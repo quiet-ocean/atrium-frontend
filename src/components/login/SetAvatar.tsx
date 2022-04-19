@@ -46,14 +46,17 @@ const SetAvatar = () => {
         >
           {new Array(8).fill(0).map((_, key: number) => {
             return (
-              <Box sx={{ px: '6px' }} key={key}>
+              <Box
+                sx={{ px: '6px' }}
+                key={key}
+                onClick={() => {
+                  selectAvatar(key + 1);
+                }}
+              >
                 <img
                   className={`${avatar === key + 1 ? 'selected' : ''}`}
                   src={`/avatars/Rectangle ${39 + key}.png`}
                   alt=""
-                  onClick={() => {
-                    selectAvatar(key + 1);
-                  }}
                 />
               </Box>
             );
