@@ -1,5 +1,5 @@
-import { enableMapSet } from 'immer'
-import { configureStore } from '@reduxjs/toolkit'
+import { enableMapSet } from 'immer';
+import { configureStore } from '@reduxjs/toolkit';
 // import userReducer from './UserStore'
 // import computerReducer from './ComputerStore'
 // import whiteboardReducer from './WhiteboardStore'

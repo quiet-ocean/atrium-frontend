@@ -9,7 +9,7 @@ const ConnectSocials = () => {
       <p>Connect your socials to access special integrations within the game.</p>
       <Button className="atrium_btn">Connect Twitter</Button>
       <Button className="atrium_btn">Connect Discord</Button>
-      <Button className="atrium_btn atrium_btn_primary" sx={{ mt: "56px"}}>
+      <Button className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
         <Link to="/login/dao">NEXT</Link>
       </Button>
       <Button className="atrium_btn">

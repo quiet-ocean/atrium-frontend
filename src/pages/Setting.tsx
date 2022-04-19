@@ -89,7 +89,7 @@ const Footer = () => {
               <span>xp</span>
               <Stack direction="row" spacing={1} className="loading-block">
                 {new Array(5).fill(1).map((_, key: number) => {
-                  return <div key={key}/>;
+                  return <div key={key} />;
                 })}
               </Stack>
             </Stack>
@@ -114,17 +114,17 @@ const Setting = () => {
         <Container>
           <Grid container spacing={2}>
             <Grid item lg={2} className="setting_panel_side_nav">
-              <Stack direction="column" sx={{ height: "100%" }} spacing={3}>
+              <Stack direction="column" sx={{ height: '100%' }} spacing={3}>
                 <div className="active">SOCIAL</div>
                 <div>TOOLS</div>
                 <div>INVENTORY</div>
                 <div>TEAMS</div>
                 <div>TOOLS</div>
-                <div style={{ height: "100%" }}></div>
+                <div style={{ height: '100%' }}></div>
                 <div>SETTINGS</div>
               </Stack>
             </Grid>
-            <Grid item lg={10} sx={{p: "0px"}} className="setting_panel_body">
+            <Grid item lg={10} sx={{ p: '0px' }} className="setting_panel_body">
               <Grid item lg={12} className="setting_panel_body_header_nav">
                 <Stack direction="row" justifyContent="space-between">
                   <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
@@ -154,20 +154,29 @@ const Setting = () => {
               <div className="setting_panel_body_tab_content">
                 <TabPanel value={value} index={0}>
                   <Grid container>
-                    <Grid item lg={4}>item-1-grid-4</Grid>
-                    <Grid item lg={8}>item-1-grid-8</Grid>
+                    <Grid item lg={4}>
+                      item-1-grid-4
+                    </Grid>
+                    <Grid item lg={8}>
+                      item-1-grid-8
+                    </Grid>
                   </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                   <Grid container className="setting_panel_body_tab_content_profile">
-                    <Grid item lg={3} className="text-center" sx={{ textAlign: 'center', px: '24px' }}>
+                    <Grid
+                      item
+                      lg={3}
+                      className="text-center"
+                      sx={{ textAlign: 'center', px: '24px' }}
+                    >
                       <Stack direction="column" spacing={2}>
                         <img src="/images/PFP_SKETCHES_1 1.png" alt="" />
                         <h1>swiftyyy</h1>
                         {/* <LinearProgress variant="determinate" value={normalise(props.value)} /> */}
                         <Stack direction="row" justifyContent="center" spacing={1}>
                           <p>LVL 72</p>
-                          <Box sx={{width: '152px', pt: '10px'}}>
+                          <Box sx={{ width: '152px', pt: '10px' }}>
                             <LinearProgress variant="determinate" color="error" value={35} />
                           </Box>
                         </Stack>
@@ -179,9 +188,9 @@ const Setting = () => {
                           <Button sx={{ background: '#181B21' }}>Email Me</Button>
                         </div>
                         <Stack direction="row" spacing={2} justifyContent="center">
-                          <TwitterIcon sx={{ fontSize: "32px" }} />
-                          <Icon sx={{ fontSize: "32px" }}>discord</Icon>
-                          <InstagramIcon sx={{ fontSize: "32px" }} />
+                          <TwitterIcon sx={{ fontSize: '32px' }} />
+                          <Icon sx={{ fontSize: '32px' }}>discord</Icon>
+                          <InstagramIcon sx={{ fontSize: '32px' }} />
                           {/* <DiscordIcon /> */}
                         </Stack>
                       </Stack>
@@ -191,7 +200,9 @@ const Setting = () => {
                         <div>
                           <h2>Description</h2>
                           <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sollicitudin donec ipsum ac egestas at sit risus ut nunc. Velit eu nec faucibus cursus lobortis magna eleifend ultrices non.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sollicitudin
+                            donec ipsum ac egestas at sit risus ut nunc. Velit eu nec faucibus
+                            cursus lobortis magna eleifend ultrices non.
                           </p>
                           <Stack direction="row" spacing={2}>
                             <Button>
@@ -200,38 +211,38 @@ const Setting = () => {
                             </Button>
                             <Button>
                               <StarIcon />
-                              &nbsp;
-                              University
+                              &nbsp; University
                             </Button>
                           </Stack>
                         </div>
                         <div>
                           <h2>Skills</h2>
                           <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sollicitudin donec ipsum ac egestas at sit risus ut nunc. Velit eu nec faucibus cursus lobortis magna eleifend ultrices non.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sollicitudin
+                            donec ipsum ac egestas at sit risus ut nunc. Velit eu nec faucibus
+                            cursus lobortis magna eleifend ultrices non.
                           </p>
                           <Stack direction="row" spacing={2}>
                             <Button>
                               <StarIcon />
-                              &nbsp;
-                              Adobe Illustrator
+                              &nbsp; Adobe Illustrator
                             </Button>
                             <Button>
                               <StarIcon />
-                              &nbsp;
-                              Adobe PhotoShop
+                              &nbsp; Adobe PhotoShop
                             </Button>
                             <Button>
                               <StarIcon />
-                              &nbsp;
-                              Figma
+                              &nbsp; Figma
                             </Button>
                           </Stack>
                         </div>
                         <div>
                           <h2>Jobs</h2>
                           <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sollicitudin donec ipsum ac egestas at sit risus ut nunc. Velit eu nec faucibus cursus lobortis magna eleifend ultrices non.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sollicitudin
+                            donec ipsum ac egestas at sit risus ut nunc. Velit eu nec faucibus
+                            cursus lobortis magna eleifend ultrices non.
                           </p>
                           <Stack direction="row" spacing={2}>
                             <Button>

@@ -46,7 +46,7 @@ const SetAvatar = () => {
         >
           {new Array(8).fill(0).map((_, key: number) => {
             return (
-              <Box sx={{ px: "6px" }} key={key}>
+              <Box sx={{ px: '6px' }} key={key}>
                 <img
                   className={`${avatar === key + 1 ? 'selected' : ''}`}
                   src={`/avatars/Rectangle ${39 + key}.png`}
@@ -60,7 +60,7 @@ const SetAvatar = () => {
           })}
         </Carousel>
       </div>
-      <Button className="atrium_btn atrium_btn_primary" sx={{ mt: "56px"}}>
+      <Button className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
         <Link to="/login/connect-socials">NEXT</Link>
       </Button>
       <Button className="atrium_btn">

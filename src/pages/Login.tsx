@@ -23,7 +23,7 @@ const Login = () => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="xl" className="login" sx={{ px: "0px" }}>
+      <Container maxWidth="xl" className="login" sx={{ px: '0px' }}>
         <Box sx={{ bgcolor: '', height: '100%' }}>
           <Grid container>
             <Grid item md={7} />
@@ -31,7 +31,8 @@ const Login = () => {
               <div className="login_panel">
                 <Outlet />
                 <Box sx={{ mt: '36px' }}>
-                  <p className="atrium_text_secondary">Already have an account?
+                  <p className="atrium_text_secondary">
+                    Already have an account?
                     <span className="atrium_text_light"> Log in now</span>
                   </p>
                 </Box>

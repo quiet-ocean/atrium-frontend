@@ -6,15 +6,14 @@ import { Setting, Login } from './pages';
 import { initNearContract } from './utils/near';
 import { CWindow } from './types/Window';
 import { useAppDispatch, useAppSelector } from './hooks';
-import { WalletType } from './stores/AppStore';
-import { setWallet, setSnackOpen } from './stores/AppStore';
+import { WalletType, setWallet, setSnackOpen } from './stores/AppStore';
+
 import { Buffer } from 'buffer';
 globalThis.Buffer = Buffer;
 
 declare let window: CWindow;
 
 const Home = () => {
-
   const message: string = useAppSelector((state: { app: { message: any } }) => state.app.message);
   const open: boolean = useAppSelector((state: { app: { snackOpen: any } }) => state.app.snackOpen);
   const dispatch = useAppDispatch();
