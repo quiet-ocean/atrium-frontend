@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 import { Stepper } from '../../components';
 import { loginNEAR } from '../../utils/near';
 import { loginSender } from '../../utils/sender';
-import { WalletType, setWallet, showToast } from '../../stores/AppStore';
+import { WalletType, showToast } from '../../stores/AppStore';
 // import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useAppSelector } from '../../hooks';
 
