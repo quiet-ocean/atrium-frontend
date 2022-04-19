@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
-import Login from './pages/login/Login';
 import { Container, Snackbar } from '@mui/material';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ChooseWallet, ChooseName, ConnectSocials, DAO, SetAvatar } from './pages/login';
-import { Setting } from './pages/setting';
+import { ChooseWallet, ChooseName, ConnectSocials, DAO, SetAvatar } from './components/login';
+import { Setting, Login } from './pages';
 import { initNearContract } from './utils/near';
 import { CWindow } from './types/Window';
 import { useAppDispatch, useAppSelector } from './hooks';

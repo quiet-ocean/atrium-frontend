@@ -236,18 +236,15 @@ const Setting = () => {
                           <Stack direction="row" spacing={2}>
                             <Button>
                               <StarIcon />
-                              &nbsp;
-                              Adobe Illustrator
+                              &nbsp; Adobe Illustrator
                             </Button>
                             <Button>
                               <StarIcon />
-                              &nbsp;
-                              Adobe PhotoShop
+                              &nbsp; Adobe PhotoShop
                             </Button>
                             <Button>
                               <StarIcon />
-                              &nbsp;
-                              Figma
+                              &nbsp; Figma
                             </Button>
                           </Stack>
                         </div>
@@ -257,8 +254,12 @@ const Setting = () => {
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                   <Grid container>
-                    <Grid item lg={4}>item-3-grid-4</Grid>
-                    <Grid item lg={8}>item-3-grid-8</Grid>
+                    <Grid item lg={4}>
+                      item-3-grid-4
+                    </Grid>
+                    <Grid item lg={8}>
+                      item-3-grid-8
+                    </Grid>
                   </Grid>
                 </TabPanel>
               </div>

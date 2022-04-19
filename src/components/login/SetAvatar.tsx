@@ -3,30 +3,30 @@ import { Button, Box } from '@mui/material';
 import { Stepper } from '../../components';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { setAvatar } from '../../stores/AppStore';
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
-    items: 4
+    items: 4,
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 4
+    items: 4,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 2
+    items: 2,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 1
-  }
+    items: 1,
+  },
 };
 
 const SetAvatar = () => {
-  const avatar = useAppSelector((state) => state.app.avatar);
+  const avatar = useAppSelector((state: { app: { avatar: any } }) => state.app.avatar);
   const dispatch = useAppDispatch();
   const selectAvatar = (id: number) => {
     console.log('select avatar ', id);
@@ -38,11 +38,11 @@ const SetAvatar = () => {
       <p>Choose your avatar to represent yourself in the digital world.</p>
       <div className="login_panel_avatar_carousel">
         <Carousel
-        responsive={responsive}
-        showDots={true}
-        dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
-        autoPlay={false}
+          responsive={responsive}
+          showDots={true}
+          dotListClass="custom-dot-list-style"
+          itemClass="carousel-item-padding-40-px"
+          autoPlay={false}
         >
           {new Array(8).fill(0).map((_, key: number) => {
             return (
@@ -51,7 +51,9 @@ const SetAvatar = () => {
                   className={`${avatar === key + 1 ? 'selected' : ''}`}
                   src={`/avatars/Rectangle ${39 + key}.png`}
                   alt=""
-                  onClick={() => { selectAvatar(key+1); }}
+                  onClick={() => {
+                    selectAvatar(key + 1);
+                  }}
                 />
               </Box>
             );
