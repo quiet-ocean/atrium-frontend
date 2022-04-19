@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles'
+import { createTheme } from '@mui/material/styles';
 
 const muiTheme = createTheme({
   palette: {
@@ -10,6 +10,6 @@ const muiTheme = createTheme({
       main: '#42eacb',
     },
   },
-})
+});
 
-export default muiTheme
+export default muiTheme;
