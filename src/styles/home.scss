@@ -1,0 +1,40 @@
+// #root {
+
+// }
+.login {
+  background-image: url('../../public/login-background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  background-position: center;
+  
+  &_panel {
+    margin: 80px 20px;
+    background: $bg-dark-900;
+
+    padding: 100px 60px;
+    
+    &_avatar {
+      &_carousel {
+        .react-multi-carousel-list {
+          height: 204px;
+        }
+        li {
+          margin: 0px 4px;
+        }
+        img {
+          width: 100%;
+        }
+        img.selected {
+          border: 1px solid white;
+        }
+        // .custom-dot-list-style {
+
+        // }
+      }
+    }
+  }
+  h1, p {
+    text-align: center;
+  }
+}
