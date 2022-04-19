@@ -15,6 +15,7 @@ globalThis.Buffer = Buffer;
 declare let window: CWindow;
 
 const Home = () => {
+
   const message: string = useAppSelector((state: { app: { message: any } }) => state.app.message);
   const open: boolean = useAppSelector((state: { app: { snackOpen: any } }) => state.app.snackOpen);
   const dispatch = useAppDispatch();
@@ -32,7 +33,7 @@ const Home = () => {
           // setConnected(false);
         }
       } else if (window.near) {
-        console.log(window.near.getAccountId());
+        console.log('already logged in by sender wallet', window.near.getAccountId());
       }
     };
     init();

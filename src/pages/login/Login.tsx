@@ -1,12 +1,23 @@
 import * as React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Grid, CssBaseline, Box, Container } from '@mui/material';
-
+// import { CWindow } from '../../types/Window';
+import { useAppSelector } from '../../hooks';
+import { WalletType } from '../../stores/AppStore';
+// declare let window: CWindow;
 const Login = () => {
-  // const navigate = useNavigate();
-  // React.useEffect(() => {
-  //   navigate('/login');
-  // }, []);
+  const navigate = useNavigate();
+  const walletType: WalletType = useAppSelector((state: { app: { wallet: any } }) => state.app.wallet);
+  
+  React.useEffect(() => {
+    console.log('wallet type is ', walletType)
+    if(walletType !== WalletType.none) {
+      navigate('/login/choose-name');
+      return;
+    }
+    navigate('/login');
+  }, [walletType]);
+  
   return (
     <React.Fragment>
       <CssBaseline />
