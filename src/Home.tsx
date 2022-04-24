@@ -1,8 +1,15 @@
 import { useEffect } from 'react';
 import { Container, Snackbar } from '@mui/material';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ChooseWallet, ChooseName, ConnectSocials, DAO, SetAvatar } from './components/login';
-import { Setting, Login } from './pages';
+import {
+  ChooseWallet,
+  ChooseName,
+  ConnectSocials,
+  DAO,
+  SetAvatar,
+  CreateRoom,
+} from './components/login';
+import { Setting, Login, Room } from './pages';
 // import { initNearContract } from './utils/near';
 import { CWindow } from './types/Window';
 import { useAppDispatch, useAppSelector } from './hooks';
@@ -17,18 +24,13 @@ const Home = () => {
   const message: string = useAppSelector((state: { app: { message: any } }) => state.app.message);
   const open: boolean = useAppSelector((state: { app: { snackOpen: any } }) => state.app.snackOpen);
   const dispatch = useAppDispatch();
-  // console.log(process.env.REACT_APP_CONTRACT_ID);
 
   useEffect(() => {
-    // console.log('wallet connected to ', wallet);
     const init = async () => {
-      // await initNearContract();
       if (window.walletConnection) {
         if (await window.walletConnection.isSignedIn()) {
           console.log('wallet logged in by near wallet');
           dispatch(setWallet({ walletType: WalletType.near }));
-        } else {
-          // setConnected(false);
         }
       } else if (window.near) {
         console.log('already logged in by sender wallet', window.near.getAccountId());
@@ -50,8 +52,10 @@ const Home = () => {
             <Route path="set-avatar" element={<SetAvatar />} />
             <Route path="connect-socials" element={<ConnectSocials />} />
             <Route path="dao" element={<DAO />} />
+            <Route path="create-room" element={<CreateRoom />} />
           </Route>
           <Route path="/setting" element={<Setting />} />
+          <Route path="/room" element={<Room />} />
         </Routes>
       </BrowserRouter>
       <Snackbar

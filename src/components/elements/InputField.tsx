@@ -11,14 +11,14 @@ const InputField = ({
   label: string;
   value: string;
   error: string;
-  setError: (e: string) => void;
-  handleChange: (un: string) => void;
+  setError?: (e: string) => void;
+  handleChange?: (un: string) => void;
 }) => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target) {
+    if (e.target && handleChange) {
       handleChange(e.target?.value);
     }
-    setError('');
+    if (setError) setError('');
   };
   return (
     <div className="input_group">
@@ -28,7 +28,7 @@ const InputField = ({
         className={`form_control ${error ? 'form_control_error' : ''}`}
         onChange={onChange}
         onFocus={() => {
-          setError('');
+          if (setError) setError('');
         }}
         type="text"
       />

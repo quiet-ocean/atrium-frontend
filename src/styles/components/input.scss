@@ -33,6 +33,9 @@
   border: 1px solid $color-warning;
 }
 .input_group {
+  label {
+    text-transform: uppercase;
+  }
   &_error_field {
     position: absolute;
     top: 122px;

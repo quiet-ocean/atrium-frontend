@@ -11,6 +11,7 @@ export interface AppState {
   avatar: number;
   wallet: WalletType;
   snackOpen: boolean;
+  roomName: string;
 }
 
 export const initialState: AppState = {
@@ -19,6 +20,7 @@ export const initialState: AppState = {
   avatar: 0,
   wallet: WalletType.none,
   snackOpen: false,
+  roomName: '',
 };
 
 export const appSlice = createSlice({
@@ -41,9 +43,12 @@ export const appSlice = createSlice({
     setAvatar: (state, action: PayloadAction<{ id: number }>) => {
       state.avatar = action.payload.id;
     },
+    setRoomName: (state, action: PayloadAction<{ roomName: string }>) => {
+      state.roomName = action.payload.roomName;
+    },
   },
 });
 
-export const { setUsername, setWallet, setSnackOpen, showToast, setAvatar } = appSlice.actions;
+export const { setUsername, setWallet, setSnackOpen, showToast, setAvatar, setRoomName } = appSlice.actions;
 
 export default appSlice.reducer;

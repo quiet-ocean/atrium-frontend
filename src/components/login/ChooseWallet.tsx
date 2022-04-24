@@ -18,7 +18,7 @@ const ChooseWallet = () => {
 
   useEffect(() => {
     if (walletType !== WalletType.none) {
-      navigate('/login/choose-name');
+      navigate('/login/create-room');
     }
   }, []);
 

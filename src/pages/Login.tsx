@@ -14,7 +14,7 @@ const Login = () => {
   React.useEffect(() => {
     console.log('wallet type is ', walletType);
     if (walletType !== WalletType.none) {
-      navigate('/login/choose-name');
+      navigate('/login/create-room');
       return;
     }
     navigate('/login');
