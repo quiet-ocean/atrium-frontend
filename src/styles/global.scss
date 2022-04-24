@@ -122,6 +122,9 @@ h1, p, a {
     line-height: 32px !important;
     color: #F8F9FA !important;
   }
+  &_btn.active {
+    border: 2px solid white !important;
+  }
   &_btn_primary {
     background: #18BAFE !important;
   }

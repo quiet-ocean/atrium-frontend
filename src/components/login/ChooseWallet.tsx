@@ -26,11 +26,13 @@ const ChooseWallet = () => {
     // dispatch(setWallet({ walletType: type }));
     setWallet(type);
   };
-
+  const handleSuccess = () => {
+    navigate('/login/create-room');
+  };
   const login = () => {
     console.log('login', walletType);
     if (wallet === WalletType.sender) {
-      loginSender();
+      loginSender(handleSuccess);
     } else if (wallet === WalletType.near) {
       loginNEAR(window.location.origin + '/login/choose-name', 'https://localhost:1234');
     } else {
@@ -44,15 +46,18 @@ const ChooseWallet = () => {
       <p>Connect your wallet to get started on your Web3 Journey</p>
       <Button
         onClick={() => selectWalletType(WalletType.near)}
-        className="atrium_btn"
+        className={`atrium_btn ${wallet === WalletType.near ? 'active' : ''}`}
         sx={{ mt: '12px' }}
       >
         NEAR Wallet
       </Button>
-      <Button onClick={() => selectWalletType(WalletType.sender)} className="atrium_btn">
+      <Button
+        className={`atrium_btn ${wallet === WalletType.sender ? 'active' : ''}`}
+        onClick={() => selectWalletType(WalletType.sender)}
+      >
         Sender Wallet
       </Button>
-      <Button onClick={login} className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
+      <Button className="atrium_btn atrium_btn_primary" onClick={login} sx={{ mt: '56px' }}>
         NEXT
       </Button>
       <Stepper length={5} step={0} />

@@ -4,7 +4,7 @@ interface CWindow extends Window {
 }
 
 declare let window: CWindow;
-export const loginSender = async () => {
+export const loginSender = async (cb?: () => void) => {
   if (!window.near) {
     console.log('you should install sender wallet');
     return;
@@ -15,10 +15,18 @@ export const loginSender = async () => {
 
   // Or add `methodNames` if you only allow the key to call some of the methods
 
-  await window.near.requestSignIn({
-    contractId: CONTRACT_ID, // contract requesting access
-    methodNames: ['addMessage'], // (optional) changed methods the app allowed to use
-  });
+  await window.near
+    .requestSignIn({
+      contractId: CONTRACT_ID, // contract requesting access
+      methodNames: ['addMessage'], // (optional) changed methods the app allowed to use
+    })
+    .then((res: any) => {
+      console.log('login succeed by sender wallet ', res);
+      if (cb) cb();
+    })
+    .catch((e: any) => {
+      console.log('an error occurred during login by sender wallet ', e);
+    });
 
   window.near.isSignedIn(); // t
 };
