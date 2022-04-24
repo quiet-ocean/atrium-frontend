@@ -49,6 +49,7 @@ export const appSlice = createSlice({
   },
 });
 
-export const { setUsername, setWallet, setSnackOpen, showToast, setAvatar, setRoomName } = appSlice.actions;
+export const { setUsername, setWallet, setSnackOpen, showToast, setAvatar, setRoomName } =
+  appSlice.actions;
 
 export default appSlice.reducer;

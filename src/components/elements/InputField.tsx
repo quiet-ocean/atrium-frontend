@@ -31,6 +31,7 @@ const InputField = ({
           if (setError) setError('');
         }}
         type="text"
+        style={{ marginTop: '12px' }}
       />
       {error && <p className="input_group_error_field">{error}</p>}
       {/* <TextField
