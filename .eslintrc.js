@@ -13,10 +13,9 @@ module.exports = {
     sourceType: 'module',
   },
   extends: [
-    'eslint:recommended',
-    // 'plugin:react/recommended',
+    // 'eslint:recommended',
     // 'airbnb',
-    'plugin:react/recommended',
+    // 'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/errors',
@@ -40,7 +39,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/display-name': 'off',
-    'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    // 'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'prettier/prettier': [
       'error',
       {

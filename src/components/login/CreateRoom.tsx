@@ -23,7 +23,7 @@ const CreateRoom = () => {
   };
   return (
     <>
-      <h1>Create Room fff</h1>
+      <h1>Create Room</h1>
       <p style={{ marginBottom: '12px' }}>
         Create a room by custom room name or your near account id.
       </p>
