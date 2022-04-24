@@ -8,20 +8,15 @@ import { loginSender } from '../../utils/sender';
 import { WalletType, showToast } from '../../stores/AppStore';
 // import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useAppSelector } from '../../hooks';
+import { Buffer } from 'buffer';
+globalThis.Buffer = Buffer;
 
 const ChooseWallet = () => {
   const navigate = useNavigate();
   const [wallet, setWallet] = useState(WalletType.none);
-  const [loggedIn, setLoggedIn] = useState(false);
   const walletType = useAppSelector((state) => state.app.wallet);
-  // const dispatch = useAppDispatch();
-  // const location = useLocation();
-  // console.log('current location is ', location);
-  // console.log(WalletType);
+
   useEffect(() => {
-    setLoggedIn(true);
-    console.log(loggedIn);
-    // console.log('wallet type is ', walletType);
     if (walletType !== WalletType.none) {
       navigate('/login/choose-name');
     }
@@ -37,7 +32,7 @@ const ChooseWallet = () => {
     if (wallet === WalletType.sender) {
       loginSender();
     } else if (wallet === WalletType.near) {
-      loginNEAR();
+      loginNEAR(window.location.origin + '/login/choose-name', 'https://localhost:1234');
     } else {
       showToast({ message: 'please select wallet' });
     }

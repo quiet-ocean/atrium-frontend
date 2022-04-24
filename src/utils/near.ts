@@ -1,5 +1,7 @@
 import { connect, Contract, keyStores, WalletConnection } from 'near-api-js';
 import { getConfig } from '../config';
+import { Buffer } from 'buffer';
+globalThis.Buffer = Buffer;
 
 const nearConfig = getConfig(process.env.REACT_APP_NODE_ENV || 'development');
 
@@ -61,13 +63,13 @@ export async function logoutNEAR() {
   // callback(false);
 }
 
-export async function loginNEAR() {
+export async function loginNEAR(successUrl: string, failureUrl: string) {
   // Allow the current app to make calls to the specified contract on the
   // user's behalf.
   // This works by creating a new access key for the user's account and storing
   // the private key in localStorage.
   await window.walletConnection
-    .requestSignIn(nearConfig.contractName)
+    .requestSignIn(nearConfig.contractName, 'near login', successUrl, failureUrl)
     .then((res: any) => {
       console.log(res);
       // callback(true);

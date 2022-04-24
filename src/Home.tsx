@@ -3,7 +3,7 @@ import { Container, Snackbar } from '@mui/material';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ChooseWallet, ChooseName, ConnectSocials, DAO, SetAvatar } from './components/login';
 import { Setting, Login } from './pages';
-import { initNearContract } from './utils/near';
+// import { initNearContract } from './utils/near';
 import { CWindow } from './types/Window';
 import { useAppDispatch, useAppSelector } from './hooks';
 import { WalletType, setWallet, setSnackOpen } from './stores/AppStore';
@@ -22,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     // console.log('wallet connected to ', wallet);
     const init = async () => {
-      await initNearContract();
+      // await initNearContract();
       if (window.walletConnection) {
         if (await window.walletConnection.isSignedIn()) {
           console.log('wallet logged in by near wallet');
