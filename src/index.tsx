@@ -10,17 +10,21 @@ import muiTheme from './MuiTheme'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import store from './stores'
+import { initNearContract } from './utils';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={muiTheme}>
-        <App />
-      </ThemeProvider>
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
-)
+initNearContract()
+  .then(() => {
+    ReactDOM.render(
+      <React.StrictMode>
+        <Provider store={store}>
+          <ThemeProvider theme={muiTheme}>
+            <App />
+          </ThemeProvider>
+        </Provider>
+      </React.StrictMode>,
+      document.getElementById('root')
+    )
+  })
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

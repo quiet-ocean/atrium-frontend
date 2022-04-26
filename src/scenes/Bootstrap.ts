@@ -3,6 +3,7 @@ import Network from '../services/Network'
 import { BackgroundMode } from '../types/BackgroundMode'
 import store from '../stores'
 import { setRoomJoined } from '../stores/RoomStore'
+import { setLoggedIn } from '../stores/UserStore';
 
 export default class Bootstrap extends Phaser.Scene {
   network!: Network
@@ -18,6 +19,7 @@ export default class Bootstrap extends Phaser.Scene {
       'assets/background/cloud_day.json'
     )
     this.load.image('backdrop_day', 'assets/background/backdrop_day.png')
+    this.load.image('login_bg', 'assets/background/login_bg.png')
     this.load.atlas(
       'cloud_night',
       'assets/background/cloud_night.png',
@@ -97,6 +99,7 @@ export default class Bootstrap extends Phaser.Scene {
 
     // update Redux state
     store.dispatch(setRoomJoined(true))
+    // store.dispatch(setLoggedIn(true));
   }
 
   changeBackgroundMode(backgroundMode: BackgroundMode) {

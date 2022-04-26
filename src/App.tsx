@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { useAppSelector } from './hooks'
+import { useAppDispatch, useAppSelector } from './hooks'
+import { setLoggedIn } from './stores/UserStore'
 
-import RoomSelectionDialog from './components/RoomSelectionDialog'
+import RoomSelectionDialog from './components/_RoomSelectionDialog'
 import LoginDialog from './components/LoginDialog'
 import ComputerDialog from './components/ComputerDialog'
 import WhiteboardDialog from './components/WhiteboardDialog'
@@ -11,13 +12,36 @@ import VideoConnectionDialog from './components/VideoConnectionDialog'
 import Chat from './components/Chat'
 import HelperButtonGroup from './components/HelperButtonGroup'
 
+import Game from './scenes/Game'
+import phaserGame from './PhaserGame'
+
+import Adam from './assets/Adam_login.png'
+import Ash from './assets/Ash_login.png'
+import Lucy from './assets/Lucy_login.png'
+import Nancy from './assets/Nancy_login.png'
+
 const Backdrop = styled.div`
   position: absolute;
   height: 100%;
   width: 100%;
 `
 
+const avatars = [
+  { name: 'adam', img: Adam },
+  { name: 'ash', img: Ash },
+  { name: 'lucy', img: Lucy },
+  { name: 'nancy', img: Nancy },
+]
+
+// shuffle the avatars array
+for (let i = avatars.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1))
+  ;[avatars[i], avatars[j]] = [avatars[j], avatars[i]]
+}
+
 function App() {
+  const dispatch = useAppDispatch();
+  const game = phaserGame.scene.keys.game as Game
   const loggedIn = useAppSelector((state) => state.user.loggedIn)
   const computerDialogOpen = useAppSelector((state) => state.computer.computerDialogOpen)
   const whiteboardDialogOpen = useAppSelector((state) => state.whiteboard.whiteboardDialogOpen)
@@ -44,10 +68,22 @@ function App() {
     }
   } else if (roomJoined) {
     /* Render LoginDialog if not logged in but selected a room. */
-    ui = <LoginDialog />
+    // ui = <LoginDialog />
+    ui = <></>
+    console.log('room joined');
+    if(game) {
+      game.registerKeys()
+      if(game.myPlayer) {
+        game.myPlayer.setPlayerName((window as any).accountId)
+        game.myPlayer.setPlayerTexture(avatars[0].name)
+        game.network.readyToConnect()
+        dispatch(setLoggedIn(true))
+      }
+    }
   } else {
     /* Render RoomSelectionDialog if yet selected a room. */
     ui = <RoomSelectionDialog />
+    // ui = <div></div>
   }
 
   return (
