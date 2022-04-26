@@ -14,6 +14,10 @@ import Nancy from '../assets/Nancy_login.png'
 import { setLoggedIn } from '../stores/UserStore'
 import { useAppSelector, useAppDispatch } from '../hooks'
 
+
+import { Box, Button, Container } from '@mui/material';
+import { Stepper } from './elements';
+
 enum Wallet {
   Near, Sender, None
 };
@@ -43,12 +47,37 @@ const WalletConnectionForm = () => {
     }
   }
   return (
-    <>
-      <h1>Wallet Connection</h1>
-      <button onClick={() => setWalletType(Wallet.Near)}>near</button>
-      <button onClick={() => setWalletType(Wallet.Sender)}>sender</button>
-      <button onClick={() => login()}>next</button>
-    </>
+    <Container>
+      <div className="login_panel">
+        <div>
+          <h1>Connect Wallet</h1>
+          <p>Connect your wallet to get started on your Web3 Journey</p>
+          <Button
+            onClick={() => setWalletType(Wallet.Near)}
+            className={`atrium_btn ${walletType === Wallet.Near ? 'active' : ''}`}
+            sx={{ mt: '12px' }}
+          >
+            NEAR Wallet
+          </Button>
+          <Button
+            className={`atrium_btn ${walletType === Wallet.Sender ? 'active' : ''}`}
+            onClick={() => setWalletType(Wallet.Sender)}
+          >
+            Sender Wallet
+          </Button>
+          <Button className="atrium_btn atrium_btn_primary" onClick={login} sx={{ mt: '56px' }}>
+            NEXT
+          </Button>
+          <Stepper length={5} step={0} />
+        </div>
+        <Box sx={{ mt: '36px' }}>
+          <p className="atrium_text_secondary">
+            Already have an account?
+            <span className="atrium_text_light"> Log in now</span>
+          </p>
+        </Box>
+      </div>
+    </Container>
   );
 };
 
@@ -83,9 +112,40 @@ const CreateRoomForm = () => {
   }
   return (
     <>
-      <h1>create room</h1>
-      <input onChange={handleChange('name')}/>
-      <button onClick={create}>create room</button>
+      <Container>
+        <div className="login_panel">
+          <div>
+            <h1>Create Room</h1>
+            <p style={{ marginBottom: '12px' }}>
+              Create a room by custom room name or your near account id.
+            </p>
+            <Box sx={{ mt: '36px' }}>
+              {/* <InputField
+                label="room name"
+                value={roomName}
+                handleChange={(name: string) => dispatch(setRoomName({ roomName: name }))}
+                error={error}
+                setError={setError}
+              /> */}
+              <div className="input_group">
+                <input onChange={handleChange('name')} className="form_control" />
+              </div>
+            </Box>
+            <Button onClick={create} className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
+              Create Room
+            </Button>
+            <Button className="atrium_btn">
+              Skip
+            </Button>
+          </div>
+          <Box sx={{ mt: '36px' }}>
+            <p className="atrium_text_secondary">
+              Already have an account?
+              <span className="atrium_text_light"> Log in now</span>
+            </p>
+          </Box>
+        </div>
+      </Container>
     </>
   );
 };
