@@ -1,0 +1,16 @@
+# dependencies
+/node_modules
+
+# testing
+
+# production
+/build
+/.cache
+/out
+/dist
+/neardev
+
+.env
+.DS_Store
+
+npm-debug.log*

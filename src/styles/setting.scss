@@ -1,0 +1,226 @@
+.setting {
+  background-image: url('../../public/setting-background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  background-position: center;
+  padding: 96px 72px !important;
+  color: white;
+  font-family: 'Sarpanch' !important;
+
+  &_panel {
+    display: flex;
+    background: $bg-dark-958;
+    border-radius: 16px;
+    padding: 12px;
+    & > div {
+      background: #181B21;
+      border-radius: 16px;
+      padding: 48px !important;
+    }
+    &_side {
+      &_nav {
+        min-height: 640px;
+        background: #111317;
+        border-radius: 16px;
+        padding: 24px !important;
+        & > div {
+          font-family: 'Sarpanch';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 24px;
+          line-height: 34px;
+          /* identical to box height */
+
+          letter-spacing: 0.07em; 
+
+          /* white */
+
+          color: rgba(255, 255, 255, 0.3);
+          & > div.active {
+            color: white;
+            font-weight: 900;
+          }
+        }
+        // margin-bottom: 24px !important;
+      }
+    }
+    &_body {
+      font-family: 'Sarpanch' !important;
+      padding-top: 0px !important;
+      &_header {
+        &_nav {
+          background: #111317;
+          border-radius: 16px;
+          padding: 12px;
+          button {
+            font-family: 'Sarpanch' !important;
+            font-family: 'Sarpanch';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 28px;
+            /* identical to box height */
+
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+          }
+          input {
+            font-family: 'Sarpanch';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 28px;
+            /* identical to box height */
+
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+
+            /* inactive */
+
+            color: rgba(255, 255, 255, 0.3);
+          }
+          .Mui-selected {
+            color: #FFFFFF !important;
+            font-weight: 900;
+            border: none !important;
+          }
+          .MuiTabs-indicator {
+            display: none;
+          }
+        }
+      }
+      &_tab_content {
+        background: #111317;
+        border-radius: 16px;
+        margin-top: 24px;
+        h1, p, button {
+          font-family: 'Sarpanch' !important;
+        }
+        h2 {
+          font-family: 'Sarpanch';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 34px;
+          /* identical to box height */
+
+          letter-spacing: 0.07em;
+          color: #FFFFFF;
+        }
+        p {
+          font-family: 'Yantramanav';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 124.8%;
+          /* or 22px */
+
+
+          /* white */
+
+          color: #FFFFFF;
+        }
+        &_profile > div:first-child {
+          h1, p {
+            // text-align: center;
+          }
+          button {
+            max-width: 250px;
+            width: 100%;
+            padding: 9px 56px;
+            // margin-bottom: 24px;
+            // background: #ED2424;
+            border-radius: 32px;
+            font-family: 'Sarpanch';
+            font-style: normal;
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 28px;
+            /* identical to box height */
+
+            text-transform: uppercase;
+
+            /* white */
+
+            color: #FFFFFF;
+          }
+        }
+        &_profile > div:nth-child(2) {
+          padding: 24px 48px;
+          button {
+            // border: 1px solid red;
+            color: white;
+            background: #0E0E0E;
+            border-radius: 16px;
+            padding: 4px 16px;
+            text-transform: capitalize;
+          }
+          h2 {
+            font-family: 'Sarpanch';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 34px;
+            /* identical to box height */
+
+            letter-spacing: 0.07em;
+          }
+           P {
+            font-family: 'Yantramanav';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 124.8%;
+            /* or 22px */
+            
+            
+            /* white */
+            
+            color: #FFFFFF;
+           }
+        }
+      }
+    }
+  }
+  &_footer {
+    font-family: 'Sarpanch';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 25px;
+
+    color: #0E1013;
+    // margin-top: 64px 0px !important;
+    padding: 64px 0px !important;
+    height: auto !important;
+    & > div {
+      & > div {
+        padding: 12px 64px;
+        & > div {
+          background: #181B21;
+          border-radius: 36px;
+          padding: 8px 24px;
+          .notice {
+            background-color: #ED2424;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            padding: 0px 6px;
+            margin-top: 4px;
+          }
+          .loading-block > div {
+            width: 23px;
+            height: 20px;
+            background: #ED2424;
+            margin-top: 4px;
+          }
+        }
+      }
+    }
+    &_main {
+      padding-top: 0px !important;
+      padding-bottom: 0px !important;
+    }
+  }
+}
