@@ -4,16 +4,11 @@ import { IRoomData } from '../types/Rooms';
 
 import phaserGame from '../PhaserGame'
 import Bootstrap from '../scenes/Bootstrap'
-import Game from '../scenes/Game'
 
 import Adam from '../assets/Adam_login.png'
 import Ash from '../assets/Ash_login.png'
 import Lucy from '../assets/Lucy_login.png'
 import Nancy from '../assets/Nancy_login.png'
-
-import { setLoggedIn } from '../stores/UserStore'
-import { useAppSelector, useAppDispatch } from '../hooks'
-
 
 import { Box, Button, Container, Grid } from '@mui/material';
 import { Stepper } from './elements';
@@ -82,8 +77,6 @@ const WalletConnectionForm = () => {
 };
 
 const CreateRoomForm = () => {
-  const dispatch = useAppDispatch();
-  const game = phaserGame.scene.keys.game as Game
   const [values, setValues] = useState<IRoomData>({
     name: '',
     description: 'game room',
@@ -98,11 +91,6 @@ const CreateRoomForm = () => {
         .createCustom(values)
         .then(() => {
           bootstrap.launchGame()
-          // game.registerKeys()
-          // game.myPlayer.setPlayerName((window as any).accountId)
-          // game.myPlayer.setPlayerTexture(avatars[0].name)
-          // game.network.readyToConnect()
-          // dispatch(setLoggedIn(true))
         })
         .catch((error) => console.error(error))
     }

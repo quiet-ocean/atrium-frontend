@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from './hooks'
 import { setLoggedIn } from './stores/UserStore'
 
 import RoomSelectionDialog from './components/_RoomSelectionDialog'
-import LoginDialog from './components/LoginDialog'
+// import LoginDialog from './components/LoginDialog'
 import ComputerDialog from './components/ComputerDialog'
 import WhiteboardDialog from './components/WhiteboardDialog'
 import VideoConnectionDialog from './components/VideoConnectionDialog'
