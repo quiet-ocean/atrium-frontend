@@ -15,7 +15,7 @@ import { setLoggedIn } from '../stores/UserStore'
 import { useAppSelector, useAppDispatch } from '../hooks'
 
 
-import { Box, Button, Container } from '@mui/material';
+import { Box, Button, Container, Grid } from '@mui/material';
 import { Stepper } from './elements';
 
 enum Wallet {
@@ -160,7 +160,14 @@ const RoomSelectionDialog = () => {
   }, []);
   return (
     <>
-      { connected ? <CreateRoomForm /> : <WalletConnectionForm /> }
+      <Container>
+        <Grid container>
+          <Grid item md={8}></Grid>
+          <Grid item md={4}>
+            { connected ? <CreateRoomForm /> : <WalletConnectionForm /> }
+          </Grid>
+        </Grid>
+      </Container>
     </>
   )
 };
