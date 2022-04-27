@@ -26,6 +26,8 @@ export default class MyPlayer extends Player {
   ) {
     super(scene, x, y, texture, id, frame)
     this.playContainerBody = this.playerContainer.body as Phaser.Physics.Arcade.Body
+    console.log(this);
+    (window as any).sprite = this;
   }
 
   setPlayerName(name: string) {

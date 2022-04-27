@@ -9,6 +9,7 @@ import RoomSelectionDialog from './components/_RoomSelectionDialog'
 import ComputerDialog from './components/ComputerDialog'
 import WhiteboardDialog from './components/WhiteboardDialog'
 import VideoConnectionDialog from './components/VideoConnectionDialog'
+import SettingDialog from './components/SettingDialog';
 import Chat from './components/Chat'
 import HelperButtonGroup from './components/HelperButtonGroup'
 
@@ -47,6 +48,7 @@ function App() {
   const whiteboardDialogOpen = useAppSelector((state) => state.whiteboard.whiteboardDialogOpen)
   const videoConnected = useAppSelector((state) => state.user.videoConnected)
   const roomJoined = useAppSelector((state) => state.room.roomJoined)
+  const settingDialogOpen = useAppSelector((state) => state.setting.settingDialogOpen);
 
   let ui: JSX.Element
   if (loggedIn) {
@@ -56,13 +58,15 @@ function App() {
     } else if (whiteboardDialogOpen) {
       /* Render WhiteboardDialog if user is using a whiteboard. */
       ui = <WhiteboardDialog />
+    } else if (settingDialogOpen) {
+      ui = <SettingDialog />
     } else {
       ui = (
         /* Render Chat or VideoConnectionDialog if no dialogs are opened. */
         <>
           <Chat />
           {/* Render VideoConnectionDialog if user is not connected to a webcam. */}
-          {!videoConnected && <VideoConnectionDialog />}
+          {/* {!videoConnected && <VideoConnectionDialog />} */}
         </>
       )
     }
@@ -70,11 +74,11 @@ function App() {
     /* Render LoginDialog if not logged in but selected a room. */
     // ui = <LoginDialog />
     ui = <></>
-    console.log('room joined');
+    // console.log('room joined');
     if(game) {
       game.registerKeys()
       if(game.myPlayer) {
-        game.myPlayer.setPlayerName((window as any).accountId)
+        game.myPlayer.setPlayerName((window as any).accountId || (window as any).near?.accountId)
         game.myPlayer.setPlayerTexture(avatars[0].name)
         game.network.readyToConnect()
         dispatch(setLoggedIn(true))
