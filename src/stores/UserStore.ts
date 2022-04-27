@@ -19,6 +19,7 @@ export const userSlice = createSlice({
     loggedIn: false,
     walletConnected: false,
     playerNameMap: new Map<string, string>(),
+    playerName: '',
   },
   reducers: {
     toggleBackgroundMode: (state) => {
@@ -47,6 +48,9 @@ export const userSlice = createSlice({
     setWalletConnected: (state, action: PayloadAction<boolean>) => {
       state.walletConnected = action.payload;
     },
+    setPlayerName: (state, action: PayloadAction<string>) => {
+      state.playerName = action.payload;
+    }
   },
 })
 
@@ -58,6 +62,7 @@ export const {
   setPlayerNameMap,
   removePlayerNameMap,
   setWalletConnected,
+  setPlayerName,
 } = userSlice.actions
 
 export default userSlice.reducer

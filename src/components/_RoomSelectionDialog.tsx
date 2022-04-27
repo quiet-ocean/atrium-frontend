@@ -3,6 +3,7 @@ import { loginNear, loginSender, logoutNear, logoutSender } from '../utils';
 import { useAppSelector, useAppDispatch } from '../hooks';
 import { setWalletConnected } from '../stores/UserStore';
 import { CustomRoomTable } from './CustomRoomTable';
+import { setPlayerName } from '../stores/UserStore';
 
 import { IRoomData } from '../types/Rooms';
 import phaserGame from '../PhaserGame'
@@ -104,6 +105,7 @@ const CreateRoomForm = () => {
         .catch((error) => console.error(error))
     }
   };
+
   const handleChange = (prop: keyof IRoomData) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [prop]: e.target.value });
   }
@@ -163,7 +165,7 @@ const CreateRoomForm = () => {
             <Button onClick={create} className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
               Create
             </Button>
-            <Button className="atrium_btn">
+            <Button className="atrium_btn" >
               Skip
             </Button>
           </div>
@@ -180,6 +182,54 @@ const CreateRoomForm = () => {
   );
 };
 
+const SetProfile = () => {
+  const dispatch = useAppDispatch();
+  const [name, setName] = useState('');
+  const handleConnect = () => {
+    const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
+    bootstrap.network
+      .joinOrCreatePublic()
+      .then(() => bootstrap.launchGame())
+      .catch((error) => console.error(error))
+  }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  }
+  const connect = () => {
+    dispatch(setPlayerName(name));
+    handleConnect();
+  }
+  return (
+    <Container>
+      <div className="login_panel">
+        <div>
+          <h1>Create Room</h1>
+          <p style={{ marginBottom: '12px' }}>
+            Create a room by custom room name or your near account id.
+          </p>
+          <Box sx={{ mt: '36px' }} className="input_group">
+            <label>Name</label>
+            <input className="form_control" value={name} onChange={handleChange}/>
+            <label>Description</label>
+            <textarea className="form_control" rows={4} style={{ width: '100%', marginTop: '12px' }}/>
+          </Box>
+          <Button onClick={connect} className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
+            Connect
+          </Button>
+          <Button className="atrium_btn" onClick={handleConnect}>
+            Skip
+          </Button>
+        </div>
+        <Box sx={{ mt: '36px' }}>
+          <p className="atrium_text_secondary">
+            Already have an account?
+            <span className="atrium_text_light"> Log in now</span>
+          </p>
+        </Box>
+      </div>
+    </Container>
+  )
+}
 const RoomSelectionDialog = () => {
   const dispatch = useAppDispatch();
   const connected = useAppSelector((state) => state.user.walletConnected);
@@ -196,7 +246,8 @@ const RoomSelectionDialog = () => {
         <Grid container>
           <Grid item md={8}></Grid>
           <Grid item md={4}>
-            { connected ? <CreateRoomForm /> : <WalletConnectionForm /> }
+            {/* { connected ? <CreateRoomForm /> : <WalletConnectionForm /> } */}
+            { connected ? <SetProfile /> : <WalletConnectionForm /> }
           </Grid>
         </Grid>
       </Container>
