@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { loginNear, loginSender, logoutNear, logoutSender } from '../utils';
 import { useAppSelector, useAppDispatch } from '../hooks';
 import { setWalletConnected } from '../stores/UserStore';
+import { CustomRoomTable } from './CustomRoomTable';
 
 import { IRoomData } from '../types/Rooms';
 import phaserGame from '../PhaserGame'
@@ -12,7 +13,8 @@ import Ash from '../assets/Ash_login.png'
 import Lucy from '../assets/Lucy_login.png'
 import Nancy from '../assets/Nancy_login.png'
 
-import { Box, Button, Container, Grid } from '@mui/material';
+import { Box, Button, Container, Grid, IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Stepper } from './elements';
 
 enum Wallet {
@@ -83,6 +85,7 @@ const WalletConnectionForm = () => {
 };
 
 const CreateRoomForm = () => {
+  const [showCustomRoom, setShowCustomRoom] = useState(true);
   const [values, setValues] = useState<IRoomData>({
     name: '',
     description: 'game room',
@@ -106,9 +109,41 @@ const CreateRoomForm = () => {
   }
   return (
     <>
+    { showCustomRoom ? (
       <Container>
         <div className="login_panel">
           <div>
+            <h1>Create Room</h1>
+            <p style={{ marginBottom: '12px' }}>
+              Create a room by custom room name or your near account id.
+            </p>
+            <Box sx={{ mt: '36px' }}>
+              <CustomRoomTable />
+            </Box>
+            <Button onClick={() => setShowCustomRoom(false)} className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
+              Create New Room
+            </Button>
+            <Button className="atrium_btn">
+              Skip
+            </Button>
+          </div>
+          <Box sx={{ mt: '36px' }}>
+            <p className="atrium_text_secondary">
+              Already have an account?
+              <span className="atrium_text_light"> Log in now</span>
+            </p>
+          </Box>
+        </div>
+      </Container>
+    ) : (
+      <Container>
+        <div className="login_panel">
+          <div>
+              <Box>
+                <IconButton onClick={() => setShowCustomRoom(true)}>
+                  <ArrowBackIcon />
+                </IconButton>
+              </Box>
             <h1>Create Room</h1>
             <p style={{ marginBottom: '12px' }}>
               Create a room by custom room name or your near account id.
@@ -126,7 +161,7 @@ const CreateRoomForm = () => {
               </div>
             </Box>
             <Button onClick={create} className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
-              Create Room
+              Create
             </Button>
             <Button className="atrium_btn">
               Skip
@@ -140,6 +175,7 @@ const CreateRoomForm = () => {
           </Box>
         </div>
       </Container>
+    )}
     </>
   );
 };
