@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { loginNear} from '../utils';
-import { IRoomData } from '../types/Rooms';
+import { loginNear, loginSender, logoutNear, logoutSender } from '../utils';
+import { useAppSelector, useAppDispatch } from '../hooks';
+import { setWalletConnected } from '../stores/UserStore';
 
+import { IRoomData } from '../types/Rooms';
 import phaserGame from '../PhaserGame'
 import Bootstrap from '../scenes/Bootstrap'
 
@@ -31,12 +33,16 @@ for (let i = avatars.length - 1; i > 0; i--) {
 }
 
 const WalletConnectionForm = () => {
+  const dispatch = useAppDispatch();
   const [walletType, setWalletType] = useState(Wallet.None);  
-  const login = () => {
+  const login = async () => {
     if (walletType === Wallet.Near) {
-      loginNear();
+      await loginNear();
     } else if (walletType === Wallet.Sender) {
-
+      // logoutNear();
+      (window as any).walletConnection?.signOut();
+      await loginSender();
+      dispatch(setWalletConnected(true));
     } else {
 
     }
@@ -139,11 +145,13 @@ const CreateRoomForm = () => {
 };
 
 const RoomSelectionDialog = () => {
-  const [connected, setConnected] = useState(false);
-  // const [showRooms, setShowRooms] = useState(false);
+  const dispatch = useAppDispatch();
+  const connected = useAppSelector((state) => state.user.walletConnected);
+  // const [connected, setConnected] = useState(false);
+  // // const [showRooms, setShowRooms] = useState(false);
   useEffect(() => {
     if((window as any)?.accountId) {
-      setConnected(true);
+      dispatch(setWalletConnected(true));
     }
   }, []);
   return (
@@ -159,5 +167,5 @@ const RoomSelectionDialog = () => {
     </>
   )
 };
-export { WalletConnectionForm };
+
 export default RoomSelectionDialog;

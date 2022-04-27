@@ -17,6 +17,7 @@ export const userSlice = createSlice({
     sessionId: '',
     videoConnected: false,
     loggedIn: false,
+    walletConnected: false,
     playerNameMap: new Map<string, string>(),
   },
   reducers: {
@@ -43,6 +44,9 @@ export const userSlice = createSlice({
     removePlayerNameMap: (state, action: PayloadAction<string>) => {
       state.playerNameMap.delete(sanitizeId(action.payload))
     },
+    setWalletConnected: (state, action: PayloadAction<boolean>) => {
+      state.walletConnected = action.payload;
+    },
   },
 })
 
@@ -53,6 +57,7 @@ export const {
   setLoggedIn,
   setPlayerNameMap,
   removePlayerNameMap,
+  setWalletConnected,
 } = userSlice.actions
 
 export default userSlice.reducer

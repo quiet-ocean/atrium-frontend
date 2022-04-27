@@ -20,6 +20,7 @@ import { ItemType } from '../types/Items'
 
 import store from '../stores'
 import { setFocused, setShowChat } from '../stores/ChatStore'
+import { setSettingDialogOpen } from '../stores/SettingStore';
 
 export default class Game extends Phaser.Scene {
   network!: Network
@@ -79,6 +80,10 @@ export default class Game extends Phaser.Scene {
     // debugDraw(groundLayer, this)
 
     this.myPlayer = this.add.myPlayer(705, 500, 'adam', this.network.mySessionId)
+    this.myPlayer.body.gameObject.setInteractive().on('pointerover', function() {
+      console.log('down');
+      store.dispatch(setSettingDialogOpen(true));
+    })
     this.playerSelector = new PlayerSelector(this, 0, 0, 16, 16)
 
     // import chair objects from Tiled map to Phaser
