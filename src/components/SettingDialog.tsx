@@ -25,6 +25,9 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import SearchIcon from '@mui/icons-material/Search';
 // import DiscordIcon from '@mui/icons-material/Discord'
 
+import { useAppDispatch } from '../hooks';
+import { setSettingDialogOpen } from '../stores/SettingStore';
+
 // const normalise = (value) => ((value - MIN) * 100) / (MAX - MIN);
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -103,15 +106,35 @@ const Footer = () => {
 
 const SettingDialog = () => {
   const [value, setValue] = React.useState(0);
+  const dispatch = useAppDispatch();
 
+  React.useEffect(() => {
+    // document.getElementsByClassName('video-grid')[0].style.display = 'none';
+    let videoGrid = document.querySelector('.video-grid');
+    let buttonGrid = document.querySelector('.button-grid');
+    if (videoGrid) {
+      (videoGrid as any).style.visibility = 'hidden';
+      (buttonGrid as any).style.visibility = 'hidden';
+    }
+  }, [])
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+  const close = () => {
+    let videoGrid = document.querySelector('.video-grid');
+    let buttonGrid = document.querySelector('.button-grid');
+    if (videoGrid) {
+      (videoGrid as any).style.visibility = 'visible';
+      (buttonGrid as any).style.visibility = 'visible';
+    }
+    dispatch(setSettingDialogOpen(false));
+  }
 
   return (
     <Container className="setting">
       <Box className="setting_panel">
         <Container>
+          <Button sx={{ top: '-18px', float: 'right' }} onClick={close}>Close</Button>
           <Grid container spacing={2}>
             <Grid item lg={2} className="setting_panel_side_nav">
               <Stack direction="column" sx={{ height: '100%' }} spacing={3}>
