@@ -43,7 +43,8 @@ for (let i = avatars.length - 1; i > 0; i--) {
 function App() {
   const dispatch = useAppDispatch();
   const game = phaserGame.scene.keys.game as Game
-  const loggedIn = useAppSelector((state) => state.user.loggedIn)
+  const loggedIn = useAppSelector((state) => state.user.loggedIn);
+  const playerName = useAppSelector((state) => state.user.playerName);
   const computerDialogOpen = useAppSelector((state) => state.computer.computerDialogOpen)
   const whiteboardDialogOpen = useAppSelector((state) => state.whiteboard.whiteboardDialogOpen)
   const videoConnected = useAppSelector((state) => state.user.videoConnected)
@@ -78,7 +79,7 @@ function App() {
     if(game) {
       game.registerKeys()
       if(game.myPlayer) {
-        game.myPlayer.setPlayerName((window as any).accountId || (window as any).near?.accountId)
+        game.myPlayer.setPlayerName(playerName || (window as any).accountId || (window as any).near?.accountId)
         game.myPlayer.setPlayerTexture(avatars[0].name)
         game.network.readyToConnect()
         dispatch(setLoggedIn(true))
