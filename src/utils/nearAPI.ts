@@ -60,7 +60,7 @@ export async function initNearContract() {
 export async function logoutNear() {
   window.walletConnection.signOut();
   // reload page
-  window.location.replace(window.location.origin + window.location.pathname);
+  // window.location.replace(window.location.origin + window.location.pathname);
   console.log('sign out');
   // callback(false);
 }

@@ -8,10 +8,12 @@ import { ThemeProvider } from '@mui/material/styles'
 import './styles/index.scss';
 import './PhaserGame'
 import muiTheme from './MuiTheme'
-import App from './App'
+
 import reportWebVitals from './reportWebVitals'
 import store from './stores'
 import { initNearContract } from './utils';
+
+import App from './App';
 
 initNearContract()
   .then(() => {
