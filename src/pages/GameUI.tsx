@@ -16,10 +16,10 @@ import HelperButtonGroup from '../components/HelperButtonGroup'
 import Game from '../scenes/Game'
 import phaserGame from '../PhaserGame'
 
-import Adam from './assets/Adam_login.png'
-import Ash from './assets/Ash_login.png'
-import Lucy from './assets/Lucy_login.png'
-import Nancy from './assets/Nancy_login.png'
+import Adam from '../assets/Adam_login.png'
+import Ash from '../assets/Ash_login.png'
+import Lucy from '../assets/Lucy_login.png'
+import Nancy from '../assets/Nancy_login.png'
 
 const Backdrop = styled.div`
   position: absolute;

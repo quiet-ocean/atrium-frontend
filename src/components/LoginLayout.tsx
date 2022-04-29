@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Grid, CssBaseline, Box, Container } from '@mui/material';
 // import { CWindow } from '../../types/Window';
 import { useAppSelector } from '../hooks';
 // declare let window: CWindow;
 import { Wallet } from '../types/Wallet';
 
-const Login = () => {
+const LoginLayout = ({ children }: { children: React.ReactNode }) => {
   const [walletType, setWalletType] = React.useState(Wallet.None)
   const connected = useAppSelector(state => state.user.walletConnected);
   const navigate = useNavigate();
@@ -14,10 +14,11 @@ const Login = () => {
   React.useEffect(() => {
     console.log('wallet type is ', walletType);
     if (connected) {
-      navigate('/login/choose-name');
+      console.log('wallet connection is ', connected);
+      navigate('/set-name');
       return;
     }
-    navigate('/login');
+    navigate('/');
   }, [connected]);
 
   return (
@@ -29,7 +30,7 @@ const Login = () => {
             <Grid item md={7} />
             <Grid item md={4}>
               <div className="login_panel">
-                <Outlet />
+                <Box>{children}</Box>
                 <Box sx={{ mt: '36px' }}>
                   <p className="atrium_text_secondary">
                     Already have an account?
@@ -45,4 +46,4 @@ const Login = () => {
   );
 };
 
-export { Login };
+export { LoginLayout };

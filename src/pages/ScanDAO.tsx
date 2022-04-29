@@ -1,9 +1,9 @@
 import { Button } from '@mui/material';
-import { Stepper } from '../../components';
+import { Stepper, LoginLayout } from '../components';
 
-const DAO = () => {
+const ScanDAO = () => {
   return (
-    <>
+    <LoginLayout>
       <h1>Suggested DAOs</h1>
       <p>Connect and choose which DAOs to be a part of ingame.</p>
       <Button className="atrium_btn">Scan for DAOs</Button>
@@ -12,8 +12,8 @@ const DAO = () => {
       </Button>
       <Button className="atrium_btn">SKIP FOR NOW</Button>
       <Stepper length={5} step={4} />
-    </>
+    </LoginLayout>
   );
 };
 
-export { DAO };
+export { ScanDAO };

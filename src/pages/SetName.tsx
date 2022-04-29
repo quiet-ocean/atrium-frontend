@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
-import { InputField, Stepper } from '../../components';
+import { InputField, Stepper, LoginLayout } from '../components';
 
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setPlayerName } from '../../stores/UserStore';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { setPlayerName } from '../stores/UserStore';
 
-const ChooseName = () => {
+const SetName = () => {
   const navigate = useNavigate();
   // const playerName = useAppSelector((state) => state.user.playerName);
   const dispatch = useAppDispatch();
@@ -37,7 +37,7 @@ const ChooseName = () => {
     setConfirmError('');
   };
   return (
-    <>
+    <LoginLayout>
       <h1>Choose Display Name</h1>
       <p style={{ marginBottom: '12px' }}>
         Choose your display name to represent yourself in the digital world.
@@ -60,8 +60,8 @@ const ChooseName = () => {
         NEXT
       </Button>
       <Stepper length={5} step={1} />
-    </>
+    </LoginLayout>
   );
 };
 
-export { ChooseName };
+export { SetName };

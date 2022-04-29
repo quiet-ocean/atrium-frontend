@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Container, Snackbar } from '@mui/material';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ChooseWallet, ChooseName, ConnectSocials, DAO, SetAvatar } from './components/login';
-import { Setting, Login } from './pages';
+import { Setting } from './pages';
 // import { initNearContract } from './utils/near';
 import { CWindow } from './types/Window';
 import { useAppDispatch, useAppSelector } from './hooks';
 import { setWalletConnected } from './stores/UserStore';
+import { ConnectSocials, ConnectWallet, SetAvatar, SetName } from './pages';
 
 // import { Buffer } from 'buffer';
 // globalThis.Buffer = Buffer;
@@ -36,15 +36,12 @@ const App = () => {
     <Container maxWidth="xl" sx={{ px: '0px', height: '100%' }}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />}>
-            <Route path="" element={<ChooseWallet />} />
-            <Route path="choose-name" element={<ChooseName />} />
-            <Route path="set-avatar" element={<SetAvatar />} />
-            <Route path="connect-socials" element={<ConnectSocials />} />
-            <Route path="dao" element={<DAO />} />
-          </Route>
+          <Route path="/" element={<ConnectWallet />} />
+          <Route path="/connect-socials" element={<ConnectSocials />} />
           <Route path="/setting" element={<Setting />} />
+          <Route path="/connect-wallet" element={<ConnectWallet />} />
+          <Route path="/set-avatar" element={<SetAvatar />} />
+          <Route path="/set-name" element={<SetName />} />
         </Routes>
       </BrowserRouter>
     </Container>

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Box } from '@mui/material';
-import { Stepper } from '../../components';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { Stepper, LoginLayout } from '../components';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 const responsive = {
@@ -32,7 +32,7 @@ const SetAvatar = () => {
     console.log('select avatar ', id);
   };
   return (
-    <>
+    <LoginLayout>
       <h1>Set your Avatar</h1>
       <p>Choose your avatar to represent yourself in the digital world.</p>
       <div className="login_panel_avatar_carousel">
@@ -69,7 +69,7 @@ const SetAvatar = () => {
         <Link to="/login/connect-socials">SKIP FOR NOW</Link>
       </Button>
       <Stepper length={5} step={2} />
-    </>
+    </LoginLayout>
   );
 };
 
