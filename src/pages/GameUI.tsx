@@ -44,6 +44,7 @@ for (let i = avatars.length - 1; i > 0; i--) {
 function GameUI() {
   const dispatch = useAppDispatch();
   const game = phaserGame.scene.keys.game as Game
+  console.log(game);
   const loggedIn = useAppSelector((state) => state.user.loggedIn);
   const playerName = useAppSelector((state) => state.user.playerName);
   const computerDialogOpen = useAppSelector((state) => state.computer.computerDialogOpen)
@@ -54,15 +55,19 @@ function GameUI() {
 
   React.useEffect(() => {
     console.log('init game');
+    console.log(game);
     let root = document.getElementById('root');
     if (root) root.style.display = 'none';
     const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
-    console.log(bootstrap);
-    // bootstrap.network
-    //   .joinOrCreatePublic()
-    //   .then(() => bootstrap.launchGame())
-    //   .catch((error) => console.error(error))
-  }, [])
+    if(bootstrap) {
+      console.log(bootstrap);
+      bootstrap.network
+        .joinOrCreatePublic()
+        .then(() => bootstrap.launchGame())
+        .catch((error) => console.error(error))
+    }
+  }, [game])
+
   let ui: JSX.Element
   if (loggedIn) {
     if (computerDialogOpen) {

@@ -7,7 +7,7 @@ import { CWindow } from './types/Window';
 import { useAppDispatch, useAppSelector } from './hooks';
 import { setWalletConnected } from './stores/UserStore';
 import { ConnectSocials, ConnectWallet, SetAvatar, SetName, ScanDAO, GameUI } from './pages';
-
+// import './PhaserGame';
 // import { Buffer } from 'buffer';
 // globalThis.Buffer = Buffer;
 
