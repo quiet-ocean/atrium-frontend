@@ -58,6 +58,8 @@ function GameUI() {
     console.log(game);
     let root = document.getElementById('root');
     if (root) root.style.display = 'none';
+    let container = document.getElementById('phaser-container');
+    if (container) container.style.display = 'block';
     const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
     if(bootstrap) {
       console.log(bootstrap);

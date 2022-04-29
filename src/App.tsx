@@ -18,7 +18,7 @@ const App = () => {
 
   useEffect(() => {
     const init = async () => {
-      if (window.walletConnection) {
+      if (window.walletConnection || window.near.getAccountId()) {
         if (await window.walletConnection.isSignedIn()) {
           console.log('wallet logged in by near wallet');
           dispatch(setWalletConnected(true));

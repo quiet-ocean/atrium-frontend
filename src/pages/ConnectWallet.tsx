@@ -16,14 +16,14 @@ const ConnectWallet = () => {
   const navigate = useNavigate();
   const [walletType, setWalletType] = useState(Wallet.None);
   const dispatch = useAppDispatch();
-  // const connected = useAppSelector(state => state.user.walletConnected);
+  const connected = useAppSelector(state => state.user.walletConnected);
 
-  // useEffect(() => {
-  //   if (connected) {
-  //     console.log('wallet connection is ', connected);
-  //     navigate('/choose-name');
-  //   }
-  // }, [connected]);
+  useEffect(() => {
+    if (connected) {
+      console.log('wallet connection is ', connected);
+      navigate('/set-name');
+    }
+  }, [connected]);
 
   const login = async () => {
     console.log('login', walletType);
@@ -33,6 +33,7 @@ const ConnectWallet = () => {
       await logoutNear();
       await loginSender();
       dispatch(setWalletConnected(true));
+      // navigate('/set-name');
     } else if (walletType === Wallet.Near) {
       loginNear(window.location.origin + '/set-name', 'https://localhost:1234');
     } else {
