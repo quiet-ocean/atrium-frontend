@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { InputField, Stepper, LoginLayout } from '../components';
 
-import { useAppDispatch, useAppSelector } from '../hooks';
+import { useAppDispatch } from '../hooks';
 import { setPlayerName } from '../stores/UserStore';
 
 const SetName = () => {

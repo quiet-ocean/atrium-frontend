@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Box } from '@mui/material';
 import { Stepper, LoginLayout } from '../components';
-import { useAppDispatch, useAppSelector } from '../hooks';
+// import { useAppDispatch } from '../hooks';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 const responsive = {
@@ -26,10 +26,11 @@ const responsive = {
 };
 
 const SetAvatar = () => {
-  const [avatar, setAvatar] = useState();
-  const dispatch = useAppDispatch();
+  const [avatar, setAvatar] = useState(0);
+  // const dispatch = useAppDispatch();
   const selectAvatar = (id: number) => {
     console.log('select avatar ', id);
+    setAvatar(id);
   };
   return (
     <LoginLayout>

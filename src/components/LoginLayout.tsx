@@ -4,15 +4,12 @@ import { Grid, CssBaseline, Box, Container } from '@mui/material';
 // import { CWindow } from '../../types/Window';
 import { useAppSelector } from '../hooks';
 // declare let window: CWindow;
-import { Wallet } from '../types/Wallet';
 
 const LoginLayout = ({ children }: { children: React.ReactNode }) => {
-  const [walletType, setWalletType] = React.useState(Wallet.None)
   const connected = useAppSelector(state => state.user.walletConnected);
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    console.log('wallet type is ', walletType);
     // if (connected || (window as any)?.accountId) {
     //   console.log('wallet connection is ', connected);
     //   navigate('/set-name');
