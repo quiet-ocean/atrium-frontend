@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { loginNear, loginSender, logoutNear, logoutSender } from '../utils';
+import { loginNear, loginSender } from '../utils';
 import { useAppSelector, useAppDispatch } from '../hooks';
 import { setWalletConnected } from '../stores/UserStore';
 import { CustomRoomTable } from './CustomRoomTable';

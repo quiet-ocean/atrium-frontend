@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { sanitizeId } from '../util'
+// import { sanitizeId } from '../util'
 
 export const settingSlice = createSlice({
   name: 'setting',

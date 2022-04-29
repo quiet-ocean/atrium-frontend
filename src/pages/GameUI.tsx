@@ -8,7 +8,7 @@ import RoomSelectionDialog from '../components/_RoomSelectionDialog'
 // import LoginDialog from './components/LoginDialog'
 import ComputerDialog from '../components/ComputerDialog'
 import WhiteboardDialog from '../components/WhiteboardDialog'
-import VideoConnectionDialog from '../components/VideoConnectionDialog'
+// import VideoConnectionDialog from '../components/VideoConnectionDialog'
 import SettingDialog from '../components/SettingDialog';
 import Chat from '../components/Chat'
 import HelperButtonGroup from '../components/HelperButtonGroup'
@@ -49,7 +49,7 @@ function GameUI() {
   const playerName = useAppSelector((state) => state.user.playerName);
   const computerDialogOpen = useAppSelector((state) => state.computer.computerDialogOpen)
   const whiteboardDialogOpen = useAppSelector((state) => state.whiteboard.whiteboardDialogOpen)
-  const videoConnected = useAppSelector((state) => state.user.videoConnected)
+  // const videoConnected = useAppSelector((state) => state.user.videoConnected)
   const roomJoined = useAppSelector((state) => state.room.roomJoined)
   const settingDialogOpen = useAppSelector((state) => state.setting.settingDialogOpen);
 
