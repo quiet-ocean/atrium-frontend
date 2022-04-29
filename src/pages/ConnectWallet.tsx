@@ -25,13 +25,13 @@ const ConnectWallet = () => {
   //   }
   // }, [connected]);
 
-  const login = () => {
+  const login = async () => {
     console.log('login', walletType);
 
     
     if (walletType === Wallet.Sender) {
-      // logoutNear();
-      loginSender();
+      await logoutNear();
+      await loginSender();
       dispatch(setWalletConnected(true));
     } else if (walletType === Wallet.Near) {
       loginNear(window.location.origin + '/login/choose-name', 'https://localhost:1234');
