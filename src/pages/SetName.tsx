@@ -21,7 +21,7 @@ const SetName = () => {
     if (name !== '') {
       if (name === confirmName) {
         dispatch(setPlayerName(name));
-        navigate('/login/set-avatar');
+        navigate('/set-avatar');
       } else {
         setConfirmError('The name must be match.');
       }

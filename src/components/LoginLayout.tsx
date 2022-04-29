@@ -13,13 +13,16 @@ const LoginLayout = ({ children }: { children: React.ReactNode }) => {
 
   React.useEffect(() => {
     console.log('wallet type is ', walletType);
-    if (connected || (window as any)?.accountId) {
-      console.log('wallet connection is ', connected);
-      navigate('/set-name');
-      return;
+    // if (connected || (window as any)?.accountId) {
+    //   console.log('wallet connection is ', connected);
+    //   navigate('/set-name');
+    //   return;
+    // }
+    // navigate('/');
+    if (!connected && !(window as any)?.accountId) {
+      navigate('/');
     }
-    navigate('/');
-  }, [connected]);
+  }, []);
 
   return (
     <React.Fragment>

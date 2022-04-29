@@ -34,7 +34,7 @@ const ConnectWallet = () => {
       await loginSender();
       dispatch(setWalletConnected(true));
     } else if (walletType === Wallet.Near) {
-      loginNear(window.location.origin + '/login/choose-name', 'https://localhost:1234');
+      loginNear(window.location.origin + '/set-name', 'https://localhost:1234');
     } else {
 
     }

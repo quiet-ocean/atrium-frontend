@@ -15,6 +15,7 @@ import HelperButtonGroup from '../components/HelperButtonGroup'
 
 import Game from '../scenes/Game'
 import phaserGame from '../PhaserGame'
+import Bootstrap from '../scenes/Bootstrap'
 
 import Adam from '../assets/Adam_login.png'
 import Ash from '../assets/Ash_login.png'
@@ -51,6 +52,17 @@ function GameUI() {
   const roomJoined = useAppSelector((state) => state.room.roomJoined)
   const settingDialogOpen = useAppSelector((state) => state.setting.settingDialogOpen);
 
+  React.useEffect(() => {
+    console.log('init game');
+    let root = document.getElementById('root');
+    if (root) root.style.display = 'none';
+    const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
+    console.log(bootstrap);
+    // bootstrap.network
+    //   .joinOrCreatePublic()
+    //   .then(() => bootstrap.launchGame())
+    //   .catch((error) => console.error(error))
+  }, [])
   let ui: JSX.Element
   if (loggedIn) {
     if (computerDialogOpen) {
@@ -100,4 +112,4 @@ function GameUI() {
   )
 }
 
-export default GameUI
+export { GameUI };

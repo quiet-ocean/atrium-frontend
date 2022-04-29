@@ -63,10 +63,10 @@ const SetAvatar = () => {
         </Carousel>
       </div>
       <Button className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
-        <Link to="/login/connect-socials">NEXT</Link>
+        <Link to="/connect-socials">NEXT</Link>
       </Button>
       <Button className="atrium_btn">
-        <Link to="/login/connect-socials">SKIP FOR NOW</Link>
+        <Link to="/connect-socials">SKIP FOR NOW</Link>
       </Button>
       <Stepper length={5} step={2} />
     </LoginLayout>
