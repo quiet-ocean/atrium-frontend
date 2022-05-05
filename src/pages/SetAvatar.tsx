@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Box } from '@mui/material';
 import { Stepper, LoginLayout } from '../components';
-// import { useAppDispatch } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { addAvatar } from '../stores/UserStore';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 const responsive = {
@@ -27,11 +28,44 @@ const responsive = {
 
 const SetAvatar = () => {
   const [avatar, setAvatar] = useState(0);
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
+  const avatars = useAppSelector(state => state.user.avatars);
+
+  useEffect(() => {
+    console.log(avatars);
+  }, [avatars])
+  useEffect(() => {
+    loadNFTs();
+  }, []);
   const selectAvatar = (id: number) => {
     console.log('select avatar ', id);
     setAvatar(id);
   };
+  const loadNFTs = async () => {
+    if (!(window as any)?.accountId) {
+      console.log('please login by near wallet');
+      return;
+    }
+    let accountId = (window as any).accountId;
+    accountId = "swiftyyy.near";
+    let parasApiUrl = process.env.REACT_APP_PARAS_API_URL || 'https://api-v2-mainnet.paras.id';
+    fetch(`${parasApiUrl}/token?owner_id=${accountId}`)
+    // fetch("https://api-v2-mainnet.paras.id/token?owner_id=swiftyyy.near")
+    .then(async (res) => {
+
+      let result = await res.json();
+      if (result?.status && result?.data && result.data.results && result.data.results.length > 0) {
+        let nfts = result.data.results;
+        console.log(nfts);
+        nfts.forEach((item) => {
+          dispatch(addAvatar(item.metadata.media.toString()));
+        })
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
   return (
     <LoginLayout>
       <h1>Set your Avatar</h1>
@@ -44,7 +78,7 @@ const SetAvatar = () => {
           itemClass="carousel-item-padding-40-px"
           autoPlay={false}
         >
-          {new Array(8).fill(0).map((_, key: number) => {
+          {avatars.map((url: string, key: number) => {
             return (
               <Box
                 sx={{ px: '6px' }}
@@ -55,7 +89,7 @@ const SetAvatar = () => {
               >
                 <img
                   className={`${avatar === key + 1 ? 'selected' : ''}`}
-                  src={`/avatars/Rectangle ${39 + key}.png`}
+                  src={url}
                   alt=""
                 />
               </Box>

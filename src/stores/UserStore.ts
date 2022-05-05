@@ -20,6 +20,7 @@ export const userSlice = createSlice({
     walletConnected: false,
     playerNameMap: new Map<string, string>(),
     playerName: '',
+    avatars: new Array<string>(),
   },
   reducers: {
     toggleBackgroundMode: (state) => {
@@ -50,6 +51,12 @@ export const userSlice = createSlice({
     },
     setPlayerName: (state, action: PayloadAction<string>) => {
       state.playerName = action.payload;
+    },
+    addAvatar: (state, action: PayloadAction<string>) => {
+      state.avatars = [ ...state.avatars, action.payload ];
+    },
+    clearAvatars: (state) => {
+      state.avatars = new Array<string>();
     }
   },
 })
@@ -63,6 +70,8 @@ export const {
   removePlayerNameMap,
   setWalletConnected,
   setPlayerName,
+  addAvatar,
+  clearAvatars,
 } = userSlice.actions
 
 export default userSlice.reducer
