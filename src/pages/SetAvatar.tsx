@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Box } from '@mui/material';
 import { Stepper, LoginLayout } from '../components';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { addAvatar } from '../stores/UserStore';
+import { addAvatar, setPlayerAvatar } from '../stores/UserStore';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 const responsive = {
@@ -85,6 +85,7 @@ const SetAvatar = () => {
                 key={key}
                 onClick={() => {
                   selectAvatar(key + 1);
+                  dispatch(setPlayerAvatar(url));
                 }}
               >
                 <img

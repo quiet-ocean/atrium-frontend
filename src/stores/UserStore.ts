@@ -21,6 +21,7 @@ export const userSlice = createSlice({
     playerNameMap: new Map<string, string>(),
     playerName: '',
     avatars: new Array<string>(),
+    playerAvatar: '',
   },
   reducers: {
     toggleBackgroundMode: (state) => {
@@ -57,6 +58,9 @@ export const userSlice = createSlice({
     },
     clearAvatars: (state) => {
       state.avatars = new Array<string>();
+    },
+    setPlayerAvatar: (state, action: PayloadAction<string>) => {
+      state.playerAvatar = action.payload;
     }
   },
 })
@@ -72,6 +76,7 @@ export const {
   setPlayerName,
   addAvatar,
   clearAvatars,
+  setPlayerAvatar,
 } = userSlice.actions
 
 export default userSlice.reducer

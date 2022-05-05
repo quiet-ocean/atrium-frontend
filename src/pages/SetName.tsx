@@ -5,6 +5,21 @@ import { InputField, Stepper, LoginLayout } from '../components';
 
 import { useAppDispatch } from '../hooks';
 import { setPlayerName } from '../stores/UserStore';
+import Game from '../scenes/Game'
+import phaserGame from '../PhaserGame'
+import { useAppSelector } from '../hooks'
+
+import Adam from '../assets/Adam_login.png'
+import Ash from '../assets/Ash_login.png'
+import Lucy from '../assets/Lucy_login.png'
+import Nancy from '../assets/Nancy_login.png'
+
+const avatars = [
+  { name: 'adam', img: Adam },
+  { name: 'ash', img: Ash },
+  { name: 'lucy', img: Lucy },
+  { name: 'nancy', img: Nancy },
+]
 
 const SetName = () => {
   const navigate = useNavigate();
@@ -14,6 +29,10 @@ const SetName = () => {
   const [confirmName, setConfirmName] = React.useState<string>('');
   const [nameError, setNameError] = React.useState<string>('');
   const [confirmError, setConfirmError] = React.useState<string>('');
+  
+  const game = phaserGame.scene.keys.game as Game
+  const playerName = useAppSelector((state) => state.user.playerName);
+
   React.useEffect(() => {
     // console.log(username);
   }, [name]);
@@ -21,6 +40,16 @@ const SetName = () => {
     if (name !== '') {
       if (name === confirmName) {
         dispatch(setPlayerName(name));
+        if(game) {
+          game.registerKeys()
+          if(game.myPlayer) {
+            console.log('set player name to ', playerName)
+            game.myPlayer.setPlayerName(playerName || (window as any).accountId || (window as any).near?.accountId)
+            game.myPlayer.setPlayerTexture(avatars[0].name)
+            game.network.readyToConnect()
+            // dispatch(setLoggedIn(true))
+          }
+        }
         navigate('/set-avatar');
       } else {
         setConfirmError('The name must be match.');
