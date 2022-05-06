@@ -132,4 +132,20 @@ h1, p, a {
       color: #F8F9FA !important;
     }
   }
+  &_title {
+    color: #F8F9FA !important;
+    font-family: 'Anek Odia' !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 48px !important;
+    line-height: 37px !important;
+  }
+  &_info {
+    color: #9AA0A6 !important;
+    font-family: 'Anek Odia' !important;
+    font-style: normal !important;
+    font-weight: 300 !important;
+    font-size: 24px !important;
+    line-height: 112% !important;
+  }
 }
