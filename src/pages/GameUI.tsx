@@ -52,21 +52,36 @@ function GameUI() {
   // const videoConnected = useAppSelector((state) => state.user.videoConnected)
   const roomJoined = useAppSelector((state) => state.room.roomJoined)
   const settingDialogOpen = useAppSelector((state) => state.setting.settingDialogOpen);
+  // const playerAvatar = useAppSelector((state) => state.user.playerAvatar);
 
   React.useEffect(() => {
     console.log('init game');
     console.log(game);
     let root = document.getElementById('root');
+    
     if (root) root.style.display = 'none';
     let container = document.getElementById('phaser-container');
     if (container) container.style.display = 'block';
+
     const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
+
     if(bootstrap) {
       console.log(bootstrap);
       bootstrap.network
         .joinOrCreatePublic()
         .then(() => bootstrap.launchGame())
         .catch((error) => console.error(error))
+    }
+
+    if(game) {
+      game.registerKeys()
+      if(game.myPlayer) {
+        console.log('set player name to ', playerName)
+        game.myPlayer.setPlayerName(playerName || (window as any).accountId || (window as any).near?.accountId)
+        game.myPlayer.setPlayerTexture(avatars[0].name)
+        game.network.readyToConnect()
+        dispatch(setLoggedIn(true))
+      }
     }
   }, [game])
 
@@ -98,6 +113,7 @@ function GameUI() {
     if(game) {
       game.registerKeys()
       if(game.myPlayer) {
+        console.log('set player name to ', playerName)
         game.myPlayer.setPlayerName(playerName || (window as any).accountId || (window as any).near?.accountId)
         game.myPlayer.setPlayerTexture(avatars[0].name)
         game.network.readyToConnect()

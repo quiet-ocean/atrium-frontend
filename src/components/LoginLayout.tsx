@@ -32,7 +32,7 @@ const LoginLayout = ({ children }: { children: React.ReactNode }) => {
               <div className="login_panel">
                 <Box>{children}</Box>
                 <Box sx={{ mt: '36px' }}>
-                  <p className="atrium_text_secondary">
+                  <p className="atrium_text_secondary" style={{ display: 'none' }}>
                     Already have an account?
                     <span className="atrium_text_light"> Log in now</span>
                   </p>

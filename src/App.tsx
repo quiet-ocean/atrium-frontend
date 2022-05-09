@@ -5,7 +5,7 @@ import { Setting } from './pages';
 import { CWindow } from './types/Window';
 import { useAppDispatch } from './hooks';
 import { setWalletConnected } from './stores/UserStore';
-import { ConnectSocials, ConnectWallet, SetAvatar, SetName, ScanDAO, GameUI } from './pages';
+import { LoginSuccess, ConnectSocials, ConnectWallet, SetAvatar, SetName, ScanDAO, GameUI } from './pages';
 
 declare let window: CWindow;
 
@@ -40,6 +40,7 @@ const App = () => {
           <Route path="/set-name" element={<SetName />} />
           <Route path="/dao" element={<ScanDAO />} />
           <Route path="/game" element={<GameUI />} />
+          <Route path="/success" element={<LoginSuccess />} />
         </Routes>
       </BrowserRouter>
     </Container>
