@@ -1,6 +1,7 @@
 {
   "name": "atrium-client",
   "version": "0.1.0",
+  "license": "",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

@@ -8,6 +8,7 @@ export default defineConfig({
   },
   plugins: [react()],
   server: {
+    hmr: { overlay: false },
     host: true,
     open: true,
   },
