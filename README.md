@@ -1,12 +1,10 @@
+# Atrium
 
-
-
-
-
-### npm
+### Installation
 
 ```sh
-cd atrium
+git clone git@github.com:AvengersLab/atrium.git
+cd c
 npm install
 npm run validate # The installation was successful if no error occurs after running 'validate'.
 npm run dev
@@ -23,6 +21,6 @@ yarn lint:fix  # run eslint with --fix option
 yarn typecheck # run TypeScript compiler check
 yarn build     # build production bundle to 'dist' directly
 yarn prettier  # run prettier for json|yml|css|md|mdx files
-yarn clean     # remove 'node_modules' 'yarn.lock' 'dist' completely
+yarn clean     # remove 'node_modules' 'package-lock.json' 'dist' completely
 yarn serve     # launch server for production bundle in local
 ```

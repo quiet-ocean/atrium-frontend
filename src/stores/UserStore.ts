@@ -1,0 +1,92 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+import phaserGame from '../PhaserGame'
+import Bootstrap from '../scenes/Bootstrap'
+import { BackgroundMode } from '../types/BackgroundMode'
+import { sanitizeId } from '../util'
+
+export function getInitialBackgroundMode() {
+  const currentHour = new Date().getHours()
+  return currentHour > 6 && currentHour <= 18
+    ? BackgroundMode.DAY
+    : BackgroundMode.NIGHT
+}
+
+export const userSlice = createSlice({
+  initialState: {
+    avatars: new Array<string>(),
+    backgroundMode: getInitialBackgroundMode(),
+    loggedIn: false,
+    playerAvatar: '',
+    playerName: '',
+    playerNameMap: new Map<string, string>(),
+    sessionId: '',
+    videoConnected: false,
+    walletConnected: false,
+  },
+  name: 'user',
+  reducers: {
+    addAvatar: (state, action: PayloadAction<string>) => {
+      state.avatars = [...state.avatars, action.payload]
+    },
+    clearAvatars: (state) => {
+      state.avatars = new Array<string>()
+    },
+    removePlayerNameMap: (state, action: PayloadAction<string>) => {
+      state.playerNameMap.delete(sanitizeId(action.payload))
+    },
+    setLoggedIn: (state, action: PayloadAction<boolean>) => {
+      state.loggedIn = action.payload
+    },
+    setPlayerAvatar: (state, action: PayloadAction<string>) => {
+      state.playerAvatar = action.payload
+    },
+    setPlayerName: (state, action: PayloadAction<string>) => {
+      state.playerName = action.payload
+    },
+    setPlayerNameMap: (
+      state,
+      action: PayloadAction<{ id: string; name: string }>
+    ) => {
+      state.playerNameMap.set(
+        sanitizeId(action.payload.id),
+        action.payload.name
+      )
+    },
+    setSessionId: (state, action: PayloadAction<string>) => {
+      state.sessionId = action.payload
+    },
+    setVideoConnected: (state, action: PayloadAction<boolean>) => {
+      state.videoConnected = action.payload
+    },
+    setWalletConnected: (state, action: PayloadAction<boolean>) => {
+      state.walletConnected = action.payload
+    },
+    toggleBackgroundMode: (state) => {
+      const newMode =
+        state.backgroundMode === BackgroundMode.DAY
+          ? BackgroundMode.NIGHT
+          : BackgroundMode.DAY
+
+      state.backgroundMode = newMode
+      const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
+      bootstrap.changeBackgroundMode(newMode)
+    },
+  },
+})
+
+export const {
+  toggleBackgroundMode,
+  setSessionId,
+  setVideoConnected,
+  setLoggedIn,
+  setPlayerNameMap,
+  removePlayerNameMap,
+  setWalletConnected,
+  setPlayerName,
+  addAvatar,
+  clearAvatars,
+  setPlayerAvatar,
+} = userSlice.actions
+
+export default userSlice.reducer
