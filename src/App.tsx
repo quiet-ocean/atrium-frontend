@@ -1,50 +1,82 @@
-import { useEffect } from 'react';
-import { Container } from '@mui/material';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Setting } from './pages';
-import { CWindow } from './types/Window';
-import { useAppDispatch } from './hooks';
-import { setWalletConnected } from './stores/UserStore';
-import { LoginSuccess, ConnectSocials, ConnectWallet, SetAvatar, SetName, ScanDAO, GameUI } from './pages';
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 
-declare let window: CWindow;
+import logo from './logo.svg'
 
-const App = () => {
-  const dispatch = useAppDispatch();
+import './App.css'
+
+type DocsList = Array<{ name: string; url: string }>
+
+const App: React.FC = () => {
+  const [count, setCount] = useState(0)
+  const [docsList, setDocsList] = useState<DocsList>([])
 
   useEffect(() => {
-    const init = async () => {
-      if (window.walletConnection || window.near.getAccountId()) {
-        if (await window.walletConnection.isSignedIn()) {
-          console.log('wallet logged in by near wallet');
-          dispatch(setWalletConnected(true));
-        } else {
-          // setConnected(false);
-        }
-      } else if (window.near) {
-        console.log('already logged in by sender wallet', window.near.getAccountId());
-      }
-    };
-    init();
-  }, []);
+    axios
+      .get('./docs_list')
+      .then(({ data }) => {
+        setDocsList(data)
+      })
+      .catch()
+  }, [])
 
   return (
-    <Container maxWidth="xl" sx={{ px: '0px', height: '100%' }}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<ConnectWallet />} />
-          <Route path="/connect-socials" element={<ConnectSocials />} />
-          <Route path="/setting" element={<Setting />} />
-          <Route path="/connect-wallet" element={<ConnectWallet />} />
-          <Route path="/set-avatar" element={<SetAvatar  />} />
-          <Route path="/set-name" element={<SetName />} />
-          <Route path="/dao" element={<ScanDAO />} />
-          <Route path="/game" element={<GameUI />} />
-          <Route path="/success" element={<LoginSuccess />} />
-        </Routes>
-      </BrowserRouter>
-    </Container>
-  );
-};
+    <main className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>Hello Vite + React!</p>
+        <p>
+          <button
+            type="button"
+            className="h-26 w-52 px-4 py-3 my-4 border border-white border-solid rounded"
+            onClick={() => setCount(count + 1)}
+          >
+            count is: {count}
+          </button>
+        </p>
+        <p>
+          Edit <code>App.tsx</code> and save to test HMR updates.
+        </p>
+        <p></p>
+        <p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+          {' | '}
+          <a
+            className="App-link"
+            href="https://vitejs.dev/guide/features.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Vite Docs
+          </a>
+          {docsList.length
+            ? docsList.map((v, i) => {
+                return (
+                  <span key={i}>
+                    {' | '}
+                    <a
+                      className="App-link"
+                      href={v.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {v.name}
+                    </a>
+                  </span>
+                )
+              })
+            : false}
+        </p>
+      </header>
+    </main>
+  )
+}
 
-export default App;
+export default App
