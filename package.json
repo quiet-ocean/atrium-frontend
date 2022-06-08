@@ -11,10 +11,9 @@
     "lint:fix": "eslint . --ext .ts,.tsx,.js,jsx --fix",
     "typecheck": "tsc --noEmit",
     "prettier": "prettier --write \"**/*.+(json|yml|css|md|mdx|html)\"",
-    "clean": "rimraf node_modules package-lock.json dist",
+    "clean": "rimraf node_modules package-lock.json yarn.lock dist",
     "validate": "./scripts/validate"
   },
-  "preinstall": "npx npm-force-resolutions",
   "dependencies": {
     "@emoji-mart/data": "^1.0.2",
     "@emotion/react": "^11.9.0",
@@ -24,6 +23,8 @@
     "@mui/styled-engine-sc": "npm:@mui/styled-engine-sc@latest",
     "@reduxjs/toolkit": "^1.8.2",
     "antd": "^4.21.0",
+    "borsh": "0.7.0",
+    "buffer": "^6.0.3",
     "near-api-js": "^0.44.2",
     "peerjs": "^1.4.6",
     "phaser": "^3.55.2",
@@ -36,10 +37,12 @@
     "swiper": "^8.2.2"
   },
   "resolutions": {
-    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
+    "borsh": "0.7.0"
   },
   "devDependencies": {
     "@colyseus/schema": "^1.0.34",
+    "@rollup/plugin-inject": "^4.0.4",
     "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -71,6 +74,7 @@
     "jest-watch-typeahead": "^1.1.0",
     "msw": "^0.42.0",
     "node-notifier": "^10.0.1",
+    "npm-force-resolutions": "^0.0.10",
     "postcss": "^8.4.14",
     "prettier": "^2.6.1",
     "react-is": "^18.1.0",

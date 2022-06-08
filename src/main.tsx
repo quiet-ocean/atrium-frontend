@@ -1,3 +1,5 @@
+import { Buffer } from 'buffer'
+
 import 'regenerator-runtime/runtime'
 import { ThemeProvider } from '@mui/material/styles'
 import React from 'react'
@@ -13,6 +15,7 @@ import { setGameGlobalScope } from './PhaserGame'
 import store from './stores'
 import { initNearContract } from './utils'
 
+globalThis.Buffer = Buffer
 window.addEventListener('load', () => setGameGlobalScope())
 
 initNearContract().then(() => {
