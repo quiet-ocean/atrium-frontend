@@ -7,11 +7,13 @@ import { Provider } from 'react-redux'
 import 'antd/dist/antd.css'
 // import './index.scss'
 import './styles/index.scss'
-import './PhaserGame'
 import App from './App'
 import muiTheme from './MuiTheme'
+import { setGameGlobalScope } from './PhaserGame'
 import store from './stores'
 import { initNearContract } from './utils'
+
+window.addEventListener('load', () => setGameGlobalScope())
 
 initNearContract().then(() => {
   ReactDOM.render(
