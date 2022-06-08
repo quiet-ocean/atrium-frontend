@@ -1,10 +1,10 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
-import phaserGame from '../PhaserGame'
-import type Bootstrap from '../scenes/Bootstrap'
 import { BackgroundMode } from '../types/BackgroundMode'
 import { sanitizeId } from '../util'
+
+import type { RootState } from './index'
 
 export function getInitialBackgroundMode() {
   const currentHour = new Date().getHours()
@@ -13,10 +13,12 @@ export function getInitialBackgroundMode() {
     : BackgroundMode.NIGHT
 }
 
+const initialBackGroundMode = getInitialBackgroundMode()
+
 export const userSlice = createSlice({
   initialState: {
     avatars: new Array<string>(),
-    backgroundMode: getInitialBackgroundMode(),
+    backgroundMode: initialBackGroundMode,
     loggedIn: false,
     playerAvatar: '',
     playerName: '',
@@ -70,11 +72,12 @@ export const userSlice = createSlice({
           : BackgroundMode.DAY
 
       state.backgroundMode = newMode
-      const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
-      bootstrap.changeBackgroundMode(newMode)
     },
   },
 })
+
+export const selectBackGroundMode = (state: RootState) =>
+  state.user.backgroundMode
 
 export const {
   toggleBackgroundMode,
