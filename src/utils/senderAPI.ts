@@ -1,4 +1,4 @@
-const CONTRACT_ID = process.env.REACT_APP_CONTRACT_ID || 'atrium-contract'
+const CONTRACT_ID = process.env.VITE_CONTRACT_ID || 'atrium-contract'
 interface CWindow extends Window {
   near: any
 }

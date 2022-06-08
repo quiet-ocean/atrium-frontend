@@ -1,4 +1,4 @@
-import Network from '../services/Network'
+import type Network from '../services/Network'
 import store from '../stores'
 import { openComputerDialog } from '../stores/ComputerStore'
 import { ItemType } from '../types/Items'

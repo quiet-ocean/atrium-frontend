@@ -9,7 +9,7 @@ import Nancy from '../assets/Nancy_login.png'
 import { InputField, Stepper, LoginLayout } from '../components'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
-import Game from '../scenes/Game'
+import type Game from '../scenes/Game'
 import { setPlayerName } from '../stores/UserStore'
 
 const avatars = [

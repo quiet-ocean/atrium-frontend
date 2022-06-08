@@ -1,4 +1,5 @@
-import { VideoHTMLAttributes, useEffect, useRef } from 'react'
+import type { VideoHTMLAttributes } from 'react'
+import { useEffect, useRef } from 'react'
 
 type PropsType = VideoHTMLAttributes<HTMLVideoElement> & {
   srcObject: MediaStream

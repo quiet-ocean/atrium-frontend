@@ -1,9 +1,9 @@
 import Phaser from 'phaser'
 
-import Item from '../items/Item'
+import type Item from '../items/Item'
 import { PlayerBehavior } from '../types/PlayerBehavior'
 
-import MyPlayer from './MyPlayer'
+import type MyPlayer from './MyPlayer'
 
 export default class PlayerSelector extends Phaser.GameObjects.Zone {
   selectedItem?: Item

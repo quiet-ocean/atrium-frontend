@@ -16,8 +16,8 @@ import SettingDialog from '../components/SettingDialog'
 import WhiteboardDialog from '../components/WhiteboardDialog'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
-import Bootstrap from '../scenes/Bootstrap'
-import Game from '../scenes/Game'
+import type Bootstrap from '../scenes/Bootstrap'
+import type Game from '../scenes/Game'
 import { setLoggedIn } from '../stores/UserStore'
 
 const Backdrop = styled.div`

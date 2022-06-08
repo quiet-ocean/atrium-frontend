@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import logo from '../assets/logo.png'
 import { useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
-import Bootstrap from '../scenes/Bootstrap'
+import type Bootstrap from '../scenes/Bootstrap'
 
 import { CreateRoomForm } from './CreateRoomForm'
 import { CustomRoomTable } from './CustomRoomTable'

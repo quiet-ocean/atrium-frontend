@@ -5,7 +5,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { useAppSelector, useAppDispatch } from '../hooks'
-import { RootState } from '../stores'
+import type { RootState } from '../stores'
 import { closeComputerDialog } from '../stores/ComputerStore'
 
 import Video from './Video'

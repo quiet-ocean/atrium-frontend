@@ -1,6 +1,7 @@
-import { Peer, MediaConnection } from 'peerjs'
+import type { MediaConnection } from 'peerjs'
+import { Peer } from 'peerjs'
 
-import Network from '../services/Network'
+import type Network from '../services/Network'
 import store from '../stores'
 import { setVideoConnected } from '../stores/UserStore'
 
@@ -81,8 +82,9 @@ export default class WebRTC {
         store.dispatch(setVideoConnected(true))
         this.network.videoConnected()
       })
-      .catch((error) => {
+      .catch(() => {
         if (alertOnError)
+          // eslint-disable-next-line no-alert
           window.alert(
             'No webcam or microphone found, or permission is blocked'
           )

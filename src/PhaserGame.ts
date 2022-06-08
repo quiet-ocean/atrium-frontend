@@ -27,9 +27,8 @@ const config: Phaser.Types.Core.GameConfig = {
   scene: [Bootstrap, Background, Game],
   type: Phaser.AUTO,
 }
-
 const phaserGame = new Phaser.Game(config)
 
-;(window as any).game = phaserGame
+(window as any).game = phaserGame
 
 export default phaserGame

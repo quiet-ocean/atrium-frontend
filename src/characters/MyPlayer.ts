@@ -1,17 +1,17 @@
 import Phaser from 'phaser'
 
 import { phaserEvents, Event } from '../events/EventCenter'
-import Chair from '../items/Chair'
-import Computer from '../items/Computer'
-import Whiteboard from '../items/Whiteboard'
-import Network from '../services/Network'
+import type Chair from '../items/Chair'
+import type Computer from '../items/Computer'
+import type Whiteboard from '../items/Whiteboard'
+import type Network from '../services/Network'
 import store from '../stores'
 import { pushPlayerJoinedMessage } from '../stores/ChatStore'
 import { ItemType } from '../types/Items'
 import { PlayerBehavior } from '../types/PlayerBehavior'
 
 import Player, { sittingShiftData } from './Player'
-import PlayerSelector from './PlayerSelector'
+import type PlayerSelector from './PlayerSelector'
 
 export default class MyPlayer extends Player {
   private playContainerBody: Phaser.Physics.Arcade.Body

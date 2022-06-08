@@ -1,4 +1,4 @@
-import { Contract } from 'near-api-js'
+import type { Contract } from 'near-api-js'
 // export interface CWindow {
 //   name: string;
 // }

@@ -1,8 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 import phaserGame from '../PhaserGame'
-import Game from '../scenes/Game'
-import { IChatMessage } from '../types/IOfficeState'
+import type Game from '../scenes/Game'
+import type { IChatMessage } from '../types/IOfficeState'
 
 export enum MessageType {
   PLAYER_JOINED,

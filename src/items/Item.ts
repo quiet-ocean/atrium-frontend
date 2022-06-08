@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 
-import { ItemType } from '../types/Items'
+import type { ItemType } from '../types/Items'
 
 export default class Item extends Phaser.Physics.Arcade.Sprite {
   private dialogBox!: Phaser.GameObjects.Container

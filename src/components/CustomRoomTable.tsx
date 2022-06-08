@@ -20,7 +20,7 @@ import styled from 'styled-components'
 
 import { useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
-import Bootstrap from '../scenes/Bootstrap'
+import type Bootstrap from '../scenes/Bootstrap'
 import { getAvatarString, getColorByString } from '../util'
 
 const MessageText = styled.p`

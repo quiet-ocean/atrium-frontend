@@ -14,7 +14,7 @@ import {
   GameUI,
 } from './pages'
 import { setWalletConnected } from './stores/UserStore'
-import { CWindow } from './types/Window'
+import type { CWindow } from './types/Window'
 
 declare let window: CWindow
 

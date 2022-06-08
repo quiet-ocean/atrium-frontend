@@ -1,4 +1,5 @@
-import { Client, Room } from 'colyseus.js'
+import type { Room } from 'colyseus.js'
+import { Client } from 'colyseus.js'
 
 import { phaserEvents, Event } from '../events/EventCenter'
 import store from '../stores'
@@ -20,7 +21,7 @@ import {
   removePlayerNameMap,
 } from '../stores/UserStore'
 import { setWhiteboardUrls } from '../stores/WhiteboardStore'
-import {
+import type {
   IComputer,
   IOfficeState,
   IPlayer,
@@ -28,7 +29,8 @@ import {
 } from '../types/IOfficeState'
 import { ItemType } from '../types/Items'
 import { Message } from '../types/Messages'
-import { IRoomData, RoomType } from '../types/Rooms'
+import type { IRoomData } from '../types/Rooms'
+import { RoomType } from '../types/Rooms'
 import WebRTC from '../web/WebRTC'
 
 export default class Network {
@@ -40,7 +42,7 @@ export default class Network {
   mySessionId!: string
 
   constructor() {
-    const endpoint = process.env.REACT_APP_GAME_API_URL
+    const endpoint = process.env.VITE_GAME_API_URL
 
     this.client = new Client(endpoint)
     this.joinLobbyRoom().then(() => {

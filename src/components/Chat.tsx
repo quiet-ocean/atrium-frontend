@@ -14,7 +14,7 @@ import styled from 'styled-components'
 
 import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
-import Game from '../scenes/Game'
+import type Game from '../scenes/Game'
 import { MessageType, setFocused, setShowChat } from '../stores/ChatStore'
 import { getColorByString } from '../util'
 

@@ -1,10 +1,11 @@
 import { connect, Contract, keyStores, WalletConnection } from 'near-api-js'
 
 import { getConfig } from '../config'
+import { CONTRACT_NAME } from '../config/nearConfig'
 // import { Buffer } from 'buffer';
 // globalThis.Buffer = Buffer;
 
-const nearConfig = getConfig(process.env.REACT_APP_NODE_ENV || 'development')
+const nearConfig = getConfig(process.env.NODE_ENV || 'development')
 
 export interface MyContract extends Contract {
   nft_mint_many: any
@@ -29,7 +30,7 @@ export async function initNearContract() {
     Object.assign(
       { deps: { keyStore: new keyStores.BrowserLocalStorageKeyStore() } },
       {
-        contractName: process.env.REACT_APP_CONTRACT_NAME,
+        contractName: CONTRACT_NAME,
         explorerUrl: 'https://explorer.testnet.near.org',
         helperUrl: 'https://helper.testnet.near.org',
         networkId: 'testnet',

@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RoomAvailable } from 'colyseus.js'
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+import type { RoomAvailable } from 'colyseus.js'
 
 import { RoomType } from '../types/Rooms'
 

@@ -1,4 +1,4 @@
-const CONTRACT_NAME = process.env.REACT_APP_CONTRACT_ID || 'atrium-contract'
+export const CONTRACT_NAME = process.env.VITE_CONTRACT_ID || 'atrium-contract'
 // const CONTRACT_NAME = 'contract-name';
 // import { Configure } from '../types';
 

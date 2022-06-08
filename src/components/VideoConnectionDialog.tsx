@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import phaserGame from '../PhaserGame'
-import Game from '../scenes/Game'
+import type Game from '../scenes/Game'
 
 const Backdrop = styled.div`
   position: fixed;

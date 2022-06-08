@@ -1,8 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { MediaConnection } from 'peerjs'
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+import type { MediaConnection } from 'peerjs'
 
 import phaserGame from '../PhaserGame'
-import Game from '../scenes/Game'
+import type Game from '../scenes/Game'
 import { sanitizeId } from '../util'
 import ShareScreenManager from '../web/ShareScreenManager'
 

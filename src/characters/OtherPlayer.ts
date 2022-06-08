@@ -1,9 +1,9 @@
 import Phaser from 'phaser'
 
 import { Event, phaserEvents } from '../events/EventCenter'
-import WebRTC from '../web/WebRTC'
+import type WebRTC from '../web/WebRTC'
 
-import MyPlayer from './MyPlayer'
+import type MyPlayer from './MyPlayer'
 import Player, { sittingShiftData } from './Player'
 
 export default class OtherPlayer extends Player {

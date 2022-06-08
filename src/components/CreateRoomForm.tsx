@@ -9,8 +9,8 @@ import styled from 'styled-components'
 
 import { useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
-import Bootstrap from '../scenes/Bootstrap'
-import { IRoomData } from '../types/Rooms'
+import type Bootstrap from '../scenes/Bootstrap'
+import type { IRoomData } from '../types/Rooms'
 
 const CreateRoomFormWrapper = styled.form`
   display: flex;

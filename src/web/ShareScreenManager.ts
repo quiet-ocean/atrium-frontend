@@ -1,7 +1,7 @@
 import Peer from 'peerjs'
 
 import phaserGame from '../PhaserGame'
-import Game from '../scenes/Game'
+import type Game from '../scenes/Game'
 import store from '../stores'
 import {
   setMyStream,
