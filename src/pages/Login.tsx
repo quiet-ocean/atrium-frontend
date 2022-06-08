@@ -1,24 +1,25 @@
-import * as React from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
-import { Grid, CssBaseline, Box, Container } from '@mui/material';
+import { Grid, CssBaseline, Box, Container } from '@mui/material'
+import * as React from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
+
 // import { CWindow } from '../../types/Window';
-import { useAppSelector } from '../hooks';
+import { useAppSelector } from '../hooks'
 // declare let window: CWindow;
-import { Wallet } from '../types/Wallet';
+import { Wallet } from '../types/Wallet'
 
 const Login = () => {
   const [walletType, setWalletType] = React.useState(Wallet.None)
-  const connected = useAppSelector(state => state.user.walletConnected);
-  const navigate = useNavigate();
+  const connected = useAppSelector((state) => state.user.walletConnected)
+  const navigate = useNavigate()
 
   React.useEffect(() => {
-    console.log('wallet type is ', walletType);
+    console.log('wallet type is ', walletType)
     if (connected) {
-      navigate('/login/choose-name');
-      return;
+      navigate('/login/choose-name')
+      return
     }
-    navigate('/login');
-  }, [connected]);
+    navigate('/login')
+  }, [connected])
 
   return (
     <React.Fragment>
@@ -42,7 +43,7 @@ const Login = () => {
         </Box>
       </Container>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export { Login };
+export { Login }

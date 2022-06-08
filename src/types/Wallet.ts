@@ -1,3 +1,5 @@
 export enum Wallet {
-  Near, Sender, None
-};
+  Near,
+  Sender,
+  None,
+}

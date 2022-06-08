@@ -1,13 +1,14 @@
-import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Grid, CssBaseline, Box, Container } from '@mui/material';
+import { Grid, CssBaseline, Box, Container } from '@mui/material'
+import * as React from 'react'
+import { useNavigate } from 'react-router-dom'
+
 // import { CWindow } from '../../types/Window';
-import { useAppSelector } from '../hooks';
+import { useAppSelector } from '../hooks'
 // declare let window: CWindow;
 
 const LoginLayout = ({ children }: { children: React.ReactNode }) => {
-  const connected = useAppSelector(state => state.user.walletConnected);
-  const navigate = useNavigate();
+  const connected = useAppSelector((state) => state.user.walletConnected)
+  const navigate = useNavigate()
 
   React.useEffect(() => {
     // if (connected || (window as any)?.accountId) {
@@ -17,9 +18,9 @@ const LoginLayout = ({ children }: { children: React.ReactNode }) => {
     // }
     // navigate('/');
     if (!connected && !(window as any)?.accountId) {
-      navigate('/');
+      navigate('/')
     }
-  }, []);
+  }, [])
 
   return (
     <React.Fragment>
@@ -32,7 +33,10 @@ const LoginLayout = ({ children }: { children: React.ReactNode }) => {
               <div className="login_panel">
                 <Box>{children}</Box>
                 <Box sx={{ mt: '36px' }}>
-                  <p className="atrium_text_secondary" style={{ display: 'none' }}>
+                  <p
+                    className="atrium_text_secondary"
+                    style={{ display: 'none' }}
+                  >
                     Already have an account?
                     <span className="atrium_text_light"> Log in now</span>
                   </p>
@@ -43,7 +47,7 @@ const LoginLayout = ({ children }: { children: React.ReactNode }) => {
         </Box>
       </Container>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export { LoginLayout };
+export { LoginLayout }

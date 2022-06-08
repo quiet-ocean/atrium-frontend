@@ -1,7 +1,7 @@
+import CloseIcon from '@mui/icons-material/Close'
+import IconButton from '@mui/material/IconButton'
 import React from 'react'
 import styled from 'styled-components'
-import IconButton from '@mui/material/IconButton'
-import CloseIcon from '@mui/icons-material/Close'
 
 import { useAppSelector, useAppDispatch } from '../hooks'
 import { closeWhiteboardDialog } from '../stores/WhiteboardStore'
@@ -45,7 +45,9 @@ const WhiteboardWrapper = styled.div`
 `
 
 export default function WhiteboardDialog() {
-  const whiteboardUrl = useAppSelector((state) => state.whiteboard.whiteboardUrl)
+  const whiteboardUrl = useAppSelector(
+    (state) => state.whiteboard.whiteboardUrl
+  )
   const dispatch = useAppDispatch()
 
   return (

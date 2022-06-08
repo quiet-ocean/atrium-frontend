@@ -1,3 +1,3 @@
-export * from './debug';
-export * from './nearAPI';
-export * from './senderAPI';
+export * from './debug'
+export * from './nearAPI'
+export * from './senderAPI'

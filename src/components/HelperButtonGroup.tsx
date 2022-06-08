@@ -1,22 +1,22 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import ArrowRightIcon from '@mui/icons-material/ArrowRight'
+import CloseIcon from '@mui/icons-material/Close'
+import DarkModeIcon from '@mui/icons-material/DarkMode'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import LightbulbIcon from '@mui/icons-material/Lightbulb'
+import LightModeIcon from '@mui/icons-material/LightMode'
+import ShareIcon from '@mui/icons-material/Share'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import Avatar from '@mui/material/Avatar'
 import Fab from '@mui/material/Fab'
 import IconButton from '@mui/material/IconButton'
-import Avatar from '@mui/material/Avatar'
 import Tooltip from '@mui/material/Tooltip'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
-import ShareIcon from '@mui/icons-material/Share'
-import LightModeIcon from '@mui/icons-material/LightMode'
-import DarkModeIcon from '@mui/icons-material/DarkMode'
-import CloseIcon from '@mui/icons-material/Close'
-import LightbulbIcon from '@mui/icons-material/Lightbulb'
-import ArrowRightIcon from '@mui/icons-material/ArrowRight'
-import GitHubIcon from '@mui/icons-material/GitHub'
-import TwitterIcon from '@mui/icons-material/Twitter'
+import React, { useState } from 'react'
+import styled from 'styled-components'
 
-import { BackgroundMode } from '../types/BackgroundMode'
-import { toggleBackgroundMode } from '../stores/UserStore'
 import { useAppSelector, useAppDispatch } from '../hooks'
+import { toggleBackgroundMode } from '../stores/UserStore'
+import { BackgroundMode } from '../types/BackgroundMode'
 import { getAvatarString, getColorByString } from '../util'
 
 const Backdrop = styled.div`
@@ -117,7 +117,11 @@ export default function HelperButtonGroup() {
       <div className="wrapper-group">
         {showRoomInfo && (
           <Wrapper>
-            <IconButton className="close" onClick={() => setShowRoomInfo(false)} size="small">
+            <IconButton
+              className="close"
+              onClick={() => setShowRoomInfo(false)}
+              size="small"
+            >
               <CloseIcon />
             </IconButton>
             <RoomName>
@@ -141,7 +145,11 @@ export default function HelperButtonGroup() {
         {showControlGuide && (
           <Wrapper>
             <Title>Controls</Title>
-            <IconButton className="close" onClick={() => setShowControlGuide(false)} size="small">
+            <IconButton
+              className="close"
+              onClick={() => setShowControlGuide(false)}
+              size="small"
+            >
               <CloseIcon />
             </IconButton>
             <ul>
@@ -152,7 +160,8 @@ export default function HelperButtonGroup() {
                 <strong>E</strong> to sit down (when facing a chair)
               </li>
               <li>
-                <strong>R</strong> to use computer to screen share (when facing a computer)
+                <strong>R</strong> to use computer to screen share (when facing
+                a computer)
               </li>
               <li>
                 <strong>Enter</strong> to open chat
@@ -205,13 +214,24 @@ export default function HelperButtonGroup() {
           </StyledFab>
         </Tooltip>
         <Tooltip title="Follow Us on Twitter">
-          <StyledFab size="small" href="https://twitter.com/SkyOfficeApp" target="_blank">
+          <StyledFab
+            size="small"
+            href="https://twitter.com/SkyOfficeApp"
+            target="_blank"
+          >
             <TwitterIcon />
           </StyledFab>
         </Tooltip>
         <Tooltip title="Switch Background Theme">
-          <StyledFab size="small" onClick={() => dispatch(toggleBackgroundMode())}>
-            {backgroundMode === BackgroundMode.DAY ? <DarkModeIcon /> : <LightModeIcon />}
+          <StyledFab
+            size="small"
+            onClick={() => dispatch(toggleBackgroundMode())}
+          >
+            {backgroundMode === BackgroundMode.DAY ? (
+              <DarkModeIcon />
+            ) : (
+              <LightModeIcon />
+            )}
           </StyledFab>
         </Tooltip>
       </ButtonGroup>

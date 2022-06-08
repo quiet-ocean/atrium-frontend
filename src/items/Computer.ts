@@ -1,14 +1,21 @@
-import { ItemType } from '../types/Items'
+import type Network from '../services/Network'
 import store from '../stores'
-import Item from './Item'
-import Network from '../services/Network'
 import { openComputerDialog } from '../stores/ComputerStore'
+import { ItemType } from '../types/Items'
+
+import Item from './Item'
 
 export default class Computer extends Item {
   id?: string
   currentUsers = new Set<string>()
 
-  constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
+  constructor(
+    scene: Phaser.Scene,
+    x: number,
+    y: number,
+    texture: string,
+    frame?: string | number
+  ) {
     super(scene, x, y, texture, frame)
 
     this.itemType = ItemType.COMPUTER
@@ -55,7 +62,9 @@ export default class Computer extends Item {
 
   openDialog(playerId: string, network: Network) {
     if (!this.id) return
-    store.dispatch(openComputerDialog({ computerId: this.id, myUserId: playerId }))
+    store.dispatch(
+      openComputerDialog({ computerId: this.id, myUserId: playerId })
+    )
     network.connectToComputer(this.id)
   }
 }

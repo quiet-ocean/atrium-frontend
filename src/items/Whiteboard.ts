@@ -1,14 +1,21 @@
-import { ItemType } from '../types/Items'
+import type Network from '../services/Network'
 import store from '../stores'
-import Item from './Item'
-import Network from '../services/Network'
 import { openWhiteboardDialog } from '../stores/WhiteboardStore'
+import { ItemType } from '../types/Items'
+
+import Item from './Item'
 
 export default class Whiteboard extends Item {
   id?: string
   currentUsers = new Set<string>()
 
-  constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
+  constructor(
+    scene: Phaser.Scene,
+    x: number,
+    y: number,
+    texture: string,
+    frame?: string | number
+  ) {
     super(scene, x, y, texture, frame)
 
     this.itemType = ItemType.WHITEBOARD

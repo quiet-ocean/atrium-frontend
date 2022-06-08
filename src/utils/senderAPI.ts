@@ -1,17 +1,17 @@
-const CONTRACT_ID = process.env.REACT_APP_CONTRACT_ID || 'atrium-contract';
+const CONTRACT_ID = process.env.VITE_CONTRACT_ID || 'atrium-contract'
 interface CWindow extends Window {
-  near: any;
+  near: any
 }
 
-declare let window: CWindow;
+declare let window: CWindow
 export const loginSender = async (cb?: () => void) => {
   if (!window.near) {
-    console.log('you should install sender wallet');
-    return;
+    console.log('you should install sender wallet')
+    return
   }
   await window.near.requestSignIn({
     contractId: CONTRACT_ID, // contract requesting access
-  });
+  })
 
   // Or add `methodNames` if you only allow the key to call some of the methods
 
@@ -21,17 +21,17 @@ export const loginSender = async (cb?: () => void) => {
       methodNames: ['addMessage'], // (optional) changed methods the app allowed to use
     })
     .then((res: any) => {
-      console.log('login succeed by sender wallet ', res);
-      if (cb) cb();
+      console.log('login succeed by sender wallet ', res)
+      if (cb) cb()
     })
     .catch((e: any) => {
-      console.log('an error occurred during login by sender wallet ', e);
-    });
+      console.log('an error occurred during login by sender wallet ', e)
+    })
 
-  window.near.isSignedIn(); // t
-};
+  window.near.isSignedIn() // t
+}
 export const logoutSender = async () => {
   if (window.near.isSignedIn()) {
-    window.near.signOut(); // true
+    window.near.signOut() // true
   } // false
-};
+}

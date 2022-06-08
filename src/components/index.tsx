@@ -1,2 +1,2 @@
-export * from './elements';
-export * from './LoginLayout';
+export * from './elements'
+export * from './LoginLayout'

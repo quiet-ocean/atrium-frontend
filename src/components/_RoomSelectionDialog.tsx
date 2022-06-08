@@ -1,32 +1,32 @@
-import { useState, useEffect } from 'react';
-import { loginNear, loginSender } from '../utils';
-import { useAppSelector, useAppDispatch } from '../hooks';
-import { setWalletConnected } from '../stores/UserStore';
-import { CustomRoomTable } from './CustomRoomTable';
-import { setPlayerName } from '../stores/UserStore';
-
-import { IRoomData } from '../types/Rooms';
-import phaserGame from '../PhaserGame'
-import Bootstrap from '../scenes/Bootstrap'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { Box, Button, Container, Grid, IconButton } from '@mui/material'
+import { useState, useEffect } from 'react'
 
 import Adam from '../assets/Adam_login.png'
 import Ash from '../assets/Ash_login.png'
 import Lucy from '../assets/Lucy_login.png'
 import Nancy from '../assets/Nancy_login.png'
+import { useAppSelector, useAppDispatch } from '../hooks'
+import phaserGame from '../PhaserGame'
+import type Bootstrap from '../scenes/Bootstrap'
+import { setPlayerName, setWalletConnected } from '../stores/UserStore'
+import type { IRoomData } from '../types/Rooms'
+import { loginNear, loginSender } from '../utils'
 
-import { Box, Button, Container, Grid, IconButton } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Stepper } from './elements';
+import { CustomRoomTable } from './CustomRoomTable'
+import { Stepper } from './elements'
 
 enum Wallet {
-  Near, Sender, None
-};
+  Near,
+  Sender,
+  None,
+}
 
 const avatars = [
-  { name: 'adam', img: Adam },
-  { name: 'ash', img: Ash },
-  { name: 'lucy', img: Lucy },
-  { name: 'nancy', img: Nancy },
+  { img: Adam, name: 'adam' },
+  { img: Ash, name: 'ash' },
+  { img: Lucy, name: 'lucy' },
+  { img: Nancy, name: 'nancy' },
 ]
 
 // shuffle the avatars array
@@ -36,18 +36,17 @@ for (let i = avatars.length - 1; i > 0; i--) {
 }
 
 const WalletConnectionForm = () => {
-  const dispatch = useAppDispatch();
-  const [walletType, setWalletType] = useState(Wallet.None);  
+  const dispatch = useAppDispatch()
+  const [walletType, setWalletType] = useState(Wallet.None)
   const login = async () => {
     if (walletType === Wallet.Near) {
-      await loginNear();
+      await loginNear()
     } else if (walletType === Wallet.Sender) {
       // logoutNear();
-      (window as any).walletConnection?.signOut();
-      await loginSender();
-      dispatch(setWalletConnected(true));
+      ;(window as any).walletConnection?.signOut()
+      await loginSender()
+      dispatch(setWalletConnected(true))
     } else {
-
     }
   }
   return (
@@ -58,18 +57,26 @@ const WalletConnectionForm = () => {
           <p>Connect your wallet to get started on your Web3 Journey</p>
           <Button
             onClick={() => setWalletType(Wallet.Near)}
-            className={`atrium_btn ${walletType === Wallet.Near ? 'active' : ''}`}
+            className={`atrium_btn ${
+              walletType === Wallet.Near ? 'active' : ''
+            }`}
             sx={{ mt: '12px' }}
           >
             NEAR Wallet
           </Button>
           <Button
-            className={`atrium_btn ${walletType === Wallet.Sender ? 'active' : ''}`}
+            className={`atrium_btn ${
+              walletType === Wallet.Sender ? 'active' : ''
+            }`}
             onClick={() => setWalletType(Wallet.Sender)}
           >
             Sender Wallet
           </Button>
-          <Button className="atrium_btn atrium_btn_primary" onClick={login} sx={{ mt: '56px' }}>
+          <Button
+            className="atrium_btn atrium_btn_primary"
+            onClick={login}
+            sx={{ mt: '56px' }}
+          >
             NEXT
           </Button>
           <Stepper length={5} step={0} />
@@ -82,20 +89,20 @@ const WalletConnectionForm = () => {
         </Box>
       </div>
     </Container>
-  );
-};
+  )
+}
 
 const CreateRoomForm = () => {
-  const [showCustomRoom, setShowCustomRoom] = useState(true);
+  const [showCustomRoom, setShowCustomRoom] = useState(true)
   const [values, setValues] = useState<IRoomData>({
-    name: '',
-    description: 'game room',
-    password: null,
     autoDispose: true,
-  });
+    description: 'game room',
+    name: '',
+    password: null,
+  })
   const create = () => {
     if (values.name) {
-      console.log(values);
+      console.log(values)
       const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
       bootstrap.network
         .createCustom(values)
@@ -104,87 +111,95 @@ const CreateRoomForm = () => {
         })
         .catch((error) => console.error(error))
     }
-  };
-
-  const handleChange = (prop: keyof IRoomData) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValues({ ...values, [prop]: e.target.value });
   }
+
+  const handleChange =
+    (prop: keyof IRoomData) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setValues({ ...values, [prop]: e.target.value })
+    }
   return (
     <>
-    { showCustomRoom ? (
-      <Container>
-        <div className="login_panel">
-          <div>
-            <h1>Create Room</h1>
-            <p style={{ marginBottom: '12px' }}>
-              Create a room by custom room name or your near account id.
-            </p>
+      {showCustomRoom ? (
+        <Container>
+          <div className="login_panel">
+            <div>
+              <h1>Create Room</h1>
+              <p style={{ marginBottom: '12px' }}>
+                Create a room by custom room name or your near account id.
+              </p>
+              <Box sx={{ mt: '36px' }}>
+                <CustomRoomTable />
+              </Box>
+              <Button
+                onClick={() => setShowCustomRoom(false)}
+                className="atrium_btn atrium_btn_primary"
+                sx={{ mt: '56px' }}
+              >
+                Create New Room
+              </Button>
+              <Button className="atrium_btn">Skip</Button>
+            </div>
             <Box sx={{ mt: '36px' }}>
-              <CustomRoomTable />
+              <p className="atrium_text_secondary">
+                Already have an account?
+                <span className="atrium_text_light"> Log in now</span>
+              </p>
             </Box>
-            <Button onClick={() => setShowCustomRoom(false)} className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
-              Create New Room
-            </Button>
-            <Button className="atrium_btn">
-              Skip
-            </Button>
           </div>
-          <Box sx={{ mt: '36px' }}>
-            <p className="atrium_text_secondary">
-              Already have an account?
-              <span className="atrium_text_light"> Log in now</span>
-            </p>
-          </Box>
-        </div>
-      </Container>
-    ) : (
-      <Container>
-        <div className="login_panel">
-          <div>
+        </Container>
+      ) : (
+        <Container>
+          <div className="login_panel">
+            <div>
               <Box>
                 <IconButton onClick={() => setShowCustomRoom(true)}>
                   <ArrowBackIcon />
                 </IconButton>
               </Box>
-            <h1>Create Room</h1>
-            <p style={{ marginBottom: '12px' }}>
-              Create a room by custom room name or your near account id.
-            </p>
-            <Box sx={{ mt: '36px' }}>
-              {/* <InputField
+              <h1>Create Room</h1>
+              <p style={{ marginBottom: '12px' }}>
+                Create a room by custom room name or your near account id.
+              </p>
+              <Box sx={{ mt: '36px' }}>
+                {/* <InputField
                 label="room name"
                 value={roomName}
                 handleChange={(name: string) => dispatch(setRoomName({ roomName: name }))}
                 error={error}
                 setError={setError}
               /> */}
-              <div className="input_group">
-                <input onChange={handleChange('name')} className="form_control" />
-              </div>
+                <div className="input_group">
+                  <input
+                    onChange={handleChange('name')}
+                    className="form_control"
+                  />
+                </div>
+              </Box>
+              <Button
+                onClick={create}
+                className="atrium_btn atrium_btn_primary"
+                sx={{ mt: '56px' }}
+              >
+                Create
+              </Button>
+              <Button className="atrium_btn">Skip</Button>
+            </div>
+            <Box sx={{ mt: '36px' }}>
+              <p className="atrium_text_secondary">
+                Already have an account?
+                <span className="atrium_text_light"> Log in now</span>
+              </p>
             </Box>
-            <Button onClick={create} className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
-              Create
-            </Button>
-            <Button className="atrium_btn" >
-              Skip
-            </Button>
           </div>
-          <Box sx={{ mt: '36px' }}>
-            <p className="atrium_text_secondary">
-              Already have an account?
-              <span className="atrium_text_light"> Log in now</span>
-            </p>
-          </Box>
-        </div>
-      </Container>
-    )}
+        </Container>
+      )}
     </>
-  );
-};
+  )
+}
 
 const SetProfile = () => {
-  const dispatch = useAppDispatch();
-  const [name, setName] = useState('');
+  const dispatch = useAppDispatch()
+  const [name, setName] = useState('')
   const handleConnect = () => {
     const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
     bootstrap.network
@@ -193,11 +208,11 @@ const SetProfile = () => {
       .catch((error) => console.error(error))
   }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
+    setName(e.target.value)
   }
   const connect = () => {
-    dispatch(setPlayerName(name));
-    handleConnect();
+    dispatch(setPlayerName(name))
+    handleConnect()
   }
   return (
     <Container>
@@ -209,11 +224,23 @@ const SetProfile = () => {
           </p>
           <Box sx={{ mt: '36px' }} className="input_group">
             <label>Name</label>
-            <input className="form_control" value={name} onChange={handleChange}/>
+            <input
+              className="form_control"
+              value={name}
+              onChange={handleChange}
+            />
             <label>Description</label>
-            <textarea className="form_control" rows={4} style={{ width: '100%', marginTop: '12px' }}/>
+            <textarea
+              className="form_control"
+              rows={4}
+              style={{ marginTop: '12px', width: '100%' }}
+            />
           </Box>
-          <Button onClick={connect} className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
+          <Button
+            onClick={connect}
+            className="atrium_btn atrium_btn_primary"
+            sx={{ mt: '56px' }}
+          >
             Connect
           </Button>
           <Button className="atrium_btn" onClick={handleConnect}>
@@ -231,15 +258,15 @@ const SetProfile = () => {
   )
 }
 const RoomSelectionDialog = () => {
-  const dispatch = useAppDispatch();
-  const connected = useAppSelector((state) => state.user.walletConnected);
+  const dispatch = useAppDispatch()
+  const connected = useAppSelector((state) => state.user.walletConnected)
   // const [connected, setConnected] = useState(false);
   // // const [showRooms, setShowRooms] = useState(false);
   useEffect(() => {
-    if((window as any)?.accountId) {
-      dispatch(setWalletConnected(true));
+    if ((window as any)?.accountId) {
+      dispatch(setWalletConnected(true))
     }
-  }, []);
+  }, [])
   return (
     <>
       <Container>
@@ -247,12 +274,12 @@ const RoomSelectionDialog = () => {
           <Grid item md={8}></Grid>
           <Grid item md={4}>
             {/* { connected ? <CreateRoomForm /> : <WalletConnectionForm /> } */}
-            { connected ? <SetProfile /> : <WalletConnectionForm /> }
+            {connected ? <SetProfile /> : <WalletConnectionForm />}
           </Grid>
         </Grid>
       </Container>
     </>
   )
-};
+}
 
-export default RoomSelectionDialog;
+export default RoomSelectionDialog

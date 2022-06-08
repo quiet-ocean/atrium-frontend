@@ -1,17 +1,16 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
-import TextField from '@mui/material/TextField'
-import InputAdornment from '@mui/material/InputAdornment'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import InputAdornment from '@mui/material/InputAdornment'
+import TextField from '@mui/material/TextField'
+import React, { useState } from 'react'
+import styled from 'styled-components'
 
-import { IRoomData } from '../types/Rooms'
 import { useAppSelector } from '../hooks'
-
 import phaserGame from '../PhaserGame'
-import Bootstrap from '../scenes/Bootstrap'
+import type Bootstrap from '../scenes/Bootstrap'
+import type { IRoomData } from '../types/Rooms'
 
 const CreateRoomFormWrapper = styled.form`
   display: flex;
@@ -22,19 +21,20 @@ const CreateRoomFormWrapper = styled.form`
 
 export const CreateRoomForm = () => {
   const [values, setValues] = useState<IRoomData>({
-    name: '',
-    description: '',
-    password: null,
     autoDispose: true,
+    description: '',
+    name: '',
+    password: null,
   })
   const [showPassword, setShowPassword] = useState(false)
   const [nameFieldEmpty, setNameFieldEmpty] = useState(false)
   const [descriptionFieldEmpty, setDescriptionFieldEmpty] = useState(false)
   const lobbyJoined = useAppSelector((state) => state.room.lobbyJoined)
 
-  const handleChange = (prop: keyof IRoomData) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValues({ ...values, [prop]: event.target.value })
-  }
+  const handleChange =
+    (prop: keyof IRoomData) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValues({ ...values, [prop]: event.target.value })
+    }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()

@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import TextField from '@mui/material/TextField'
-import Button from '@mui/material/Button'
-import Avatar from '@mui/material/Avatar'
+import ArrowRightIcon from '@mui/icons-material/ArrowRight'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
-import ArrowRightIcon from '@mui/icons-material/ArrowRight'
-
-import { Swiper, SwiperSlide } from 'swiper/react'
+import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import React, { useState } from 'react'
+import styled from 'styled-components'
 import SwiperCore, { Navigation } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper.min.css'
 import 'swiper/components/navigation/navigation.min.css'
 
@@ -17,11 +16,10 @@ import Ash from '../assets/Ash_login.png'
 import Lucy from '../assets/Lucy_login.png'
 import Nancy from '../assets/Nancy_login.png'
 import { useAppSelector, useAppDispatch } from '../hooks'
+import phaserGame from '../PhaserGame'
+import type Game from '../scenes/Game'
 import { setLoggedIn } from '../stores/UserStore'
 import { getAvatarString, getColorByString } from '../util'
-
-import phaserGame from '../PhaserGame'
-import Game from '../scenes/Game'
 
 SwiperCore.use([Navigation])
 
@@ -129,10 +127,10 @@ const Warning = styled.div`
 `
 
 const avatars = [
-  { name: 'adam', img: Adam },
-  { name: 'ash', img: Ash },
-  { name: 'lucy', img: Lucy },
-  { name: 'nancy', img: Nancy },
+  { img: Adam, name: 'adam' },
+  { img: Ash, name: 'ash' },
+  { img: Lucy, name: 'lucy' },
+  { img: Nancy, name: 'nancy' },
 ]
 
 // shuffle the avatars array
@@ -214,7 +212,8 @@ export default function LoginDialog() {
             <Warning>
               <Alert variant="outlined" severity="warning">
                 <AlertTitle>Warning</AlertTitle>
-                No webcam/mic connected - <strong>connect one for best experience!</strong>
+                No webcam/mic connected -{' '}
+                <strong>connect one for best experience!</strong>
               </Alert>
               <Button
                 variant="outlined"
@@ -236,7 +235,12 @@ export default function LoginDialog() {
         </Right>
       </Content>
       <Bottom>
-        <Button variant="contained" color="secondary" size="large" type="submit">
+        <Button
+          variant="contained"
+          color="secondary"
+          size="large"
+          type="submit"
+        >
           Join
         </Button>
       </Bottom>

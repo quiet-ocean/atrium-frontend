@@ -1,17 +1,17 @@
 import Phaser from 'phaser'
-import PlayerSelector from './PlayerSelector'
-import { PlayerBehavior } from '../types/PlayerBehavior'
-import { sittingShiftData } from './Player'
-import Player from './Player'
-import Network from '../services/Network'
-import Chair from '../items/Chair'
-import Computer from '../items/Computer'
-import Whiteboard from '../items/Whiteboard'
 
 import { phaserEvents, Event } from '../events/EventCenter'
+import type Chair from '../items/Chair'
+import type Computer from '../items/Computer'
+import type Whiteboard from '../items/Whiteboard'
+import type Network from '../services/Network'
 import store from '../stores'
 import { pushPlayerJoinedMessage } from '../stores/ChatStore'
 import { ItemType } from '../types/Items'
+import { PlayerBehavior } from '../types/PlayerBehavior'
+
+import Player, { sittingShiftData } from './Player'
+import type PlayerSelector from './PlayerSelector'
 
 export default class MyPlayer extends Player {
   private playContainerBody: Phaser.Physics.Arcade.Body
@@ -25,9 +25,10 @@ export default class MyPlayer extends Player {
     frame?: string | number
   ) {
     super(scene, x, y, texture, id, frame)
-    this.playContainerBody = this.playerContainer.body as Phaser.Physics.Arcade.Body
-    console.log(this);
-    (window as any).sprite = this;
+    this.playContainerBody = this.playerContainer
+      .body as Phaser.Physics.Arcade.Body
+    console.log(this)
+    ;(window as any).sprite = this
   }
 
   setPlayerName(name: string) {
@@ -39,7 +40,12 @@ export default class MyPlayer extends Player {
   setPlayerTexture(texture: string) {
     this.playerTexture = texture
     this.anims.play(`${this.playerTexture}_idle_down`, true)
-    phaserEvents.emit(Event.MY_PLAYER_TEXTURE_CHANGE, this.x, this.y, this.anims.currentAnim.key)
+    phaserEvents.emit(
+      Event.MY_PLAYER_TEXTURE_CHANGE,
+      this.x,
+      this.y,
+      this.anims.currentAnim.key
+    )
   }
 
   update(
@@ -73,7 +79,10 @@ export default class MyPlayer extends Player {
     switch (this.playerBehavior) {
       case PlayerBehavior.IDLE:
         // if press E in front of selected chair
-        if (Phaser.Input.Keyboard.JustDown(keyE) && item?.itemType === ItemType.CHAIR) {
+        if (
+          Phaser.Input.Keyboard.JustDown(keyE) &&
+          item?.itemType === ItemType.CHAIR
+        ) {
           const chairItem = item as Chair
           /**
            * move player to the chair and play sit animation
@@ -82,7 +91,6 @@ export default class MyPlayer extends Player {
            * not sitting at the center of the chair
            */
           this.scene.time.addEvent({
-            delay: 10,
             callback: () => {
               // update character velocity and position
               this.setVelocity(0, 0)
@@ -90,16 +98,23 @@ export default class MyPlayer extends Player {
                 this.setPosition(
                   chairItem.x + sittingShiftData[chairItem.itemDirection][0],
                   chairItem.y + sittingShiftData[chairItem.itemDirection][1]
-                ).setDepth(chairItem.depth + sittingShiftData[chairItem.itemDirection][2])
+                ).setDepth(
+                  chairItem.depth + sittingShiftData[chairItem.itemDirection][2]
+                )
                 // also update playerNameContainer velocity and position
                 this.playContainerBody.setVelocity(0, 0)
                 this.playerContainer.setPosition(
                   chairItem.x + sittingShiftData[chairItem.itemDirection][0],
-                  chairItem.y + sittingShiftData[chairItem.itemDirection][1] - 30
+                  chairItem.y +
+                    sittingShiftData[chairItem.itemDirection][1] -
+                    30
                 )
               }
 
-              this.play(`${this.playerTexture}_sit_${chairItem.itemDirection}`, true)
+              this.play(
+                `${this.playerTexture}_sit_${chairItem.itemDirection}`,
+                true
+              )
               playerSelector.selectedItem = undefined
               if (chairItem.itemDirection === 'up') {
                 playerSelector.setPosition(this.x, this.y - this.height)
@@ -109,6 +124,7 @@ export default class MyPlayer extends Player {
               // send new location and anim to server
               network.updatePlayer(this.x, this.y, this.anims.currentAnim.key)
             },
+            delay: 10,
             loop: false,
           })
           // set up new dialog as player sits down
@@ -140,7 +156,8 @@ export default class MyPlayer extends Player {
         this.playContainerBody.velocity.setLength(speed)
 
         // update animation according to velocity and send new location and anim to server
-        if (vx !== 0 || vy !== 0) network.updatePlayer(this.x, this.y, this.anims.currentAnim.key)
+        if (vx !== 0 || vy !== 0)
+          network.updatePlayer(this.x, this.y, this.anims.currentAnim.key)
         if (vx > 0) {
           this.play(`${this.playerTexture}_run_right`, true)
         } else if (vx < 0) {
@@ -182,7 +199,13 @@ export default class MyPlayer extends Player {
 declare global {
   namespace Phaser.GameObjects {
     interface GameObjectFactory {
-      myPlayer(x: number, y: number, texture: string, id: string, frame?: string | number): MyPlayer
+      myPlayer(
+        x: number,
+        y: number,
+        texture: string,
+        id: string,
+        frame?: string | number
+      ): MyPlayer
     }
   }
 }
@@ -202,11 +225,17 @@ Phaser.GameObjects.GameObjectFactory.register(
     this.displayList.add(sprite)
     this.updateList.add(sprite)
 
-    this.scene.physics.world.enableBody(sprite, Phaser.Physics.Arcade.DYNAMIC_BODY)
+    this.scene.physics.world.enableBody(
+      sprite,
+      Phaser.Physics.Arcade.DYNAMIC_BODY
+    )
 
     const collisionScale = [0.5, 0.2]
     sprite.body
-      .setSize(sprite.width * collisionScale[0], sprite.height * collisionScale[1])
+      .setSize(
+        sprite.width * collisionScale[0],
+        sprite.height * collisionScale[1]
+      )
       .setOffset(
         sprite.width * (1 - collisionScale[0]) * 0.5,
         sprite.height * (1 - collisionScale[1])

@@ -1,21 +1,21 @@
-import React, { useState } from 'react'
-import logo from '../assets/logo.png'
-import styled from 'styled-components'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import Alert from '@mui/material/Alert'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
-import Tooltip from '@mui/material/Tooltip'
 import LinearProgress from '@mui/material/LinearProgress'
-import Alert from '@mui/material/Alert'
 import Snackbar from '@mui/material/Snackbar'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import Tooltip from '@mui/material/Tooltip'
+import React, { useState } from 'react'
+import styled from 'styled-components'
 
-import { CustomRoomTable } from './CustomRoomTable'
-import { CreateRoomForm } from './CreateRoomForm'
+import logo from '../assets/logo.png'
 import { useAppSelector } from '../hooks'
-
 import phaserGame from '../PhaserGame'
-import Bootstrap from '../scenes/Bootstrap'
+import type Bootstrap from '../scenes/Bootstrap'
+
+import { CreateRoomForm } from './CreateRoomForm'
+import { CustomRoomTable } from './CustomRoomTable'
 
 const Backdrop = styled.div`
   position: absolute;
@@ -109,7 +109,7 @@ export default function RoomSelectionDialog() {
   return (
     <>
       <Snackbar
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{ horizontal: 'center', vertical: 'top' }}
         open={showSnackbar}
         autoHideDuration={3000}
         onClose={() => {
@@ -169,13 +169,21 @@ export default function RoomSelectionDialog() {
               <Title>Welcome to SkyOffice</Title>
               <Content>
                 <img src={logo} alt="logo" />
-                <Button variant="contained" color="secondary" onClick={handleConnect}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleConnect}
+                >
                   Connect to public lobby
                 </Button>
                 <Button
                   variant="outlined"
                   color="secondary"
-                  onClick={() => (lobbyJoined ? setShowCustomRoom(true) : setShowSnackbar(true))}
+                  onClick={() =>
+                    lobbyJoined
+                      ? setShowCustomRoom(true)
+                      : setShowSnackbar(true)
+                  }
                 >
                   Create/find custom rooms
                 </Button>
