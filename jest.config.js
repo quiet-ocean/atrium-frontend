@@ -9,7 +9,7 @@ const config = {
   notifyMode: 'success-change',
   resetMocks: true,
   roots: ['<rootDir>'],
-  setupFilesAfterEnv: ['<rootDir>/jest/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest/setupTests.ts', 'jest-canvas-mock'],
   testEnvironment: 'jsdom',
   testMatch: [
     '<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}',
@@ -22,8 +22,8 @@ const config = {
     '^.+\\.css$': '<rootDir>/jest/cssTransform.js',
   },
   transformIgnorePatterns: [
-    '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$',
-    '^.+\\.module\\.(css|sass|scss)$',
+    '[\\/]node_modules[\\/].+\\.(js|jsx|mjs|cjs|ts|tsx)$',
+    '^.+\\.module\\.(css|sass|scss)$'
   ],
   verbose: true,
   watchPlugins: [
