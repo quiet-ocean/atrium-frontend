@@ -1,12 +1,20 @@
 import Phaser from 'phaser'
-import MyPlayer from './MyPlayer'
+
+import type Item from '../items/Item'
 import { PlayerBehavior } from '../types/PlayerBehavior'
-import Item from '../items/Item'
+
+import type MyPlayer from './MyPlayer'
 
 export default class PlayerSelector extends Phaser.GameObjects.Zone {
   selectedItem?: Item
 
-  constructor(scene: Phaser.Scene, x: number, y: number, width: number, height: number) {
+  constructor(
+    scene: Phaser.Scene,
+    x: number,
+    y: number,
+    width: number,
+    height: number
+  ) {
     super(scene, x, y, width, height)
 
     scene.physics.add.existing(this)

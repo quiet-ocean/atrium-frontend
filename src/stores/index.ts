@@ -1,29 +1,38 @@
+import { configureStore, createListenerMiddleware } from '@reduxjs/toolkit'
 import { enableMapSet } from 'immer'
-import { configureStore } from '@reduxjs/toolkit'
-import userReducer from './UserStore'
-import computerReducer from './ComputerStore'
-import whiteboardReducer from './WhiteboardStore'
-import chatReducer from './ChatStore'
-import roomReducer from './RoomStore'
-import settingReducer from './SettingStore';
 
+import chatReducer from './ChatStore'
+import computerReducer from './ComputerStore'
+import { toggleBackGroundListener } from './listener'
+import roomReducer from './RoomStore'
+import settingReducer from './SettingStore'
+import userReducer, { toggleBackgroundMode } from './UserStore'
+import whiteboardReducer from './WhiteboardStore'
+
+const listenerMiddleware = createListenerMiddleware()
 enableMapSet()
 
+listenerMiddleware.startListening({
+  actionCreator: toggleBackgroundMode,
+  effect: toggleBackGroundListener,
+})
+
 const store = configureStore({
-  reducer: {
-    user: userReducer,
-    computer: computerReducer,
-    whiteboard: whiteboardReducer,
-    chat: chatReducer,
-    room: roomReducer,
-    setting: settingReducer,
-  },
   // Temporary disable serialize check for redux as we store MediaStream in ComputerStore.
   // https://stackoverflow.com/a/63244831
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),
+
+  reducer: {
+    chat: chatReducer,
+    computer: computerReducer,
+    room: roomReducer,
+    setting: settingReducer,
+    user: userReducer,
+    whiteboard: whiteboardReducer,
+  },
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

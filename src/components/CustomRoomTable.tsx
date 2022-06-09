@@ -1,27 +1,27 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import LockIcon from '@mui/icons-material/Lock'
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
+import Alert from '@mui/material/Alert'
+import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
-import Paper from '@mui/material/Paper'
-import TableContainer from '@mui/material/TableContainer'
-import Table from '@mui/material/Table'
-import TableRow from '@mui/material/TableRow'
-import TableCell from '@mui/material/TableCell'
-import TableHead from '@mui/material/TableHead'
-import TableBody from '@mui/material/TableBody'
-import Tooltip from '@mui/material/Tooltip'
-import TextField from '@mui/material/TextField'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
-import Alert from '@mui/material/Alert'
-import Avatar from '@mui/material/Avatar'
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
-import LockIcon from '@mui/icons-material/Lock'
-import { useAppSelector } from '../hooks'
-import { getAvatarString, getColorByString } from '../util'
+import Paper from '@mui/material/Paper'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import TextField from '@mui/material/TextField'
+import Tooltip from '@mui/material/Tooltip'
+import React, { useState } from 'react'
+import styled from 'styled-components'
 
+import { useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
-import Bootstrap from '../scenes/Bootstrap'
+import type Bootstrap from '../scenes/Bootstrap'
+import { getAvatarString, getColorByString } from '../util'
 
 const MessageText = styled.p`
   margin: 10px;
@@ -108,7 +108,8 @@ export const CustomRoomTable = () => {
     event.preventDefault()
     const isValidPassword = password !== ''
 
-    if (isValidPassword === passwordFieldEmpty) setPasswordFieldEmpty(!passwordFieldEmpty)
+    if (isValidPassword === passwordFieldEmpty)
+      setPasswordFieldEmpty(!passwordFieldEmpty)
     if (isValidPassword) handleJoinClick(selectedRoom, password)
   }
 
@@ -120,7 +121,9 @@ export const CustomRoomTable = () => {
   }
 
   return availableRooms.length === 0 ? (
-    <MessageText>There are no custom rooms now, create one or join the public lobby.</MessageText>
+    <MessageText>
+      There are no custom rooms now, create one or join the public lobby.
+    </MessageText>
   ) : (
     <>
       <CustomRoomTableContainer component={Paper}>
@@ -144,7 +147,10 @@ export const CustomRoomTable = () => {
               return (
                 <TableRowWrapper key={roomId}>
                   <TableCell>
-                    <Avatar className="avatar" style={{ background: getColorByString(name) }}>
+                    <Avatar
+                      className="avatar"
+                      style={{ background: getColorByString(name) }}
+                    >
                       {getAvatarString(name)}
                     </Avatar>
                   </TableCell>
@@ -186,7 +192,9 @@ export const CustomRoomTable = () => {
       <PasswordDialog open={showPasswordDialog} onClose={resetPasswordDialog}>
         <form onSubmit={handlePasswordSubmit}>
           <DialogContent className="dialog-content">
-            <MessageText>This a private room, please enter password:</MessageText>
+            <MessageText>
+              This a private room, please enter password:
+            </MessageText>
             <TextField
               autoFocus
               fullWidth

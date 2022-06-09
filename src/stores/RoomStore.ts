@@ -1,5 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RoomAvailable } from 'colyseus.js'
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+import type { RoomAvailable } from 'colyseus.js'
+
 import { RoomType } from '../types/Rooms'
 
 interface RoomInterface extends RoomAvailable {
@@ -14,34 +16,20 @@ const isCustomRoom = (room: RoomInterface) => {
 }
 
 export const roomSlice = createSlice({
-  name: 'room',
   initialState: {
-    lobbyJoined: false,
-    roomJoined: false,
-    roomId: '',
-    roomName: '',
-    roomDescription: '',
     availableRooms: new Array<RoomAvailable>(),
+    lobbyJoined: false,
+    roomDescription: '',
+    roomId: '',
+    roomJoined: false,
+    roomName: '',
   },
+  name: 'room',
   reducers: {
-    setLobbyJoined: (state, action: PayloadAction<boolean>) => {
-      state.lobbyJoined = action.payload
-    },
-    setRoomJoined: (state, action: PayloadAction<boolean>) => {
-      state.roomJoined = action.payload
-    },
-    setJoinedRoomData: (
+    addAvailableRooms: (
       state,
-      action: PayloadAction<{ id: string; name: string; description: string }>
+      action: PayloadAction<{ roomId: string; room: RoomAvailable }>
     ) => {
-      state.roomId = action.payload.id
-      state.roomName = action.payload.name
-      state.roomDescription = action.payload.description
-    },
-    setAvailableRooms: (state, action: PayloadAction<RoomAvailable[]>) => {
-      state.availableRooms = action.payload.filter((room) => isCustomRoom(room))
-    },
-    addAvailableRooms: (state, action: PayloadAction<{ roomId: string; room: RoomAvailable }>) => {
       if (!isCustomRoom(action.payload.room)) return
       const roomIndex = state.availableRooms.findIndex(
         (room) => room.roomId === action.payload.roomId
@@ -53,7 +41,26 @@ export const roomSlice = createSlice({
       }
     },
     removeAvailableRooms: (state, action: PayloadAction<string>) => {
-      state.availableRooms = state.availableRooms.filter((room) => room.roomId !== action.payload)
+      state.availableRooms = state.availableRooms.filter(
+        (room) => room.roomId !== action.payload
+      )
+    },
+    setAvailableRooms: (state, action: PayloadAction<RoomAvailable[]>) => {
+      state.availableRooms = action.payload.filter((room) => isCustomRoom(room))
+    },
+    setJoinedRoomData: (
+      state,
+      action: PayloadAction<{ id: string; name: string; description: string }>
+    ) => {
+      state.roomId = action.payload.id
+      state.roomName = action.payload.name
+      state.roomDescription = action.payload.description
+    },
+    setLobbyJoined: (state, action: PayloadAction<boolean>) => {
+      state.lobbyJoined = action.payload
+    },
+    setRoomJoined: (state, action: PayloadAction<boolean>) => {
+      state.roomJoined = action.payload
     },
   },
 })

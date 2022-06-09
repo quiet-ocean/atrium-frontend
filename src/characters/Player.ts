@@ -1,14 +1,15 @@
 import Phaser from 'phaser'
+
 import { PlayerBehavior } from '../types/PlayerBehavior'
 /**
  * shifting distance for sitting animation
  * format: direction: [xShift, yShift, depthShift]
  */
 export const sittingShiftData = {
-  up: [0, 3, -10],
   down: [0, 3, 1],
   left: [0, -8, 10],
   right: [0, -8, 10],
+  up: [0, 3, -10],
 }
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
@@ -38,7 +39,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.anims.play(`${this.playerTexture}_idle_down`, true)
 
-    this.playerContainer = this.scene.add.container(this.x, this.y - 30).setDepth(5000)
+    this.playerContainer = this.scene.add
+      .container(this.x, this.y - 30)
+      .setDepth(5000)
 
     // add dialogBubble to playerContainer
     this.playerDialogBubble = this.scene.add.container(0, 0).setDepth(5000)
@@ -54,7 +57,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.playerContainer.add(this.playerName)
 
     this.scene.physics.world.enable(this.playerContainer)
-    const playContainerBody = this.playerContainer.body as Phaser.Physics.Arcade.Body
+    const playContainerBody = this.playerContainer
+      .body as Phaser.Physics.Arcade.Body
     const collisionScale = [0.5, 0.2]
     playContainerBody
       .setSize(this.width * collisionScale[0], this.height * collisionScale[1])
@@ -65,10 +69,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.clearDialogBubble()
 
     // preprocessing for dialog bubble text (maximum 70 characters)
-    const dialogBubbleText = content.length <= 70 ? content : content.substring(0, 70).concat('...')
+    const dialogBubbleText =
+      content.length <= 70 ? content : content.substring(0, 70).concat('...')
 
     const innerText = this.scene.add
-      .text(0, 0, dialogBubbleText, { wordWrap: { width: 165, useAdvancedWrap: true } })
+      .text(0, 0, dialogBubbleText, {
+        wordWrap: { useAdvancedWrap: true, width: 165 },
+      })
       .setFontFamily('Arial')
       .setFontSize(12)
       .setColor('#000000')
@@ -88,9 +95,21 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       this.scene.add
         .graphics()
         .fillStyle(0xffffff, 1)
-        .fillRoundedRect(dialogBoxX, dialogBoxY, dialogBoxWidth, dialogBoxHeight, 3)
+        .fillRoundedRect(
+          dialogBoxX,
+          dialogBoxY,
+          dialogBoxWidth,
+          dialogBoxHeight,
+          3
+        )
         .lineStyle(1, 0x000000, 1)
-        .strokeRoundedRect(dialogBoxX, dialogBoxY, dialogBoxWidth, dialogBoxHeight, 3)
+        .strokeRoundedRect(
+          dialogBoxX,
+          dialogBoxY,
+          dialogBoxWidth,
+          dialogBoxHeight,
+          3
+        )
     )
     this.playerDialogBubble.add(innerText)
 

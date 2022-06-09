@@ -1,2 +1,2 @@
-import getConfig from './nearConfig';
-export { getConfig };
+import getConfig from './nearConfig'
+export { getConfig }

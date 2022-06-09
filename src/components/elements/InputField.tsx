@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 // import { TextField } from '@mui/material';
 
 const InputField = ({
@@ -8,18 +8,18 @@ const InputField = ({
   setError,
   handleChange,
 }: {
-  label: string;
-  value: string;
-  error: string;
-  setError?: (e: string) => void;
-  handleChange?: (un: string) => void;
+  label: string
+  value: string
+  error: string
+  setError?: (e: string) => void
+  handleChange?: (un: string) => void
 }) => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target && handleChange) {
-      handleChange(e.target?.value);
+      handleChange(e.target?.value)
     }
-    if (setError) setError('');
-  };
+    if (setError) setError('')
+  }
   return (
     <div className="input_group">
       <label>{label}</label>
@@ -28,7 +28,7 @@ const InputField = ({
         className={`form_control ${error ? 'form_control_error' : ''}`}
         onChange={onChange}
         onFocus={() => {
-          if (setError) setError('');
+          if (setError) setError('')
         }}
         type="text"
         style={{ marginTop: '12px' }}
@@ -43,7 +43,7 @@ const InputField = ({
         variant="standard"
       /> */}
     </div>
-  );
-};
+  )
+}
 
-export { InputField };
+export { InputField }

@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
-import { Stepper, LoginLayout } from '../components';
+import { Button } from '@mui/material'
+import { Link } from 'react-router-dom'
+
+import { Stepper, LoginLayout } from '../components'
 // import phaserGame from '../PhaserGame'
 // import Bootstrap from '../scenes/Bootstrap'
 const ScanDAO = () => {
@@ -24,7 +25,7 @@ const ScanDAO = () => {
       <Button className="atrium_btn">SKIP FOR NOW</Button>
       <Stepper length={5} step={4} />
     </LoginLayout>
-  );
-};
+  )
+}
 
-export { ScanDAO };
+export { ScanDAO }

@@ -1,4 +1,13 @@
-import * as React from 'react';
+// import Typography from '@mui/material/Typography';
+import InstagramIcon from '@mui/icons-material/Instagram'
+// import PersonIcon from '@mui/icons-material/Person';
+// import BuildIcon from '@mui/icons-material/Build';
+// import SettingsIcon from '@mui/icons-material/Settings';
+// import EventNoteIcon from '@mui/icons-material/EventNote';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
+import SearchIcon from '@mui/icons-material/Search'
+import StarIcon from '@mui/icons-material/Star'
+import TwitterIcon from '@mui/icons-material/Twitter'
 import {
   Container,
   Grid,
@@ -9,31 +18,22 @@ import {
   Paper,
   InputBase,
   IconButton,
-} from '@mui/material';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-// import Typography from '@mui/material/Typography';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import Icon from '@mui/material/Icon';
-import StarIcon from '@mui/icons-material/Star';
-// import PersonIcon from '@mui/icons-material/Person';
-// import BuildIcon from '@mui/icons-material/Build';
-// import SettingsIcon from '@mui/icons-material/Settings';
-// import EventNoteIcon from '@mui/icons-material/EventNote';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import SearchIcon from '@mui/icons-material/Search';
+} from '@mui/material'
+import Icon from '@mui/material/Icon'
+import Tab from '@mui/material/Tab'
+import Tabs from '@mui/material/Tabs'
+import * as React from 'react'
 // import DiscordIcon from '@mui/icons-material/Discord'
 
 // const normalise = (value) => ((value - MIN) * 100) / (MAX - MIN);
 interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
+  children?: React.ReactNode
+  index: number
+  value: number
 }
 
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
 
   return (
     <div
@@ -49,13 +49,13 @@ function TabPanel(props: TabPanelProps) {
         </Box>
       )}
     </div>
-  );
+  )
 }
 function a11yProps(index: number) {
   return {
-    id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
-  };
+    id: `simple-tab-${index}`,
+  }
 }
 
 const Footer = () => {
@@ -89,7 +89,7 @@ const Footer = () => {
               <span>xp</span>
               <Stack direction="row" spacing={1} className="loading-block">
                 {new Array(5).fill(1).map((_, key: number) => {
-                  return <div key={key} />;
+                  return <div key={key} />
                 })}
               </Stack>
             </Stack>
@@ -98,15 +98,15 @@ const Footer = () => {
         </Grid>
       </Grid>
     </Container>
-  );
-};
+  )
+}
 
 const Setting = () => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0)
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
   return (
     <Container className="setting">
@@ -127,7 +127,11 @@ const Setting = () => {
             <Grid item lg={10} sx={{ p: '0px' }} className="setting_panel_body">
               <Grid item lg={12} className="setting_panel_body_header_nav">
                 <Stack direction="row" justifyContent="space-between">
-                  <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                  <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="basic tabs example"
+                  >
                     <Tab label="Hub" {...a11yProps(0)} />
                     <Tab label="Profile" {...a11yProps(1)} />
                     <Tab label="Connections" {...a11yProps(2)} />
@@ -137,14 +141,23 @@ const Setting = () => {
                   <div>
                     <Paper
                       component="form"
-                      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+                      sx={{
+                        alignItems: 'center',
+                        display: 'flex',
+                        p: '2px 4px',
+                        width: 400,
+                      }}
                     >
                       <InputBase
-                        sx={{ ml: 1, flex: 1 }}
+                        sx={{ flex: 1, ml: 1 }}
                         placeholder="Search"
                         inputProps={{ 'aria-label': 'search google maps' }}
                       />
-                      <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+                      <IconButton
+                        type="submit"
+                        sx={{ p: '10px' }}
+                        aria-label="search"
+                      >
                         <SearchIcon />
                       </IconButton>
                     </Paper>
@@ -163,31 +176,50 @@ const Setting = () => {
                   </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                  <Grid container className="setting_panel_body_tab_content_profile">
+                  <Grid
+                    container
+                    className="setting_panel_body_tab_content_profile"
+                  >
                     <Grid
                       item
                       lg={3}
                       className="text-center"
-                      sx={{ textAlign: 'center', px: '24px' }}
+                      sx={{ px: '24px', textAlign: 'center' }}
                     >
                       <Stack direction="column" spacing={2}>
                         <img src="/images/PFP_SKETCHES_1 1.png" alt="" />
                         <h1>swiftyyy</h1>
                         {/* <LinearProgress variant="determinate" value={normalise(props.value)} /> */}
-                        <Stack direction="row" justifyContent="center" spacing={1}>
+                        <Stack
+                          direction="row"
+                          justifyContent="center"
+                          spacing={1}
+                        >
                           <p>LVL 72</p>
-                          <Box sx={{ width: '152px', pt: '10px' }}>
-                            <LinearProgress variant="determinate" color="error" value={35} />
+                          <Box sx={{ pt: '10px', width: '152px' }}>
+                            <LinearProgress
+                              variant="determinate"
+                              color="error"
+                              value={35}
+                            />
                           </Box>
                         </Stack>
                         <p>Graphic Designer</p>
                         <div>
-                          <Button sx={{ background: '#ED2424' }}>Chat Now</Button>
+                          <Button sx={{ background: '#ED2424' }}>
+                            Chat Now
+                          </Button>
                         </div>
                         <div>
-                          <Button sx={{ background: '#181B21' }}>Email Me</Button>
+                          <Button sx={{ background: '#181B21' }}>
+                            Email Me
+                          </Button>
                         </div>
-                        <Stack direction="row" spacing={2} justifyContent="center">
+                        <Stack
+                          direction="row"
+                          spacing={2}
+                          justifyContent="center"
+                        >
                           <TwitterIcon sx={{ fontSize: '32px' }} />
                           <Icon sx={{ fontSize: '32px' }}>discord</Icon>
                           <InstagramIcon sx={{ fontSize: '32px' }} />
@@ -200,9 +232,10 @@ const Setting = () => {
                         <div>
                           <h2>Description</h2>
                           <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sollicitudin
-                            donec ipsum ac egestas at sit risus ut nunc. Velit eu nec faucibus
-                            cursus lobortis magna eleifend ultrices non.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Sollicitudin donec ipsum ac egestas at sit
+                            risus ut nunc. Velit eu nec faucibus cursus lobortis
+                            magna eleifend ultrices non.
                           </p>
                           <Stack direction="row" spacing={2}>
                             <Button>
@@ -218,9 +251,10 @@ const Setting = () => {
                         <div>
                           <h2>Skills</h2>
                           <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sollicitudin
-                            donec ipsum ac egestas at sit risus ut nunc. Velit eu nec faucibus
-                            cursus lobortis magna eleifend ultrices non.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Sollicitudin donec ipsum ac egestas at sit
+                            risus ut nunc. Velit eu nec faucibus cursus lobortis
+                            magna eleifend ultrices non.
                           </p>
                           <Stack direction="row" spacing={2}>
                             <Button>
@@ -240,9 +274,10 @@ const Setting = () => {
                         <div>
                           <h2>Jobs</h2>
                           <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sollicitudin
-                            donec ipsum ac egestas at sit risus ut nunc. Velit eu nec faucibus
-                            cursus lobortis magna eleifend ultrices non.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Sollicitudin donec ipsum ac egestas at sit
+                            risus ut nunc. Velit eu nec faucibus cursus lobortis
+                            magna eleifend ultrices non.
                           </p>
                           <Stack direction="row" spacing={2}>
                             <Button>
@@ -280,7 +315,7 @@ const Setting = () => {
       </Box>
       <Footer />
     </Container>
-  );
-};
+  )
+}
 
-export { Setting };
+export { Setting }

@@ -1,8 +1,9 @@
 import Phaser from 'phaser'
+
 import Network from '../services/Network'
-import { BackgroundMode } from '../types/BackgroundMode'
 import store from '../stores'
 import { setRoomJoined } from '../stores/RoomStore'
+import type { BackgroundMode } from '../types/BackgroundMode'
 
 export default class Bootstrap extends Phaser.Scene {
   network!: Network
@@ -29,52 +30,60 @@ export default class Bootstrap extends Phaser.Scene {
 
     this.load.tilemapTiledJSON('tilemap', 'assets/map/map.json')
     this.load.spritesheet('tiles_wall', 'assets/map/FloorAndGround.png', {
-      frameWidth: 32,
       frameHeight: 32,
+      frameWidth: 32,
     })
     this.load.spritesheet('chairs', 'assets/items/chair.png', {
-      frameWidth: 32,
       frameHeight: 64,
+      frameWidth: 32,
     })
     this.load.spritesheet('computers', 'assets/items/computer.png', {
-      frameWidth: 96,
       frameHeight: 64,
+      frameWidth: 96,
     })
     this.load.spritesheet('whiteboards', 'assets/items/whiteboard.png', {
-      frameWidth: 64,
       frameHeight: 64,
+      frameWidth: 64,
     })
-    this.load.spritesheet('vendingmachines', 'assets/items/vendingmachine.png', {
-      frameWidth: 48,
-      frameHeight: 72,
-    })
-    this.load.spritesheet('office', 'assets/items/Modern_Office_Black_Shadow.png', {
-      frameWidth: 32,
-      frameHeight: 32,
-    })
+    this.load.spritesheet(
+      'vendingmachines',
+      'assets/items/vendingmachine.png',
+      {
+        frameHeight: 72,
+        frameWidth: 48,
+      }
+    )
+    this.load.spritesheet(
+      'office',
+      'assets/items/Modern_Office_Black_Shadow.png',
+      {
+        frameHeight: 32,
+        frameWidth: 32,
+      }
+    )
     this.load.spritesheet('basement', 'assets/items/Basement.png', {
-      frameWidth: 32,
       frameHeight: 32,
+      frameWidth: 32,
     })
     this.load.spritesheet('generic', 'assets/items/Generic.png', {
-      frameWidth: 32,
       frameHeight: 32,
+      frameWidth: 32,
     })
     this.load.spritesheet('adam', 'assets/character/adam.png', {
-      frameWidth: 32,
       frameHeight: 48,
+      frameWidth: 32,
     })
     this.load.spritesheet('ash', 'assets/character/ash.png', {
-      frameWidth: 32,
       frameHeight: 48,
+      frameWidth: 32,
     })
     this.load.spritesheet('lucy', 'assets/character/lucy.png', {
-      frameWidth: 32,
       frameHeight: 48,
+      frameWidth: 32,
     })
     this.load.spritesheet('nancy', 'assets/character/nancy.png', {
-      frameWidth: 32,
       frameHeight: 48,
+      frameWidth: 32,
     })
   }
 

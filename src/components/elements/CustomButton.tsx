@@ -1,7 +1,7 @@
-import { Button } from '@mui/material';
+import { Button } from '@mui/material'
 
 const CustomButton = () => {
-  return <Button>button</Button>;
-};
+  return <Button>button</Button>
+}
 
-export { CustomButton };
+export { CustomButton }

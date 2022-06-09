@@ -1,22 +1,22 @@
-import React, { useRef, useState, useEffect } from 'react'
-import styled from 'styled-components'
-import Box from '@mui/material/Box'
-import Fab from '@mui/material/Fab'
-import Tooltip from '@mui/material/Tooltip'
-import IconButton from '@mui/material/IconButton'
-import InputBase from '@mui/material/InputBase'
-import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
 import CloseIcon from '@mui/icons-material/Close'
-import 'emoji-mart/css/emoji-mart.css'
+import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
+import Box from '@mui/material/Box'
+import Fab from '@mui/material/Fab'
+import IconButton from '@mui/material/IconButton'
+import InputBase from '@mui/material/InputBase'
+import Tooltip from '@mui/material/Tooltip'
+// I've never find any css file in the emoji-mart package, and such as guide
+// import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
+import React, { useRef, useState, useEffect } from 'react'
+import styled from 'styled-components'
 
-import phaserGame from '../PhaserGame'
-import Game from '../scenes/Game'
-
-import { getColorByString } from '../util'
 import { useAppDispatch, useAppSelector } from '../hooks'
+import phaserGame from '../PhaserGame'
+import type Game from '../scenes/Game'
 import { MessageType, setFocused, setShowChat } from '../stores/ChatStore'
+import { getColorByString } from '../util'
 
 const Backdrop = styled.div`
   position: fixed;
@@ -120,8 +120,8 @@ const EmojiPickerWrapper = styled.div`
 `
 
 const dateFormatter = new Intl.DateTimeFormat('en', {
-  timeStyle: 'short',
   dateStyle: 'short',
+  timeStyle: 'short',
 })
 
 const Message = ({ chatMessage, messageType }) => {
@@ -228,7 +228,11 @@ export default function Chat() {
             </ChatHeader>
             <ChatBox>
               {chatMessages.map(({ messageType, chatMessage }, index) => (
-                <Message chatMessage={chatMessage} messageType={messageType} key={index} />
+                <Message
+                  chatMessage={chatMessage}
+                  messageType={messageType}
+                  key={index}
+                />
               ))}
               <div ref={messagesEndRef} />
               {showEmojiPicker && (
@@ -261,7 +265,10 @@ export default function Chat() {
                 }}
                 onBlur={() => dispatch(setFocused(false))}
               />
-              <IconButton aria-label="emoji" onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
+              <IconButton
+                aria-label="emoji"
+                onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+              >
                 <InsertEmoticonIcon />
               </IconButton>
             </InputWrapper>

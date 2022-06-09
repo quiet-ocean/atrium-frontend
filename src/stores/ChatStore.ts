@@ -1,7 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IChatMessage } from '../types/IOfficeState'
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+
 import phaserGame from '../PhaserGame'
-import Game from '../scenes/Game'
+import type Game from '../scenes/Game'
+import type { IChatMessage } from '../types/IOfficeState'
 
 export enum MessageType {
   PLAYER_JOINED,
@@ -10,37 +12,40 @@ export enum MessageType {
 }
 
 export const chatSlice = createSlice({
-  name: 'chat',
   initialState: {
-    chatMessages: new Array<{ messageType: MessageType; chatMessage: IChatMessage }>(),
+    chatMessages: new Array<{
+      messageType: MessageType
+      chatMessage: IChatMessage
+    }>(),
     focused: false,
     showChat: true,
   },
+  name: 'chat',
   reducers: {
     pushChatMessage: (state, action: PayloadAction<IChatMessage>) => {
       state.chatMessages.push({
-        messageType: MessageType.REGULAR_MESSAGE,
         chatMessage: action.payload,
+        messageType: MessageType.REGULAR_MESSAGE,
       })
     },
     pushPlayerJoinedMessage: (state, action: PayloadAction<string>) => {
       state.chatMessages.push({
-        messageType: MessageType.PLAYER_JOINED,
         chatMessage: {
-          createdAt: new Date().getTime(),
           author: action.payload,
           content: 'joined the lobby',
+          createdAt: new Date().getTime(),
         } as IChatMessage,
+        messageType: MessageType.PLAYER_JOINED,
       })
     },
     pushPlayerLeftMessage: (state, action: PayloadAction<string>) => {
       state.chatMessages.push({
-        messageType: MessageType.PLAYER_LEFT,
         chatMessage: {
-          createdAt: new Date().getTime(),
           author: action.payload,
           content: 'left the lobby',
+          createdAt: new Date().getTime(),
         } as IChatMessage,
+        messageType: MessageType.PLAYER_LEFT,
       })
     },
     setFocused: (state, action: PayloadAction<boolean>) => {

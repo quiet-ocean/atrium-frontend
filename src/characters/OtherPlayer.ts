@@ -1,9 +1,10 @@
 import Phaser from 'phaser'
-import Player from './Player'
-import MyPlayer from './MyPlayer'
-import { sittingShiftData } from './Player'
-import WebRTC from '../web/WebRTC'
+
 import { Event, phaserEvents } from '../events/EventCenter'
+import type WebRTC from '../web/WebRTC'
+
+import type MyPlayer from './MyPlayer'
+import Player, { sittingShiftData } from './Player'
 
 export default class OtherPlayer extends Player {
   private targetPosition: [number, number]
@@ -26,7 +27,8 @@ export default class OtherPlayer extends Player {
     this.targetPosition = [x, y]
 
     this.playerName.setText(name)
-    this.playContainerBody = this.playerContainer.body as Phaser.Physics.Arcade.Body
+    this.playContainerBody = this.playerContainer
+      .body as Phaser.Physics.Arcade.Body
   }
 
   makeCall(myPlayer: MyPlayer, webRTC: WebRTC) {
@@ -161,7 +163,13 @@ export default class OtherPlayer extends Player {
       this.body.touching.none &&
       this.connectionBufferTime >= 750
     ) {
-      if (this.x < 610 && this.y > 515 && this.myPlayer!.x < 610 && this.myPlayer!.y > 515) return
+      if (
+        this.x < 610 &&
+        this.y > 515 &&
+        this.myPlayer!.x < 610 &&
+        this.myPlayer!.y > 515
+      )
+        return
       phaserEvents.emit(Event.PLAYER_DISCONNECTED, this.playerId)
       this.connectionBufferTime = 0
       this.connected = false
@@ -200,11 +208,17 @@ Phaser.GameObjects.GameObjectFactory.register(
     this.displayList.add(sprite)
     this.updateList.add(sprite)
 
-    this.scene.physics.world.enableBody(sprite, Phaser.Physics.Arcade.DYNAMIC_BODY)
+    this.scene.physics.world.enableBody(
+      sprite,
+      Phaser.Physics.Arcade.DYNAMIC_BODY
+    )
 
     const collisionScale = [6, 4]
     sprite.body
-      .setSize(sprite.width * collisionScale[0], sprite.height * collisionScale[1])
+      .setSize(
+        sprite.width * collisionScale[0],
+        sprite.height * collisionScale[1]
+      )
       .setOffset(
         sprite.width * (1 - collisionScale[0]) * 0.5,
         sprite.height * (1 - collisionScale[1]) * 0.5 + 17
