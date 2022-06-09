@@ -1,17 +1,12 @@
 import { configureStore, createListenerMiddleware } from '@reduxjs/toolkit'
 import { enableMapSet } from 'immer'
 
-import phaserGame from '../PhaserGame'
-import type Bootstrap from '../scenes/Bootstrap'
-
 import chatReducer from './ChatStore'
 import computerReducer from './ComputerStore'
+import { toggleBackGroundListener } from './listener'
 import roomReducer from './RoomStore'
 import settingReducer from './SettingStore'
-import userReducer, {
-  toggleBackgroundMode,
-  selectBackGroundMode,
-} from './UserStore'
+import userReducer, { toggleBackgroundMode } from './UserStore'
 import whiteboardReducer from './WhiteboardStore'
 
 const listenerMiddleware = createListenerMiddleware()
@@ -19,11 +14,7 @@ enableMapSet()
 
 listenerMiddleware.startListening({
   actionCreator: toggleBackgroundMode,
-  effect: (action, listenerApi) => {
-    const newMode = selectBackGroundMode(listenerApi.getState() as RootState)
-    const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
-    bootstrap.changeBackgroundMode(newMode)
-  },
+  effect: toggleBackGroundListener,
 })
 
 const store = configureStore({
