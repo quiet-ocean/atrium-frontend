@@ -24,3 +24,7 @@ yarn prettier  # run prettier for json|yml|css|md|mdx files
 yarn clean     # remove 'node_modules' 'package-lock.json' 'dist' completely
 yarn serve     # launch server for production bundle in local
 ```
+
+### Environment Variable
+
+- VITE_CONTRACT_ID: NEAR Wallet ID
