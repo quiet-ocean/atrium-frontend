@@ -5,13 +5,11 @@
     "jest": true,
     "node": true
   },
-  "extends": ["plugin:jsx-a11y/recommended"],
   "globals": {
     "JSX": "readonly"
   },
   "parser": "@typescript-eslint/parser",
   "plugins": [
-    "jsx-a11y",
     "import",
     "sort-keys-fix",
     "react-hooks",
@@ -71,7 +69,7 @@
     },
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts", ".css"]
       },
       "typescript": {
         "alwaysTryTypes": true,

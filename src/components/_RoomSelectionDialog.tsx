@@ -92,6 +92,8 @@ const WalletConnectionForm = () => {
   )
 }
 
+// Might be middle of implementation any feature?
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const CreateRoomForm = () => {
   const [showCustomRoom, setShowCustomRoom] = useState(true)
   const [values, setValues] = useState<IRoomData>({
