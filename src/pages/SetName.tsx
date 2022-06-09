@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
 import type Game from '../scenes/Game'
 import { setPlayerName } from '../stores/UserStore'
+import { setUser } from '../stores/AuthStore'
 
 const avatars = [
   { img: Adam, name: 'adam' },
@@ -34,9 +35,11 @@ const SetName = () => {
   React.useEffect(() => {
     // console.log(username);
   }, [name])
-  const next = () => {
+
+  const handleNextBtn = () => {
     if (name !== '') {
       if (name === confirmName) {
+        dispatch(setUser({ username: name }))
         dispatch(setPlayerName(name))
         if (game) {
           game.registerKeys()
@@ -88,7 +91,7 @@ const SetName = () => {
         handleChange={setConfirmName}
       />
       <Button
-        onClick={next}
+        onClick={handleNextBtn}
         className="atrium_btn atrium_btn_primary"
         sx={{ mt: '56px' }}
       >

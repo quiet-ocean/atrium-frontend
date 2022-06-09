@@ -5,6 +5,8 @@ import { ThemeProvider } from '@mui/material/styles'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import axios from 'axios'
+import { PersistGate } from 'redux-persist/integration/react'
 
 import 'antd/dist/antd.css'
 // import './index.scss'
@@ -12,19 +14,23 @@ import './styles/index.scss'
 import App from './App'
 import muiTheme from './MuiTheme'
 import { setGameGlobalScope } from './PhaserGame'
-import store from './stores'
-import { initNearContract } from './utils'
+import store, { persistor } from './stores'
+import { initNearContract, setupAxios } from './utils'
 
 globalThis.Buffer = Buffer
 window.addEventListener('load', () => setGameGlobalScope())
+
+setupAxios(axios, store)
 
 initNearContract().then(() => {
   ReactDOM.render(
     <React.StrictMode>
       <Provider store={store}>
-        <ThemeProvider theme={muiTheme}>
-          <App />
-        </ThemeProvider>
+        <PersistGate persistor={persistor}>
+          <ThemeProvider theme={muiTheme}>
+            <App />
+          </ThemeProvider>
+        </PersistGate>
       </Provider>
     </React.StrictMode>,
     document.getElementById('root')

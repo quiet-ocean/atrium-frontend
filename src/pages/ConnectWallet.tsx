@@ -1,17 +1,26 @@
 import { Button } from '@mui/material'
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { To, useNavigate } from 'react-router-dom'
+import { unwrapResult } from '@reduxjs/toolkit'
 
 // import { Link } from 'react-router-dom';
 import { Stepper, LoginLayout } from '../components'
 import { useAppSelector, useAppDispatch } from '../hooks'
 import { setWalletConnected } from '../stores/UserStore'
 import { Wallet } from '../types/Wallet'
+import {
+  setAccessToken,
+  login,
+  setUser,
+  requestUser,
+} from '../stores/AuthStore'
 import { loginNear, logoutNear } from '../utils/nearAPI'
 import { loginSender } from '../utils/senderAPI'
+import type { CWindow } from '../types/Window'
 // import { useAppDispatch, useAppSelector } from '../../hooks';
 // import { Buffer } from 'buffer';
 // globalThis.Buffer = Buffer;
+declare let window: CWindow
 
 const ConnectWallet = () => {
   const navigate = useNavigate()
@@ -22,20 +31,40 @@ const ConnectWallet = () => {
   useEffect(() => {
     if (connected) {
       console.log('wallet connection is ', connected)
-      navigate('/set-name')
+      dispatch(setUser({ accountId: window.accountId }))
+      fetchLogin('/success', '/set-name')
     }
   }, [connected])
 
-  const login = async () => {
-    console.log('login', walletType)
+  const fetchLogin = async (loggedUrl: To, unloggedUrl: To) => {
+    try {
+      const resultAction = await dispatch(login(window.accountId))
+      const originalPromiseResult = unwrapResult(resultAction)
+      console.log(resultAction)
+      console.log(originalPromiseResult)
+      if (originalPromiseResult.accessToken == '') {
+        navigate(unloggedUrl)
+      } else {
+        await dispatch(requestUser())
+        navigate(loggedUrl)
+      }
+    } catch (rejectedValueOrSerializedError) {
+      console.log(rejectedValueOrSerializedError)
+    }
+  }
 
+  const handleClickBtn = async () => {
     if (walletType === Wallet.Sender) {
       await logoutNear()
-      await loginSender()
-      dispatch(setWalletConnected(true))
+      const loggedIn = await loginSender()
+      console.log(loggedIn)
+      if (loggedIn) {
+        dispatch(setWalletConnected(true))
+        navigate('/set-name')
+      }
       // navigate('/set-name');
     } else if (walletType === Wallet.Near) {
-      loginNear(window.location.origin + '/set-name', 'https://localhost:1234')
+      loginNear()
     } else {
     }
   }
@@ -61,7 +90,7 @@ const ConnectWallet = () => {
           Sender Wallet
         </Button>
         <Button
-          onClick={login}
+          onClick={handleClickBtn}
           className="atrium_btn atrium_btn_primary"
           sx={{ mt: '56px' }}
         >

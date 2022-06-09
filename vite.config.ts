@@ -17,6 +17,7 @@ export default defineConfig({
       'VITE_CONTRACT_ID',
       'VITE_GAME_API_URL',
       'VITE_PARAS_API_URL',
+      'VITE_API_URL',
     ]),
   ],
   server: {
