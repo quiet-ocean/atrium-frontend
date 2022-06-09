@@ -8,7 +8,7 @@ import { useAppSelector } from '../hooks'
 import { Wallet } from '../types/Wallet'
 
 const Login = () => {
-  const [walletType, setWalletType] = React.useState(Wallet.None)
+  const [walletType] = React.useState(Wallet.None)
   const connected = useAppSelector((state) => state.user.walletConnected)
   const navigate = useNavigate()
 

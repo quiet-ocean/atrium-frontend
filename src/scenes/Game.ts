@@ -41,11 +41,11 @@ export default class Game extends Phaser.Scene {
     this.keyE = this.input.keyboard.addKey('E')
     this.keyR = this.input.keyboard.addKey('R')
     this.input.keyboard.disableGlobalCapture()
-    this.input.keyboard.on('keydown-ENTER', (event) => {
+    this.input.keyboard.on('keydown-ENTER', () => {
       store.dispatch(setShowChat(true))
       store.dispatch(setFocused(true))
     })
-    this.input.keyboard.on('keydown-ESC', (event) => {
+    this.input.keyboard.on('keydown-ESC', () => {
       store.dispatch(setShowChat(false))
     })
   }
@@ -142,7 +142,7 @@ export default class Game extends Phaser.Scene {
       classType: VendingMachine,
     })
     const vendingMachineLayer = this.map.getObjectLayer('VendingMachine')
-    vendingMachineLayer.objects.forEach((obj, i) => {
+    vendingMachineLayer.objects.forEach((obj) => {
       this.addObjectFromTiled(
         vendingMachines,
         obj,
@@ -360,7 +360,7 @@ export default class Game extends Phaser.Scene {
     otherPlayer?.updateDialogBubble(content)
   }
 
-  update(t: number, dt: number) {
+  update() {
     if (this.myPlayer && this.network) {
       this.playerSelector.update(this.myPlayer, this.cursors)
       this.myPlayer.update(
