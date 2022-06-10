@@ -31,9 +31,6 @@ const SetName = () => {
   const game = phaserGame.scene.keys.game as Game
   const playerName = useAppSelector((state) => state.user.playerName)
 
-  React.useEffect(() => {
-    // console.log(username);
-  }, [name])
   const next = () => {
     if (name !== '') {
       if (name === confirmName) {
