@@ -11,12 +11,11 @@ import 'antd/dist/antd.css'
 import './styles/index.scss'
 import App from './App'
 import muiTheme from './MuiTheme'
-import { setGameGlobalScope } from './PhaserGame'
+import './PhaserGame'
 import store from './stores'
 import { initNearContract } from './utils'
 
 globalThis.Buffer = Buffer
-window.addEventListener('load', () => setGameGlobalScope())
 
 initNearContract().then(() => {
   ReactDOM.render(

@@ -35,9 +35,7 @@ class Game extends Phaser.Game {
 }
 
 const phaserGame = new Game(config)
-export default phaserGame
+// @ts-expect-error
+window.game = phaserGame
 
-export function setGameGlobalScope() {
-  // @ts-expect-error
-  window.game = phaserGame
-}
+export default phaserGame
