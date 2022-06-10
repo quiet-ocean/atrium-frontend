@@ -28,4 +28,4 @@ yarn serve     # launch server for production bundle in local
 ### Environment Variable
 
 - `VITE_CONTRACT_ID`: NEAR Wallet ID
-- `VITE_GAME_API_URL`: ```ws://192.168.1.108:2567```
+- `VITE_GAME_API_URL`: `ws://192.168.1.108:2567`
