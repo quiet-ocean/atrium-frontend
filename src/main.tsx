@@ -1,6 +1,7 @@
 import { Buffer } from 'buffer'
 
 import 'regenerator-runtime/runtime'
+import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -22,6 +23,7 @@ initNearContract().then(() => {
   ReactDOM.render(
     <React.StrictMode>
       <Provider store={store}>
+        <CssBaseline />
         <ThemeProvider theme={muiTheme}>
           <App />
         </ThemeProvider>

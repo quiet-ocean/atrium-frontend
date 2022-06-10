@@ -13,6 +13,7 @@ import {
   ScanDAO,
   GameUI,
 } from './pages'
+import ProfileModal from './pages/ProfileModal'
 import { setWalletConnected } from './stores/UserStore'
 import type { CWindow } from './types/Window'
 
@@ -53,6 +54,10 @@ const App = () => {
           <Route path="/dao" element={<ScanDAO />} />
           <Route path="/game" element={<GameUI />} />
           <Route path="/success" element={<LoginSuccess />} />
+          <Route
+            path="/profile-modal-development-sandbox"
+            element={<ProfileModal />}
+          />
         </Routes>
       </BrowserRouter>
     </Container>
