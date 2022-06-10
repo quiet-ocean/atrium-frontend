@@ -9,7 +9,7 @@ import Nancy from '../assets/Nancy_login.png'
 import { InputField, Stepper, LoginLayout } from '../components'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
-import type Game from '../scenes/Game'
+import type GameScene from '../scenes/GameScene'
 import { setPlayerName } from '../stores/UserStore'
 
 const avatars = [
@@ -28,7 +28,7 @@ const SetName = () => {
   const [nameError, setNameError] = React.useState<string>('')
   const [confirmError, setConfirmError] = React.useState<string>('')
 
-  const game = phaserGame.scene.keys.game as Game
+  const game = phaserGame.scene.keys.game as GameScene
   const playerName = useAppSelector((state) => state.user.playerName)
 
   const next = () => {

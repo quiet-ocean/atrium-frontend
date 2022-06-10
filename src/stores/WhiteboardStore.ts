@@ -2,7 +2,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
 import phaserGame from '../PhaserGame'
-import type Game from '../scenes/Game'
+import type GameScene from '../scenes/GameScene'
 
 interface WhiteboardState {
   whiteboardDialogOpen: boolean
@@ -23,7 +23,7 @@ export const whiteboardSlice = createSlice({
   name: 'whiteboard',
   reducers: {
     closeWhiteboardDialog: (state) => {
-      const game = phaserGame.scene.keys.game as Game
+      const game = phaserGame.scene.keys.game as GameScene
       game.enableKeys()
       game.network.disconnectFromWhiteboard(state.whiteboardId!)
       state.whiteboardDialogOpen = false
@@ -35,7 +35,7 @@ export const whiteboardSlice = createSlice({
       state.whiteboardId = action.payload
       const url = state.urls.get(action.payload)
       if (url) state.whiteboardUrl = url
-      const game = phaserGame.scene.keys.game as Game
+      const game = phaserGame.scene.keys.game as GameScene
       game.disableKeys()
     },
     setWhiteboardUrls: (

@@ -2,7 +2,7 @@ import Phaser from 'phaser'
 
 import Background from './scenes/Background'
 import Bootstrap from './scenes/Bootstrap'
-import GameScene from './scenes/Game'
+import GameScene from './scenes/GameScene'
 
 const config: Phaser.Types.Core.GameConfig = {
   autoFocus: true,

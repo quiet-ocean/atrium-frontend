@@ -17,7 +17,7 @@ import WhiteboardDialog from '../components/WhiteboardDialog'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
 import type Bootstrap from '../scenes/Bootstrap'
-import type Game from '../scenes/Game'
+import type GameScene from '../scenes/GameScene'
 import { setLoggedIn } from '../stores/UserStore'
 
 const Backdrop = styled.div`
@@ -41,7 +41,7 @@ for (let i = avatars.length - 1; i > 0; i--) {
 
 function GameUI() {
   const dispatch = useAppDispatch()
-  const game = phaserGame.scene.keys.game as Game
+  const game = phaserGame.scene.keys.game as GameScene
   console.log(game)
   const loggedIn = useAppSelector((state) => state.user.loggedIn)
   const playerName = useAppSelector((state) => state.user.playerName)
