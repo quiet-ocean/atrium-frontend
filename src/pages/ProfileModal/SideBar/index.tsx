@@ -9,7 +9,6 @@ import IconButton from '@mui/material/IconButton'
 import React from 'react'
 
 import muiTheme from '../../../MuiTheme'
-console.log(muiTheme)
 
 const SideBar: React.FC = () => {
   return (

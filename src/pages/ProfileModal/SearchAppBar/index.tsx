@@ -10,7 +10,7 @@ import * as React from 'react'
 import muiTheme from '../../../MuiTheme'
 
 import MenuIconList from './MenuIconList'
-import * as Styled from './styles'
+import * as Styled from './styled'
 
 const SearchAppBar: React.FC = () => {
   return (
