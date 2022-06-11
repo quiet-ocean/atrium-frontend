@@ -4,6 +4,7 @@ import React from 'react'
 import './reset.css'
 import { palette } from '../../MuiTheme'
 
+import img from './main.png'
 import SearchAppBar from './SearchAppBar'
 import SideBar from './SideBar/index'
 import * as Styld from './styled'
@@ -22,10 +23,24 @@ const ProfileModal: React.FC = () => {
         <SideBar />
       </>
       <Styld.GridContainer>
-        <Box sx={{ backgroundColor: 'green', gridArea: 'main' }}></Box>
+        <Box sx={{ gridArea: 'main', height: '386px' }}>
+          <img src={img} width="1200" height="386" />
+        </Box>
 
-        <Box sx={{ backgroundColor: 'blue', gridArea: 'carousel' }}></Box>
-        <Box sx={{ backgroundColor: 'darkcyan', gridArea: 'livechat' }}></Box>
+        <Box
+          sx={{
+            backgroundColor: 'blue',
+            gridArea: 'carousel',
+            height: '310px',
+          }}
+        ></Box>
+        <Box
+          sx={{
+            backgroundColor: 'darkcyan',
+            gridArea: 'livechat',
+            height: '310px',
+          }}
+        ></Box>
         <Box
           sx={{
             display: 'flex',
