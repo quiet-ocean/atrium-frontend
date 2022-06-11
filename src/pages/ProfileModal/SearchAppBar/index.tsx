@@ -7,7 +7,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
 
-import MenuItemList from './MenuItemList'
+import MenuIconList from './MenuIconList'
 import * as Styled from './styles'
 
 const SearchAppBar: React.FC = () => {
@@ -42,7 +42,7 @@ const SearchAppBar: React.FC = () => {
             />
           </Styled.Search>
           <Box sx={{ flexGrow: 1 }} />
-          <MenuItemList />
+          <MenuIconList />
         </Toolbar>
       </AppBar>
     </Box>

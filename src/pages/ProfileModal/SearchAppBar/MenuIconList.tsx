@@ -9,7 +9,7 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import React from 'react'
 
-const MenuItemList: React.FC = () => {
+const MenuIconList: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
 
@@ -154,4 +154,4 @@ const MenuItemList: React.FC = () => {
   )
 }
 
-export default MenuItemList
+export default MenuIconList
