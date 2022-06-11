@@ -18,3 +18,5 @@ jobs:
       - run: yarn build
         env:
           VITE_CONTRACT_ID: ${{secrets.VITE_CONTRACT_ID}}
+          VITE_GAME_API_URL: ${{secrets.VITE_GAME_API_URL}}
+          VITE_API_URL: ${{secrets.VITE_API_URL}}
