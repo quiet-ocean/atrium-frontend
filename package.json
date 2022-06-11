@@ -21,6 +21,7 @@
     "@mui/icons-material": "^5.8.2",
     "@mui/material": "^5.8.2",
     "@mui/styled-engine-sc": "npm:@mui/styled-engine-sc@latest",
+    "@mui/system": "^5.8.3",
     "@reduxjs/toolkit": "^1.8.2",
     "antd": "^4.21.0",
     "borsh": "0.7.0",
