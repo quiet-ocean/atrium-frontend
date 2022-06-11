@@ -1,30 +1,33 @@
-/* eslint-disable */
+import type { Color, PaletteMode } from '@mui/material'
 import type { PaletteColor, Theme } from '@mui/material/styles'
 import type { Components } from '@mui/material/styles/components'
 import type { Mixins } from '@mui/material/styles/createMixins'
-import type { Palette as DefaultPalette } from '@mui/material/styles/createPalette'
+import type {
+  CommonColors,
+  Palette as DefaultPalette,
+  PaletteTonalOffset,
+  TypeText,
+  TypeDivider,
+  TypeAction,
+  TypeBackground,
+  PaletteAugmentColorOptions,
+} from '@mui/material/styles/createPalette'
 import type { Transitions } from '@mui/material/styles/createTransitions'
 import type { Typography } from '@mui/material/styles/createTypography'
 import type { Shadows } from '@mui/material/styles/shadows'
 import type { ZIndex } from '@mui/material/styles/zIndex'
 import type { ThemeOptions } from '@mui/system'
-import type { BreakpointsOptions } from '@mui/system/createTheme/createBreakpoints'
-import type { SpacingOptions } from '@mui/system/createTheme/createSpacing'
+import type {
+  BreakpointsOptions,
+  Breakpoints,
+} from '@mui/system/createTheme/createBreakpoints'
+import type {
+  SpacingOptions,
+  Spacing,
+} from '@mui/system/createTheme/createSpacing'
 import type { Direction } from '@mui/system/createTheme/createTheme'
-import type { ShapeOptions } from '@mui/system/createTheme/shape'
-import { Shape } from '@mui/system/createTheme/shape'
-import { Breakpoints } from '@mui/system/createTheme/createBreakpoints'
-import { Spacing } from '@mui/system/createTheme/createSpacing'
-import { Color } from '@mui/material'
-import { PaletteMode } from '@mui/material'
-import { CommonColors } from '@mui/material/styles/createPalette'
-import { PaletteTonalOffset } from '@mui/material/styles/createPalette'
-import { TypeText } from '@mui/material/styles/createPalette'
-import { TypeDivider } from '@mui/material/styles/createPalette'
-import { TypeAction } from '@mui/material/styles/createPalette'
-import { TypeBackground } from '@mui/material/styles/createPalette'
-import { PaletteAugmentColorOptions } from '@mui/material/styles/createPalette'
-/* eslint-enable */
+import type { ShapeOptions, Shape } from '@mui/system/createTheme/shape'
+
 export function assertCast<T>(v: any): asserts v is T {}
 
 // https://mui.com/customization/color/#color-palette
