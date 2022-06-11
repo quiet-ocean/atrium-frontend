@@ -16,3 +16,5 @@ jobs:
           node-version: '18.1.0'
       - run: yarn install
       - run: yarn build
+        env:
+          VITE_CONTRACT_ID: ${{secrets.VITE_CONTRACT_ID}}
