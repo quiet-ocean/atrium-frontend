@@ -6,6 +6,7 @@ assertCast<CreateAtrimTheme>(createAtruimTheme)
 
 const muiTheme: AtriumTheme = createAtruimTheme({
   palette: {
+    background: { default: '#16161A' },
     border: {
       dark: '#1D1F23',
     },
@@ -20,6 +21,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
       main: '#42eacb',
     },
   },
+  spacing: 8,
 })
 
 export const palette = muiTheme.palette
