@@ -11,10 +11,10 @@ import * as Styld from './styled'
 const ProfileModal: React.FC = () => {
   return (
     <Container
+      maxWidth="md"
       sx={{
         bgcolor: palette.background.default,
         height: '100%',
-        width: '100%',
       }}
     >
       <>

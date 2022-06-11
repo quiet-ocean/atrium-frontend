@@ -13,7 +13,8 @@ export const GridContainer = styled.main`
     'flex flex flex flex flex flex';
 
   height: 100%;
-  margin-left: 80px;
   padding-top: 64px;
-  width: calc(100% - 80px);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 `
