@@ -24,7 +24,7 @@ const SideBar: React.FC = () => {
         gap: muiTheme.spacing(3),
         height: '100%',
         left: 0,
-        marginTop: '30px',
+        paddingTop: '30px',
         position: 'fixed',
         top: '64px',
         width: '80px',
