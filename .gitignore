@@ -4,3 +4,4 @@ dist/assets/**/*.
 dist-ssr
 *.local
 dist
+.env

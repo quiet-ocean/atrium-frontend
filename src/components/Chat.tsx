@@ -14,7 +14,7 @@ import styled from 'styled-components'
 
 import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
-import type Game from '../scenes/Game'
+import type GameScene from '../scenes/GameScene'
 import { MessageType, setFocused, setShowChat } from '../stores/ChatStore'
 import { getColorByString } from '../util'
 
@@ -169,7 +169,7 @@ export default function Chat() {
   const focused = useAppSelector((state) => state.chat.focused)
   const showChat = useAppSelector((state) => state.chat.showChat)
   const dispatch = useAppDispatch()
-  const game = phaserGame.scene.keys.game as Game
+  const game = phaserGame.scene.keys.game as GameScene
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     setInputValue(event.currentTarget.value)
