@@ -2,7 +2,7 @@ import Phaser from 'phaser'
 
 import Background from './scenes/Background'
 import Bootstrap from './scenes/Bootstrap'
-import GameScene from './scenes/Game'
+import GameScene from './scenes/GameScene'
 
 const config: Phaser.Types.Core.GameConfig = {
   autoFocus: true,
@@ -28,16 +28,14 @@ const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
 }
 
-class Game extends Phaser.Game {
+class PhaserGame extends Phaser.Game {
   constructor(config: Phaser.Types.Core.GameConfig) {
     super(config)
   }
 }
 
-const phaserGame = new Game(config)
-export default phaserGame
+const phaserGame = new PhaserGame(config)
+// @ts-expect-error
+window.game = phaserGame
 
-export function setGameGlobalScope() {
-  // @ts-expect-error
-  window.game = phaserGame
-}
+export default phaserGame

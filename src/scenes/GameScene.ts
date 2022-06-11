@@ -18,7 +18,7 @@ import type { IPlayer } from '../types/IOfficeState'
 import { ItemType } from '../types/Items'
 import { PlayerBehavior } from '../types/PlayerBehavior'
 
-export default class Game extends Phaser.Scene {
+export default class GameScene extends Phaser.Scene {
   network!: Network
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys
   private keyE!: Phaser.Input.Keyboard.Key
