@@ -12,7 +12,7 @@ import * as Styled from './styles'
 
 const SearchAppBar: React.FC = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, left: 0, position: 'fixed', right: 0, top: 0 }}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
