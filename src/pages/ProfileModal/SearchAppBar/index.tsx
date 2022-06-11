@@ -7,12 +7,23 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
 
+import muiTheme from '../../../MuiTheme'
+
 import MenuIconList from './MenuIconList'
 import * as Styled from './styles'
 
 const SearchAppBar: React.FC = () => {
   return (
-    <Box sx={{ flexGrow: 1, left: 0, position: 'fixed', right: 0, top: 0 }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        left: 0,
+        position: 'fixed',
+        right: 0,
+        top: 0,
+        zIndex: muiTheme.zIndex.appBar,
+      }}
+    >
       <AppBar position="static">
         <Toolbar>
           <IconButton
