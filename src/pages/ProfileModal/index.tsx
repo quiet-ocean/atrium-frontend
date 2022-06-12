@@ -1,40 +1,36 @@
-import { Container, Box } from '@mui/material'
+import { Box } from '@mui/material'
 import React from 'react'
 
 import './reset.css'
-import { palette } from '../../MuiTheme'
 
-import img from './images/main.png'
+import Carousel from './Carousel'
+import mainImg from './images/main.png'
 import SearchAppBar from './SearchAppBar'
 import SideBar from './SideBar/index'
 import * as Styld from './styled'
 
 const ProfileModal: React.FC = () => {
   return (
-    <Container
-      maxWidth="md"
-      sx={{
-        bgcolor: palette.background.default,
-        height: '100%',
-      }}
-    >
+    <Styld.ProfileModalRoot>
       <>
         <SearchAppBar />
         <SideBar />
       </>
-      <Styld.GridContainer>
-        <Box sx={{ gridArea: 'main', height: '386px' }}>
-          <img src={img} width="1200" height="386" />
+      <Styld.LayoutRoot>
+        <Box sx={{ gridArea: 'main', height: '483px' }}>
+          <img src={mainImg} width="1500" height="483" />
         </Box>
 
         <Box
           sx={{
-            backgroundColor: 'blue',
             gridArea: 'carousel',
             height: '380px',
             width: '715px',
           }}
-        ></Box>
+        >
+          <Carousel />
+        </Box>
+
         <Box
           sx={{
             backgroundColor: 'darkcyan',
@@ -42,6 +38,7 @@ const ProfileModal: React.FC = () => {
             height: '310px',
           }}
         ></Box>
+
         <Box
           sx={{
             display: 'flex',
@@ -57,8 +54,8 @@ const ProfileModal: React.FC = () => {
             sx={{ backgroundColor: 'lightBlue', flexShrink: 0, width: '30%' }}
           ></Box>
         </Box>
-      </Styld.GridContainer>
-    </Container>
+      </Styld.LayoutRoot>
+    </Styld.ProfileModalRoot>
   )
 }
 

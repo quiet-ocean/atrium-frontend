@@ -1,8 +1,16 @@
 import styled from 'styled-components'
 
-export const GridContainer = styled.main`
+import { palette } from '../../MuiTheme'
+
+export const ProfileModalRoot = styled.section`
+  background-color: ${palette.background.default};
+  height: 100%;
+  width: 100%;
+`
+
+export const LayoutRoot = styled.main`
   display: grid;
-  gap: 5px;
+  gap: 8px;
   grid-template-areas:
     'main main main main main main'
     'main main main main main main'
@@ -15,6 +23,6 @@ export const GridContainer = styled.main`
   height: 100%;
   padding-top: 64px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
 `
