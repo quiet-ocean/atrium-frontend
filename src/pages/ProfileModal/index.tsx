@@ -35,7 +35,8 @@ const ProfileModal: React.FC = () => {
           sx={{
             backgroundColor: 'darkcyan',
             gridArea: 'livechat',
-            height: '310px',
+            height: '380px',
+            width: '715px',
           }}
         ></Box>
 
@@ -48,7 +49,7 @@ const ProfileModal: React.FC = () => {
           }}
         >
           <Box
-            sx={{ backgroundColor: 'orange', height: '100%', width: '70%' }}
+            sx={{ backgroundColor: 'black', height: 500, width: '70%' }}
           ></Box>
           <Box
             sx={{ backgroundColor: 'lightBlue', flexShrink: 0, width: '30%' }}
