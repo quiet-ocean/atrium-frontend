@@ -4,7 +4,7 @@ import React from 'react'
 import './reset.css'
 import { palette } from '../../MuiTheme'
 
-import img from './main.png'
+import img from './images/main.png'
 import SearchAppBar from './SearchAppBar'
 import SideBar from './SideBar/index'
 import * as Styld from './styled'
@@ -31,7 +31,8 @@ const ProfileModal: React.FC = () => {
           sx={{
             backgroundColor: 'blue',
             gridArea: 'carousel',
-            height: '310px',
+            height: '380px',
+            width: '715px',
           }}
         ></Box>
         <Box
