@@ -11,7 +11,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
       dark: '#1D1F23',
     },
     icon: {
-      sideBar: '#898F94',
+      dark: '#898F94',
     },
     mode: 'dark',
     primary: {

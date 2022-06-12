@@ -5,6 +5,7 @@ import './reset.css'
 
 import Carousel from './Carousel'
 import mainImg from './images/main.png'
+import LiveChat from './LiveChat/index'
 import SearchAppBar from './SearchAppBar'
 import SideBar from './SideBar/index'
 import * as Styld from './styled'
@@ -25,6 +26,7 @@ const ProfileModal: React.FC = () => {
           sx={{
             gridArea: 'carousel',
             height: '380px',
+            marginTop: '-28px',
             width: '715px',
           }}
         >
@@ -33,28 +35,25 @@ const ProfileModal: React.FC = () => {
 
         <Box
           sx={{
-            backgroundColor: 'darkcyan',
             gridArea: 'livechat',
             height: '380px',
-            width: '715px',
+            marginTop: '-28px',
+            width: '770px',
           }}
-        ></Box>
+        >
+          <LiveChat />
+        </Box>
 
         <Box
           sx={{
+            backgroundColor: 'black',
             display: 'flex',
             gridArea: 'flex',
-            height: '100%',
-            width: '100%',
+            height: '770px',
+            marginTop: '-28px',
+            width: '1500px',
           }}
-        >
-          <Box
-            sx={{ backgroundColor: 'black', height: 500, width: '70%' }}
-          ></Box>
-          <Box
-            sx={{ backgroundColor: 'lightBlue', flexShrink: 0, width: '30%' }}
-          ></Box>
-        </Box>
+        ></Box>
       </Styld.LayoutRoot>
     </Styld.ProfileModalRoot>
   )

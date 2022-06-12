@@ -50,7 +50,7 @@ export interface Palette extends DefaultPalette {
   getContrastText: (background: string) => string
   augmentColor: (options: PaletteAugmentColorOptions) => PaletteColor
   border: PaletteColor
-  icon: { sideBar: string }
+  icon: { dark: string }
 }
 
 export interface AtriumTheme extends Theme {

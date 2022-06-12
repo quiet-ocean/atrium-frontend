@@ -4,7 +4,7 @@ import { palette } from '../../MuiTheme'
 
 export const ProfileModalRoot = styled.section`
   background-color: ${palette.background.default};
-  height: 100%;
+  height: 1786px;
   width: 100%;
 `
 

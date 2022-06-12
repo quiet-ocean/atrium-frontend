@@ -34,7 +34,7 @@ const SideBar: React.FC = () => {
         aria-label="account of current user"
         aria-controls="primary-search-account-menu"
         aria-haspopup="true"
-        sx={{ color: muiTheme.palette.icon.sideBar }}
+        sx={{ color: muiTheme.palette.icon.dark }}
       >
         <AccountCircle />
       </IconButton>
@@ -43,7 +43,7 @@ const SideBar: React.FC = () => {
         aria-label="account of current user"
         aria-controls="primary-search-account-menu"
         aria-haspopup="true"
-        sx={{ color: muiTheme.palette.icon.sideBar }}
+        sx={{ color: muiTheme.palette.icon.dark }}
       >
         <AccountCircle />
       </IconButton>
@@ -52,7 +52,7 @@ const SideBar: React.FC = () => {
         aria-label="account of current user"
         aria-controls="primary-search-account-menu"
         aria-haspopup="true"
-        sx={{ color: muiTheme.palette.icon.sideBar }}
+        sx={{ color: muiTheme.palette.icon.dark }}
       >
         <AddBoxIcon />
       </IconButton>
@@ -61,7 +61,7 @@ const SideBar: React.FC = () => {
         aria-label="account of current user"
         aria-controls="primary-search-account-menu"
         aria-haspopup="true"
-        sx={{ color: muiTheme.palette.icon.sideBar }}
+        sx={{ color: muiTheme.palette.icon.dark }}
       >
         <AdUnitsIcon />
       </IconButton>
@@ -70,7 +70,7 @@ const SideBar: React.FC = () => {
         aria-label="account of current user"
         aria-controls="primary-search-account-menu"
         aria-haspopup="true"
-        sx={{ color: muiTheme.palette.icon.sideBar }}
+        sx={{ color: muiTheme.palette.icon.dark }}
       >
         <AddToPhotosIcon />
       </IconButton>
@@ -79,7 +79,7 @@ const SideBar: React.FC = () => {
         aria-label="account of current user"
         aria-controls="primary-search-account-menu"
         aria-haspopup="true"
-        sx={{ color: muiTheme.palette.icon.sideBar }}
+        sx={{ color: muiTheme.palette.icon.dark }}
       >
         <AppsIcon />
       </IconButton>
@@ -88,7 +88,7 @@ const SideBar: React.FC = () => {
         aria-label="account of current user"
         aria-controls="primary-search-account-menu"
         aria-haspopup="true"
-        sx={{ color: muiTheme.palette.icon.sideBar }}
+        sx={{ color: muiTheme.palette.icon.dark }}
       >
         <AssignmentReturnedIcon />
       </IconButton>
