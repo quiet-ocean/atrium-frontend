@@ -4,11 +4,14 @@ import React from 'react'
 import './reset.css'
 
 import Carousel from './Carousel'
+import Gallery from './Gallery/index'
 import mainImg from './images/main.png'
 import LiveChat from './LiveChat/index'
+import MRWContainer from './MRW/index'
 import SearchAppBar from './SearchAppBar'
 import SideBar from './SideBar/index'
 import * as Styld from './styled'
+import Tweets from './Tweets'
 
 const ProfileModal: React.FC = () => {
   return (
@@ -28,21 +31,18 @@ const ProfileModal: React.FC = () => {
         </Box>
 
         {/* eslint-disable-next-line prettier/prettier */}
-        <Box sx={{ gridArea: 'livechat', height: '380px', marginTop: '-28px', width: '770px', }}
-        >
+        <Box sx={{ gridArea: 'livechat', height: '380px', marginTop: '-28px', width: '770px', }}>
           <LiveChat />
         </Box>
 
-        <Box
-          sx={{
-            backgroundColor: 'black',
-            display: 'flex',
-            gridArea: 'flex',
-            height: '770px',
-            marginTop: '-28px',
-            width: '1500px',
-          }}
-        ></Box>
+        {/* eslint-disable-next-line prettier/prettier */}
+        <Box sx={{ display: 'flex',gridArea: 'flex', height: '770px', marginTop: '-28px', width: '1500px', }}>
+          <MRWContainer
+            sx={{ display: 'flex', gap: '10px', height: 210, width: 910 }}
+          />
+          <Gallery sx={{ height: 450, width: 920 }} />
+          <Tweets sx={{ height: 690, width: 550 }} />
+        </Box>
       </Styld.PageLayoutRoot>
     </Styld.ProfileModalRoot>
   )
