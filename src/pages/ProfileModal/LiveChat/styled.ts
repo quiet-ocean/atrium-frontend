@@ -5,7 +5,7 @@ export const Root = styled(Paper)(() => ({
   display: 'flex',
   flexDirection: 'column',
   height: '100%',
-  paddingBottom: '10px',
+  paddingBottom: 0,
   paddingLeft: '20px',
   paddingRight: '10px',
   paddingTop: '25px',
@@ -24,4 +24,11 @@ export const Timeline = styled('div')(() => ({
   height: '240px',
   overflow: 'scroll',
   width: '100%',
+}))
+
+export const SendMessage = styled('div')(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  height: '60px',
+  justifyContent: 'flex-end',
 }))

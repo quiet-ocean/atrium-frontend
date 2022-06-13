@@ -8,7 +8,7 @@ export const ProfileModalRoot = styled.section`
   width: 100%;
 `
 
-export const LayoutRoot = styled.main`
+export const PageLayoutRoot = styled.main`
   display: grid;
   gap: 8px;
   grid-template-areas:

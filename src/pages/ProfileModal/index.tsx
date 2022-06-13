@@ -17,29 +17,18 @@ const ProfileModal: React.FC = () => {
         <SearchAppBar />
         <SideBar />
       </>
-      <Styld.LayoutRoot>
+      <Styld.PageLayoutRoot>
         <Box sx={{ gridArea: 'main', height: '483px' }}>
           <img src={mainImg} width="1500" height="483" />
         </Box>
 
-        <Box
-          sx={{
-            gridArea: 'carousel',
-            height: '380px',
-            marginTop: '-28px',
-            width: '715px',
-          }}
-        >
+        {/* eslint-disable-next-line prettier/prettier */}
+        <Box sx={{ gridArea: 'carousel', height: '380px', marginTop: '-28px', width: '715px' }}>
           <Carousel />
         </Box>
 
-        <Box
-          sx={{
-            gridArea: 'livechat',
-            height: '380px',
-            marginTop: '-28px',
-            width: '770px',
-          }}
+        {/* eslint-disable-next-line prettier/prettier */}
+        <Box sx={{ gridArea: 'livechat', height: '380px', marginTop: '-28px', width: '770px', }}
         >
           <LiveChat />
         </Box>
@@ -54,7 +43,7 @@ const ProfileModal: React.FC = () => {
             width: '1500px',
           }}
         ></Box>
-      </Styld.LayoutRoot>
+      </Styld.PageLayoutRoot>
     </Styld.ProfileModalRoot>
   )
 }
