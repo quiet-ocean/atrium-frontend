@@ -2,10 +2,10 @@ name: Typecheck
 on:
   push:
     branches:
-      - main
+      - [main, dev]
   pull_request:
     branches:
-      - main
+      - [main, dev]
 jobs:
   typecheck:
     runs-on: ubuntu-latest
