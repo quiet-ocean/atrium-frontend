@@ -1,7 +1,7 @@
 import Paper from '@mui/material/Paper'
 import { styled } from '@mui/material/styles'
 
-export const RootLayout = styled(Paper)(() => ({
+export const Root = styled(Paper)(() => ({
   display: 'flex',
   flexDirection: 'column',
   height: '100%',
@@ -12,10 +12,16 @@ export const RootLayout = styled(Paper)(() => ({
   width: '100%',
 }))
 
-export const HeaderRow = styled('div')(() => ({
+export const Heading = styled('div')(() => ({
   alignItems: 'center',
   display: 'flex',
   height: 'auto',
   justifyContent: 'space-between',
+  width: '100%',
+}))
+
+export const Timeline = styled('div')(() => ({
+  height: '240px',
+  overflow: 'scroll',
   width: '100%',
 }))

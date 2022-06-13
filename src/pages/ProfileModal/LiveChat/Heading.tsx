@@ -7,7 +7,7 @@ import React from 'react'
 
 import muiTheme from '../../../MuiTheme'
 
-const Header: React.FC = () => (
+const Heading: React.FC = () => (
   <>
     <Text variant="h5" textAlign="center" color="#fff">
       Live Chat
@@ -23,4 +23,4 @@ const Header: React.FC = () => (
   </>
 )
 
-export default Header
+export default Heading

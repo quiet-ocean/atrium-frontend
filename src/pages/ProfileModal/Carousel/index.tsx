@@ -9,7 +9,7 @@ export const imageList = [carousel1, carousel2, carousel3]
 
 const Carousel: React.FC = () => {
   return (
-    <CarouselLibrary navButtonsAlwaysVisible>
+    <CarouselLibrary navButtonsAlwaysVisible indicators={false}>
       {imageList.map((img, i) => {
         return <img src={img} key={i} width="715px" height="380px" />
       })}

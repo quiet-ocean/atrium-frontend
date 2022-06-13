@@ -23,7 +23,6 @@
     "@mui/styled-engine-sc": "npm:@mui/styled-engine-sc@latest",
     "@mui/system": "^5.8.3",
     "@reduxjs/toolkit": "^1.8.2",
-    "antd": "^4.21.0",
     "borsh": "0.7.0",
     "buffer": "^6.0.3",
     "near-api-js": "^0.44.2",
