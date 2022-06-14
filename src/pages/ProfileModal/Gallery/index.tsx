@@ -1,3 +1,4 @@
+import AddIcon from '@mui/icons-material/Add'
 import SearchIcon from '@mui/icons-material/Search'
 import Box from '@mui/material/Box'
 import Switch from '@mui/material/Switch'
@@ -15,9 +16,8 @@ const Gallery: React.FC = () => {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '16  px',
           height: 450,
-          padding: '30px',
+          padding: '15px 30px',
           width: 290,
         }}
       >
@@ -28,10 +28,11 @@ const Gallery: React.FC = () => {
           Gallery
         </Text>
         <Text
-          variant="h5"
+          variant="h6"
           sx={{
             color: palette.grey.A700,
             fontWeight: 'bold',
+            marginTop: '5px',
             width: 290,
           }}
         >
@@ -42,7 +43,6 @@ const Gallery: React.FC = () => {
           sx={{
             color: '#fff',
             fontWeight: 'bold',
-            padding: '20px 0',
             width: 290,
           }}
         >
@@ -68,17 +68,65 @@ const Gallery: React.FC = () => {
           </Text>
           <Switch sx={{ positon: 'reletive', right: '10px' }} />
         </Box>
-        {/* @TODO Need Gellery spefic search input */}
-        <Styled.Search>
-          <Styled.SearchIconWrapper>
-            <SearchIcon />
-          </Styled.SearchIconWrapper>
-          <Styled.TextInput
-            placeholder="Search By ID #..."
-            inputProps={{ 'aria-label': 'search' }}
-            sx={{ color: '#fff', width: '190px' }}
-          />
-        </Styled.Search>
+        <Box sx={{ width: 290 }}>
+          {/* @TODO Need Gellery spefic search input */}
+          <Box sx={{ marginLeft: '-30px', width: 270 }}>
+            <Styled.Search>
+              <Styled.SearchIconWrapper>
+                <SearchIcon />
+              </Styled.SearchIconWrapper>
+              <Styled.TextInput
+                placeholder="Search By ID #..."
+                inputProps={{ 'aria-label': 'search' }}
+                sx={{ color: '#fff' }}
+              />
+            </Styled.Search>
+          </Box>
+          {/* eslint-disable-next-line prettier/prettier */}
+          <Box sx={{ alignItems: 'center', border: `2px solid ${palette.border.dark}`, display: 'flex', height: 40, justifyContent: 'space-between', marginTop: '10px', width: 220, }}>
+            {/* eslint-disable-next-line prettier/prettier */}
+            <Text variant="h6" sx={{ alignItems: 'center', color: '#fff', display: 'flex', fontWeight: 'bold', }}>
+              Skin
+            </Text>
+            <AddIcon fontSize="large" sx={{ color: '#fff' }} />
+          </Box>
+
+          {/* eslint-disable-next-line prettier/prettier */}
+          <Box sx={{ alignItems: 'center', border: `2px solid ${palette.border.dark}`, display: 'flex', height: 40, justifyContent: 'space-between', marginTop: '10px', width: 220, }}>
+            {/* eslint-disable-next-line prettier/prettier */}
+            <Text variant="h6" sx={{ alignItems: 'center', color: '#fff', display: 'flex', fontWeight: 'bold', }}>
+              Head
+            </Text>
+            <AddIcon fontSize="large" sx={{ color: '#fff' }} />
+          </Box>
+
+          {/* eslint-disable-next-line prettier/prettier */}
+          <Box sx={{ alignItems: 'center', border: `2px solid ${palette.border.dark}`, display: 'flex', height: 40, justifyContent: 'space-between', marginTop: '10px', width: 220, }}>
+            {/* eslint-disable-next-line prettier/prettier */}
+            <Text variant="h6" sx={{ alignItems: 'center', color: '#fff', display: 'flex', fontWeight: 'bold', }}>
+              Eyes
+            </Text>
+            <AddIcon fontSize="large" sx={{ color: '#fff' }} />
+          </Box>
+
+          {/* eslint-disable-next-line prettier/prettier */}
+          <Box sx={{ alignItems: 'center', border: `2px solid ${palette.border.dark}`, display: 'flex', height: 40, justifyContent: 'space-between', marginTop: '10px', width: 220, }}>
+            {/* eslint-disable-next-line prettier/prettier */}
+            <Text variant="h6" sx={{ alignItems: 'center', color: '#fff', display: 'flex', fontWeight: 'bold', }}>
+              Month
+            </Text>
+            <AddIcon fontSize="large" sx={{ color: '#fff' }} />
+          </Box>
+
+          {/* eslint-disable-next-line prettier/prettier */}
+          <Box sx={{ alignItems: 'center', border: `2px solid ${palette.border.dark}`, display: 'flex', height: 40, justifyContent: 'space-between', marginTop: '10px', width: 220, }}>
+            {/* eslint-disable-next-line prettier/prettier */}
+            <Text variant="h6" sx={{ alignItems: 'center', color: '#fff', display: 'flex', fontWeight: 'bold', }}>
+              Hat
+            </Text>
+            <AddIcon fontSize="large" sx={{ color: '#fff' }} />
+          </Box>
+        </Box>
       </Box>
     </Box>
   )
