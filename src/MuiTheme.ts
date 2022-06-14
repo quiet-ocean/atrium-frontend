@@ -1,7 +1,7 @@
 import { createTheme as createAtruimTheme } from '@mui/material/styles'
 
-import type { CreateAtrimTheme, AtriumTheme } from './AtriumThemeType'
-import { assertCast } from './AtriumThemeType'
+import type { CreateAtrimTheme, AtriumTheme } from './types/AtriumThemeType'
+import { assertCast } from './types/AtriumThemeType'
 assertCast<CreateAtrimTheme>(createAtruimTheme)
 
 const muiTheme: AtriumTheme = createAtruimTheme({
