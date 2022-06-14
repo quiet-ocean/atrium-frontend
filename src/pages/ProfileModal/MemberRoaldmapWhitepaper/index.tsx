@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box'
-import type { SxProps } from '@mui/system'
 import React from 'react'
 
 import { palette } from '../../../MuiTheme'
@@ -8,13 +7,9 @@ import Members from './Members'
 import Roadmap from './Roadmap'
 import Whitepaper from './Whitepaper'
 
-interface Props {
-  sx: SxProps
-}
-
-const MemberRoaldmapWhitepaper: React.FC<Props> = ({ sx }) => {
+const MemberRoaldmapWhitepaper: React.FC = () => {
   return (
-    <Box sx={sx}>
+    <Box sx={{ display: 'flex', gap: '10px', height: 210, width: 890 }}>
       {/* eslint-disable-next-line prettier/prettier */}
       <Members sx={{ border: `2px solid ${palette.border.dark}`, display: 'flex', flexDirection: 'column', height: 210, width: 450, }}/>
       <Roadmap />

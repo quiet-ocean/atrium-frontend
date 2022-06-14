@@ -38,7 +38,7 @@ const ProfileModal: React.FC = () => {
 
         <Box sx={{ display: 'flex',gridArea: 'flex', height: '770px', marginTop: '-28px', width: '1500px', }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <MemberRoaldmapWhitepaper sx={{ display: 'flex', gap: '10px', height: 210, width: 890 }}/>
+            <MemberRoaldmapWhitepaper />
             <Gallery sx={{ backgroundColor: palette.wedget.background, border: `2px solid ${palette.border.dark}`, height: 450, width: 890 }} />
           </Box>
           <Tweets sx={{ backgroundColor: palette.wedget.background, border: `2px solid ${palette.border.dark}`, height: 670, marginLeft: '10px', width: 595 }} />
