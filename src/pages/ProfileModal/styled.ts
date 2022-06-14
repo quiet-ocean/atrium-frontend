@@ -8,7 +8,7 @@ export const Root = styled.section`
   width: 100%;
 `
 
-export const Mainpage = styled.main`
+export const Page = styled.main`
   display: grid;
   gap: 8px;
   grid-template-areas:

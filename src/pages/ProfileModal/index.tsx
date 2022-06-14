@@ -3,8 +3,6 @@ import React from 'react'
 
 import './reset.css'
 
-import { palette } from '../../MuiTheme'
-
 import Carousel from './Carousel'
 import Gallery from './Gallery'
 import mainImg from './images/main.png'
@@ -23,7 +21,7 @@ const ProfileModal: React.FC = () => {
         <SearchAppBar />
         <SideBar />
       </>
-      <Container.Mainpage>
+      <Container.Page>
         <Box sx={{ gridArea: 'main', height: '483px' }}>
           <img src={mainImg} width="1500" height="483" />
         </Box>
@@ -39,11 +37,11 @@ const ProfileModal: React.FC = () => {
         <Box sx={{ display: 'flex',gridArea: 'flex', height: '770px', marginTop: '-28px', width: '1500px', }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <MemberRoaldmapWhitepaper />
-            <Gallery sx={{ backgroundColor: palette.wedget.background, border: `2px solid ${palette.border.dark}`, height: 450, width: 890 }} />
+            <Gallery />
           </Box>
-          <Tweets sx={{ backgroundColor: palette.wedget.background, border: `2px solid ${palette.border.dark}`, height: 670, marginLeft: '10px', width: 595 }} />
+          <Tweets />
         </Box>
-      </Container.Mainpage>
+      </Container.Page>
     </Container.Root>
   )
 }

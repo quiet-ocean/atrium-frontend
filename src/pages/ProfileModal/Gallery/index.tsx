@@ -1,17 +1,13 @@
 import Box from '@mui/material/Box'
 import Text from '@mui/material/Typography'
-import type { SxProps } from '@mui/system'
 import React from 'react'
 
 import { palette } from '../../../MuiTheme'
 
-interface Props {
-  sx: SxProps
-}
-
-const Gallery: React.FC<Props> = ({ sx }) => {
+const Gallery: React.FC = () => {
   return (
-    <Box sx={{ ...sx, border: `2px solid ${palette.border.dark}` }}>
+    /* eslint-disable-next-line prettier/prettier */
+    <Box sx={{ backgroundColor: palette.wedget.background, border: `2px solid ${palette.border.dark}`, height: 450, width: 890 }}>
       <Text>Gallery</Text>
     </Box>
   )

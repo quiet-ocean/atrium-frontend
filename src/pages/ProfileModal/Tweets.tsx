@@ -1,13 +1,15 @@
 import Box from '@mui/material/Box'
-import type { SxProps } from '@mui/system'
 import React from 'react'
 
-interface Props {
-  sx: SxProps
-}
+import { palette } from '../../MuiTheme'
 
-const Tweets: React.FC<Props> = ({ sx }) => {
-  return <Box sx={sx}>Tweets</Box>
+const Tweets: React.FC = () => {
+  return (
+    <Box /* eslint-disable-next-line prettier/prettier */
+      sx={{ backgroundColor: palette.wedget.background, border: `2px solid ${palette.border.dark}`, height: 670,marginLeft: '10px', width: 595, }}>
+      Tweets
+    </Box>
+  )
 }
 
 export default Tweets
