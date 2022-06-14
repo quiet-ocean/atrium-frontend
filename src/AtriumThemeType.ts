@@ -32,6 +32,7 @@ export function assertCast<T>(v: any): asserts v is T {}
 
 // https://mui.com/customization/color/#color-palette
 export interface Palette extends DefaultPalette {
+  wedget: { background: string }
   common: CommonColors
   mode: PaletteMode
   contrastThreshold: number
