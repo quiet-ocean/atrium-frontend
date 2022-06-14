@@ -3,7 +3,7 @@ import React from 'react'
 
 import './reset.css'
 
-import muiTheme from '../../MuiTheme'
+import { palette } from '../../MuiTheme'
 
 import Carousel from './Carousel'
 import Gallery from './Gallery/index'
@@ -41,12 +41,13 @@ const ProfileModal: React.FC = () => {
         <Box sx={{ display: 'flex',gridArea: 'flex', height: '770px', marginTop: '-28px', width: '1500px', }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <MRWContainer
-              sx={{ display: 'flex', gap: '10px', height: 210, width: 910 }}
+              sx={{ display: 'flex', gap: '10px', height: 210, width: 890 }}
             />
             {/* eslint-disable-next-line prettier/prettier */}
-            <Gallery sx={{ backgroundColor: muiTheme.palette.wedget.background, height: 450, width: 890 }} />
+            <Gallery sx={{ backgroundColor: palette.wedget.background, border: `2px solid ${palette.border.dark}`, height: 450, width: 890 }} />
           </Box>
-          <Tweets sx={{ height: 690, width: 550 }} />
+          {/* eslint-disable-next-line prettier/prettier */}
+          <Tweets sx={{ backgroundColor: palette.wedget.background, border: `2px solid ${palette.border.dark}`, height: 670, marginLeft: '10px', width: 595 }} />
         </Box>
       </Styld.PageLayoutRoot>
     </Styld.ProfileModalRoot>

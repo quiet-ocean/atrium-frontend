@@ -21,7 +21,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
       main: '#42eacb',
     },
     wedget: {
-      background: '#242528',
+      background: '#121212',
     },
   },
   spacing: 8,
