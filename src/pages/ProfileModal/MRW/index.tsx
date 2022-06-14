@@ -5,6 +5,8 @@ import React from 'react'
 
 import { palette } from '../../../MuiTheme'
 
+import Members from './Members'
+
 interface Props {
   sx: SxProps
 }
@@ -12,19 +14,8 @@ interface Props {
 const MRWContainer: React.FC<Props> = ({ sx }) => {
   return (
     <Box sx={sx}>
-      <Box
-        sx={{
-          border: `2px solid ${palette.border.dark}`,
-          display: 'flex',
-          flexDirection: 'column',
-          height: 210,
-          width: 450,
-        }}
-      >
-        <Text variant="h5" sx={{ color: '#fff' }}>
-          Members
-        </Text>
-      </Box>
+      {/* eslint-disable-next-line prettier/prettier */}
+      <Members sx={{ border: `2px solid ${palette.border.dark}`, display: 'flex', flexDirection: 'column', height: 210, width: 450, }}/>
       <Box
         sx={{
           border: `2px solid ${palette.border.dark}`,

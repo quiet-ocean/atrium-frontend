@@ -20,6 +20,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     secondary: {
       main: '#42eacb',
     },
+    text: { primary: '#fff' },
     wedget: {
       background: '#121212',
     },
