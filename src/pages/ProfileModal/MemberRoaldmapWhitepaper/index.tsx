@@ -11,7 +11,7 @@ interface Props {
   sx: SxProps
 }
 
-const MRWContainer: React.FC<Props> = ({ sx }) => {
+const MemberRoaldmapWhitepaper: React.FC<Props> = ({ sx }) => {
   return (
     <Box sx={sx}>
       {/* eslint-disable-next-line prettier/prettier */}
@@ -38,4 +38,4 @@ const MRWContainer: React.FC<Props> = ({ sx }) => {
   )
 }
 
-export default MRWContainer
+export default MemberRoaldmapWhitepaper

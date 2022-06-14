@@ -9,12 +9,13 @@ import Carousel from './Carousel'
 import Gallery from './Gallery/index'
 import mainImg from './images/main.png'
 import LiveChat from './LiveChat/index'
-import MRWContainer from './MRW/index'
+import MemberRoaldmapWhitepaper from './MemberRoaldmapWhitepaper/'
 import SearchAppBar from './SearchAppBar'
 import SideBar from './SideBar/index'
 import * as Styld from './styled'
 import Tweets from './Tweets'
 
+/* eslint-disable prettier/prettier */
 const ProfileModal: React.FC = () => {
   return (
     <Styld.ProfileModalRoot>
@@ -27,31 +28,25 @@ const ProfileModal: React.FC = () => {
           <img src={mainImg} width="1500" height="483" />
         </Box>
 
-        {/* eslint-disable-next-line prettier/prettier */}
         <Box sx={{ gridArea: 'carousel', height: '380px', marginTop: '-28px', width: '715px' }}>
           <Carousel />
         </Box>
 
-        {/* eslint-disable-next-line prettier/prettier */}
         <Box sx={{ gridArea: 'livechat', height: '380px', marginTop: '-28px', width: '770px', }}>
           <LiveChat />
         </Box>
 
-        {/* eslint-disable-next-line prettier/prettier */}
         <Box sx={{ display: 'flex',gridArea: 'flex', height: '770px', marginTop: '-28px', width: '1500px', }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <MRWContainer
-              sx={{ display: 'flex', gap: '10px', height: 210, width: 890 }}
-            />
-            {/* eslint-disable-next-line prettier/prettier */}
+            <MemberRoaldmapWhitepaper sx={{ display: 'flex', gap: '10px', height: 210, width: 890 }}/>
             <Gallery sx={{ backgroundColor: palette.wedget.background, border: `2px solid ${palette.border.dark}`, height: 450, width: 890 }} />
           </Box>
-          {/* eslint-disable-next-line prettier/prettier */}
           <Tweets sx={{ backgroundColor: palette.wedget.background, border: `2px solid ${palette.border.dark}`, height: 670, marginLeft: '10px', width: 595 }} />
         </Box>
       </Styld.PageLayoutRoot>
     </Styld.ProfileModalRoot>
   )
 }
+/* eslint-enable prettier/prettier */
 
 export default ProfileModal
