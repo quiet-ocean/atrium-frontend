@@ -2,13 +2,13 @@ import styled from 'styled-components'
 
 import { palette } from '../../MuiTheme'
 
-export const ProfileModalRoot = styled.section`
+export const Root = styled.section`
   background-color: ${palette.background.default};
   height: 1786px;
   width: 100%;
 `
 
-export const PageLayoutRoot = styled.main`
+export const Mainpage = styled.main`
   display: grid;
   gap: 8px;
   grid-template-areas:

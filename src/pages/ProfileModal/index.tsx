@@ -6,24 +6,24 @@ import './reset.css'
 import { palette } from '../../MuiTheme'
 
 import Carousel from './Carousel'
-import Gallery from './Gallery/index'
+import Gallery from './Gallery'
 import mainImg from './images/main.png'
 import LiveChat from './LiveChat/index'
-import MemberRoaldmapWhitepaper from './MemberRoaldmapWhitepaper/'
+import MemberRoaldmapWhitepaper from './MemberRoaldmapWhitepaper'
 import SearchAppBar from './SearchAppBar'
-import SideBar from './SideBar/index'
-import * as Styld from './styled'
+import SideBar from './SideBar'
+import * as Container from './styled'
 import Tweets from './Tweets'
 
 /* eslint-disable prettier/prettier */
 const ProfileModal: React.FC = () => {
   return (
-    <Styld.ProfileModalRoot>
+    <Container.Root>
       <>
         <SearchAppBar />
         <SideBar />
       </>
-      <Styld.PageLayoutRoot>
+      <Container.Mainpage>
         <Box sx={{ gridArea: 'main', height: '483px' }}>
           <img src={mainImg} width="1500" height="483" />
         </Box>
@@ -43,8 +43,8 @@ const ProfileModal: React.FC = () => {
           </Box>
           <Tweets sx={{ backgroundColor: palette.wedget.background, border: `2px solid ${palette.border.dark}`, height: 670, marginLeft: '10px', width: 595 }} />
         </Box>
-      </Styld.PageLayoutRoot>
-    </Styld.ProfileModalRoot>
+      </Container.Mainpage>
+    </Container.Root>
   )
 }
 /* eslint-enable prettier/prettier */

@@ -9,7 +9,7 @@ const config = {
   notifyMode: 'success-change',
   resetMocks: true,
   roots: ['<rootDir>'],
-  setupFilesAfterEnv: ['<rootDir>/jest/setupTests.ts', 'jest-canvas-mock'],
+  setupFilesAfterEnv: ['<rootDir>/jest/setupTests.ts'],
   testEnvironment: 'jsdom',
   testMatch: [
     '<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}',

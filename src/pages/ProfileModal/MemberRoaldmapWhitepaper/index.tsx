@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box'
-import Text from '@mui/material/Typography'
 import type { SxProps } from '@mui/system'
 import React from 'react'
 
