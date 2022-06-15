@@ -1,0 +1,20 @@
+import { Box } from '@mui/material'
+import { styled } from '@mui/material/styles'
+
+import { palette } from '../../../MuiTheme'
+
+export const Root = styled(Box)(() => ({
+  backgroundColor: palette.wedget.background,
+  border: `2px solid ${palette.border.dark}`,
+  display: 'flex',
+  height: 450,
+  width: 890,
+}))
+
+export const Left = styled(Box)(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  height: 450,
+  padding: '15px 30px',
+  width: 290,
+}))
