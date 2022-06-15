@@ -18,3 +18,8 @@ export const Left = styled(Box)(() => ({
   padding: '15px 30px',
   width: 290,
 }))
+
+export const Right = styled(Box)(() => ({
+  padding: '0 30px',
+  paddingTop: '40px',
+}))
