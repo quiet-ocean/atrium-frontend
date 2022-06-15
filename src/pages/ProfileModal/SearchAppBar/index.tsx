@@ -12,7 +12,11 @@ import muiTheme from '../../../MuiTheme'
 import MenuIconList from './MenuIconList'
 import * as Styled from './styled'
 
-const SearchAppBar: React.FC = () => {
+interface Props {
+  onClose: () => void
+}
+
+const SearchAppBar: React.FC<Props> = ({ onClose }) => {
   return (
     <Box
       sx={{
@@ -31,6 +35,7 @@ const SearchAppBar: React.FC = () => {
             edge="start"
             color="inherit"
             aria-label="open drawer"
+            onClick={onClose}
             sx={{ mr: 2 }}
           >
             <MenuIcon />
