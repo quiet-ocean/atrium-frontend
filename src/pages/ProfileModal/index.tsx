@@ -1,14 +1,27 @@
-import { Container } from '@mui/system'
-import React from 'react'
+import Button from '@mui/material/Button'
+import Modal from '@mui/material/Modal'
+import * as React from 'react'
 
-import './reset.css'
-import SearchAppBar from './SearchAppBar'
+import ProfilePage from './ProfilePage'
 
-const ProfileModal: React.FC = () => {
+const ProfileModal = () => {
+  const [open, setOpen] = React.useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
+
   return (
-    <Container sx={{ bgcolor: '#16161A', h: '100%', w: '100%' }}>
-      <SearchAppBar />
-    </Container>
+    <>
+      <Button onClick={handleOpen}>Open modal</Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        sx={{ overflowY: 'scroll' }}
+      >
+        <ProfilePage onClose={handleClose} />
+      </Modal>
+    </>
   )
 }
 
