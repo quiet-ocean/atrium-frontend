@@ -21,7 +21,7 @@ import {
 
 const Comment = ({ text }: { text: string }) => {
   return (
-    <Box sx={{ display: 'flex', padding: '24px 0px', gap: '24px' }}>
+    <Box sx={{ display: 'flex', gap: '24px' }}>
       <Box sx={{ padding: '42px 0px' }}>
         <img src={commentAvatar} alt='' width='90px' />
       </Box>
@@ -36,7 +36,7 @@ const Account = () => {
     <Box sx={{ gridArea: 'main' }}>
       <Box sx={{ gridArea: 'main' }}>
         <Box>
-          <img src={bg} alt="" />
+          <img src={bg} alt="" width='100%' />
         </Box>
         <Box>
           <Box sx={{ p: '32px' }}>
@@ -72,11 +72,11 @@ const Account = () => {
           <Comment text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac convallis commodo morbi ut leo gravida. A nunc laoreet cras semper netus quis blandit eu.`} />
           <Comment text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac convallis commodo morbi ut leo gravida. A nunc laoreet cras semper netus quis blandit eu.`} />
         </Box>
-        <Box sx={{ display: 'flex', gap: '24px' }}>
-          <Card>
+        <Box sx={{ display: 'flex', gap: '24px', padding: '24px 0px' }}>
+          <Card sx={{ padding: '24px' }}>
             <img src={icon1} alt='' />
           </Card>
-          <Card>
+          <Card sx={{ padding: '24px' }}>
             <img src={icon2} alt='' />
           </Card>
           {/* <Card>
@@ -87,7 +87,7 @@ const Account = () => {
             <img src={icon3} alt='' />
           </Card> */}
           <FormControl sx={{ width: '100%' }} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password" sx={{ fontSize: '36px' }}>Type Here...</InputLabel>
+            <InputLabel htmlFor="outlined-adornment-password" sx={{ fontSize: '36px', top: '2px', left: '12px' }}>Type Here...</InputLabel>
             <OutlinedInput
               id="outlined-adornment-password"
               type='text'
@@ -113,12 +113,17 @@ const Account = () => {
           <HeadButton>See All</HeadButton>
         </Box>
         <Box sx={{ display: 'flex', gap: '36px', padding: '24px 0px' }}>
-          <Card>
+          <Card sx={{ padding: '24px' }}>
             <img src={cardImage} alt='' />
             <SubHead>spotify integrating with atrium</SubHead>
             <Text>//mar 1st, 2022</Text>
           </Card>
-          <Card>
+          <Card sx={{ padding: '24px' }}>
+            <img src={cardImage} alt='' />
+            <SubHead>spotify integrating with atrium</SubHead>
+            <Text>//mar 1st, 2022</Text>
+          </Card>
+          <Card sx={{ padding: '24px' }}>
             <img src={cardImage} alt='' />
             <SubHead>spotify integrating with atrium</SubHead>
             <Text>//mar 1st, 2022</Text>
