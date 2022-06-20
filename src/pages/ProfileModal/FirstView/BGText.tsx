@@ -1,7 +1,7 @@
 import Text from '@mui/material/Typography'
 import React from 'react'
 
-export function BGText() {
+const BGText = () => {
   return (
     <Text
       align="center"
@@ -16,3 +16,5 @@ export function BGText() {
     </Text>
   )
 }
+
+export default BGText
