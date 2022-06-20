@@ -12,7 +12,7 @@ export const Heading = styled(Typography)(() => ({
   }))
   
 export const Text = styled(Typography)(() => ({
-    fontFamily: 'Andale Mono',
+    fontFamily: 'Andale Mono Regular',
     fontStyle: 'normal',
     fontWeight: '400',
     fontSize: "24px",
@@ -27,7 +27,7 @@ export const Text = styled(Typography)(() => ({
 export const HeadButton = styled(Button)(() => ({
     background: '#202124',
     padding: '4px 16px',
-    fontFamily: 'Andale Mono',
+    fontFamily: 'Andale Mono Regular',
     fontStyle: 'normal',
     fontWeight: 400,
     fontSize: '16px',
