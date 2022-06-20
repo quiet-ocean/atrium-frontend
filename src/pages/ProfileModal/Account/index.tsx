@@ -1,8 +1,20 @@
-import { Box } from '@mui/material'
+import {
+  Box,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  InputAdornment,
+  IconButton,
+  
+} from '@mui/material'
 import bg from '../images/Frame 138.png'
 import profileImage from '../images/Rectangle 121.png'
 import commentAvatar from '../images/Ellipse 37.png'
 import cardImage from '../images/Rectangle 138.png'
+import icon1 from '../images/fa-solid_search.png'
+import icon2 from '../images/fa-solid_search-1.png'
+import icon3 from '../images/Vector.png'
+
 import {
   Text, Heading, SubHead, HeadButton, Container, Card
 } from './styled';
@@ -10,7 +22,7 @@ import {
 const Comment = ({ text }: { text: string }) => {
   return (
     <Box sx={{ display: 'flex', padding: '24px 0px', gap: '24px' }}>
-      <Box sx={{ padding: '12px 0px' }}>
+      <Box sx={{ padding: '42px 0px' }}>
         <img src={commentAvatar} alt='' width='90px' />
       </Box>
       <Text sx={{ color: '#F8F9FA', padding: '36px', background: '#17181B' }}>
@@ -60,7 +72,40 @@ const Account = () => {
           <Comment text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac convallis commodo morbi ut leo gravida. A nunc laoreet cras semper netus quis blandit eu.`} />
           <Comment text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac convallis commodo morbi ut leo gravida. A nunc laoreet cras semper netus quis blandit eu.`} />
         </Box>
-        <Box></Box>
+        <Box sx={{ display: 'flex', gap: '24px' }}>
+          <Card>
+            <img src={icon1} alt='' />
+          </Card>
+          <Card>
+            <img src={icon2} alt='' />
+          </Card>
+          {/* <Card>
+            <input style={{
+              background: 'transparent',
+              border: 'none'
+            }} />
+            <img src={icon3} alt='' />
+          </Card> */}
+          <FormControl sx={{ width: '100%' }} variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password" sx={{ fontSize: '36px' }}>Type Here...</InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-password"
+              type='text'
+              sx={{ height: '100%', fontSize: '42px' }}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    edge="end"
+                  >
+                    <img src={icon3} alt='' />
+                  </IconButton>
+                </InputAdornment>
+              }
+              label="Password"
+            />
+          </FormControl>
+        </Box>
       </Container>
       <Container>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
