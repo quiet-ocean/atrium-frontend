@@ -1,56 +1,12 @@
-import { Box, Typography, Button } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import { Box } from '@mui/material'
 import bg from '../images/Frame 138.png'
 import profileImage from '../images/Rectangle 121.png'
 import commentAvatar from '../images/Ellipse 37.png'
 import cardImage from '../images/Rectangle 138.png'
+import {
+  Text, Heading, SubHead, HeadButton, Container, Card
+} from './styled';
 
-const Heading = styled(Typography)(() => ({
-  fontFamily: 'Fractul',
-  fontStyle: 'normal',
-  fontWeight: 800,
-  fontSize: '60px',
-  lineHeight: '50px',
-  textTransform: 'uppercase',
-  color: '#F8F9FA'
-}))
-
-const Text = styled(Typography)(() => ({
-  fontFamily: 'Andale Mono',
-  fontStyle: 'normal',
-  fontWeight: '400',
-  fontSize: "24px",
-  lineHeight: '27px',
-  display: 'flex',
-  alignItems: 'center',
-  letterSpacing: '-0.05em',
-  color: '#9AA0A6',
-  margin: '24px 0px'
-}));
-
-const HeadButton = styled(Button)(() => ({
-  background: '#202124',
-  padding: '4px 16px',
-  fontFamily: 'Andale Mono',
-  fontStyle: 'normal',
-  fontWeight: 400,
-  fontSize: '16px',
-  lineHeight: '19px',
-  color: '#F8F9FA',
-}));
-const SubHead = styled(Heading)(() => ({
-  fontSize: '36px'
-}))
-const Container = styled(Box)(() => ({
-  border: '1px solid #D9D9D9',
-  padding: '48px',
-  marginBottom: '48px'
-}))
-const Card = styled(Box)(() => ({
-  border: '1px solid #D9D9D9',
-  padding: '36px',
-  background: '#17181B'
-}))
 const Comment = ({ text }: { text: string }) => {
   return (
     <Box sx={{ display: 'flex', padding: '24px 0px', gap: '24px' }}>
