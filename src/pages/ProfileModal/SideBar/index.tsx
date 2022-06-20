@@ -27,6 +27,7 @@ const SideBar: React.FC = () => {
         position: 'fixed',
         top: '64px',
         width: '80px',
+        xIndex: muiTheme.zIndex.drawer,
       }}
     >
       <IconButton

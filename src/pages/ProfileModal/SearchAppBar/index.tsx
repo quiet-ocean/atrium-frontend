@@ -28,7 +28,7 @@ const SearchAppBar: React.FC<Props> = ({ onClose }) => {
         zIndex: muiTheme.zIndex.appBar,
       }}
     >
-      <AppBar position="static">
+      <AppBar position="static" sx={{ opacity: 0.9 }}>
         <Toolbar>
           <IconButton
             size="large"

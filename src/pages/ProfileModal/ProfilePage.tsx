@@ -1,11 +1,11 @@
 import { Box } from '@mui/material'
+import Text from '@mui/material/Typography'
 import React from 'react'
 
 import './reset.css'
 
 import Carousel from './Carousel'
 import Gallery from './Gallery'
-import mainImg from './images/main.png'
 import LiveChat from './LiveChat/index'
 import MemberRoaldmapWhitepaper from './MemberRoaldmapWhitepaper'
 import SearchAppBar from './SearchAppBar'
@@ -26,8 +26,8 @@ const ProfilePage: React.FC<Props> = ({onClose}) => {
         <SideBar />
       </>
       <Container.Page>
-        <Box sx={{ gridArea: 'main', height: '483px' }}>
-          <img src={mainImg} width="1500" height="483" />
+        <Box sx={{ gridArea: 'main', height: 483, width: 1500 }}>
+          <Text sx={{ fontFamily: 'Polar Press', fontSize: '30px'}}>ANTISOCIAL </Text>
         </Box>
 
         <Box sx={{ gridArea: 'carousel', height: '380px', marginTop: '-28px', width: '715px' }}>
