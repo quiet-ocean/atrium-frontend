@@ -19,11 +19,18 @@ const Center = () => {
         width: '100%',
       }}
     >
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', flexShrink: 0 }}>
         <MainText text={mainText} />
         <SubText text={subText} />
       </Box>
-      <EditButton />
+      <Box
+        sx={{
+          left: '300px',
+          position: 'relative',
+        }}
+      >
+        <EditButton />
+      </Box>
     </Box>
   )
 }
