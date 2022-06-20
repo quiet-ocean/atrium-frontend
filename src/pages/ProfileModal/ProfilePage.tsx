@@ -26,7 +26,7 @@ const ProfilePage: React.FC<Props> = ({onClose}) => {
         <SideBar />
       </>
       <Container.Page>
-        <Box sx={{ gridArea: 'main', height: 483, width: 1500 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gridArea: 'main', height: 483, width: 1500 }}>
           <FirstView />
         </Box>
 
