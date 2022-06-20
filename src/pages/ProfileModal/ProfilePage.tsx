@@ -1,10 +1,10 @@
 import { Box } from '@mui/material'
-import Text from '@mui/material/Typography'
 import React from 'react'
 
 import './reset.css'
 
 import Carousel from './Carousel'
+import FirstView from './FirstView/index'
 import Gallery from './Gallery'
 import LiveChat from './LiveChat/index'
 import MemberRoaldmapWhitepaper from './MemberRoaldmapWhitepaper'
@@ -27,7 +27,7 @@ const ProfilePage: React.FC<Props> = ({onClose}) => {
       </>
       <Container.Page>
         <Box sx={{ gridArea: 'main', height: 483, width: 1500 }}>
-          <Text sx={{ fontFamily: 'Polar Press', fontSize: '30px'}}>ANTISOCIAL </Text>
+          <FirstView />
         </Box>
 
         <Box sx={{ gridArea: 'carousel', height: '380px', marginTop: '-28px', width: '715px' }}>
