@@ -16,6 +16,7 @@ import {
 import ProfileModal from './pages/ProfileModal'
 import Account from './pages/ProfileModal/Account'
 import Dashboard from './pages/ProfileModal/Dashboard'
+import ProfileEdit from './pages/ProfileModal/ProfileEdit'
 import { setWalletConnected } from './stores/UserStore'
 import type { CWindow } from './types/Window'
 
@@ -63,6 +64,7 @@ const App = () => {
             <Route path="" element={<Dashboard />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="account" element={<Account />} />
+            <Route path="edit" element={<ProfileEdit />} />
           </Route>
         </Routes>
       </BrowserRouter>
