@@ -31,6 +31,12 @@ export const Wallet = () => {
         <SubTitle>Wallet Options</SubTitle>
         <Text>Disable/Enable options relating to your crypto wallet.</Text>
         <Box>
+          <Stack direction="row" spacing={2}>
+            <Box sx={{ padding: '6px' }}>
+              <AntSwitch />
+            </Box>
+            <Text>Allow others to view your balances.</Text>
+          </Stack>
           <Stack direction="row" spacing={2} sx={{ padding: '12px 0px' }}>
             <Box sx={{ padding: '6px' }}>
               <AntSwitch />

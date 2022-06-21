@@ -3,8 +3,11 @@ import { styled } from '@mui/material/styles'
 
 export const CTab = styled(Tab)(() => ({
   justifyContent: 'flex-start',
-  padding: '12px 0px',
+  // padding: '12px 12px 12px 0px',
   textTransform: 'capitalize',
+  alignItems: 'flex-start',
+  fontSize: '24px',
+  fontWeight: '400',
 }))
 
 export const Heading = styled(Typography)(() => ({
