@@ -88,9 +88,9 @@ export const BootstrapInput = styled(InputBase)(({ theme }) => ({
       boxShadow: `${(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
     },
     backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
-    border: '1px solid #ced4da',
+    border: '1px solid #2E3134',
 
-    borderRadius: 4,
+    borderRadius: 0,
 
     // Use the system font instead of the default Roboto font.
     fontFamily: [

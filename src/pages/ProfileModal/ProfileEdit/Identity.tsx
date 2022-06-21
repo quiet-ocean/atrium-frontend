@@ -10,6 +10,7 @@ import {
 import React from 'react'
 
 import { SubTitle, Text, BootstrapInput } from './styled'
+import { TextInput } from './TextInput'
 
 export const Identity = () => {
   return (
@@ -23,65 +24,33 @@ export const Identity = () => {
       </Box>
       <Stack direction="row" spacing={2}>
         <Box sx={{ width: '50%' }}>
-          <FormControl variant="standard" sx={{ width: '100%' }}>
-            <InputLabel shrink htmlFor="bootstrap-input">
-              Display Name
-            </InputLabel>
-            <BootstrapInput
-              sx={{ width: '100%' }}
-              defaultValue=""
-              id="bootstrap-input"
-            />
-          </FormControl>
+          <TextInput label={`Display Name`} />
         </Box>
         <Box sx={{ width: '50%' }}>
-          <FormControl variant="standard" sx={{ width: '100%' }}>
-            <InputLabel shrink htmlFor="bootstrap-input">
-              Website
-            </InputLabel>
-            <BootstrapInput
-              sx={{ width: '100%' }}
-              defaultValue=""
-              id="bootstrap-input"
-            />
-          </FormControl>
+          <TextInput label={`Website`} />
           <FormControlLabel
             control={<Checkbox defaultChecked />}
-            label="display website on profile"
+            label="Display Website on Profile"
           />
         </Box>
       </Stack>
       <Stack direction="row" spacing={2}>
         <Box sx={{ width: '50%' }}>
-          <FormControl variant="standard" sx={{ width: '100%' }}>
-            <InputLabel shrink htmlFor="bootstrap-input">
-              Display Name
-            </InputLabel>
-            <BootstrapInput
-              sx={{ width: '100%' }}
-              defaultValue=""
-              id="bootstrap-input"
-            />
-          </FormControl>
-        </Box>
-        <Box sx={{ width: '50%' }}>
-          <FormControl variant="standard" sx={{ width: '100%' }}>
-            <InputLabel shrink htmlFor="bootstrap-input">
-              Website
-            </InputLabel>
-            <BootstrapInput
-              sx={{ width: '100%' }}
-              defaultValue=""
-              id="bootstrap-input"
-            />
-          </FormControl>
+          <TextInput label={`Email Address`} />
           <FormControlLabel
             control={<Checkbox defaultChecked />}
-            label="display website on profile"
+            label="Display Email on Profile"
+          />
+        </Box>
+        <Box sx={{ width: '50%' }}>
+          <TextInput label={`Birthday`} />
+          <FormControlLabel
+            control={<Checkbox defaultChecked />}
+            label="Display Email on Profile"
           />
         </Box>
       </Stack>
-      <Box>
+      <Box sx={{ padding: '24px 0px' }}>
         <InputLabel>Description/Bio</InputLabel>
         <TextField
           multiline
