@@ -1,12 +1,9 @@
-import { Buffer } from 'buffer'
-
 import 'regenerator-runtime/runtime'
 import { ThemeProvider } from '@mui/material/styles'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
-import 'antd/dist/antd.css'
 // import './index.scss'
 import './styles/index.scss'
 import App from './App'
@@ -14,8 +11,6 @@ import muiTheme from './MuiTheme'
 import './PhaserGame'
 import store from './stores'
 import { initNearContract } from './utils'
-
-globalThis.Buffer = Buffer
 
 initNearContract().then(() => {
   ReactDOM.render(
