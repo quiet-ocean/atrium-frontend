@@ -1,8 +1,9 @@
-import React from 'react'
-import { Box, Stack } from '@mui/material'
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet'
-import { SubTitle, Text, WalletButton } from './styled'
+import { Box, Stack } from '@mui/material'
+import React from 'react'
+
 import { AntSwitch } from './AntSwitch'
+import { SubTitle, Text, WalletButton } from './styled'
 
 export const Wallet = () => {
   return (
@@ -14,11 +15,11 @@ export const Wallet = () => {
           <AccountBalanceWalletIcon />
           <Text
             sx={{
+              color: '#F8F9FA',
               fontSize: '24px',
               fontWeight: 800,
-              color: '#F8F9FA',
-              textTransform: 'capitalize',
               margin: '0px',
+              textTransform: 'capitalize',
             }}
           >
             Wallet Connected

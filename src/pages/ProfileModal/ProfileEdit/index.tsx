@@ -1,19 +1,11 @@
 import SearchIcon from '@mui/icons-material/Search'
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  InputAdornment,
-  IconButton,
-  OutlinedInput,
-  Tab,
-  Tabs,
-} from '@mui/material'
+import { Box, Tabs } from '@mui/material'
 import React from 'react'
-import { Identity } from './Identity'
-import { Tags } from './Tags'
 
-import { Heading, TabPanel, a11yProps } from './styled'
+import { AdornmentInput } from './AdornmentInput'
+import { Identity } from './Identity'
+import { Heading, TabPanel, a11yProps, CTab } from './styled'
+import { Tags } from './Tags'
 import { Wallet } from './Wallet'
 
 const tabItems = [
@@ -25,6 +17,7 @@ const tabItems = [
   'socials',
   'privacy',
 ]
+
 const ProfileEdit: React.FC = () => {
   const [value, setValue] = React.useState(0)
 
@@ -35,27 +28,10 @@ const ProfileEdit: React.FC = () => {
     <Box sx={{ gridArea: 'main', padding: '64px' }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Heading>Edit Profile</Heading>
-        <FormControl sx={{ width: '350px' }} variant="outlined">
-          <InputLabel
-            htmlFor="outlined-adornment-password"
-            sx={{ fontSize: '16px' }}
-          >
-            Search settings...
-          </InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type="text"
-            sx={{ fontSize: '18px', height: '100%' }}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton aria-label="toggle password visibility" edge="end">
-                  <SearchIcon />
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
+        <AdornmentInput
+          adornment={<SearchIcon />}
+          label={'Search setting...'}
+        />
       </Box>
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderColor: 'divider', displayborderBottom: 1 }}>
@@ -64,11 +40,9 @@ const ProfileEdit: React.FC = () => {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            {
-              tabItems.map((item: string, key: number) => (
-                <Tab label={item} {...a11yProps(key)} key={key} />
-              ))
-            }
+            {tabItems.map((item: string, key: number) => (
+              <CTab label={item} {...a11yProps(key)} key={key} />
+            ))}
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>

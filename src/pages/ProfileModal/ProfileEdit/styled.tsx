@@ -1,5 +1,11 @@
-import { Box, Typography, Button, InputBase } from '@mui/material'
+import { Box, Typography, Button, InputBase, Tab } from '@mui/material'
 import { styled } from '@mui/material/styles'
+
+export const CTab = styled(Tab)(() => ({
+  justifyContent: 'flex-start',
+  padding: '12px 0px',
+  textTransform: 'capitalize',
+}))
 
 export const Heading = styled(Typography)(() => ({
   color: '#F5F7FA',
@@ -11,12 +17,12 @@ export const Heading = styled(Typography)(() => ({
 }))
 
 export const SubTitle = styled(Typography)(() => ({
+  color: '#F8F9FA',
   fontFamily: 'Fractul',
-  fontStyle: 'normal',
   fontSize: '32px',
+  fontStyle: 'normal',
   fontWeight: 600,
   lineHeight: '32px',
-  color: '#F8F9FA',
   textTransform: 'capitalize',
 }))
 export interface TabPanelProps {
@@ -26,25 +32,24 @@ export interface TabPanelProps {
 }
 
 export const Text = styled(Typography)(() => ({
-  fontFamily: 'Andale Mono Regular',
-  fontStyle: 'normal',
-  fontSize: '18px',
-  fontWeight: '400',
-  display: 'flex',
-  lineHeight: '32px',
   alignItems: 'center',
   color: '#80868B',
+  display: 'flex',
+  fontFamily: 'Andale Mono Regular',
+  fontSize: '18px',
+  fontStyle: 'normal',
+  fontWeight: '400',
   letterSpacing: '-0.05em',
+  lineHeight: '32px',
   margin: '24px 0px',
 }))
 
 export const WalletButton = styled(Button)(() => ({
   alignItems: 'center',
-	background: '#0149D1',
-	gap: '21px',
-	padding: '24px 62px',
-	display: 'flex'
-	
+  background: '#0149D1',
+  display: 'flex',
+  gap: '21px',
+  padding: '24px 62px',
 }))
 export function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props
@@ -74,22 +79,16 @@ export function a11yProps(index: number) {
 }
 
 export const BootstrapInput = styled(InputBase)(({ theme }) => ({
-  'label + &': {
-    marginTop: theme.spacing(3),
-  },
   '& .MuiInputBase-input': {
-    borderRadius: 4,
-    position: 'relative',
+    '&:focus': {
+      borderColor: theme.palette.primary.main,
+      boxShadow: `${(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
+    },
     backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
     border: '1px solid #ced4da',
-    fontSize: 16,
-    width: 'auto',
-    padding: '10px 12px',
-    transition: theme.transitions.create([
-      'border-color',
-      'background-color',
-      'box-shadow',
-    ]),
+
+    borderRadius: 4,
+
     // Use the system font instead of the default Roboto font.
     fontFamily: [
       '-apple-system',
@@ -103,24 +102,36 @@ export const BootstrapInput = styled(InputBase)(({ theme }) => ({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(','),
-    '&:focus': {
-      boxShadow: `${(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
-      borderColor: theme.palette.primary.main,
-    },
+
+    fontSize: 16,
+
+    padding: '10px 12px',
+
+    position: 'relative',
+
+    transition: theme.transitions.create([
+      'border-color',
+      'background-color',
+      'box-shadow',
+    ]),
+    width: 'auto',
   },
-}));
+  'label + &': {
+    marginTop: theme.spacing(3),
+  },
+}))
 
 export const Tag = styled(Button)(() => ({
+  alignItems: 'center',
   background: '#1A1A1A',
-  padding: '10px 16px',
+  color: '#FFFFFF',
+  display: 'flex',
   fontFamily: 'Fractul',
+  fontSize: '24px',
   fontStyle: 'normal',
   fontWeight: '500',
-  fontSize: '24px',
   lineHeight: '32px',
-  display: 'flex',
-  alignItems: 'center',
+  padding: '10px 16px',
   textTransform: 'capitalize',
-  color: '#FFFFFF',
   // margin: '12px',
 }))

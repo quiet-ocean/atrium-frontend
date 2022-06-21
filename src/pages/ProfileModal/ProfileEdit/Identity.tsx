@@ -8,6 +8,7 @@ import {
   TextField,
 } from '@mui/material'
 import React from 'react'
+
 import { SubTitle, Text, BootstrapInput } from './styled'
 
 export const Identity = () => {
@@ -82,7 +83,12 @@ export const Identity = () => {
       </Stack>
       <Box>
         <InputLabel>Description/Bio</InputLabel>
-        <TextField multiline rows={5} maxRows={10} sx={{ width: '100%' }}></TextField>
+        <TextField
+          multiline
+          rows={5}
+          maxRows={10}
+          sx={{ width: '100%' }}
+        ></TextField>
       </Box>
     </Box>
   )
