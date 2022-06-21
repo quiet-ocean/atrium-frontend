@@ -2,14 +2,13 @@ import {
   Stack,
   Box,
   Checkbox,
-  FormControl,
   InputLabel,
   FormControlLabel,
   TextField,
 } from '@mui/material'
 import React from 'react'
 
-import { SubTitle, Text, BootstrapInput } from './styled'
+import { SubTitle, Text } from './styled'
 import { TextInput } from './TextInput'
 
 export const Identity = () => {

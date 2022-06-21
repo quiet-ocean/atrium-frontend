@@ -3,7 +3,7 @@ import { FormControl, InputLabel } from '@mui/material'
 import { BootstrapInput } from './styled'
 
 export const TextInput: React.FC<{ label }> = ({
-  label
+  label,
 }: {
   label: string
 }) => {
