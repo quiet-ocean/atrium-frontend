@@ -1,10 +1,16 @@
 import { Box, TextField, InputLabel } from '@mui/material'
+import { styled } from '@mui/material/styles'
 
+import MultipleSelectPlaceholder from '../../../components/MultipleSelectPlaceholder'
+import { UploadButton } from '../ArticleBuilder/styled'
 import { Heading, Text } from '../ProfileEdit/styled'
 import { TextInput } from '../ProfileEdit/TextInput'
-import { UploadButton } from '../ArticleBuilder/styled'
-import MultipleSelectPlaceholder from '../../../components/MultipleSelectPlaceholder'
 
+const CTextField = styled(TextField)(() => ({
+  '& .MuiInputBase-root': {
+    borderRadius: '0px'
+  }
+}))
 export const FeedbackForm = () => {
   return (
     <Box sx={{ gridArea: 'main', padding: '64px 0px' }}>
@@ -20,12 +26,12 @@ export const FeedbackForm = () => {
       </Box>
       <Box sx={{ padding: '24px 0px' }}>
         <InputLabel>Description/Bio</InputLabel>
-        <TextField
+        <CTextField
           multiline
           rows={5}
           maxRows={10}
           sx={{ borderRadius: '0px', width: '100%' }}
-        ></TextField>
+        ></CTextField>
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <UploadButton>Submit</UploadButton>
