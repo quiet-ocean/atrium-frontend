@@ -1,10 +1,10 @@
 import 'regenerator-runtime/runtime'
+import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
-// import './index.scss'
 import './styles/index.scss'
 import App from './App'
 import muiTheme from './MuiTheme'
@@ -16,6 +16,7 @@ initNearContract().then(() => {
   ReactDOM.render(
     <React.StrictMode>
       <Provider store={store}>
+        <CssBaseline />
         <ThemeProvider theme={muiTheme}>
           <App />
         </ThemeProvider>
