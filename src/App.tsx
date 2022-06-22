@@ -15,6 +15,7 @@ import {
 } from './pages'
 import ProfileModal from './pages/ProfileModal'
 import Account from './pages/ProfileModal/Account'
+import { ArticleBuilder } from './pages/ProfileModal/ArticleBuilder'
 import Dashboard from './pages/ProfileModal/Dashboard'
 import ProfileEdit from './pages/ProfileModal/ProfileEdit'
 import { setWalletConnected } from './stores/UserStore'
@@ -65,6 +66,7 @@ const App = () => {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="account" element={<Account />} />
             <Route path="edit" element={<ProfileEdit />} />
+            <Route path='article-builder' element={<ArticleBuilder />} />
           </Route>
         </Routes>
       </BrowserRouter>
