@@ -8,7 +8,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
   palette: {
     background: { default: '#16161A' },
     border: {
-      dark: '#1D1F23',
+      dark: 'rgba(255, 255, 255, 0.12)',
     },
     icon: {
       dark: '#898F94',

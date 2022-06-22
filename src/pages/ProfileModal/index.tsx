@@ -5,7 +5,7 @@ import * as React from 'react'
 import ProfilePage from './ProfilePage'
 
 const ProfileModal = () => {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(true)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
