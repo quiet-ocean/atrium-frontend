@@ -3,6 +3,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
+import { styled } from '@mui/material/styles'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
@@ -16,6 +17,17 @@ interface Props {
   onClose: () => void
 }
 
+const Text = styled(Typography)(() => ({
+  alignItems: 'center',
+  color: '#80868B',
+  display: 'flex',
+  fontFamily: 'Fractul',
+  fontSize: '14px',
+  fontStyle: 'normal',
+  fontWeight: 300,
+  lineHeight: '32px',
+}))
+const fontWeight = 600
 const SearchAppBar: React.FC<Props> = ({ onClose }) => {
   return (
     <Box
@@ -29,7 +41,34 @@ const SearchAppBar: React.FC<Props> = ({ onClose }) => {
       }}
     >
       <AppBar position="static" sx={{ opacity: 0.9 }}>
-        <Toolbar>
+        <Box
+          sx={{
+            backgroundColor: '#17181B',
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '16px',
+            justifyContent: 'center',
+            padding: '12px 0px',
+          }}
+        >
+          <Text>
+            $ATR PRICE:
+            <Text sx={{ fontWeight: fontWeight }}> $5.84</Text>
+          </Text>
+          <Text>
+            PLAYERS ONLINE:
+            <Text sx={{ fontWeight: fontWeight }}> 104</Text>
+          </Text>
+          <Text>
+            TRANSACTIONS 24H:
+            <Text sx={{ fontWeight: fontWeight }}> 526</Text>
+          </Text>
+          <Text>
+            VOLUME 24H:
+            <Text sx={{ fontWeight: fontWeight }}> 590,234 $ATR</Text>
+          </Text>
+        </Box>
+        <Toolbar sx={{ backgroundColor: '#0E1013' }}>
           <IconButton
             size="large"
             edge="start"

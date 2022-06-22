@@ -16,7 +16,8 @@ const SideBar: React.FC = () => {
     <Box
       sx={{
         alignItems: 'center',
-        backgroundColor: muiTheme.palette.background.default,
+        // backgroundColor: muiTheme.palette.background.default,
+        backgroundColor: '#0E1013',
         border: '2px solid',
         borderColor: muiTheme.palette.border.dark,
         display: 'flex',
