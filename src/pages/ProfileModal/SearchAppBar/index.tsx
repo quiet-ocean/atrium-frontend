@@ -9,9 +9,10 @@ import Typography from '@mui/material/Typography'
 import * as React from 'react'
 
 import muiTheme from '../../../MuiTheme'
+import { AdornmentInput } from '../AdornmentInput'
 
 import MenuIconList from './MenuIconList'
-import * as Styled from './styled'
+// import * as Styled from './styled'
 
 interface Props {
   onClose: () => void
@@ -68,7 +69,7 @@ const SearchAppBar: React.FC<Props> = ({ onClose }) => {
             <Text sx={{ fontWeight: fontWeight }}> 590,234 $ATR</Text>
           </Text>
         </Box>
-        <Toolbar sx={{ backgroundColor: '#0E1013' }}>
+        <Toolbar sx={{ backgroundColor: '#0E1013', padding: '12px 0px' }}>
           <IconButton
             size="large"
             edge="start"
@@ -87,7 +88,7 @@ const SearchAppBar: React.FC<Props> = ({ onClose }) => {
           >
             ATRIUM
           </Typography>
-          <Styled.Search>
+          {/* <Styled.Search>
             <Styled.SearchIconWrapper>
               <SearchIcon />
             </Styled.SearchIconWrapper>
@@ -95,7 +96,9 @@ const SearchAppBar: React.FC<Props> = ({ onClose }) => {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
-          </Styled.Search>
+          </Styled.Search> */}
+          <Box sx={{ flexGrow: 1 }} />
+          <AdornmentInput label={`Search the grid...`} adornment={<SearchIcon />} />
           <Box sx={{ flexGrow: 1 }} />
           <MenuIconList />
         </Toolbar>
