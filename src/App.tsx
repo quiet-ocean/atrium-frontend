@@ -14,6 +14,8 @@ import {
   GameUI,
 } from './pages'
 import ProfileModal from './pages/ProfileModal'
+import Account from './pages/ProfileModal/Account'
+import Dashboard from './pages/ProfileModal/Dashboard'
 import { setWalletConnected } from './stores/UserStore'
 import type { CWindow } from './types/Window'
 
@@ -57,7 +59,11 @@ const App = () => {
           <Route
             path="/profile-modal-development-sandbox"
             element={<ProfileModal />}
-          />
+          >
+            <Route path="" element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="account" element={<Account />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Container>
