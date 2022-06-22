@@ -3,6 +3,7 @@ import { Box, TextField, InputLabel } from '@mui/material'
 import { Heading, Text } from '../ProfileEdit/styled'
 import { TextInput } from '../ProfileEdit/TextInput'
 import { UploadButton } from '../ArticleBuilder/styled'
+import MultipleSelectPlaceholder from '../../../components/MultipleSelectPlaceholder'
 
 export const FeedbackForm = () => {
   return (
@@ -15,7 +16,7 @@ export const FeedbackForm = () => {
       </Box>
       <Box sx={{ display: 'flex', gap: '16px' }}>
         <TextInput label={`Display Name`} />
-        <TextInput label={``} />
+        <MultipleSelectPlaceholder />
       </Box>
       <Box sx={{ padding: '24px 0px' }}>
         <InputLabel>Description/Bio</InputLabel>
