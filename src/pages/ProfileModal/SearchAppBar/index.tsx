@@ -98,7 +98,10 @@ const SearchAppBar: React.FC<Props> = ({ onClose }) => {
             />
           </Styled.Search> */}
           <Box sx={{ flexGrow: 1 }} />
-          <AdornmentInput label={`Search the grid...`} adornment={<SearchIcon />} />
+          <AdornmentInput
+            label={`Search the grid...`}
+            adornment={<SearchIcon />}
+          />
           <Box sx={{ flexGrow: 1 }} />
           <MenuIconList />
         </Toolbar>

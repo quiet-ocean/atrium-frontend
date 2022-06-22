@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import AddBoxIcon from '@mui/icons-material/AddBox'
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos'
@@ -9,6 +8,7 @@ import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord'
 import { Box } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import muiTheme from '../../../MuiTheme'
 
@@ -33,7 +33,7 @@ const SideBar: React.FC = () => {
         xIndex: muiTheme.zIndex.drawer,
       }}
     >
-      <Link to='account'>
+      <Link to="account">
         <IconButton
           size="large"
           aria-label="account of current user"

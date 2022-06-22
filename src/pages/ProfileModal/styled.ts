@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import { palette } from '../../MuiTheme'
 
 export const Root = styled.section`
-
   // background-color: ${palette.background.default};
-  background-color: #0E1013 !important;
+  background-color: #0e1013 !important;
   height: 1786px;
   width: 100%;
 `

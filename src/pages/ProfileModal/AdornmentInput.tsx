@@ -6,7 +6,7 @@ import {
   IconButton,
 } from '@mui/material'
 
-export const AdornmentInput: React.FC<{ adornment, label }> = ({
+export const AdornmentInput: React.FC<{ adornment; label }> = ({
   adornment,
   label,
 }: {

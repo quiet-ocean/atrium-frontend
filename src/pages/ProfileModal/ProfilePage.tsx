@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom'
 import './reset.css'
 
 import SearchAppBar from './SearchAppBar'
