@@ -28,7 +28,7 @@ export const loginSender = async (cb?: () => void) => {
       console.log('an error occurred during login by sender wallet ', e)
     })
 
-  window.near.isSignedIn() // t
+  return window.near.isSignedIn() // t
 }
 export const logoutSender = async () => {
   if (window.near.isSignedIn()) {

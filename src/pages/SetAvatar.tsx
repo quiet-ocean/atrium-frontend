@@ -1,12 +1,14 @@
 import { Button, Box } from '@mui/material'
 import { useState, useEffect } from 'react'
 import Carousel from 'react-multi-carousel'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { Stepper, LoginLayout } from '../components'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { addAvatar, setPlayerAvatar } from '../stores/UserStore'
+import { setUser } from '../stores/AuthStore'
 import 'react-multi-carousel/lib/styles.css'
+
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -30,18 +32,22 @@ const responsive = {
 const SetAvatar = () => {
   const [avatar, setAvatar] = useState(0)
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const avatars = useAppSelector((state) => state.user.avatars)
 
   useEffect(() => {
     // console.log(avatars);
   }, [avatars])
+
   useEffect(() => {
     loadNFTs()
   }, [])
+
   const selectAvatar = (id: number) => {
     console.log('select avatar ', id)
     setAvatar(id)
   }
+
   const loadNFTs = async () => {
     if (!(window as any)?.accountId) {
       console.log('please login by near wallet')
@@ -73,6 +79,12 @@ const SetAvatar = () => {
         console.log(err)
       })
   }
+
+  const handleNextBtn = () => {
+    dispatch(setUser({ avatar: avatars[avatar] }))
+    navigate('/connect-socials')
+  }
+
   return (
     <LoginLayout>
       <h1>Set your Avatar</h1>
@@ -91,12 +103,12 @@ const SetAvatar = () => {
                 sx={{ px: '6px' }}
                 key={key}
                 onClick={() => {
-                  selectAvatar(key + 1)
+                  selectAvatar(key)
                   dispatch(setPlayerAvatar(url))
                 }}
               >
                 <img
-                  className={`${avatar === key + 1 ? 'selected' : ''}`}
+                  className={`${avatar === key ? 'selected' : ''}`}
                   src={url}
                   alt=""
                 />
@@ -105,11 +117,15 @@ const SetAvatar = () => {
           })}
         </Carousel>
       </div>
-      <Button className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
-        <Link to="/connect-socials">NEXT</Link>
+      <Button
+        className="atrium_btn atrium_btn_primary"
+        sx={{ mt: '56px' }}
+        onClick={handleNextBtn}
+      >
+        NEXT
       </Button>
-      <Button className="atrium_btn">
-        <Link to="/connect-socials">SKIP FOR NOW</Link>
+      <Button className="atrium_btn" onClick={handleNextBtn}>
+        SKIP FOR NOW
       </Button>
       <Stepper length={5} step={2} />
     </LoginLayout>
