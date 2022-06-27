@@ -3,12 +3,14 @@ import styled from 'styled-components'
 import { palette } from '../../MuiTheme'
 
 export const Root = styled.section`
-  background-color: ${palette.background.default};
+  // background-color: ${palette.background.default};
+  background-color: #0E1013 !important;
   height: 1786px;
   width: 100%;
 `
 
 export const Page = styled.main`
+  background-color: '#0E1013 !important';
   display: grid;
   gap: 8px;
   grid-template-areas:
@@ -21,7 +23,8 @@ export const Page = styled.main`
     'flex flex flex flex flex flex';
 
   height: 100%;
-  padding-top: 64px;
+  // padding-top: 64px;
+  padding-top: 128px;
   width: 100%;
   max-width: 1500px;
   margin: 0 auto;

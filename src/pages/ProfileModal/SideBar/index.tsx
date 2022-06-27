@@ -4,6 +4,7 @@ import AddToPhotosIcon from '@mui/icons-material/AddToPhotos'
 import AdUnitsIcon from '@mui/icons-material/AdUnits'
 import AppsIcon from '@mui/icons-material/Apps'
 import AssignmentReturnedIcon from '@mui/icons-material/AssignmentReturned'
+import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord'
 import { Box } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 import React from 'react'
@@ -15,7 +16,8 @@ const SideBar: React.FC = () => {
     <Box
       sx={{
         alignItems: 'center',
-        backgroundColor: muiTheme.palette.background.default,
+        // backgroundColor: muiTheme.palette.background.default,
+        backgroundColor: '#0E1013',
         border: '2px solid',
         borderColor: muiTheme.palette.border.dark,
         display: 'flex',
@@ -27,6 +29,7 @@ const SideBar: React.FC = () => {
         position: 'fixed',
         top: '64px',
         width: '80px',
+        xIndex: muiTheme.zIndex.drawer,
       }}
     >
       <IconButton
@@ -36,7 +39,7 @@ const SideBar: React.FC = () => {
         aria-haspopup="true"
         sx={{ color: muiTheme.palette.icon.dark }}
       >
-        <AccountCircle />
+        <FiberSmartRecordIcon />
       </IconButton>
       <IconButton
         size="large"
