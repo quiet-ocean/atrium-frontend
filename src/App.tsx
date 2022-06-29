@@ -24,9 +24,6 @@ import type { CWindow } from './types/Window'
 
 declare let window: CWindow
 
-(window as any).global = window;
-declare let global = globalThis;
-
 const App = () => {
   const dispatch = useAppDispatch()
 
