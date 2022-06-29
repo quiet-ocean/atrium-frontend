@@ -18,7 +18,7 @@ import AccountSelect from './AccountSelect'
 
 
 const IconButtonBox = styled(IconButton)(({ theme }) => ({
-  padding: '12px',
+  padding: '12px 14px',
   backgroundColor: theme.palette.background.primary.p1,
   borderRadius: '0px'
 }))

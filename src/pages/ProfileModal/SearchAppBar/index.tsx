@@ -73,7 +73,7 @@ const SearchAppBar: React.FC<Props> = ({ onClose }) => {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Styled.Search> */}
-          <Box sx={{ width: '800px'}}>
+          <Box sx={{ width: '900px'}}>
             <AdornmentInput
               label={`Search the grid...`}
               adornment={<SearchIcon />}
