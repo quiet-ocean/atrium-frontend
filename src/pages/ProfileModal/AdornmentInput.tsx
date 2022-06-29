@@ -28,7 +28,7 @@ export const AdornmentInput: React.FC<Props> = ({
           fontWeight: 400,
           letterSpacing: '-0.1em',
           lineHeight: '32px',
-          top: '-5px',
+          top: '-3px',
         }}
       >
         {label}

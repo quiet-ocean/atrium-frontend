@@ -5,7 +5,28 @@ import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import muiTheme from '../../../MuiTheme'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 
+const AccountMenuItem = () => {
+  return (
+    <Box sx={{ display: 'flex', gap: '8px'}}>
+      <img src={`/images/Ellipse 11.png`} alt=''/>
+      <Typography
+        sx={{
+          fontFamily: 'Fractul',
+          fontStyle: 'normal',
+          fontWeight: 700,
+          fontSize: '14px',
+          lineHeight: '32px',
+          color: muiTheme.palette.text.light,
+        }}
+      >
+        swiftyyy
+      </Typography>
+    </Box>
+  )
+}
 export default function AccountSelect() {
   const [age, setAge] = React.useState('');
 
@@ -14,7 +35,7 @@ export default function AccountSelect() {
   };
 
   return (
-    <div>
+    <Box>
       <FormControl sx={{ 
         minWidth: 120,
         background: muiTheme.palette.background.primary.p4,
@@ -31,11 +52,16 @@ export default function AccountSelect() {
           {/* <MenuItem value="">
             <em>None</em>
           </MenuItem> */}
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value=''>
+            <AccountMenuItem />
+          </MenuItem>
+          <MenuItem value={10}>
+            <AccountMenuItem />
+          </MenuItem>
+          <MenuItem value={20}><AccountMenuItem /></MenuItem>
+          <MenuItem value={30}><AccountMenuItem /></MenuItem>
         </Select>
       </FormControl>
-    </div>
+    </Box>
   );
 }

@@ -18,8 +18,8 @@ import AccountSelect from './AccountSelect'
 
 
 const IconButtonBox = styled(IconButton)(({ theme }) => ({
-  padding: '8px',
-  backgroundColor: muiTheme.palette.background.primary.p1,
+  padding: '12px',
+  backgroundColor: theme.palette.background.primary.p1,
   borderRadius: '0px'
 }))
 
