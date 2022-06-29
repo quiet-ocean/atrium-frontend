@@ -1,26 +1,26 @@
 import AccountCircle from '@mui/icons-material/AccountCircle'
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
 import MailIcon from '@mui/icons-material/Mail'
 import MoreIcon from '@mui/icons-material/MoreVert'
 import NotificationsIcon from '@mui/icons-material/Notifications'
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined'
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
+import { Typography } from '@mui/material'
 import Badge from '@mui/material/Badge'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import React from 'react'
 import styled from '@mui/material/styles/styled'
-import muiTheme, { palette } from '../../../MuiTheme'
-import { Typography } from '@mui/material'
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import React from 'react'
+import { palette } from '../../../MuiTheme'
+
 import AccountSelect from './AccountSelect'
 
-
 const IconButtonBox = styled(IconButton)(({ theme }) => ({
-  padding: '12px 14px',
   backgroundColor: theme.palette.background.primary.p1,
-  borderRadius: '0px'
+  borderRadius: '0px',
+  padding: '12px 14px',
 }))
 
 const MenuIconList: React.FC = () => {
@@ -133,16 +133,29 @@ const MenuIconList: React.FC = () => {
             <NotificationsNoneOutlinedIcon />
           </Badge>
         </IconButtonBox>
-        <IconButtonBox size="large" aria-label="show 4 new mails" color="inherit">
+        <IconButtonBox
+          size="large"
+          aria-label="show 4 new mails"
+          color="inherit"
+        >
           <Badge badgeContent={4} color="error">
             <EmailOutlinedIcon />
           </Badge>
         </IconButtonBox>
-        <IconButtonBox size='large' aria-label='plus' color='inherit' sx={{ background: palette.background.red }}>
-          <Typography sx={{ fontSize: '20px', fontWeight: 600, padding: '0px 8px' }}>+</Typography>
+        <IconButtonBox
+          size="large"
+          aria-label="plus"
+          color="inherit"
+          sx={{ background: palette.background.red }}
+        >
+          <Typography
+            sx={{ fontSize: '20px', fontWeight: 600, padding: '0px 8px' }}
+          >
+            +
+          </Typography>
         </IconButtonBox>
         <AccountSelect />
-        <IconButtonBox size='large' aria-label='plus' color='inherit'>
+        <IconButtonBox size="large" aria-label="plus" color="inherit">
           <SettingsOutlinedIcon />
         </IconButtonBox>
         {/* <IconButton

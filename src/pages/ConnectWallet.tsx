@@ -1,3 +1,5 @@
+import { Buffer } from 'buffer'
+
 import { Button } from '@mui/material'
 import { unwrapResult } from '@reduxjs/toolkit'
 import React, { useState, useEffect } from 'react'
@@ -19,8 +21,7 @@ import type { CWindow } from '../types/Window'
 import { loginNear, logoutNear } from '../utils/nearAPI'
 import { loginSender } from '../utils/senderAPI'
 // import { useAppDispatch, useAppSelector } from '../../hooks';
-import { Buffer } from 'buffer';
-globalThis.Buffer = Buffer;
+globalThis.Buffer = Buffer
 declare let window: CWindow
 
 const ConnectWallet = () => {

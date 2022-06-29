@@ -1,26 +1,26 @@
-import * as React from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import muiTheme from '../../../MuiTheme'
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
+import FormControl from '@mui/material/FormControl'
+import MenuItem from '@mui/material/MenuItem'
+import type { SelectChangeEvent } from '@mui/material/Select'
+import Select from '@mui/material/Select'
 import styled from '@mui/material/styles/styled'
+import Typography from '@mui/material/Typography'
+import * as React from 'react'
+
+import muiTheme from '../../../MuiTheme'
 
 const AccountMenuItem = () => {
   return (
-    <Box sx={{ display: 'flex', gap: '8px'}}>
-      <img src={`/images/Ellipse 11.png`} alt=''/>
+    <Box sx={{ display: 'flex', gap: '8px' }}>
+      <img src={`/images/Ellipse 11.png`} alt="" />
       <Typography
         sx={{
+          color: muiTheme.palette.text.light,
           fontFamily: 'Fractul',
+          fontSize: '14px',
           fontStyle: 'normal',
           fontWeight: 700,
-          fontSize: '14px',
           lineHeight: '32px',
-          color: muiTheme.palette.text.light,
         }}
       >
         swiftyyy
@@ -29,26 +29,26 @@ const AccountMenuItem = () => {
   )
 }
 const MySelect = styled(Select)(() => ({
-  borderRadius: '0px',
   '& .MuiSelect-select': {
     padding: '12px',
-  }
-
-})) 
+  },
+  borderRadius: '0px',
+}))
 export default function AccountSelect() {
-  const [age, setAge] = React.useState('');
+  const [age, setAge] = React.useState('')
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
-  };
+    setAge(event.target.value)
+  }
 
   return (
     <Box>
-      <FormControl sx={{ 
-        minWidth: 120,
-        background: muiTheme.palette.background.primary.p4,
-        border: muiTheme.palette.border.dim, }}
-        
+      <FormControl
+        sx={{
+          background: muiTheme.palette.background.primary.p4,
+          border: muiTheme.palette.border.dim,
+          minWidth: 120,
+        }}
       >
         <MySelect
           value={age}
@@ -59,16 +59,20 @@ export default function AccountSelect() {
           {/* <MenuItem value="">
             <em>None</em>
           </MenuItem> */}
-          <MenuItem value=''>
+          <MenuItem value="">
             <AccountMenuItem />
           </MenuItem>
           <MenuItem value={10}>
             <AccountMenuItem />
           </MenuItem>
-          <MenuItem value={20}><AccountMenuItem /></MenuItem>
-          <MenuItem value={30}><AccountMenuItem /></MenuItem>
+          <MenuItem value={20}>
+            <AccountMenuItem />
+          </MenuItem>
+          <MenuItem value={30}>
+            <AccountMenuItem />
+          </MenuItem>
         </MySelect>
       </FormControl>
     </Box>
-  );
+  )
 }

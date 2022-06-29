@@ -6,12 +6,14 @@ import mainImg from '../images/main.png'
 import LiveChat from '../LiveChat/index'
 import MemberRoaldmapWhitepaper from '../MemberRoaldmapWhitepaper'
 import Tweets from '../Tweets'
+import FirstView from '../FirstView'
 
 const Dashboard: React.FC = () => {
   return (
     <>
       <Box sx={{ gridArea: 'main', height: '483px' }}>
-        <img src={mainImg} width="1500" height="483" />
+        {/* <img src={mainImg} width="1500" height="483" /> */}
+        <FirstView />
       </Box>
 
       <Box

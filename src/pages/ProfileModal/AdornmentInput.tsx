@@ -14,7 +14,7 @@ type Props = {
 export const AdornmentInput: React.FC<Props> = ({
   adornment,
   label,
-  sx
+  sx,
 }: Props) => {
   return (
     <FormControl sx={{ width: '100%', ...sx }} variant="outlined">

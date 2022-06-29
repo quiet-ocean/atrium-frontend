@@ -15,28 +15,27 @@ import MenuIconList from './MenuIconList'
 import { StatusBar } from './StatusBar'
 // import * as Styled from './styled'
 
-interface Props {
-  onClose: () => void
-}
+// interface Props {
+//   onClose: () => void
+// }
 
-
-const SearchAppBar: React.FC<Props> = ({ onClose }) => {
+const SearchAppBar: React.FC = () => {
   return (
     <Box
       sx={{
+        background: muiTheme.palette.background.primary.p2,
         flexGrow: 1,
         left: 0,
         position: 'fixed',
         right: 0,
         top: 0,
         zIndex: muiTheme.zIndex.appBar,
-        background: muiTheme.palette.background.primary.p2
       }}
     >
       <AppBar position="static" sx={{ opacity: 0.9 }}>
         <StatusBar />
         {/* <Toolbar sx={{ backgroundColor: '#0E1013', padding: '12px 0px' }}> */}
-        <Toolbar sx={{ padding: '24px 0px', justifyContent: 'space-between' }}>
+        <Toolbar sx={{ justifyContent: 'space-between', padding: '24px 0px' }}>
           {/* <IconButton
             size="large"
             edge="start"
@@ -52,14 +51,14 @@ const SearchAppBar: React.FC<Props> = ({ onClose }) => {
             noWrap
             component="div"
             sx={{
+              color: '#F8F9FA',
               display: { sm: 'block', xs: 'none' },
               fontFamily: 'Fractul',
+              fontSize: '42px',
               fontStyle: 'normal',
               fontWeight: 800,
-              fontSize: '42px',
               lineHeight: '32px',
-              color: '#F8F9FA',
-              paddingLeft: '24px'
+              paddingLeft: '24px',
             }}
           >
             ATRIUM
@@ -73,13 +72,13 @@ const SearchAppBar: React.FC<Props> = ({ onClose }) => {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Styled.Search> */}
-          <Box sx={{ width: '900px'}}>
+          <Box sx={{ width: '900px' }}>
             <AdornmentInput
               label={`Search the grid...`}
               adornment={<SearchIcon />}
               sx={{
                 background: muiTheme.palette.background.primary.p4,
-                border: muiTheme.palette.border.dim
+                border: muiTheme.palette.border.dim,
               }}
             />
           </Box>
