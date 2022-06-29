@@ -6,6 +6,8 @@ import './reset.css'
 import SearchAppBar from './SearchAppBar'
 import SideBar from './SideBar'
 import * as Container from './styled'
+import Box from '@mui/material/Box'
+// import Box from '@mui/material/Box'
 interface Props {
   onClose: () => void
 }
@@ -13,13 +15,13 @@ interface Props {
 const ProfilePage: React.FC<Props> = ({onClose}) => {
   return (
     <Container.Root>
-      <>
+      <div>
         <SearchAppBar onClose={onClose}/>
+      </div>
+      <Box>
         <SideBar />
-      </>
-      <Container.Page>
         <Outlet />
-      </Container.Page>
+      </Box>
     </Container.Root>
   )
 }

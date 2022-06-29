@@ -15,11 +15,11 @@ import MenuIconList from './MenuIconList'
 import { StatusBar } from './StatusBar'
 // import * as Styled from './styled'
 
-// interface Props {
-//   onClose: () => void
-// }
+interface Props {
+  onClose: () => void
+}
 
-const SearchAppBar: React.FC = () => {
+const SearchAppBar: React.FC<Props> = ({ onClose }) => {
   return (
     <Box
       sx={{

@@ -4,7 +4,7 @@ import { palette } from '../../MuiTheme'
 
 export const Root = styled.section`
   // background-color: ${palette.background.default};
-  background-color: #0e1013 !important;
+  background-color: #0e1013;
   height: 1786px;
   width: 100%;
 `
@@ -27,5 +27,7 @@ export const Page = styled.main`
   padding-top: 128px;
   width: 100%;
   max-width: 1500px;
+  // margin-left: 80px;
+  padding-left: 80px;
   margin: 32px auto;
 `
