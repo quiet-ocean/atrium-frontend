@@ -3,8 +3,10 @@ import Phaser from 'phaser'
 // import { debugDraw } from '../utils/debug'
 import { createCharacterAnims } from '../anims/CharacterAnims'
 import '../characters/MyPlayer'
+// eslint-disable-next-line import/no-duplicates
 import '../characters/OtherPlayer'
 import type MyPlayer from '../characters/MyPlayer'
+// eslint-disable-next-line import/no-duplicates
 import OtherPlayer from '../characters/OtherPlayer'
 import PlayerSelector from '../characters/PlayerSelector'
 import Chair from '../items/Chair'
