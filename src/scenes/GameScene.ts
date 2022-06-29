@@ -2,6 +2,8 @@ import Phaser from 'phaser'
 
 // import { debugDraw } from '../utils/debug'
 import { createCharacterAnims } from '../anims/CharacterAnims'
+import '../characters/MyPlayer'
+import '../characters/OtherPlayer'
 import type MyPlayer from '../characters/MyPlayer'
 import OtherPlayer from '../characters/OtherPlayer'
 import PlayerSelector from '../characters/PlayerSelector'
