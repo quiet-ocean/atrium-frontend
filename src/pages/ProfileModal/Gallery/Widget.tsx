@@ -8,7 +8,7 @@ import React from 'react'
 import { palette } from '../../../MuiTheme'
 import * as Styled from '../SearchAppBar/styled'
 
-const Wedget = () => (
+const Widget = () => (
   <>
     <Text
       variant="h6"
@@ -102,4 +102,4 @@ const Wedget = () => (
   </>
 )
 
-export default Wedget
+export default Widget

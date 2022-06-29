@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles'
 import { palette } from '../../../MuiTheme'
 
 export const Root = styled(Box)(() => ({
-  backgroundColor: palette.wedget.background,
+  backgroundColor: palette.widget.background,
   border: `2px solid ${palette.border.dark}`,
   display: 'flex',
   height: 450,

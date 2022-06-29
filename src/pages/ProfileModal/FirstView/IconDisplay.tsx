@@ -11,7 +11,7 @@ const IconDisplay = () => {
   return (
     <Box
       sx={{
-        backgroundColor: palette.wedget.background,
+        backgroundColor: palette.widget.background,
         display: 'flex',
         gap: '20px',
         height: 60,
