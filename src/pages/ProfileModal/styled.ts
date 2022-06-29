@@ -27,5 +27,5 @@ export const Page = styled.main`
   padding-top: 128px;
   width: 100%;
   max-width: 1500px;
-  margin: 0 auto;
+  margin: 32px auto;
 `

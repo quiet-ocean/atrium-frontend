@@ -7,6 +7,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import muiTheme from '../../../MuiTheme'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
+import styled from '@mui/material/styles/styled'
 
 const AccountMenuItem = () => {
   return (
@@ -27,6 +28,13 @@ const AccountMenuItem = () => {
     </Box>
   )
 }
+const MySelect = styled(Select)(() => ({
+  borderRadius: '0px',
+  '& .MuiSelect-select': {
+    padding: '12px',
+  }
+
+})) 
 export default function AccountSelect() {
   const [age, setAge] = React.useState('');
 
@@ -42,12 +50,11 @@ export default function AccountSelect() {
         border: muiTheme.palette.border.dim, }}
         
       >
-        <Select
+        <MySelect
           value={age}
           onChange={handleChange}
           displayEmpty
           inputProps={{ 'aria-label': 'Without label' }}
-          sx={{ borderRadius: '0px' }}
         >
           {/* <MenuItem value="">
             <em>None</em>
@@ -60,7 +67,7 @@ export default function AccountSelect() {
           </MenuItem>
           <MenuItem value={20}><AccountMenuItem /></MenuItem>
           <MenuItem value={30}><AccountMenuItem /></MenuItem>
-        </Select>
+        </MySelect>
       </FormControl>
     </Box>
   );
