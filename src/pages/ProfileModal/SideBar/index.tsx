@@ -4,10 +4,11 @@ import AddToPhotosIcon from '@mui/icons-material/AddToPhotos'
 import AdUnitsIcon from '@mui/icons-material/AdUnits'
 import AppsIcon from '@mui/icons-material/Apps'
 import AssignmentReturnedIcon from '@mui/icons-material/AssignmentReturned'
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord'
+// import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord'
 import { Box } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import muiTheme from '../../../MuiTheme'
 
@@ -32,15 +33,18 @@ const SideBar: React.FC = () => {
         xIndex: muiTheme.zIndex.drawer,
       }}
     >
-      <IconButton
-        size="large"
-        aria-label="account of current user"
-        aria-controls="primary-search-account-menu"
-        aria-haspopup="true"
-        sx={{ color: muiTheme.palette.icon.dark }}
-      >
-        <FiberSmartRecordIcon />
-      </IconButton>
+      <Link to="account">
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          sx={{ color: muiTheme.palette.icon.dark }}
+        >
+          <AccountCircle />
+        </IconButton>
+      </Link>
+
       <IconButton
         size="large"
         aria-label="account of current user"
