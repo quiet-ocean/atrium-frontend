@@ -1,6 +1,7 @@
 import { Box, Stack, Typography } from '@mui/material'
 
 import { SubTitle, Tag } from '../ProfileEdit/styled'
+
 import { ArticleBox, CButton, UploadButton } from './styled'
 
 export const ArticleBuilder = () => {
@@ -11,26 +12,30 @@ export const ArticleBuilder = () => {
         <Tag sx={{ padding: '6px' }}>Add Tag</Tag>
         <Tag sx={{ padding: '6px' }}>Add Tag</Tag>
       </Stack>
-      <ArticleBox style={{ padding: '24px 0px' }} >
+      <ArticleBox style={{ padding: '24px 0px' }}>
         <Typography
           sx={{
+            color: '#80868B',
             fontFamily: 'Fractul',
             fontSize: '36px',
             fontWeight: 600,
-            color: '#80868B',
             textAlign: 'center',
           }}
         >
           Start Creating your Content
         </Typography>
       </ArticleBox>
-      <Stack direction="row" spacing={2} style={{ padding: '24px 0px' }} >
+      <Stack direction="row" spacing={2} style={{ padding: '24px 0px' }}>
         <CButton>Section</CButton>
         <CButton>Text</CButton>
         <CButton>Image</CButton>
         <CButton>Link</CButton>
       </Stack>
-      <Stack direction="row" justifyContent="center" style={{ padding: '24px 0px' }}>
+      <Stack
+        direction="row"
+        justifyContent="center"
+        style={{ padding: '24px 0px' }}
+      >
         <UploadButton>upload</UploadButton>
       </Stack>
     </Box>

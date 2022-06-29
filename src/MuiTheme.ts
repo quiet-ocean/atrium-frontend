@@ -11,6 +11,9 @@ const muiTheme: AtriumTheme = createAtruimTheme({
       dark: '#1D1F23',
       gray: '#80868B',
     },
+    color: {
+      gray: '#80868B',
+    },
     icon: {
       dark: '#898F94',
     },
@@ -22,14 +25,11 @@ const muiTheme: AtriumTheme = createAtruimTheme({
       main: '#42eacb',
     },
     text: {
-      primary: '#fff',
       gray: '#80868B',
+      primary: '#fff',
     },
     wedget: {
       background: '#121212',
-    },
-    color: {
-      gray: '#80868B'
     },
   },
   spacing: 8,

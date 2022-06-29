@@ -1,22 +1,23 @@
 import { Button } from '@mui/material'
-import React, { useState, useEffect } from 'react'
-import { To, useNavigate } from 'react-router-dom'
 import { unwrapResult } from '@reduxjs/toolkit'
+import React, { useState, useEffect } from 'react'
+import type { To } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 // import { Link } from 'react-router-dom';
 import { Stepper, LoginLayout } from '../components'
 import { useAppSelector, useAppDispatch } from '../hooks'
-import { setWalletConnected } from '../stores/UserStore'
-import { Wallet } from '../types/Wallet'
 import {
-  setAccessToken,
+  // setAccessToken,
   login,
   setUser,
   requestUser,
 } from '../stores/AuthStore'
+import { setWalletConnected } from '../stores/UserStore'
+import { Wallet } from '../types/Wallet'
+import type { CWindow } from '../types/Window'
 import { loginNear, logoutNear } from '../utils/nearAPI'
 import { loginSender } from '../utils/senderAPI'
-import type { CWindow } from '../types/Window'
 // import { useAppDispatch, useAppSelector } from '../../hooks';
 // import { Buffer } from 'buffer';
 // globalThis.Buffer = Buffer;

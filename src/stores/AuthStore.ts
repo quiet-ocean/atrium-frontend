@@ -1,9 +1,13 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { RootState } from '.'
+
 import * as authApi from '../services/authApi'
+
 import { setLoggedIn, setPlayerAvatar, setPlayerName } from './UserStore'
+
+// import { RootState } from '.'
 
 export const login = createAsyncThunk(
   '/auth/login',
@@ -49,26 +53,6 @@ export const signup = createAsyncThunk(
 )
 
 export const authSlice = createSlice({
-  name: 'auth',
-  initialState: {
-    accessToken: '',
-    user: {},
-  },
-  reducers: {
-    setAccessToken: (state, action: PayloadAction<string>) => {
-      console.log(action.payload)
-      state.accessToken = action.payload
-    },
-    clearToken: (state) => {
-      state.accessToken = ''
-    },
-    setUser: (state, action: PayloadAction<any>) => {
-      console.log(action.payload)
-      console.log(state.user)
-      let oldUser = state.user
-      state.user = { ...oldUser, ...action.payload }
-    },
-  },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
       state.accessToken = action.payload.accessToken
@@ -82,11 +66,31 @@ export const authSlice = createSlice({
       state.accessToken = action.payload.accessToken
     })
   },
+  initialState: {
+    accessToken: '',
+    user: {},
+  },
+  name: 'auth',
+  reducers: {
+    clearToken: (state) => {
+      state.accessToken = ''
+    },
+    setAccessToken: (state, action: PayloadAction<string>) => {
+      console.log(action.payload)
+      state.accessToken = action.payload
+    },
+    setUser: (state, action: PayloadAction<any>) => {
+      console.log(action.payload)
+      console.log(state.user)
+      let oldUser = state.user
+      state.user = { ...oldUser, ...action.payload }
+    },
+  },
 })
 
 export const { setAccessToken, clearToken, setUser } = authSlice.actions
 
 export default persistReducer(
-  { storage, key: 'auth', whitelist: ['accessToken'] },
+  { key: 'auth', storage, whitelist: ['accessToken'] },
   authSlice.reducer
 )

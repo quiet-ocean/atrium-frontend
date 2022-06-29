@@ -8,8 +8,8 @@ import { TextInput } from '../ProfileEdit/TextInput'
 
 const CTextField = styled(TextField)(() => ({
   '& .MuiInputBase-root': {
-    borderRadius: '0px'
-  }
+    borderRadius: '0px',
+  },
 }))
 export const FeedbackForm = () => {
   return (
