@@ -13,7 +13,7 @@ import * as Container from '../styled'
 const Dashboard: React.FC = () => {
   return (
     <>
-      <Box sx={{ gridArea: 'main', height: '483px', paddingTop: '160px' }}>
+      <Box sx={{ gridArea: 'main', height: '483px', marginTop: '160px' }}>
         {/* <img src={mainImg} width="1500" height="483" /> */}
         <FirstView />
       </Box>
@@ -46,7 +46,7 @@ const Dashboard: React.FC = () => {
             display: 'flex',
             gridArea: 'flex',
             height: '770px',
-            marginTop: '-28px',
+            // marginTop: '-28px',
             width: '1500px',
           }}
         >
