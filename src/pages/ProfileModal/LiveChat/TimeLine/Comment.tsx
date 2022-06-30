@@ -3,8 +3,8 @@ import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import * as React from 'react'
-import muiTheme from '../../../../MuiTheme'
 
+// import muiTheme from '../../../../MuiTheme'
 import AvatarIcon from '../images/AvatarIcon.png'
 
 interface Props {
@@ -22,31 +22,35 @@ const Comment: React.FC<Props> = ({ comment }) => {
           width: '60px',
         }}
       >
-        <Avatar src={AvatarIcon} sx={{ width: '47px', height: '47px' }} />
+        <Avatar src={AvatarIcon} sx={{ height: '47px', width: '47px' }} />
       </Box>
       <Card
         sx={{
           backgroundColor: '#FFE721',
+
+          borderRadius: '0px',
           // backgroundColor: muiTheme.palette.background.primary.yellow,
           // maxHeight: 100,
           maxWidth: 380,
           minHeight: 100,
           minWidth: 380,
           padding: '12px',
-          borderRadius: '0px',
         }}
       >
-        <Text sx={{
-          fontFamily: 'Andale Mono Regular',
-          fontStyle: 'normal',
-          fontWeight: 400,
-          fontSize: '16px',
-          lineHeight: '16px',
-          display: 'flex',
-          alignItems: 'center',
-          letterSpacing: '-0.05em',
-          // color: #0E1013,
-        }} color="text.secondary">
+        <Text
+          sx={{
+            alignItems: 'center',
+            display: 'flex',
+            fontFamily: 'Andale Mono Regular',
+            fontSize: '16px',
+            fontStyle: 'normal',
+            fontWeight: 400,
+            letterSpacing: '-0.05em',
+            lineHeight: '16px',
+            // color: #0E1013,
+          }}
+          color="text.secondary"
+        >
           {comment}
         </Text>
       </Card>

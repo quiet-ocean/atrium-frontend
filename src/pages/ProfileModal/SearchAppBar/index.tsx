@@ -13,13 +13,8 @@ import { AdornmentInput } from '../AdornmentInput'
 
 import MenuIconList from './MenuIconList'
 import { StatusBar } from './StatusBar'
-// import * as Styled from './styled'
 
-interface Props {
-  onClose: () => void
-}
-
-const SearchAppBar: React.FC<Props> = ({ onClose }) => {
+const SearchAppBar: React.FC = () => {
   return (
     <Box
       sx={{

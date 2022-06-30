@@ -14,9 +14,9 @@ import bg from '../images/Frame 138.png'
 import profileImage from '../images/Rectangle 121.png'
 import cardImage from '../images/Rectangle 138.png'
 import icon3 from '../images/Vector.png'
+import * as GContainer from '../styled'
 
 import { Text, Heading, SubHead, HeadButton, Container, Card } from './styled'
-import * as GContainer from '../styled'
 
 const Comment = ({ text }: { text: string }) => {
   return (

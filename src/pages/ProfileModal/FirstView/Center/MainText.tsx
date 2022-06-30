@@ -1,8 +1,9 @@
+import VerifiedIcon from '@mui/icons-material/Verified'
+import Box from '@mui/material/Box'
 import Text from '@mui/material/Typography'
 import React from 'react'
-import VerifiedIcon from '@mui/icons-material/Verified';
-import Box from '@mui/material/Box'
-import muiTheme from '../../../../MuiTheme';
+
+import muiTheme from '../../../../MuiTheme'
 
 interface Props {
   text: string
@@ -16,16 +17,18 @@ const MainText: React.FC<Props> = ({ text }) => {
         variant="h2"
         sx={{
           color: muiTheme.palette.text.primary,
-          fontWeight: 800,
-          fontStyle: 'normal',
           fontFamily: 'Fractul',
-          fontSize: '40px'
+          fontSize: '40px',
+          fontStyle: 'normal',
+          fontWeight: 800,
         }}
       >
         {text}
       </Text>
       <Box sx={{ padding: '4px' }}>
-        <VerifiedIcon sx={{ fontSize: '40px', color: muiTheme.palette.background?.yellow }} />
+        <VerifiedIcon
+          sx={{ color: muiTheme.palette.background?.yellow, fontSize: '40px' }}
+        />
       </Box>
     </Box>
   )

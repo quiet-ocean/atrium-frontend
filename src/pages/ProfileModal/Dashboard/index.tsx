@@ -1,14 +1,13 @@
 import { Box } from '@mui/material'
 
 import Carousel from '../Carousel'
+import FirstView from '../FirstView'
 import Gallery from '../Gallery'
 // import mainImg from '../images/main.png'
 import LiveChat from '../LiveChat/index'
 import MemberRoaldmapWhitepaper from '../MemberRoaldmapWhitepaper'
-import Tweets from '../Tweets'
-import FirstView from '../FirstView'
-
 import * as Container from '../styled'
+import Tweets from '../Tweets'
 
 const Dashboard: React.FC = () => {
   return (

@@ -41,11 +41,12 @@ const muiTheme: AtriumTheme = createAtruimTheme({
       main: '#42eacb',
     },
     text: {
-      //dark
-      secondary: '#0E1013',
+      disabled: '#80868B',
+
       // gray: '#80868B',
       primary: '#F8F9FA',
-      disabled: '#80868B',
+      //dark
+      secondary: '#0E1013',
       // primary: '#FFF',
     },
     widget: {

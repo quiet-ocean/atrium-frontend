@@ -12,14 +12,14 @@ const SubText: React.FC<Props> = ({ text }) => {
     <Text
       variant="h6"
       sx={{
+        color: palette.text.disabled,
         fontFamily: 'Andale Mono Regular',
+        fontSize: '20px',
         fontStyle: 'normal',
         fontWeight: 400,
-        fontSize: '20px',
+        letterSpacing: '-0.05em',
         lineHeight: '22px',
         textAlign: 'center',
-        letterSpacing: '-0.05em',
-        color: palette.text.disabled,
       }}
     >
       {text}

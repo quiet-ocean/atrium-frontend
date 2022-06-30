@@ -34,12 +34,12 @@ const SNSButton: React.FC<Props> = ({ icon, children }) => (
     sx={{
       borderColor: palette.border.dark,
       color: palette.text.primary,
-      textTransform: 'capitalize',
       fontFamily: 'Fractul',
-      fontStyle: 'normal',
       fontSize: '16px',
-      lineHeight: '19px',
+      fontStyle: 'normal',
       fontWeight: '800',
+      lineHeight: '19px',
+      textTransform: 'capitalize',
     }}
     startIcon={icon}
   >

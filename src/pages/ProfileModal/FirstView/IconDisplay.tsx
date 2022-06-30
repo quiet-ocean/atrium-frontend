@@ -2,6 +2,7 @@ import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Text from '@mui/material/Typography'
 import React from 'react'
+
 import muiTheme from '../../../MuiTheme'
 
 // import { palette } from '../../../MuiTheme'
@@ -13,31 +14,39 @@ type Props = {
   value: string
 }
 const DisplayPaper: React.FC<Props> = (props: Props) => {
-
   return (
-    <Paper variant="outlined" sx={{
-      padding: '5px 20px',
+    <Paper
+      variant="outlined"
+      sx={{
+        padding: '5px 20px',
       }}
     >
-      <Text variant="caption" sx={{
-        fontFamily: 'Inter',
-        fontStyle: 'normal',
-        fontWeight: '400',
-        fontSize: '12px',
-        lingHeight: '15px',
-        color: muiTheme.palette.text.primary,
+      <Text
+        variant="caption"
+        sx={{
+          color: muiTheme.palette.text.primary,
+          fontFamily: 'Inter',
+          fontSize: '12px',
+          fontStyle: 'normal',
+          fontWeight: '400',
+          lingHeight: '15px',
         }}
-      >{props.caption}</Text>
-      <Text sx={{
-        fontFamliy: 'Fractul',
-        fontStyle: 'normal',
-        fontWeight: 800,
-        fontSize: '18px',
-        lineHeight: '22px',
-        color: muiTheme.palette.text.primary,
-        textAlign: 'center',
+      >
+        {props.caption}
+      </Text>
+      <Text
+        sx={{
+          color: muiTheme.palette.text.primary,
+          fontFamliy: 'Fractul',
+          fontSize: '18px',
+          fontStyle: 'normal',
+          fontWeight: 800,
+          lineHeight: '22px',
+          textAlign: 'center',
         }}
-      >{props.value}</Text>
+      >
+        {props.value}
+      </Text>
     </Paper>
   )
 }
@@ -51,13 +60,13 @@ const IconDisplay = () => {
         // height: 60,
         height: 116,
         justifyContent: 'center',
-        width: '100%',
         padding: '24px',
+        width: '100%',
       }}
     >
       <DisplayPaper caption={`Supply`} value={`5000`} />
       <DisplayPaper caption={`Listed`} value={`313`} />
-      
+
       {/* <Paper variant="outlined" sx={{ padding: '5px 20px' }}>
         <Text variant="caption">Listed</Text>
         <Text sx={{ fontWeight: 'bold' }}>313</Text>
