@@ -14,6 +14,7 @@ const Whitepaper = () => {
         height: 210,
         justifyContent: 'flex-end',
         width: 210,
+        padding: '12px',
       }}
     >
       <Text

@@ -4,14 +4,15 @@ import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Text from '@mui/material/Typography'
 import React from 'react'
+import { FractulText } from '../../../components/Styled'
 
 import muiTheme from '../../../MuiTheme'
 
 const Heading: React.FC = () => (
   <>
-    <Text variant="h5" textAlign="center" color="#fff">
+    <FractulText variant="h5" textAlign="center" color="#fff" >
       Live Chat
-    </Text>
+    </FractulText>
     <Box sx={{ ailgnItem: 'center', display: 'flex' }}>
       <IconButton size="large" sx={{ color: muiTheme.palette.icon.dark }}>
         <PushPinIcon sx={{ transform: 'rotate(0.1turn)' }} />
