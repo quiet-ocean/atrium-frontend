@@ -11,7 +11,16 @@ const SubText: React.FC<Props> = ({ text }) => {
   return (
     <Text
       variant="h6"
-      sx={{ color: palette.text.secondary, letterSpacing: '3px' }}
+      sx={{
+        fontFamily: 'Andale Mono Regular',
+        fontStyle: 'normal',
+        fontWeight: 400,
+        fontSize: '20px',
+        lineHeight: '22px',
+        textAlign: 'center',
+        letterSpacing: '-0.05em',
+        color: palette.text.disabled,
+      }}
     >
       {text}
     </Text>

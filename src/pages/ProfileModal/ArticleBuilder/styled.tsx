@@ -13,7 +13,7 @@ export const CButton = styled(Button)(({ theme }) => ({
   background: 'transparent',
   border: '1px solid ' + theme.palette.border.gray,
   borderRadius: '0px',
-  color: theme.palette.text.gray,
+  color: theme.palette.text.disabled,
   fontFamily: 'Fractul',
   fontSize: '30px',
   fontWeight: 600,

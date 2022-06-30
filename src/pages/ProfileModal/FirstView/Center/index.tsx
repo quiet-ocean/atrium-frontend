@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box'
 import React from 'react'
 
-import EditButton from './EditButton'
+// import EditButton from './EditButton'
 import MainText from './MainText'
 import SubText from './SubText'
 
@@ -23,14 +23,14 @@ const Center = () => {
         <MainText text={mainText} />
         <SubText text={subText} />
       </Box>
-      <Box
+      {/* <Box
         sx={{
           left: '300px',
           position: 'relative',
         }}
       >
         <EditButton />
-      </Box>
+      </Box> */}
     </Box>
   )
 }

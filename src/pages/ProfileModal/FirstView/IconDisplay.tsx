@@ -25,7 +25,7 @@ const DisplayPaper: React.FC<Props> = (props: Props) => {
         fontWeight: '400',
         fontSize: '12px',
         lingHeight: '15px',
-        color: muiTheme.palette.text.light,
+        color: muiTheme.palette.text.primary,
         }}
       >{props.caption}</Text>
       <Text sx={{
@@ -34,7 +34,8 @@ const DisplayPaper: React.FC<Props> = (props: Props) => {
         fontWeight: 800,
         fontSize: '18px',
         lineHeight: '22px',
-        color: muiTheme.palette.text.light,
+        color: muiTheme.palette.text.primary,
+        textAlign: 'center',
         }}
       >{props.value}</Text>
     </Paper>
@@ -55,22 +56,25 @@ const IconDisplay = () => {
       }}
     >
       <DisplayPaper caption={`Supply`} value={`5000`} />
-
-      <Paper variant="outlined" sx={{ padding: '5px 20px' }}>
+      <DisplayPaper caption={`Listed`} value={`313`} />
+      
+      {/* <Paper variant="outlined" sx={{ padding: '5px 20px' }}>
         <Text variant="caption">Listed</Text>
         <Text sx={{ fontWeight: 'bold' }}>313</Text>
-      </Paper>
+      </Paper> */}
       <Box sx={{ bottom: '70px', position: 'relative' }}>
         <img src={AvaterImg} width="160" height="160" />
       </Box>
-      <Paper variant="outlined" sx={{ padding: '5px 20px' }}>
+      <DisplayPaper caption={`Floor Price`} value={`20 Ⓝ`} />
+      <DisplayPaper caption={`Vol. All Time`} value={`93,420 Ⓝ`} />
+      {/* <Paper variant="outlined" sx={{ padding: '5px 20px' }}>
         <Text variant="caption">Floor Price</Text>
         <Text sx={{ fontWeight: 'bold' }}>20</Text>
       </Paper>
       <Paper variant="outlined" sx={{ padding: '5px 20px' }}>
         <Text variant="caption">Vol. All Time</Text>
         <Text sx={{ fontWeight: '900' }}>93,420</Text>
-      </Paper>
+      </Paper> */}
     </Box>
   )
 }

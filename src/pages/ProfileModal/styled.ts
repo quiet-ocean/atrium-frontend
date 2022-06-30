@@ -23,8 +23,8 @@ export const Page = styled.main`
     'flex flex flex flex flex flex';
 
   height: 100%;
-  // padding-top: 64px;
-  padding-top: 128px;
+  padding-top: 64px;
+  // padding-top: 128px;
   width: 100%;
   max-width: 1500px;
   // margin-left: 80px;

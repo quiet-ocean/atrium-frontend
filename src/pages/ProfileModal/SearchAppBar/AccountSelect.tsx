@@ -15,7 +15,7 @@ const AccountMenuItem = () => {
       <img src={`/images/Ellipse 11.png`} alt="" />
       <Typography
         sx={{
-          color: muiTheme.palette.text.light,
+          color: muiTheme.palette.text.primary,
           fontFamily: 'Fractul',
           fontSize: '14px',
           fontStyle: 'normal',

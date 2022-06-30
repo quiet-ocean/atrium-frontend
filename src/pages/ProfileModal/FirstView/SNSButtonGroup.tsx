@@ -31,7 +31,16 @@ interface Props {
 const SNSButton: React.FC<Props> = ({ icon, children }) => (
   <Button
     variant="outlined"
-    sx={{ borderColor: palette.border.dark, color: '#fff' }}
+    sx={{
+      borderColor: palette.border.dark,
+      color: palette.text.primary,
+      textTransform: 'capitalize',
+      fontFamily: 'Fractul',
+      fontStyle: 'normal',
+      fontSize: '16px',
+      lineHeight: '19px',
+      fontWeight: '800',
+    }}
     startIcon={icon}
   >
     {children}
