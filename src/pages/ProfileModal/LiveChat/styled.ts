@@ -5,11 +5,13 @@ export const Root = styled(Paper)(() => ({
   display: 'flex',
   flexDirection: 'column',
   height: '100%',
-  paddingBottom: 0,
-  paddingLeft: '20px',
-  paddingRight: '10px',
-  paddingTop: '25px',
+  padding: '24px 24px 12px 24px',
+  // paddingBottom: 0,
+  // paddingLeft: '20px',
+  // paddingRight: '10px',
+  // paddingTop: '25px',
   width: '100%',
+  borderRadius: '0px',
 }))
 
 export const Heading = styled('div')(() => ({
@@ -22,7 +24,7 @@ export const Heading = styled('div')(() => ({
 
 export const Timeline = styled('div')(() => ({
   height: '240px',
-  overflow: 'scroll',
+  overflowY: 'scroll',
   width: '100%',
 }))
 
@@ -31,4 +33,5 @@ export const SendMessage = styled('div')(() => ({
   flexDirection: 'column',
   height: '60px',
   justifyContent: 'flex-end',
+  marginTop: '12px',
 }))

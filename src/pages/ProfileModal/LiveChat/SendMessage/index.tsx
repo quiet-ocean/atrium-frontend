@@ -1,7 +1,7 @@
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined'
 import SendIcon from '@mui/icons-material/Send'
 import SentimentSatisfiedOutlinedIcon from '@mui/icons-material/SentimentSatisfiedOutlined'
-import { FormControl, Input, InputAdornment } from '@mui/material'
+import { FormControl, OutlinedInput, InputAdornment } from '@mui/material'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import React from 'react'
@@ -12,8 +12,8 @@ import IconBox from './IconBox'
 
 const SendMessage: React.FC = () => {
   return (
-    <Box sx={{ display: 'flex' }}>
-      <Box
+    <Box sx={{ display: 'flex', width: '100%' }}>
+      {/* <Box
         sx={{
           alignItems: 'center',
           display: 'flex',
@@ -34,14 +34,14 @@ const SendMessage: React.FC = () => {
             <ImageOutlinedIcon />
           </IconButton>
         </IconBox>
-      </Box>
+      </Box> */}
       <FormControl
         fullWidth
-        sx={{ m: 1, paddingLeft: '50px' }}
+        sx={{ m: 1, mt: 3 }}
         variant="standard"
       >
-        <Input
-          sx={{ paddingRight: '20px' }}
+        <OutlinedInput
+          sx={{ paddingRight: '20px', width: '100%', borderRadius: '0px' }}
           placeholder="Type Here..."
           endAdornment={
             <InputAdornment position="end">
