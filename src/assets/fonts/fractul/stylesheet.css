@@ -1,4 +1,10 @@
 @font-face {
+    font-family: 'Fractul Alt';
+    src: url('FontsFree-Net-Fractul4.ttf');
+    src: local('FontsFree-Net-Fractul4'),
+    url('FontsFree-Net-Fractul4.ttf') format('truetype');
+}
+@font-face {
     font-family: 'Fractul Hairline';
     src: url('Fractul-HairlineItalic.eot');
     src: local('Fractul Hairline Italic'), local('Fractul-HairlineItalic'),

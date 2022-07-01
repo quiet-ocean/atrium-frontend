@@ -20,7 +20,7 @@ const Members: React.FC<Props> = () => {
         Members
       </Text>
       {/* eslint-disable-next-line prettier/prettier */}
-      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', height: 170, minHeight: 170, overflowX: 'scroll', width: 425 }}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', height: 170, minHeight: 170, overflowX: 'scroll', width: 425, paddingLeft: '20px' }}>
         <Card />
         <Card />
         <Card />
