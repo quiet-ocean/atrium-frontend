@@ -1,5 +1,7 @@
 import { FormControl, InputLabel } from '@mui/material'
 
+import muiTheme from '../../../MuiTheme'
+
 import { BootstrapInput } from './styled'
 
 export const TextInput: React.FC<{ label }> = ({
@@ -9,7 +11,11 @@ export const TextInput: React.FC<{ label }> = ({
 }) => {
   return (
     <FormControl variant="standard" sx={{ width: '100%' }}>
-      <InputLabel shrink htmlFor="bootstrap-input" sx={{ fontSize: '18px' }}>
+      <InputLabel
+        shrink
+        htmlFor="bootstrap-input"
+        sx={{ color: muiTheme.palette.text.primary, fontSize: '18px' }}
+      >
         {label}
       </InputLabel>
       <BootstrapInput

@@ -1,9 +1,9 @@
 import { Box, Typography, Button, InputBase, Tab } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-export const CTab = styled(Tab)(() => ({
+export const CTab = styled(Tab)(({ theme }) => ({
   alignItems: 'flex-start',
-
+  color: theme.palette.text.primary,
   fontSize: '24px',
 
   fontWeight: '400',

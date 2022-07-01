@@ -1,7 +1,8 @@
 import Box from '@mui/material/Box'
-import Text from '@mui/material/Typography'
+// import Text from '@mui/material/Typography'
 import React from 'react'
 
+import { FractulAltText } from '../../../components/Styled'
 import { palette } from '../../../MuiTheme'
 
 const Whitepaper = () => {
@@ -13,10 +14,11 @@ const Whitepaper = () => {
         flexDirection: 'column',
         height: 210,
         justifyContent: 'flex-end',
+        padding: '12px',
         width: 210,
       }}
     >
-      <Text
+      <FractulAltText
         variant="h5"
         sx={{
           color: 'white',
@@ -24,7 +26,7 @@ const Whitepaper = () => {
         }}
       >
         Whitepaper
-      </Text>
+      </FractulAltText>
     </Box>
   )
 }

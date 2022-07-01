@@ -20,5 +20,11 @@
     "jsx": "react-jsx"
   },
   "include": ["./src"],
-  "exclude": ["./dist", "./node_modules", "/jest", "/mocks", "mockServiceWorker.js"]
+  "exclude": [
+    "./dist",
+    "./node_modules",
+    "/jest",
+    "/mocks",
+    "mockServiceWorker.js"
+  ]
 }

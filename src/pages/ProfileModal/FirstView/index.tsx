@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import React from 'react'
 
 import BGText from './BGText'
@@ -8,8 +9,10 @@ import SNSButtonGroup from './SNSButtonGroup'
 const FirstView = () => {
   return (
     <>
-      <BGText />
-      <IconDisplay />
+      <Box sx={{ background: 'black' }}>
+        <BGText />
+        <IconDisplay />
+      </Box>
       <Center />
       <SNSButtonGroup />
     </>
