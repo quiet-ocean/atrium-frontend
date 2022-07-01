@@ -20,7 +20,8 @@ export const FeedbackForm = () => {
         <Box>
           <Heading sx={{ textAlign: 'center' }}>Feedback Form</Heading>
           <Text sx={{ justifyContent: 'center' }}>
-            Submit feedback or bug reports to enter a raffle to win an Atrium NFT!
+            Submit feedback or bug reports to enter a raffle to win an Atrium
+            NFT!
           </Text>
         </Box>
         <Box sx={{ display: 'flex', gap: '16px' }}>
@@ -28,7 +29,9 @@ export const FeedbackForm = () => {
           <MultipleSelectPlaceholder />
         </Box>
         <Box sx={{ padding: '24px 0px' }}>
-          <InputLabel sx={{ color: muiTheme.palette.text.primary }}>Description/Bio</InputLabel>
+          <InputLabel sx={{ color: muiTheme.palette.text.primary }}>
+            Description/Bio
+          </InputLabel>
           <CTextField
             multiline
             rows={5}
@@ -40,6 +43,6 @@ export const FeedbackForm = () => {
           <UploadButton>Submit</UploadButton>
         </Box>
       </Box>
-    </Container.Page>    
+    </Container.Page>
   )
 }
