@@ -7,26 +7,23 @@ assertCast<CreateAtrimTheme>(createAtruimTheme)
 const muiTheme: AtriumTheme = createAtruimTheme({
   palette: {
     background: {
-      black: 'black',
-      default: '#16161A',
-      primary: {
-        p1: '#0E1013',
-        p2: '#1A1A1A', //black90
-        p3: '#131313',
-        p4: '#17181B',
-      },
-      red: '#E90026',
-      yellow: '#FFE721',
+      // black: 'black',
+      default: '#0E1013',
+      paper: '',
     },
     border: {
       dark: '#1D1F23',
-      dim: '#3C4043',
-      gray: '#80868B',
+      light: '#80868B',
+      main: '#3C4043',
     },
-    color: {
-      error: '#FFE721',
-      gray: '#80868B',
+    colors: {
+      red: '#E90026',
+      yellow: '#FFE721',
     },
+    // color: {
+    //   error: '#FFE721',
+    //   gray: '#80868B',
+    // },
     error: {
       500: '#FFE721',
     },
@@ -35,10 +32,16 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     },
     mode: 'dark',
     primary: {
-      main: '#426dea',
+      dark: '#131313',
+
+      light: '#17181B',
+      // main: '#426dea',
+      main: '#1A1A1A',
     },
     secondary: {
-      main: '#42eacb',
+      // main: '#42eacb',
+      main: '#FFE721', //yellow
+      // main: '',
     },
     text: {
       disabled: '#80868B',

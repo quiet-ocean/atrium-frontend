@@ -30,7 +30,7 @@ const Card: React.FC = () => {
         <Box sx={{ display: 'flex', gap: '8px', padding: '2px 10px' }}>
           <Box
             sx={{
-              background: muiTheme.palette.background.yellow,
+              background: muiTheme.palette.colors?.yellow,
               borderRadius: '6px',
               height: '12px',
               margin: '3px 0px',

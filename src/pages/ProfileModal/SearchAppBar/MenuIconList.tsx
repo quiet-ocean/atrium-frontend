@@ -19,7 +19,7 @@ import { palette } from '../../../MuiTheme'
 import AccountSelect from './AccountSelect'
 
 const IconButtonBox = styled(IconButton)(({ theme }) => ({
-  backgroundColor: theme.palette.background.primary.p1,
+  backgroundColor: theme.palette.background.default,
   borderRadius: '0px',
   padding: '12px 14px',
 }))
@@ -147,7 +147,7 @@ const MenuIconList: React.FC = () => {
           size="large"
           aria-label="plus"
           color="inherit"
-          sx={{ background: palette.background.red }}
+          sx={{ background: palette.colors?.red }}
         >
           <Typography
             sx={{ fontSize: '20px', fontWeight: 600, padding: '0px 8px' }}

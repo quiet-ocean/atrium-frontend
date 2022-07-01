@@ -27,7 +27,7 @@ const MainText: React.FC<Props> = ({ text }) => {
       </Text>
       <Box sx={{ padding: '4px' }}>
         <VerifiedIcon
-          sx={{ color: muiTheme.palette.background?.yellow, fontSize: '40px' }}
+          sx={{ color: muiTheme.palette.colors?.yellow, fontSize: '40px' }}
         />
       </Box>
     </Box>

@@ -32,7 +32,7 @@ export const Timeline = styled('div')(() => ({
 export const SendMessage = styled('div')(() => ({
   display: 'flex',
   flexDirection: 'column',
-  height: '60px',
+  // height: '60px',
   justifyContent: 'flex-end',
-  marginTop: '12px',
+  // marginTop: '12px',
 }))

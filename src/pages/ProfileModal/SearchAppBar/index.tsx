@@ -18,7 +18,7 @@ const SearchAppBar: React.FC = () => {
   return (
     <Box
       sx={{
-        background: muiTheme.palette.background.primary.p2,
+        background: muiTheme.palette.primary.main,
         flexGrow: 1,
         left: 0,
         position: 'fixed',
@@ -72,8 +72,8 @@ const SearchAppBar: React.FC = () => {
               label={`Search the grid...`}
               adornment={<SearchIcon />}
               sx={{
-                background: muiTheme.palette.background.primary.p4,
-                border: muiTheme.palette.border.dim,
+                background: muiTheme.palette.primary.light,
+                border: muiTheme.palette.border.main,
               }}
             />
           </Box>

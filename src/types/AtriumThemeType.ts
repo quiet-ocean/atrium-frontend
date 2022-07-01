@@ -43,7 +43,7 @@ export interface Palette extends DefaultPalette {
   warning: PaletteColor
   info: PaletteColor
   success: PaletteColor
-  grey: Color
+  // grey: Color
   text: TypeText
   divider: TypeDivider
   action: TypeAction
@@ -52,6 +52,7 @@ export interface Palette extends DefaultPalette {
   augmentColor: (options: PaletteAugmentColorOptions) => PaletteColor
   border: PaletteColor
   icon: { dark: string }
+  colors: { [key: string]: string }
 }
 
 export interface AtriumTheme extends Theme {

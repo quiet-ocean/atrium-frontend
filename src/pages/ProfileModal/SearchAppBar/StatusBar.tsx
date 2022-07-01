@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 const StatusBarContainer = styled(Box)(({ theme }) => ({
-  background: theme.palette.background.primary.p3,
+  background: theme.palette.primary.dark,
   // backgroundColor: '#17181B',
   display: 'flex',
   flexDirection: 'row',
