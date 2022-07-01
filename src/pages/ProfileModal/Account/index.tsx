@@ -37,7 +37,6 @@ const Account = () => {
         <Box>
           <img src={bg} alt="" width="100%" />
         </Box>
-
       </Box>
       <GContainer.Page>
         <Box sx={{ gridArea: 'main' }}>

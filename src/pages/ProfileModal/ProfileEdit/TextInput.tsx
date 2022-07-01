@@ -14,7 +14,7 @@ export const TextInput: React.FC<{ label }> = ({
       <InputLabel
         shrink
         htmlFor="bootstrap-input"
-        sx={{ fontSize: '18px', color: muiTheme.palette.text.primary }}
+        sx={{ color: muiTheme.palette.text.primary, fontSize: '18px' }}
       >
         {label}
       </InputLabel>

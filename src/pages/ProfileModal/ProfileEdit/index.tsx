@@ -2,12 +2,13 @@ import SearchIcon from '@mui/icons-material/Search'
 import { Box, Tabs } from '@mui/material'
 import React from 'react'
 
+import * as Container from '../styled'
+
 import { AdornmentInput } from './AdornmentInput'
 import { Identity } from './Identity'
 import { Heading, TabPanel, a11yProps, CTab } from './styled'
 import { Tags } from './Tags'
 import { Wallet } from './Wallet'
-import * as Container from '../styled'
 
 const tabItems = [
   'all',
