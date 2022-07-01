@@ -4,8 +4,8 @@ import Box from '@mui/material/Box'
 import Switch from '@mui/material/Switch'
 import Text from '@mui/material/Typography'
 import React from 'react'
-import { DisabledText, FractulAltText } from '../../../components/Styled'
 
+import { DisabledText, FractulAltText } from '../../../components/Styled'
 import { palette } from '../../../MuiTheme'
 // import { AdornmentInput } from '../AdornmentInput'
 import * as Styled from '../SearchAppBar/styled'
@@ -19,12 +19,32 @@ import * as Styled from '../SearchAppBar/styled'
 //     border: '1px solid red'
 //   }
 // }))
-const traits = ['skin', 'head', 'eyes', 'mouth', 'hat'];
+const traits = ['skin', 'head', 'eyes', 'mouth', 'hat']
 
-const TraitItem = ({ trait }: { trait: string })=> {
+const TraitItem = ({ trait }: { trait: string }) => {
   return (
-    <Box sx={{ alignItems: 'center', border: `2px solid ${palette.border.dark}`, display: 'flex', height: 40, justifyContent: 'space-between', marginTop: '10px', width: 220, }}>
-      <FractulAltText variant="h6" sx={{ alignItems: 'center', color: '#fff', display: 'flex', fontWeight: 'bold', fontSize: '16px', padding: '0px 12px' }}>
+    <Box
+      sx={{
+        alignItems: 'center',
+        border: `2px solid ${palette.border.dark}`,
+        display: 'flex',
+        height: 40,
+        justifyContent: 'space-between',
+        marginTop: '10px',
+        width: 220,
+      }}
+    >
+      <FractulAltText
+        variant="h6"
+        sx={{
+          alignItems: 'center',
+          color: '#fff',
+          display: 'flex',
+          fontSize: '16px',
+          fontWeight: 'bold',
+          padding: '0px 12px',
+        }}
+      >
         {trait}
       </FractulAltText>
       <AddIcon fontSize="large" sx={{ color: '#fff' }} />
@@ -54,11 +74,11 @@ const Widget = () => (
         variant="body1"
         sx={{
           alignItems: 'center',
+          color: palette.text.primary,
           display: 'flex',
-          width: 290,
           fontSize: '14px',
           letterSpacing: '-0.1em',
-          color: palette.text.primary,
+          width: 290,
         }}
       >
         Listed Items Only
@@ -69,7 +89,7 @@ const Widget = () => (
       {/* @TODO Need Gellery spefic search input */}
       {/* <Box sx={{ marginLeft: '-30px', width: 270 }}> */}
       <Box sx={{ marginLeft: '-24px', width: 260 }}>
-      {/* <Box sx={{ width: 220 }}> */}
+        {/* <Box sx={{ width: 220 }}> */}
         <Styled.Search>
           <Styled.TextInput
             placeholder="Search By ID #..."
@@ -88,7 +108,6 @@ const Widget = () => (
 
           }}  
         /> */}
-
       </Box>
       {/* eslint-disable-next-line prettier/prettier */}
       { traits.map((trait: string, key: number) => (<TraitItem key={key} trait={trait} />))}

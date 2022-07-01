@@ -37,9 +37,7 @@ const Card: React.FC = () => {
               width: '12px',
             }}
           />
-          <DisabledText sx={{ fontSize: '12px' }}>
-            online
-          </DisabledText>
+          <DisabledText sx={{ fontSize: '12px' }}>online</DisabledText>
         </Box>
       </Box>
     </Box>

@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box'
 import Text from '@mui/material/Typography'
 import React from 'react'
-import { FractulAltText } from '../../../components/Styled'
 
+import { FractulAltText } from '../../../components/Styled'
 import { palette } from '../../../MuiTheme'
 
 const Roadmap = () => {
