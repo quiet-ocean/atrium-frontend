@@ -5,7 +5,8 @@ import { palette } from '../../MuiTheme'
 export const Root = styled.section`
   // background-color: ${palette.background.default};
   background-color: #0e1013;
-  height: 1786px;
+  // height: 1786px;
+  min-height: 1786px;
   width: 100%;
 `
 

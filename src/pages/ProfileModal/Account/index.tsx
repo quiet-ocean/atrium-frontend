@@ -32,26 +32,27 @@ const Comment = ({ text }: { text: string }) => {
 }
 const Account = () => {
   return (
-    <Box>
-      <Box>
+    <Box sx={{ marginTop: '160px' }}>
+      <Box sx={{ paddingLeft: '75px' }}>
         <Box>
           <img src={bg} alt="" width="100%" />
         </Box>
-        <Box>
-          <Box sx={{ p: '32px' }}>
-            <Heading>spotify integrating with atrium</Heading>
-            <Box sx={{ display: 'flex', gap: '12px', padding: '36px 0px' }}>
-              <HeadButton>spotify</HeadButton>
-              <HeadButton>atrium</HeadButton>
-              <HeadButton>trending news</HeadButton>
-              <HeadButton>integrations</HeadButton>
-            </Box>
-          </Box>
-          <Box></Box>
-        </Box>
+
       </Box>
       <GContainer.Page>
         <Box sx={{ gridArea: 'main' }}>
+          <Box>
+            <Box sx={{ p: '32px' }}>
+              <Heading>spotify integrating with atrium</Heading>
+              <Box sx={{ display: 'flex', gap: '12px', padding: '36px 0px' }}>
+                <HeadButton>spotify</HeadButton>
+                <HeadButton>atrium</HeadButton>
+                <HeadButton>trending news</HeadButton>
+                <HeadButton>integrations</HeadButton>
+              </Box>
+            </Box>
+            <Box></Box>
+          </Box>
           <Container>
             <Text>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet quam
