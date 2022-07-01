@@ -1,4 +1,4 @@
-import Text from '@mui/material/Typography'
+// import Text from '@mui/material/Typography'
 import React from 'react'
 
 import { DisabledText, FractulAltText } from '../../../components/Styled'

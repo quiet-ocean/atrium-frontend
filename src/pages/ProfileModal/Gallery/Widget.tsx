@@ -2,7 +2,7 @@ import AddIcon from '@mui/icons-material/Add'
 import SearchIcon from '@mui/icons-material/Search'
 import Box from '@mui/material/Box'
 import Switch from '@mui/material/Switch'
-import Text from '@mui/material/Typography'
+// import Text from '@mui/material/Typography'
 import React from 'react'
 
 import { DisabledText, FractulAltText } from '../../../components/Styled'

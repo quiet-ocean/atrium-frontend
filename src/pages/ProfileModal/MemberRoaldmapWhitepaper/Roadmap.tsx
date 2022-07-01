@@ -1,5 +1,5 @@
 import Box from '@mui/material/Box'
-import Text from '@mui/material/Typography'
+// import Text from '@mui/material/Typography'
 import React from 'react'
 
 import { FractulAltText } from '../../../components/Styled'
