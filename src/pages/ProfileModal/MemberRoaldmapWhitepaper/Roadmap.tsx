@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box'
 import Text from '@mui/material/Typography'
 import React from 'react'
+import { FractulAltText } from '../../../components/Styled'
 
 import { palette } from '../../../MuiTheme'
 
@@ -17,7 +18,7 @@ const Roadmap = () => {
         width: 210,
       }}
     >
-      <Text
+      <FractulAltText
         variant="h5"
         sx={{
           color: 'white',
@@ -25,7 +26,7 @@ const Roadmap = () => {
         }}
       >
         Roadmap
-      </Text>
+      </FractulAltText>
     </Box>
   )
 }
