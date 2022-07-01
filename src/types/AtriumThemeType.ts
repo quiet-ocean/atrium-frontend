@@ -1,4 +1,4 @@
-import type { Color, PaletteMode } from '@mui/material'
+import type { PaletteMode } from '@mui/material'
 import type { PaletteColor, Theme } from '@mui/material/styles'
 import type { Components } from '@mui/material/styles/components'
 import type { Mixins } from '@mui/material/styles/createMixins'
