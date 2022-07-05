@@ -1,12 +1,32 @@
 import { Box, Typography, Button } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import React from 'react'
 
 import { LoginLayout, Stepper } from '../components'
 import { useAppSelector } from '../hooks'
+import phaserGame from '../PhaserGame'
+import Bootstrap from '../scenes/Bootstrap'
+import Game from '../scenes/Game'
 
 const LoginSuccess = () => {
   const user = useAppSelector((state) => state.auth.user)
-  console.log(user)
+  const lobbyJoined = useAppSelector((state) => state.room.lobbyJoined)
+  const roomJoined = useAppSelector((state) => state.room.roomJoined)
+
+  const navigate = useNavigate()
+  const game = phaserGame.scene.keys.game as Game
+  const handleNextBtn = () => {
+    if (!roomJoined && lobbyJoined) {
+      const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
+      bootstrap.network
+        .joinOrCreatePublic()
+        .then(() => {
+          bootstrap.launchGame()
+          navigate('/game')
+        })
+        .catch((error) => console.error(error))
+    }
+  }
 
   return (
     <LoginLayout>
@@ -23,11 +43,13 @@ const LoginSuccess = () => {
         </Typography>
       </Box>
       <Box sx={{ mb: '24px' }}>
-        <Link to="/game">
-          <Button className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
-            NEXT
-          </Button>
-        </Link>
+        <Button
+          className="atrium_btn atrium_btn_primary"
+          sx={{ mt: '56px' }}
+          onClick={handleNextBtn}
+        >
+          NEXT
+        </Button>
       </Box>
       <Box>
         <Stepper length={5} step={5} />

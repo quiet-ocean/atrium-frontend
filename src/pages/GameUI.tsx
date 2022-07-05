@@ -17,8 +17,9 @@ import WhiteboardDialog from '../components/WhiteboardDialog'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
 import type Bootstrap from '../scenes/Bootstrap'
-import type GameScene from '../scenes/GameScene'
+import type Game from '../scenes/Game'
 import { setLoggedIn } from '../stores/UserStore'
+import LoginDialog from '../components/LoginDialog'
 
 const Backdrop = styled.div`
   position: absolute;
@@ -41,7 +42,7 @@ for (let i = avatars.length - 1; i > 0; i--) {
 
 function GameUI() {
   const dispatch = useAppDispatch()
-  const game = phaserGame.scene.keys.game as GameScene
+  const game = phaserGame.scene.keys.game as Game
   console.log(game)
   const loggedIn = useAppSelector((state) => state.user.loggedIn)
   const playerName = useAppSelector((state) => state.user.playerName)
@@ -56,28 +57,10 @@ function GameUI() {
   const settingDialogOpen = useAppSelector(
     (state) => state.setting.settingDialogOpen
   )
-  // const playerAvatar = useAppSelector((state) => state.user.playerAvatar);
+  const isMyPlayerReady = useAppSelector((state) => state.user.isMyPlayerReady)
 
   React.useEffect(() => {
-    console.log('init game')
-    console.log(game)
-    let root = document.getElementById('root')
-
-    if (root) root.style.display = 'none'
-    let container = document.getElementById('phaser-container')
-    if (container) container.style.display = 'block'
-
-    const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
-
-    if (bootstrap) {
-      console.log(bootstrap)
-      bootstrap.network
-        .joinOrCreatePublic()
-        .then(() => bootstrap.launchGame())
-        .catch((error) => console.error(error))
-    }
-
-    if (game) {
+    if (isMyPlayerReady && game) {
       game.registerKeys()
       if (game.myPlayer) {
         console.log('set player name to ', playerName)
@@ -91,7 +74,7 @@ function GameUI() {
         dispatch(setLoggedIn(true))
       }
     }
-  }, [game])
+  }, [isMyPlayerReady])
 
   let ui: JSX.Element
   if (loggedIn) {
@@ -116,22 +99,22 @@ function GameUI() {
   } else if (roomJoined) {
     /* Render LoginDialog if not logged in but selected a room. */
     // ui = <LoginDialog />
+    // if (game) {
+    //   game.registerKeys()
+    //   if (game.myPlayer) {
+    //     console.log('set player name to ', playerName)
+    //     game.myPlayer.setPlayerName(
+    //       playerName ||
+    //         (window as any).accountId ||
+    //         (window as any).near?.accountId
+    //     )
+    //     game.myPlayer.setPlayerTexture(avatars[0].name)
+    //     game.network.readyToConnect()
+    //     dispatch(setLoggedIn(true))
+    //   }
+    // }
     ui = <></>
     // console.log('room joined');
-    if (game) {
-      game.registerKeys()
-      if (game.myPlayer) {
-        console.log('set player name to ', playerName)
-        game.myPlayer.setPlayerName(
-          playerName ||
-            (window as any).accountId ||
-            (window as any).near?.accountId
-        )
-        game.myPlayer.setPlayerTexture(avatars[0].name)
-        game.network.readyToConnect()
-        dispatch(setLoggedIn(true))
-      }
-    }
   } else {
     /* Render RoomSelectionDialog if yet selected a room. */
     ui = <RoomSelectionDialog />

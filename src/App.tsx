@@ -21,33 +21,22 @@ import Dashboard from './pages/ProfileModal/Dashboard'
 import ProfileEdit from './pages/ProfileModal/ProfileEdit'
 import { setWalletConnected } from './stores/UserStore'
 import type { CWindow } from './types/Window'
-
-declare let window: CWindow
+import { getAccount } from './utils'
 
 const App = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    const init = async () => {
-      if (window.walletConnection || window.near.getAccountId()) {
-        if (await window.walletConnection.isSignedIn()) {
-          console.log('wallet logged in by near wallet')
-          dispatch(setWalletConnected(true))
-        } else {
-          // setConnected(false);
-        }
-      } else if (window.near) {
-        console.log(
-          'already logged in by sender wallet',
-          window.near.getAccountId()
-        )
-      }
-    }
-    init()
+    const account = getAccount()
+    dispatch(setWalletConnected(account.accountId !== ''))
   }, [])
 
   return (
-    <Container maxWidth="xl" sx={{ height: '100%', px: '0px' }}>
+    <Container
+      maxWidth="xl"
+      sx={{ height: '100%', px: '0px' }}
+      style={{ position: 'absolute' }}
+    >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ConnectWallet />} />
@@ -67,8 +56,8 @@ const App = () => {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="account" element={<Account />} />
             <Route path="edit" element={<ProfileEdit />} />
-            <Route path='article-builder' element={<ArticleBuilder />} />
-            <Route path='feedback' element={<FeedbackForm />} />
+            <Route path="article-builder" element={<ArticleBuilder />} />
+            <Route path="feedback" element={<FeedbackForm />} />
           </Route>
         </Routes>
       </BrowserRouter>

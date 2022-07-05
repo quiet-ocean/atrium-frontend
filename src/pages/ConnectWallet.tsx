@@ -4,45 +4,41 @@ import { useNavigate } from 'react-router-dom'
 import type { To } from 'react-router-dom'
 import { unwrapResult } from '@reduxjs/toolkit'
 
-// import { Link } from 'react-router-dom';
 import { Stepper, LoginLayout } from '../components'
 import { useAppSelector, useAppDispatch } from '../hooks'
 import { setWalletConnected } from '../stores/UserStore'
 import { Wallet } from '../types/Wallet'
 import { login, setUser, requestUser } from '../stores/AuthStore'
-import { loginNear, logoutNear } from '../utils/nearAPI'
+import { getAccount, loginNear, logoutNear } from '../utils/nearAPI'
 import { loginSender } from '../utils/senderAPI'
-import type { CWindow } from '../types/Window'
-// import { useAppDispatch, useAppSelector } from '../../hooks';
-// import { Buffer } from 'buffer';
-// globalThis.Buffer = Buffer;
-declare let window: CWindow
 
 const ConnectWallet = () => {
   const navigate = useNavigate()
   const [walletType, setWalletType] = useState(Wallet.None)
   const dispatch = useAppDispatch()
-  const connected = useAppSelector((state) => state.user.walletConnected)
+  const walletConnected = useAppSelector((state) => state.user.walletConnected)
 
   useEffect(() => {
-    if (connected) {
-      console.log('wallet connection is ', connected)
-      dispatch(setUser({ accountId: window.accountId }))
+    if (walletConnected) {
+      const account = getAccount()
+      console.log(account)
+      dispatch(setUser({ accountId: account.accountId }))
       fetchLogin('/success', '/set-name')
     }
-  }, [connected])
+  }, [walletConnected])
 
   const fetchLogin = async (loggedUrl: To, unloggedUrl: To) => {
     try {
-      const resultAction = await dispatch(login(window.accountId))
-      const originalPromiseResult = unwrapResult(resultAction)
-      console.log(resultAction)
-      console.log(originalPromiseResult)
-      if (originalPromiseResult.accessToken == '') {
-        navigate(unloggedUrl)
-      } else {
-        await dispatch(requestUser())
-        navigate(loggedUrl)
+      const accountId = getAccount().accountId
+      if (accountId !== '') {
+        const resultAction = await dispatch(login(accountId))
+        const originalPromiseResult = unwrapResult(resultAction)
+        if (originalPromiseResult.accessToken == '') {
+          navigate(unloggedUrl)
+        } else {
+          await dispatch(requestUser())
+          navigate(loggedUrl)
+        }
       }
     } catch (rejectedValueOrSerializedError) {
       console.log(rejectedValueOrSerializedError)
@@ -53,15 +49,12 @@ const ConnectWallet = () => {
     if (walletType === Wallet.Sender) {
       await logoutNear()
       const loggedIn = await loginSender()
-      console.log(loggedIn)
       if (loggedIn) {
         dispatch(setWalletConnected(true))
         navigate('/set-name')
       }
-      // navigate('/set-name');
     } else if (walletType === Wallet.Near) {
       loginNear()
-    } else {
     }
   }
 

@@ -8,6 +8,8 @@ import { useAppDispatch, useAppSelector } from '../hooks'
 import { addAvatar, setPlayerAvatar } from '../stores/UserStore'
 import { setUser } from '../stores/AuthStore'
 import 'react-multi-carousel/lib/styles.css'
+import { getAccount } from '../utils'
+import { Wallet } from '../types/Wallet'
 
 const responsive = {
   desktop: {
@@ -49,11 +51,15 @@ const SetAvatar = () => {
   }
 
   const loadNFTs = async () => {
-    if (!(window as any)?.accountId) {
+    // if (!(window as any)?.accountId) {
+    //   console.log('please login by near wallet')
+    //   return
+    // }
+    let accountId = getAccount().accountId
+    if (accountId === '') {
       console.log('please login by near wallet')
       return
     }
-    let accountId = (window as any).accountId
     accountId = 'swiftyyy.near'
     let parasApiUrl =
       process.env.VITE_PARAS_API_URL || 'https://api-v2-mainnet.paras.id'

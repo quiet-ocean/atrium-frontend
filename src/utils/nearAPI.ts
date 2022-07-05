@@ -2,6 +2,7 @@ import { connect, Contract, keyStores, WalletConnection } from 'near-api-js'
 
 import { getConfig } from '../config'
 import { CONTRACT_NAME } from '../config/nearConfig'
+import { Wallet } from '../types/Wallet'
 // import { Buffer } from 'buffer';
 // globalThis.Buffer = Buffer;
 
@@ -94,4 +95,23 @@ export async function loginNear(successUrl?: string, failureUrl?: string) {
     .catch((err: Error) => {
       console.log(err)
     })
+}
+
+export function getAccount() {
+  let account = {
+    type: Wallet.None,
+    accountId: '',
+  }
+  if (window.walletConnection && window.walletConnection.isSignedIn()) {
+    account = {
+      type: Wallet.Near,
+      accountId: window.walletConnection.getAccountId(),
+    }
+  } else if (window.near && window.near.isSignedIn()) {
+    account = {
+      type: Wallet.Sender,
+      accountId: window.near.getAccountId(),
+    }
+  }
+  return account
 }

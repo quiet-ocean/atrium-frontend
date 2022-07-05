@@ -26,6 +26,7 @@ export const userSlice = createSlice({
     sessionId: '',
     videoConnected: false,
     walletConnected: false,
+    isMyPlayerReady: false,
   },
   name: 'user',
   reducers: {
@@ -73,6 +74,9 @@ export const userSlice = createSlice({
 
       state.backgroundMode = newMode
     },
+    setMyPlayerReady: (state, action: PayloadAction<boolean>) => {
+      state.isMyPlayerReady = action.payload
+    },
   },
 })
 
@@ -91,6 +95,7 @@ export const {
   addAvatar,
   clearAvatars,
   setPlayerAvatar,
+  setMyPlayerReady,
 } = userSlice.actions
 
 export default userSlice.reducer
