@@ -16,10 +16,8 @@ import SettingDialog from '../components/SettingDialog'
 import WhiteboardDialog from '../components/WhiteboardDialog'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
-import type Bootstrap from '../scenes/Bootstrap'
 import type Game from '../scenes/Game'
 import { setLoggedIn } from '../stores/UserStore'
-import LoginDialog from '../components/LoginDialog'
 
 const Backdrop = styled.div`
   position: absolute;

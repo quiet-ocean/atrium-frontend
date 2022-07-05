@@ -6,7 +6,6 @@ import { LoginLayout, Stepper } from '../components'
 import { useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
 import Bootstrap from '../scenes/Bootstrap'
-import Game from '../scenes/Game'
 
 const LoginSuccess = () => {
   const user = useAppSelector((state) => state.auth.user)
@@ -14,7 +13,7 @@ const LoginSuccess = () => {
   const roomJoined = useAppSelector((state) => state.room.roomJoined)
 
   const navigate = useNavigate()
-  const game = phaserGame.scene.keys.game as Game
+
   const handleNextBtn = () => {
     if (!roomJoined && lobbyJoined) {
       const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap

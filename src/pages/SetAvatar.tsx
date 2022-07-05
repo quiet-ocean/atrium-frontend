@@ -9,7 +9,6 @@ import { setUser } from '../stores/AuthStore'
 import { addAvatar, setPlayerAvatar } from '../stores/UserStore'
 import 'react-multi-carousel/lib/styles.css'
 import { getAccount } from '../utils'
-import { Wallet } from '../types/Wallet'
 
 const responsive = {
   desktop: {

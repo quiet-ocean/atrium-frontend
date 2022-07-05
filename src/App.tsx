@@ -20,7 +20,6 @@ import Dashboard from './pages/ProfileModal/Dashboard'
 import { FeedbackForm } from './pages/ProfileModal/FeedbackForm'
 import ProfileEdit from './pages/ProfileModal/ProfileEdit'
 import { setWalletConnected } from './stores/UserStore'
-import type { CWindow } from './types/Window'
 import { getAccount } from './utils'
 
 const App = () => {

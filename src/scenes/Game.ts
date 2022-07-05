@@ -2,9 +2,11 @@ import Phaser from 'phaser'
 
 // import { debugDraw } from '../utils/debug'
 import { createCharacterAnims } from '../anims/CharacterAnims'
+// eslint-disable-next-line import/no-duplicates
 import '../characters/MyPlayer'
 // eslint-disable-next-line import/no-duplicates
 import '../characters/OtherPlayer'
+// eslint-disable-next-line import/no-duplicates
 import MyPlayer from '../characters/MyPlayer'
 // eslint-disable-next-line import/no-duplicates
 import OtherPlayer from '../characters/OtherPlayer'
