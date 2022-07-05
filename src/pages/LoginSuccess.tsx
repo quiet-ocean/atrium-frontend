@@ -44,7 +44,6 @@ const LoginSuccess = () => {
       <Box sx={{ mb: '24px' }}>
         <Button
           className="atrium_btn atrium_btn_primary"
-          sx={{ mt: '56px' }}
           onClick={handleNextBtn}
         >
           NEXT
