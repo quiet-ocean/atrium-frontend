@@ -1,41 +1,31 @@
 import Phaser from 'phaser'
-
+import Game from './scenes/Game'
 import Background from './scenes/Background'
 import Bootstrap from './scenes/Bootstrap'
-import GameScene from './scenes/GameScene'
 
 const config: Phaser.Types.Core.GameConfig = {
-  autoFocus: true,
-  backgroundColor: '#93cbee',
+  type: Phaser.AUTO,
   parent: 'phaser-container',
-  physics: {
-    arcade: {
-      debug: false,
-      gravity: { y: 0 },
-    },
-    default: 'arcade',
-  },
-  pixelArt: true,
-
-  // Prevent pixel art from becoming blurred when scaled.
+  backgroundColor: '#93cbee',
+  pixelArt: true, // Prevent pixel art from becoming blurred when scaled.
   scale: {
-    height: window.innerHeight,
     mode: Phaser.Scale.ScaleModes.RESIZE,
     width: window.innerWidth,
+    height: window.innerHeight,
   },
-
-  scene: [Bootstrap, Background, GameScene],
-  type: Phaser.AUTO,
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 0 },
+      debug: false,
+    },
+  },
+  autoFocus: true,
+  scene: [Bootstrap, Background, Game],
 }
 
-class PhaserGame extends Phaser.Game {
-  constructor(config: Phaser.Types.Core.GameConfig) {
-    super(config)
-  }
-}
+const phaserGame = new Phaser.Game(config)
 
-const phaserGame = new PhaserGame(config)
-// @ts-expect-error
-window.game = phaserGame
+;(window as any).game = phaserGame
 
 export default phaserGame

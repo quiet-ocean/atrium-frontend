@@ -16,9 +16,9 @@ const Login = () => {
     console.log('wallet type is ', walletType)
     if (connected) {
       navigate('/login/choose-name')
-      return
+    } else {
+      navigate('/login')
     }
-    navigate('/login')
   }, [connected])
 
   return (

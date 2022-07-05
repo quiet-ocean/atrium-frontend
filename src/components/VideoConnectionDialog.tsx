@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import phaserGame from '../PhaserGame'
-import type GameScene from '../scenes/GameScene'
+import type Game from '../scenes/Game'
 
 const Backdrop = styled.div`
   position: fixed;
@@ -43,7 +43,7 @@ export default function VideoConnectionDialog() {
           variant="contained"
           color="secondary"
           onClick={() => {
-            const game = phaserGame.scene.keys.game as GameScene
+            const game = phaserGame.scene.keys.game as Game
             game.network.webRTC?.getUserMedia()
           }}
         >

@@ -22,7 +22,7 @@ import {
 import Icon from '@mui/material/Icon'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
-import * as React from 'react'
+import React from 'react'
 // import DiscordIcon from '@mui/icons-material/Discord'
 
 import { useAppDispatch } from '../hooks'
@@ -118,6 +118,7 @@ const SettingDialog = () => {
     }
   }, [])
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    console.log(newValue)
     setValue(newValue)
   }
   const close = () => {
@@ -160,8 +161,8 @@ const SettingDialog = () => {
                     <Tab label="Hub" {...a11yProps(0)} />
                     <Tab label="Profile" {...a11yProps(1)} />
                     <Tab label="Connections" {...a11yProps(2)} />
-                    <Tab label="Jobs" {...a11yProps(2)} />
-                    <Tab label="Edit Profile" {...a11yProps(2)} />
+                    <Tab label="Jobs" {...a11yProps(3)} />
+                    <Tab label="Edit Profile" {...a11yProps(4)} />
                   </Tabs>
                   <div>
                     <Paper
@@ -324,6 +325,26 @@ const SettingDialog = () => {
                   </Grid>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
+                  <Grid container>
+                    <Grid item lg={4}>
+                      item-3-grid-4
+                    </Grid>
+                    <Grid item lg={8}>
+                      item-3-grid-8
+                    </Grid>
+                  </Grid>
+                </TabPanel>
+                <TabPanel value={value} index={3}>
+                  <Grid container>
+                    <Grid item lg={4}>
+                      item-3-grid-4
+                    </Grid>
+                    <Grid item lg={8}>
+                      item-3-grid-8
+                    </Grid>
+                  </Grid>
+                </TabPanel>
+                <TabPanel value={value} index={4}>
                   <Grid container>
                     <Grid item lg={4}>
                       item-3-grid-4
