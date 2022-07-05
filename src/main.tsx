@@ -1,10 +1,10 @@
 import 'regenerator-runtime/runtime'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
+import axios from 'axios'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import axios from 'axios'
 import { PersistGate } from 'redux-persist/integration/react'
 
 import './styles/index.scss'

@@ -6,25 +6,54 @@ import {
   IconButton,
 } from '@mui/material'
 
-export const AdornmentInput: React.FC<{ adornment; label }> = ({
-  adornment,
-  label,
-}: {
+type Props = {
   adornment: React.ReactNode
   label: string
-}) => {
+  sx?: object
+  inputStyle?: object
+  labelStyle?: object
+}
+
+export const AdornmentInput: React.FC<Props> = ({
+  adornment,
+  label,
+  sx,
+  inputStyle,
+  labelStyle,
+}: Props) => {
   return (
-    <FormControl sx={{ width: '350px' }} variant="outlined">
+    <FormControl sx={{ width: '100%', ...sx }} variant="outlined">
       <InputLabel
         htmlFor="outlined-adornment-password"
-        sx={{ fontSize: '16px' }}
+        sx={{
+          color: '#80868B',
+          fontFamily: 'Andale Mono Regular',
+          fontSize: '16px',
+          fontStyle: 'normal',
+          fontWeight: 400,
+          letterSpacing: '-0.1em',
+          lineHeight: '32px',
+          top: '-3px',
+          ...labelStyle,
+        }}
       >
         {label}
       </InputLabel>
       <OutlinedInput
         id="outlined-adornment-password"
         type="text"
-        sx={{ borderRadius: '0px', fontSize: '18px', height: '100%' }}
+        sx={{
+          borderRadius: '0px',
+          color: '#80868B',
+          fontFamily: 'Andale Mono Regular',
+          fontSize: '16px',
+          fontStyle: 'normal',
+          fontWeight: 400,
+          height: '100%',
+          letterSpacing: '-0.1em',
+          lineHeight: '32px',
+          ...inputStyle,
+        }}
         endAdornment={
           <InputAdornment position="end">
             <IconButton aria-label="toggle password visibility" edge="end">

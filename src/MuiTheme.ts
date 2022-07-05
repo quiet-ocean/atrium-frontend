@@ -6,30 +6,54 @@ assertCast<CreateAtrimTheme>(createAtruimTheme)
 
 const muiTheme: AtriumTheme = createAtruimTheme({
   palette: {
-    background: { default: '#16161A' },
+    background: {
+      // black: 'black',
+      default: '#0E1013',
+      paper: '',
+    },
     border: {
       dark: '#1D1F23',
-      gray: '#80868B',
+      light: '#80868B',
+      main: '#3C4043',
+    },
+    colors: {
+      red: '#E90026',
+      yellow: '#FFE721',
+    },
+    // color: {
+    //   error: '#FFE721',
+    //   gray: '#80868B',
+    // },
+    error: {
+      500: '#FFE721',
     },
     icon: {
       dark: '#898F94',
     },
     mode: 'dark',
     primary: {
-      main: '#426dea',
+      dark: '#131313',
+
+      light: '#17181B',
+      // main: '#426dea',
+      main: '#1A1A1A',
     },
     secondary: {
-      main: '#42eacb',
+      // main: '#42eacb',
+      main: '#FFE721', //yellow
+      // main: '',
     },
     text: {
-      primary: '#fff',
-      gray: '#80868B',
+      disabled: '#80868B',
+
+      // gray: '#80868B',
+      primary: '#F8F9FA',
+      //dark
+      secondary: '#0E1013',
+      // primary: '#FFF',
     },
-    wedget: {
+    widget: {
       background: '#121212',
-    },
-    color: {
-      gray: '#80868B'
     },
   },
   spacing: 8,
@@ -38,3 +62,15 @@ const muiTheme: AtriumTheme = createAtruimTheme({
 export const palette = muiTheme.palette
 
 export default muiTheme
+
+// fontFamily: 'Fractul',
+// fontStyle: 'normal',
+// fontWeight: 800,
+// fontSize: '42px',
+// lineHeight: '32px',
+// /* identical to box height, or 76% */
+
+// display: 'flex';
+// align-items: 'center';
+
+// color: '#F8F9FA';

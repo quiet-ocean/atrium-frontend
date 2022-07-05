@@ -1,4 +1,4 @@
-import type { Color, PaletteMode } from '@mui/material'
+import type { PaletteMode } from '@mui/material'
 import type { PaletteColor, Theme } from '@mui/material/styles'
 import type { Components } from '@mui/material/styles/components'
 import type { Mixins } from '@mui/material/styles/createMixins'
@@ -32,7 +32,7 @@ export function assertCast<T>(v: any): asserts v is T {}
 
 // https://mui.com/customization/color/#color-palette
 export interface Palette extends DefaultPalette {
-  wedget: { background: string }
+  widget: { background: string }
   common: CommonColors
   mode: PaletteMode
   contrastThreshold: number
@@ -43,7 +43,7 @@ export interface Palette extends DefaultPalette {
   warning: PaletteColor
   info: PaletteColor
   success: PaletteColor
-  grey: Color
+  // grey: Color
   text: TypeText
   divider: TypeDivider
   action: TypeAction
@@ -52,6 +52,7 @@ export interface Palette extends DefaultPalette {
   augmentColor: (options: PaletteAugmentColorOptions) => PaletteColor
   border: PaletteColor
   icon: { dark: string }
+  colors: { [key: string]: string }
 }
 
 export interface AtriumTheme extends Theme {

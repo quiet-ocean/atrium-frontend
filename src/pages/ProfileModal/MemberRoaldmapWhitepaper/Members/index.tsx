@@ -16,11 +16,19 @@ const Members: React.FC<Props> = () => {
     /* eslint-disable-next-line prettier/prettier */
     <Box sx={{ border: `2px solid ${palette.border.dark}`, display: 'flex', flexDirection: 'column', height: 210, width: 450, }}>
       {/* eslint-disable-next-line prettier/prettier */}
-      <Text variant="h6" sx={{color: '#fff', fontWeight: 'bold', padding: '0 10px', paddingLeft: '20px', }}>
+      <Text variant="h6" sx={{
+          color: palette.text.primary,
+          fontFamily: 'Fractul Alt',
+          fontSize: '20px',
+          fontWeight: '600',
+          padding: '0 10px',
+          paddingLeft: '20px',
+        }}
+      >
         Members
       </Text>
       {/* eslint-disable-next-line prettier/prettier */}
-      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', height: 170, minHeight: 170, overflowX: 'scroll', width: 425 }}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', height: 170, minHeight: 170, overflowX: 'scroll', paddingLeft: '20px', width: 425 }}>
         <Card />
         <Card />
         <Card />

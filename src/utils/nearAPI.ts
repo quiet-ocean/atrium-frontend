@@ -13,14 +13,6 @@ export interface MyContract extends Contract {
   get_mint_start_epoch: any
   tokens_left: any
 }
-// export interface CWindow extends Window {
-//   walletConnection: any;
-//   accountId: string;
-//   contract: MyContract;
-//   location: any;
-// }
-
-// declare let window: CWindow;
 
 declare let window: any
 
@@ -40,9 +32,6 @@ export async function initNearContract() {
       } as any
     )
   )
-  // console.log('near object is ', near);
-  // Initializing Wallet based Account. It can work with NEAR testnet wallet that
-  // is hosted at https://wallet.testnet.near.org
   window.walletConnection = new WalletConnection(near, null)
 
   // Getting the Account ID. If still unauthorized, it's just empty string

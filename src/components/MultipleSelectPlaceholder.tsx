@@ -41,8 +41,8 @@ function getStyles(name: string, personName: readonly string[], theme: Theme) {
 }
 const CSelect = styled(Select)(() => ({
   '& .MuiSelect-select': {
-    padding: '12px 14px'
-  }
+    padding: '12px 14px',
+  },
 }))
 export default function MultipleSelectPlaceholder() {
   const theme = useTheme()

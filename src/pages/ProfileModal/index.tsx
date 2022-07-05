@@ -19,7 +19,8 @@ const ProfileModal = () => {
         aria-describedby="modal-modal-description"
         sx={{ overflowY: 'scroll' }}
       >
-        <ProfilePage onClose={handleClose} />
+        {/* <ProfilePage onClose={handleClose} /> */}
+        <ProfilePage />
       </Modal>
     </>
   )

@@ -1,13 +1,28 @@
 import AccountCircle from '@mui/icons-material/AccountCircle'
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
 import MailIcon from '@mui/icons-material/Mail'
 import MoreIcon from '@mui/icons-material/MoreVert'
 import NotificationsIcon from '@mui/icons-material/Notifications'
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined'
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
+import { Typography } from '@mui/material'
 import Badge from '@mui/material/Badge'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
+import styled from '@mui/material/styles/styled'
 import React from 'react'
+
+import { palette } from '../../../MuiTheme'
+
+import AccountSelect from './AccountSelect'
+
+const IconButtonBox = styled(IconButton)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+  borderRadius: '0px',
+  padding: '12px 14px',
+}))
 
 const MenuIconList: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -109,22 +124,42 @@ const MenuIconList: React.FC = () => {
 
   return (
     <>
-      <Box sx={{ display: { md: 'flex', xs: 'none' } }}>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <IconButton
+      <Box sx={{ display: { md: 'flex', xs: 'none' }, gap: '12px' }}>
+        <IconButtonBox
           size="large"
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
+          <Badge badgeContent={3} color="error">
+            <NotificationsNoneOutlinedIcon />
           </Badge>
-        </IconButton>
-        <IconButton
+        </IconButtonBox>
+        <IconButtonBox
+          size="large"
+          aria-label="show 4 new mails"
+          color="inherit"
+        >
+          <Badge badgeContent={4} color="error">
+            <EmailOutlinedIcon />
+          </Badge>
+        </IconButtonBox>
+        <IconButtonBox
+          size="large"
+          aria-label="plus"
+          color="inherit"
+          sx={{ background: palette.colors?.red }}
+        >
+          <Typography
+            sx={{ fontSize: '20px', fontWeight: 600, padding: '0px 8px' }}
+          >
+            +
+          </Typography>
+        </IconButtonBox>
+        <AccountSelect />
+        <IconButtonBox size="large" aria-label="plus" color="inherit">
+          <SettingsOutlinedIcon />
+        </IconButtonBox>
+        {/* <IconButton
           size="large"
           edge="end"
           aria-label="account of current user"
@@ -134,7 +169,7 @@ const MenuIconList: React.FC = () => {
           color="inherit"
         >
           <AccountCircle />
-        </IconButton>
+        </IconButton> */}
       </Box>
       <Box sx={{ display: { md: 'none', xs: 'flex' } }}>
         <IconButton

@@ -45,23 +45,6 @@ export const signup = createAsyncThunk(
 )
 
 export const authSlice = createSlice({
-  name: 'auth',
-  initialState: {
-    accessToken: '',
-    user: {},
-  },
-  reducers: {
-    setAccessToken: (state, action: PayloadAction<string>) => {
-      state.accessToken = action.payload
-    },
-    clearToken: (state) => {
-      state.accessToken = ''
-    },
-    setUser: (state, action: PayloadAction<any>) => {
-      let oldUser = state.user
-      state.user = { ...oldUser, ...action.payload }
-    },
-  },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
       state.accessToken = action.payload.accessToken
@@ -73,11 +56,28 @@ export const authSlice = createSlice({
       state.accessToken = action.payload.accessToken
     })
   },
+  initialState: {
+    accessToken: '',
+    user: {},
+  },
+  name: 'auth',
+  reducers: {
+    clearToken: (state) => {
+      state.accessToken = ''
+    },
+    setAccessToken: (state, action: PayloadAction<string>) => {
+      state.accessToken = action.payload
+    },
+    setUser: (state, action: PayloadAction<any>) => {
+      let oldUser = state.user
+      state.user = { ...oldUser, ...action.payload }
+    },
+  },
 })
 
 export const { setAccessToken, clearToken, setUser } = authSlice.actions
 
 export default persistReducer(
-  { storage, key: 'auth', whitelist: ['accessToken'] },
+  { key: 'auth', storage, whitelist: ['accessToken'] },
   authSlice.reducer
 )
