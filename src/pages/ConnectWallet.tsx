@@ -1,14 +1,14 @@
 import { Button } from '@mui/material'
+import { unwrapResult } from '@reduxjs/toolkit'
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { To } from 'react-router-dom'
-import { unwrapResult } from '@reduxjs/toolkit'
 
 import { Stepper, LoginLayout } from '../components'
 import { useAppSelector, useAppDispatch } from '../hooks'
+import { login, setUser, requestUser } from '../stores/AuthStore'
 import { setWalletConnected } from '../stores/UserStore'
 import { Wallet } from '../types/Wallet'
-import { login, setUser, requestUser } from '../stores/AuthStore'
 import { getAccount, loginNear, logoutNear } from '../utils/nearAPI'
 import { loginSender } from '../utils/senderAPI'
 

@@ -88,18 +88,18 @@ export async function loginNear(successUrl?: string, failureUrl?: string) {
 
 export function getAccount() {
   let account = {
-    type: Wallet.None,
     accountId: '',
+    type: Wallet.None,
   }
   if (window.walletConnection && window.walletConnection.isSignedIn()) {
     account = {
-      type: Wallet.Near,
       accountId: window.walletConnection.getAccountId(),
+      type: Wallet.Near,
     }
   } else if (window.near && window.near.isSignedIn()) {
     account = {
-      type: Wallet.Sender,
       accountId: window.near.getAccountId(),
+      type: Wallet.Sender,
     }
   }
   return account

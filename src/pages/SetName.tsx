@@ -10,8 +10,8 @@ import { InputField, Stepper, LoginLayout } from '../components'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
 import type Game from '../scenes/Game'
-import { setPlayerName } from '../stores/UserStore'
 import { setUser } from '../stores/AuthStore'
+import { setPlayerName } from '../stores/UserStore'
 
 const avatars = [
   { img: Adam, name: 'adam' },

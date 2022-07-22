@@ -1,11 +1,11 @@
 import { Box, Typography, Button } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { LoginLayout, Stepper } from '../components'
 import { useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
-import Bootstrap from '../scenes/Bootstrap'
+import type Bootstrap from '../scenes/Bootstrap'
 
 const LoginSuccess = () => {
   const user = useAppSelector((state) => state.auth.user)

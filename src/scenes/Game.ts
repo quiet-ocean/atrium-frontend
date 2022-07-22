@@ -7,7 +7,7 @@ import '../characters/MyPlayer'
 // eslint-disable-next-line import/no-duplicates
 import '../characters/OtherPlayer'
 // eslint-disable-next-line import/no-duplicates
-import MyPlayer from '../characters/MyPlayer'
+import type MyPlayer from '../characters/MyPlayer'
 // eslint-disable-next-line import/no-duplicates
 import OtherPlayer from '../characters/OtherPlayer'
 import PlayerSelector from '../characters/PlayerSelector'
@@ -20,10 +20,10 @@ import type Network from '../services/Network'
 import store from '../stores'
 import { setFocused, setShowChat } from '../stores/ChatStore'
 import { setSettingDialogOpen } from '../stores/SettingStore'
+import { setMyPlayerReady } from '../stores/UserStore'
 import type { IPlayer } from '../types/IOfficeState'
 import { ItemType } from '../types/Items'
 import { PlayerBehavior } from '../types/PlayerBehavior'
-import { setMyPlayerReady } from '../stores/UserStore'
 
 export default class Game extends Phaser.Scene {
   network!: Network
