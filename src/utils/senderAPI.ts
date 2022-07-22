@@ -5,6 +5,7 @@ interface CWindow extends Window {
 
 declare let window: CWindow
 export const loginSender = async (cb?: () => void) => {
+  console.log('-----sender login-----')
   if (!window.near) {
     console.log('you should install sender wallet')
     return

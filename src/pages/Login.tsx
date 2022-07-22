@@ -1,5 +1,5 @@
 import { Grid, CssBaseline, Box, Container } from '@mui/material'
-import * as React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 
 // import { CWindow } from '../../types/Window';
@@ -8,11 +8,11 @@ import { useAppSelector } from '../hooks'
 import { Wallet } from '../types/Wallet'
 
 const Login = () => {
-  const [walletType] = React.useState(Wallet.None)
+  const [walletType] = useState(Wallet.None)
   const connected = useAppSelector((state) => state.user.walletConnected)
   const navigate = useNavigate()
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log('wallet type is ', walletType)
     if (connected) {
       navigate('/login/choose-name')

@@ -19,6 +19,7 @@ const ConnectWallet = () => {
   const walletConnected = useAppSelector((state) => state.user.walletConnected)
 
   useEffect(() => {
+    console.log('wallet connected: ', walletConnected);
     if (walletConnected) {
       const account = getAccount()
       console.log(account)
@@ -46,6 +47,7 @@ const ConnectWallet = () => {
   }
 
   const handleClickBtn = async () => {
+    // console.log(location)
     if (walletType === Wallet.Sender) {
       await logoutNear()
       const loggedIn = await loginSender()
@@ -54,7 +56,7 @@ const ConnectWallet = () => {
         navigate('/set-name')
       }
     } else if (walletType === Wallet.Near) {
-      loginNear()
+      loginNear(`${window.location.href}set-name`)
     }
   }
 
