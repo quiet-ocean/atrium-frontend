@@ -62,7 +62,7 @@ const SetAvatar = () => {
     accountId = 'swiftyyy.near'
     let parasApiUrl =
       process.env.VITE_PARAS_API_URL || 'https://api-v2-mainnet.paras.id'
-    fetch(`${parasApiUrl}/token?owner_id=${accountId}&__limit=100`)
+    fetch(`${parasApiUrl}/token?owner_id=${accountId}&__limit=10`)
       // fetch("https://api-v2-mainnet.paras.id/token?owner_id=swiftyyy.near")
       .then(async (res) => {
         let result = await res.json()
