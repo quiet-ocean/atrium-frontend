@@ -2,6 +2,7 @@ import { Container } from '@mui/material'
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+import { PrivateRoute } from './components'
 import { useAppDispatch } from './hooks'
 import {
   Setting,
@@ -39,7 +40,14 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ConnectWallet />} />
-          <Route path="/connect-socials" element={<ConnectSocials />} />
+          <Route
+            path="/connect-socials"
+            element={
+              <PrivateRoute>
+                <ConnectSocials />
+              </PrivateRoute>
+            }
+          />
           <Route path="/setting" element={<Setting />} />
           <Route path="/connect-wallet" element={<ConnectWallet />} />
           <Route path="/set-avatar" element={<SetAvatar />} />

@@ -19,6 +19,7 @@ export const userSlice = createSlice({
   initialState: {
     avatars: new Array<string>(),
     backgroundMode: initialBackGroundMode,
+    isMyPlayerReady: false,
     loggedIn: false,
     playerAvatar: '',
     playerName: '',
@@ -26,7 +27,6 @@ export const userSlice = createSlice({
     sessionId: '',
     videoConnected: false,
     walletConnected: false,
-    isMyPlayerReady: false,
   },
   name: 'user',
   reducers: {
@@ -41,6 +41,9 @@ export const userSlice = createSlice({
     },
     setLoggedIn: (state, action: PayloadAction<boolean>) => {
       state.loggedIn = action.payload
+    },
+    setMyPlayerReady: (state, action: PayloadAction<boolean>) => {
+      state.isMyPlayerReady = action.payload
     },
     setPlayerAvatar: (state, action: PayloadAction<string>) => {
       state.playerAvatar = action.payload
@@ -73,9 +76,6 @@ export const userSlice = createSlice({
           : BackgroundMode.DAY
 
       state.backgroundMode = newMode
-    },
-    setMyPlayerReady: (state, action: PayloadAction<boolean>) => {
-      state.isMyPlayerReady = action.payload
     },
   },
 })
