@@ -2,7 +2,13 @@ import Phaser from 'phaser'
 
 // import { debugDraw } from '../utils/debug'
 import { createCharacterAnims } from '../anims/CharacterAnims'
+// eslint-disable-next-line import/no-duplicates
+import '../characters/MyPlayer'
+// eslint-disable-next-line import/no-duplicates
+import '../characters/OtherPlayer'
+// eslint-disable-next-line import/no-duplicates
 import type MyPlayer from '../characters/MyPlayer'
+// eslint-disable-next-line import/no-duplicates
 import OtherPlayer from '../characters/OtherPlayer'
 import PlayerSelector from '../characters/PlayerSelector'
 import Chair from '../items/Chair'
@@ -14,6 +20,7 @@ import type Network from '../services/Network'
 import store from '../stores'
 import { setFocused, setShowChat } from '../stores/ChatStore'
 import { setSettingDialogOpen } from '../stores/SettingStore'
+import { setMyPlayerReady } from '../stores/UserStore'
 import type { IPlayer } from '../types/IOfficeState'
 import { ItemType } from '../types/Items'
 import { PlayerBehavior } from '../types/PlayerBehavior'
@@ -213,6 +220,8 @@ export default class Game extends Phaser.Scene {
     this.network.onItemUserAdded(this.handleItemUserAdded, this)
     this.network.onItemUserRemoved(this.handleItemUserRemoved, this)
     this.network.onChatMessageAdded(this.handleChatMessageAdded, this)
+
+    store.dispatch(setMyPlayerReady(true))
   }
 
   private handleItemSelectorOverlap(playerSelector, selectionItem) {

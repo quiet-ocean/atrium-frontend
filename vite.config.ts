@@ -1,4 +1,3 @@
-import injectNodeModuleToBrowserBundle from '@rollup/plugin-inject'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import EnvironmentPlugin from 'vite-plugin-environment'
@@ -8,15 +7,16 @@ export default defineConfig({
   build: {
     sourcemap: true,
   },
+  define: {
+    global: 'window',
+  },
   plugins: [
-    injectNodeModuleToBrowserBundle({
-      Buffer: ['buffer', 'Buffer'],
-    }),
     react(),
     EnvironmentPlugin([
       'VITE_CONTRACT_ID',
       'VITE_GAME_API_URL',
       'VITE_PARAS_API_URL',
+      'VITE_API_URL',
     ]),
   ],
   server: {

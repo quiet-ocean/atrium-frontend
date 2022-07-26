@@ -19,5 +19,12 @@
     "experimentalDecorators": true,
     "jsx": "react-jsx"
   },
-  "include": ["./src"]
+  "include": ["./src"],
+  "exclude": [
+    "./dist",
+    "./node_modules",
+    "/jest",
+    "/mocks",
+    "mockServiceWorker.js"
+  ]
 }

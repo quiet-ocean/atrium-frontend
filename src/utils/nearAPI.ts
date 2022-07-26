@@ -2,6 +2,7 @@ import { connect, Contract, keyStores, WalletConnection } from 'near-api-js'
 
 import { getConfig } from '../config'
 import { CONTRACT_NAME } from '../config/nearConfig'
+import { Wallet } from '../types/Wallet'
 // import { Buffer } from 'buffer';
 // globalThis.Buffer = Buffer;
 
@@ -12,14 +13,6 @@ export interface MyContract extends Contract {
   get_mint_start_epoch: any
   tokens_left: any
 }
-// export interface CWindow extends Window {
-//   walletConnection: any;
-//   accountId: string;
-//   contract: MyContract;
-//   location: any;
-// }
-
-// declare let window: CWindow;
 
 declare let window: any
 
@@ -39,9 +32,6 @@ export async function initNearContract() {
       } as any
     )
   )
-  // console.log('near object is ', near);
-  // Initializing Wallet based Account. It can work with NEAR testnet wallet that
-  // is hosted at https://wallet.testnet.near.org
   window.walletConnection = new WalletConnection(near, null)
 
   // Getting the Account ID. If still unauthorized, it's just empty string
@@ -94,4 +84,23 @@ export async function loginNear(successUrl?: string, failureUrl?: string) {
     .catch((err: Error) => {
       console.log(err)
     })
+}
+
+export function getAccount() {
+  let account = {
+    accountId: '',
+    type: Wallet.None,
+  }
+  if (window.walletConnection && window.walletConnection.isSignedIn()) {
+    account = {
+      accountId: window.walletConnection.getAccountId(),
+      type: Wallet.Near,
+    }
+  } else if (window.near && window.near.isSignedIn()) {
+    account = {
+      accountId: window.near.getAccountId(),
+      type: Wallet.Sender,
+    }
+  }
+  return account
 }

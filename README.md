@@ -24,3 +24,8 @@ yarn prettier  # run prettier for json|yml|css|md|mdx files
 yarn clean     # remove 'node_modules' 'package-lock.json' 'dist' completely
 yarn serve     # launch server for production bundle in local
 ```
+
+### Environment Variable
+
+- `VITE_CONTRACT_ID`: NEAR Wallet ID
+- `VITE_GAME_API_URL`: `ws://192.168.1.108:2567`

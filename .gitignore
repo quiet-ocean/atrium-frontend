@@ -4,3 +4,5 @@ dist/assets/**/*.
 dist-ssr
 *.local
 dist
+.env
+yarn.lock

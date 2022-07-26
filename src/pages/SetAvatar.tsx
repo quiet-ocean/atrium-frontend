@@ -1,12 +1,15 @@
 import { Button, Box } from '@mui/material'
 import { useState, useEffect } from 'react'
 import Carousel from 'react-multi-carousel'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { Stepper, LoginLayout } from '../components'
 import { useAppDispatch, useAppSelector } from '../hooks'
+import { setUser } from '../stores/AuthStore'
 import { addAvatar, setPlayerAvatar } from '../stores/UserStore'
 import 'react-multi-carousel/lib/styles.css'
+import { getAccount } from '../utils'
+
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -30,28 +33,36 @@ const responsive = {
 const SetAvatar = () => {
   const [avatar, setAvatar] = useState(0)
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const avatars = useAppSelector((state) => state.user.avatars)
 
   useEffect(() => {
-    // console.log(avatars);
+    console.log(avatars.length)
   }, [avatars])
+
   useEffect(() => {
     loadNFTs()
   }, [])
+
   const selectAvatar = (id: number) => {
     console.log('select avatar ', id)
     setAvatar(id)
   }
+
   const loadNFTs = async () => {
-    if (!(window as any)?.accountId) {
+    // if (!(window as any)?.accountId) {
+    //   console.log('please login by near wallet')
+    //   return
+    // }
+    let accountId = getAccount().accountId
+    if (accountId === '') {
       console.log('please login by near wallet')
       return
     }
-    let accountId = (window as any).accountId
     accountId = 'swiftyyy.near'
     let parasApiUrl =
       process.env.VITE_PARAS_API_URL || 'https://api-v2-mainnet.paras.id'
-    fetch(`${parasApiUrl}/token?owner_id=${accountId}&__limit=100`)
+    await fetch(`${parasApiUrl}/token?owner_id=${accountId}&__limit=10`)
       // fetch("https://api-v2-mainnet.paras.id/token?owner_id=swiftyyy.near")
       .then(async (res) => {
         let result = await res.json()
@@ -62,6 +73,7 @@ const SetAvatar = () => {
           result.data.results.length > 0
         ) {
           let nfts = result.data.results
+          console.log(nfts)
 
           console.log(nfts)
           nfts.forEach((item) => {
@@ -72,7 +84,17 @@ const SetAvatar = () => {
       .catch((err) => {
         console.log(err)
       })
+    console.log('fetch ended')
+    avatars.forEach((item: any) => {
+      console.log(item)
+    })
   }
+
+  const handleNextBtn = () => {
+    dispatch(setUser({ avatar: avatars[avatar] }))
+    navigate('/connect-socials')
+  }
+
   return (
     <LoginLayout>
       <h1>Set your Avatar</h1>
@@ -91,12 +113,12 @@ const SetAvatar = () => {
                 sx={{ px: '6px' }}
                 key={key}
                 onClick={() => {
-                  selectAvatar(key + 1)
+                  selectAvatar(key)
                   dispatch(setPlayerAvatar(url))
                 }}
               >
                 <img
-                  className={`${avatar === key + 1 ? 'selected' : ''}`}
+                  className={`${avatar === key ? 'selected' : ''}`}
                   src={url}
                   alt=""
                 />
@@ -105,11 +127,15 @@ const SetAvatar = () => {
           })}
         </Carousel>
       </div>
-      <Button className="atrium_btn atrium_btn_primary" sx={{ mt: '56px' }}>
-        <Link to="/connect-socials">NEXT</Link>
+      <Button
+        className="atrium_btn atrium_btn_primary"
+        sx={{ mt: '56px' }}
+        onClick={handleNextBtn}
+      >
+        NEXT
       </Button>
-      <Button className="atrium_btn">
-        <Link to="/connect-socials">SKIP FOR NOW</Link>
+      <Button className="atrium_btn" onClick={handleNextBtn}>
+        SKIP FOR NOW
       </Button>
       <Stepper length={5} step={2} />
     </LoginLayout>

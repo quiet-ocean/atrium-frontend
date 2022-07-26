@@ -1,42 +1,62 @@
 import { Button } from '@mui/material'
+import { unwrapResult } from '@reduxjs/toolkit'
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import type { To } from 'react-router-dom'
 
-// import { Link } from 'react-router-dom';
 import { Stepper, LoginLayout } from '../components'
 import { useAppSelector, useAppDispatch } from '../hooks'
+import { login, setUser, requestUser } from '../stores/AuthStore'
 import { setWalletConnected } from '../stores/UserStore'
 import { Wallet } from '../types/Wallet'
-import { loginNear, logoutNear } from '../utils/nearAPI'
+import { getAccount, loginNear, logoutNear } from '../utils/nearAPI'
 import { loginSender } from '../utils/senderAPI'
-// import { useAppDispatch, useAppSelector } from '../../hooks';
-// import { Buffer } from 'buffer';
-// globalThis.Buffer = Buffer;
 
 const ConnectWallet = () => {
   const navigate = useNavigate()
   const [walletType, setWalletType] = useState(Wallet.None)
   const dispatch = useAppDispatch()
-  const connected = useAppSelector((state) => state.user.walletConnected)
+  const walletConnected = useAppSelector((state) => state.user.walletConnected)
 
   useEffect(() => {
-    if (connected) {
-      console.log('wallet connection is ', connected)
-      navigate('/set-name')
+    console.log('wallet connected: ', walletConnected)
+    if (walletConnected) {
+      const account = getAccount()
+      console.log(account)
+      dispatch(setUser({ accountId: account.accountId }))
+      fetchLogin('/success', '/set-name')
     }
-  }, [connected])
+  }, [walletConnected])
 
-  const login = async () => {
-    console.log('login', walletType)
+  const fetchLogin = async (loggedUrl: To, unloggedUrl: To) => {
+    try {
+      const accountId = getAccount().accountId
+      if (accountId !== '') {
+        const resultAction = await dispatch(login(accountId))
+        const originalPromiseResult = unwrapResult(resultAction)
+        if (originalPromiseResult.accessToken == '') {
+          navigate(unloggedUrl)
+        } else {
+          await dispatch(requestUser())
+          navigate(loggedUrl)
+        }
+      }
+    } catch (rejectedValueOrSerializedError) {
+      console.log(rejectedValueOrSerializedError)
+    }
+  }
 
+  const handleClickBtn = async () => {
+    // console.log(location)
     if (walletType === Wallet.Sender) {
       await logoutNear()
-      await loginSender()
-      dispatch(setWalletConnected(true))
-      // navigate('/set-name');
+      const loggedIn = await loginSender()
+      if (loggedIn) {
+        dispatch(setWalletConnected(true))
+        navigate('/set-name')
+      }
     } else if (walletType === Wallet.Near) {
-      loginNear(window.location.origin + '/set-name', 'https://localhost:1234')
-    } else {
+      loginNear(`${window.location.href}set-name`)
     }
   }
 
@@ -61,7 +81,7 @@ const ConnectWallet = () => {
           Sender Wallet
         </Button>
         <Button
-          onClick={login}
+          onClick={handleClickBtn}
           className="atrium_btn atrium_btn_primary"
           sx={{ mt: '56px' }}
         >
