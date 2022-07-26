@@ -19,7 +19,7 @@ const ConnectWallet = () => {
   const walletConnected = useAppSelector((state) => state.user.walletConnected)
 
   useEffect(() => {
-    console.log('wallet connected: ', walletConnected);
+    console.log('wallet connected: ', walletConnected)
     if (walletConnected) {
       const account = getAccount()
       console.log(account)

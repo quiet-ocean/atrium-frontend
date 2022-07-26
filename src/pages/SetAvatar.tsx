@@ -37,8 +37,7 @@ const SetAvatar = () => {
   const avatars = useAppSelector((state) => state.user.avatars)
 
   useEffect(() => {
-    console.log(avatars.length);
-    
+    console.log(avatars.length)
   }, [avatars])
 
   useEffect(() => {
@@ -85,10 +84,10 @@ const SetAvatar = () => {
       .catch((err) => {
         console.log(err)
       })
-      console.log('fetch ended');
-      avatars.forEach((item: any) => {
-        console.log(item);
-      })
+    console.log('fetch ended')
+    avatars.forEach((item: any) => {
+      console.log(item)
+    })
   }
 
   const handleNextBtn = () => {

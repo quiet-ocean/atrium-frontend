@@ -1,4 +1,5 @@
 import 'regenerator-runtime/runtime'
+
 import { Buffer } from 'buffer'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
@@ -15,7 +16,7 @@ import './PhaserGame'
 import store, { persistor } from './stores'
 import { initNearContract, setupAxios } from './utils'
 
-globalThis.Buffer = Buffer;
+globalThis.Buffer = Buffer
 
 setupAxios(axios, store)
 
