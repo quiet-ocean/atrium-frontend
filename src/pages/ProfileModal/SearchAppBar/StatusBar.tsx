@@ -10,6 +10,16 @@ const StatusBarContainer = styled(Box)(({ theme }) => ({
   justifyContent: 'center',
   padding: '12px 0px',
 }))
+const TextBox = styled(`div`)(() => ({
+  alignItems: 'center',
+  color: '#80868B',
+  display: 'flex',
+  fontFamily: 'Fractul',
+  fontSize: '14px',
+  fontStyle: 'normal',
+  fontWeight: 300,
+  lineHeight: '32px',
+}))
 const Text = styled(Typography)(() => ({
   alignItems: 'center',
   color: '#80868B',
@@ -26,22 +36,22 @@ const fontWeight = 600
 export const StatusBar = () => {
   return (
     <StatusBarContainer>
-      <Text>
+      <TextBox>
         $ATR PRICE:
-        <Text sx={{ fontWeight: fontWeight }}> $5.84</Text>
-      </Text>
-      <Text>
+        <Text sx={{ fontWeight: fontWeight }}>&nbsp; $5.84</Text>
+      </TextBox>
+      <TextBox>
         PLAYERS ONLINE:
-        <Text sx={{ fontWeight: fontWeight }}> 104</Text>
-      </Text>
-      <Text>
+        <Text sx={{ fontWeight: fontWeight }}>&nbsp; 104</Text>
+      </TextBox>
+      <TextBox>
         TRANSACTIONS 24H:
-        <Text sx={{ fontWeight: fontWeight }}> 526</Text>
-      </Text>
-      <Text>
+        <Text sx={{ fontWeight: fontWeight }}>&nbsp; 526</Text>
+      </TextBox>
+      <TextBox>
         VOLUME 24H:
-        <Text sx={{ fontWeight: fontWeight }}> 590,234 $ATR</Text>
-      </Text>
+        <Text sx={{ fontWeight: fontWeight }}>&nbsp; 590,234 $ATR</Text>
+      </TextBox>
     </StatusBarContainer>
   )
 }

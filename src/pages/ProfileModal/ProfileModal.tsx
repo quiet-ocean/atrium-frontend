@@ -1,5 +1,6 @@
 import Button from '@mui/material/Button'
 import Modal from '@mui/material/Modal'
+import Box from '@mui/material/Box'
 import * as React from 'react'
 
 import ProfilePage from './ProfilePage'
@@ -20,7 +21,9 @@ const ProfileModal = () => {
         sx={{ overflowY: 'scroll' }}
       >
         {/* <ProfilePage onClose={handleClose} /> */}
-        <ProfilePage />
+        <Box>
+          <ProfilePage />
+        </Box>
       </Modal>
     </>
   )
