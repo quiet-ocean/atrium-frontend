@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 import * as React from 'react'
 
 import muiTheme from '../../../MuiTheme'
-import { AdornmentInput } from '../AdornmentInput'
+import { AdornmentInput } from '../_AdornmentInput'
 
 import MenuIconList from './MenuIconList'
 import { StatusBar } from './StatusBar'

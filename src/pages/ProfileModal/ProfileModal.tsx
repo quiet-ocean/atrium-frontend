@@ -26,4 +26,4 @@ const ProfileModal = () => {
   )
 }
 
-export default ProfileModal
+export { ProfileModal }
