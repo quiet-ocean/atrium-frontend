@@ -34,8 +34,18 @@ export const UserProfile = () => {
           <Community />
         </Box>
       </Box>
-      <Container maxWidth="lg" sx={{ p: '24px !important' }}>
-        <Grid container spacing={"24px"}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          padding: {
+            lg: '24px 120px !important',
+            md: '24px 120px !important',
+            sm: '24px 0px',
+            xs: '24px 0px',
+          },
+        }}
+      >
+        <Grid container spacing={'24px'}>
           <Grid item lg={6}>
             <PostCarousel />
             <FriendList />

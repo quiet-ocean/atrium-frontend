@@ -51,7 +51,7 @@ export const Media = () => {
           <AtButton text="shared" variant="x-small" />
         </Box>
       </Box>
-      <Box display="flex" py="24px" gap="8px">
+      <Box display="flex" py="24px" gap="8px" sx={{ overflowX: 'hidden' }}>
         <Item />
         <Item />
         <Item />
