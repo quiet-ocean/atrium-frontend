@@ -1,9 +1,46 @@
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
+import { AtButton, AtText } from '../../../components'
+import { palette } from '../../../MuiTheme'
+import avatar from '../images/avatar-3.png'
+export const Comment = () => {
+  return (
+    <Box display="flex" gap="8px" p="12px 0px">
+      <Box py="10px">
+        <img src={avatar} alt="" width="45px" height="45px" />
+      </Box>
+      <Box p="12px" sx={{ background: `${palette.background.paper}` }}>
+        <Typography
+          sx={{
+            fontFamily: 'Andale Mono Regular',
+            fontSize: '16px',
+            // lineHeight: '15px',
+            fontStyle: 'normal',
+
+            fontWeight: 400,
+
+            letterSpacing: '-0. 05em',
+          }}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac
+          convallis commodo morbi ut leo gravida. A nunc laoreet cras semper
+          netus quis blandit eu.
+        </Typography>
+      </Box>
+    </Box>
+  )
+}
 export const Comments = () => {
   return (
-    <Box>
-      connects
+    <Box p="30px" border={`1px solid ${palette.background.paper}`} mt="48px">
+      <Box display="flex" justifyContent="space-between">
+        <AtText sx={{ fontSize: '22px', fontWeight: '800' }}>comments</AtText>
+        <AtButton variant="small" text="see all" />
+      </Box>
+      <Box mt="12px">
+        <Comment />
+        <Comment />
+      </Box>
     </Box>
   )
 }
