@@ -1,18 +1,17 @@
 import { Box } from '@mui/material'
 
 import { AtButton, AtText } from '../../../components'
+import { palette } from '../../../MuiTheme'
 import avatar from '../images/friend-avatar.png'
 
 import { Container as PContainer } from './styled'
-
-import { palette } from '../../../MuiTheme'
 
 export const FriendItemContent = ({
   text1,
   text2,
 }: {
   text1: string
-  text2: string
+  text2: React.ReactNode
 }) => {
   return (
     <Box display="flex" flexDirection="column">
@@ -61,11 +60,21 @@ export const FriendList = () => {
   return (
     <PContainer>
       <Box display="flex" justifyContent="space-between">
-        <AtText className="subtitle">friend list (364)</AtText>
+        <AtText
+          className=""
+          sx={{
+            fontSize: '30px',
+            fontWeight: 700,
+          }}
+        >
+          friend list (364)
+        </AtText>
         <AtButton variant="small" text="see all" />
       </Box>
       <Box height="320px" sx={{ overflowY: 'scroll' }} mt="12px">
-        {new Array(10).fill(2).map((_, key: number) => <FriendItem key={key} index={key} />)}
+        {new Array(10).fill(2).map((_, key: number) => (
+          <FriendItem key={key} index={key} />
+        ))}
       </Box>
     </PContainer>
   )

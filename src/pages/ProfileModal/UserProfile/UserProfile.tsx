@@ -19,21 +19,23 @@ export const UserProfile = () => {
         <img src={landingBg} alt="" width="100%" height="715px" />
         <Box
           sx={{
+            bottom: '0px',
             display: 'flex',
             justifyContent: 'center',
             position: 'absolute',
-            top: '180px',
             width: '100%',
           }}
         >
           <img src={avatar} alt="" />
         </Box>
+      </Box>
+      <Box>
         <Box pt="12px">
           <Community />
         </Box>
       </Box>
       <Container maxWidth="lg" sx={{ p: '24px !important' }}>
-        <Grid container>
+        <Grid container spacing={"24px"}>
           <Grid item lg={6}>
             <PostCarousel />
             <FriendList />

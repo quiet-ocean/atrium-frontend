@@ -17,4 +17,5 @@ export const AtText = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   fontFamily: 'Fractul',
   fontStyle: 'normal',
+  textTransform: 'capitalize',
 }))
