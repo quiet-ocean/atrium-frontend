@@ -69,7 +69,9 @@ export const FriendList = () => {
         >
           friend list (364)
         </AtText>
-        <AtButton variant="small" text="see all" />
+        <Box py="6px">
+          <AtButton variant="small" text="see all" />
+        </Box>
       </Box>
       <Box height="320px" sx={{ overflowY: 'scroll' }} mt="12px">
         {new Array(10).fill(2).map((_, key: number) => (

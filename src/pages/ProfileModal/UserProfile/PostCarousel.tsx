@@ -17,7 +17,7 @@ export const PostCarousel = () => {
         indicators={true}
       >
         {imageList.map((img, i) => {
-          return <img src={img} key={i} width="100%" height="380px" />
+          return <img src={img} key={i} width="100%" height="480px" />
         })}
       </CarouselLibrary>
     </Box>

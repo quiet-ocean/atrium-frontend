@@ -16,7 +16,7 @@ export const UserProfile = () => {
   return (
     <Box sx={{ mt: '160px', pl: '80px' }}>
       <Box sx={{ position: 'relative' }}>
-        <img src={landingBg} alt="" width="100%" height="715px" />
+        <img src={landingBg} alt="" width="100%" />
         <Box
           sx={{
             bottom: '0px',
