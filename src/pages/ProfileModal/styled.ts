@@ -31,3 +31,7 @@ export const Page = styled.main`
   padding-left: 80px;
   margin: 32px auto;
 `
+export const Exploration = styled.main`
+  display: grid;
+  
+`

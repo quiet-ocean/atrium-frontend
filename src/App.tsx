@@ -21,7 +21,7 @@ import {
   ArticleBuilder,
   FeedbackForm,
   ProfileEdit,
-  Exploration,
+  UserProfile,
 } from './pages/ProfileModal'
 import { setWalletConnected } from './stores/UserStore'
 import { getAccount } from './utils'
@@ -64,7 +64,7 @@ const App = () => {
           >
             <Route path="" element={<Dashboard />} />
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="exploration" element={<Exploration />} />
+            <Route path="exploration" element={<UserProfile />} />
             <Route path="account" element={<Account />} />
             <Route path="edit" element={<ProfileEdit />} />
             <Route path="article-builder" element={<ArticleBuilder />} />

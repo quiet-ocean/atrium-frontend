@@ -47,7 +47,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
       disabled: '#80868B',
 
       // gray: '#80868B',
-      primary: '#F8F9FA',
+      primary: '#F8F9FA', //white
       //dark
       secondary: '#0E1013',
       // primary: '#FFF',

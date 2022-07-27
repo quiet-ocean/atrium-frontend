@@ -10,7 +10,7 @@ import {
 import commentAvatar from '../images/Ellipse 37.png'
 import icon2 from '../images/fa-solid_search-1.png'
 import icon1 from '../images/fa-solid_search.png'
-import bg from '../images/Frame 138.png'
+import bg from '../images/profile-landing-image.png'
 import profileImage from '../images/Rectangle 121.png'
 import cardImage from '../images/Rectangle 138.png'
 import icon3 from '../images/Vector.png'
