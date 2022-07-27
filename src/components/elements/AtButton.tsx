@@ -68,7 +68,7 @@ export const AtButton: React.FC<ButtonProps> = ({
               : 'Fractul',
           fontSize: `${
             _variant === 'outlined'
-              ? ''
+              ? '16px'
               : _variant === 'small'
               ? '14px'
               : _variant === 'default'

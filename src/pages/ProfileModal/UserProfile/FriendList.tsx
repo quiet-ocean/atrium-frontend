@@ -4,7 +4,7 @@ import { AtButton, AtText } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import avatar from '../images/friend-avatar.png'
 
-import { Container as PContainer } from './styled'
+import { Container as PContainer, OnlineIcon } from './styled'
 
 export const FriendItemContent = ({
   text1,
@@ -17,7 +17,12 @@ export const FriendItemContent = ({
     <Box display="flex" flexDirection="column">
       <AtText
         className="secondary"
-        sx={{ fontSize: '18px', fontWeight: '800', lineHeight: '18px' }}
+        sx={{
+          fontSize: '18px',
+          fontWeight: '800',
+          lineHeight: '18px',
+          textAlign: 'center',
+        }}
       >
         {text1}
       </AtText>
@@ -49,7 +54,15 @@ export const FriendItem = ({ index }: { index: number }) => {
     >
       <img src={avatar} alt="" width="46px" height="46px" />
       <Box display="flex" gap="32px" p="5px">
-        <FriendItemContent text1="RandomGuy123" text2="Online" />
+        <FriendItemContent
+          text1="RandomGuy123"
+          text2={
+            <Box display="flex" gap="4px">
+              <OnlineIcon sx={{ margin: '4px'}} />
+              Online
+            </Box>
+          }
+        />
         <FriendItemContent text1="July3rd" text2="Friend Since" />
         <FriendItemContent text1={index.toString()} text2="Level" />
       </Box>
