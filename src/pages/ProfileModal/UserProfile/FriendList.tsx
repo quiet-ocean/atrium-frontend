@@ -58,7 +58,7 @@ export const FriendItem = ({ index }: { index: number }) => {
           text1="RandomGuy123"
           text2={
             <Box display="flex" gap="4px">
-              <OnlineIcon sx={{ margin: '4px'}} />
+              <OnlineIcon sx={{ margin: '4px' }} />
               Online
             </Box>
           }
