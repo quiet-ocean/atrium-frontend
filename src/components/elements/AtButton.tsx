@@ -1,3 +1,4 @@
+import React from 'react'
 import { Typography, Button } from '@mui/material'
 
 import { palette } from '../../MuiTheme'
@@ -5,7 +6,7 @@ import { palette } from '../../MuiTheme'
 type ButtonProps = {
   // fontFamily?: string
   text: string
-  icon?: any
+  icon?: React.ReactNode
   variant?: 'default' | 'primary' | 'secodary' | 'outlined' | 'small'
 }
 
@@ -19,15 +20,20 @@ export const AtButton: React.FC<ButtonProps> = ({ variant, text, icon }) => {
             ? palette.background.paper
             : _variant === 'default'
             ? '#2E3134'
+            : _variant === 'primary'
+            ? palette.background.paper
             : '',
         border: `${
           variant === 'outlined' ? '1px solid ' + palette.primary.main : 'none'
         }`,
         borderRadius: '0px',
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '12px',
         padding:
           _variant === 'small'
             ? '4px 16px'
-            : _variant === 'default'
+            : _variant === 'default' || _variant === 'primary'
             ? '12px 24px'
             : '6px 12px',
       }}
@@ -36,7 +42,12 @@ export const AtButton: React.FC<ButtonProps> = ({ variant, text, icon }) => {
       <Typography
         sx={{
           color: palette.text.primary,
-          fontFamily: `${_variant === 'outlined' ? 'Fractul Alt' : 'Fractul'}`,
+          fontFamily:
+            _variant === 'outlined'
+              ? 'Fractul Alt'
+              : _variant === 'primary'
+              ? 'Andale Mono Regular'
+              : 'Fractul',
           fontSize: `${
             _variant === 'outlined'
               ? ''
@@ -44,6 +55,8 @@ export const AtButton: React.FC<ButtonProps> = ({ variant, text, icon }) => {
               ? '14px'
               : _variant === 'default'
               ? '20px'
+              : _variant === 'primary'
+              ? '16px'
               : ''
           }`,
           fontWeight: _variant === 'default' ? '800' : '',
