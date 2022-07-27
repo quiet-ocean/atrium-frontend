@@ -16,7 +16,7 @@ export const UserProfile = () => {
   return (
     <Box sx={{ mt: '160px', pl: '80px' }}>
       <Box sx={{ position: 'relative' }}>
-        <img src={landingBg} alt="" width="100% " />
+        <img src={landingBg} alt="" width="100%" height="715px" />
         <Box
           sx={{
             display: 'flex',
@@ -32,7 +32,7 @@ export const UserProfile = () => {
           <Community />
         </Box>
       </Box>
-      <Container>
+      <Container maxWidth="lg" sx={{ p: '24px !important' }}>
         <Grid container>
           <Grid item lg={6}>
             <PostCarousel />

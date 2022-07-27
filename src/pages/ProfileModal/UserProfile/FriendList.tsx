@@ -1,7 +1,72 @@
 import { Box } from '@mui/material'
 
+import { AtButton, AtText } from '../../../components'
+import avatar from '../images/friend-avatar.png'
+
+import { Container as PContainer } from './styled'
+
+import { palette } from '../../../MuiTheme'
+
+export const FriendItemContent = ({
+  text1,
+  text2,
+}: {
+  text1: string
+  text2: string
+}) => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <AtText
+        className="secondary"
+        sx={{ fontSize: '18px', fontWeight: '800', lineHeight: '18px' }}
+      >
+        {text1}
+      </AtText>
+      <AtText
+        className="disabled"
+        sx={{
+          fontSize: '12px',
+          fontWeight: '400',
+          letterSpacing: '-0.05em',
+          lineHeight: '18px',
+        }}
+      >
+        {text2}
+      </AtText>
+    </Box>
+  )
+}
+export const FriendItem = ({ index }: { index: number }) => {
+  return (
+    <Box
+      display="flex"
+      gap="12px"
+      p="9px"
+      sx={{
+        background: `${
+          index % 2 === 1 ? palette.background.paper : 'transparent'
+        }`,
+      }}
+    >
+      <img src={avatar} alt="" width="46px" height="46px" />
+      <Box display="flex" gap="32px" p="5px">
+        <FriendItemContent text1="RandomGuy123" text2="Online" />
+        <FriendItemContent text1="July3rd" text2="Friend Since" />
+        <FriendItemContent text1={index.toString()} text2="Level" />
+      </Box>
+    </Box>
+  )
+}
 export const FriendList = () => {
   return (
-    <Box>friend list</Box>
+    <PContainer>
+      <Box display="flex" justifyContent="space-between">
+        <AtText className="subtitle">friend list (364)</AtText>
+        <AtButton variant="small" text="see all" />
+      </Box>
+      <Box height="320px" sx={{ overflowY: 'scroll' }} mt="12px">
+        {new Array(10).fill(2).map((_, key: number) => <FriendItem key={key} index={key} />)}
+      </Box>
+    </PContainer>
   )
 }

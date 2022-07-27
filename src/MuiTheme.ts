@@ -9,7 +9,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     background: {
       // black: 'black',
       default: '#0E1013',
-      paper: '',
+      paper: '#202124',
     },
     border: {
       dark: '#1D1F23',

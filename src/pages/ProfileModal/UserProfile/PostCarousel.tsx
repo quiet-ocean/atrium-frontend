@@ -10,14 +10,14 @@ export const imageList = [carousel1, carousel2, carousel3]
 
 export const PostCarousel = () => {
   return (
-    <Box>
+    <Box sx={{ pb: '32px', border: `1px solid #2E3134` }}>
       <CarouselLibrary
         navButtonsAlwaysVisible
         autoPlay={false}
-        indicators={false}
+        indicators={true}
       >
         {imageList.map((img, i) => {
-          return <img src={img} key={i} width="100%" height="380px" />
+          return <img src={img} key={i} width="100%" height="" />
         })}
       </CarouselLibrary>
     </Box>
