@@ -1,5 +1,4 @@
 import { Box } from '@mui/material'
-
 import CarouselLibrary from 'react-material-ui-carousel'
 
 import carousel1 from '../images/carousel1.png'
@@ -10,7 +9,7 @@ export const imageList = [carousel1, carousel2, carousel3]
 
 export const PostCarousel = () => {
   return (
-    <Box sx={{ paddingBottom: '32px', border: `1px solid #2E3134` }} mb="24px">
+    <Box sx={{ border: `1px solid #2E3134`, paddingBottom: '32px' }} mb="24px">
       <CarouselLibrary
         navButtonsAlwaysVisible
         autoPlay={false}

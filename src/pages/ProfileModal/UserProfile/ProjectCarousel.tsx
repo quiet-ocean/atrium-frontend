@@ -31,9 +31,15 @@ export const Project = () => {
         <Box>
           <AtText className="disabled" sx={{ fontSize: '16px !important' }}>
             Current Roles:
-            <Typography component="span" color="#0149D1" px="4px">OG</Typography>
-            <Typography component="span" color="#FFE721" px="4px">WL</Typography>
-            <Typography component="span" color="#E90026" px="4px">TM</Typography>
+            <Typography component="span" color="#0149D1" px="4px">
+              OG
+            </Typography>
+            <Typography component="span" color="#FFE721" px="4px">
+              WL
+            </Typography>
+            <Typography component="span" color="#E90026" px="4px">
+              TM
+            </Typography>
           </AtText>
         </Box>
         <Box display="flex" gap="32px">

@@ -1,9 +1,9 @@
-import { Box } from '@mui/material'
-import { AtButton, AtText } from '../../../components/elements'
-
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import TwitterIcon from '@mui/icons-material/Twitter'
+import { Box } from '@mui/material'
+
+import { AtButton, AtText } from '../../../components/elements'
 import LinkIcon from '../images/link-icon-mini.png'
 
 export const Community = () => {
@@ -36,10 +36,16 @@ export const Community = () => {
         justifyContent="center"
         gap="18px"
       >
-        <AtButton variant="outlined" text="twitter"
-        icon={<TwitterIcon sx={{ color: 'white', fontSize: '20px' }} />}
+        <AtButton
+          variant="outlined"
+          text="twitter"
+          icon={<TwitterIcon sx={{ color: 'white', fontSize: '20px' }} />}
         />
-        <AtButton variant="outlined" text="website" icon={ <img src={LinkIcon} alt="" />} />
+        <AtButton
+          variant="outlined"
+          text="website"
+          icon={<img src={LinkIcon} alt="" />}
+        />
         <AtButton
           variant="outlined"
           text="discord"

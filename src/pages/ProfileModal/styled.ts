@@ -33,5 +33,4 @@ export const Page = styled.main`
 `
 export const Exploration = styled.main`
   display: grid;
-  
 `
