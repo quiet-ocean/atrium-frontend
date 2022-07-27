@@ -1,15 +1,28 @@
 import { Box } from '@mui/material'
 import { AtButton, AtText } from '../../../components/elements'
 
+import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined'
+import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import LinkIcon from '../images/link-icon-mini.png'
+
 export const Community = () => {
   return (
     <>
       <Box display="flex" justifyContent="center" gap="38px">
-        <AtButton text="message" variant="outlined" />
+        <AtButton
+          icon={<ChatOutlinedIcon sx={{ color: 'white', fontSize: '18px' }} />}
+          text="message"
+          variant="outlined"
+        />
         <Box>
           <AtText className="subtitle">swiftyyy</AtText>
         </Box>
-        <AtButton text="add friend" variant="outlined" />
+        <AtButton
+          icon={<GroupOutlinedIcon sx={{ color: 'white', fontSize: '20px' }} />}
+          text="add friend"
+          variant="outlined"
+        />
       </Box>
       <Box mt="12px">
         <AtText className="disabled" sx={{ textAlign: 'center' }}>
@@ -23,9 +36,19 @@ export const Community = () => {
         justifyContent="center"
         gap="18px"
       >
-        <AtButton variant="outlined" text="twitter" />
-        <AtButton variant="outlined" text="website" />
-        <AtButton variant="outlined" text="discord" />
+        <AtButton variant="outlined" text="twitter"
+        icon={<TwitterIcon sx={{ color: 'white', fontSize: '20px' }} />}
+        />
+        <AtButton variant="outlined" text="website" icon={ <img src={LinkIcon} alt="" />} />
+        <AtButton
+          variant="outlined"
+          text="discord"
+          icon={
+            <span className="material-icons" style={{ color: 'white' }}>
+              discord
+            </span>
+          }
+        />
       </Box>
     </>
   )

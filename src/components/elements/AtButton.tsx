@@ -44,7 +44,7 @@ export const AtButton: React.FC<ButtonProps> = ({
         }`,
         borderRadius: '0px',
         display: 'flex',
-        gap: '12px',
+        gap: '6px',
         justifyContent: 'center',
         padding:
           _variant === 'small'
