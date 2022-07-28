@@ -9,16 +9,16 @@ import Ash from '../assets/Ash_login.png'
 import Lucy from '../assets/Lucy_login.png'
 import Nancy from '../assets/Nancy_login.png'
 import RoomSelectionDialog from '../components/_RoomSelectionDialog'
-import Chat from '../components/Chat'
+// import Chat from '../components/Chat'
 import ComputerDialog from '../components/ComputerDialog'
 import HelperButtonGroup from '../components/HelperButtonGroup'
 import SettingDialog from '../components/SettingDialog'
+import UnityGame from '../components/UnityGame'
 import WhiteboardDialog from '../components/WhiteboardDialog'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
 import type Game from '../scenes/Game'
 import { setLoggedIn } from '../stores/UserStore'
-import UnityGame from '../components/UnityGame'
 
 const Backdrop = styled.div`
   position: absolute;
@@ -55,7 +55,6 @@ function GameUI() {
   const settingDialogOpen = useAppSelector(
     (state) => state.setting.settingDialogOpen
   )
-  const isMyPlayerReady = useAppSelector((state) => state.user.isMyPlayerReady)
 
   React.useEffect(() => {
     if (game) {

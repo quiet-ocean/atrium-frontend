@@ -1,10 +1,9 @@
-import Phaser from 'phaser'
-
 import Network from '../services/Network'
 import store from '../stores'
 import { setRoomJoined } from '../stores/RoomStore'
 import type { BackgroundMode } from '../types/BackgroundMode'
-import Game from './Game'
+
+import type Game from './Game'
 
 export default class Bootstrap {
   network!: Network
@@ -24,6 +23,7 @@ export default class Bootstrap {
   }
 
   private launchBackground(backgroundMode: BackgroundMode) {
+    console.log(backgroundMode)
     // this.scene.launch('background', { backgroundMode })
   }
 

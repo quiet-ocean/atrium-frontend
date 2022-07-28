@@ -1,6 +1,3 @@
-import Phaser from 'phaser'
-
-import Background from './scenes/Background'
 import Bootstrap from './scenes/Bootstrap'
 import Game from './scenes/Game'
 

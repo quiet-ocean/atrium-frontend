@@ -1,5 +1,3 @@
-import Phaser from 'phaser'
-
 // import { debugDraw } from '../utils/debug'
 // eslint-disable-next-line import/no-duplicates
 import '../characters/MyPlayer'
@@ -8,18 +6,12 @@ import '../characters/OtherPlayer'
 // eslint-disable-next-line import/no-duplicates
 import type MyPlayer from '../characters/MyPlayer'
 // eslint-disable-next-line import/no-duplicates
-import OtherPlayer from '../characters/OtherPlayer'
-import Computer from '../items/Computer'
-import type Item from '../items/Item'
-import Whiteboard from '../items/Whiteboard'
+import type OtherPlayer from '../characters/OtherPlayer'
+import type Computer from '../items/Computer'
+import type Whiteboard from '../items/Whiteboard'
 import type Network from '../services/Network'
-import store from '../stores'
-import { setFocused, setShowChat } from '../stores/ChatStore'
-import { setSettingDialogOpen } from '../stores/SettingStore'
-import { setMyPlayerReady } from '../stores/UserStore'
-import type { IPlayer } from '../types/IOfficeState'
+// import type { IPlayer } from '../types/IOfficeState'
 import { ItemType } from '../types/Items'
-import { PlayerBehavior } from '../types/PlayerBehavior'
 
 export default class Game {
   network!: Network
@@ -55,7 +47,7 @@ export default class Game {
   }
 
   // function to add new player to the otherPlayer group
-  private handlePlayerJoined(newPlayer: IPlayer, id: string) {}
+  private handlePlayerJoined() {}
 
   // function to remove the player who left from the otherPlayer group
   private handlePlayerLeft(id: string) {
@@ -84,9 +76,9 @@ export default class Game {
     otherPlayer?.updateOtherPlayer(field, value)
   }
 
-  private handlePlayersOverlap(myPlayer, otherPlayer) {
-    otherPlayer.makeCall(myPlayer, this.network?.webRTC)
-  }
+  // private handlePlayersOverlap(myPlayer, otherPlayer) {
+  //   otherPlayer.makeCall(myPlayer, this.network?.webRTC)
+  // }
 
   private handleItemUserAdded(
     playerId: string,
