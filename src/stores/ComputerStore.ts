@@ -48,7 +48,7 @@ export const computerSlice = createSlice({
     },
     closeComputerDialog: (state) => {
       // Tell server the computer dialog is closed.
-      const game = phaserGame.scene.keys.game as Game
+      const game = phaserGame.game as Game
       game.enableKeys()
       game.network.disconnectFromComputer(state.computerId!)
       for (const { call } of state.peerStreams.values()) {
@@ -69,7 +69,7 @@ export const computerSlice = createSlice({
           action.payload.myUserId
         )
       }
-      const game = phaserGame.scene.keys.game as Game
+      const game = phaserGame.game as Game
       game.disableKeys()
       state.shareScreenManager.onOpen()
       state.computerDialogOpen = true

@@ -105,7 +105,7 @@ const CreateRoomForm = () => {
   const create = () => {
     if (values.name) {
       console.log(values)
-      const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
+      const bootstrap = phaserGame.bootstrap as Bootstrap
       bootstrap.network
         .createCustom(values)
         .then(() => {
@@ -203,7 +203,7 @@ const SetProfile = () => {
   const dispatch = useAppDispatch()
   const [name, setName] = useState('')
   const handleConnect = () => {
-    const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
+    const bootstrap = phaserGame.bootstrap as Bootstrap
     bootstrap.network
       .joinOrCreatePublic()
       .then(() => bootstrap.launchGame())

@@ -43,7 +43,7 @@ export default function VideoConnectionDialog() {
           variant="contained"
           color="secondary"
           onClick={() => {
-            const game = phaserGame.scene.keys.game as Game
+            const game = phaserGame.game as Game
             game.network.webRTC?.getUserMedia()
           }}
         >

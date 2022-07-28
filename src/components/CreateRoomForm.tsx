@@ -47,7 +47,7 @@ export const CreateRoomForm = () => {
 
     // create custom room if name and description are not empty
     if (isValidName && isValidDescription && lobbyJoined) {
-      const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
+      const bootstrap = phaserGame.bootstrap as Bootstrap
       bootstrap.network
         .createCustom(values)
         .then(() => bootstrap.launchGame())

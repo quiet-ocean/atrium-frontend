@@ -16,7 +16,7 @@ const LoginSuccess = () => {
 
   const handleNextBtn = () => {
     if (!roomJoined && lobbyJoined) {
-      const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
+      const bootstrap = phaserGame.bootstrap as Bootstrap
       bootstrap.network
         .joinOrCreatePublic()
         .then(() => {

@@ -9,10 +9,11 @@ import Ash from '../assets/Ash_login.png'
 import Lucy from '../assets/Lucy_login.png'
 import Nancy from '../assets/Nancy_login.png'
 import RoomSelectionDialog from '../components/_RoomSelectionDialog'
-import Chat from '../components/Chat'
+// import Chat from '../components/Chat'
 import ComputerDialog from '../components/ComputerDialog'
 import HelperButtonGroup from '../components/HelperButtonGroup'
 import SettingDialog from '../components/SettingDialog'
+import UnityGame from '../components/UnityGame'
 import WhiteboardDialog from '../components/WhiteboardDialog'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
@@ -40,8 +41,7 @@ for (let i = avatars.length - 1; i > 0; i--) {
 
 function GameUI() {
   const dispatch = useAppDispatch()
-  const game = phaserGame.scene.keys.game as Game
-  console.log(game)
+  const game = phaserGame.game as Game
   const loggedIn = useAppSelector((state) => state.user.loggedIn)
   const playerName = useAppSelector((state) => state.user.playerName)
   const computerDialogOpen = useAppSelector(
@@ -55,24 +55,23 @@ function GameUI() {
   const settingDialogOpen = useAppSelector(
     (state) => state.setting.settingDialogOpen
   )
-  const isMyPlayerReady = useAppSelector((state) => state.user.isMyPlayerReady)
 
   React.useEffect(() => {
-    if (isMyPlayerReady && game) {
+    if (game) {
       game.registerKeys()
-      if (game.myPlayer) {
-        console.log('set player name to ', playerName)
-        game.myPlayer.setPlayerName(
-          playerName ||
-            (window as any).accountId ||
-            (window as any).near?.accountId
-        )
-        game.myPlayer.setPlayerTexture(avatars[0].name)
-        game.network.readyToConnect()
-        dispatch(setLoggedIn(true))
-      }
+      // if (game.myPlayer) {
+      console.log('set player name to ', playerName)
+      // game.myPlayer.setPlayerName(
+      //   playerName ||
+      //     (window as any).accountId ||
+      //     (window as any).near?.accountId
+      // )
+      // game.myPlayer.setPlayerTexture(avatars[0].name)
+      game.network.readyToConnect()
+      dispatch(setLoggedIn(true))
+      // }
     }
-  }, [isMyPlayerReady])
+  }, [])
 
   let ui: JSX.Element
   if (loggedIn) {
@@ -88,9 +87,10 @@ function GameUI() {
       ui = (
         /* Render Chat or VideoConnectionDialog if no dialogs are opened. */
         <>
-          <Chat />
+          {/* <Chat /> */}
           {/* Render VideoConnectionDialog if user is not connected to a webcam. */}
           {/* {!videoConnected && <VideoConnectionDialog />} */}
+          <UnityGame />
         </>
       )
     }

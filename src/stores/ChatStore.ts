@@ -49,7 +49,7 @@ export const chatSlice = createSlice({
       })
     },
     setFocused: (state, action: PayloadAction<boolean>) => {
-      const game = phaserGame.scene.keys.game as Game
+      const game = phaserGame.game as Game
       action.payload ? game.disableKeys() : game.enableKeys()
       state.focused = action.payload
     },
