@@ -29,7 +29,7 @@ const SetName = () => {
   const [nameError, setNameError] = React.useState<string>('')
   const [confirmError, setConfirmError] = React.useState<string>('')
 
-  const game = phaserGame.scene.keys.game as Game
+  const game = phaserGame.game as Game
   const playerName = useAppSelector((state) => state.user.playerName)
 
   const handleNextBtn = () => {
