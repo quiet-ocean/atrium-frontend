@@ -6,15 +6,17 @@ import {
   IconButton,
 } from '@mui/material'
 
-export const AdornmentInput: React.FC<{ adornment; label }> = ({
-  adornment,
-  label,
-}: {
+export const AdornmentInput: React.FC<{
   adornment: React.ReactNode
   label: string
+  variant?: 'primary' | 'default' | undefined
+}> = ({
+  adornment,
+  label,
+  variant,
 }) => {
   return (
-    <FormControl sx={{ width: '350px' }} variant="outlined">
+    <FormControl sx={{ width: variant === 'default' ? '100%' : '350px' }} variant="outlined">
       <InputLabel
         htmlFor="outlined-adornment-password"
         sx={{ fontSize: '16px' }}
