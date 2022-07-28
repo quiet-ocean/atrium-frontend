@@ -1,21 +1,22 @@
-import { Box, styled } from '@mui/material'
-import { AtText } from '../../../components'
-
-import { ModalContainer } from '../styled'
-
-import avatar from '../images/project-image.png'
-import { OnlineIcon } from '../UserProfile/styled'
-import { AdornmentInput } from '../ProfileEdit/AdornmentInput'
 import SearchIcon from '@mui/icons-material/Search'
+import { Box, styled } from '@mui/material'
 
-export const Contact = ({
-  active
-}: {
-  active?: boolean
-}) => {
+import { AtText } from '../../../components'
+import avatar from '../images/project-image.png'
+import { AdornmentInput } from '../ProfileEdit/AdornmentInput'
+import { ModalContainer } from '../styled'
+import { OnlineIcon } from '../UserProfile/styled'
+
+import { Message } from './Message'
+
+export const Contact = ({ active }: { active?: boolean }) => {
   return (
     <Box p="12px 0px">
-      <Box display="flex" gap="12px" border={`${active ? '2px solid yellow' : ''}`}>
+      <Box
+        display="flex"
+        gap="12px"
+        border={`${active ? '2px solid yellow' : ''}`}
+      >
         <img src={avatar} alt="" width="74px" height="74px" />
         <Box p="12px">
           <AtText>hades</AtText>
@@ -31,11 +32,11 @@ export const Contact = ({
   )
 }
 export const ChatContainer = styled(Box)(() => ({
-  width: '480px',
-  padding: '24px',
   '&.main': {
-    width: '100%'
-  }
+    width: '100%',
+  },
+  padding: '24px',
+  width: '480px',
 }))
 export const Chat = () => {
   return (
@@ -57,20 +58,33 @@ export const Chat = () => {
             <Contact />
             <Contact />
             <Contact />
-            <Contact active/>
+            <Contact active />
             <Contact />
             <Contact />
             <Contact />
           </Box>
         </ChatContainer>
         <ChatContainer className="main">
-          <Box>dfdf</Box>
+          <Box height="720px" sx={{ overflowY: 'scroll' }} p="24px">
+            {new Array(10).fill(3).map((_, key: number) => (
+              <Message key={key} sent={ key % 2 === 0 ? true : false }/>
+            ))}
+            <Message />
+          </Box>
           <Box>
-            <AdornmentInput variant="default" label='search conversaion' adornment={<SearchIcon />}/>
+            <AdornmentInput
+              variant="default"
+              label="search conversaion"
+              adornment={<SearchIcon />}
+            />
           </Box>
         </ChatContainer>
         <ChatContainer>
-          <AdornmentInput variant="default" label='search conversaion' adornment={<SearchIcon />}/>
+          <AdornmentInput
+            variant="default"
+            label="search conversation"
+            adornment={<SearchIcon />}
+          />
         </ChatContainer>
       </Box>
     </ModalContainer>
