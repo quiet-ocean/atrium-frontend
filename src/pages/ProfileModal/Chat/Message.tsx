@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 import { palette } from '../../../MuiTheme'
 import avatar from '../images/avatar-1.png'
@@ -28,9 +28,12 @@ export const Message = ({ sent }: { sent?: boolean }) => {
         sx={{
           background: sent ? 'yellow' : palette.background.paper,
           padding: '24px',
+          border: !sent ? `1px solid ${palette.border.light}` : ``,
         }}
       >
-        This is a sample message
+        <Typography sx={{ fontFamily: 'Andale Mono Regular', color: `${sent ? palette.text.secondary : palette.text.primary}`}}>
+          This is a sample message
+        </Typography>
       </Box>
     </Box>
   )

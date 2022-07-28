@@ -38,5 +38,7 @@ export const Main = styled.div`
   margin: 160px 0px 0px 80px;
 `
 export const ModalContainer = styled.div`
-  margin: 160px 0px 0px 80px;
+  // margin: 160px 0px 0px 80px;
+  padding: 160px 0px 0px 80px;
+  height: 100%;
 `
