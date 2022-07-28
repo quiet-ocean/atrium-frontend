@@ -18,6 +18,7 @@ import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
 import type Game from '../scenes/Game'
 import { setLoggedIn } from '../stores/UserStore'
+import UnityGame from '../components/UnityGame'
 
 const Backdrop = styled.div`
   position: absolute;
@@ -40,8 +41,7 @@ for (let i = avatars.length - 1; i > 0; i--) {
 
 function GameUI() {
   const dispatch = useAppDispatch()
-  const game = phaserGame.scene.keys.game as Game
-  console.log(game)
+  const game = phaserGame.game as Game
   const loggedIn = useAppSelector((state) => state.user.loggedIn)
   const playerName = useAppSelector((state) => state.user.playerName)
   const computerDialogOpen = useAppSelector(
@@ -58,21 +58,21 @@ function GameUI() {
   const isMyPlayerReady = useAppSelector((state) => state.user.isMyPlayerReady)
 
   React.useEffect(() => {
-    if (isMyPlayerReady && game) {
+    if (game) {
       game.registerKeys()
-      if (game.myPlayer) {
-        console.log('set player name to ', playerName)
-        game.myPlayer.setPlayerName(
-          playerName ||
-            (window as any).accountId ||
-            (window as any).near?.accountId
-        )
-        game.myPlayer.setPlayerTexture(avatars[0].name)
-        game.network.readyToConnect()
-        dispatch(setLoggedIn(true))
-      }
+      // if (game.myPlayer) {
+      console.log('set player name to ', playerName)
+      // game.myPlayer.setPlayerName(
+      //   playerName ||
+      //     (window as any).accountId ||
+      //     (window as any).near?.accountId
+      // )
+      // game.myPlayer.setPlayerTexture(avatars[0].name)
+      game.network.readyToConnect()
+      dispatch(setLoggedIn(true))
+      // }
     }
-  }, [isMyPlayerReady])
+  }, [])
 
   let ui: JSX.Element
   if (loggedIn) {
@@ -88,9 +88,10 @@ function GameUI() {
       ui = (
         /* Render Chat or VideoConnectionDialog if no dialogs are opened. */
         <>
-          <Chat />
+          {/* <Chat /> */}
           {/* Render VideoConnectionDialog if user is not connected to a webcam. */}
           {/* {!videoConnected && <VideoConnectionDialog />} */}
+          <UnityGame />
         </>
       )
     }
