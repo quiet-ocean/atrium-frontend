@@ -35,9 +35,13 @@ export const Message = ({ sent }: { sent?: boolean }) => {
           sx={{
             color: `${sent ? palette.text.secondary : palette.text.primary}`,
             fontFamily: 'Andale Mono Regular',
+            fontSize: '16px',
+            fontWeight: '400',
+            letterSpacing: '-0.05em',
+            lineHeight: '16px',
           }}
         >
-          This is a sample message
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac convallis commodo morbi ut leo gravida. 
         </Typography>
       </Box>
     </Box>

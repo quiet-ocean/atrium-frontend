@@ -14,12 +14,14 @@ export const Contact = ({ active }: { active?: boolean }) => {
       >
         <img src={avatar} alt="" width="74px" height="74px" />
         <Box p="12px">
-          <AtText>hades</AtText>
+          <AtText sx={{ fontSize: '20px' }}>hades</AtText>
           <Box display="flex" gap="8px">
-            <Box p="6px 0px">
+            <Box p="3px 0px">
               <OnlineIcon />
             </Box>
-            <AtText className="">online</AtText>
+            <AtText className="disabled" sx={{
+              fontSize: '12px !important',
+            }}>online</AtText>
           </Box>
         </Box>
       </Box>

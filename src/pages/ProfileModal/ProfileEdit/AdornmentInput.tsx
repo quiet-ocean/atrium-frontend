@@ -22,8 +22,12 @@ export const AdornmentInput: React.FC<{
         htmlFor="outlined-adornment-password"
         sx={{
           color: palette.text.disabled,
-          fontSize: '16px',
+          fontFamily: 'Andale Mono Regular',
+          fontSize: '18px',
+          fontWeight: 400,
+          lineHeight: '32px',
           textTransform: 'capitalize',
+          letterSpacing: '-0.1em',
         }}
       >
         {label}
