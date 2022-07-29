@@ -1,15 +1,16 @@
+import LaunchIcon from '@mui/icons-material/Launch'
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone'
 import SearchIcon from '@mui/icons-material/Search'
 import VideoCameraFrontIcon from '@mui/icons-material/VideoCameraFront'
 import { Box, Button, Typography, ButtonGroup } from '@mui/material'
 
+import avatar from '../../../assets/images/avatar-5.png'
 import { AtText } from '../../../components'
 import { palette } from '../../../MuiTheme'
-import avatar from '../images/project-image.png'
 import { AdornmentInput } from '../ProfileEdit/AdornmentInput'
+import { OnlineIcon } from '../UserProfile/styled'
 
 import { AntSwitch } from './Switch'
-import LaunchIcon from '@mui/icons-material/Launch';
 export const ContactInfo = () => {
   return (
     <>
@@ -26,15 +27,27 @@ export const ContactInfo = () => {
         }}
       >
         <Box display="flex" justifyContent="center">
-          <img
-            src={avatar}
-            alt=""
-            style={{
-              borderRadius: '100%',
-              height: '100px',
-              width: '100px',
-            }}
-          />
+          <Box position="relative">
+            <img
+              src={avatar}
+              alt=""
+              style={{
+                borderRadius: '100%',
+                height: '100px',
+                width: '100px',
+              }}
+            />
+            <OnlineIcon
+              sx={{
+                border: `1px solid ${palette.border.dark}`,
+                position: 'absolute',
+                right: '3px',
+                top: '12px',
+                width: '15px',
+                height: '15px',
+              }}
+            />
+          </Box>
         </Box>
         <Box p="6px 0px">
           <Box display="flex" justifyContent="center">
@@ -46,7 +59,7 @@ export const ContactInfo = () => {
               hades
             </AtText>
             <Box pt="7px">
-              <LaunchIcon sx={{ color: palette.text.primary }}/>
+              <LaunchIcon sx={{ color: palette.text.primary }} />
             </Box>
           </Box>
           <Typography
