@@ -20,7 +20,7 @@ export const ChatBox = () => {
       <Box display="flex" gap="12px">
         <Box
           sx={{
-            border: `1px solid ${palette.primary.main}`,
+            border: `1px solid ${palette.border.main}`,
             padding: '13px',
           }}
         >
@@ -28,7 +28,7 @@ export const ChatBox = () => {
         </Box>
         <Box
           sx={{
-            border: `1px solid ${palette.primary.main}`,
+            border: `1px solid ${palette.border.main}`,
             padding: '13px',
           }}
         >

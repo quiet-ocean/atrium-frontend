@@ -27,11 +27,16 @@ export const Message = ({ sent }: { sent?: boolean }) => {
         width="80%"
         sx={{
           background: sent ? 'yellow' : palette.background.paper,
+          border: !sent ? `1px solid ${palette.border.main}` : ``,
           padding: '24px',
-          border: !sent ? `1px solid ${palette.border.light}` : ``,
         }}
       >
-        <Typography sx={{ fontFamily: 'Andale Mono Regular', color: `${sent ? palette.text.secondary : palette.text.primary}`}}>
+        <Typography
+          sx={{
+            color: `${sent ? palette.text.secondary : palette.text.primary}`,
+            fontFamily: 'Andale Mono Regular',
+          }}
+        >
           This is a sample message
         </Typography>
       </Box>

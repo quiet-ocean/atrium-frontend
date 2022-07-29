@@ -1,7 +1,7 @@
 import LaunchIcon from '@mui/icons-material/Launch'
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone'
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import SearchIcon from '@mui/icons-material/Search'
-import VideoCameraFrontIcon from '@mui/icons-material/VideoCameraFront'
+import VideoCameraFrontOutlinedIcon from '@mui/icons-material/VideoCameraFrontOutlined'
 import { Box, Button, Typography, ButtonGroup } from '@mui/material'
 
 import avatar from '../../../assets/images/avatar-5.png'
@@ -77,19 +77,19 @@ export const ContactInfo = () => {
           <ButtonGroup variant="outlined" aria-label="outlined button group">
             <Button
               sx={{
-                border: `1px solid ${palette.border.light}`,
+                border: `1px solid ${palette.border.main}`,
                 padding: '12px 36px',
               }}
             >
-              <LocalPhoneIcon sx={{ color: 'yellow' }} />
+              <LocalPhoneOutlinedIcon sx={{ color: 'yellow' }} />
             </Button>
             <Button
               sx={{
-                border: `1px solid ${palette.border.light}`,
+                border: `1px solid ${palette.border.main}`,
                 padding: '12px 36px',
               }}
             >
-              <VideoCameraFrontIcon sx={{ color: 'yellow' }} />
+              <VideoCameraFrontOutlinedIcon sx={{ color: 'yellow' }} />
             </Button>
           </ButtonGroup>
         </Box>
