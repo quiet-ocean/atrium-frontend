@@ -16,7 +16,7 @@ export const ContactInfo = () => {
     <>
       <AdornmentInput
         variant="default"
-        label="search conversation"
+        label="search conversation..."
         adornment={<SearchIcon />}
       />
       <Box
@@ -78,6 +78,7 @@ export const ContactInfo = () => {
             <Button
               sx={{
                 border: `1px solid ${palette.border.main}`,
+                borderRadius: '0px',
                 padding: '12px 36px',
               }}
             >
@@ -86,6 +87,7 @@ export const ContactInfo = () => {
             <Button
               sx={{
                 border: `1px solid ${palette.border.main}`,
+                borderRadius: '0px',
                 padding: '12px 36px',
               }}
             >

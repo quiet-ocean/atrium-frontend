@@ -11,7 +11,12 @@ export const ContactList = () => {
         </AtText>
         <AtText
           className="disabled"
-          sx={{ fontSize: '18px !important', padding: '3px' }}
+          sx={{
+            fontFamily: 'Fractul Alt !important',
+            fontSize: '18px !important',
+            fontWeight: 300,
+            padding: '3px',
+          }}
         >
           requests
         </AtText>

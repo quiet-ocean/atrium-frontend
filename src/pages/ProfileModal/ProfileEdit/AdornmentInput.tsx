@@ -6,6 +6,8 @@ import {
   IconButton,
 } from '@mui/material'
 
+import { palette } from '../../../MuiTheme'
+
 export const AdornmentInput: React.FC<{
   adornment: React.ReactNode
   label: string
@@ -18,7 +20,11 @@ export const AdornmentInput: React.FC<{
     >
       <InputLabel
         htmlFor="outlined-adornment-password"
-        sx={{ fontSize: '16px' }}
+        sx={{
+          color: palette.text.disabled,
+          fontSize: '16px',
+          textTransform: 'capitalize',
+        }}
       >
         {label}
       </InputLabel>

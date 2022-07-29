@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 
+import avatar from '../../../assets/images/avatar-5.png'
 import { palette } from '../../../MuiTheme'
-import avatar from '../images/avatar-1.png'
 
 export const Message = ({ sent }: { sent?: boolean }) => {
   return (

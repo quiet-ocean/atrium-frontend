@@ -36,7 +36,7 @@ export const ChatBox = () => {
         </Box>
         <AdornmentInput
           variant="default"
-          label="search conversaion"
+          label="type here..."
           adornment={<SendIcon />}
         />
       </Box>
