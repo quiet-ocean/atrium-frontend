@@ -1,17 +1,26 @@
-import AccountCircle from '@mui/icons-material/AccountCircle'
-import AddBoxIcon from '@mui/icons-material/AddBox'
-import AddToPhotosIcon from '@mui/icons-material/AddToPhotos'
-import AdUnitsIcon from '@mui/icons-material/AdUnits'
-import AppsIcon from '@mui/icons-material/Apps'
-import AssignmentReturnedIcon from '@mui/icons-material/AssignmentReturned'
+// import AccountCircle from '@mui/icons-material/AccountCircle'
+// import AddBoxIcon from '@mui/icons-material/AddBox'
+// import AddToPhotosIcon from '@mui/icons-material/AddToPhotos'
+// import AdUnitsIcon from '@mui/icons-material/AdUnits'
+// import AppsIcon from '@mui/icons-material/Apps'
+// import AssignmentReturnedIcon from '@mui/icons-material/AssignmentReturned'
 // import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord'
-import { Box } from '@mui/material'
+import { Box, styled } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import BagIcon from '../../../assets/icons/bag-icon.png'
+import BountyIcon from '../../../assets/icons/bounties-icon.png'
+import FlagIcon from '../../../assets/icons/flag-icon.png'
+import HomeIcon from '../../../assets/icons/inv-icon.png'
+import QuestsIcon from '../../../assets/icons/quests-icon.png'
+import UsersIcon from '../../../assets/icons/users-icon.png'
 import muiTheme from '../../../MuiTheme'
 
+const IconContainer = styled(Box)(() => ({
+  background: '',
+}))
 const SideBar: React.FC = () => {
   return (
     <Box
@@ -42,7 +51,9 @@ const SideBar: React.FC = () => {
           aria-haspopup="true"
           sx={{ color: muiTheme.palette.icon.dark }}
         >
-          <AccountCircle />
+          <IconContainer>
+            <img src={HomeIcon} alt="" width="100%" height="100%" />
+          </IconContainer>
         </IconButton>
       </Link>
 
@@ -53,7 +64,9 @@ const SideBar: React.FC = () => {
         aria-haspopup="true"
         sx={{ color: muiTheme.palette.icon.dark }}
       >
-        <AccountCircle />
+        <IconContainer>
+          <img src={BountyIcon} alt="" width="100%" height="100%" />
+        </IconContainer>
       </IconButton>
       <IconButton
         size="large"
@@ -62,7 +75,9 @@ const SideBar: React.FC = () => {
         aria-haspopup="true"
         sx={{ color: muiTheme.palette.icon.dark }}
       >
-        <AddBoxIcon />
+        <IconContainer>
+          <img src={UsersIcon} alt="" width="100%" height="100%" />
+        </IconContainer>
       </IconButton>
       <IconButton
         size="large"
@@ -71,7 +86,9 @@ const SideBar: React.FC = () => {
         aria-haspopup="true"
         sx={{ color: muiTheme.palette.icon.dark }}
       >
-        <AdUnitsIcon />
+        <IconContainer>
+          <img src={HomeIcon} alt="" width="100%" height="100%" />
+        </IconContainer>
       </IconButton>
       <IconButton
         size="large"
@@ -80,7 +97,9 @@ const SideBar: React.FC = () => {
         aria-haspopup="true"
         sx={{ color: muiTheme.palette.icon.dark }}
       >
-        <AddToPhotosIcon />
+        <IconContainer>
+          <img src={QuestsIcon} alt="" width="100%" height="100%" />
+        </IconContainer>
       </IconButton>
       <IconButton
         size="large"
@@ -89,7 +108,9 @@ const SideBar: React.FC = () => {
         aria-haspopup="true"
         sx={{ color: muiTheme.palette.icon.dark }}
       >
-        <AppsIcon />
+        <IconContainer>
+          <img src={FlagIcon} alt="" width="100%" height="100%" />
+        </IconContainer>
       </IconButton>
       <IconButton
         size="large"
@@ -98,7 +119,9 @@ const SideBar: React.FC = () => {
         aria-haspopup="true"
         sx={{ color: muiTheme.palette.icon.dark }}
       >
-        <AssignmentReturnedIcon />
+        <IconContainer>
+          <img src={BagIcon} alt="" width="100%" height="100%" />
+        </IconContainer>
       </IconButton>
     </Box>
   )

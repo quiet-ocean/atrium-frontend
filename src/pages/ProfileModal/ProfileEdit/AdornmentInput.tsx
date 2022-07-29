@@ -25,9 +25,9 @@ export const AdornmentInput: React.FC<{
           fontFamily: 'Andale Mono Regular',
           fontSize: '18px',
           fontWeight: 400,
+          letterSpacing: '-0.1em',
           lineHeight: '32px',
           textTransform: 'capitalize',
-          letterSpacing: '-0.1em',
         }}
       >
         {label}
