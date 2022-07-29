@@ -9,6 +9,7 @@ import avatar from '../images/project-image.png'
 import { AdornmentInput } from '../ProfileEdit/AdornmentInput'
 
 import { AntSwitch } from './Switch'
+import LaunchIcon from '@mui/icons-material/Launch';
 export const ContactInfo = () => {
   return (
     <>
@@ -39,11 +40,14 @@ export const ContactInfo = () => {
           <Box display="flex" justifyContent="center">
             <AtText
               sx={{
-                fontSize: '18px',
+                fontSize: '24px',
               }}
             >
               hades
             </AtText>
+            <Box pt="7px">
+              <LaunchIcon sx={{ color: palette.text.primary }}/>
+            </Box>
           </Box>
           <Typography
             sx={{
