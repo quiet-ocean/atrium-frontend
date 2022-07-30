@@ -1,5 +1,5 @@
 import LaunchIcon from '@mui/icons-material/Launch'
-import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined'
 import SearchIcon from '@mui/icons-material/Search'
 import VideoCameraFrontOutlinedIcon from '@mui/icons-material/VideoCameraFrontOutlined'
 import { Box, Button, Typography, ButtonGroup } from '@mui/material'
@@ -40,11 +40,11 @@ export const ContactInfo = () => {
             <OnlineIcon
               sx={{
                 border: `1px solid ${palette.border.dark}`,
+                height: '15px',
                 position: 'absolute',
                 right: '3px',
                 top: '12px',
                 width: '15px',
-                height: '15px',
               }}
             />
           </Box>

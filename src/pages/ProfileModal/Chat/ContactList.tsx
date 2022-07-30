@@ -1,5 +1,7 @@
 import { Box } from '@mui/material'
+
 import { AtText } from '../../../components'
+
 import { Contact } from './'
 
 export const ContactList = () => {

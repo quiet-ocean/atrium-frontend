@@ -12,11 +12,19 @@ import image from '../images/post-image.png'
 
 export const imageList = [image, image, image]
 
-export const PostItem = () => {
+export const PostContainer = ({
+  children,
+  img,
+  height,
+}: {
+  children: React.ReactNode
+  img: string
+  height?: string
+}) => {
   return (
-    <Box>
-      <Box position="relative" height="480px">
-        <img src={image} alt="" width="100%" height="100%" />
+    <Box border={`1px solid ${palette.border.main}`}>
+      <Box position="relative" height={`${height ? height : '480px'}`}>
+        <img src={img} alt="" width="100%" height="100%" />
         <Box
           sx={{
             backgroundImage: `linear-gradient(0deg, ${palette.background.default}, transparent)`,
@@ -29,28 +37,31 @@ export const PostItem = () => {
           }}
         >
           <Box position="absolute" sx={{ bottom: '24px' }}>
-            <AtText sx={{ fontSize: '36px', fontWeight: 600 }}>
-              my very first project
-            </AtText>
-            <AtText
-              sx={{
-                // color: '#BFBFBF',
-                color: palette.text.disabled,
-
-                fontFamily: 'Andale Mono Regular',
-
-                fontSize: '20px',
-
-                fontWeight: 400,
-              }}
-            >
-              This is my very first post! Please take a look! Bitch. Dont fade
-              it.
-            </AtText>
+            {children}
           </Box>
         </Box>
       </Box>
     </Box>
+  )
+}
+export const PostItem = ({ img }: { img: string }) => {
+  return (
+    <PostContainer img={img}>
+      <AtText sx={{ fontSize: '36px', fontWeight: 600 }}>
+        my very first project
+      </AtText>
+      <AtText
+        sx={{
+          // color: '#BFBFBF',
+          color: palette.text.disabled,
+          fontFamily: 'Andale Mono Regular',
+          fontSize: '20px',
+          fontWeight: 400,
+        }}
+      >
+        This is my very first post! Please take a look! Bitch. Dont fade it.
+      </AtText>
+    </PostContainer>
   )
 }
 export const PostCarousel = () => {
@@ -63,7 +74,7 @@ export const PostCarousel = () => {
       >
         {imageList.map(() => {
           // return <img src={img} key={i} width="100%" height="480px" />
-          return <PostItem />
+          return <PostItem img={image} />
         })}
       </CarouselLibrary>
     </Box>

@@ -1,7 +1,8 @@
 import { Box } from '@mui/material'
 
-import { PostItem } from './PostItem'
 import { ModalContainer } from '../styled'
+
+import { PostItem } from './PostItem'
 export const Post = () => {
   return (
     <ModalContainer>
