@@ -8,7 +8,8 @@ import post1 from '../../../assets/images/post-1.png'
 import post2 from '../../../assets/images/post-2.png'
 import post3 from '../../../assets/images/post-3.png'
 import post4 from '../../../assets/images/post-4.png'
-// import { AtText } from '../../../components'
+import { AtText } from '../../../components'
+import post5 from '../images/post-image.png'
 import * as PContainer from '../styled'
 import { PostContainer } from '../UserProfile/PostCarousel'
 
@@ -41,10 +42,7 @@ export const Dashboard = () => {
                 </Typography>
               </Box>
               <Box p="40px 12px 0px 0px">
-                <img
-                  src={reactions}
-                  alt=""
-                />
+                <img src={reactions} alt="" />
               </Box>
             </Box>
           </PostContainer>
@@ -77,7 +75,7 @@ export const Dashboard = () => {
       </Container>
       <Container>
         <Box flex="2">
-          <PostContainer img={post3} height="350px">
+          <PostContainer img={post3} height="480px">
             <Title>How I stay ahead on quests</Title>
             <Box mt="12px">
               <User name="swiftyyy" />
@@ -85,7 +83,7 @@ export const Dashboard = () => {
           </PostContainer>
         </Box>
         <Box flex="2">
-          <PostContainer img={post4} height="350px">
+          <PostContainer img={post4} height="480px">
             <Title>Why bounties mean everything</Title>
             <Box mt="12px">
               <User name="swiftyyy" />
@@ -101,6 +99,23 @@ export const Dashboard = () => {
           <HorizontalPostComp img={land1} />
           <HorizontalPostComp img={land2} />
           <HorizontalPostComp img={land3} />
+        </Box>
+      </Container>
+      <Container>
+        <Box width="100%">
+          <PostContainer img={post5} height="350px">
+            <AtText>Project 1</AtText>
+          </PostContainer>
+        </Box>
+        <Box width="100%">
+          <PostContainer img={post5} height="350px">
+            <AtText>Project 1</AtText>
+          </PostContainer>
+        </Box>
+        <Box width="100%">
+          <PostContainer img={post5} height="350px">
+            <AtText>Project 1</AtText>
+          </PostContainer>
         </Box>
       </Container>
     </PContainer.Main>
