@@ -6,18 +6,29 @@ import {
   IconButton,
 } from '@mui/material'
 
-export const AdornmentInput: React.FC<{ adornment; label }> = ({
-  adornment,
-  label,
-}: {
+import { palette } from '../../../MuiTheme'
+
+export const AdornmentInput: React.FC<{
   adornment: React.ReactNode
   label: string
-}) => {
+  variant?: 'primary' | 'default' | undefined
+}> = ({ adornment, label, variant }) => {
   return (
-    <FormControl sx={{ width: '350px' }} variant="outlined">
+    <FormControl
+      sx={{ width: variant === 'default' ? '100%' : '350px' }}
+      variant="outlined"
+    >
       <InputLabel
         htmlFor="outlined-adornment-password"
-        sx={{ fontSize: '16px' }}
+        sx={{
+          color: palette.text.disabled,
+          fontFamily: 'Andale Mono Regular',
+          fontSize: '18px',
+          fontWeight: 400,
+          letterSpacing: '-0.1em',
+          lineHeight: '32px',
+          textTransform: 'capitalize',
+        }}
       >
         {label}
       </InputLabel>

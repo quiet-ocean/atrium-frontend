@@ -5,7 +5,7 @@ import { palette } from '../../MuiTheme'
 
 type ButtonProps = {
   // fontFamily?: string
-  text: string
+  text: React.ReactNode
   icon?: React.ReactNode
   variant?:
     | 'default'

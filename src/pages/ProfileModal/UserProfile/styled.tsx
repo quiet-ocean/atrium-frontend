@@ -10,7 +10,7 @@ export const Container = styled(Box)(({ theme }) => ({
 
 export const OnlineIcon = styled(Box)(() => ({
   background: 'yellow',
-  borderRadius: '5px',
+  borderRadius: '25px',
   height: '10px',
   width: '10px',
 }))

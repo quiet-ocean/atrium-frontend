@@ -2,6 +2,7 @@ import { Box, Grid, Container } from '@mui/material'
 
 import avatar from '../images/profile-avatar.png'
 import landingBg from '../images/profile-landing-image.png'
+import { ModalContainer } from '../styled'
 
 import {
   Community,
@@ -14,7 +15,7 @@ import {
 
 export const UserProfile = () => {
   return (
-    <Box sx={{ mt: '160px', pl: '80px' }}>
+    <ModalContainer>
       <Box sx={{ position: 'relative' }}>
         <img src={landingBg} alt="" width="100%" />
         <Box
@@ -57,6 +58,6 @@ export const UserProfile = () => {
           </Grid>
         </Grid>
       </Container>
-    </Box>
+    </ModalContainer>
   )
 }
