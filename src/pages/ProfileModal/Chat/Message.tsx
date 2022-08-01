@@ -41,7 +41,8 @@ export const Message = ({ sent }: { sent?: boolean }) => {
             lineHeight: '16px',
           }}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac convallis commodo morbi ut leo gravida. 
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac
+          convallis commodo morbi ut leo gravida.
         </Typography>
       </Box>
     </Box>

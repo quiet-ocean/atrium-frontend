@@ -19,9 +19,14 @@ export const Contact = ({ active }: { active?: boolean }) => {
             <Box p="3px 0px">
               <OnlineIcon />
             </Box>
-            <AtText className="disabled" sx={{
-              fontSize: '12px !important',
-            }}>online</AtText>
+            <AtText
+              className="disabled"
+              sx={{
+                fontSize: '12px !important',
+              }}
+            >
+              online
+            </AtText>
           </Box>
         </Box>
       </Box>
