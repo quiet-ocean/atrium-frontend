@@ -24,6 +24,7 @@ import {
   UserProfile,
   Chat,
   Post,
+  SinglePost,
 } from './pages/ProfileModal'
 import { setWalletConnected } from './stores/UserStore'
 import { getAccount } from './utils'
@@ -73,6 +74,7 @@ const App = () => {
             <Route path="feedback" element={<FeedbackForm />} />
             <Route path="chat" element={<Chat />} />
             <Route path="post" element={<Post />} />
+            <Route path="single-post" element={<SinglePost />} />
           </Route>
         </Routes>
       </BrowserRouter>

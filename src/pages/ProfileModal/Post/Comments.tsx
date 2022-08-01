@@ -3,6 +3,10 @@ import { Box, Typography } from '@mui/material'
 import { AtButton, AtText } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import avatar from '../images/avatar-3.png'
+import { AdornmentInput } from '../ProfileEdit/AdornmentInput'
+import SendIcon from '@mui/icons-material/Send'
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
+
 export const Comment = () => {
   return (
     <Box display="flex" gap="8px" p="12px 0px">
@@ -40,6 +44,21 @@ export const Comments = () => {
       <Box mt="12px">
         <Comment />
         <Comment />
+      </Box>
+      <Box display="flex" gap="12px">
+        <Box
+          sx={{
+            border: `1px solid ${palette.border.main}`,
+            padding: '13px',
+          }}
+        >
+          <SentimentSatisfiedAltIcon sx={{ color: 'white' }} />
+        </Box>
+        <AdornmentInput
+          variant="default"
+          label="type here..."
+          adornment={<SendIcon />}
+        />
       </Box>
     </Box>
   )
