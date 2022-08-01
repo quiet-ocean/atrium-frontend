@@ -14,7 +14,7 @@ import bg from '../images/profile-landing-image.png'
 import profileImage from '../images/Rectangle 121.png'
 import cardImage from '../images/Rectangle 138.png'
 import icon3 from '../images/Vector.png'
-import * as GContainer from '../styled'
+import * as PContainer from '../styled'
 
 import { Text, Heading, SubHead, HeadButton, Container, Card } from './styled'
 
@@ -32,14 +32,14 @@ const Comment = ({ text }: { text: string }) => {
 }
 const SinglePost = () => {
   return (
-    <Box sx={{ marginTop: '160px' }}>
-      <Box sx={{ paddingLeft: '75px' }}>
+    <PContainer.Main>
+      <Box>
         <Box>
           <img src={bg} alt="" width="100%" />
         </Box>
       </Box>
-      <GContainer.Page>
-        <Box sx={{ gridArea: 'main' }}>
+      <Box>
+        <Box sx={{ padding: '0px 180px' }}>
           <Box>
             <Box sx={{ p: '32px' }}>
               <Heading>spotify integrating with atrium</Heading>
@@ -161,8 +161,8 @@ const SinglePost = () => {
             </Box>
           </Container>
         </Box>
-      </GContainer.Page>
-    </Box>
+      </Box>
+    </PContainer.Main>
   )
 }
 
