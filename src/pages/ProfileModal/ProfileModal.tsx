@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Modal from '@mui/material/Modal'
 import * as React from 'react'
@@ -20,10 +21,12 @@ const ProfileModal = () => {
         sx={{ overflowY: 'scroll' }}
       >
         {/* <ProfilePage onClose={handleClose} /> */}
-        <ProfilePage />
+        <Box>
+          <ProfilePage />
+        </Box>
       </Modal>
     </>
   )
 }
 
-export default ProfileModal
+export { ProfileModal }

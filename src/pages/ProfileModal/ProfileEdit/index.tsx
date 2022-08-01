@@ -75,4 +75,4 @@ const ProfileEdit: React.FC = () => {
   )
 }
 
-export default ProfileEdit
+export { ProfileEdit }

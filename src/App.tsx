@@ -14,12 +14,15 @@ import {
   ScanDAO,
   GameUI,
 } from './pages'
-import ProfileModal from './pages/ProfileModal'
-import Account from './pages/ProfileModal/Account'
-import { ArticleBuilder } from './pages/ProfileModal/ArticleBuilder'
-import Dashboard from './pages/ProfileModal/Dashboard'
-import { FeedbackForm } from './pages/ProfileModal/FeedbackForm'
-import ProfileEdit from './pages/ProfileModal/ProfileEdit'
+import {
+  ProfileModal,
+  Dashboard,
+  Account,
+  ArticleBuilder,
+  FeedbackForm,
+  ProfileEdit,
+  UserProfile,
+} from './pages/ProfileModal'
 import { setWalletConnected } from './stores/UserStore'
 import { getAccount } from './utils'
 
@@ -61,6 +64,7 @@ const App = () => {
           >
             <Route path="" element={<Dashboard />} />
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="exploration" element={<UserProfile />} />
             <Route path="account" element={<Account />} />
             <Route path="edit" element={<ProfileEdit />} />
             <Route path="article-builder" element={<ArticleBuilder />} />
