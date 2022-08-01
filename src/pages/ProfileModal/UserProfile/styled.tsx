@@ -9,8 +9,8 @@ export const Container = styled(Box)(({ theme }) => ({
 }))
 
 export const OnlineIcon = styled(Box)(() => ({
-  width: '10px',
-  height: '10px',
   background: 'yellow',
   borderRadius: '5px',
+  height: '10px',
+  width: '10px',
 }))

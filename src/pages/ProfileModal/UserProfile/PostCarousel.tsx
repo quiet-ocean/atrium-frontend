@@ -6,6 +6,7 @@ import CarouselLibrary from 'react-material-ui-carousel'
 // import carousel3 from '../images/carousel3.png'
 
 // export const imageList = [carousel1, carousel2, carousel3]
+import { AtText } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import image from '../images/post-image.png'
 
@@ -21,11 +22,33 @@ export const PostItem = () => {
             backgroundImage: `linear-gradient(0deg, ${palette.background.default}, transparent)`,
             height: '100%',
             left: '0',
+            padding: '36px',
             position: 'absolute',
             top: 0,
             width: '100%',
           }}
-        ></Box>
+        >
+          <Box position="absolute" sx={{ bottom: '24px' }}>
+            <AtText sx={{ fontSize: '36px', fontWeight: 600 }}>
+              my very first project
+            </AtText>
+            <AtText
+              sx={{
+                // color: '#BFBFBF',
+                color: palette.text.disabled,
+
+                fontFamily: 'Andale Mono Regular',
+
+                fontSize: '20px',
+
+                fontWeight: 400,
+              }}
+            >
+              This is my very first post! Please take a look! Bitch. Dont fade
+              it.
+            </AtText>
+          </Box>
+        </Box>
       </Box>
     </Box>
   )
