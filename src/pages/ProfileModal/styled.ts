@@ -1,3 +1,5 @@
+import { Box } from '@mui/material'
+import { styled as muiStyled } from '@mui/material/styles'
 import styled from 'styled-components'
 
 import { palette } from '../../MuiTheme'
@@ -42,3 +44,7 @@ export const ModalContainer = styled.div`
   padding: 160px 0px 0px 80px;
   height: 100%;
 `
+export const Community = muiStyled(Box)(({ theme }) => ({
+  border: `1px solid ${theme.palette.text.primary}`,
+  padding: '24px',
+}))

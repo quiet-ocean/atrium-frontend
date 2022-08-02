@@ -8,7 +8,7 @@ import post1 from '../../../assets/images/post-1.png'
 import post2 from '../../../assets/images/post-2.png'
 import post3 from '../../../assets/images/post-3.png'
 import post4 from '../../../assets/images/post-4.png'
-import { AtText } from '../../../components'
+import { AText } from '../../../components'
 import post5 from '../images/post-image.png'
 import * as PContainer from '../styled'
 import { PostContainer } from '../UserProfile/PostCarousel'
@@ -104,17 +104,17 @@ export const Dashboard = () => {
       <Container>
         <Box width="100%">
           <PostContainer img={post5} height="350px">
-            <AtText>Project 1</AtText>
+            <AText>Project 1</AText>
           </PostContainer>
         </Box>
         <Box width="100%">
           <PostContainer img={post5} height="350px">
-            <AtText>Project 1</AtText>
+            <AText>Project 1</AText>
           </PostContainer>
         </Box>
         <Box width="100%">
           <PostContainer img={post5} height="350px">
-            <AtText>Project 1</AtText>
+            <AText>Project 1</AText>
           </PostContainer>
         </Box>
       </Container>

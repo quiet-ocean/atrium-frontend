@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 
-import { AtText, AtButton } from '../../../components'
+import { AText, AtButton } from '../../../components'
 import { palette } from '../../../MuiTheme'
 
 import { Container as PContainer } from './styled'
@@ -30,13 +30,13 @@ export const Skills = () => {
   return (
     <PContainer>
       <Box display="flex" justifyContent="space-between">
-        <AtText
+        <AText
           className="disabled"
           sx={{
             fontSize: '20px !important',
           }}
         >
-          <AtText
+          <AText
             component="span"
             sx={{
               color: 'white !important',
@@ -45,9 +45,9 @@ export const Skills = () => {
             }}
           >
             skills
-          </AtText>
+          </AText>
           &nbsp;&nbsp;tags
-        </AtText>
+        </AText>
         <AtButton variant="small" text="see all" />
       </Box>
       <Box display="flex" gap="16px" pt="12px">

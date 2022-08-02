@@ -6,7 +6,7 @@ import CarouselLibrary from 'react-material-ui-carousel'
 // import carousel3 from '../images/carousel3.png'
 
 // export const imageList = [carousel1, carousel2, carousel3]
-import { AtText } from '../../../components'
+import { AText } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import image from '../images/post-image.png'
 
@@ -47,10 +47,10 @@ export const PostContainer = ({
 export const PostItem = ({ img }: { img: string }) => {
   return (
     <PostContainer img={img}>
-      <AtText sx={{ fontSize: '36px', fontWeight: 600 }}>
+      <AText sx={{ fontSize: '36px', fontWeight: 600 }}>
         my very first project
-      </AtText>
-      <AtText
+      </AText>
+      <AText
         sx={{
           // color: '#BFBFBF',
           color: palette.text.disabled,
@@ -60,7 +60,7 @@ export const PostItem = ({ img }: { img: string }) => {
         }}
       >
         This is my very first post! Please take a look! Bitch. Dont fade it.
-      </AtText>
+      </AText>
     </PostContainer>
   )
 }

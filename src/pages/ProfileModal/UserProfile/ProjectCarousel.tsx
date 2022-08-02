@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import CarouselLibrary from 'react-material-ui-carousel'
 
-import { AtText, AtButton } from '../../../components'
+import { AText, AtButton } from '../../../components'
 import projectImage from '../images/project-image.png'
 
 import { Container as PContainer } from './styled'
@@ -17,7 +17,7 @@ export const Project = () => {
         justifyContent="space-between"
       >
         <Box>
-          <AtText
+          <AText
             sx={{
               fontSize: '36px',
               fontWeight: '800',
@@ -26,10 +26,10 @@ export const Project = () => {
           >
             Antisocial <br />
             Ape Club
-          </AtText>
+          </AText>
         </Box>
         <Box>
-          <AtText className="disabled" sx={{ fontSize: '16px !important' }}>
+          <AText className="disabled" sx={{ fontSize: '16px !important' }}>
             Current Roles:
             <Typography component="span" color="#0149D1" px="4px">
               OG
@@ -40,16 +40,16 @@ export const Project = () => {
             <Typography component="span" color="#E90026" px="4px">
               TM
             </Typography>
-          </AtText>
+          </AText>
         </Box>
         <Box display="flex" gap="32px">
           <Box>
-            <AtText sx={{ fontSize: '24px' }}>12</AtText>
-            <AtText className="disabled">NFT Owned</AtText>
+            <AText sx={{ fontSize: '24px' }}>12</AText>
+            <AText className="disabled">NFT Owned</AText>
           </Box>
           <Box>
-            <AtText sx={{ fontSize: '24px' }}>july 3rd</AtText>
-            <AtText className="disabled">date joined</AtText>
+            <AText sx={{ fontSize: '24px' }}>july 3rd</AText>
+            <AText className="disabled">date joined</AText>
           </Box>
         </Box>
         <Box>
