@@ -216,8 +216,17 @@ export const LiveChat = () => {
           flexDirection="column"
           justifyContent="space-between"
           height="100%"
+          py="24px"
         >
-          <Box>
+          <Box sx={{ height: '450px', overflowY: 'scroll' }}>
+            <UserIntro />
+            <UserIntro />
+            <UserIntro />
+            <UserIntro />
+            <UserIntro />
+            <UserIntro />
+            <UserIntro />
+            <UserIntro />
             <UserIntro />
             <UserIntro />
             <UserIntro />
@@ -242,14 +251,16 @@ export const Media = () => {
         <AText>Media</AText>
         <AButton className="outlined secondary">view all</AButton>
       </Box>
-      <Box sx={{
-        height: '360px',
-        overflowY: 'scroll',
-      }}>
+      <Box
+        sx={{
+          height: '360px',
+          overflowY: 'scroll',
+        }}
+      >
         <Grid container spacing={1}>
           {new Array(12).fill(2).map((_, key: number) => (
             <Grid item lg={3} key={key}>
-              <Box width="136px" height="136px">
+              <Box width="136px" height="136px" margin="0px">
                 <img
                   src={`/assets/images/media (${key + 1}).png`}
                   alt=""
@@ -266,9 +277,14 @@ export const Media = () => {
 }
 export const Member = ({ index }: { index: number }) => {
   return (
-    <Box p="8px 16px" display="flex" justifyContent="space-between" sx={{
-      background: index % 2 === 0 ? palette.background.paper : '',
-    }}>
+    <Box
+      p="8px 16px"
+      display="flex"
+      justifyContent="space-between"
+      sx={{
+        background: index % 2 === 0 ? palette.background.paper : '',
+      }}
+    >
       <Box display="flex" gap="12px">
         <img src={avatar2} alt="" width="46px" height="46px" />
         <Box py="6px">
@@ -277,7 +293,9 @@ export const Member = ({ index }: { index: number }) => {
       </Box>
       <Box>
         <AText sx={{ fontSize: '18px', fontWeight: 800 }}>15</AText>
-        <AText className="disabled" sx={{ fontSize: '12px !important' }} >NFTs</AText>
+        <AText className="disabled" sx={{ fontSize: '12px !important' }}>
+          NFTs
+        </AText>
       </Box>
       <Box display="flex" gap="12px">
         <Box py="3px">
@@ -316,11 +334,16 @@ export const Members = () => {
           founder
         </Tag>
       </Box>
-      <Box pt="24px" sx={{
-        height: '360px',
-        overflowY: 'scroll',
-      }}>
-        {new Array(10).fill(2).map((_, key: number) => (<Member index={key} key={key} />))}
+      <Box
+        pt="24px"
+        sx={{
+          height: '360px',
+          overflowY: 'scroll',
+        }}
+      >
+        {new Array(10).fill(2).map((_, key: number) => (
+          <Member index={key} key={key} />
+        ))}
       </Box>
     </Container>
   )
