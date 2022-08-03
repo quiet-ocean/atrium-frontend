@@ -3,7 +3,15 @@ import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
 import PushPinIcon from '@mui/icons-material/PushPin'
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap'
-import { Box, Grid, Button, Typography, Modal, Backdrop, Fade } from '@mui/material'
+import {
+  Box,
+  Grid,
+  Button,
+  Typography,
+  Modal,
+  Backdrop,
+  Fade,
+} from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { useState } from 'react'
 
