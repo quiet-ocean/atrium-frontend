@@ -15,8 +15,8 @@ import * as PContainer from '../styled'
 import { Community as Container } from '../styled'
 import { PostContainer } from '../UserProfile'
 
-import PushPinIcon from '@mui/icons-material/PushPin';
-import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
+import PushPinIcon from '@mui/icons-material/PushPin'
+import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap'
 
 export const Banner = () => {
   return (
@@ -316,7 +316,12 @@ export const LiveChat = () => {
             view all
           </AButton> */}
           <Box display="flex" gap="6px">
-            <PushPinIcon sx={{ color: palette.secondary.light, transform: 'rotate(45deg)' }}/>
+            <PushPinIcon
+              sx={{
+                color: palette.secondary.light,
+                transform: 'rotate(45deg)',
+              }}
+            />
             <ZoomOutMapIcon sx={{ color: palette.secondary.light }} />
           </Box>
         </Box>
