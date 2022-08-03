@@ -27,7 +27,7 @@ const SearchAppBar: React.FC = () => {
     >
       <AppBar position="static" sx={{ opacity: 0.9 }}>
         {/* <StatusBar /> */}
-        <Toolbar sx={{ justifyContent: 'space-between', padding: '24px 0px' }}>
+        <Toolbar sx={{ justifyContent: 'space-between', padding: '16px 0px' }}>
           <img src={logo} alt="" />
 
           <Box sx={{ textAlign: 'center' }}>
@@ -37,7 +37,7 @@ const SearchAppBar: React.FC = () => {
               sx={{
                 background: muiTheme.palette.background.paper,
                 border: muiTheme.palette.border.main,
-                width: '560px',
+                width: { lg: '560px', md: '100%', sm: '100%', xs: '100%' },
               }}
             />
           </Box>

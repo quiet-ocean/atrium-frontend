@@ -157,7 +157,9 @@ export const ChatMessage = ({ children }: { children: React.ReactNode }) => {
         />
         <Box display="flex" gap="8px" py="6px">
           <Box>
-            <AText sx={{ fontSize: '14px', padding: '2px', fontWeight: 600 }}>Hades</AText>
+            <AText sx={{ fontSize: '14px', fontWeight: 600, padding: '2px' }}>
+              Hades
+            </AText>
           </Box>
           <Box>
             <AButton
@@ -185,9 +187,7 @@ export const ChatMessage = ({ children }: { children: React.ReactNode }) => {
           </Box>
         </Box>
       </Box>
-      <Box pl="36px">
-        {children}
-      </Box>
+      <Box pl="36px">{children}</Box>
     </Box>
   )
 }
@@ -196,7 +196,9 @@ export const UsernameWithTags = () => {
     <>
       <Box display="flex" gap="8px">
         <Box>
-          <AText sx={{ fontSize: '14px', padding: '2px', fontWeight: 600 }}>Hades</AText>
+          <AText sx={{ fontSize: '14px', fontWeight: 600, padding: '2px' }}>
+            Hades
+          </AText>
         </Box>
         <Box>
           <AButton
@@ -246,19 +248,21 @@ export const UserIntro = () => {
   return (
     <Box pt="4px">
       <ChatMessage>
-        <Typography sx={{
+        <Typography
+          sx={{
+            alignItems: 'center',
             color: palette.text.primary,
             fontFamily: 'Andale Mono Regular',
+            fontSize: '16px',
             fontStyle: 'normal',
             fontWeight: 400,
-            fontSize: '16px',
-            lineHeight: '120%',
-            alignItems: 'center',
             letterSpacing: '-0.05em',
-          }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac
-            convallis commodo morbi ut leo gravida ...
-          </Typography>
+            lineHeight: '120%',
+          }}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac
+          convallis commodo morbi ut leo gravida ...
+        </Typography>
       </ChatMessage>
     </Box>
   )
@@ -296,7 +300,12 @@ export const LiveChat = () => {
       <Box height="100%" display="flex" flexDirection="column">
         <Box display="flex" justifyContent="space-between">
           <AText>live chat</AText>
-          <AButton className="primary outlined" btnColor={palette.secondary.light}>view all</AButton>
+          <AButton
+            className="primary outlined"
+            btnColor={palette.secondary.light}
+          >
+            view all
+          </AButton>
         </Box>
         <Box
           display="flex"
@@ -406,7 +415,12 @@ export const Member = ({ index }: { index: number }) => {
       </Box>
       <Box display="flex" gap="12px">
         <Box py="3px">
-          <AButton className="tag primary outlined tag-small" btnColor='#FF75CD'>whitelisted</AButton>
+          <AButton
+            className="tag primary outlined tag-small"
+            btnColor="#FF75CD"
+          >
+            whitelisted
+          </AButton>
         </Box>
       </Box>
     </Box>
@@ -417,15 +431,35 @@ export const Members = () => {
     <Container>
       <Box display="flex" justifyContent="space-between" height="100%">
         <AText>members</AText>
-        <AButton className="primary outlined" btnColor={palette.secondary.light}>view all</AButton>
+        <AButton
+          className="primary outlined"
+          btnColor={palette.secondary.light}
+        >
+          view all
+        </AButton>
       </Box>
       <Box display="flex" gap="12px" pt="18px">
-        <AButton className="tag-secondary outlined tag-small" btnColor='#A8A8A8'>all</AButton>
-        <AButton className="tag primary outlined tag-small" btnColor='#FF75CD'>whitelisted</AButton>
-        <AButton className="tag primary outlined tag-small" btnColor='#90E487'>OG member</AButton>
-        <AButton className="tag primary outlined tag-small" btnColor='#FFB350'>devs</AButton>
-        <AButton className="tag primary outlined tag-small" btnColor='#DE58FF'>moderator</AButton>
-        <AButton className="tag primary outlined tag-small" btnColor='#71E5FF'>founder</AButton>
+        <AButton
+          className="tag-secondary outlined tag-small"
+          btnColor="#A8A8A8"
+        >
+          all
+        </AButton>
+        <AButton className="tag primary outlined tag-small" btnColor="#FF75CD">
+          whitelisted
+        </AButton>
+        <AButton className="tag primary outlined tag-small" btnColor="#90E487">
+          OG member
+        </AButton>
+        <AButton className="tag primary outlined tag-small" btnColor="#FFB350">
+          devs
+        </AButton>
+        <AButton className="tag primary outlined tag-small" btnColor="#DE58FF">
+          moderator
+        </AButton>
+        <AButton className="tag primary outlined tag-small" btnColor="#71E5FF">
+          founder
+        </AButton>
         {/* <Tag tcolor="#A8A8A8" className="">
           all
         </Tag>
@@ -478,7 +512,7 @@ export const CommunityHub = () => {
         <Grid item lg={6}>
           <Media />
         </Grid>
-        <Grid item lg={6}>
+        <Grid item lg={6} sx={{ width: '100%' }}>
           <Members />
         </Grid>
       </Grid>
