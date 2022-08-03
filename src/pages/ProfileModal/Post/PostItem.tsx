@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles'
 import { useState } from 'react'
 
 import postImage from '../../../assets/images/post-image.png'
-import { AtText, AtButton } from '../../../components'
+import { AText, AtButton } from '../../../components'
 import { palette } from '../../../MuiTheme'
 
 import { Comments } from './Comments'
@@ -60,9 +60,9 @@ export const PostItem = () => {
         justifyContent="space-between"
         onClick={() => setExpand(!expand)}
       >
-        <AtText sx={{ fontSize: '60px', fontWeight: 600, maxWidth: '640px' }}>
+        <AText sx={{ fontSize: '60px', fontWeight: 600, maxWidth: '640px' }}>
           spotify integrating with atrium
-        </AtText>
+        </AText>
         <Box>
           <RefText>//mar 1st, 2022</RefText>
         </Box>
@@ -83,7 +83,7 @@ export const PostItem = () => {
             turpis ut id amet sollicitudin leo fusce integer.
           </PostText>
         </Box>
-        <AtText
+        <AText
           sx={{
             alignItems: 'center',
             color: '#F8F9FA',
@@ -96,7 +96,7 @@ export const PostItem = () => {
           }}
         >
           “spotify integrating with atrium”
-        </AtText>
+        </AText>
         <PostText>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis eu sed
           et tortor proin. Ac vulputate eget sagittis amet metus feugiat vitae.

@@ -12,22 +12,25 @@ export const AdornmentInput: React.FC<{
   adornment: React.ReactNode
   label: string
   variant?: 'primary' | 'default' | undefined
-}> = ({ adornment, label, variant }) => {
+  sx?: object
+}> = ({ adornment, label, variant, sx }) => {
   return (
     <FormControl
-      sx={{ width: variant === 'default' ? '100%' : '350px' }}
+      sx={{ width: variant === 'default' ? '100%' : '350px', ...sx }}
       variant="outlined"
     >
       <InputLabel
         htmlFor="outlined-adornment-password"
         sx={{
-          color: palette.text.disabled,
+          color: palette.text.secondary,
           fontFamily: 'Andale Mono Regular',
           fontSize: '18px',
           fontWeight: 400,
           letterSpacing: '-0.1em',
           lineHeight: '32px',
+          px: '24px',
           textTransform: 'capitalize',
+          top: '-3px',
         }}
       >
         {label}
@@ -35,7 +38,15 @@ export const AdornmentInput: React.FC<{
       <OutlinedInput
         id="outlined-adornment-password"
         type="text"
-        sx={{ borderRadius: '0px', fontSize: '18px', height: '100%' }}
+        sx={{
+          '& input': {
+            py: '16px',
+          },
+          borderRadius: '0px',
+          fontSize: '18px',
+          height: '100%',
+          px: '24px',
+        }}
         endAdornment={
           <InputAdornment position="end">
             <IconButton aria-label="toggle password visibility" edge="end">

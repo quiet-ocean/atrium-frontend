@@ -1,10 +1,10 @@
 import AccountCircle from '@mui/icons-material/AccountCircle'
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
+// import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
 import MailIcon from '@mui/icons-material/Mail'
 import MoreIcon from '@mui/icons-material/MoreVert'
 import NotificationsIcon from '@mui/icons-material/Notifications'
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined'
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
+// import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined'
+// import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import { Typography } from '@mui/material'
 import Badge from '@mui/material/Badge'
 import Box from '@mui/material/Box'
@@ -19,7 +19,7 @@ import { palette } from '../../../MuiTheme'
 import AccountSelect from './AccountSelect'
 
 const IconButtonBox = styled(IconButton)(({ theme }) => ({
-  backgroundColor: theme.palette.background.default,
+  backgroundColor: theme.palette.background.paper,
   borderRadius: '0px',
   padding: '12px 14px',
 }))
@@ -125,7 +125,7 @@ const MenuIconList: React.FC = () => {
   return (
     <>
       <Box sx={{ display: { md: 'flex', xs: 'none' }, gap: '12px' }}>
-        <IconButtonBox
+        {/* <IconButtonBox
           size="large"
           aria-label="show 17 new notifications"
           color="inherit"
@@ -142,12 +142,12 @@ const MenuIconList: React.FC = () => {
           <Badge badgeContent={4} color="error">
             <EmailOutlinedIcon />
           </Badge>
-        </IconButtonBox>
+        </IconButtonBox> */}
         <IconButtonBox
           size="large"
           aria-label="plus"
           color="inherit"
-          sx={{ background: palette.colors?.red }}
+          sx={{ background: palette.secondary.dark }}
         >
           <Typography
             sx={{ fontSize: '20px', fontWeight: 600, padding: '0px 8px' }}
@@ -156,9 +156,9 @@ const MenuIconList: React.FC = () => {
           </Typography>
         </IconButtonBox>
         <AccountSelect />
-        <IconButtonBox size="large" aria-label="plus" color="inherit">
+        {/* <IconButtonBox size="large" aria-label="plus" color="inherit">
           <SettingsOutlinedIcon />
-        </IconButtonBox>
+        </IconButtonBox> */}
         {/* <IconButton
           size="large"
           edge="end"

@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 
-import { AtText } from '../../../components'
+import { AText } from '../../../components'
 import avatar from '../images/project-image.png'
 import { OnlineIcon } from '../UserProfile/styled'
 
@@ -14,19 +14,19 @@ export const Contact = ({ active }: { active?: boolean }) => {
       >
         <img src={avatar} alt="" width="74px" height="74px" />
         <Box p="12px">
-          <AtText sx={{ fontSize: '20px' }}>hades</AtText>
+          <AText sx={{ fontSize: '20px' }}>hades</AText>
           <Box display="flex" gap="8px">
             <Box p="3px 0px">
               <OnlineIcon />
             </Box>
-            <AtText
+            <AText
               className="disabled"
               sx={{
                 fontSize: '12px !important',
               }}
             >
               online
-            </AtText>
+            </AText>
           </Box>
         </Box>
       </Box>

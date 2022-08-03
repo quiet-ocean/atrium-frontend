@@ -1,11 +1,11 @@
+import SendIcon from '@mui/icons-material/Send'
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt'
 import { Box, Typography } from '@mui/material'
 
-import { AtButton, AtText } from '../../../components'
+import { AtButton, AText } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import avatar from '../images/avatar-3.png'
 import { AdornmentInput } from '../ProfileEdit/AdornmentInput'
-import SendIcon from '@mui/icons-material/Send'
-import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 
 export const Comment = () => {
   return (
@@ -38,7 +38,7 @@ export const Comments = () => {
   return (
     <Box p="30px" border={`1px solid ${palette.background.paper}`} mt="48px">
       <Box display="flex" justifyContent="space-between">
-        <AtText sx={{ fontSize: '22px', fontWeight: '800' }}>comments</AtText>
+        <AText sx={{ fontSize: '22px', fontWeight: '800' }}>comments</AText>
         <AtButton variant="small" text="see all" />
       </Box>
       <Box mt="12px">

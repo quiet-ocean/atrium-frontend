@@ -3,7 +3,7 @@ import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import { Box } from '@mui/material'
 
-import { AtButton, AtText } from '../../../components/elements'
+import { AtButton, AText } from '../../../components/elements'
 import { palette } from '../../../MuiTheme'
 import EditIcon from '../images/edit-icon.png'
 import LinkIcon from '../images/link-icon-mini.png'
@@ -18,7 +18,7 @@ export const Community = () => {
           variant="outlined"
         />
         <Box>
-          <AtText className="subtitle">swiftyyy</AtText>
+          <AText className="subtitle">swiftyyy</AText>
         </Box>
         <AtButton
           icon={<GroupOutlinedIcon sx={{ color: 'white', fontSize: '20px' }} />}
@@ -27,9 +27,9 @@ export const Community = () => {
         />
       </Box>
       <Box mt="12px">
-        <AtText className="disabled" sx={{ textAlign: 'center' }}>
+        <AText className="disabled" sx={{ textAlign: 'center' }}>
           Your #1 Favourite Degen on NEAR.
-        </AtText>
+        </AText>
       </Box>
       <Box
         mt="12px"

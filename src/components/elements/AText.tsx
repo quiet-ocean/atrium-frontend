@@ -1,7 +1,12 @@
 import { Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-export const AtText = styled(Typography)(({ theme }) => ({
+export const AText = styled(Typography)(({ theme }) => ({
+  '&.description': {
+    fontFamily: 'Andale Mono Regular',
+    letterSpacing: '-0.05em',
+    lineHeight: '120%',
+  },
   '&.disabled': {
     color: theme.palette.text.disabled,
     fontFamily: 'Andale Mono Regular',
@@ -15,7 +20,9 @@ export const AtText = styled(Typography)(({ theme }) => ({
     lineHeight: '32px',
   },
   color: theme.palette.text.primary,
-  fontFamily: 'Fractul',
+  fontFamily: 'Fractul Alt',
+  fontSize: '24px',
   fontStyle: 'normal',
+  fontWeight: 400,
   textTransform: 'capitalize',
 }))

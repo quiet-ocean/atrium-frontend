@@ -1,9 +1,14 @@
+import { Box } from '@mui/material'
+import { styled as muiStyled } from '@mui/material/styles'
 import styled from 'styled-components'
 
 import { palette } from '../../MuiTheme'
 
 export const Root = styled.section`
-  background-color: ${palette.background.default};
+  // background-color: ${palette.background.default};
+  background-color: ${palette.grey[300]};
+  // background-color: ${palette.primary.main};
+  // background-colro: #A8A8A8;/
   // height: 1786px;
   min-height: 1786px;
   width: 100%;
@@ -35,10 +40,15 @@ export const Exploration = styled.main`
   display: grid;
 `
 export const Main = styled.div`
-  margin: 160px 0px 0px 80px;
+  // margin: 160px 0px 0px 80px;
+  margin: 90px 0px 0px 80px;
 `
 export const ModalContainer = styled.div`
   // margin: 160px 0px 0px 80px;
   padding: 160px 0px 0px 80px;
   height: 100%;
 `
+export const Community = muiStyled(Box)(({ theme }) => ({
+  border: `1px solid ${theme.palette.text.primary}`,
+  padding: '32px 24px',
+}))

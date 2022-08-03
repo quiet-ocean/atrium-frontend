@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 
-import { AtButton, AtText } from '../../../components'
+import { AtButton, AText } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import avatar from '../images/friend-avatar.png'
 
@@ -15,7 +15,7 @@ export const FriendItemContent = ({
 }) => {
   return (
     <Box display="flex" flexDirection="column">
-      <AtText
+      <AText
         className="secondary"
         sx={{
           fontSize: '18px',
@@ -25,8 +25,8 @@ export const FriendItemContent = ({
         }}
       >
         {text1}
-      </AtText>
-      <AtText
+      </AText>
+      <AText
         className="disabled"
         sx={{
           fontSize: '12px',
@@ -36,7 +36,7 @@ export const FriendItemContent = ({
         }}
       >
         {text2}
-      </AtText>
+      </AText>
     </Box>
   )
 }
@@ -73,7 +73,7 @@ export const FriendList = () => {
   return (
     <PContainer>
       <Box display="flex" justifyContent="space-between">
-        <AtText
+        <AText
           className=""
           sx={{
             fontSize: '30px',
@@ -81,7 +81,7 @@ export const FriendList = () => {
           }}
         >
           friend list (364)
-        </AtText>
+        </AText>
         <Box py="6px">
           <AtButton variant="small" text="see all" />
         </Box>

@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 
-import { AtText } from '../../../components'
+import { AText } from '../../../components'
 
 import { Contact } from './'
 
@@ -8,10 +8,10 @@ export const ContactList = () => {
   return (
     <>
       <Box display="flex" justifyContent="space-between">
-        <AtText className="subtitle" sx={{ fontSize: '24px !important' }}>
+        <AText className="subtitle" sx={{ fontSize: '24px !important' }}>
           messages
-        </AtText>
-        <AtText
+        </AText>
+        <AText
           className="disabled"
           sx={{
             fontFamily: 'Fractul Alt !important',
@@ -21,7 +21,7 @@ export const ContactList = () => {
           }}
         >
           requests
-        </AtText>
+        </AText>
       </Box>
       <Box>
         <Contact />

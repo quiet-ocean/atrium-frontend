@@ -1,5 +1,8 @@
 import { Box, Typography } from '@mui/material'
 
+import coolcat from '../../../assets/icons/reaction-coolcat.png'
+import seemsgood from '../../../assets/icons/reaction-seemsgood.png'
+import smile from '../../../assets/icons/reaction-smile.png'
 import reactions from '../../../assets/icons/reactions.png'
 import land1 from '../../../assets/images/land-1.png'
 import land2 from '../../../assets/images/land-2.png'
@@ -8,7 +11,7 @@ import post1 from '../../../assets/images/post-1.png'
 import post2 from '../../../assets/images/post-2.png'
 import post3 from '../../../assets/images/post-3.png'
 import post4 from '../../../assets/images/post-4.png'
-import { AtText } from '../../../components'
+import { AText } from '../../../components'
 import post5 from '../images/post-image.png'
 import * as PContainer from '../styled'
 import { PostContainer } from '../UserProfile/PostCarousel'
@@ -17,6 +20,28 @@ import { HorizontalPostComp } from './HorizontalPostComp'
 import { Container } from './styled'
 import { Title } from './Title'
 import { User } from './User'
+
+export const Reactions = () => {
+  return (
+    <Box display="flex" gap="4px">
+      <img src={smile} alt="" width="18px" height="18px" />
+      <img src={seemsgood} alt="" width="18px" height="18px" />
+      <img src={coolcat} alt="" width="18px" height="18px" />
+      <Typography
+        sx={{
+          color: '#FFFFFF',
+          fontFamily: 'Andale Mono Regular',
+          fontSize: '14px',
+          fontStyle: 'normal',
+          fontWeight: 400,
+          lineHeight: '19px',
+        }}
+      >
+        +204
+      </Typography>
+    </Box>
+  )
+}
 
 export const Dashboard = () => {
   return (
@@ -104,17 +129,17 @@ export const Dashboard = () => {
       <Container>
         <Box width="100%">
           <PostContainer img={post5} height="350px">
-            <AtText>Project 1</AtText>
+            <AText>Project 1</AText>
           </PostContainer>
         </Box>
         <Box width="100%">
           <PostContainer img={post5} height="350px">
-            <AtText>Project 1</AtText>
+            <AText>Project 1</AText>
           </PostContainer>
         </Box>
         <Box width="100%">
           <PostContainer img={post5} height="350px">
-            <AtText>Project 1</AtText>
+            <AText>Project 1</AText>
           </PostContainer>
         </Box>
       </Container>

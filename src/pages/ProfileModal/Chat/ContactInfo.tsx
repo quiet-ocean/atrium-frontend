@@ -5,7 +5,7 @@ import VideoCameraFrontOutlinedIcon from '@mui/icons-material/VideoCameraFrontOu
 import { Box, Button, Typography, ButtonGroup } from '@mui/material'
 
 import avatar from '../../../assets/images/avatar-5.png'
-import { AtText } from '../../../components'
+import { AText } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import { AdornmentInput } from '../ProfileEdit/AdornmentInput'
 import { OnlineIcon } from '../UserProfile/styled'
@@ -51,13 +51,13 @@ export const ContactInfo = () => {
         </Box>
         <Box p="6px 0px">
           <Box display="flex" justifyContent="center">
-            <AtText
+            <AText
               sx={{
                 fontSize: '24px',
               }}
             >
               hades
-            </AtText>
+            </AText>
             <Box pt="7px">
               <LaunchIcon sx={{ color: palette.text.primary }} />
             </Box>
