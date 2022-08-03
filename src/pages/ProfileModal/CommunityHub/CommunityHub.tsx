@@ -74,7 +74,7 @@ export const Detail = () => {
           position="absolute"
           width="100%"
           textAlign="center"
-          bottom="120px"
+          bottom="160px"
           pr="16px"
         >
           <img
@@ -88,7 +88,7 @@ export const Detail = () => {
             }}
           />
         </Box>
-        <Box pt="24px">
+        <Box pt="48px">
           <AText
             sx={{ fontSize: '24px', fontWeight: '800', textAlign: 'center' }}
           >
@@ -98,7 +98,7 @@ export const Detail = () => {
             ownerwalletfullID
           </AText>
         </Box>
-        <Box pt="24px" textAlign="center">
+        <Box pt="48px" textAlign="center">
           <AButton className="community">
             <GroupOutlinedIcon />
             join community

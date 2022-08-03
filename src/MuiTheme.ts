@@ -4,6 +4,20 @@ import type { CreateAtrimTheme, AtriumTheme } from './types/AtriumThemeType'
 import { assertCast } from './types/AtriumThemeType'
 assertCast<CreateAtrimTheme>(createAtruimTheme)
 
+export const colors = {
+  alertBlue: '#486DF3',
+  alertRed: '#E33E3E',
+  alertYellow: '#DBE96B',
+  black: '#21E0A5',
+  grey1: '#4A4A4A',
+  grey2: '#B8B8B8',
+  grey3: '#EDEDED',
+  offBlack: '#D83956',
+  offWhite: '#75B863',
+  primaryBlue: '#952B87',
+  primaryRed: '#463586',
+  primaryYellow: '#15707C',
+}
 const muiTheme: AtriumTheme = createAtruimTheme({
   palette: {
     background: {
@@ -47,7 +61,8 @@ const muiTheme: AtriumTheme = createAtruimTheme({
       disabled: '#80868B',
 
       // gray: '#80868B',
-      primary: '#F8F9FA', //white
+      // primary: '#F8F9FA', //white
+      primary: colors.offWhite,
       //dark
       secondary: '#0E1013',
       // primary: '#FFF',
