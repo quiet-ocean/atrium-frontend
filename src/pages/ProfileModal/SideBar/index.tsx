@@ -28,7 +28,7 @@ const SideBar: React.FC = () => {
         alignItems: 'center',
         // backgroundColor: muiTheme.palette.background.default,
         // backgroundColor: '#0E1013',
-        backgroundColor: muiTheme.palette.primary.main,
+        backgroundColor: muiTheme.palette.grey[300],
         border: '2px solid',
         borderColor: muiTheme.palette.border.dark,
         display: 'flex',

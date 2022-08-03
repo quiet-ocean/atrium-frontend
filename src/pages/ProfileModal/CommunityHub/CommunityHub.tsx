@@ -3,9 +3,9 @@ import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
 import { Box, Grid, Button } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-import avatar1 from '../../../assets/images/avatar-5.png'
+import avatar1 from '../../../assets/images/avatar-7.png'
 import avatar2 from '../../../assets/images/avatar-6.png'
-import bannerImage from '../../../assets/images/banner-1.png'
+import bannerImage from '../../../assets/images/banner-2.png'
 import postImage from '../../../assets/images/post-5.png'
 import { AText, AButton } from '../../../components'
 import { palette } from '../../../MuiTheme'
@@ -133,22 +133,22 @@ export const UsernameWithTags = () => {
           <AText sx={{ fontSize: '14px', padding: '4px' }}>Hades</AText>
         </Box>
         <Box>
-          <Tag tagColor="#71E5FF">founder</Tag>
+          <Tag tcolor="#71E5FF">founder</Tag>
         </Box>
-        <Tag tagColor="#FFB350">devs</Tag>
-        <Tag tagColor="#DE58FF">moderator</Tag>
+        <Tag tcolor="#FFB350">devs</Tag>
+        <Tag tcolor="#DE58FF">moderator</Tag>
       </Box>
     </>
   )
 }
-type TagStyleProps = { tagColor: string }
-export const Tag = styled(Button)<TagStyleProps>(({ theme, tagColor }) => ({
+type TagStyleProps = { tcolor: string }
+export const Tag = styled(Button)<TagStyleProps>(({ theme, tcolor }) => ({
   '&.outlined': {
     background: 'transparent',
-    border: `1px solid ${tagColor ? tagColor : theme.palette.background.paper}`,
-    color: tagColor ? tagColor : theme.palette.text.primary,
+    border: `1px solid ${tcolor ? tcolor : theme.palette.background.paper}`,
+    color: tcolor ? tcolor : theme.palette.text.primary,
   },
-  background: tagColor,
+  background: tcolor,
   borderRadius: '54px',
   fontFamily: 'Andale Mono Regular',
   fontSize: '12px',
@@ -299,7 +299,7 @@ export const Member = ({ index }: { index: number }) => {
       </Box>
       <Box display="flex" gap="12px">
         <Box py="3px">
-          <Tag tagColor="#FF75CD" className="outlined">
+          <Tag tcolor="#FF75CD" className="outlined">
             whitelisted
           </Tag>
         </Box>
@@ -315,22 +315,22 @@ export const Members = () => {
         <AButton className="outlined secondary">view all</AButton>
       </Box>
       <Box display="flex" gap="12px" pt="12px">
-        <Tag tagColor="#A8A8A8" className="">
+        <Tag tcolor="#A8A8A8" className="">
           all
         </Tag>
-        <Tag tagColor="#FF75CD" className="outlined">
+        <Tag tcolor="#FF75CD" className="outlined">
           whitelisted
         </Tag>
-        <Tag tagColor="#90E487" className="outlined">
+        <Tag tcolor="#90E487" className="outlined">
           OG member
         </Tag>
-        <Tag tagColor="#FFB350" className="outlined">
+        <Tag tcolor="#FFB350" className="outlined">
           devs
         </Tag>
-        <Tag tagColor="#DE58FF" className="outlined">
+        <Tag tcolor="#DE58FF" className="outlined">
           moderator
         </Tag>
-        <Tag tagColor="#71E5FF" className="outlined">
+        <Tag tcolor="#71E5FF" className="outlined">
           founder
         </Tag>
       </Box>

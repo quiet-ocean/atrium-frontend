@@ -45,8 +45,8 @@ export default function AccountSelect() {
     <Box>
       <FormControl
         sx={{
-          background: muiTheme.palette.primary.light,
-          border: muiTheme.palette.border.main,
+          background: muiTheme.palette.background.paper,
+          // border: muiTheme.palette.border.main,
           minWidth: 120,
         }}
       >
