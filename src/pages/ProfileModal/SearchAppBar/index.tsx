@@ -7,10 +7,10 @@ import * as React from 'react'
 
 import logo from '../../../assets/images/atrium-logo.png'
 import muiTheme from '../../../MuiTheme'
-import { AdornmentInput } from '../_AdornmentInput'
+import { AdornmentInput } from '../ProfileEdit/AdornmentInput'
 
 import MenuIconList from './MenuIconList'
-import { StatusBar } from './StatusBar'
+// import { StatusBar } from './StatusBar'
 
 const SearchAppBar: React.FC = () => {
   return (
@@ -26,18 +26,18 @@ const SearchAppBar: React.FC = () => {
       }}
     >
       <AppBar position="static" sx={{ opacity: 0.9 }}>
-        <StatusBar />
-        {/* <Toolbar sx={{ backgroundColor: '#0E1013', padding: '12px 0px' }}> */}
+        {/* <StatusBar /> */}
         <Toolbar sx={{ justifyContent: 'space-between', padding: '24px 0px' }}>
           <img src={logo} alt="" />
 
-          <Box sx={{ width: '900px' }}>
+          <Box sx={{ textAlign: 'center' }}>
             <AdornmentInput
               label={`Search the grid...`}
               adornment={<SearchIcon />}
               sx={{
                 background: muiTheme.palette.background.paper,
                 border: muiTheme.palette.border.main,
+                width: '560px',
               }}
             />
           </Box>

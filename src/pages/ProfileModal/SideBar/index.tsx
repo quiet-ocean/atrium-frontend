@@ -38,7 +38,7 @@ const SideBar: React.FC = () => {
         left: 0,
         paddingTop: '30px',
         position: 'fixed',
-        top: '159px',
+        top: '104px',
         width: '80px',
         xIndex: muiTheme.zIndex.drawer,
       }}

@@ -125,7 +125,7 @@ const MenuIconList: React.FC = () => {
   return (
     <>
       <Box sx={{ display: { md: 'flex', xs: 'none' }, gap: '12px' }}>
-        <IconButtonBox
+        {/* <IconButtonBox
           size="large"
           aria-label="show 17 new notifications"
           color="inherit"
@@ -142,7 +142,7 @@ const MenuIconList: React.FC = () => {
           <Badge badgeContent={4} color="error">
             <EmailOutlinedIcon />
           </Badge>
-        </IconButtonBox>
+        </IconButtonBox> */}
         <IconButtonBox
           size="large"
           aria-label="plus"
@@ -156,9 +156,9 @@ const MenuIconList: React.FC = () => {
           </Typography>
         </IconButtonBox>
         <AccountSelect />
-        <IconButtonBox size="large" aria-label="plus" color="inherit">
+        {/* <IconButtonBox size="large" aria-label="plus" color="inherit">
           <SettingsOutlinedIcon />
-        </IconButtonBox>
+        </IconButtonBox> */}
         {/* <IconButton
           size="large"
           edge="end"
