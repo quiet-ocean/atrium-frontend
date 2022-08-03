@@ -3,8 +3,8 @@ import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
 import { Box, Grid, Button } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-import avatar1 from '../../../assets/images/avatar-7.png'
 import avatar2 from '../../../assets/images/avatar-6.png'
+import avatar1 from '../../../assets/images/avatar-7.png'
 import bannerImage from '../../../assets/images/banner-2.png'
 import postImage from '../../../assets/images/post-5.png'
 import { AText, AButton } from '../../../components'
@@ -99,7 +99,10 @@ export const Detail = () => {
           </AText>
         </Box>
         <Box pt="48px" textAlign="center">
-          <AButton className="community">
+          <AButton
+            className="community primary outlined"
+            btncolor={palette.secondary.light}
+          >
             <GroupOutlinedIcon />
             join community
           </AButton>

@@ -1,25 +1,30 @@
 import { Button } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-export const AButton = styled(Button)(({ theme }) => ({
-  '&.community': {
-    background: theme.palette.secondary.main,
-    color: theme.palette.text.secondary,
-    padding: '6px 8px',
-  },
+type AButtonProps = { btncolor?: string }
+export const AButton = styled(Button)<AButtonProps>(({ theme, btncolor }) => ({
   '&.outlined': {
-    border: `1px solid ${theme.palette.grey}`,
+    border: btncolor
+      ? `1px solid ${btncolor}`
+      : `1px solid ${theme.palette.primary.main}`,
   },
-  '&.small': {
-    padding: '6px 8px',
+  '&.priamry:hover': {
+    background: btncolor ? btncolor : theme.palette.background.paper,
+    border: 'none',
+    color: theme.palette.text.primary,
+  },
+  '&.primary': {
+    background: 'transparent',
+    color: btncolor ? btncolor : theme.palette.text.primary,
   },
   '&.secondary': {
-    border: `1px solid ${theme.palette.secondary.main}`,
-    color: theme.palette.secondary.main,
+    background: theme.palette.background.paper,
   },
-  color: theme.palette.text.primary,
-  border: `1px solid ${theme.palette.primary.main}`,
+  '&.secondary:hover': {
+    border: `1px solid ${theme.palette.text.primary}`,
+  },
   borderRadius: '0px',
+  color: theme.palette.text.primary,
   fontFamily: 'Fractul Alt',
   textTransform: 'capitalize',
 }))
