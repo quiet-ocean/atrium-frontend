@@ -245,7 +245,7 @@ export const Tag = styled(Button)<TagStyleProps>(({ theme, tcolor }) => ({
 
 export const UserIntro = () => {
   return (
-    <Box pt="4px">
+    <Box pt="24px">
       <ChatMessage>
         <Typography
           sx={{
