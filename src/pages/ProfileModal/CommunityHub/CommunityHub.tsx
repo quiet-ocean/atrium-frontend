@@ -136,10 +136,24 @@ export const UsernameWithTags = () => {
           <AText sx={{ fontSize: '14px', padding: '4px' }}>Hades</AText>
         </Box>
         <Box>
-          <Tag tcolor="#71E5FF">founder</Tag>
+          <AButton className="tag-secondary outlined tag-small" btncolor="#71E5FF">founder</AButton>
         </Box>
-        <Tag tcolor="#FFB350">devs</Tag>
-        <Tag tcolor="#DE58FF">moderator</Tag>
+        <Box>
+          <AButton
+            className="tag-secondary tag-small outlined"
+            btncolor="#FFB350"
+          >
+            devs
+          </AButton>
+        </Box>
+        <Box>
+          <AButton
+            className="tag-secondary tag-small outlined"
+            btncolor="#DE58FF"
+          >
+            moderator
+          </AButton>
+        </Box>
       </Box>
     </>
   )
