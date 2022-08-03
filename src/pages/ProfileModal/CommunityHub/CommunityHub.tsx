@@ -1,7 +1,19 @@
+import CloseIcon from '@mui/icons-material/Close'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
-import { Box, Grid, Button, Typography } from '@mui/material'
+import PushPinIcon from '@mui/icons-material/PushPin'
+import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap'
+import {
+  Box,
+  Grid,
+  Button,
+  Typography,
+  Modal,
+  Backdrop,
+  Fade,
+} from '@mui/material'
 import { styled } from '@mui/material/styles'
+import { useState } from 'react'
 
 import avatar2 from '../../../assets/images/avatar-6.png'
 import avatar1 from '../../../assets/images/avatar-7.png'
@@ -306,12 +318,21 @@ export const LiveChat = () => {
       <Box height="100%" display="flex" flexDirection="column">
         <Box display="flex" justifyContent="space-between">
           <AText>live chat</AText>
-          <AButton
+          {/* <AButton
             className="primary outlined"
             btnColor={palette.secondary.light}
           >
             view all
-          </AButton>
+          </AButton> */}
+          <Box display="flex" gap="6px">
+            <PushPinIcon
+              sx={{
+                color: palette.secondary.light,
+                transform: 'rotate(45deg)',
+              }}
+            />
+            <ZoomOutMapIcon sx={{ color: palette.secondary.light }} />
+          </Box>
         </Box>
         <Box
           display="flex"
@@ -432,17 +453,30 @@ export const Member = ({ index }: { index: number }) => {
     </Box>
   )
 }
-export const Members = () => {
+export const Members = ({
+  isModal,
+  handleOpen,
+}: {
+  isModal: boolean
+  handleOpen: (f: boolean) => void
+}) => {
   return (
     <Container>
       <Box display="flex" justifyContent="space-between" height="100%">
         <AText>members</AText>
-        <AButton
-          className="primary outlined"
-          btnColor={palette.secondary.light}
-        >
-          view all
-        </AButton>
+        {isModal ? (
+          <Box onClick={() => handleOpen(false)}>
+            <CloseIcon sx={{ color: palette.text.primary }} />
+          </Box>
+        ) : (
+          <AButton
+            className="primary outlined"
+            btnColor={palette.secondary.light}
+            onClick={() => handleOpen(true)}
+          >
+            view all
+          </AButton>
+        )}
       </Box>
       <Box display="flex" gap="12px" pt="18px">
         <AButton
@@ -482,6 +516,23 @@ export const Members = () => {
   )
 }
 export const CommunityHub = () => {
+  const [openMembersModal, setOpenMembersModal] = useState(false)
+  const style = {
+    bgcolor: palette.grey[300],
+    // border: '2px solid #000',
+    boxShadow: 24,
+
+    left: '50%',
+
+    position: 'absolute' as const,
+
+    top: '50%',
+
+    transform: 'translate(-50%, -50%)',
+
+    width: '70%',
+    // p: 4,
+  }
   return (
     <PContainer.Main>
       <Box>
@@ -501,9 +552,26 @@ export const CommunityHub = () => {
           <Media />
         </Grid>
         <Grid item lg={6} sx={{ width: '100%' }}>
-          <Members />
+          <Members isModal={false} handleOpen={setOpenMembersModal} />
         </Grid>
       </Grid>
+      <Modal
+        open={openMembersModal}
+        onClose={() => setOpenMembersModal(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={openMembersModal}>
+          <Box sx={style}>
+            <Members isModal={true} handleOpen={setOpenMembersModal} />
+          </Box>
+        </Fade>
+      </Modal>
     </PContainer.Main>
   )
 }
