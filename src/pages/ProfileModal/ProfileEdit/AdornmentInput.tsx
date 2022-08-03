@@ -39,13 +39,13 @@ export const AdornmentInput: React.FC<{
         id="outlined-adornment-password"
         type="text"
         sx={{
+          '& input': {
+            py: '16px',
+          },
           borderRadius: '0px',
           fontSize: '18px',
           height: '100%',
           px: '24px',
-          '& input': {
-            py: '16px',
-          }
         }}
         endAdornment={
           <InputAdornment position="end">

@@ -9,12 +9,11 @@ import bannerImage from '../../../assets/images/banner-2.png'
 import postImage from '../../../assets/images/post-6.png'
 import { AText, AButton } from '../../../components'
 import { palette } from '../../../MuiTheme'
+import { Reactions } from '../Dashboard'
 import { AdornmentInput } from '../ProfileEdit/AdornmentInput'
 import * as PContainer from '../styled'
 import { Community as Container } from '../styled'
 import { PostContainer } from '../UserProfile'
-
-import { Reactions } from '../Dashboard'
 
 export const Banner = () => {
   return (
