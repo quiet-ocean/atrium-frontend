@@ -1,6 +1,6 @@
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
-import { Box, Grid, Button } from '@mui/material'
+import { Box, Grid, Button, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 import avatar2 from '../../../assets/images/avatar-6.png'
@@ -33,12 +33,18 @@ export const DetailParams = () => {
   }) => {
     return (
       <Box p="4px 12px 4px 0px">
-        <AText
-          className="disabled"
-          sx={{ fontSize: '12px', fontWeight: 400, lineHeight: '15px' }}
+        <Typography
+          sx={{
+            fontFamily: 'Inter',
+            fontSize: '12px',
+            fontStyle: 'normal',
+            fontWeight: 400,
+            lineHeight: '15px',
+            textTransform: 'capitalize',
+          }}
         >
           {category}
-        </AText>
+        </Typography>
         <AText sx={{ fontSize: '18px', fontWeight: 600, lineHeight: '22px' }}>
           {value}
         </AText>
@@ -47,8 +53,8 @@ export const DetailParams = () => {
   }
   return (
     <Box display="flex">
-      <Item category="supply" value="5000" />
-      <Item category="listed" value="313" />
+      <Item category="supply" value="3333" />
+      <Item category="listed" value="258" />
       <Item category="floor price" value="20 Ⓝ" />
       <Item category="Vol. All Time" value="93,420 Ⓝ" />
     </Box>
@@ -58,11 +64,11 @@ export const DetailParams = () => {
 export const SocialButtons = () => {
   return (
     <Box display="flex" gap="12px">
-      <AButton className="small">marketplace</AButton>
-      <AButton className="small">whitepaper</AButton>
-      <AButton className="small">twitter</AButton>
-      <AButton className="small">discord</AButton>
-      <AButton className="small">website</AButton>
+      <AButton className="secondary">marketplace</AButton>
+      <AButton className="secondary">whitepaper</AButton>
+      <AButton className="secondary">twitter</AButton>
+      <AButton className="secondary">discord</AButton>
+      <AButton className="secondary">website</AButton>
     </Box>
   )
 }
@@ -100,8 +106,8 @@ export const Detail = () => {
         </Box>
         <Box pt="48px" textAlign="center">
           <AButton
-            className="community primary outlined"
-            btncolor={palette.secondary.light}
+            className="community primary outlined active"
+            btnColor={palette.secondary.light}
           >
             <GroupOutlinedIcon />
             join community
@@ -114,10 +120,20 @@ export const Detail = () => {
             <DetailParams />
           </Box>
           <Box pt="15px">
-            <AText className="description">
-              A collection of 3333 pixel art ape NFTs stored on the NEAR
-              blockchain.
-            </AText>
+            <Typography
+              sx={{
+                color: `${palette.text.primary}`,
+                fontFamily: 'Andale Mono Regular',
+                fontSize: '24px',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                letterSpacing: '-0.05em',
+                lineHeight: '120%',
+              }}
+            >
+              A collection of 3333 unique, randomly generated pixel art NFTs
+              stored on the NEAR blockchain.
+            </Typography>
           </Box>
           <Box pt="15px">
             <SocialButtons />
@@ -136,12 +152,17 @@ export const UsernameWithTags = () => {
           <AText sx={{ fontSize: '14px', padding: '4px' }}>Hades</AText>
         </Box>
         <Box>
-          <AButton className="tag-secondary outlined tag-small" btncolor="#71E5FF">founder</AButton>
+          <AButton
+            className="tag-secondary outlined tag-small"
+            btnColor="#71E5FF"
+          >
+            founder
+          </AButton>
         </Box>
         <Box>
           <AButton
             className="tag-secondary tag-small outlined"
-            btncolor="#FFB350"
+            btnColor="#FFB350"
           >
             devs
           </AButton>
@@ -149,7 +170,7 @@ export const UsernameWithTags = () => {
         <Box>
           <AButton
             className="tag-secondary tag-small outlined"
-            btncolor="#DE58FF"
+            btnColor="#DE58FF"
           >
             moderator
           </AButton>
@@ -203,9 +224,14 @@ export const FeaturedPost = () => {
     <Container>
       <Box display="flex" justifyContent="space-between">
         <AText>featured post</AText>
-        <AButton className="outlined secondary">view all posts</AButton>
+        <AButton
+          className="primary outlined"
+          btnColor={palette.secondary.light}
+        >
+          view all posts
+        </AButton>
       </Box>
-      <Box pt="12px">
+      <Box pt="32px">
         <PostContainer img={postImage} height="">
           <AText>Why do these noobs keep tryna play games with us?</AText>
           <AText className="disabled">
@@ -213,7 +239,7 @@ export const FeaturedPost = () => {
             Stay Ape.{' '}
           </AText>
         </PostContainer>
-        <Box pt="12px">
+        <Box pt="16px">
           <UserIntro />
         </Box>
       </Box>
@@ -252,8 +278,12 @@ export const LiveChat = () => {
           <Box>
             <AdornmentInput
               adornment={<InsertEmoticonIcon />}
-              label=""
+              label="type here..."
               variant="default"
+              sx={{
+                background: palette.background.paper,
+                border: palette.border.main,
+              }}
             />
           </Box>
         </Box>

@@ -1,24 +1,24 @@
 import { Button } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-type AButtonProps = { btncolor?: string }
-export const AButton = styled(Button)<AButtonProps>(({ theme, btncolor }) => ({
+type AButtonProps = { btnColor?: string }
+export const AButton = styled(Button)<AButtonProps>(({ theme, btnColor }) => ({
   '&.disabled': {
     textTransform: 'uppercase',
   },
   '&.outlined': {
-    border: btncolor
-      ? `1px solid ${btncolor} !important`
+    border: btnColor
+      ? `1px solid ${btnColor} !important`
       : `1px solid ${theme.palette.primary.main}`,
   },
   '&.primary': {
     background: 'transparent',
-    color: `${btncolor ? btncolor : theme.palette.text.primary} !important`,
+    color: `${btnColor ? btnColor : theme.palette.text.primary} !important`,
   },
   '&.primary:hover, &.active': {
-    background: btncolor ? btncolor : theme.palette.background.paper,
+    background: btnColor ? btnColor : theme.palette.background.paper,
     border: '1px solid transparent !important',
-    color: `${theme.palette.text.primary} !important`,
+    color: `${theme.palette.background.paper} !important`,
   },
   '&.secondary': {
     background: theme.palette.background.paper,
@@ -32,11 +32,14 @@ export const AButton = styled(Button)<AButtonProps>(({ theme, btncolor }) => ({
     color: theme.palette.text.secondary,
     fontFamily: 'Andale Mono Regular',
   },
+  '&.tag-primary': {
+
+  },
   '&.tag-secondary': {
-    border: `1px solid ${btncolor}`,
+    border: `1px solid ${btnColor}`,
     borderRadius: '54px',
     color: theme.palette.primary.dark,
-    background: `${btncolor}`,
+    background: `${btnColor}`,
     fontFamily: 'Andale Mono Regular',
   },
   '&.tag-active': {

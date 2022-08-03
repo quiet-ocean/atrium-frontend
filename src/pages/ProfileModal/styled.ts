@@ -48,5 +48,5 @@ export const ModalContainer = styled.div`
 `
 export const Community = muiStyled(Box)(({ theme }) => ({
   border: `1px solid ${theme.palette.text.primary}`,
-  padding: '24px',
+  padding: '32px 24px',
 }))

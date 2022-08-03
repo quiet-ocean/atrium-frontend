@@ -58,6 +58,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
       main: colors.primaryRed,
     },
     text: {
+      disabled: '#a8a8a8',
       primary: colors.offWhite, //ICONS ON BACKGROUND
       secondary: '#80868B', //TEXT IN ICON/CONTAINER
     },

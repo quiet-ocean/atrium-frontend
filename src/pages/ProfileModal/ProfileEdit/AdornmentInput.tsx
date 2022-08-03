@@ -11,17 +11,18 @@ import { palette } from '../../../MuiTheme'
 export const AdornmentInput: React.FC<{
   adornment: React.ReactNode
   label: string
-  variant?: 'primary' | 'default' | undefined
-}> = ({ adornment, label, variant }) => {
+  variant?: 'primary' | 'default' | undefined,
+  sx?: object,
+}> = ({ adornment, label, variant, sx }) => {
   return (
     <FormControl
-      sx={{ width: variant === 'default' ? '100%' : '350px' }}
+      sx={{ width: variant === 'default' ? '100%' : '350px', ...sx }}
       variant="outlined"
     >
       <InputLabel
         htmlFor="outlined-adornment-password"
         sx={{
-          color: palette.text.disabled,
+          color: palette.text.secondary,
           fontFamily: 'Andale Mono Regular',
           fontSize: '18px',
           fontWeight: 400,
