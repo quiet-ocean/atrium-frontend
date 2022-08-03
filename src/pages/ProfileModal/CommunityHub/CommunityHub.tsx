@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles'
 import avatar2 from '../../../assets/images/avatar-6.png'
 import avatar1 from '../../../assets/images/avatar-7.png'
 import bannerImage from '../../../assets/images/banner-2.png'
-import postImage from '../../../assets/images/post-5.png'
+import postImage from '../../../assets/images/post-6.png'
 import { AText, AButton } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import { AdornmentInput } from '../ProfileEdit/AdornmentInput'
@@ -144,12 +144,59 @@ export const Detail = () => {
   )
 }
 
+export const ChatMessage = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Box>
+      <Box display="flex" gap="12px">
+        <img
+          src={avatar2}
+          alt=""
+          width="36px"
+          height="36px"
+          style={{ borderRadius: '18px' }}
+        />
+        <Box display="flex" gap="8px" py="6px">
+          <Box>
+            <AText sx={{ fontSize: '14px', padding: '2px', fontWeight: 600 }}>Hades</AText>
+          </Box>
+          <Box>
+            <AButton
+              className="tag-secondary outlined tag-small"
+              btnColor="#71E5FF"
+            >
+              founder
+            </AButton>
+          </Box>
+          <Box>
+            <AButton
+              className="tag-secondary tag-small outlined"
+              btnColor="#FFB350"
+            >
+              devs
+            </AButton>
+          </Box>
+          <Box>
+            <AButton
+              className="tag-secondary tag-small outlined"
+              btnColor="#DE58FF"
+            >
+              moderator
+            </AButton>
+          </Box>
+        </Box>
+      </Box>
+      <Box pl="36px">
+        {children}
+      </Box>
+    </Box>
+  )
+}
 export const UsernameWithTags = () => {
   return (
     <>
       <Box display="flex" gap="8px">
         <Box>
-          <AText sx={{ fontSize: '14px', padding: '4px' }}>Hades</AText>
+          <AText sx={{ fontSize: '14px', padding: '2px', fontWeight: 600 }}>Hades</AText>
         </Box>
         <Box>
           <AButton
@@ -197,25 +244,22 @@ export const Tag = styled(Button)<TagStyleProps>(({ theme, tcolor }) => ({
 
 export const UserIntro = () => {
   return (
-    <Box display="flex" gap="12px">
-      <Box>
-        <img
-          src={avatar2}
-          alt=""
-          width="36px"
-          height="36px"
-          style={{ borderRadius: '18px' }}
-        />
-      </Box>
-      <Box>
-        <UsernameWithTags />
-        <Box pt="6px">
-          <AText className="disabled description">
+    <Box pt="4px">
+      <ChatMessage>
+        <Typography sx={{
+            color: palette.text.primary,
+            fontFamily: 'Andale Mono Regular',
+            fontStyle: 'normal',
+            fontWeight: 400,
+            fontSize: '16px',
+            lineHeight: '120%',
+            alignItems: 'center',
+            letterSpacing: '-0.05em',
+          }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac
             convallis commodo morbi ut leo gravida ...
-          </AText>
-        </Box>
-      </Box>
+          </Typography>
+      </ChatMessage>
     </Box>
   )
 }
@@ -252,16 +296,23 @@ export const LiveChat = () => {
       <Box height="100%" display="flex" flexDirection="column">
         <Box display="flex" justifyContent="space-between">
           <AText>live chat</AText>
-          <AButton className="outlined secondary">view all</AButton>
+          <AButton className="primary outlined" btnColor={palette.secondary.light}>view all</AButton>
         </Box>
         <Box
           display="flex"
           flexDirection="column"
           justifyContent="space-between"
           height="100%"
-          py="24px"
+          pt="32px"
         >
-          <Box sx={{ height: '450px', overflowY: 'scroll' }}>
+          <Box
+            sx={{
+              borderTop: `1px solid ${palette.text.primary}`,
+              height: '484px',
+              overflowY: 'scroll',
+              paddingTop: '16px',
+            }}
+          >
             <UserIntro />
             <UserIntro />
             <UserIntro />
@@ -293,31 +344,40 @@ export const LiveChat = () => {
 }
 export const Media = () => {
   return (
-    <Container>
-      <Box display="flex" justifyContent="space-between">
-        <AText>Media</AText>
-        <AButton className="outlined secondary">view all</AButton>
-      </Box>
-      <Box
-        sx={{
-          height: '360px',
-          overflowY: 'scroll',
-        }}
-      >
-        <Grid container spacing={1}>
-          {new Array(12).fill(2).map((_, key: number) => (
-            <Grid item lg={3} key={key}>
-              <Box width="136px" height="136px" margin="0px">
-                <img
-                  src={`/assets/images/media (${key + 1}).png`}
-                  alt=""
-                  width="100%"
-                  height="100%"
-                />
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
+    <Container height="100%">
+      <Box height="100%">
+        <Box display="flex" justifyContent="space-between">
+          <AText>Media</AText>
+          <AButton
+            className="primary outlined"
+            btnColor={palette.secondary.light}
+          >
+            view all
+          </AButton>
+        </Box>
+        <Box
+          sx={{
+            height: '390px',
+            overflowY: 'scroll',
+          }}
+          mt="32px"
+          pr="24px"
+        >
+          <Grid container spacing={1}>
+            {new Array(12).fill(2).map((_, key: number) => (
+              <Grid item lg={3} key={key}>
+                <Box width="100%" height="136px" margin="0px">
+                  <img
+                    src={`/assets/images/media (${key + 1}).png`}
+                    alt=""
+                    width="100%"
+                    height="100%"
+                  />
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </Box>
     </Container>
   )
@@ -346,9 +406,7 @@ export const Member = ({ index }: { index: number }) => {
       </Box>
       <Box display="flex" gap="12px">
         <Box py="3px">
-          <Tag tcolor="#FF75CD" className="outlined">
-            whitelisted
-          </Tag>
+          <AButton className="tag primary outlined tag-small" btnColor='#FF75CD'>whitelisted</AButton>
         </Box>
       </Box>
     </Box>
@@ -357,12 +415,18 @@ export const Member = ({ index }: { index: number }) => {
 export const Members = () => {
   return (
     <Container>
-      <Box display="flex" justifyContent="space-between">
+      <Box display="flex" justifyContent="space-between" height="100%">
         <AText>members</AText>
-        <AButton className="outlined secondary">view all</AButton>
+        <AButton className="primary outlined" btnColor={palette.secondary.light}>view all</AButton>
       </Box>
-      <Box display="flex" gap="12px" pt="12px">
-        <Tag tcolor="#A8A8A8" className="">
+      <Box display="flex" gap="12px" pt="18px">
+        <AButton className="tag-secondary outlined tag-small" btnColor='#A8A8A8'>all</AButton>
+        <AButton className="tag primary outlined tag-small" btnColor='#FF75CD'>whitelisted</AButton>
+        <AButton className="tag primary outlined tag-small" btnColor='#90E487'>OG member</AButton>
+        <AButton className="tag primary outlined tag-small" btnColor='#FFB350'>devs</AButton>
+        <AButton className="tag primary outlined tag-small" btnColor='#DE58FF'>moderator</AButton>
+        <AButton className="tag primary outlined tag-small" btnColor='#71E5FF'>founder</AButton>
+        {/* <Tag tcolor="#A8A8A8" className="">
           all
         </Tag>
         <Tag tcolor="#FF75CD" className="outlined">
@@ -379,10 +443,10 @@ export const Members = () => {
         </Tag>
         <Tag tcolor="#71E5FF" className="outlined">
           founder
-        </Tag>
+        </Tag> */}
       </Box>
       <Box
-        pt="24px"
+        mt="24px"
         sx={{
           height: '360px',
           overflowY: 'scroll',

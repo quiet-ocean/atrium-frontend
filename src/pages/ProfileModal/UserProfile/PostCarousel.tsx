@@ -27,7 +27,7 @@ export const PostContainer = ({
         <img src={img} alt="" width="100%" height="100%" />
         <Box
           sx={{
-            backgroundImage: `linear-gradient(0deg, ${palette.background.default}, transparent)`,
+            backgroundImage: `linear-gradient(0deg, ${palette.common.black}, transparent)`,
             height: '100%',
             left: '0',
             padding: '36px',
