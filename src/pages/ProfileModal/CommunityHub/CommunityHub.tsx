@@ -14,6 +14,8 @@ import * as PContainer from '../styled'
 import { Community as Container } from '../styled'
 import { PostContainer } from '../UserProfile'
 
+import { Reactions } from '../Dashboard'
+
 export const Banner = () => {
   return (
     <Box position="relative">
@@ -279,11 +281,18 @@ export const FeaturedPost = () => {
       </Box>
       <Box pt="32px">
         <PostContainer img={postImage} height="">
-          <AText>Why do these noobs keep tryna play games with us?</AText>
-          <AText className="disabled">
-            Keep the peace? Fuck that. We keep it antisocial on this island.
-            Stay Ape.{' '}
-          </AText>
+          <Box display="flex" gap="24px">
+            <Box>
+              <AText>Antisocial Ape Club Raffles Coming Soon</AText>
+              <AText className="disabled">
+                Keep the peace? Fuck that. We keep it antisocial on this island.
+                Stay Ape.{' '}
+              </AText>
+            </Box>
+            <Box display="flex" flexDirection="column" justifyContent="end">
+              <Reactions />
+            </Box>
+          </Box>
         </PostContainer>
         <Box pt="16px">
           <UserIntro />

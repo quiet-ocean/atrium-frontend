@@ -1,5 +1,8 @@
 import { Box, Typography } from '@mui/material'
 
+import coolcat from '../../../assets/icons/reaction-coolcat.png'
+import seemsgood from '../../../assets/icons/reaction-seemsgood.png'
+import smile from '../../../assets/icons/reaction-smile.png'
 import reactions from '../../../assets/icons/reactions.png'
 import land1 from '../../../assets/images/land-1.png'
 import land2 from '../../../assets/images/land-2.png'
@@ -17,6 +20,28 @@ import { HorizontalPostComp } from './HorizontalPostComp'
 import { Container } from './styled'
 import { Title } from './Title'
 import { User } from './User'
+
+export const Reactions = () => {
+  return (
+    <Box display="flex" gap="4px">
+      <img src={smile} alt="" width="18px" height="18px" />
+      <img src={seemsgood} alt="" width="18px" height="18px" />
+      <img src={coolcat} alt="" width="18px" height="18px" />
+      <Typography
+        sx={{
+          color: '#FFFFFF',
+          fontFamily: 'Andale Mono Regular',
+          fontSize: '14px',
+          fontStyle: 'normal',
+          fontWeight: 400,
+          lineHeight: '19px',
+        }}
+      >
+        +204
+      </Typography>
+    </Box>
+  )
+}
 
 export const Dashboard = () => {
   return (

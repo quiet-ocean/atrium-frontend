@@ -28,7 +28,10 @@ export const PostContainer = ({
         <Box
           sx={{
             backgroundImage: `linear-gradient(0deg, ${palette.common.black}, transparent)`,
+            display: 'flex',
+            flexDirection: 'column',
             height: '100%',
+            justifyContent: 'end',
             left: '0',
             padding: '36px',
             position: 'absolute',
@@ -36,9 +39,7 @@ export const PostContainer = ({
             width: '100%',
           }}
         >
-          <Box position="absolute" sx={{ bottom: '24px' }}>
-            {children}
-          </Box>
+          <Box>{children}</Box>
         </Box>
       </Box>
     </Box>
