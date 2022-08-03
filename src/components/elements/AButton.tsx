@@ -32,16 +32,6 @@ export const AButton = styled(Button)<AButtonProps>(({ theme, btnColor }) => ({
     color: theme.palette.text.secondary,
     fontFamily: 'Andale Mono Regular',
   },
-  '&.tag-primary': {
-
-  },
-  '&.tag-secondary': {
-    border: `1px solid ${btnColor}`,
-    borderRadius: '54px',
-    color: theme.palette.primary.dark,
-    background: `${btnColor}`,
-    fontFamily: 'Andale Mono Regular',
-  },
   '&.tag-active': {
     background: theme.palette.text.secondary,
     border: `1px solid transparent`,
@@ -50,6 +40,14 @@ export const AButton = styled(Button)<AButtonProps>(({ theme, btnColor }) => ({
   '&.tag-large': {
     fontSize: '18px',
     padding: '6px 16px',
+  },
+  '&.tag-primary': {},
+  '&.tag-secondary': {
+    background: `${btnColor}`,
+    border: `1px solid ${btnColor}`,
+    borderRadius: '54px',
+    color: theme.palette.primary.dark,
+    fontFamily: 'Andale Mono Regular',
   },
   '&.tag-small': {
     fontSize: '12px',

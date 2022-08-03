@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material'
+
 import avatar from '../images/profile-avatar.png'
 
 export const User = ({ name }: { name: string }) => {

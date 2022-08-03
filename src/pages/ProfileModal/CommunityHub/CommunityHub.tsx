@@ -351,7 +351,7 @@ export const LiveChat = () => {
     </Container>
   )
 }
-export const Media = () => {
+const Media = () => {
   return (
     <Container height="100%">
       <Box height="100%">

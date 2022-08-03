@@ -11,8 +11,8 @@ import { palette } from '../../../MuiTheme'
 export const AdornmentInput: React.FC<{
   adornment: React.ReactNode
   label: string
-  variant?: 'primary' | 'default' | undefined,
-  sx?: object,
+  variant?: 'primary' | 'default' | undefined
+  sx?: object
 }> = ({ adornment, label, variant, sx }) => {
   return (
     <FormControl

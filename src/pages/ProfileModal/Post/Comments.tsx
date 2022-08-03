@@ -1,11 +1,11 @@
+import SendIcon from '@mui/icons-material/Send'
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt'
 import { Box, Typography } from '@mui/material'
 
 import { AtButton, AText } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import avatar from '../images/avatar-3.png'
 import { AdornmentInput } from '../ProfileEdit/AdornmentInput'
-import SendIcon from '@mui/icons-material/Send'
-import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 
 export const Comment = () => {
   return (

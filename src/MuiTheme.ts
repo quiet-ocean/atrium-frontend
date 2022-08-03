@@ -49,10 +49,9 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     mode: 'dark',
     primary: {
       dark: colors.offBlack,
-      main: '#303234',//LINE & GRID,
+      main: '#303234', //LINE & GRID,
     },
     secondary: {
-
       dark: colors.primaryBlue,
       light: colors.primaryYellow,
       main: colors.primaryRed,
