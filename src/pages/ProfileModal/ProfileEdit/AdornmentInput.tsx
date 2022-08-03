@@ -28,7 +28,9 @@ export const AdornmentInput: React.FC<{
           fontWeight: 400,
           letterSpacing: '-0.1em',
           lineHeight: '32px',
+          px: '24px',
           textTransform: 'capitalize',
+          top: '-3px',
         }}
       >
         {label}
@@ -36,7 +38,15 @@ export const AdornmentInput: React.FC<{
       <OutlinedInput
         id="outlined-adornment-password"
         type="text"
-        sx={{ borderRadius: '0px', fontSize: '18px', height: '100%' }}
+        sx={{
+          borderRadius: '0px',
+          fontSize: '18px',
+          height: '100%',
+          px: '24px',
+          '& input': {
+            py: '16px',
+          }
+        }}
         endAdornment={
           <InputAdornment position="end">
             <IconButton aria-label="toggle password visibility" edge="end">

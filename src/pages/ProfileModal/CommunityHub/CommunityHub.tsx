@@ -73,6 +73,15 @@ export const SocialButtons = () => {
   )
 }
 export const Detail = () => {
+  const Text = styled(Typography)(() => ({
+    color: `${palette.text.primary}`,
+    fontFamily: 'Andale Mono Regular',
+    fontSize: '24px',
+    fontStyle: 'normal',
+    fontWeight: 400,
+    letterSpacing: '-0.05em',
+    lineHeight: '120%',
+  }))
   return (
     <Grid container spacing={2}>
       <Grid item lg={5} position="relative">
@@ -104,7 +113,7 @@ export const Detail = () => {
             ownerwalletfullID
           </AText>
         </Box>
-        <Box pt="48px" textAlign="center">
+        <Box pt="32px" textAlign="center">
           <AButton
             className="community primary outlined active"
             btnColor={palette.secondary.light}
@@ -120,20 +129,9 @@ export const Detail = () => {
             <DetailParams />
           </Box>
           <Box pt="15px">
-            <Typography
-              sx={{
-                color: `${palette.text.primary}`,
-                fontFamily: 'Andale Mono Regular',
-                fontSize: '24px',
-                fontStyle: 'normal',
-                fontWeight: 400,
-                letterSpacing: '-0.05em',
-                lineHeight: '120%',
-              }}
-            >
-              A collection of 3333 unique, randomly generated pixel art NFTs
-              stored on the NEAR blockchain.
-            </Typography>
+            <Text>A collection of 3333 unique, randomly</Text>
+            <Text>generated pixel art NFTs stored on the NEAR</Text>
+            <Text> blockchain.</Text>
           </Box>
           <Box pt="15px">
             <SocialButtons />
@@ -403,7 +401,7 @@ export const Member = ({ index }: { index: number }) => {
     >
       <Box display="flex" gap="12px">
         <img src={avatar2} alt="" width="46px" height="46px" />
-        <Box py="6px">
+        <Box py="10px">
           <AText sx={{ fontSize: '18px', fontWeight: 800 }}>LtLollipop</AText>
         </Box>
       </Box>
@@ -414,7 +412,7 @@ export const Member = ({ index }: { index: number }) => {
         </AText>
       </Box>
       <Box display="flex" gap="12px">
-        <Box py="3px">
+        <Box py="10px">
           <AButton
             className="tag primary outlined tag-small"
             btnColor="#FF75CD"
@@ -460,24 +458,6 @@ export const Members = () => {
         <AButton className="tag primary outlined tag-small" btnColor="#71E5FF">
           founder
         </AButton>
-        {/* <Tag tcolor="#A8A8A8" className="">
-          all
-        </Tag>
-        <Tag tcolor="#FF75CD" className="outlined">
-          whitelisted
-        </Tag>
-        <Tag tcolor="#90E487" className="outlined">
-          OG member
-        </Tag>
-        <Tag tcolor="#FFB350" className="outlined">
-          devs
-        </Tag>
-        <Tag tcolor="#DE58FF" className="outlined">
-          moderator
-        </Tag>
-        <Tag tcolor="#71E5FF" className="outlined">
-          founder
-        </Tag> */}
       </Box>
       <Box
         mt="24px"
@@ -502,7 +482,7 @@ export const CommunityHub = () => {
       <Box>
         <Detail />
       </Box>
-      <Grid container p="24px" spacing={2}>
+      <Grid container p="72px 24px" spacing={2}>
         <Grid item lg={6}>
           <FeaturedPost />
         </Grid>
