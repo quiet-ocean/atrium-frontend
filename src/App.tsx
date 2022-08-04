@@ -13,8 +13,8 @@ import {
   SetName,
   ScanDAO,
   GameUI,
-  
-  Welcome, Signin
+  Welcome,
+  Signin,
 } from './pages'
 import {
   ClubBoard,
@@ -30,7 +30,6 @@ import {
   SinglePost,
   CommunityHub,
 } from './pages/ClubBoard'
-
 import { setWalletConnected } from './stores/UserStore'
 import { getAccount } from './utils'
 

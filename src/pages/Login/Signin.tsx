@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 import { LoginLayout, AButton } from '../../components'
 import { palette } from '../../MuiTheme'
@@ -18,13 +19,17 @@ export const Signin = () => {
               className="primary active large"
               color0btn={palette.secondary.light}
             >
-              connect wallet
+              <Link to="/connect-wallet">
+                <Typography variant="h2" color={palette.background.paper}>
+                  connect wallet
+                </Typography>
+              </Link>
             </AButton>
             <AButton
               className=" active large secondary"
               color0btn={palette.secondary.light}
             >
-              continue as guest
+              <Typography variant="h2">continue as guest</Typography>
             </AButton>
           </Box>
         </Box>
