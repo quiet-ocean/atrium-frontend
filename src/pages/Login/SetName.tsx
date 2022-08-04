@@ -72,7 +72,7 @@ const SetName = () => {
       <LoginSubLayout
         stepper
         enable
-        goForward={() => navigate('./select-identity')}
+        goForward={() => navigate('/select-identity')}
       >
         <Box flexDirection="column">
           <Box>
