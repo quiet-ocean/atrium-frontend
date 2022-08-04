@@ -97,7 +97,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     },
     h2: {
       color: '#F8F9FA',
-      fontFamily: 'Fractul Alt',
+      fontFamily: 'Fractul',
       fontSize: '36px',
       fontStyle: 'normal',
       fontWeight: 400,
@@ -106,7 +106,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     },
     h3: {
       color: '#F8F9FA',
-      fontFamily: 'Fractul Alt',
+      fontFamily: 'Fractul',
       fontSize: '32px',
       fontStyle: 'normal',
       fontWeight: 600,
@@ -115,7 +115,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     },
     h4: {
       color: '#F8F9FA',
-      fontFamily: 'Fractul Alt',
+      fontFamily: 'Fractul',
       fontSize: '24px',
       fontStyle: 'normal',
       fontWeight: 600,
@@ -125,7 +125,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     },
     h5: {
       color: '#F8F9FA',
-      fontFamily: 'Fractul Alt',
+      fontFamily: 'Fractul',
       fontSize: '18px',
       fontStyle: 'normal',
       fontWeight: 600,
@@ -135,7 +135,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     },
     h6: {
       color: '#F8F9FA',
-      fontFamily: 'Fractul Alt',
+      fontFamily: 'Fractul',
       fontSize: '16px',
       fontStyle: 'normal',
       fontWeight: 600,

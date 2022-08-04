@@ -339,12 +339,6 @@ export const LiveChat = () => {
           >
             live chat
           </Typography>
-          {/* <AButton
-            className="primary outlined"
-            btn0color={palette.secondary.light}
-          >
-            view all
-          </AButton> */}
           <Box display="flex" gap="6px">
             <PushPinIcon
               sx={{

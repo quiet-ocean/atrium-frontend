@@ -1,10 +1,11 @@
-import { Grid, CssBaseline, Box, Container } from '@mui/material'
+import { CssBaseline, Box, Container } from '@mui/material'
 import * as React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // import { CWindow } from '../../types/Window';
 import { useAppSelector } from '../hooks'
 // declare let window: CWindow;
+import '../styles/login.scss'
 
 const LoginLayout = ({ children }: { children: React.ReactNode }) => {
   const connected = useAppSelector((state) => state.user.walletConnected)
@@ -25,25 +26,18 @@ const LoginLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="xl" className="login" sx={{ px: '0px' }}>
-        <Box sx={{ bgcolor: '', height: '100%' }}>
-          <Grid container>
-            <Grid item md={7} />
-            <Grid item md={4}>
-              <div className="login_panel">
-                <Box>{children}</Box>
-                <Box sx={{ mt: '36px' }}>
-                  <p
-                    className="atrium_text_secondary"
-                    style={{ display: 'none' }}
-                  >
-                    Already have an account?
-                    <span className="atrium_text_light"> Log in now</span>
-                  </p>
-                </Box>
-              </div>
-            </Grid>
-          </Grid>
+      <Container maxWidth="xl">
+        <Box position="relative" width="100%" height="100%">
+          <Box className="login" height="100%">
+            <Box
+              sx={{ bgcolor: 'black', opacity: '0.5', height: '100%' }}
+            ></Box>
+          </Box>
+          <Box
+            sx={{ position: 'absolute', top: 0, width: '100%', height: '100%' }}
+          >
+            {children}
+          </Box>
         </Box>
       </Container>
     </React.Fragment>

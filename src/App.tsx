@@ -13,6 +13,8 @@ import {
   SetName,
   ScanDAO,
   GameUI,
+  
+  Welcome, Signin
 } from './pages'
 import {
   ClubBoard,
@@ -28,6 +30,7 @@ import {
   SinglePost,
   CommunityHub,
 } from './pages/ClubBoard'
+
 import { setWalletConnected } from './stores/UserStore'
 import { getAccount } from './utils'
 
@@ -47,7 +50,8 @@ const App = () => {
     >
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<ConnectWallet />} />
+          <Route path="/" element={<Welcome />} />
+          <Route path="/signin" element={<Signin />} />
           <Route
             path="/connect-socials"
             element={
