@@ -20,7 +20,7 @@ import {
   Account,
   ArticleBuilder,
   FeedbackForm,
-  ProfileEdit,
+  EditProfile,
   UserProfile,
   Chat,
   Profile,
@@ -71,7 +71,7 @@ const App = () => {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="exploration" element={<UserProfile />} />
             <Route path="account" element={<Account />} />
-            <Route path="edit" element={<ProfileEdit />} />
+            <Route path="edit" element={<EditProfile />} />
             <Route path="article-builder" element={<ArticleBuilder />} />
             <Route path="feedback" element={<FeedbackForm />} />
             <Route path="chat" element={<Chat />} />
