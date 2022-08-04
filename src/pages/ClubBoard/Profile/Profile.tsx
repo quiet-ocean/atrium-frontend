@@ -1,6 +1,6 @@
 import { Box, Typography, Grid } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Carousel from 'react-material-ui-carousel'
 
 import avatar1 from '../../../assets/images/avatar-8.png'
@@ -163,7 +163,7 @@ export const CommunityCarousel = () => {
         indicators={true}
         NextIcon={
           <AButton className="primary active" btn0color={palette.text.disabled}>
-            Next
+            Prev
           </AButton>
         }
         PrevIcon={
@@ -219,6 +219,17 @@ export const CommunityCarousel = () => {
         <CommunityPanel />
         <CommunityPanel />
       </Carousel>
+      {/* <Box display="flex" gap="24px">
+        <Box display="flex" gap="24px"></Box>
+        <Box display="flex" gap="16px">
+          <AButton className="primary active" btn0color={palette.text.disabled}>
+            Prev
+          </AButton>
+          <AButton className="primary active" btn0color={palette.text.disabled} ref={nextButtonRef}>
+            Next
+          </AButton>
+        </Box>
+      </Box> */}
     </Panel>
   )
 }
