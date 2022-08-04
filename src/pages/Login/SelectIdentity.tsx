@@ -1,4 +1,4 @@
-import { Button, Box } from '@mui/material'
+import { Grid, Box, Typography } from '@mui/material'
 import { useState, useEffect } from 'react'
 import Carousel from 'react-multi-carousel'
 import { useNavigate } from 'react-router-dom'
@@ -9,6 +9,9 @@ import { setUser } from '../../stores/AuthStore'
 import { addAvatar, setPlayerAvatar } from '../../stores/UserStore'
 import 'react-multi-carousel/lib/styles.css'
 import { getAccount } from '../../utils'
+import { LoginSubLayout } from './LoginSubLayout'
+
+import { palette } from '../../MuiTheme'
 
 const responsive = {
   desktop: {
@@ -31,7 +34,7 @@ const responsive = {
 }
 
 export const SelectIdentity = () => {
-  const [avatar, setAvatar] = useState(0)
+  const [avatar, setAvatar] = useState<string>('')
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const avatars = useAppSelector((state) => state.user.avatars)
@@ -43,11 +46,6 @@ export const SelectIdentity = () => {
   useEffect(() => {
     loadNFTs()
   }, [])
-
-  const selectAvatar = (id: number) => {
-    console.log('select avatar ', id)
-    setAvatar(id)
-  }
 
   const loadNFTs = async () => {
     // if (!(window as any)?.accountId) {
@@ -97,47 +95,81 @@ export const SelectIdentity = () => {
 
   return (
     <LoginLayout>
-      <h1>Set your Avatar</h1>
-      <p>Choose your avatar to represent yourself in the digital world.</p>
-      <div className="login_panel_avatar_carousel">
-        <Carousel
-          responsive={responsive}
-          showDots={true}
-          dotListClass="custom-dot-list-style"
-          itemClass="carousel-item-padding-40-px"
-          autoPlay={false}
-        >
-          {avatars.map((url: string, key: number) => {
-            return (
-              <Box
-                sx={{ px: '6px' }}
-                key={key}
-                onClick={() => {
-                  selectAvatar(key)
-                  dispatch(setPlayerAvatar(url))
-                }}
-              >
-                <img
-                  className={`${avatar === key ? 'selected' : ''}`}
-                  src={url}
-                  alt=""
-                />
-              </Box>
-            )
-          })}
-        </Carousel>
-      </div>
-      <Button
-        className="atrium_btn atrium_btn_primary"
-        sx={{ mt: '56px' }}
-        onClick={handleNextBtn}
-      >
-        NEXT
-      </Button>
-      <Button className="atrium_btn" onClick={handleNextBtn}>
-        SKIP FOR NOW
-      </Button>
-      <Stepper length={5} step={2} />
+      <LoginSubLayout enable stepper goForward={() => navigate('/select-skin')}>
+        <Box flexDirection="column">
+          <Box>
+            <Typography variant="h3">Select your Identity</Typography>
+          </Box>
+          <Box mt="24px">
+            <Typography variant="body2">
+              Choose an NFT from your wallet to represent you on The Grid.
+            </Typography>
+          </Box>
+          <Box mt="32px">
+            <Box width="160px" height="160px" borderRadius="102px" border={`1px solid ${palette.text.primary}`}>
+              {avatar && <img src={avatar} width="160px" height="160px" style={{
+                borderRadius: `50%`,
+                border: `1px solid ${palette.text.primary}`,
+              }} />}
+            </Box>
+          </Box>
+          <Box>
+            <Box mt="32px" sx={{ overflowY: 'scroll',height: '200px', width: { lg: '50%' } }} px="24px">
+              <Grid container spacing={'12px'} >
+                {avatars.map((url: string, key: number) => {
+                  return (
+                    <Grid
+                      key={key}
+                      onClick={() => {
+                        setAvatar(url)
+                        dispatch(setPlayerAvatar(url))
+                      }}
+                      item
+                      sx={{ height: '100px' }}
+                      lg={2}
+                    >
+                      <img
+                        src={url}
+                        alt=""
+                        width="100%"
+                        height="100%"
+                      />
+                    </Grid>
+                  )
+                })}
+              </Grid>
+            </Box>
+          </Box>
+          {/* <div className="login_panel_avatar_carousel">
+            <Carousel
+              responsive={responsive}
+              showDots={true}
+              dotListClass="custom-dot-list-style"
+              itemClass="carousel-item-padding-40-px"
+              autoPlay={false}
+            >
+              {avatars.map((url: string, key: number) => {
+                return (
+                  <Box
+                    sx={{ px: '6px' }}
+                    key={key}
+                    onClick={() => {
+                      selectAvatar(key)
+                      dispatch(setPlayerAvatar(url))
+                    }}
+                  >
+                    <img
+                      className={`${avatar === key ? 'selected' : ''}`}
+                      src={url}
+                      alt=""
+                    />
+                  </Box>
+                )
+              })}
+            </Carousel>
+          </div> */}
+        </Box>
+      </LoginSubLayout>
     </LoginLayout>
   )
 }

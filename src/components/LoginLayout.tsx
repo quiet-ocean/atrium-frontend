@@ -1,15 +1,15 @@
 import { CssBaseline, Box, Container } from '@mui/material'
 import * as React from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 // import { CWindow } from '../../types/Window';
-import { useAppSelector } from '../hooks'
+// import { useAppSelector } from '../hooks'
 // declare let window: CWindow;
 import '../styles/login.scss'
 
 const LoginLayout = ({ children }: { children: React.ReactNode }) => {
-  const connected = useAppSelector((state) => state.user.walletConnected)
-  const navigate = useNavigate()
+  // const connected = useAppSelector((state) => state.user.walletConnected)
+  // const navigate = useNavigate()
 
   React.useEffect(() => {
     // if (connected || (window as any)?.accountId) {
@@ -18,9 +18,9 @@ const LoginLayout = ({ children }: { children: React.ReactNode }) => {
     //   return;
     // }
     // navigate('/');
-    if (!connected && !(window as any)?.accountId) {
-      navigate('/')
-    }
+    // if (!connected && !(window as any)?.accountId) {
+    //   navigate('/')
+    // }
   }, [])
 
   return (
