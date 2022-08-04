@@ -6,6 +6,10 @@ export const AButton = styled(Button)<AButtonProps>(({ theme, btn0color }) => ({
   '&.disabled': {
     textTransform: 'uppercase',
   },
+  '&.large': {
+    fontSize: '36px',
+    padding: '36px 140px',
+  },
   '&.outlined': {
     border: btn0color
       ? `1px solid ${btn0color} !important`
