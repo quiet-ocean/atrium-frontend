@@ -1,8 +1,9 @@
-import SearchIcon from '@mui/icons-material/Search'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Box, Tabs, Typography, Tab } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-import { AdornmentInput } from '../../../components'
+import { AButton } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import * as Container from '../styled'
 
@@ -38,18 +39,36 @@ const EditProfile: React.FC = () => {
     setValue(newValue)
   }
   return (
-    <Container.Page>
-      <Box sx={{ gridArea: 'main', padding: '60px 0px' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Typography variant="h2" color={palette.secondary.light}>
-            edit profile
-          </Typography>
-          <AdornmentInput
-            adornment={<SearchIcon />}
-            label={'Search setting...'}
-          />
-        </Box>
-        <Box sx={{ width: '100%' }}>
+    <Container.Main>
+      <Box sx={{ padding: '60px 24px' }}>
+        <Box p="32px">
+          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Typography variant="h2" color={palette.secondary.light}>
+              edit profile
+            </Typography>
+            <Box display="flex" gap="24px">
+                <AButton
+                  className="primary active"
+                  btn0color={palette.text.primary}
+                >
+                  <Link to="/profile-modal-development-sandbox/profile">
+                    <Typography
+                      variant="h6"
+                      sx={{ color: palette.background.paper }}
+                    >
+                      back to profile
+                    </Typography>
+                  </Link>
+                  <ArrowForwardIcon sx={{ fontSize: 18 }} />
+                </AButton>
+                <AButton
+                  className="primary active"
+                  btn0color={palette.secondary.light}
+                >
+                  save changes
+                </AButton>
+            </Box>
+          </Box>
           <Box sx={{ borderColor: 'divider', displayborderBottom: 1 }}>
             <Tabs
               value={value}
@@ -61,6 +80,8 @@ const EditProfile: React.FC = () => {
               ))}
             </Tabs>
           </Box>
+        </Box>
+        <Box sx={{ width: '100%' }}>
           <TabPanel value={value} index={0}>
             <EditContent />
           </TabPanel>
@@ -84,7 +105,7 @@ const EditProfile: React.FC = () => {
           </TabPanel>
         </Box>
       </Box>
-    </Container.Page>
+    </Container.Main>
   )
 }
 

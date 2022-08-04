@@ -1,10 +1,14 @@
 import { Box, Typography, Collapse } from '@mui/material'
+import { useState } from 'react'
 
+import post7 from '../../../assets/images/post-7.png'
+import post8 from '../../../assets/images/post-8.png'
+import post9 from '../../../assets/images/post-9.png'
 import project6 from '../../../assets/images/project-6.png'
 import { AButton } from '../../../components'
 import { palette } from '../../../MuiTheme'
-
-import { useState } from 'react'
+import { Reactions } from '../Dashboard'
+import avatar from '../../../assets/images/avatar-6.png'
 
 export const CommunityCard = () => {
   const [selected, setSelected] = useState(false)
@@ -12,7 +16,7 @@ export const CommunityCard = () => {
     if (!selected) setSelected(true)
   }
   return (
-    <Box width="470px">
+    <Box width="470px" mt="32px">
       <Box
         display="flex"
         gap="16px"
@@ -96,21 +100,60 @@ export const CommunityCard = () => {
           </Box>
         </Box>
       </Box>
-      <Collapse in={selected} orientation="vertical">
-        <Box width="100%" p="8px" textAlign="center">
-          <AButton
-            className="primary active"
-            btn0color={palette.secondary.light}
-            onClick={() => setSelected(false)}
-          >
-            unselect
-          </AButton>
-        </Box>
-      </Collapse>
+      <Box height="46px">
+        <Collapse in={selected} orientation="vertical">
+          <Box width="100%" p="8px" textAlign="center">
+            <AButton
+              className="primary active"
+              btn0color={palette.secondary.light}
+              onClick={() => setSelected(false)}
+            >
+              unselect
+            </AButton>
+          </Box>
+        </Collapse>
+      </Box>
     </Box>
   )
 }
 
+export const PostCard = ({ image }: { image: string }) => {
+  return (
+    <Box p="16px" border={`1px solid ${palette.text.primary}`}>
+      <img src={image} alt="" width="100%" height="180px" />
+      <Box py="12px">
+        <Typography variant="h6">
+          Why ASAC has taken over HavenSwap and it’s plan for the future
+        </Typography>
+        <Box mt="12px">
+          <Reactions/>
+        </Box>
+        <Typography mt="12px" variant="caption" sx={{fontSize: '12px'}}>posted 1 day ago</Typography>
+      </Box>
+    </Box>
+  )
+}
+export  const CommentCard = () => {
+  const [selected, setSelected] = useState(false)
+  return (
+    <Box border={`1px solid ${selected ? palette.secondary.light : palette.text.primary}`} p="12px" onClick={() => setSelected(!selected)} >
+      <Box display="flex" gap="48px">
+        <Box display="flex" gap="12px">
+          <Box width="36px" height="36px">
+            <img src={avatar} width="100%" height="100%" />
+          </Box>
+          <Box display="flex" flexDirection="column" justifyContent="space-between">
+            <Typography variant="h6" sx={{ fontSize: 14 }}>Hades</Typography>
+            <Typography variant="caption" sx={{ fontSize: 12 }} textTransform="lowercase">12 hours ago</Typography>
+          </Box>
+        </Box>
+        <Box>
+          <Typography variant="caption" textTransform="lowercase">asac seems to have a bright future ahead of it (or it doesn’t idk)</Typography>
+        </Box>
+      </Box>
+    </Box>
+  )
+}
 export const EditContent = () => {
   return (
     <Box sx={{ border: `1px solid ${palette.text.primary}`, padding: '32px' }}>
@@ -130,21 +173,65 @@ export const EditContent = () => {
             borderRadius: '12px',
             margin: '32px 0px',
             padding: '24px',
+            background: 'rgba(242, 242, 242, 0.1)',
           }}
         >
           <Typography variant="body1" color={palette.text.primary}>
             asac is the worst project that i’ve owned
           </Typography>
         </Box>
-        <Box py="32px">
+        <Box py="32px" display="flex" flexDirection="column">
           <Typography variant="h4">Favorite Community</Typography>
           <Typography mt="8px" variant="body2">
             Select up to 3 projects to feature.{' '}
           </Typography>
-          <Box mt="32px">
-            <CommunityCard />
+          <Box sx={{ overflowX: 'scroll' }} p="32px 0px">
+            <Box display="flex" gap="24px">
+              <Box>
+                <CommunityCard />
+                <CommunityCard />
+              </Box>
+              <Box>
+                <CommunityCard />
+                <CommunityCard />
+              </Box>
+              <Box>
+                <CommunityCard />
+              </Box>
+            </Box>
           </Box>
         </Box>
+        <Box>
+          <Typography variant="h4">Featured Post</Typography>
+          <Typography mt="8px" variant="body2">
+            Select 1 post to feature. 
+          </Typography>
+          <Box display="flex" gap="32px" my="32px">
+            <PostCard image={post7} />
+            <PostCard image={post8} />
+            <PostCard image={post9} />
+          </Box>
+        </Box>
+        <Box my="32px">
+          <Typography variant="h4">Featured Post Comment</Typography>
+          <Typography mt="8px" variant="body2">
+            Select 1 comment from your featured post.
+          </Typography>
+          <Box pt="50px" pl="114px">
+            <Box mt="16px">
+              <CommentCard />
+            </Box>
+            <Box mt="16px">
+              <CommentCard />
+            </Box>
+            <Box mt="16px">
+              <CommentCard />
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+      <Box display="flex" justifyContent="end" mt="120px">
+        <AButton className="primary active" btn0color={palette.secondary.light}>save changes</AButton>
       </Box>
     </Box>
   )
