@@ -1,16 +1,30 @@
-import { Box } from '@mui/material'
-
+import { Box, Typography } from '@mui/material'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import logo from '../../assets/images/atrium-logo-large.png'
 import logotype from '../../assets/images/atrium-logotype-small.png'
-import { Stepper } from '../../components'
+import { AButton, Stepper } from '../../components'
+
+import { palette } from '../../MuiTheme'
 
 export const LoginSubLayout = ({
   children,
   stepper,
+  goForward,
+  goBack,
 }: {
   children: React.ReactNode
   stepper?: boolean
+  goForward?: AnyFunction
+  goBack?: AnyFunction
 }) => {
+
+  const handleBack = () => {
+    if(goBack) goBack()
+  }
+  const handleForward = () => {
+    if(goForward) goForward()
+  }
   return (
     <Box
       height="100%"
@@ -33,8 +47,25 @@ export const LoginSubLayout = ({
       <Box display="flex" flexDirection="column" justifyContent="center">
         <Box height="100%">{children}</Box>
       </Box>
-      <Box display={`${stepper ? 'flex' : 'none'}`}>
-        <Stepper length={4} step={2} />
+      <Box>
+        <Box display={`${stepper ? 'flex' : 'none !important'}`} flexDirection="column" gap="32px">
+          <Box>
+            <AButton onClick={handleForward} className="primary active large" color0btn={palette.text.disabled}>
+              Next &nbsp;<ArrowForwardIcon sx={{fontSize: '28px'}} />
+            </AButton>
+          </Box>
+          <Box>
+            <Box onClick={handleBack}>
+              <ArrowBackIcon />
+              <Typography variant="body1" color={palette.text.primary} textTransform="capitalize">
+                &nbsp;go back
+              </Typography>
+            </Box>
+            </Box>
+          <Box>
+            <Stepper length={4} step={2} />
+          </Box>
+        </Box>
       </Box>
     </Box>
   )
