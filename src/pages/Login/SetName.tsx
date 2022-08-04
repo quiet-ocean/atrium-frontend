@@ -1,4 +1,4 @@
-import { Button } from '@mui/material'
+import { Box, Typography, TextField } from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -6,12 +6,13 @@ import Adam from '../../assets/Adam_login.png'
 import Ash from '../../assets/Ash_login.png'
 import Lucy from '../../assets/Lucy_login.png'
 import Nancy from '../../assets/Nancy_login.png'
-import { InputField, Stepper, LoginLayout } from '../../components'
+import { ATextField, LoginLayout } from '../../components'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import phaserGame from '../../PhaserGame'
 import type Game from '../../scenes/Game'
 import { setUser } from '../../stores/AuthStore'
 import { setPlayerName } from '../../stores/UserStore'
+import { LoginSubLayout } from './LoginSubLayout'
 
 const avatars = [
   { img: Adam, name: 'adam' },
@@ -68,32 +69,22 @@ const SetName = () => {
   }
   return (
     <LoginLayout>
-      <h1>Choose Display Name</h1>
-      <p style={{ marginBottom: '12px' }}>
-        Choose your display name to represent yourself in the digital world.
-      </p>
-      <InputField
-        label="NAME"
-        value={name}
-        error={nameError}
-        setError={setNameError}
-        handleChange={handleChange}
-      />
-      <InputField
-        label="CONFIRM DISPLAY NAME"
-        error={confirmError}
-        setError={setConfirmError}
-        value={confirmName}
-        handleChange={setConfirmName}
-      />
-      <Button
-        onClick={handleNextBtn}
-        className="atrium_btn atrium_btn_primary"
-        sx={{ mt: '56px' }}
-      >
-        NEXT
-      </Button>
-      <Stepper length={5} step={1} />
+      <LoginSubLayout stepper enable>
+        <Box flexDirection="column">
+          <Box>
+            <Typography variant="h3">Set a Nickname</Typography>
+          </Box>
+          <Box mt="24px">
+            <Typography variant="body2">This will be your public name on The Grid.</Typography>
+          </Box>
+          <Box mt='12px'>
+            <Typography variant="body2">Don’t stress fam. You can change this later if you want. </Typography>
+          </Box>
+          <Box mt="84px">
+            <ATextField fullWidth />
+          </Box>
+        </Box>
+      </LoginSubLayout>
     </LoginLayout>
   )
 }

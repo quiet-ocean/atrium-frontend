@@ -8,7 +8,7 @@ export const AButton = styled(Button)<AButtonProps>(({ theme, color0btn }) => ({
   },
   '&.large': {
     fontSize: '36px',
-    padding: '36px 140px',
+    padding: '24px 120px',
   },
   '&.outlined': {
     border: color0btn

@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react'
 import Carousel from 'react-multi-carousel'
 import { useNavigate } from 'react-router-dom'
 
-import { Stepper, LoginLayout } from '../components'
-import { useAppDispatch, useAppSelector } from '../hooks'
-import { setUser } from '../stores/AuthStore'
-import { addAvatar, setPlayerAvatar } from '../stores/UserStore'
+import { Stepper, LoginLayout } from '../../components'
+import { useAppDispatch, useAppSelector } from '../../hooks'
+import { setUser } from '../../stores/AuthStore'
+import { addAvatar, setPlayerAvatar } from '../../stores/UserStore'
 import 'react-multi-carousel/lib/styles.css'
-import { getAccount } from '../utils'
+import { getAccount } from '../../utils'
 
 const responsive = {
   desktop: {
@@ -30,7 +30,7 @@ const responsive = {
   },
 }
 
-const SetAvatar = () => {
+export const SelectIdentity = () => {
   const [avatar, setAvatar] = useState(0)
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
@@ -141,5 +141,3 @@ const SetAvatar = () => {
     </LoginLayout>
   )
 }
-
-export { SetAvatar }

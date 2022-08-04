@@ -9,7 +9,7 @@ import {
   LoginSuccess,
   ConnectSocials,
   ConnectWallet,
-  SetAvatar,
+  SelectIdentity,
   SetName,
   ScanDAO,
   GameUI,
@@ -61,7 +61,7 @@ const App = () => {
           />
           <Route path="/setting" element={<Setting />} />
           <Route path="/connect-wallet" element={<ConnectWallet />} />
-          <Route path="/set-avatar" element={<SetAvatar />} />
+          <Route path="/select-identity" element={<SelectIdentity />} />
           <Route path="/set-name" element={<SetName />} />
           <Route path="/dao" element={<ScanDAO />} />
           <Route path="/game" element={<GameUI />} />
