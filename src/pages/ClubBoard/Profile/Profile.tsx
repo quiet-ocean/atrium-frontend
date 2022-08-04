@@ -1,6 +1,6 @@
 import { Box, Typography, Grid } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import Carousel from 'react-material-ui-carousel'
 
 import avatar1 from '../../../assets/images/avatar-8.png'
@@ -8,6 +8,9 @@ import banner from '../../../assets/images/banner-3.png'
 import project6 from '../../../assets/images/project-6.png'
 import { AText, AButton } from '../../../components'
 import { palette } from '../../../MuiTheme'
+
+import editIcon from '../images/edit-icon.png'
+
 import {
   SocialButtons,
   FeaturedPost,
@@ -69,13 +72,17 @@ export const UserInfo = () => {
         </Box>
       </Grid>
       <Grid item lg={7}>
-        <Box>
+        <Box position="relative">
           <Box pt="64px">
             <Text>cofounder @ASAC_NFT</Text>
           </Box>
           <Box pt="36px">
             <SocialButtons />
           </Box>
+          <AButton className="outlined primary active" btn0color={palette.text.disabled} sx={{ position: 'absolute', top: '24px', right: '24px' }}>
+            <img src={editIcon} alt="" />
+            &nbsp; edit profile
+          </AButton>
         </Box>
       </Grid>
     </Grid>
