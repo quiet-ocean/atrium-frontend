@@ -15,7 +15,7 @@ import {
   GameUI,
 } from './pages'
 import {
-  ProfileModal,
+  ClubBoard,
   Dashboard,
   Account,
   ArticleBuilder,
@@ -26,7 +26,7 @@ import {
   Post,
   SinglePost,
   CommunityHub,
-} from './pages/ProfileModal'
+} from './pages/ClubBoard'
 import { setWalletConnected } from './stores/UserStore'
 import { getAccount } from './utils'
 
@@ -64,7 +64,7 @@ const App = () => {
           <Route path="/success" element={<LoginSuccess />} />
           <Route
             path="/profile-modal-development-sandbox"
-            element={<ProfileModal />}
+            element={<ClubBoard />}
           >
             <Route path="" element={<Dashboard />} />
             <Route path="dashboard" element={<Dashboard />} />

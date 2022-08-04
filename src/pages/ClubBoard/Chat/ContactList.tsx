@@ -2,7 +2,7 @@ import { Box } from '@mui/material'
 
 import { AText } from '../../../components'
 
-import { Contact } from './'
+import { Contact } from '.'
 
 export const ContactList = () => {
   return (

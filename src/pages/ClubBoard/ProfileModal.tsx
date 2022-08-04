@@ -5,7 +5,7 @@ import * as React from 'react'
 
 import ProfilePage from './ProfilePage'
 
-const ProfileModal = () => {
+const ClubBoard = () => {
   const [open, setOpen] = React.useState(true)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
@@ -29,4 +29,4 @@ const ProfileModal = () => {
   )
 }
 
-export { ProfileModal }
+export { ClubBoard }

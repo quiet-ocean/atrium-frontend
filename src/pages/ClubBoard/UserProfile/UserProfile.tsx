@@ -11,7 +11,7 @@ import {
   FriendList,
   Skills,
   Media,
-} from './'
+} from '.'
 
 export const UserProfile = () => {
   return (
