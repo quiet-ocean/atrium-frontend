@@ -10,17 +10,40 @@ import IconButton from '@mui/material/IconButton'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import BagIcon from '../../../assets/icons/bag-icon.png'
-import BountyIcon from '../../../assets/icons/bounties-icon.png'
-import FlagIcon from '../../../assets/icons/flag-icon.png'
-import HomeIcon from '../../../assets/icons/inv-icon.png'
-import QuestsIcon from '../../../assets/icons/quests-icon.png'
-import UsersIcon from '../../../assets/icons/users-icon.png'
+// import BagIcon from '../../../assets/icons/bag-icon.png'
+// import BountyIcon from '../../../assets/icons/bounties-icon.png'
+// import FlagIcon from '../../../assets/icons/flag-icon.png'
+// // import HomeIcon from '../../../assets/icons/inv-icon.png'
+// import QuestsIcon from '../../../assets/icons/quests-icon.png'
+// import UsersIcon from '../../../assets/icons/users-icon.png'
 import muiTheme from '../../../MuiTheme'
 
-const IconContainer = styled(Box)(() => ({
-  background: '',
-}))
+import HomeIcon from '../../../assets/icons/home-icon.png'
+import FrameIcon from '../../../assets/icons/frame-icon.png'
+import MessageIcon from '../../../assets/icons/message-icon.png'
+import ProposalIcon from '../../../assets/icons/proposal-icon.png'
+import SettingIcon from '../../../assets/icons/setting-icon.png'
+
+// const Box = styled(Box)(() => ({
+//   background: '',
+// }))
+const IconLink = ({ children, to }: { children: React.ReactNode, to: string }) => {
+  return (
+    <Link to={`${to}`}>
+      <IconButton
+        size="large"
+        aria-label="account of current user"
+        aria-controls="primary-search-account-menu"
+        aria-haspopup="true"
+        sx={{ color: muiTheme.palette.icon.dark }}
+      >
+        <Box>
+          {children}
+        </Box>
+      </IconButton>
+    </Link>
+  )
+}
 const SideBar: React.FC = () => {
   return (
     <Box
@@ -43,74 +66,31 @@ const SideBar: React.FC = () => {
         xIndex: muiTheme.zIndex.drawer,
       }}
     >
-      <Link to="account">
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          sx={{ color: muiTheme.palette.icon.dark }}
-        >
-          <IconContainer>
-            <img src={HomeIcon} alt="" width="100%" height="100%" />
-          </IconContainer>
-        </IconButton>
-      </Link>
-
-      <IconButton
+      <IconLink to="profile">
+        <img src={HomeIcon} alt="" width="100%" height="100%" />
+      </IconLink>
+      <IconLink to="profile">
+        <img src={FrameIcon} alt="" width="100%" height="100%" />
+      </IconLink>
+      <IconLink to="community-hub">
+        <img src={MessageIcon} alt="" width="100%" height="100%" />
+      </IconLink>
+      <IconLink to="profile">
+        <img src={ProposalIcon} alt="" width="100%" height="100%" />
+      </IconLink>
+      <IconLink to="edit">
+        <img src={SettingIcon} alt="" width="100%" height="100%" />
+      </IconLink>
+      {/* <IconButton
         size="large"
         aria-label="account of current user"
         aria-controls="primary-search-account-menu"
         aria-haspopup="true"
         sx={{ color: muiTheme.palette.icon.dark }}
       >
-        <IconContainer>
-          <img src={BountyIcon} alt="" width="100%" height="100%" />
-        </IconContainer>
-      </IconButton>
-      <IconButton
-        size="large"
-        aria-label="account of current user"
-        aria-controls="primary-search-account-menu"
-        aria-haspopup="true"
-        sx={{ color: muiTheme.palette.icon.dark }}
-      >
-        <IconContainer>
-          <img src={UsersIcon} alt="" width="100%" height="100%" />
-        </IconContainer>
-      </IconButton>
-      <IconButton
-        size="large"
-        aria-label="account of current user"
-        aria-controls="primary-search-account-menu"
-        aria-haspopup="true"
-        sx={{ color: muiTheme.palette.icon.dark }}
-      >
-        <IconContainer>
-          <img src={HomeIcon} alt="" width="100%" height="100%" />
-        </IconContainer>
-      </IconButton>
-      <IconButton
-        size="large"
-        aria-label="account of current user"
-        aria-controls="primary-search-account-menu"
-        aria-haspopup="true"
-        sx={{ color: muiTheme.palette.icon.dark }}
-      >
-        <IconContainer>
-          <img src={QuestsIcon} alt="" width="100%" height="100%" />
-        </IconContainer>
-      </IconButton>
-      <IconButton
-        size="large"
-        aria-label="account of current user"
-        aria-controls="primary-search-account-menu"
-        aria-haspopup="true"
-        sx={{ color: muiTheme.palette.icon.dark }}
-      >
-        <IconContainer>
+        <Box>
           <img src={FlagIcon} alt="" width="100%" height="100%" />
-        </IconContainer>
+        </Box>
       </IconButton>
       <IconButton
         size="large"
@@ -119,10 +99,10 @@ const SideBar: React.FC = () => {
         aria-haspopup="true"
         sx={{ color: muiTheme.palette.icon.dark }}
       >
-        <IconContainer>
+        <Box>
           <img src={BagIcon} alt="" width="100%" height="100%" />
-        </IconContainer>
-      </IconButton>
+        </Box>
+      </IconButton> */}
     </Box>
   )
 }

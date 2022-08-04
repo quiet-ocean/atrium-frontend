@@ -2,15 +2,13 @@ import { Box, Typography, Grid } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { useState } from 'react'
 import Carousel from 'react-material-ui-carousel'
+import { Link } from 'react-router-dom'
 
 import avatar1 from '../../../assets/images/avatar-8.png'
 import banner from '../../../assets/images/banner-3.png'
 import project6 from '../../../assets/images/project-6.png'
 import { AText, AButton } from '../../../components'
 import { palette } from '../../../MuiTheme'
-
-import editIcon from '../images/edit-icon.png'
-
 import {
   SocialButtons,
   FeaturedPost,
@@ -18,6 +16,7 @@ import {
   MembersModal,
   MediaPanel,
 } from '../CommunityHub'
+import editIcon from '../images/edit-icon.png'
 import { Main as Container, Community as Panel } from '../styled'
 
 const Banner = () => {
@@ -79,9 +78,15 @@ export const UserInfo = () => {
           <Box pt="36px">
             <SocialButtons />
           </Box>
-          <AButton className="outlined primary active" btn0color={palette.text.disabled} sx={{ position: 'absolute', top: '24px', right: '24px' }}>
+          <AButton
+            className="outlined primary active"
+            btn0color={palette.text.disabled}
+            sx={{ position: 'absolute', right: '24px', top: '24px' }}
+          >
             <img src={editIcon} alt="" />
-            &nbsp; edit profile
+            <Link to="/profile-modal-development-sandbox/edit">
+              &nbsp; edit profile
+            </Link>
           </AButton>
         </Box>
       </Grid>
