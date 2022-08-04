@@ -4,8 +4,8 @@ import { styled } from '@mui/material/styles'
 import MultipleSelectPlaceholder from '../../../components/MultipleSelectPlaceholder'
 import muiTheme from '../../../MuiTheme'
 import { UploadButton } from '../ArticleBuilder/styled'
-import { Heading, Text } from '../ProfileEdit/styled'
-import { TextInput } from '../ProfileEdit/TextInput'
+import { Heading, Text } from '../EditProfile/styled'
+import { TextInput } from '../EditProfile/TextInput'
 import * as Container from '../styled'
 
 const CTextField = styled(TextField)(() => ({

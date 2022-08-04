@@ -5,9 +5,8 @@ import VideoCameraFrontOutlinedIcon from '@mui/icons-material/VideoCameraFrontOu
 import { Box, Button, Typography, ButtonGroup } from '@mui/material'
 
 import avatar from '../../../assets/images/avatar-5.png'
-import { AText } from '../../../components'
+import { AText, AdornmentInput } from '../../../components'
 import { palette } from '../../../MuiTheme'
-import { AdornmentInput } from '../ProfileEdit/AdornmentInput'
 import { OnlineIcon } from '../UserProfile/styled'
 
 import { AntSwitch } from './Switch'

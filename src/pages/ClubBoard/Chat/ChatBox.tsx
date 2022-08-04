@@ -4,7 +4,7 @@ import SendIcon from '@mui/icons-material/Send'
 import { Box } from '@mui/material'
 
 import { palette } from '../../../MuiTheme'
-import { AdornmentInput } from '../ProfileEdit/AdornmentInput'
+import { AdornmentInput } from '../../../components'
 
 import { Message } from './Message'
 

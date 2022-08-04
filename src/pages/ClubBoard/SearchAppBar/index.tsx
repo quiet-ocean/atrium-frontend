@@ -7,7 +7,7 @@ import * as React from 'react'
 
 import logo from '../../../assets/images/atrium-logo.png'
 import muiTheme from '../../../MuiTheme'
-import { AdornmentInput } from '../ProfileEdit/AdornmentInput'
+import { AdornmentInput } from '../../../components'
 
 import MenuIconList from './MenuIconList'
 // import { StatusBar } from './StatusBar'

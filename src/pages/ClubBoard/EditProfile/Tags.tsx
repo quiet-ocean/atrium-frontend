@@ -2,7 +2,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import { Box, Stack, Grid } from '@mui/material'
 import React from 'react'
 
-import { AdornmentInput } from './AdornmentInput'
+import { AdornmentInput } from '../../../components'
 import { Heading, Text, Tag } from './styled'
 
 export const Tags = () => {

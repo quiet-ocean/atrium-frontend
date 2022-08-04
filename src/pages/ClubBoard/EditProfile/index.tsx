@@ -4,7 +4,7 @@ import React from 'react'
 
 import * as Container from '../styled'
 
-import { AdornmentInput } from './AdornmentInput'
+import { AdornmentInput } from '../../../components'
 import { Identity } from './Identity'
 import { Heading, TabPanel, a11yProps, CTab } from './styled'
 import { Tags } from './Tags'

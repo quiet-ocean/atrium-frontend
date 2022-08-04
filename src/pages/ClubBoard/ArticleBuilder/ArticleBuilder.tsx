@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material'
 
-import { SubTitle, Tag } from '../ProfileEdit/styled'
+import { SubTitle, Tag } from '../EditProfile/styled'
 import * as Container from '../styled'
 
 import { ArticleBox, CButton, UploadButton } from './styled'

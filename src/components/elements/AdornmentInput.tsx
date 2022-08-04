@@ -6,7 +6,7 @@ import {
   IconButton,
 } from '@mui/material'
 
-import { palette } from '../../../MuiTheme'
+import { palette } from '../../MuiTheme'
 
 export const AdornmentInput: React.FC<{
   adornment: React.ReactNode
