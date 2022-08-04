@@ -45,7 +45,7 @@ export const Main = styled.div`
 `
 export const ModalContainer = styled.div`
   // margin: 160px 0px 0px 80px;
-  padding: 160px 0px 0px 80px;
+  padding: 90px 0px 0px 80px;
   height: 100%;
 `
 export const Community = muiStyled(Box)(({ theme }) => ({

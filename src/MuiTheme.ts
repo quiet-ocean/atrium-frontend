@@ -66,6 +66,37 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     },
   },
   spacing: 8,
+  typography: {
+    body1: {
+      fontFamily: 'Andale Mono Regular',
+      fontStyle: 'normal',
+      fontWeight: 400,
+      fontSize: '24px',
+      lineHeight: '120%',
+      letterSpacing: '-0.05em',
+      color: '#A8A8A8',
+    },
+    caption: {
+      color: '#a8a8a8',
+      fontFamily: 'Andale Mono Regular',
+      fontSize: '16px',
+      fontStyle: 'normal',
+      fontWeight: '400',
+      letterSpacing: '-0.05em',
+      lineHeight: '90%',
+      textTransform: 'capitalize',
+    },
+    h4: {
+      color: '#F2F2F2',
+      fontFamily: 'Fractul Alt',
+      fontSize: '24px',
+      fontStyle: 'normal',
+      fontWeight: 600,
+      letterSpacing: '-0.02em',
+      lineHeight: '29px',
+      textTransform: 'capitalize',
+    },
+  },
 })
 
 export const palette = muiTheme.palette

@@ -23,6 +23,7 @@ import {
   ProfileEdit,
   UserProfile,
   Chat,
+  Profile,
   Post,
   SinglePost,
   CommunityHub,
@@ -77,6 +78,7 @@ const App = () => {
             <Route path="post" element={<Post />} />
             <Route path="single-post" element={<SinglePost />} />
             <Route path="community-hub" element={<CommunityHub />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -129,7 +129,7 @@ export const Detail = () => {
         <Box pt="32px" textAlign="center">
           <AButton
             className="community primary outlined active"
-            btnColor={palette.secondary.light}
+            btn0color={palette.secondary.light}
           >
             <GroupOutlinedIcon />
             join community
@@ -175,7 +175,7 @@ export const ChatMessage = ({ children }: { children: React.ReactNode }) => {
           <Box>
             <AButton
               className="tag-secondary outlined tag-small"
-              btnColor="#71E5FF"
+              btn0color="#71E5FF"
             >
               founder
             </AButton>
@@ -183,7 +183,7 @@ export const ChatMessage = ({ children }: { children: React.ReactNode }) => {
           <Box>
             <AButton
               className="tag-secondary tag-small outlined"
-              btnColor="#FFB350"
+              btn0color="#FFB350"
             >
               devs
             </AButton>
@@ -191,7 +191,7 @@ export const ChatMessage = ({ children }: { children: React.ReactNode }) => {
           <Box>
             <AButton
               className="tag-secondary tag-small outlined"
-              btnColor="#DE58FF"
+              btn0color="#DE58FF"
             >
               moderator
             </AButton>
@@ -214,7 +214,7 @@ export const UsernameWithTags = () => {
         <Box>
           <AButton
             className="tag-secondary outlined tag-small"
-            btnColor="#71E5FF"
+            btn0color="#71E5FF"
           >
             founder
           </AButton>
@@ -222,7 +222,7 @@ export const UsernameWithTags = () => {
         <Box>
           <AButton
             className="tag-secondary tag-small outlined"
-            btnColor="#FFB350"
+            btn0color="#FFB350"
           >
             devs
           </AButton>
@@ -230,7 +230,7 @@ export const UsernameWithTags = () => {
         <Box>
           <AButton
             className="tag-secondary tag-small outlined"
-            btnColor="#DE58FF"
+            btn0color="#DE58FF"
           >
             moderator
           </AButton>
@@ -278,20 +278,31 @@ export const UserIntro = () => {
     </Box>
   )
 }
-export const FeaturedPost = () => {
+export const FeaturedPost = ({ height }: { height?: string }) => {
   return (
     <Container>
       <Box display="flex" justifyContent="space-between">
-        <AText>featured post</AText>
+        <Typography
+          sx={{
+            fontFamily: 'Fractul Alt',
+            fontSize: '36px',
+            fontStyle: 'normal',
+            fontWeight: '600',
+            lineHeight: '120%',
+            textTransform: 'capitalize',
+          }}
+        >
+          featured post
+        </Typography>
         <AButton
           className="primary outlined"
-          btnColor={palette.secondary.light}
+          btn0color={palette.secondary.light}
         >
           view all posts
         </AButton>
       </Box>
       <Box pt="32px">
-        <PostContainer img={postImage} height="">
+        <PostContainer img={postImage} height={height ? height : ''}>
           <Box display="flex" gap="24px">
             <Box>
               <AText>Antisocial Ape Club Raffles Coming Soon</AText>
@@ -317,10 +328,21 @@ export const LiveChat = () => {
     <Container height="100%">
       <Box height="100%" display="flex" flexDirection="column">
         <Box display="flex" justifyContent="space-between">
-          <AText>live chat</AText>
+          <Typography
+            sx={{
+              fontFamily: 'Fractul Alt',
+              fontSize: '36px',
+              fontStyle: 'normal',
+              fontWeight: '600',
+              lineHeight: '120%',
+              textTransform: 'capitalize',
+            }}
+          >
+            live chat
+          </Typography>
           {/* <AButton
             className="primary outlined"
-            btnColor={palette.secondary.light}
+            btn0color={palette.secondary.light}
           >
             view all
           </AButton> */}
@@ -378,15 +400,26 @@ export const LiveChat = () => {
     </Container>
   )
 }
-const Media = () => {
+export const MediaPanel = () => {
   return (
     <Container height="100%">
       <Box height="100%">
         <Box display="flex" justifyContent="space-between">
-          <AText>Media</AText>
+          <Typography
+            sx={{
+              fontFamily: 'Fractul Alt',
+              fontSize: '36px',
+              fontStyle: 'normal',
+              fontWeight: '600',
+              lineHeight: '120%',
+              textTransform: 'capitalize',
+            }}
+          >
+            media
+          </Typography>
           <AButton
             className="primary outlined"
-            btnColor={palette.secondary.light}
+            btn0color={palette.secondary.light}
           >
             view all
           </AButton>
@@ -444,7 +477,7 @@ export const Member = ({ index }: { index: number }) => {
         <Box py="10px">
           <AButton
             className="tag primary outlined tag-small"
-            btnColor="#FF75CD"
+            btn0color="#FF75CD"
           >
             whitelisted
           </AButton>
@@ -463,7 +496,18 @@ export const Members = ({
   return (
     <Container>
       <Box display="flex" justifyContent="space-between" height="100%">
-        <AText>members</AText>
+        <Typography
+          sx={{
+            fontFamily: 'Fractul Alt',
+            fontSize: '36px',
+            fontStyle: 'normal',
+            fontWeight: '600',
+            lineHeight: '120%',
+            textTransform: 'capitalize',
+          }}
+        >
+          members
+        </Typography>
         {isModal ? (
           <Box onClick={() => handleOpen(false)}>
             <CloseIcon sx={{ color: palette.text.primary }} />
@@ -471,7 +515,7 @@ export const Members = ({
         ) : (
           <AButton
             className="primary outlined"
-            btnColor={palette.secondary.light}
+            btn0color={palette.secondary.light}
             onClick={() => handleOpen(true)}
           >
             view all
@@ -481,23 +525,23 @@ export const Members = ({
       <Box display="flex" gap="12px" pt="18px">
         <AButton
           className="tag-secondary outlined tag-small"
-          btnColor="#A8A8A8"
+          btn0color="#A8A8A8"
         >
           all
         </AButton>
-        <AButton className="tag primary outlined tag-small" btnColor="#FF75CD">
+        <AButton className="tag primary outlined tag-small" btn0color="#FF75CD">
           whitelisted
         </AButton>
-        <AButton className="tag primary outlined tag-small" btnColor="#90E487">
+        <AButton className="tag primary outlined tag-small" btn0color="#90E487">
           OG member
         </AButton>
-        <AButton className="tag primary outlined tag-small" btnColor="#FFB350">
+        <AButton className="tag primary outlined tag-small" btn0color="#FFB350">
           devs
         </AButton>
-        <AButton className="tag primary outlined tag-small" btnColor="#DE58FF">
+        <AButton className="tag primary outlined tag-small" btn0color="#DE58FF">
           moderator
         </AButton>
-        <AButton className="tag primary outlined tag-small" btnColor="#71E5FF">
+        <AButton className="tag primary outlined tag-small" btn0color="#71E5FF">
           founder
         </AButton>
       </Box>
@@ -515,8 +559,13 @@ export const Members = ({
     </Container>
   )
 }
-export const CommunityHub = () => {
-  const [openMembersModal, setOpenMembersModal] = useState(false)
+export const MembersModal = ({
+  open,
+  handleOpen,
+}: {
+  open: boolean
+  handleOpen: AnyFunction
+}) => {
   const style = {
     bgcolor: palette.grey[300],
     // border: '2px solid #000',
@@ -534,6 +583,29 @@ export const CommunityHub = () => {
     // p: 4,
   }
   return (
+    <Modal
+      open={open}
+      onClose={() => handleOpen(false)}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 500,
+      }}
+    >
+      <Fade in={open}>
+        <Box sx={style}>
+          <Members isModal={true} handleOpen={handleOpen} />
+        </Box>
+      </Fade>
+    </Modal>
+  )
+}
+export const CommunityHub = () => {
+  const [openMembersModal, setOpenMembersModal] = useState(false)
+
+  return (
     <PContainer.Main>
       <Box>
         <Banner />
@@ -549,29 +621,13 @@ export const CommunityHub = () => {
           <LiveChat />
         </Grid>
         <Grid item lg={6}>
-          <Media />
+          <MediaPanel />
         </Grid>
         <Grid item lg={6} sx={{ width: '100%' }}>
           <Members isModal={false} handleOpen={setOpenMembersModal} />
         </Grid>
       </Grid>
-      <Modal
-        open={openMembersModal}
-        onClose={() => setOpenMembersModal(false)}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={openMembersModal}>
-          <Box sx={style}>
-            <Members isModal={true} handleOpen={setOpenMembersModal} />
-          </Box>
-        </Fade>
-      </Modal>
+      <MembersModal open={openMembersModal} handleOpen={setOpenMembersModal} />
     </PContainer.Main>
   )
 }
