@@ -11,6 +11,7 @@ import { setWalletConnected } from '../../stores/UserStore'
 import { Wallet } from '../../types/Wallet'
 import { getAccount, loginNear, logoutNear } from '../../utils/nearAPI'
 import { loginSender } from '../../utils/senderAPI'
+import { LoginSubLayout } from './LoginSubLayout'
 
 const ConnectWallet = () => {
   const navigate = useNavigate()
@@ -62,7 +63,7 @@ const ConnectWallet = () => {
 
   return (
     <LoginLayout>
-      <>
+      <LoginSubLayout stepper>
         <h1>Connect Wallet</h1>
         <p>Connect your wallet to get started on your Web3 Journey</p>
         <Button
@@ -87,8 +88,7 @@ const ConnectWallet = () => {
         >
           NEXT
         </Button>
-        <Stepper length={5} step={0} />
-      </>
+      </LoginSubLayout>
     </LoginLayout>
   )
 }

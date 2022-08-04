@@ -34,7 +34,7 @@ export const LoginSubLayout = ({
         <Box height="100%">{children}</Box>
       </Box>
       <Box display={`${stepper ? 'flex' : 'none'}`}>
-        <Stepper length={4} step={0} />
+        <Stepper length={4} step={2} />
       </Box>
     </Box>
   )
