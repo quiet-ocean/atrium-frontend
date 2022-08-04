@@ -69,16 +69,24 @@ const SetName = () => {
   }
   return (
     <LoginLayout>
-      <LoginSubLayout stepper enable>
+      <LoginSubLayout
+        stepper
+        enable
+        goForward={() => navigate('./select-identity')}
+      >
         <Box flexDirection="column">
           <Box>
             <Typography variant="h3">Set a Nickname</Typography>
           </Box>
           <Box mt="24px">
-            <Typography variant="body2">This will be your public name on The Grid.</Typography>
+            <Typography variant="body2">
+              This will be your public name on The Grid.
+            </Typography>
           </Box>
-          <Box mt='12px'>
-            <Typography variant="body2">Don’t stress fam. You can change this later if you want. </Typography>
+          <Box mt="12px">
+            <Typography variant="body2">
+              Don’t stress fam. You can change this later if you want.{' '}
+            </Typography>
           </Box>
           <Box mt="84px">
             <ATextField fullWidth />
