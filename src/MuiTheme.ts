@@ -100,7 +100,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
       fontFamily: 'Fractul',
       fontSize: '36px',
       fontStyle: 'normal',
-      fontWeight: 400,
+      fontWeight: 600,
       lineHeight: '120%',
       textTransform: 'capitalize',
     },

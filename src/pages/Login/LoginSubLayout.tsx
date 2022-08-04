@@ -12,18 +12,20 @@ export const LoginSubLayout = ({
   stepper,
   goForward,
   goBack,
+  enable,
 }: {
   children: React.ReactNode
   stepper?: boolean
   goForward?: AnyFunction
   goBack?: AnyFunction
+  enable?: boolean
 }) => {
 
   const handleBack = () => {
     if(goBack) goBack()
   }
   const handleForward = () => {
-    if(goForward) goForward()
+    if(goForward && enable) goForward()
   }
   return (
     <Box
@@ -50,7 +52,7 @@ export const LoginSubLayout = ({
       <Box>
         <Box display={`${stepper ? 'flex' : 'none !important'}`} flexDirection="column" gap="32px">
           <Box>
-            <AButton onClick={handleForward} className="primary active large" color0btn={palette.text.disabled}>
+            <AButton onClick={handleForward} className="primary active large" color0btn={enable ? palette.secondary.light : palette.text.disabled}>
               Next &nbsp;<ArrowForwardIcon sx={{fontSize: '28px'}} />
             </AButton>
           </Box>
