@@ -86,6 +86,15 @@ const muiTheme: AtriumTheme = createAtruimTheme({
       lineHeight: '90%',
       textTransform: 'capitalize',
     },
+    h2: {
+      color: '#F2F2F2',
+      fontFamily: 'Fractul Alt',
+      fontSize: '36px',
+      fontStyle: 'normal',
+      fontWeight: 600,
+      lineHeight: '120%',
+      textTransform: 'capitalize',
+    },
     h4: {
       color: '#F2F2F2',
       fontFamily: 'Fractul Alt',
