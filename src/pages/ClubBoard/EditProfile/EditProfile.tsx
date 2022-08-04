@@ -47,26 +47,26 @@ const EditProfile: React.FC = () => {
               edit profile
             </Typography>
             <Box display="flex" gap="24px">
-                <AButton
-                  className="primary active"
-                  btn0color={palette.text.primary}
-                >
-                  <Link to="/profile-modal-development-sandbox/profile">
-                    <Typography
-                      variant="h6"
-                      sx={{ color: palette.background.paper }}
-                    >
-                      back to profile
-                    </Typography>
-                  </Link>
-                  <ArrowForwardIcon sx={{ fontSize: 18 }} />
-                </AButton>
-                <AButton
-                  className="primary active"
-                  btn0color={palette.secondary.light}
-                >
-                  save changes
-                </AButton>
+              <AButton
+                className="primary active"
+                btn0color={palette.text.primary}
+              >
+                <Link to="/profile-modal-development-sandbox/profile">
+                  <Typography
+                    variant="h6"
+                    sx={{ color: palette.background.paper }}
+                  >
+                    back to profile
+                  </Typography>
+                </Link>
+                <ArrowForwardIcon sx={{ fontSize: 18 }} />
+              </AButton>
+              <AButton
+                className="primary active"
+                btn0color={palette.secondary.light}
+              >
+                save changes
+              </AButton>
             </Box>
           </Box>
           <Box sx={{ borderColor: 'divider', displayborderBottom: 1 }}>

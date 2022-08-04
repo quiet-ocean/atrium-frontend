@@ -101,9 +101,7 @@ export const CommunityPanel = () => {
         <img src={project6} alt="" width="100%" height="100%" />
       </Box>
       <Box py="20px" flex="1">
-        <Typography variant="h2">
-          atrium
-        </Typography>
+        <Typography variant="h2">atrium</Typography>
         <Box mt="40px">
           <AButton
             className="primary outlined active"
