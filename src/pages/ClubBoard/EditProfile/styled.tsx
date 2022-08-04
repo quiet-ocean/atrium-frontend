@@ -1,21 +1,21 @@
-import { Box, Typography, Button, InputBase, Tab } from '@mui/material'
+import { Box, Typography, Button, InputBase } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-export const CTab = styled(Tab)(({ theme }) => ({
-  alignItems: 'flex-start',
-  color: theme.palette.text.primary,
-  fontSize: '24px',
+// export const CTab = styled(Tab)(({ theme }) => ({
+//   alignItems: 'flex-start',
+//   color: theme.palette.text.primary,
+//   fontSize: '24px',
 
-  fontWeight: '400',
+//   fontWeight: '400',
 
-  justifyContent: 'flex-start',
-  // padding: '12px 12px 12px 0px',
-  textTransform: 'capitalize',
-}))
+//   justifyContent: 'flex-start',
+//   // padding: '12px 12px 12px 0px',
+//   textTransform: 'capitalize',
+// }))
 
 export const Heading = styled(Typography)(() => ({
   color: '#F5F7FA',
-  fontFamily: 'Fractul',
+  fontFamily: 'Fractul Alt',
   fontSize: '48px',
   fontStyle: 'normal',
   fontWeight: '800',

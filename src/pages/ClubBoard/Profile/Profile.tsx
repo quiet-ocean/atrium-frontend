@@ -101,16 +101,7 @@ export const CommunityPanel = () => {
         <img src={project6} alt="" width="100%" height="100%" />
       </Box>
       <Box py="20px" flex="1">
-        <Typography
-          sx={{
-            fontFamily: 'Fractul Alt',
-            fontSize: '36px',
-            fontStyle: 'normal',
-            fontWeight: '600',
-            lineHeight: '120%',
-            textTransform: 'capitalize',
-          }}
-        >
+        <Typography variant="h2">
           atrium
         </Typography>
         <Box mt="40px">
