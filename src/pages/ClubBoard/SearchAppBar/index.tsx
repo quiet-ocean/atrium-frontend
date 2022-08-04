@@ -6,8 +6,8 @@ import Toolbar from '@mui/material/Toolbar'
 import * as React from 'react'
 
 import logo from '../../../assets/images/atrium-logo.png'
-import muiTheme from '../../../MuiTheme'
 import { AdornmentInput } from '../../../components'
+import muiTheme from '../../../MuiTheme'
 
 import MenuIconList from './MenuIconList'
 // import { StatusBar } from './StatusBar'

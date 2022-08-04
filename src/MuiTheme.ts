@@ -68,13 +68,13 @@ const muiTheme: AtriumTheme = createAtruimTheme({
   spacing: 8,
   typography: {
     body1: {
+      color: '#A8A8A8',
       fontFamily: 'Andale Mono Regular',
+      fontSize: '24px',
       fontStyle: 'normal',
       fontWeight: 400,
-      fontSize: '24px',
-      lineHeight: '120%',
       letterSpacing: '-0.05em',
-      color: '#A8A8A8',
+      lineHeight: '120%',
     },
     caption: {
       color: '#a8a8a8',

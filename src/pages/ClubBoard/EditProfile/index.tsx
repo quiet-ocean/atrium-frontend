@@ -2,9 +2,9 @@ import SearchIcon from '@mui/icons-material/Search'
 import { Box, Tabs } from '@mui/material'
 import React from 'react'
 
+import { AdornmentInput } from '../../../components'
 import * as Container from '../styled'
 
-import { AdornmentInput } from '../../../components'
 import { Identity } from './Identity'
 import { Heading, TabPanel, a11yProps, CTab } from './styled'
 import { Tags } from './Tags'

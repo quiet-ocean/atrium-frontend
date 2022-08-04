@@ -3,8 +3,8 @@ import ImageIcon from '@mui/icons-material/Image'
 import SendIcon from '@mui/icons-material/Send'
 import { Box } from '@mui/material'
 
-import { palette } from '../../../MuiTheme'
 import { AdornmentInput } from '../../../components'
+import { palette } from '../../../MuiTheme'
 
 import { Message } from './Message'
 
