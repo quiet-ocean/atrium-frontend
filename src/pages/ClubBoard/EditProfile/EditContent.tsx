@@ -76,7 +76,7 @@ export const CommunityCard = () => {
                 <Box>
                   <AButton
                     className="primary active tag tag-small"
-                    btn0color="#FF75CD"
+                    color0btn="#FF75CD"
                   >
                     whitelisted
                   </AButton>
@@ -84,7 +84,7 @@ export const CommunityCard = () => {
                 <Box>
                   <AButton
                     className="primary active tag tag-small"
-                    btn0color="#90E487"
+                    color0btn="#90E487"
                   >
                     OG Member
                   </AButton>
@@ -105,7 +105,7 @@ export const CommunityCard = () => {
           <Box width="100%" p="8px" textAlign="center">
             <AButton
               className="primary active"
-              btn0color={palette.secondary.light}
+              color0btn={palette.secondary.light}
               onClick={() => setSelected(false)}
             >
               unselect
@@ -253,7 +253,7 @@ export const EditContent = () => {
         </Box>
       </Box>
       <Box display="flex" justifyContent="end" mt="120px">
-        <AButton className="primary active" btn0color={palette.secondary.light}>
+        <AButton className="primary active" color0btn={palette.secondary.light}>
           save changes
         </AButton>
       </Box>

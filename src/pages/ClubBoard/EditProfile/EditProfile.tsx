@@ -49,7 +49,7 @@ const EditProfile: React.FC = () => {
             <Box display="flex" gap="24px">
               <AButton
                 className="primary active"
-                btn0color={palette.text.primary}
+                color0btn={palette.text.primary}
               >
                 <Link to="/profile-modal-development-sandbox/profile">
                   <Typography
@@ -63,7 +63,7 @@ const EditProfile: React.FC = () => {
               </AButton>
               <AButton
                 className="primary active"
-                btn0color={palette.secondary.light}
+                color0btn={palette.secondary.light}
               >
                 save changes
               </AButton>
