@@ -16,6 +16,7 @@ import {
   GameUI,
   Welcome,
   Signin,
+  LoadScene,
 } from './pages'
 import {
   ClubBoard,
@@ -65,6 +66,7 @@ const App = () => {
           <Route path="/select-identity" element={<SelectIdentity />} />
           <Route path="/select-skin" element={<SelectSkin />} />
           <Route path="/set-name" element={<SetName />} />
+          <Route path="/load-scene" element={<LoadScene />} />
           <Route path="/dao" element={<ScanDAO />} />
           <Route path="/game" element={<GameUI />} />
           <Route path="/success" element={<LoginSuccess />} />
