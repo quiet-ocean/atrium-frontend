@@ -36,7 +36,12 @@ export const EditIdentity = () => {
     >
       <Box>
         <Typography variant="h6">Nickname</Typography>
-        <ATextField />
+        <Box py="12px">
+          <Grid container>
+            <Grid item lg={6}><ATextField className="rounded dark" /></Grid>
+            <Grid item lg={6} />
+          </Grid>
+        </Box>
       </Box>
       <Box mt="32px">
         <Typography variant="h6">Bio</Typography>
@@ -52,8 +57,10 @@ export const EditIdentity = () => {
           <Grid item lg={6}>
             <Box>
               <Typography variant="h6">website url</Typography>
-              <ATextField />
-              <Box p="12px 24px" display="flex" gap="12px">
+              <Box py="12px">
+                <ATextField className="rounded default" />
+              </Box>
+              <Box p="0px 24px" display="flex" gap="12px">
                 <AntSwitch />
                 <Typography variant="caption" py="4px">Displayed on Profile</Typography>
               </Box>
@@ -62,8 +69,10 @@ export const EditIdentity = () => {
           <Grid item lg={6}>
             <Box>
               <Typography variant="h6">website url</Typography>
-              <ATextField />
-              <Box p="12px 24px" display="flex" gap="12px">
+              <Box py="12px">
+                <ATextField className="rounded default" />
+              </Box>
+              <Box p="0px 24px" display="flex" gap="12px">
                 <AntSwitch />
                 <Typography variant="caption" py="4px">Displayed on Profile</Typography>
               </Box>
