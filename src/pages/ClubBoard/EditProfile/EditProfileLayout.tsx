@@ -18,7 +18,7 @@ export const EditProfileLayout = ({
           {subtitle}
         </Typography>
       </Box>
-      <Box>{children}</Box>
+      <Box p="24px 80px">{children}</Box>
     </Box>
   )
 }
