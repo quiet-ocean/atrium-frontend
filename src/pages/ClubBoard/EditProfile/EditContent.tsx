@@ -1,5 +1,6 @@
 import { Box, Typography, Collapse } from '@mui/material'
 import { useState } from 'react'
+import { styled } from '@mui/material/styles'
 
 import avatar from '../../../assets/images/avatar-6.png'
 import post7 from '../../../assets/images/post-7.png'
@@ -176,6 +177,13 @@ export const CommentCard = () => {
     </Box>
   )
 }
+export const TextPanel = styled(Box)(({ theme }) => ({
+  background: 'rgba(242, 242, 242, 0.1)',
+  border: `1px solid ${theme.palette.text.primary}`,
+  borderRadius: '12px',
+  margin: '32px 0px',
+  padding: '24px',
+}))
 export const EditContent = () => {
   return (
     <Box>
@@ -189,19 +197,11 @@ export const EditContent = () => {
           Write an annoucement that appears next to your Profile Image. 64
           Charaters max.{' '}
         </Typography>
-        <Box
-          sx={{
-            background: 'rgba(242, 242, 242, 0.1)',
-            border: `1px solid ${palette.text.primary}`,
-            borderRadius: '12px',
-            margin: '32px 0px',
-            padding: '24px',
-          }}
-        >
+        <TextPanel>
           <Typography variant="body1" color={palette.text.primary}>
             asac is the worst project that i’ve owned
           </Typography>
-        </Box>
+        </TextPanel>
         <Box py="32px" display="flex" flexDirection="column">
           <Typography variant="h4">Favorite Community</Typography>
           <Typography mt="8px" variant="body2">
