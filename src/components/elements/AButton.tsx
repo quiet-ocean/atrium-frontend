@@ -1,22 +1,22 @@
 import { Button } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-type AButtonProps = { btnColor?: string }
-export const AButton = styled(Button)<AButtonProps>(({ theme, btnColor }) => ({
+type AButtonProps = { btn0color?: string }
+export const AButton = styled(Button)<AButtonProps>(({ theme, btn0color }) => ({
   '&.disabled': {
     textTransform: 'uppercase',
   },
   '&.outlined': {
-    border: btnColor
-      ? `1px solid ${btnColor} !important`
+    border: btn0color
+      ? `1px solid ${btn0color} !important`
       : `1px solid ${theme.palette.primary.main}`,
   },
   '&.primary': {
     background: 'transparent',
-    color: `${btnColor ? btnColor : theme.palette.text.primary} !important`,
+    color: `${btn0color ? btn0color : theme.palette.text.primary} !important`,
   },
   '&.primary:hover, &.active': {
-    background: btnColor ? btnColor : theme.palette.background.paper,
+    background: btn0color ? btn0color : theme.palette.background.paper,
     border: '1px solid transparent !important',
     color: `${theme.palette.background.paper} !important`,
   },
@@ -43,8 +43,8 @@ export const AButton = styled(Button)<AButtonProps>(({ theme, btnColor }) => ({
   },
   '&.tag-primary': {},
   '&.tag-secondary': {
-    background: `${btnColor}`,
-    border: `1px solid ${btnColor}`,
+    background: `${btn0color}`,
+    border: `1px solid ${btn0color}`,
     borderRadius: '54px',
     color: theme.palette.primary.dark,
     fontFamily: 'Andale Mono Regular',
@@ -58,6 +58,7 @@ export const AButton = styled(Button)<AButtonProps>(({ theme, btnColor }) => ({
     color: theme.palette.text.primary,
   },
   background: 'transparent',
+  border: `1px solid transparent`,
   borderRadius: '0px',
   color: theme.palette.text.primary,
   fontFamily: 'Fractul Alt',
