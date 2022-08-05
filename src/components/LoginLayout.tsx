@@ -30,11 +30,11 @@ const LoginLayout = ({ children }: { children: React.ReactNode }) => {
         <Box position="relative" width="100%" height="100%">
           <Box className="login" height="100%">
             <Box
-              sx={{ bgcolor: 'black', opacity: '0.5', height: '100%' }}
+              sx={{ bgcolor: 'black', height: '100%', opacity: '0.5' }}
             ></Box>
           </Box>
           <Box
-            sx={{ position: 'absolute', top: 0, width: '100%', height: '100%' }}
+            sx={{ height: '100%', position: 'absolute', top: 0, width: '100%' }}
           >
             {children}
           </Box>

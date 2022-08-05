@@ -1,11 +1,11 @@
 import { Box, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 import logo from '../../assets/images/atrium-logo-large.png'
 import logotype from '../../assets/images/atrium-logotype-large.png'
 import { LoginLayout } from '../../components'
-import { useNavigate } from 'react-router-dom'
 export const Welcome = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <LoginLayout>
       <Box p="90px" height="100%">

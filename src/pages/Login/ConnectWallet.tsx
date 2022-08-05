@@ -1,6 +1,7 @@
-import { Button, Box, Typography, IconButton } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { unwrapResult } from '@reduxjs/toolkit'
-import React, { useState, useEffect } from 'react'
+// import React, { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { To } from 'react-router-dom'
 
@@ -11,10 +12,11 @@ import { LoginLayout } from '../../components'
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import { palette } from '../../MuiTheme'
 import { login, setUser, requestUser } from '../../stores/AuthStore'
-import { setWalletConnected } from '../../stores/UserStore'
-import { Wallet } from '../../types/Wallet'
-import { getAccount, loginNear, logoutNear } from '../../utils/nearAPI'
-import { loginSender } from '../../utils/senderAPI'
+// import { setWalletConnected } from '../../stores/UserStore'
+// import { Wallet } from '../../types/Wallet'
+// import { getAccount, loginNear, logoutNear } from '../../utils/nearAPI'
+import { getAccount } from '../../utils/nearAPI'
+// import { loginSender } from '../../utils/senderAPI'
 
 import { LoginSubLayout } from './LoginSubLayout'
 
@@ -57,7 +59,7 @@ export const WalletCard = ({
 }
 const ConnectWallet = () => {
   const navigate = useNavigate()
-  const [walletType, setWalletType] = useState(Wallet.None)
+  // const [walletType, setWalletType] = useState(Wallet.None)
   const dispatch = useAppDispatch()
   const walletConnected = useAppSelector((state) => state.user.walletConnected)
 
@@ -114,7 +116,7 @@ const ConnectWallet = () => {
           <Box gap="24px" mt="24px">
             <WalletCard wallet={phantom} commingSoon />
             <Box>
-              <WalletCard wallet={near} handleClick={loginNear}/>
+              <WalletCard wallet={near} />
             </Box>
             <WalletCard wallet={metamask} commingSoon />
           </Box>

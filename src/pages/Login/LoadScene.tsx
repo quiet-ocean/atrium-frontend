@@ -1,36 +1,41 @@
 import { Box, Typography } from '@mui/material'
-
-import { LoginLayout } from '../../components'
+import LinearProgress from '@mui/material/LinearProgress'
+import * as React from 'react'
 
 import logo from '../../assets/images/atrium-logo-large.png'
-import * as React from 'react';
-
-import LinearProgress from '@mui/material/LinearProgress';
+import { LoginLayout } from '../../components'
 
 export default function LinearDeterminate() {
-  const [progress, setProgress] = React.useState(0);
+  const [progress, setProgress] = React.useState(0)
 
   React.useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
         if (oldProgress === 100) {
-          return 0;
+          return 0
         }
-        const diff = Math.random() * 10;
-        return Math.min(oldProgress + diff, 100);
-      });
-    }, 500);
+        const diff = Math.random() * 10
+        return Math.min(oldProgress + diff, 100)
+      })
+    }, 500)
 
     return () => {
-      clearInterval(timer);
-    };
-  }, []);
+      clearInterval(timer)
+    }
+  }, [])
 
   return (
-    <Box sx={{ width: '100%', '& .MuiLinearProgress-root': { width: '100%' } }}>
-      <LinearProgress variant="determinate" value={progress} sx={{ background: '#929292', '& .MuiLinearProgress-bar': { background: 'white' }}} />
+    <Box sx={{ '& .MuiLinearProgress-root': { width: '100%' }, width: '100%' }}>
+      <LinearProgress
+        variant="determinate"
+        value={progress}
+        sx={{
+          '& .MuiLinearProgress-bar': { background: 'white' },
+          background: '#929292',
+        }}
+      />
     </Box>
-  );
+  )
 }
 export const LoadScene = () => {
   return (
