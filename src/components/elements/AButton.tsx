@@ -10,6 +10,10 @@ export const AButton = styled(Button)<AButtonProps>(({ theme, color0btn }) => ({
     fontSize: '36px',
     padding: '24px 120px',
   },
+  '&.medium': {
+    fontSize: '18px',
+    padding: '16px 20px',
+  },
   '&.outlined': {
     border: color0btn
       ? `1px solid ${color0btn} !important`
@@ -46,7 +50,7 @@ export const AButton = styled(Button)<AButtonProps>(({ theme, color0btn }) => ({
     fontFamily: 'Andale Mono Regular',
   },
   '&.tag-active': {
-    background: theme.palette.text.secondary,
+    background: theme.palette.text.disabled,
     border: `1px solid transparent`,
     color: theme.palette.background.paper,
   },
