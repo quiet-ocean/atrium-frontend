@@ -21,9 +21,9 @@ export const TagDescription = ({ tag }: { tag: string }) => {
       <AButton className="tag tag-large tag-active">{tag}</AButton>
       <TextPanel margin="12px 0px !important">
         <Typography variant="body2">
-          I have been coding for 8 years. I’ve built 16 websites using
-          React and Javascript mainly. I’ve built games as well, 3 in
-          Unity and 2 using custom APIs.
+          I have been coding for 8 years. I’ve built 16 websites using React and
+          Javascript mainly. I’ve built games as well, 3 in Unity and 2 using
+          custom APIs.
         </Typography>
       </TextPanel>
     </Box>
