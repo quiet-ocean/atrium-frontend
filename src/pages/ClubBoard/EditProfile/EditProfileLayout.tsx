@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material'
-import { AButton } from '../../../components'
 import React from 'react'
+
+import { AButton } from '../../../components'
 import { palette } from '../../../MuiTheme'
 
 export const EditProfileLayout = ({

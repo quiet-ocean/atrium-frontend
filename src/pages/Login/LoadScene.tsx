@@ -5,7 +5,11 @@ import * as React from 'react'
 import logo from '../../assets/images/atrium-logo-large.png'
 import { LoginLayout } from '../../components'
 
-export default function LinearDeterminate({ callback }: { callback: AnyFunction }) {
+export default function LinearDeterminate({
+  callback,
+}: {
+  callback: AnyFunction
+}) {
   const [progress, setProgress] = React.useState(0)
 
   React.useEffect(() => {
@@ -39,10 +43,10 @@ export default function LinearDeterminate({ callback }: { callback: AnyFunction 
   )
 }
 export const LoadScene = () => {
-  const [angle, setAngle] = React.useState(0);
+  const [angle, setAngle] = React.useState(0)
 
   const rotateLogo = () => {
-    setAngle((prevAngle) => prevAngle + 45);
+    setAngle((prevAngle) => prevAngle + 45)
   }
   return (
     <LoginLayout>
@@ -79,13 +83,16 @@ export const LoadScene = () => {
           <Box
             width="360px"
             height="360px"
-            sx={{ transform: `rotate(${angle}deg)`, transition: 'transform 1s' }}
+            sx={{
+              transform: `rotate(${angle}deg)`,
+              transition: 'transform 1s',
+            }}
           >
             <img src={logo} alt="" width="100%" height="100%" />
           </Box>
         </Box>
         <Box width="100%">
-          <LinearDeterminate callback={rotateLogo}/>
+          <LinearDeterminate callback={rotateLogo} />
         </Box>
       </Box>
     </LoginLayout>
