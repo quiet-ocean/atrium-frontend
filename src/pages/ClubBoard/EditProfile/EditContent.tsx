@@ -178,7 +178,7 @@ export const CommentCard = () => {
 }
 export const EditContent = () => {
   return (
-    <Box sx={{ border: `1px solid ${palette.text.primary}`, padding: '32px' }}>
+    <Box>
       <Typography variant="h3">featured content</Typography>
       <Typography variant="body2" pt="16px">
         Edit content featured on your profile.{' '}
