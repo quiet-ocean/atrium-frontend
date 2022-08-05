@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles'
 import MultipleSelectPlaceholder from '../../../components/MultipleSelectPlaceholder'
 import muiTheme from '../../../MuiTheme'
 import { UploadButton } from '../ArticleBuilder/styled'
-import { Heading, Text } from '../EditProfile/styled'
+// import { Heading, Text } from '../EditProfile/styled'
 import { TextInput } from '../EditProfile/TextInput'
 import * as Container from '../styled'
 
@@ -18,11 +18,11 @@ export const FeedbackForm = () => {
     <Container.Page>
       <Box sx={{ gridArea: 'main', padding: '64px 0px' }}>
         <Box>
-          <Heading sx={{ textAlign: 'center' }}>Feedback Form</Heading>
-          <Text sx={{ justifyContent: 'center' }}>
+          {/* <Heading sx={{ textAlign: 'center' }}>Feedback Form</Heading> */}
+          {/* <Text sx={{ justifyContent: 'center' }}>
             Submit feedback or bug reports to enter a raffle to win an Atrium
             NFT!
-          </Text>
+          </Text> */}
         </Box>
         <Box sx={{ display: 'flex', gap: '16px' }}>
           <TextInput label={`Display Name`} />

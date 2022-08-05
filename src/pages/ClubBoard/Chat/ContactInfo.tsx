@@ -9,7 +9,8 @@ import { AText, AdornmentInput } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import { OnlineIcon } from '../UserProfile/styled'
 
-import { AntSwitch } from './Switch'
+import { AntSwitch } from './AntSwitch'
+
 export const ContactInfo = () => {
   return (
     <>

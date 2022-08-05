@@ -1,6 +1,6 @@
 import { Box, Typography, Collapse } from '@mui/material'
-import { useState } from 'react'
 import { styled } from '@mui/material/styles'
+import { useState } from 'react'
 
 import avatar from '../../../assets/images/avatar-6.png'
 import post7 from '../../../assets/images/post-7.png'

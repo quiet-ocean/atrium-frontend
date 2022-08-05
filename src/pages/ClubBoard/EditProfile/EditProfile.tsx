@@ -7,12 +7,9 @@ import { AButton } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import * as Container from '../styled'
 
-import { Identity } from './Identity'
 import { TabPanel, a11yProps } from './styled'
-import { Tags } from './Tags'
-import { Wallet } from './Wallet'
 
-import { EditContent } from './'
+import { EditContent, EditWallet, EditIdentity, EditTags } from './'
 
 const tabItems = ['content', 'tags', 'identity', 'wallet & privacy']
 
@@ -92,22 +89,13 @@ const EditProfile: React.FC = () => {
             <EditContent />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <Identity />
+            <EditTags />
           </TabPanel>
           <TabPanel value={value} index={2}>
-            Content
+            <EditIdentity />
           </TabPanel>
           <TabPanel value={value} index={3}>
-            <Wallet />
-          </TabPanel>
-          <TabPanel value={value} index={4}>
-            <Tags />
-          </TabPanel>
-          <TabPanel value={value} index={5}>
-            Socials
-          </TabPanel>
-          <TabPanel value={value} index={6}>
-            Privacy
+            <EditWallet />
           </TabPanel>
         </Box>
       </Box>
