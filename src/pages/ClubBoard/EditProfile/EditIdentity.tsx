@@ -21,7 +21,7 @@ export const EditIdentity = () => {
         </AButton>
         <Box p="16px 24px" display="flex" gap="12px" width="100%" justifyContent="center">
           <AntSwitch />
-          <Typography variant="caption" py="4px">Displayed on Profile</Typography>
+          <Typography variant="caption" py="2px">Displayed on Profile</Typography>
         </Box>
         <Box display="flex" justifyContent="center">
           <Typography variant="h6" color={palette.text.disabled} sx={{ textDecoration: 'underline'}}>Disconnect {title}</Typography>
@@ -62,7 +62,7 @@ export const EditIdentity = () => {
               </Box>
               <Box p="0px 24px" display="flex" gap="12px">
                 <AntSwitch />
-                <Typography variant="caption" py="4px">Displayed on Profile</Typography>
+                <Typography variant="caption" py="2px">Displayed on Profile</Typography>
               </Box>
             </Box>
           </Grid>
@@ -74,7 +74,7 @@ export const EditIdentity = () => {
               </Box>
               <Box p="0px 24px" display="flex" gap="12px">
                 <AntSwitch />
-                <Typography variant="caption" py="4px">Displayed on Profile</Typography>
+                <Typography variant="caption" py="2px">Displayed on Profile</Typography>
               </Box>
             </Box>
           </Grid>
