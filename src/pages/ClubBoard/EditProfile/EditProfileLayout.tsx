@@ -1,5 +1,7 @@
 import { Box, Typography } from '@mui/material'
+import { AButton } from '../../../components'
 import React from 'react'
+import { palette } from '../../../MuiTheme'
 
 export const EditProfileLayout = ({
   title,
@@ -19,6 +21,14 @@ export const EditProfileLayout = ({
         </Typography>
       </Box>
       <Box p="24px 80px">{children}</Box>
+      <Box display="flex" justifyContent="end" mt="64px">
+        <AButton
+          className="primary active medium"
+          color0btn={palette.secondary.light}
+        >
+          save changes
+        </AButton>
+      </Box>
     </Box>
   )
 }
