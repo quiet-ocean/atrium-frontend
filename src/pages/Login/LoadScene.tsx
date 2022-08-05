@@ -60,7 +60,12 @@ export const LoadScene = () => {
           </Box>
           <Box mt="24px">
             <Typography variant="caption">
-              We’re now loading you into Atrium, enjoy your stay ASAP Rocky.
+              We’re now loading you into Atrium,
+            </Typography>
+          </Box>
+          <Box mt="12px">
+            <Typography variant="caption">
+              enjoy your stay ASAP Rocky.
             </Typography>
           </Box>
         </Box>
