@@ -124,3 +124,16 @@ button.Mui-selected[role='tab'] {
 .MuiTabs-indicator-crgwgg {
   display: none;
 }
+
+.slick-active {
+  padding: 24px;
+}
+.slick-current {
+  padding: 12px;
+  // border: 1px solid red;
+  // background: #B8B8B8;
+  // background: #4A4A4A;
+  // background: #EDEDED;
+  background: #747474;
+  border-radius: 20px;
+}

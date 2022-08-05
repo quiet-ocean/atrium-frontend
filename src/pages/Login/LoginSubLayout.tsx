@@ -31,7 +31,7 @@ export const LoginSubLayout = ({
       height="100%"
       p="36px"
       sx={{
-        '& div': { display: 'flex', justifyContent: 'center' },
+        '& div.MuiBox-root': { display: 'flex', justifyContent: 'center' },
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
