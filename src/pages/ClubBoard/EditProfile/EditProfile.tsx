@@ -81,7 +81,13 @@ const EditProfile: React.FC = () => {
             </Tabs>
           </Box>
         </Box>
-        <Box sx={{ width: '100%', border: `1px solid ${palette.text.primary}`, padding: '32px' }}>
+        <Box
+          sx={{
+            border: `1px solid ${palette.text.primary}`,
+            padding: '32px',
+            width: '100%',
+          }}
+        >
           <TabPanel value={value} index={0}>
             <EditContent />
           </TabPanel>
