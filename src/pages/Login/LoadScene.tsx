@@ -6,18 +6,22 @@ import logo from '../../assets/images/atrium-logo-large.png'
 import { LoginLayout } from '../../components'
 
 export default function LinearDeterminate({
-  callback,
+  rotate,
 }: {
-  callback: AnyFunction
+  rotate?: AnyFunction
 }) {
-  const [progress, setProgress] = React.useState(0)
+  const [progress, setProgress] = React.useState<number>(0)
+  // const [state, setState] = useState(1);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
+        // if(oldProgress > )
+        if(rotate) rotate(parseInt((oldProgress / 25).toString()) * 90)
+
         if (oldProgress === 100) {
-          callback()
-          return 0
+          clearInterval(timer)
+          // return 0
         }
         const diff = Math.random() * 10
         return Math.min(oldProgress + diff, 100)
@@ -45,9 +49,9 @@ export default function LinearDeterminate({
 export const LoadScene = () => {
   const [angle, setAngle] = React.useState(0)
 
-  const rotateLogo = () => {
-    setAngle((prevAngle) => prevAngle + 45)
-  }
+  // const rotateLogo = () => {
+  //   setAngle((prevAngle) => prevAngle + 45)
+  // }
   return (
     <LoginLayout>
       <Box
@@ -92,7 +96,7 @@ export const LoadScene = () => {
           </Box>
         </Box>
         <Box width="100%">
-          <LinearDeterminate callback={rotateLogo} />
+          <LinearDeterminate rotate={setAngle} />
         </Box>
       </Box>
     </LoginLayout>
