@@ -21,7 +21,7 @@ export const PopupMenu = ({
 
   const MenuItemContent = ({ icon, text }: { icon: string; text: string }) => {
     return (
-      <Box display="flex" gap="16px" mb="24px" width="154px">
+      <Box display="flex" gap="16px" py="12px" width="154px">
         <img src={icon} alt="" width="24px" height="24px" />
         <Box py="2px">
           <Typography variant="h6">{text}</Typography>
@@ -57,8 +57,8 @@ export const PopupMenu = ({
           padding: '24px',
         }}
       >
-        <MenuItem sx={{ paddingBottom: '24px' }}>
-          <Box display="flex" gap="12px">
+        <MenuItem>
+          <Box display="flex" gap="12px" py="12px">
             <img
               src={avatar}
               alt=""
