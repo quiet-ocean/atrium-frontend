@@ -105,7 +105,7 @@ export const SelectIdentity = () => {
               sx={{
                 height: '200px',
                 overflowY: 'scroll',
-                width: { lg: '50%' },
+                width: `100%`,
               }}
               px="24px"
             >
