@@ -16,18 +16,20 @@ export default function LinearDeterminate({
   loadScene?: AnyFunction
 }) {
   const [progress, setProgress] = React.useState<number>(0)
-  // const [state, setState] = useState(1);
-
   React.useEffect(() => {
+    let step = 0
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
-        // if(oldProgress > )
-        if (rotate) rotate(parseInt((oldProgress / 25).toString()) * 90)
+        const currentStep = parseInt((oldProgress / 25).toString())
+        if (currentStep > step) {
+          if (rotate) rotate()
+          step++
+        }
 
         if (oldProgress === 100) {
           clearInterval(timer)
           if (loadScene) loadScene()
-          // return 0
+          return 0
         }
         const diff = Math.random() * 10
         return Math.min(oldProgress + diff, 100)
@@ -59,9 +61,10 @@ export const LoadScene = () => {
   // const user = useAppSelector((state) => state.auth.user)
   const lobbyJoined = useAppSelector((state) => state.room.lobbyJoined)
   const roomJoined = useAppSelector((state) => state.room.roomJoined)
-  // const rotateLogo = () => {
-  //   setAngle((prevAngle) => prevAngle + 45)
-  // }
+
+  const rotate = () => {
+    setAngle((prevAngle) => prevAngle + 90)
+  }
   const loadScene = () => {
     console.log('load scene')
     console.log(roomJoined, lobbyJoined)
@@ -120,7 +123,7 @@ export const LoadScene = () => {
           </Box>
         </Box>
         <Box width="100%">
-          <LinearDeterminate rotate={setAngle} loadScene={loadScene} />
+          <LinearDeterminate rotate={rotate} loadScene={loadScene} />
         </Box>
       </Box>
     </LoginLayout>

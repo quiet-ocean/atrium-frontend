@@ -199,7 +199,7 @@ export default class Network {
     // when a computer user stops sharing screen
     this.room.onMessage(Message.STOP_SCREEN_SHARE, (clientId: string) => {
       const computerState = store.getState().computer
-      computerState.shareScreenManager?.onUserLeft(clientId)
+      computerState?.shareScreenManager?.onUserLeft(clientId)
     })
   }
 
