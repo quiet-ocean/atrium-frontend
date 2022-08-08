@@ -253,7 +253,10 @@ export const EditContent = () => {
         </Box>
       </Box>
       <Box display="flex" justifyContent="end" mt="120px">
-        <AButton className="primary active" color0btn={palette.secondary.light}>
+        <AButton
+          className="primary active medium"
+          color0btn={palette.secondary.light}
+        >
           save changes
         </AButton>
       </Box>

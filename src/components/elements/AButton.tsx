@@ -78,9 +78,9 @@ export const AButton = styled(Button)<AButtonProps>(({ theme, color0btn }) => ({
   border: `1px solid transparent`,
   borderRadius: '0px',
   color: theme.palette.text.primary,
-  fontFamily: 'Fractul Alt',
+  fontFamily: 'Fractul',
   fontSize: '16px',
-  fontWeight: 400,
+  fontWeight: 600,
   lineHeight: '100%',
   textTransform: 'capitalize',
 }))

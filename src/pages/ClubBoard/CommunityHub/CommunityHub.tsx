@@ -2,6 +2,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
 import PushPinIcon from '@mui/icons-material/PushPin'
+import TwitterIcon from '@mui/icons-material/Twitter'
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap'
 import {
   Box,
@@ -12,9 +13,12 @@ import {
   Backdrop,
   Fade,
 } from '@mui/material'
+import Icon from '@mui/material/Icon'
 import { styled } from '@mui/material/styles'
 import { useState } from 'react'
 
+import LinkIcon from '../../../assets/icons/link-chain-icon.png'
+import badge from '../../../assets/icons/verified-icon-small.png'
 import avatar2 from '../../../assets/images/avatar-6.png'
 import avatar1 from '../../../assets/images/avatar-7.png'
 import bannerImage from '../../../assets/images/banner-2.png'
@@ -76,11 +80,21 @@ export const DetailParams = () => {
 export const SocialButtons = () => {
   return (
     <Box display="flex" gap="12px">
-      <AButton className="secondary">marketplace</AButton>
-      <AButton className="secondary">whitepaper</AButton>
-      <AButton className="secondary">twitter</AButton>
-      <AButton className="secondary">discord</AButton>
-      <AButton className="secondary">website</AButton>
+      <AButton className="secondary">
+        <img src={LinkIcon} alt="" /> &nbsp; marketplace
+      </AButton>
+      {/* <AButton className="secondary">whitepaper</AButton> */}
+      <AButton className="secondary">
+        <TwitterIcon sx={{ fontSize: '16px' }} />
+        &nbsp; twitter
+      </AButton>
+      <AButton className="secondary">
+        <Icon sx={{ fontSize: '16px' }}>discord</Icon>
+        &nbsp; discord
+      </AButton>
+      <AButton className="secondary">
+        <img src={LinkIcon} alt="" /> &nbsp; website
+      </AButton>
     </Box>
   )
 }
@@ -116,11 +130,14 @@ export const Detail = () => {
           />
         </Box>
         <Box pt="48px">
-          <AText
-            sx={{ fontSize: '24px', fontWeight: '800', textAlign: 'center' }}
-          >
-            Antisocial Ape Club
-          </AText>
+          <Box display="flex" justifyContent="center" gap={`8px`}>
+            <Typography variant="h4" textAlign="center">
+              Antisocial Ape Club
+            </Typography>
+            <Box py="6px">
+              <img src={badge} alt="" />
+            </Box>
+          </Box>
           <AText className="disabled" sx={{ textAlign: 'center' }}>
             ownerwalletfullID
           </AText>
@@ -141,7 +158,9 @@ export const Detail = () => {
             <DetailParams />
           </Box>
           <Box pt="15px">
-            <Text>A collection of 3333 unique, randomly</Text>
+            <Typography variant="body1" color={palette.text.primary}>
+              A collection of 3333 unique, randomly
+            </Typography>
             <Text>generated pixel art NFTs stored on the NEAR</Text>
             <Text> blockchain.</Text>
           </Box>
@@ -197,7 +216,7 @@ export const ChatMessage = ({ children }: { children: React.ReactNode }) => {
           </Box>
         </Box>
       </Box>
-      <Box pl="36px">{children}</Box>
+      <Box pl="49px">{children}</Box>
     </Box>
   )
 }
@@ -256,7 +275,7 @@ export const Tag = styled(Button)<TagStyleProps>(({ theme, tcolor }) => ({
 
 export const UserIntro = () => {
   return (
-    <Box pt="24px">
+    <Box pb="24px">
       <ChatMessage>
         <Typography
           sx={{
@@ -281,26 +300,17 @@ export const FeaturedPost = ({ height }: { height?: string }) => {
   return (
     <Container>
       <Box display="flex" justifyContent="space-between">
-        <Typography
-          sx={{
-            fontFamily: 'Fractul Alt',
-            fontSize: '36px',
-            fontStyle: 'normal',
-            fontWeight: '600',
-            lineHeight: '120%',
-            textTransform: 'capitalize',
-          }}
-        >
-          featured post
-        </Typography>
-        <AButton
-          className="primary outlined"
-          color0btn={palette.secondary.light}
-        >
-          view all posts
-        </AButton>
+        <Typography variant="h2">featured post</Typography>
+        <Box>
+          <AButton
+            className="primary outlined"
+            color0btn={palette.secondary.light}
+          >
+            view all posts
+          </AButton>
+        </Box>
       </Box>
-      <Box pt="32px">
+      <Box pt="40px">
         <PostContainer img={postImage} height={height ? height : ''}>
           <Box display="flex" gap="24px">
             <Box>
@@ -327,18 +337,7 @@ export const LiveChat = () => {
     <Container height="100%">
       <Box height="100%" display="flex" flexDirection="column">
         <Box display="flex" justifyContent="space-between">
-          <Typography
-            sx={{
-              fontFamily: 'Fractul Alt',
-              fontSize: '36px',
-              fontStyle: 'normal',
-              fontWeight: '600',
-              lineHeight: '120%',
-              textTransform: 'capitalize',
-            }}
-          >
-            live chat
-          </Typography>
+          <Typography variant="h2">live chat</Typography>
           <Box display="flex" gap="6px">
             <PushPinIcon
               sx={{
@@ -354,14 +353,16 @@ export const LiveChat = () => {
           flexDirection="column"
           justifyContent="space-between"
           height="100%"
-          pt="32px"
+          mt="24px"
+          sx={{
+            borderTop: `1px solid ${palette.text.primary}`,
+          }}
         >
           <Box
             sx={{
-              borderTop: `1px solid ${palette.text.primary}`,
-              height: '484px',
+              height: '512px',
+              mt: '12px',
               overflowY: 'scroll',
-              paddingTop: '16px',
             }}
           >
             <UserIntro />
@@ -398,24 +399,15 @@ export const MediaPanel = () => {
     <Container height="100%">
       <Box height="100%">
         <Box display="flex" justifyContent="space-between">
-          <Typography
-            sx={{
-              fontFamily: 'Fractul Alt',
-              fontSize: '36px',
-              fontStyle: 'normal',
-              fontWeight: '600',
-              lineHeight: '120%',
-              textTransform: 'capitalize',
-            }}
-          >
-            media
-          </Typography>
-          <AButton
-            className="primary outlined"
-            color0btn={palette.secondary.light}
-          >
-            view all
-          </AButton>
+          <Typography variant="h2">media</Typography>
+          <Box>
+            <AButton
+              className="primary outlined"
+              color0btn={palette.secondary.light}
+            >
+              view all
+            </AButton>
+          </Box>
         </Box>
         <Box
           sx={{
@@ -489,30 +481,21 @@ export const Members = ({
   return (
     <Container>
       <Box display="flex" justifyContent="space-between" height="100%">
-        <Typography
-          sx={{
-            fontFamily: 'Fractul Alt',
-            fontSize: '36px',
-            fontStyle: 'normal',
-            fontWeight: '600',
-            lineHeight: '120%',
-            textTransform: 'capitalize',
-          }}
-        >
-          members
-        </Typography>
+        <Typography variant="h2">members</Typography>
         {isModal ? (
           <Box onClick={() => handleOpen(false)}>
             <CloseIcon sx={{ color: palette.text.primary }} />
           </Box>
         ) : (
-          <AButton
-            className="primary outlined"
-            color0btn={palette.secondary.light}
-            onClick={() => handleOpen(true)}
-          >
-            view all
-          </AButton>
+          <Box>
+            <AButton
+              className="primary outlined"
+              color0btn={palette.secondary.light}
+              onClick={() => handleOpen(true)}
+            >
+              view all
+            </AButton>
+          </Box>
         )}
       </Box>
       <Box display="flex" gap="12px" pt="18px">
@@ -606,7 +589,7 @@ export const CommunityHub = () => {
       <Box>
         <Detail />
       </Box>
-      <Grid container p="72px 24px" spacing={2}>
+      <Grid container p="72px 24px" spacing={`24px`}>
         <Grid item lg={6}>
           <FeaturedPost />
         </Grid>

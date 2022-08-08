@@ -60,11 +60,9 @@ export const UserInfo = () => {
           />
         </Box>
         <Box pt="48px">
-          <AText
-            sx={{ fontSize: '24px', fontWeight: '800', textAlign: 'center' }}
-          >
+          <Typography variant="h4" textAlign="center">
             ASAC Rocky
-          </AText>
+          </Typography>
           <AText className="disabled" sx={{ textAlign: 'center' }} mt="8px">
             rockyyy.near
           </AText>
@@ -238,18 +236,7 @@ export const Tags = () => {
   return (
     <Panel mt="24px">
       <Box display="flex" gap="64px">
-        <Typography
-          sx={{
-            fontFamily: 'Fractul Alt',
-            fontSize: '36px',
-            fontStyle: 'normal',
-            fontWeight: '600',
-            lineHeight: '120%',
-            textTransform: 'capitalize',
-          }}
-        >
-          tags
-        </Typography>
+        <Typography variant="h2">tags</Typography>
         <Box display="flex" gap="24px" py="5px">
           <AButton className="tag tag-large tag-active">developer</AButton>
           <AButton className="tag tag-large">founder</AButton>

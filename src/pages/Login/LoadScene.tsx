@@ -1,14 +1,19 @@
 import { Box, Typography } from '@mui/material'
 import LinearProgress from '@mui/material/LinearProgress'
 import * as React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import logo from '../../assets/images/atrium-logo-large.png'
 import { LoginLayout } from '../../components'
-
+import { useAppSelector } from '../../hooks'
+import phaserGame from '../../PhaserGame'
+import type Bootstrap from '../../scenes/Bootstrap'
 export default function LinearDeterminate({
   rotate,
+  loadScene,
 }: {
   rotate?: AnyFunction
+  loadScene?: AnyFunction
 }) {
   const [progress, setProgress] = React.useState<number>(0)
   // const [state, setState] = useState(1);
@@ -17,10 +22,11 @@ export default function LinearDeterminate({
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
         // if(oldProgress > )
-        if(rotate) rotate(parseInt((oldProgress / 25).toString()) * 90)
+        if (rotate) rotate(parseInt((oldProgress / 25).toString()) * 90)
 
         if (oldProgress === 100) {
           clearInterval(timer)
+          if (loadScene) loadScene()
           // return 0
         }
         const diff = Math.random() * 10
@@ -49,9 +55,27 @@ export default function LinearDeterminate({
 export const LoadScene = () => {
   const [angle, setAngle] = React.useState(0)
 
+  const navigate = useNavigate()
+  // const user = useAppSelector((state) => state.auth.user)
+  const lobbyJoined = useAppSelector((state) => state.room.lobbyJoined)
+  const roomJoined = useAppSelector((state) => state.room.roomJoined)
   // const rotateLogo = () => {
   //   setAngle((prevAngle) => prevAngle + 45)
   // }
+  const loadScene = () => {
+    console.log('load scene')
+    console.log(roomJoined, lobbyJoined)
+    // if (!roomJoined && lobbyJoined) {
+    const bootstrap = phaserGame.bootstrap as Bootstrap
+    bootstrap.network
+      .joinOrCreatePublic()
+      .then(() => {
+        bootstrap.launchGame()
+        navigate('/game')
+      })
+      .catch((error) => console.error(error))
+    // }
+  }
   return (
     <LoginLayout>
       <Box
@@ -96,7 +120,7 @@ export const LoadScene = () => {
           </Box>
         </Box>
         <Box width="100%">
-          <LinearDeterminate rotate={setAngle} />
+          <LinearDeterminate rotate={setAngle} loadScene={loadScene} />
         </Box>
       </Box>
     </LoginLayout>

@@ -10,8 +10,11 @@ export const Root = styled.section`
   // background-color: ${palette.primary.main};
   // background-colro: #A8A8A8;/
   // height: 1786px;
-  min-height: 1786px;
+  // min-height: 1786px;
+  // height: 100%;
+  min-height: 100%;
   width: 100%;
+  // display:flex;
 `
 
 export const Page = styled.main`
