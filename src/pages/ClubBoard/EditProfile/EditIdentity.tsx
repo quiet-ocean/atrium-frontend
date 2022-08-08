@@ -138,8 +138,3 @@ export const EditIdentity = () => {
     </EditProfileLayout>
   )
 }
-{
-  /* <TwitterIcon sx={{ fontSize: '32px' }} />
-                          <Icon sx={{ fontSize: '32px' }}>discord</Icon>
-                          <InstagramIcon sx={{ fontSize: '32px' }} /> */
-}
