@@ -1,62 +1,12 @@
-import { Box, Typography, Button, InputBase } from '@mui/material'
+import { Box, InputBase } from '@mui/material'
 import { styled } from '@mui/material/styles'
-
-// export const CTab = styled(Tab)(({ theme }) => ({
-//   alignItems: 'flex-start',
-//   color: theme.palette.text.primary,
-//   fontSize: '24px',
-
-//   fontWeight: '400',
-
-//   justifyContent: 'flex-start',
-//   // padding: '12px 12px 12px 0px',
-//   textTransform: 'capitalize',
-// }))
-
-export const Heading = styled(Typography)(() => ({
-  color: '#F5F7FA',
-  fontFamily: 'Fractul Alt',
-  fontSize: '48px',
-  fontStyle: 'normal',
-  fontWeight: '800',
-  lineHeight: '32px',
-}))
-
-export const SubTitle = styled(Typography)(() => ({
-  color: '#F8F9FA',
-  fontFamily: 'Fractul',
-  fontSize: '32px',
-  fontStyle: 'normal',
-  fontWeight: 600,
-  lineHeight: '32px',
-  textTransform: 'capitalize',
-}))
+import Switch from '@mui/material/Switch'
 export interface TabPanelProps {
   children?: React.ReactNode
   index: number
   value: number
 }
 
-export const Text = styled(Typography)(() => ({
-  alignItems: 'center',
-  color: '#80868B',
-  display: 'flex',
-  fontFamily: 'Andale Mono Regular',
-  fontSize: '18px',
-  fontStyle: 'normal',
-  fontWeight: '400',
-  letterSpacing: '-0.05em',
-  lineHeight: '32px',
-  margin: '24px 0px',
-}))
-
-export const WalletButton = styled(Button)(() => ({
-  alignItems: 'center',
-  background: '#0149D1',
-  display: 'flex',
-  gap: '21px',
-  padding: '24px 62px',
-}))
 export function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props
 
@@ -68,11 +18,7 @@ export function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ padding: '24px 0px' }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box>{children}</Box>}
     </div>
   )
 }
@@ -127,17 +73,46 @@ export const BootstrapInput = styled(InputBase)(({ theme }) => ({
   },
 }))
 
-export const Tag = styled(Button)(() => ({
-  alignItems: 'center',
-  background: '#1A1A1A',
-  color: '#FFFFFF',
+export const AntSwitch = styled(Switch)(({ theme }) => ({
+  '& .MuiSwitch-switchBase': {
+    '&.Mui-checked': {
+      '& + .MuiSwitch-track': {
+        backgroundColor: theme.palette.mode === 'dark' ? '#90E487' : '#1890ff',
+        opacity: 1,
+      },
+      color: '#fff',
+      transform: 'translateX(18px)',
+    },
+    padding: 2,
+  },
+  '& .MuiSwitch-thumb': {
+    borderRadius: 10,
+    boxShadow: '0 2px 4px 0 rgb(0 35 11 / 20%)',
+    height: 16,
+    transition: theme.transitions.create(['width'], {
+      duration: 200,
+    }),
+    width: 16,
+  },
+  '& .MuiSwitch-track': {
+    backgroundColor:
+      theme.palette.mode === 'dark'
+        ? 'rgba(255,255,255,.35)'
+        : 'rgba(0,0,0,.25)',
+    borderRadius: 20 / 2,
+    boxSizing: 'border-box',
+    opacity: 1,
+  },
+  '&:active': {
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      transform: 'translateX(18px)',
+    },
+    '& .MuiSwitch-thumb': {
+      width: 16,
+    },
+  },
   display: 'flex',
-  fontFamily: 'Fractul',
-  fontSize: '24px',
-  fontStyle: 'normal',
-  fontWeight: '500',
-  lineHeight: '32px',
-  padding: '10px 16px',
-  textTransform: 'capitalize',
-  // margin: '12px',
+  height: 20,
+  padding: 0,
+  width: 40,
 }))

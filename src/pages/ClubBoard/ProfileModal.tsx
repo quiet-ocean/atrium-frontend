@@ -21,7 +21,7 @@ const ClubBoard = () => {
         sx={{ overflowY: 'scroll' }}
       >
         {/* <ProfilePage onClose={handleClose} /> */}
-        <Box>
+        <Box height="100%">
           <ProfilePage />
         </Box>
       </Modal>

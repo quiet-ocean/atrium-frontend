@@ -9,38 +9,38 @@ export const AntSwitch = styled(Switch)(({ theme }) => ({
         opacity: 1,
       },
       color: '#fff',
-      transform: 'translateX(30px)',
+      transform: 'translateX(12px)',
     },
     padding: 2,
   },
   '& .MuiSwitch-thumb': {
-    borderRadius: 10,
+    borderRadius: 6,
     boxShadow: '0 2px 4px 0 rgb(0 35 11 / 20%)',
-    height: 20,
+    height: 12,
     transition: theme.transitions.create(['width'], {
       duration: 200,
     }),
-    width: 20,
+    width: 12,
   },
   '& .MuiSwitch-track': {
     backgroundColor:
       theme.palette.mode === 'dark'
         ? 'rgba(255,255,255,.35)'
         : 'rgba(0,0,0,.25)',
-    borderRadius: 24 / 2,
+    borderRadius: 16 / 2,
     boxSizing: 'border-box',
     opacity: 1,
   },
   '&:active': {
     '& .MuiSwitch-switchBase.Mui-checked': {
-      transform: 'translateX(30px)',
+      transform: 'translateX(9px)',
     },
     '& .MuiSwitch-thumb': {
-      width: 20,
+      width: 15,
     },
   },
   display: 'flex',
-  height: 24,
+  height: 16,
   padding: 0,
-  width: 56,
+  width: 28,
 }))

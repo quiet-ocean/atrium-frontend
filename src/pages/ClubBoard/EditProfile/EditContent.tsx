@@ -1,4 +1,5 @@
 import { Box, Typography, Collapse } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import { useState } from 'react'
 
 import avatar from '../../../assets/images/avatar-6.png'
@@ -176,9 +177,16 @@ export const CommentCard = () => {
     </Box>
   )
 }
+export const TextPanel = styled(Box)(({ theme }) => ({
+  background: 'rgba(242, 242, 242, 0.1)',
+  border: `1px solid ${theme.palette.text.primary}`,
+  borderRadius: '12px',
+  margin: '32px 0px',
+  padding: '24px',
+}))
 export const EditContent = () => {
   return (
-    <Box sx={{ border: `1px solid ${palette.text.primary}`, padding: '32px' }}>
+    <Box>
       <Typography variant="h3">featured content</Typography>
       <Typography variant="body2" pt="16px">
         Edit content featured on your profile.{' '}
@@ -189,19 +197,11 @@ export const EditContent = () => {
           Write an annoucement that appears next to your Profile Image. 64
           Charaters max.{' '}
         </Typography>
-        <Box
-          sx={{
-            background: 'rgba(242, 242, 242, 0.1)',
-            border: `1px solid ${palette.text.primary}`,
-            borderRadius: '12px',
-            margin: '32px 0px',
-            padding: '24px',
-          }}
-        >
+        <TextPanel>
           <Typography variant="body1" color={palette.text.primary}>
             asac is the worst project that i’ve owned
           </Typography>
-        </Box>
+        </TextPanel>
         <Box py="32px" display="flex" flexDirection="column">
           <Typography variant="h4">Favorite Community</Typography>
           <Typography mt="8px" variant="body2">
@@ -253,7 +253,10 @@ export const EditContent = () => {
         </Box>
       </Box>
       <Box display="flex" justifyContent="end" mt="120px">
-        <AButton className="primary active" color0btn={palette.secondary.light}>
+        <AButton
+          className="primary active medium"
+          color0btn={palette.secondary.light}
+        >
           save changes
         </AButton>
       </Box>

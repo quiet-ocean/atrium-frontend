@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material'
 
-import { SubTitle, Tag } from '../EditProfile/styled'
+// import { SubTitle, Tag } from '../EditProfile/styled'
 import * as Container from '../styled'
 
 import { ArticleBox, CButton, UploadButton } from './styled'
@@ -9,10 +9,10 @@ export const ArticleBuilder = () => {
   return (
     <Container.Page>
       <Box sx={{ gridArea: 'main', padding: '128px 0px' }}>
-        <SubTitle style={{ padding: '24px 0px' }}>Add A Title</SubTitle>
+        {/* <SubTitle style={{ padding: '24px 0px' }}>Add A Title</SubTitle> */}
         <Stack direction="row" spacing={2} style={{ padding: '24px 0px' }}>
-          <Tag sx={{ padding: '6px' }}>Add Tag</Tag>
-          <Tag sx={{ padding: '6px' }}>Add Tag</Tag>
+          {/* <Tag sx={{ padding: '6px' }}>Add Tag</Tag> */}
+          {/* <Tag sx={{ padding: '6px' }}>Add Tag</Tag> */}
         </Stack>
         <ArticleBox style={{ padding: '24px 0px' }}>
           <Typography

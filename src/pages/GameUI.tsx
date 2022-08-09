@@ -8,10 +8,11 @@ import Adam from '../assets/Adam_login.png'
 import Ash from '../assets/Ash_login.png'
 import Lucy from '../assets/Lucy_login.png'
 import Nancy from '../assets/Nancy_login.png'
+import { PopupMenuGroup } from '../components'
 import RoomSelectionDialog from '../components/_RoomSelectionDialog'
 // import Chat from '../components/Chat'
 import ComputerDialog from '../components/ComputerDialog'
-import HelperButtonGroup from '../components/HelperButtonGroup'
+// import HelperButtonGroup from '../components/HelperButtonGroup'
 import SettingDialog from '../components/SettingDialog'
 import UnityGame from '../components/UnityGame'
 import WhiteboardDialog from '../components/WhiteboardDialog'
@@ -123,7 +124,8 @@ function GameUI() {
     <Backdrop>
       {ui}
       {/* Render HelperButtonGroup if no dialogs are opened. */}
-      {!computerDialogOpen && !whiteboardDialogOpen && <HelperButtonGroup />}
+      {/* {!computerDialogOpen && !whiteboardDialogOpen && <HelperButtonGroup />} */}
+      {!computerDialogOpen && !whiteboardDialogOpen && <PopupMenuGroup />}
     </Backdrop>
   )
 }
