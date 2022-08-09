@@ -7,7 +7,7 @@ import { useAppSelector } from '../hooks'
 // declare let window: CWindow;
 import { Wallet } from '../types/Wallet'
 
-const Login = () => {
+const _Login = () => {
   const [walletType] = useState(Wallet.None)
   const connected = useAppSelector((state) => state.user.walletConnected)
   const navigate = useNavigate()
@@ -46,4 +46,4 @@ const Login = () => {
   )
 }
 
-export { Login }
+export { _Login }

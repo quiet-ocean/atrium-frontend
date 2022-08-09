@@ -1,27 +1,40 @@
 import { Button } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-type AButtonProps = { btn0color?: string }
-export const AButton = styled(Button)<AButtonProps>(({ theme, btn0color }) => ({
+type AButtonProps = { color0btn?: string }
+export const AButton = styled(Button)<AButtonProps>(({ theme, color0btn }) => ({
   '&.disabled': {
     textTransform: 'uppercase',
   },
+  '&.large': {
+    fontSize: '36px',
+    padding: '24px 120px',
+  },
   '&.outlined': {
-    border: btn0color
-      ? `1px solid ${btn0color} !important`
+    border: color0btn
+      ? `1px solid ${color0btn} !important`
       : `1px solid ${theme.palette.primary.main}`,
   },
   '&.primary': {
     background: 'transparent',
-    color: `${btn0color ? btn0color : theme.palette.text.primary} !important`,
+    color: `${color0btn ? color0btn : theme.palette.text.primary} !important`,
   },
   '&.primary:hover, &.active': {
-    background: btn0color ? btn0color : theme.palette.background.paper,
+    background: color0btn ? color0btn : theme.palette.background.paper,
     border: '1px solid transparent !important',
     color: `${theme.palette.background.paper} !important`,
   },
+  '&.rounded': {
+    '& *': {
+      margin: '0px',
+    },
+    background: color0btn ? color0btn : theme.palette.background.paper,
+    borderRadius: '100px',
+    padding: '16px',
+  },
   '&.secondary': {
     background: theme.palette.background.paper,
+    color: `${theme.palette.text.primary} !important`,
   },
   '&.secondary:hover': {
     border: `1px solid ${theme.palette.text.primary}`,
@@ -43,8 +56,8 @@ export const AButton = styled(Button)<AButtonProps>(({ theme, btn0color }) => ({
   },
   '&.tag-primary': {},
   '&.tag-secondary': {
-    background: `${btn0color}`,
-    border: `1px solid ${btn0color}`,
+    background: `${color0btn}`,
+    border: `1px solid ${color0btn}`,
     borderRadius: '54px',
     color: theme.palette.primary.dark,
     fontFamily: 'Andale Mono Regular',

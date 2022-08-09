@@ -106,50 +106,8 @@ body {
 h1,
 p,
 a {
-  color: $color-light-50;
-}
-.atrium {
-  &_btn {
-    border: 2px solid #2e3134 !important;
-    box-sizing: border-box !important;
-    background: transparent !important;
-    padding: 28px 0px !important;
-    margin-bottom: 12px !important;
-    width: 100% !important;
-
-    line-height: 32px !important;
-    color: #f8f9fa !important;
-  }
-  &_btn.active {
-    border: 2px solid white !important;
-  }
-  &_btn_primary {
-    background: #18bafe !important;
-  }
-  &_text {
-    &_secondary {
-      color: #9aa0a6;
-    }
-    &_light {
-      color: #f8f9fa !important;
-    }
-  }
-  &_title {
-    color: #f8f9fa !important;
-    font-family: 'Anek Odia' !important;
-    font-style: normal !important;
-    font-weight: 700 !important;
-    font-size: 48px !important;
-    line-height: 37px !important;
-  }
-  &_info {
-    color: #9aa0a6 !important;
-    font-family: 'Anek Odia' !important;
-    font-style: normal !important;
-    font-weight: 300 !important;
-    font-size: 24px !important;
-    line-height: 112% !important;
-  }
+  // color: $color-light-50;
+  text-decoration: none;
 }
 
 .MuiInputBase-input {
@@ -165,4 +123,17 @@ button.Mui-selected[role='tab'] {
 // }
 .MuiTabs-indicator-crgwgg {
   display: none;
+}
+
+.slick-active {
+  padding: 24px;
+}
+.slick-current {
+  padding: 12px;
+  // border: 1px solid red;
+  // background: #B8B8B8;
+  // background: #4A4A4A;
+  // background: #EDEDED;
+  background: #747474;
+  border-radius: 20px;
 }

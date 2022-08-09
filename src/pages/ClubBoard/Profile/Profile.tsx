@@ -80,7 +80,7 @@ export const UserInfo = () => {
           </Box>
           <AButton
             className="outlined primary active"
-            btn0color={palette.text.disabled}
+            color0btn={palette.text.disabled}
             sx={{ position: 'absolute', right: '24px', top: '24px' }}
           >
             <img src={editIcon} alt="" />
@@ -101,13 +101,11 @@ export const CommunityPanel = () => {
         <img src={project6} alt="" width="100%" height="100%" />
       </Box>
       <Box py="20px" flex="1">
-        <Typography variant="h2">
-          atrium
-        </Typography>
+        <Typography variant="h2">atrium</Typography>
         <Box mt="40px">
           <AButton
             className="primary outlined active"
-            btn0color={palette.secondary.light}
+            color0btn={palette.secondary.light}
           >
             view community hub
           </AButton>
@@ -121,7 +119,7 @@ export const CommunityPanel = () => {
               <Box>
                 <AButton
                   className="primary active tag tag-small"
-                  btn0color="#FF75CD"
+                  color0btn="#FF75CD"
                 >
                   whitelisted
                 </AButton>
@@ -149,7 +147,7 @@ export const CommunityPanel = () => {
       <Box sx={{ position: 'absolute', right: '0px', top: '0px' }}>
         <AButton
           className="outlined primary"
-          btn0color={palette.secondary.light}
+          color0btn={palette.secondary.light}
         >
           view all
         </AButton>
@@ -165,12 +163,12 @@ export const CommunityCarousel = () => {
         autoPlay={false}
         indicators={true}
         NextIcon={
-          <AButton className="primary active" btn0color={palette.text.disabled}>
+          <AButton className="primary active" color0btn={palette.text.disabled}>
             Prev
           </AButton>
         }
         PrevIcon={
-          <AButton className="primary active" btn0color={palette.text.disabled}>
+          <AButton className="primary active" color0btn={palette.text.disabled}>
             Prev
           </AButton>
         }
@@ -225,10 +223,10 @@ export const CommunityCarousel = () => {
       {/* <Box display="flex" gap="24px">
         <Box display="flex" gap="24px"></Box>
         <Box display="flex" gap="16px">
-          <AButton className="primary active" btn0color={palette.text.disabled}>
+          <AButton className="primary active" color0btn={palette.text.disabled}>
             Prev
           </AButton>
-          <AButton className="primary active" btn0color={palette.text.disabled} ref={nextButtonRef}>
+          <AButton className="primary active" color0btn={palette.text.disabled} ref={nextButtonRef}>
             Next
           </AButton>
         </Box>

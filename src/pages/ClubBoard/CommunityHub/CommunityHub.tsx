@@ -128,7 +128,7 @@ export const Detail = () => {
         <Box pt="32px" textAlign="center">
           <AButton
             className="community primary outlined active"
-            btn0color={palette.secondary.light}
+            color0btn={palette.secondary.light}
           >
             <GroupOutlinedIcon />
             join community
@@ -174,7 +174,7 @@ export const ChatMessage = ({ children }: { children: React.ReactNode }) => {
           <Box>
             <AButton
               className="tag-secondary outlined tag-small"
-              btn0color="#71E5FF"
+              color0btn="#71E5FF"
             >
               founder
             </AButton>
@@ -182,7 +182,7 @@ export const ChatMessage = ({ children }: { children: React.ReactNode }) => {
           <Box>
             <AButton
               className="tag-secondary tag-small outlined"
-              btn0color="#FFB350"
+              color0btn="#FFB350"
             >
               devs
             </AButton>
@@ -190,7 +190,7 @@ export const ChatMessage = ({ children }: { children: React.ReactNode }) => {
           <Box>
             <AButton
               className="tag-secondary tag-small outlined"
-              btn0color="#DE58FF"
+              color0btn="#DE58FF"
             >
               moderator
             </AButton>
@@ -213,7 +213,7 @@ export const UsernameWithTags = () => {
         <Box>
           <AButton
             className="tag-secondary outlined tag-small"
-            btn0color="#71E5FF"
+            color0btn="#71E5FF"
           >
             founder
           </AButton>
@@ -221,7 +221,7 @@ export const UsernameWithTags = () => {
         <Box>
           <AButton
             className="tag-secondary tag-small outlined"
-            btn0color="#FFB350"
+            color0btn="#FFB350"
           >
             devs
           </AButton>
@@ -229,7 +229,7 @@ export const UsernameWithTags = () => {
         <Box>
           <AButton
             className="tag-secondary tag-small outlined"
-            btn0color="#DE58FF"
+            color0btn="#DE58FF"
           >
             moderator
           </AButton>
@@ -295,7 +295,7 @@ export const FeaturedPost = ({ height }: { height?: string }) => {
         </Typography>
         <AButton
           className="primary outlined"
-          btn0color={palette.secondary.light}
+          color0btn={palette.secondary.light}
         >
           view all posts
         </AButton>
@@ -339,12 +339,6 @@ export const LiveChat = () => {
           >
             live chat
           </Typography>
-          {/* <AButton
-            className="primary outlined"
-            btn0color={palette.secondary.light}
-          >
-            view all
-          </AButton> */}
           <Box display="flex" gap="6px">
             <PushPinIcon
               sx={{
@@ -418,7 +412,7 @@ export const MediaPanel = () => {
           </Typography>
           <AButton
             className="primary outlined"
-            btn0color={palette.secondary.light}
+            color0btn={palette.secondary.light}
           >
             view all
           </AButton>
@@ -476,7 +470,7 @@ export const Member = ({ index }: { index: number }) => {
         <Box py="10px">
           <AButton
             className="tag primary outlined tag-small"
-            btn0color="#FF75CD"
+            color0btn="#FF75CD"
           >
             whitelisted
           </AButton>
@@ -514,7 +508,7 @@ export const Members = ({
         ) : (
           <AButton
             className="primary outlined"
-            btn0color={palette.secondary.light}
+            color0btn={palette.secondary.light}
             onClick={() => handleOpen(true)}
           >
             view all
@@ -524,23 +518,23 @@ export const Members = ({
       <Box display="flex" gap="12px" pt="18px">
         <AButton
           className="tag-secondary outlined tag-small"
-          btn0color="#A8A8A8"
+          color0btn="#A8A8A8"
         >
           all
         </AButton>
-        <AButton className="tag primary outlined tag-small" btn0color="#FF75CD">
+        <AButton className="tag primary outlined tag-small" color0btn="#FF75CD">
           whitelisted
         </AButton>
-        <AButton className="tag primary outlined tag-small" btn0color="#90E487">
+        <AButton className="tag primary outlined tag-small" color0btn="#90E487">
           OG member
         </AButton>
-        <AButton className="tag primary outlined tag-small" btn0color="#FFB350">
+        <AButton className="tag primary outlined tag-small" color0btn="#FFB350">
           devs
         </AButton>
-        <AButton className="tag primary outlined tag-small" btn0color="#DE58FF">
+        <AButton className="tag primary outlined tag-small" color0btn="#DE58FF">
           moderator
         </AButton>
-        <AButton className="tag primary outlined tag-small" btn0color="#71E5FF">
+        <AButton className="tag primary outlined tag-small" color0btn="#71E5FF">
           founder
         </AButton>
       </Box>

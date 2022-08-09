@@ -9,10 +9,14 @@ import {
   LoginSuccess,
   ConnectSocials,
   ConnectWallet,
-  SetAvatar,
+  SelectIdentity,
+  SelectSkin,
   SetName,
   ScanDAO,
   GameUI,
+  Welcome,
+  Signin,
+  LoadScene,
 } from './pages'
 import {
   ClubBoard,
@@ -47,7 +51,8 @@ const App = () => {
     >
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<ConnectWallet />} />
+          <Route path="/" element={<Welcome />} />
+          <Route path="/signin" element={<Signin />} />
           <Route
             path="/connect-socials"
             element={
@@ -58,8 +63,10 @@ const App = () => {
           />
           <Route path="/setting" element={<Setting />} />
           <Route path="/connect-wallet" element={<ConnectWallet />} />
-          <Route path="/set-avatar" element={<SetAvatar />} />
+          <Route path="/select-identity" element={<SelectIdentity />} />
+          <Route path="/select-skin" element={<SelectSkin />} />
           <Route path="/set-name" element={<SetName />} />
+          <Route path="/load-scene" element={<LoadScene />} />
           <Route path="/dao" element={<ScanDAO />} />
           <Route path="/game" element={<GameUI />} />
           <Route path="/success" element={<LoginSuccess />} />

@@ -20,7 +20,7 @@ export const AText = styled(Typography)(({ theme }) => ({
     lineHeight: '32px',
   },
   color: theme.palette.text.primary,
-  fontFamily: 'Fractul Alt',
+  fontFamily: 'Fractul',
   fontSize: '24px',
   fontStyle: 'normal',
   fontWeight: 400,
