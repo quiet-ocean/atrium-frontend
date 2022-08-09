@@ -54,7 +54,13 @@ export const SelectIdentity = () => {
 
           console.log(nfts)
           nfts.forEach((item) => {
-            dispatch(addAvatar(item.metadata.media.toString()))
+            const media = item.metadata.media.toString()
+            const url =
+              media.indexOf('http') > -1
+                ? media
+                : `https://ipfs.io/ipfs/${media}`
+            console.log(url)
+            dispatch(addAvatar(url))
           })
         }
       })
