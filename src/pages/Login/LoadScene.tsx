@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import LinearProgress from '@mui/material/LinearProgress'
-import * as React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import logo from '../../assets/images/atrium-logo-large.png'
@@ -8,38 +8,8 @@ import { LoginLayout } from '../../components'
 import { useAppSelector } from '../../hooks'
 import phaserGame from '../../PhaserGame'
 import type Bootstrap from '../../scenes/Bootstrap'
-export default function LinearDeterminate({
-  rotate,
-  loadScene,
-}: {
-  rotate?: AnyFunction
-  loadScene?: AnyFunction
-}) {
-  const [progress, setProgress] = React.useState<number>(0)
-  React.useEffect(() => {
-    let step = 0
-    const timer = setInterval(() => {
-      setProgress((oldProgress) => {
-        const currentStep = parseInt((oldProgress / 25).toString())
-        if (currentStep > step) {
-          if (rotate) rotate()
-          step++
-        }
 
-        if (oldProgress === 100) {
-          clearInterval(timer)
-          if (loadScene) loadScene()
-          return 0
-        }
-        const diff = Math.random() * 10
-        return Math.min(oldProgress + diff, 100)
-      })
-    }, 500)
-
-    return () => {
-      clearInterval(timer)
-    }
-  }, [])
+export default function LinearDeterminate({ progress }: { progress: number }) {
 
   return (
     <Box sx={{ '& .MuiLinearProgress-root': { width: '100%' }, width: '100%' }}>
@@ -55,16 +25,36 @@ export default function LinearDeterminate({
   )
 }
 export const LoadScene = () => {
-  const [angle, setAngle] = React.useState(0)
+  const [angle, setAngle] = useState(0)
+  const [progress, setProgress] = useState<number>(0)
 
   const navigate = useNavigate()
   // const user = useAppSelector((state) => state.auth.user)
   const lobbyJoined = useAppSelector((state) => state.room.lobbyJoined)
   const roomJoined = useAppSelector((state) => state.room.roomJoined)
 
-  const rotate = () => {
-    setAngle((prevAngle) => prevAngle + 90)
-  }
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((oldProgress) => {
+
+        if (oldProgress === 100) {
+          clearInterval(timer)
+          if (loadScene) setTimeout(() => loadScene(), 1000)
+          // return 0
+        }
+        const diff = Math.random() * 10
+        return Math.min(oldProgress + diff, 100)
+      })
+    }, 500)
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
+
+  useEffect(() => {
+    setAngle(parseInt((progress / 25).toString()) * 90)
+  }, [progress])
   const loadScene = () => {
     console.log('load scene')
     console.log(roomJoined, lobbyJoined)
@@ -123,7 +113,8 @@ export const LoadScene = () => {
           </Box>
         </Box>
         <Box width="100%">
-          <LinearDeterminate rotate={rotate} loadScene={loadScene} />
+          {/* <LinearDeterminate rotate={rotate} loadScene={loadScene} /> */}
+          <LinearDeterminate progress={progress} />
         </Box>
       </Box>
     </LoginLayout>
