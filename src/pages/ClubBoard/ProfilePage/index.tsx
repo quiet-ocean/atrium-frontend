@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 import '../reset.css'
 
 import SearchAppBar from '../SearchAppBar'
-import SideBar from '../SideBar'
+// import SideBar from '../SideBar'
 import * as Container from '../styled'
 
 const ProfilePage: React.FC = () => {
@@ -14,8 +14,8 @@ const ProfilePage: React.FC = () => {
       <div>
         <SearchAppBar />
       </div>
-      <Box>
-        <SideBar />
+      <Box position="relative">
+        {/* <SideBar /> */}
         <Outlet />
       </Box>
     </Container.Root>

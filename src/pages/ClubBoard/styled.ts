@@ -44,11 +44,12 @@ export const Exploration = styled.main`
 `
 export const Main = styled.div`
   // margin: 160px 0px 0px 80px;
-  margin: 90px 0px 0px 80px;
+  margin: 0px 0px 0px 80px;
 `
 export const ModalContainer = styled.div`
   // margin: 160px 0px 0px 80px;
-  padding: 90px 0px 0px 80px;
+  // padding: 90px 0px 0px 80px;
+  padding: 0px 0px 0px 80px;
   height: 100%;
 `
 export const Community = muiStyled(Box)(({ theme }) => ({

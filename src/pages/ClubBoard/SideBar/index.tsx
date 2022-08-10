@@ -37,7 +37,7 @@ const SideBar: React.FC = () => {
       sx={{
         alignItems: 'center',
         backgroundColor: muiTheme.palette.grey[300],
-        border: '2px solid',
+        // border: '2px solid',
         borderColor: muiTheme.palette.border.dark,
         display: 'flex',
         flexDirection: 'column',
@@ -45,8 +45,8 @@ const SideBar: React.FC = () => {
         height: '100%',
         left: 0,
         paddingTop: '30px',
-        position: 'fixed',
-        top: '90px',
+        position: 'absolute',
+        top: '136px',
         width: '80px',
         xIndex: muiTheme.zIndex.drawer,
       }}

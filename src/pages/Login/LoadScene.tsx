@@ -10,7 +10,6 @@ import phaserGame from '../../PhaserGame'
 import type Bootstrap from '../../scenes/Bootstrap'
 
 export default function LinearDeterminate({ progress }: { progress: number }) {
-
   return (
     <Box sx={{ '& .MuiLinearProgress-root': { width: '100%' }, width: '100%' }}>
       <LinearProgress
@@ -36,7 +35,6 @@ export const LoadScene = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
-
         if (oldProgress === 100) {
           clearInterval(timer)
           if (loadScene) setTimeout(() => loadScene(), 1000)
