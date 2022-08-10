@@ -10,7 +10,7 @@ import { palette } from '../../../MuiTheme'
 import { OnlineIcon } from '../UserProfile/styled'
 
 import { AntSwitch } from './AntSwitch'
-import { UserProps } from './Chat'
+import type { UserProps } from './Chat'
 
 export const ContactInfo = ({ info }: { info: UserProps }) => {
   return (
@@ -60,7 +60,9 @@ export const ContactInfo = ({ info }: { info: UserProps }) => {
               {info.name}
             </AText>
             <Box p="6px 5px">
-              <LaunchIcon sx={{ color: palette.text.primary, fontSize: '18px' }} />
+              <LaunchIcon
+                sx={{ color: palette.text.primary, fontSize: '18px' }}
+              />
             </Box>
           </Box>
           <Typography

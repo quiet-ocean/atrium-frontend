@@ -1,6 +1,7 @@
 // import { SearchIcon } from '@mui/icons-material';
 import { Box, styled } from '@mui/material'
-import { useState, useEffect } from 'react' 
+import { useState, useEffect } from 'react'
+
 import { palette } from '../../../MuiTheme'
 import { ModalContainer } from '../styled'
 
@@ -25,54 +26,54 @@ export type UserProps = {
 }
 const users: UserProps[] = [
   {
+    avatar: '',
     name: 'crooks',
+    status: 'online',
     walletId: 'crooks.near',
-    status: 'online',
-    avatar: '',
   },
   {
+    avatar: '',
     name: 'snowstorm',
+    status: 'online',
     walletId: 'snowstorm.near',
-    status: 'online',
-    avatar: '',
   },
   {
+    avatar: '',
     name: 'hades',
+    status: 'online',
     walletId: 'hades.near',
-    status: 'online',
-    avatar: '',
   },
   {
+    avatar: '',
     name: 'robbie123',
+    status: 'online',
     walletId: 'robbie123.near',
-    status: 'online',
-    avatar: '',
   },
   {
+    avatar: '',
     name: 'soccor156',
+    status: 'online',
     walletId: 'soccor156.near',
-    status: 'online',
-    avatar: '',
   },
   {
+    avatar: '',
     name: 'penaldo',
-    walletId: 'penaldo.near',
     status: 'online',
-    avatar: '',
+    walletId: 'penaldo.near',
   },
   {
-    name: '',
-    walletId: '',
-    status: 'online',
     avatar: '',
+    name: '',
+    status: 'online',
+    walletId: '',
   },
 ]
 export const Chat = () => {
   const [opponentId, setOpponentId] = useState('')
-  const [opponentInfo, setOpponentInfo]= useState<UserProps>(users[0])
+  const [opponentInfo, setOpponentInfo] = useState<UserProps>(users[0])
   useEffect(() => {
     users.forEach((item: UserProps) => {
-      if(item.walletId === opponentId) setOpponentInfo(item)
+      if (item.walletId === opponentId) setOpponentInfo(item)
     })
   }, [opponentId])
   return (
@@ -80,7 +81,11 @@ export const Chat = () => {
       <ModalContainer>
         <Box display="flex">
           <ChatContainer>
-            <ContactList contacts={users} opponentId={opponentId} setOpponentId={setOpponentId} />
+            <ContactList
+              contacts={users}
+              opponentId={opponentId}
+              setOpponentId={setOpponentId}
+            />
           </ChatContainer>
           <ChatContainer className="main">
             <ChatBox />
