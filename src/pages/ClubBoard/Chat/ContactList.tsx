@@ -1,6 +1,6 @@
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
-import { AText } from '../../../components'
+// import { AText } from '../../../components'
 
 import { Contact, UserProps } from '.'
 
@@ -15,21 +15,8 @@ export const ContactList = ({
 }) => {
   return (
     <>
-      <Box display="flex" justifyContent="space-between">
-        <AText className="subtitle" sx={{ fontSize: '24px !important' }}>
-          messages
-        </AText>
-        <AText
-          className="disabled"
-          sx={{
-            fontFamily: 'Fractul Alt !important',
-            fontSize: '18px !important',
-            fontWeight: 300,
-            padding: '3px',
-          }}
-        >
-          requests
-        </AText>
+      <Box display="flex" justifyContent="center">
+        <Typography variant="h4" sx={{ textAlign: 'center', textDecoration: 'underline' }}>friends</Typography>
       </Box>
       <Box>
         {contacts.map((item: UserProps, key: number) => (
