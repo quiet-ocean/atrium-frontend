@@ -1,32 +1,26 @@
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
-import { AText } from '../../../components'
-import avatar from '../images/project-image.png'
 import { OnlineIcon } from '../UserProfile/styled'
+import { UserProps } from './'
 
-export const Contact = ({ active }: { active?: boolean }) => {
+export const Contact = ({ user, active }: { user: UserProps, active?: boolean }) => {
   return (
     <Box p="12px 0px">
       <Box
         display="flex"
         gap="12px"
-        border={`${active ? '2px solid yellow' : ''}`}
+        border={`${active ? '2px solid yellow' : '2px solid transparent'}`}
       >
-        <img src={avatar} alt="" width="74px" height="74px" />
+        <img src={`/images/avatar-${user.walletId}.png`} alt="" width="74px" height="74px" />
         <Box p="12px">
-          <AText sx={{ fontSize: '20px' }}>hades</AText>
-          <Box display="flex" gap="8px">
+          <Typography variant="h5" sx={{ fontSize: '20px', textTransform: 'lowercase' }}>{user.name}</Typography>
+          <Box display="flex" gap="8px" pt="3px">
             <Box p="3px 0px">
               <OnlineIcon />
             </Box>
-            <AText
-              className="disabled"
-              sx={{
-                fontSize: '12px !important',
-              }}
-            >
-              online
-            </AText>
+            <Typography variant="caption" sx={{ fontSize: '12px !important' }} py="3px">
+              {user.status}
+            </Typography>
           </Box>
         </Box>
       </Box>

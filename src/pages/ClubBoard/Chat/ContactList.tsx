@@ -2,9 +2,17 @@ import { Box } from '@mui/material'
 
 import { AText } from '../../../components'
 
-import { Contact } from '.'
+import { Contact, UserProps } from '.'
 
-export const ContactList = () => {
+export const ContactList = ({
+  contacts,
+  opponentId,
+  setOpponentId,
+}: {
+  contacts: UserProps[]
+  opponentId: string
+  setOpponentId: AnyFunction
+}) => {
   return (
     <>
       <Box display="flex" justifyContent="space-between">
@@ -24,11 +32,11 @@ export const ContactList = () => {
         </AText>
       </Box>
       <Box>
-        <Contact />
-        <Contact />
-        <Contact />
-        <Contact active />
-        <Contact />
+        {contacts.map((item: UserProps, key: number) => (
+          <Box key={key} onClick={() => setOpponentId(item.walletId)}>
+            <Contact user={item} active={item.walletId === opponentId ? true : false} />
+          </Box>
+        ))}
         {/* <Contact />
         <Contact /> */}
       </Box>

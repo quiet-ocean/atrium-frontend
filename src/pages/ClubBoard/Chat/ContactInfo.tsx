@@ -4,14 +4,15 @@ import SearchIcon from '@mui/icons-material/Search'
 import VideoCameraFrontOutlinedIcon from '@mui/icons-material/VideoCameraFrontOutlined'
 import { Box, Button, Typography, ButtonGroup } from '@mui/material'
 
-import avatar from '../../../assets/images/avatar-5.png'
+// import avatar from '../../../assets/images/avatar-5.png'
 import { AText, AdornmentInput } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import { OnlineIcon } from '../UserProfile/styled'
 
 import { AntSwitch } from './AntSwitch'
+import { UserProps } from './Chat'
 
-export const ContactInfo = () => {
+export const ContactInfo = ({ info }: { info: UserProps }) => {
   return (
     <>
       <AdornmentInput
@@ -29,7 +30,7 @@ export const ContactInfo = () => {
         <Box display="flex" justifyContent="center">
           <Box position="relative">
             <img
-              src={avatar}
+              src={`/images/avatar-${info.walletId}.png`}
               alt=""
               style={{
                 borderRadius: '100%',
@@ -56,7 +57,7 @@ export const ContactInfo = () => {
                 fontSize: '24px',
               }}
             >
-              hades
+              {info.name}
             </AText>
             <Box pt="7px">
               <LaunchIcon sx={{ color: palette.text.primary }} />
@@ -70,7 +71,7 @@ export const ContactInfo = () => {
               textTransform: 'uppercase',
             }}
           >
-            hades.near
+            {info.walletId}
           </Typography>
         </Box>
         <Box display="flex" justifyContent="center" p="6px 0px">

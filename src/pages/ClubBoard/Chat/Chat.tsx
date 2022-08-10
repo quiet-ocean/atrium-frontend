@@ -1,6 +1,6 @@
 // import { SearchIcon } from '@mui/icons-material';
 import { Box, styled } from '@mui/material'
-
+import { useState, useEffect } from 'react' 
 import { palette } from '../../../MuiTheme'
 import { ModalContainer } from '../styled'
 
@@ -31,56 +31,62 @@ const users: UserProps[] = [
     avatar: '',
   },
   {
-    name: 'crooks',
-    walletId: 'crooks.near',
+    name: 'snowstorm',
+    walletId: 'snowstorm.near',
     status: 'online',
     avatar: '',
   },
   {
-    name: 'crooks',
-    walletId: 'crooks.near',
+    name: 'hades',
+    walletId: 'hades.near',
     status: 'online',
     avatar: '',
   },
   {
-    name: 'crooks',
-    walletId: 'crooks.near',
+    name: 'robbie123',
+    walletId: 'robbie123.near',
     status: 'online',
     avatar: '',
   },
   {
-    name: 'crooks',
-    walletId: 'crooks.near',
+    name: 'soccor156',
+    walletId: 'soccor156.near',
     status: 'online',
     avatar: '',
   },
   {
-    name: 'crooks',
-    walletId: 'crooks.near',
+    name: 'penaldo',
+    walletId: 'penaldo.near',
     status: 'online',
     avatar: '',
   },
   {
-    name: 'crooks',
-    walletId: 'crooks.near',
+    name: '',
+    walletId: '',
     status: 'online',
     avatar: '',
   },
 ]
 export const Chat = () => {
-
+  const [opponentId, setOpponentId] = useState('')
+  const [opponentInfo, setOpponentInfo]= useState<UserProps>(users[0])
+  useEffect(() => {
+    users.forEach((item: UserProps) => {
+      if(item.walletId === opponentId) setOpponentInfo(item)
+    })
+  }, [opponentId])
   return (
     <Box>
       <ModalContainer>
         <Box display="flex">
           <ChatContainer>
-            <ContactList />
+            <ContactList contacts={users} opponentId={opponentId} setOpponentId={setOpponentId} />
           </ChatContainer>
           <ChatContainer className="main">
             <ChatBox />
           </ChatContainer>
           <ChatContainer>
-            <ContactInfo />
+            <ContactInfo info={opponentInfo} />
           </ChatContainer>
         </Box>
       </ModalContainer>
