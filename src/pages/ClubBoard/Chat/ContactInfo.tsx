@@ -59,8 +59,8 @@ export const ContactInfo = ({ info }: { info: UserProps }) => {
             >
               {info.name}
             </AText>
-            <Box pt="7px">
-              <LaunchIcon sx={{ color: palette.text.primary }} />
+            <Box p="6px 5px">
+              <LaunchIcon sx={{ color: palette.text.primary, fontSize: '18px' }} />
             </Box>
           </Box>
           <Typography

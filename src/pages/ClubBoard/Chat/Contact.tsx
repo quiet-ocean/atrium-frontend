@@ -5,7 +5,7 @@ import { UserProps } from './'
 
 export const Contact = ({ user, active }: { user: UserProps, active?: boolean }) => {
   return (
-    <Box p="12px 0px">
+    <Box pt="12px">
       <Box
         display="flex"
         gap="12px"
