@@ -17,7 +17,58 @@ export const ChatContainer = styled(Box)(() => ({
   padding: '24px',
   width: '480px',
 }))
+export type UserProps = {
+  name: string
+  walletId: string
+  status: 'online' | 'offline'
+  avatar: string
+}
+const users: UserProps[] = [
+  {
+    name: 'crooks',
+    walletId: 'crooks.near',
+    status: 'online',
+    avatar: '',
+  },
+  {
+    name: 'crooks',
+    walletId: 'crooks.near',
+    status: 'online',
+    avatar: '',
+  },
+  {
+    name: 'crooks',
+    walletId: 'crooks.near',
+    status: 'online',
+    avatar: '',
+  },
+  {
+    name: 'crooks',
+    walletId: 'crooks.near',
+    status: 'online',
+    avatar: '',
+  },
+  {
+    name: 'crooks',
+    walletId: 'crooks.near',
+    status: 'online',
+    avatar: '',
+  },
+  {
+    name: 'crooks',
+    walletId: 'crooks.near',
+    status: 'online',
+    avatar: '',
+  },
+  {
+    name: 'crooks',
+    walletId: 'crooks.near',
+    status: 'online',
+    avatar: '',
+  },
+]
 export const Chat = () => {
+
   return (
     <Box>
       <ModalContainer>
