@@ -49,6 +49,7 @@ const SideBar: React.FC = () => {
         top: '136px',
         width: '80px',
         xIndex: muiTheme.zIndex.drawer,
+        zIndex: 1,
       }}
     >
       <IconLink to="profile">
