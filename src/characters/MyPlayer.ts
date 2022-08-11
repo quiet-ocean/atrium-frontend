@@ -8,9 +8,8 @@ import type Network from '../services/Network'
 import store from '../stores'
 import { pushPlayerJoinedMessage } from '../stores/ChatStore'
 import { ItemType } from '../types/Items'
-import { PlayerBehavior } from '../types/PlayerBehavior'
 
-import Player, { sittingShiftData } from './Player'
+import Player from './Player'
 import type PlayerSelector from './PlayerSelector'
 
 export default class MyPlayer extends Player {
@@ -24,7 +23,7 @@ export default class MyPlayer extends Player {
     id: string
     // frame?: string | number
   ) {
-    super(x, y, texture, id)
+    super(texture, id)
     // this.playContainerBody = this.playerContainer
     //   .body as Phaser.Physics.Arcade.Body
     ;(window as any).sprite = this

@@ -1,10 +1,5 @@
 // import { debugDraw } from '../utils/debug'
-// eslint-disable-next-line import/no-duplicates
-import '../characters/MyPlayer'
-// eslint-disable-next-line import/no-duplicates
-import '../characters/OtherPlayer'
 import MyPlayer from '../characters/MyPlayer'
-// eslint-disable-next-line import/no-duplicates
 import type OtherPlayer from '../characters/OtherPlayer'
 import type Computer from '../items/Computer'
 import type Whiteboard from '../items/Whiteboard'
