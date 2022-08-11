@@ -18,7 +18,7 @@ export const ModalLayout = ({
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
-      sx={{ margin: 'auto', pt: '120px', width: '80%' }}
+      sx={{ margin: 'auto', pt: '30px', width: '80%' }}
     >
       {/* <ProfilePage onClose={handleClose} /> */}
       <Box height="100%" position="relative">
