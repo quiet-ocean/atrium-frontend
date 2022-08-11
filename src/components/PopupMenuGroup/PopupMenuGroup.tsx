@@ -21,7 +21,7 @@ export const PopupMenuGroup = () => {
 
   return (
     <Box
-      width="100%"
+      // width="100%"
       textAlign={`right`}
       sx={{
         bottom: '0px',

@@ -1,8 +1,16 @@
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { Box } from '@mui/material'
-import Divider from '@mui/material/Divider'
+// import Divider from '@mui/material/Divider'
+import { styled } from '@mui/material/styles'
 
 import item1 from '../assets/images/item-1.png'
+
+const Divider = styled(Box)(() => ({
+  borderLeft: `1px solid white`,
+  height: '100%',
+  margin: '0px 32px',
+  width: '0px',
+}))
 
 const Item = ({ img }: { img?: string }) => {
   return (
@@ -33,16 +41,12 @@ export const ItemMenu = () => {
           <KeyboardArrowUpIcon sx={{ color: 'white' }} />
         </Box>
         <Box display="flex" p="16px" sx={{ borderTop: `1px solid white` }}>
-          <Box pr="46px">
+          <Box>
             <Item img={item1} />
           </Box>
           {new Array(5).fill(2).map((_, key: number) => (
-            <Box key={key}>
-              <Divider
-                orientation="vertical"
-                flexItem
-                sx={{ padding: '0px 46px ' }}
-              />
+            <Box key={key} display="flex">
+              <Divider />
               <Item />
             </Box>
           ))}
