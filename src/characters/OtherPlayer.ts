@@ -1,5 +1,3 @@
-import Phaser from 'phaser'
-
 import { Event, phaserEvents } from '../events/EventCenter'
 import type WebRTC from '../web/WebRTC'
 
