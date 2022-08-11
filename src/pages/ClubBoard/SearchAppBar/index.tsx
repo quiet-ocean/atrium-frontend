@@ -19,7 +19,7 @@ const SearchAppBar: React.FC = () => {
         background: muiTheme.palette.background.paper,
         flexGrow: 1,
         left: 0,
-        position: 'fixed',
+        // position: 'fixed',
         right: 0,
         top: 0,
         zIndex: muiTheme.zIndex.appBar,
