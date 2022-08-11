@@ -44,25 +44,25 @@ const FabWrapper = styled.div`
   margin-top: auto;
 `
 
-const ChatHeader = styled.div`
-  position: relative;
-  height: 35px;
-  background: #000000a7;
-  // border-radius: 10px 10px 0px 0px;
+// const ChatHeader = styled.div`
+//   position: relative;
+//   height: 35px;
+//   background: #000000a7;
+//   // border-radius: 10px 10px 0px 0px;
 
-  h3 {
-    color: #fff;
-    margin: 7px;
-    font-size: 17px;
-    text-align: center;
-  }
+//   h3 {
+//     color: #fff;
+//     margin: 7px;
+//     font-size: 17px;
+//     text-align: center;
+//   }
 
-  .close {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-`
+//   .close {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//   }
+// `
 
 const ChatBox = styled(Box)`
   height: 100%;
