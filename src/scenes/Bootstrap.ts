@@ -28,7 +28,7 @@ export default class Bootstrap {
   }
 
   launchGame() {
-    this.network.webRTC?.checkPreviousPermission()
+    // this.network.webRTC?.checkPreviousPermission()
     this.game.create({
       network: this.network,
     })

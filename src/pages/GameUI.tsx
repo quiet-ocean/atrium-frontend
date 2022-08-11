@@ -10,7 +10,7 @@ import Lucy from '../assets/Lucy_login.png'
 import Nancy from '../assets/Nancy_login.png'
 import { PopupMenuGroup } from '../components'
 import RoomSelectionDialog from '../components/_RoomSelectionDialog'
-// import Chat from '../components/Chat'
+import Chat from '../components/Chat'
 import ComputerDialog from '../components/ComputerDialog'
 // import HelperButtonGroup from '../components/HelperButtonGroup'
 import SettingDialog from '../components/SettingDialog'
@@ -88,10 +88,10 @@ function GameUI() {
       ui = (
         /* Render Chat or VideoConnectionDialog if no dialogs are opened. */
         <>
-          {/* <Chat /> */}
+          <UnityGame />
+          <Chat />
           {/* Render VideoConnectionDialog if user is not connected to a webcam. */}
           {/* {!videoConnected && <VideoConnectionDialog />} */}
-          <UnityGame />
         </>
       )
     }

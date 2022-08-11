@@ -113,10 +113,13 @@ export default class Network {
 
     // new instance added to the players MapSchema
     this.room.state.players.onAdd = (player: IPlayer, key: string) => {
+      console.log(player)
+      console.log(key)
       if (key === this.mySessionId) return
 
       // track changes on every child object inside the players MapSchema
       player.onChange = (changes) => {
+        console.log(changes)
         changes.forEach((change) => {
           const { field, value } = change
           phaserEvents.emit(Event.PLAYER_UPDATED, field, value, key)
@@ -178,6 +181,7 @@ export default class Network {
 
     // new instance added to the chatMessages ArraySchema
     this.room.state.chatMessages.onAdd = (item) => {
+      console.log(item)
       store.dispatch(pushChatMessage(item))
     }
 

@@ -3,8 +3,7 @@
 import '../characters/MyPlayer'
 // eslint-disable-next-line import/no-duplicates
 import '../characters/OtherPlayer'
-// eslint-disable-next-line import/no-duplicates
-import type MyPlayer from '../characters/MyPlayer'
+import MyPlayer from '../characters/MyPlayer'
 // eslint-disable-next-line import/no-duplicates
 import type OtherPlayer from '../characters/OtherPlayer'
 import type Computer from '../items/Computer'
@@ -34,6 +33,14 @@ export default class Game {
     } else {
       this.network = data.network
     }
+
+    this.myPlayer = new MyPlayer(705, 500, 'adam', this.network.mySessionId)
+    // this.myPlayer.body.gameObject
+    //   .setInteractive()
+    //   .on('pointerover', function () {
+    //     console.log('down')
+    //     store.dispatch(setSettingDialogOpen(true))
+    //   })
 
     // register network event listeners
     this.network.onPlayerJoined(this.handlePlayerJoined, this)
