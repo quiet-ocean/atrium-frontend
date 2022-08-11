@@ -21,7 +21,13 @@ export const ModalLayout = ({
       sx={{ margin: 'auto', pt: '30px', width: '80%' }}
     >
       {/* <ProfilePage onClose={handleClose} /> */}
-      <Box height="100%" position="relative">
+      <Box
+        height="100%"
+        position="relative"
+        sx={{
+          outline: 'none',
+        }}
+      >
         <Box display="flex" justifyContent="end" position="relative">
           <Box
             sx={{
