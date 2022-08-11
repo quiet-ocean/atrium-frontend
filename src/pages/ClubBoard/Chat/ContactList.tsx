@@ -1,34 +1,38 @@
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
-import { AText } from '../../../components'
+// import { AText } from '../../../components'
 
+import type { UserProps } from '.'
 import { Contact } from '.'
 
-export const ContactList = () => {
+export const ContactList = ({
+  contacts,
+  opponentId,
+  setOpponentId,
+}: {
+  contacts: UserProps[]
+  opponentId: string
+  setOpponentId: AnyFunction
+}) => {
   return (
     <>
-      <Box display="flex" justifyContent="space-between">
-        <AText className="subtitle" sx={{ fontSize: '24px !important' }}>
-          messages
-        </AText>
-        <AText
-          className="disabled"
-          sx={{
-            fontFamily: 'Fractul Alt !important',
-            fontSize: '18px !important',
-            fontWeight: 300,
-            padding: '3px',
-          }}
+      <Box display="flex" justifyContent="center">
+        <Typography
+          variant="h4"
+          sx={{ textAlign: 'center', textDecoration: 'underline' }}
         >
-          requests
-        </AText>
+          friends
+        </Typography>
       </Box>
       <Box>
-        <Contact />
-        <Contact />
-        <Contact />
-        <Contact active />
-        <Contact />
+        {contacts.map((item: UserProps, key: number) => (
+          <Box key={key} onClick={() => setOpponentId(item.walletId)}>
+            <Contact
+              user={item}
+              active={item.walletId === opponentId ? true : false}
+            />
+          </Box>
+        ))}
         {/* <Contact />
         <Contact /> */}
       </Box>
