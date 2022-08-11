@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box'
+// import Button from '@mui/material/Button'
 import * as React from 'react'
 
 import logo from '../../assets/images/atrium-logo-large.png'
@@ -11,12 +12,15 @@ import './popup-menu.style.scss'
 
 export const PopupMenuGroup = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const [open, setOpen] = React.useState(false)
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
+    setOpen(!open)
   }
   const handleClose = () => {
     setAnchorEl(null)
+    setOpen(false)
   }
 
   return (
@@ -24,22 +28,31 @@ export const PopupMenuGroup = () => {
       // width="100%"
       textAlign={`right`}
       sx={{
+        background: 'rgba(26, 26, 26, 0.8)',
+        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))`,
         bottom: '0px',
-        padding: '16px',
+        margin: '16px',
         position: 'fixed',
         right: '0px',
+        // width: 'auto',
+        // height: 'auto',
       }}
+      className={open ? `popup-menu-group` : ``}
     >
       <AButton
         onClick={handleClick}
-        className="primary active"
-        color0btn={`rgba(26, 26, 26, 0.8)`}
+        className=""
+        // color0btn={`rgba(26, 26, 26, 0.8)`}
         sx={{
-          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))`,
+          background: 'rgba(26, 26, 26, 0.8) !important',
+          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)) !important`,
+          bottom: '0px',
           padding: '10px',
+          position: 'absolute',
+          right: '0px',
         }}
       >
-        <Box width="56px" height="56px">
+        <Box width="56px" height="56px" className={`popup-button`}>
           <img src={logo} alt="" width="100%" height="100%" />
         </Box>
       </AButton>

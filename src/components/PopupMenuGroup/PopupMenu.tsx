@@ -32,7 +32,7 @@ export const PopupMenu = ({
 
   return (
     <Box>
-      <Menu
+      {/* <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
@@ -52,9 +52,10 @@ export const PopupMenu = ({
           '& .MuiPaper-root': {
             borderRadius: '0px !important',
             padding: '24px',
-          },
+          },  
           borderRadius: '0px !important',
           padding: '24px',
+          // display: 'none',
         }}
       >
         <MenuItem>
@@ -80,7 +81,7 @@ export const PopupMenu = ({
           <MenuItemContent icon={HomeIcon} text={`home`} />
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <MenuItemContent icon={PostIcon} text={`posts`} />
+          <MenuItemContent icon={HomeIcon} text={`home`} />
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <MenuItemContent icon={MessageIcon} text={`messages`} />
@@ -99,7 +100,39 @@ export const PopupMenu = ({
             disconnect wallet
           </Typography>
         </MenuItem>
-      </Menu>
+      </Menu> */}
+      <Box className="MuiPaper-root" p="24px" onClick={handleClose}>
+        <Box display="flex" gap="12px" py="12px">
+          <img
+            src={avatar}
+            alt=""
+            width="32px"
+            height="32px"
+            style={{ borderRadius: '16px' }}
+          />
+          <Box py="5px">
+            <Typography
+              variant="h6"
+              sx={{ textDecoration: 'underline', textTransform: 'lowercase' }}
+            >
+              midnight maverick
+            </Typography>
+          </Box>
+        </Box>
+        <MenuItemContent icon={HomeIcon} text={`home`} />
+        <MenuItemContent icon={HomeIcon} text={`home`} />
+        <MenuItemContent icon={MessageIcon} text={`messages`} />
+        <MenuItemContent icon={SettingIcon} text={`settings`} />
+        <MenuItemContent icon={WalletIcon} text={`view wallet`} />
+        <Box>
+          <Typography
+            variant="caption"
+            sx={{ fontSize: '12px', textDecoration: 'underline' }}
+          >
+            disconnect wallet
+          </Typography>
+        </Box>
+      </Box>
     </Box>
   )
 }
