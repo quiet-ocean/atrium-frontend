@@ -13,23 +13,23 @@ import { LoginSubLayout } from './Login/LoginSubLayout'
 
 const LoginSuccess = () => {
   const user = useAppSelector((state) => state.auth.user)
-  const lobbyJoined = useAppSelector((state) => state.room.lobbyJoined)
-  const roomJoined = useAppSelector((state) => state.room.roomJoined)
+  // const lobbyJoined = useAppSelector((state) => state.room.lobbyJoined)
+  // const roomJoined = useAppSelector((state) => state.room.roomJoined)
 
   const navigate = useNavigate()
 
   const handleForward = () => {
     console.log('handle next')
-    if (!roomJoined && lobbyJoined) {
-      const bootstrap = phaserGame.bootstrap as Bootstrap
-      bootstrap.network
-        .joinOrCreatePublic()
-        .then(() => {
-          bootstrap.launchGame()
-          navigate('/game')
-        })
-        .catch((error) => console.error(error))
-    }
+    // if (!roomJoined && lobbyJoined) {
+    const bootstrap = phaserGame.bootstrap as Bootstrap
+    bootstrap.network
+      .joinOrCreatePublic()
+      .then(() => {
+        bootstrap.launchGame()
+        navigate('/game')
+      })
+      .catch((error) => console.error(error))
+    // }
   }
   // console.log(handleForward)
   return (

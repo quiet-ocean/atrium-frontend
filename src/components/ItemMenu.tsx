@@ -1,0 +1,53 @@
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
+import { Box } from '@mui/material'
+import Divider from '@mui/material/Divider'
+
+import item1 from '../assets/images/item-1.png'
+
+const Item = ({ img }: { img?: string }) => {
+  return (
+    <Box width="48px" height="48px" sx={{ background: '#A8A8A8' }}>
+      {img && <img src={img} width={`100%`} height="100%" />}
+    </Box>
+  )
+}
+export const ItemMenu = () => {
+  return (
+    <Box
+      sx={{
+        bottom: '0px',
+        display: 'flex',
+        justifyContent: 'center',
+        padding: '16px',
+        position: 'fixed',
+        width: '100%',
+      }}
+    >
+      <Box
+        sx={{
+          backdropFilter: 'opacity(20%)',
+          backgroundColor: 'rgba(26, 26, 26, 0.9)',
+        }}
+      >
+        <Box display="flex" justifyContent="center" p="6px">
+          <KeyboardArrowUpIcon sx={{ color: 'white' }} />
+        </Box>
+        <Box display="flex" p="16px" sx={{ borderTop: `1px solid white` }}>
+          <Box pr="46px">
+            <Item img={item1} />
+          </Box>
+          {new Array(5).fill(2).map((_, key: number) => (
+            <Box key={key}>
+              <Divider
+                orientation="vertical"
+                flexItem
+                sx={{ padding: '0px 46px ' }}
+              />
+              <Item />
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
+  )
+}

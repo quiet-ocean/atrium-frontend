@@ -1,11 +1,12 @@
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
-import CloseIcon from '@mui/icons-material/Close'
-import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
+// import CloseIcon from '@mui/icons-material/Close'
+// import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
 import Box from '@mui/material/Box'
 import Fab from '@mui/material/Fab'
-import IconButton from '@mui/material/IconButton'
+// import IconButton from '@mui/material/IconButton'
 import InputBase from '@mui/material/InputBase'
 import Tooltip from '@mui/material/Tooltip'
+import Typography from '@mui/material/Typography'
 // I've never find any css file in the emoji-mart package, and such as guide
 // import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
@@ -13,10 +14,11 @@ import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { useAppDispatch, useAppSelector } from '../hooks'
+import { palette } from '../MuiTheme'
 import phaserGame from '../PhaserGame'
 import type Game from '../scenes/Game'
 import { MessageType, setFocused, setShowChat } from '../stores/ChatStore'
-import { getColorByString } from '../util'
+// import { getColorByString } from '../util'
 
 const Backdrop = styled.div`
   position: fixed;
@@ -26,12 +28,14 @@ const Backdrop = styled.div`
   width: 500px;
   max-height: 50%;
   max-width: 50%;
+  padding: 16px;
+  z-index: 10;
 `
 
 const Wrapper = styled.div`
+  // background: #2c2c2c;
   position: relative;
   height: 100%;
-  padding: 16px;
   display: flex;
   flex-direction: column;
 `
@@ -44,7 +48,7 @@ const ChatHeader = styled.div`
   position: relative;
   height: 35px;
   background: #000000a7;
-  border-radius: 10px 10px 0px 0px;
+  // border-radius: 10px 10px 0px 0px;
 
   h3 {
     color: #fff;
@@ -64,8 +68,10 @@ const ChatBox = styled(Box)`
   height: 100%;
   width: 100%;
   overflow: auto;
-  background: #2c2c2c;
-  border: 1px solid #00000029;
+  // background: #2c2c2c;
+  // border: 1px solid #00000029;
+  border-top: 1px solid white;
+  z-index: 0;
 `
 
 const MessageWrapper = styled.div`
@@ -99,17 +105,26 @@ const MessageWrapper = styled.div`
 
 const InputWrapper = styled.form`
   box-shadow: 10px 10px 10px #00000018;
-  border: 1px solid #42eacb;
-  border-radius: 0px 0px 10px 10px;
+  // border: 1px solid #42eacb;
+  // border-radius: 0px 0px 10px 10px;
   display: flex;
   flex-direction: row;
-  background: linear-gradient(180deg, #000000c1, #242424c0);
+  // background: linear-gradient(180deg, #000000c1, #242424c0);
+  background: #2c2c2c;
 `
 
 const InputTextField = styled(InputBase)`
   border-radius: 0px 0px 10px 10px;
   input {
     padding: 5px;
+    color: #f8f9fa;
+    font-family: Fractul;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 19px;
+    text-transform: capitalize;
   }
 `
 
@@ -143,17 +158,31 @@ const Message = ({ chatMessage, messageType }) => {
         arrow
       >
         {messageType === MessageType.REGULAR_MESSAGE ? (
-          <p
-            style={{
-              color: getColorByString(chatMessage.author),
-            }}
-          >
-            {chatMessage.author}: <span>{chatMessage.content}</span>
-          </p>
+          // <p
+          //   style={{
+          //     color: getColorByString(chatMessage.author),
+          //   }}
+          // >
+          //   {chatMessage.author}: <span>{chatMessage.content}</span>
+          // </p>
+          <Typography variant="h6" py="4px">
+            {/* {chatMessage.author}: <span>{chatMessage.content}</span> */}
+            {`Hades`}:{' '}
+            <span style={{ color: palette.secondary.main }}>
+              {chatMessage.content}
+            </span>
+          </Typography>
         ) : (
-          <p className="notification">
+          // <p className="notification">
+          //   {chatMessage.author} {chatMessage.content}
+          // </p>
+          <Typography
+            variant="h6"
+            py="4px"
+            sx={{ color: palette.secondary.light, fontSize: '12px' }}
+          >
             {chatMessage.author} {chatMessage.content}
-          </p>
+          </Typography>
         )}
       </Tooltip>
     </MessageWrapper>
@@ -215,7 +244,7 @@ export default function Chat() {
       <Wrapper>
         {showChat ? (
           <>
-            <ChatHeader>
+            {/* <ChatHeader>
               <h3>Chat</h3>
               <IconButton
                 aria-label="close dialog"
@@ -225,33 +254,57 @@ export default function Chat() {
               >
                 <CloseIcon />
               </IconButton>
-            </ChatHeader>
-            <ChatBox>
-              {chatMessages.map(({ messageType, chatMessage }, index) => (
-                <Message
-                  chatMessage={chatMessage}
-                  messageType={messageType}
-                  key={index}
-                />
-              ))}
-              <div ref={messagesEndRef} />
-              {showEmojiPicker && (
-                <EmojiPickerWrapper>
-                  <Picker
-                    theme="dark"
-                    showSkinTones={false}
-                    showPreview={false}
-                    onSelect={(emoji) => {
-                      setInputValue(inputValue + emoji.native)
-                      setShowEmojiPicker(!showEmojiPicker)
-                      dispatch(setFocused(true))
-                    }}
-                    exclude={['recent', 'flags']}
+            </ChatHeader> */}
+            <Box
+              sx={{ height: '100%', padding: '32px 16px' }}
+              position="relative"
+            >
+              <ChatBox>
+                {chatMessages.map(({ messageType, chatMessage }, index) => (
+                  <Message
+                    chatMessage={chatMessage}
+                    messageType={messageType}
+                    key={index}
                   />
-                </EmojiPickerWrapper>
-              )}
-            </ChatBox>
+                ))}
+                <div ref={messagesEndRef} />
+                {showEmojiPicker && (
+                  <EmojiPickerWrapper>
+                    <Picker
+                      theme="dark"
+                      showSkinTones={false}
+                      showPreview={false}
+                      onSelect={(emoji) => {
+                        setInputValue(inputValue + emoji.native)
+                        setShowEmojiPicker(!showEmojiPicker)
+                        dispatch(setFocused(true))
+                      }}
+                      exclude={['recent', 'flags']}
+                    />
+                  </EmojiPickerWrapper>
+                )}
+              </ChatBox>
+              <Box
+                sx={{
+                  backdropFilter: 'opacity(20%)',
+                  backgroundColor: 'rgba(26, 26, 26, 0.9)',
+                  // filter: 'blur(10px)',
+                  height: '100%',
+                  left: '0px',
+                  position: 'absolute',
+                  top: '0px',
+                  width: '100%',
+                  zIndex: '-1',
+                }}
+              ></Box>
+            </Box>
             <InputWrapper onSubmit={handleSubmit}>
+              <Typography
+                variant="h6"
+                sx={{ padding: '6px', whiteSpace: 'nowrap' }}
+              >
+                ASAC Rocky:
+              </Typography>
               <InputTextField
                 inputRef={inputRef}
                 autoFocus={focused}
@@ -265,12 +318,12 @@ export default function Chat() {
                 }}
                 onBlur={() => dispatch(setFocused(false))}
               />
-              <IconButton
+              {/* <IconButton
                 aria-label="emoji"
                 onClick={() => setShowEmojiPicker(!showEmojiPicker)}
               >
                 <InsertEmoticonIcon />
-              </IconButton>
+              </IconButton> */}
             </InputWrapper>
           </>
         ) : (

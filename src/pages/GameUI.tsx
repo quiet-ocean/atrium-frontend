@@ -8,7 +8,7 @@ import Adam from '../assets/Adam_login.png'
 import Ash from '../assets/Ash_login.png'
 import Lucy from '../assets/Lucy_login.png'
 import Nancy from '../assets/Nancy_login.png'
-import { PopupMenuGroup } from '../components'
+import { PopupMenuGroup, ItemMenu } from '../components'
 import RoomSelectionDialog from '../components/_RoomSelectionDialog'
 import Chat from '../components/Chat'
 import ComputerDialog from '../components/ComputerDialog'
@@ -90,6 +90,7 @@ function GameUI() {
         <>
           <UnityGame />
           <Chat />
+          <ItemMenu />
           {/* Render VideoConnectionDialog if user is not connected to a webcam. */}
           {/* {!videoConnected && <VideoConnectionDialog />} */}
         </>
