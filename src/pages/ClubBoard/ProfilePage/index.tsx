@@ -1,12 +1,12 @@
 import Box from '@mui/material/Box'
 import React from 'react'
 
+import { EditProfile, Profile, CommunityHub } from '../'
+import { useAppSelector } from '../../../hooks'
 import { TabPanel } from '../EditProfile/styled'
 import '../reset.css'
 import SearchAppBar from '../SearchAppBar'
 import * as Container from '../styled'
-import { EditProfile, Profile, CommunityHub } from '../'
-import { useAppSelector } from '../../../hooks'
 
 const ProfilePage: React.FC = () => {
   const value = useAppSelector((state) => state.ui.currentBoardTab) || 0
