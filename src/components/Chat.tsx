@@ -1,10 +1,6 @@
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
-// import CloseIcon from '@mui/icons-material/Close'
-// import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import Box from '@mui/material/Box'
-import Fab from '@mui/material/Fab'
 // import IconButton from '@mui/material/IconButton'
 import InputBase from '@mui/material/InputBase'
 import Tooltip from '@mui/material/Tooltip'
@@ -20,8 +16,6 @@ import { palette } from '../MuiTheme'
 import phaserGame from '../PhaserGame'
 import type Game from '../scenes/Game'
 import { MessageType, setFocused, setShowChat } from '../stores/ChatStore'
-
-// import { getColorByString } from '../util'
 
 const Backdrop = styled.div`
   position: fixed;
@@ -47,40 +41,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: end;
   height: 100%;
-`
-
-const FabWrapper = styled.div`
-  margin-top: auto;
-`
-
-// const ChatHeader = styled.div`
-//   position: relative;
-//   height: 35px;
-//   background: #000000a7;
-//   // border-radius: 10px 10px 0px 0px;
-
-//   h3 {
-//     color: #fff;
-//     margin: 7px;
-//     font-size: 17px;
-//     text-align: center;
-//   }
-
-//   .close {
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//   }
-// `
-
-const ChatBox = styled(Box)`
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  // background: #2c2c2c;
-  // border: 1px solid #00000029;
-
-  z-index: 0;
 `
 
 const MessageWrapper = styled.div`
@@ -307,10 +267,10 @@ export default function Chat() {
           display="flex"
           justifyContent="center"
           sx={{
-            padding: '6px',
             backdropFilter: 'opacity(20%)',
             backgroundColor: 'rgba(26, 26, 26, 0.9)',
             borderBottom: '1px solid white',
+            padding: '6px',
           }}
         >
           {open ? (
@@ -357,19 +317,6 @@ export default function Chat() {
                 />
               </EmojiPickerWrapper>
             )}
-            {/* <Box
-                sx={{
-                  backdropFilter: 'opacity(20%)',
-                  backgroundColor: 'rgba(26, 26, 26, 0.9)',
-                  // filter: 'blur(10px)',
-                  height: '100%',
-                  left: '0px',
-                  position: 'absolute',
-                  top: '0px',
-                  width: '100%',
-                  zIndex: '-1',
-                }}
-              ></Box> */}
           </Box>
         </AnimationWrapper>
         <InputWrapper onSubmit={handleSubmit}>
