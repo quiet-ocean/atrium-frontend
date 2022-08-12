@@ -13,12 +13,14 @@ export const LoginSubLayout = ({
   goForward,
   goBack,
   enable,
+  step,
 }: {
   children: React.ReactNode
   stepper?: boolean
   goForward?: AnyFunction
   goBack?: AnyFunction
   enable?: boolean
+  step?: number
 }) => {
   const handleBack = () => {
     if (goBack) goBack()
@@ -79,7 +81,7 @@ export const LoginSubLayout = ({
             </Box>
           </Box>
           <Box>
-            <Stepper length={4} step={2} />
+            <Stepper length={4} step={step ? step : 2} />
           </Box>
         </Box>
       </Box>

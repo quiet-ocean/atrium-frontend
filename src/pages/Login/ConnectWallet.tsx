@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import { unwrapResult } from '@reduxjs/toolkit'
 // import React, { useState, useEffect } from 'react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { To } from 'react-router-dom'
 
@@ -9,13 +9,14 @@ import metamask from '../../assets/icons/metamask-logo.png'
 import near from '../../assets/icons/near-logo.png'
 import phantom from '../../assets/icons/phantom-logo.png'
 import { LoginLayout } from '../../components'
-import { useAppSelector, useAppDispatch } from '../../hooks'
+import { useAppDispatch } from '../../hooks'
 import { palette } from '../../MuiTheme'
 import { login, setUser, requestUser } from '../../stores/AuthStore'
 // import { setWalletConnected } from '../../stores/UserStore'
 // import { Wallet } from '../../types/Wallet'
 // import { getAccount, loginNear, logoutNear } from '../../utils/nearAPI'
-import { getAccount } from '../../utils/nearAPI'
+import { setWalletConnected, setPlayerName } from '../../stores/UserStore'
+import { getAccount, loginNear } from '../../utils/nearAPI'
 // import { loginSender } from '../../utils/senderAPI'
 
 import { LoginSubLayout } from './LoginSubLayout'
@@ -61,17 +62,27 @@ const ConnectWallet = () => {
   const navigate = useNavigate()
   // const [walletType, setWalletType] = useState(Wallet.None)
   const dispatch = useAppDispatch()
-  const walletConnected = useAppSelector((state) => state.user.walletConnected)
+  // const walletConnected = useAppSelector((state) => state.user.walletConnected)
+  const [enable, setEnable] = useState(false)
 
   useEffect(() => {
-    console.log('wallet connected: ', walletConnected)
-    if (walletConnected) {
-      const account = getAccount()
-      console.log(account)
+    const account = getAccount()
+    if (account.accountId !== '') {
+      dispatch(setWalletConnected(true))
       dispatch(setUser({ accountId: account.accountId }))
-      fetchLogin('/success', '/set-name')
+      setEnable(true)
     }
-  }, [walletConnected])
+  }, [])
+
+  // useEffect(() => {
+  //   console.log('wallet connected: ', walletConnected)
+  //   if (walletConnected) {
+  //     const account = getAccount()
+  //     console.log(account)
+  //     dispatch(setUser({ accountId: account.accountId }))
+  //     fetchLogin('/success', '/set-name')
+  //   }
+  // }, [walletConnected])
 
   const fetchLogin = async (loggedUrl: To, unloggedUrl: To) => {
     try {
@@ -82,9 +93,12 @@ const ConnectWallet = () => {
         if (originalPromiseResult.accessToken == '') {
           navigate(unloggedUrl)
         } else {
+          dispatch(setPlayerName(accountId))
           await dispatch(requestUser())
           navigate(loggedUrl)
         }
+      } else {
+        console.log('account id is not defined')
       }
     } catch (rejectedValueOrSerializedError) {
       console.log(rejectedValueOrSerializedError)
@@ -108,7 +122,13 @@ const ConnectWallet = () => {
 
   return (
     <LoginLayout>
-      <LoginSubLayout stepper enable goForward={() => navigate('/set-name')}>
+      <LoginSubLayout
+        stepper
+        step={1}
+        enable={true}
+        goForward={() => fetchLogin(`set-name`, `/`)}
+        goBack={() => navigate('/signin')}
+      >
         <Box flexDirection="column">
           <Box>
             <Typography variant="h3">Select a Wallet Source</Typography>
@@ -116,7 +136,11 @@ const ConnectWallet = () => {
           <Box gap="24px" mt="24px">
             <WalletCard wallet={phantom} commingSoon />
             <Box>
-              <WalletCard wallet={near} />
+              <WalletCard
+                wallet={near}
+                active={enable}
+                handleClick={loginNear}
+              />
             </Box>
             <WalletCard wallet={metamask} commingSoon />
           </Box>
