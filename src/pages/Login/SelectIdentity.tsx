@@ -75,7 +75,12 @@ export const SelectIdentity = () => {
 
   return (
     <LoginLayout>
-      <LoginSubLayout enable stepper goForward={() => navigate('/select-skin')}>
+      <LoginSubLayout
+        enable
+        stepper
+        goForward={() => navigate('/select-skin')}
+        goBack={() => navigate('/set-name')}
+      >
         <Box flexDirection="column">
           <Box>
             <Typography variant="h3">Select your Identity</Typography>

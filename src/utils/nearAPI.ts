@@ -1,10 +1,11 @@
+import { Buffer } from 'buffer'
+
 import { connect, Contract, keyStores, WalletConnection } from 'near-api-js'
 
 import { getConfig } from '../config'
 import { CONTRACT_NAME } from '../config/nearConfig'
 import { Wallet } from '../types/Wallet'
-// import { Buffer } from 'buffer';
-// globalThis.Buffer = Buffer;
+globalThis.Buffer = Buffer
 
 const nearConfig = getConfig(process.env.NODE_ENV || 'development')
 

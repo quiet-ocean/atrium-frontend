@@ -43,7 +43,12 @@ export const SelectSkin = () => {
   const carouselRef = useRef<Slider>(null)
   return (
     <LoginLayout>
-      <LoginSubLayout stepper enable goForward={() => navigate('/load-scene')}>
+      <LoginSubLayout
+        stepper
+        enable
+        goForward={() => navigate('/load-scene')}
+        goBack={() => navigate('/select-identity')}
+      >
         <Box flexDirection="column">
           <Box>
             <Typography variant="h3">Select your Skin</Typography>
