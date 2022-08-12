@@ -27,7 +27,7 @@ const Backdrop = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 500px;
+  height: 468px;
   width: 500px;
   // max-height: 50%;
   max-width: 50%;
