@@ -129,7 +129,7 @@ const AnimationWrapper = styled.div`
     }
   }
   &.close {
-    // animation: collapse-close;
+    animation: collapse-close;
     animation-duration: 0.5s;
     height: 0px;
 
@@ -317,9 +317,22 @@ export default function Chat() {
                 />
               </EmojiPickerWrapper>
             )}
+            {/* <Box
+                sx={{
+                  backdropFilter: 'opacity(20%)',
+                  backgroundColor: 'rgba(26, 26, 26, 0.9)',
+                  // filter: 'blur(10px)',
+                  height: '100%',
+                  left: '0px',
+                  position: 'absolute',
+                  top: '0px',
+                  width: '100%',
+                  zIndex: '-1',
+                }}
+              ></Box> */}
           </Box>
         </AnimationWrapper>
-        <InputWrapper onSubmit={handleSubmit}>
+        <InputWrapper onSubmit={handleSubmit} style={{ display: open ? 'flex' : 'none' }}>
           <Typography
             variant="h6"
             sx={{ padding: '6px', whiteSpace: 'nowrap' }}
