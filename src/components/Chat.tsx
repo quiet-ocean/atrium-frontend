@@ -129,7 +129,7 @@ const AnimationWrapper = styled.div`
     }
   }
   &.close {
-    animation: collapse-close;
+    // animation: collapse-close;
     animation-duration: 0.5s;
     height: 0px;
 
