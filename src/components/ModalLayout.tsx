@@ -1,5 +1,5 @@
 import CloseIcon from '@mui/icons-material/Close'
-import { Box, Modal } from '@mui/material'
+import { Box, Modal, Slide } from '@mui/material'
 
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { SideBar } from '../pages/ClubBoard/'
@@ -34,44 +34,46 @@ export const ModalLayout = ({
       aria-describedby="modal-modal-description"
       sx={{ margin: 'auto', pt: '30px', width: '80%' }}
     >
-      {/* <ProfilePage onClose={handleClose} /> */}
-      <Box
-        height="100%"
-        position="relative"
-        sx={{
-          outline: 'none',
-        }}
-      >
-        <Box display="flex" justifyContent="end" position="relative">
-          <Box
-            sx={{
-              background: '#1a1a1a',
-              bottom: '0px',
-              height: '10px',
-              position: 'absolute',
-              width: '100%',
-            }}
-          />
-          <Box
-            sx={{
-              // border: '1px solid red',
-              background: '#1a1a1a',
+      <Slide direction="up" in={open} mountOnEnter unmountOnExit>
+        {/* <ProfilePage onClose={handleClose} /> */}
+        <Box
+          height="100%"
+          position="relative"
+          sx={{
+            outline: 'none',
+          }}
+        >
+          <Box display="flex" justifyContent="end" position="relative">
+            <Box
+              sx={{
+                background: '#1a1a1a',
+                bottom: '0px',
+                height: '10px',
+                position: 'absolute',
+                width: '100%',
+              }}
+            />
+            <Box
+              sx={{
+                // border: '1px solid red',
+                background: '#1a1a1a',
 
-              clipPath: 'polygon(60% 0%, 100% 0%, 100% 100%, 0% 100%)',
-              color: 'white',
-              display: 'flex',
-              padding: '8px 12px 8px 56px',
-            }}
-            onClick={handleClose}
-          >
-            <CloseIcon sx={{ color: 'white' }} />
+                clipPath: 'polygon(60% 0%, 100% 0%, 100% 100%, 0% 100%)',
+                color: 'white',
+                display: 'flex',
+                padding: '8px 12px 8px 56px',
+              }}
+              onClick={handleClose}
+            >
+              <CloseIcon sx={{ color: 'white' }} />
+            </Box>
+          </Box>
+          <SideBar value={value} handleChange={handleChange} />
+          <Box height="100%" sx={{ overflowY: 'scroll' }}>
+            {children}
           </Box>
         </Box>
-        <SideBar value={value} handleChange={handleChange} />
-        <Box height="100%" sx={{ overflowY: 'scroll' }}>
-          {children}
-        </Box>
-      </Box>
+      </Slide>
     </Modal>
   )
 }

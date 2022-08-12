@@ -332,7 +332,10 @@ export default function Chat() {
               ></Box> */}
           </Box>
         </AnimationWrapper>
-        <InputWrapper onSubmit={handleSubmit} style={{ display: open ? 'flex' : 'none' }}>
+        <InputWrapper
+          onSubmit={handleSubmit}
+          style={{ display: open ? 'flex' : 'none' }}
+        >
           <Typography
             variant="h6"
             sx={{ padding: '6px', whiteSpace: 'nowrap' }}
