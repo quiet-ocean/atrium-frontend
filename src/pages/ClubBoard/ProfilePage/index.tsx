@@ -21,11 +21,15 @@ import {
 const ProfilePage: React.FC = () => {
   const dispatch = useAppDispatch()
   // const [value, setValue] = useState(0)
-  const value = useAppSelector(state => state.ui.currentBoardTab)
+  const value = useAppSelector(state => state.ui.currentBoardTab) || 0
+  console.log('tab value in profile page: ', value)
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     dispatch(setBoardDialogOpen(true))
     // setValue(newValue)
-    dispatch(setCurrentBoardTab(newValue))
+    console.log('new value for tab: ',newValue)
+    if(newValue >= 0)
+      dispatch(setCurrentBoardTab(newValue))
+    else console.log('invalid tab value in profile page')
   }
   return (
     <Container.Root>
@@ -33,7 +37,7 @@ const ProfilePage: React.FC = () => {
         <SearchAppBar />
       </div>
       <Box>
-        <SideBar value={value} handleChange={handleChange}/>
+        {/* <SideBar value={value} handleChange={handleChange}/> */}
         <Box position="relative">
           <TabPanel value={value} index={0}>
             <Profile />

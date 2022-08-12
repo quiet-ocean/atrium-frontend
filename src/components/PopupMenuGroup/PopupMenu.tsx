@@ -27,7 +27,9 @@ export const PopupMenu = ({
     return (
       <Box display="flex" gap="16px" py="12px" width="154px" onClick={() => {
         dispatch(setBoardDialogOpen(true))
-        dispatch(setCurrentBoardTab(id))
+        if(id >= 0)
+          dispatch(setCurrentBoardTab(id))
+        else console.log('invalid tab id in popup menu')
       }}>
         <img src={icon} alt="" width="24px" height="24px" />
         <Box py="2px">

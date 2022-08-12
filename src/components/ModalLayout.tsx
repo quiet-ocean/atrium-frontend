@@ -2,6 +2,8 @@ import CloseIcon from '@mui/icons-material/Close'
 import { Box, Modal } from '@mui/material'
 
 import { SideBar } from '../pages/ClubBoard/'
+import { useAppDispatch, useAppSelector } from '../hooks'
+import { setCurrentBoardTab, setBoardDialogOpen } from '../stores/UiStore'
 
 export const ModalLayout = ({
   open,
@@ -12,6 +14,19 @@ export const ModalLayout = ({
   handleClose: AnyFunction
   children: React.ReactNode
 }) => {
+  const dispatch = useAppDispatch()
+  // const [value, setValue] = useState(0)
+  const value = useAppSelector(state => state.ui.currentBoardTab) || 0
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    dispatch(setBoardDialogOpen(true))
+    // setValue(newValue)
+    console.log('new value for tab: ',newValue)
+    if(newValue >= 0)
+      dispatch(setCurrentBoardTab(newValue))
+    else console.log('invalid tab value in profile page')
+  }
+
   return (
     <Modal
       open={open}
@@ -53,7 +68,7 @@ export const ModalLayout = ({
             <CloseIcon sx={{ color: 'white' }} />
           </Box>
         </Box>
-        <SideBar />
+        <SideBar value={value} handleChange={handleChange} />
         <Box height="100%" sx={{ overflowY: 'scroll' }}>
           {children}
         </Box>

@@ -37,6 +37,7 @@ const SideBar: React.FC<{
   value: number
   handleChange: AnyFunction
 }> = ({ value, handleChange }) => {
+  console.log('value in sidebar: ', value)
   return (
     <Box
       sx={{
