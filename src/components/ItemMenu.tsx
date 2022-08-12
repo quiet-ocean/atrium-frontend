@@ -1,7 +1,9 @@
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { Box } from '@mui/material'
 // import Divider from '@mui/material/Divider'
 import { styled } from '@mui/material/styles'
+import { useState } from 'react'
 
 import item1 from '../assets/images/item-1.png'
 
@@ -20,6 +22,7 @@ const Item = ({ img }: { img?: string }) => {
   )
 }
 export const ItemMenu = () => {
+  const [open, setOpen] = useState(false)
   return (
     <Box
       sx={{
@@ -37,10 +40,22 @@ export const ItemMenu = () => {
           backgroundColor: 'rgba(26, 26, 26, 0.9)',
         }}
       >
-        <Box display="flex" justifyContent="center" p="6px">
-          <KeyboardArrowUpIcon sx={{ color: 'white' }} />
+        <Box
+          display="flex"
+          justifyContent="center"
+          p="6px"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? (
+            <KeyboardArrowDownIcon sx={{ color: 'white' }} />
+          ) : (
+            <KeyboardArrowUpIcon sx={{ color: 'white' }} />
+          )}
         </Box>
-        <Box display="flex" p="16px" sx={{ borderTop: `1px solid white` }}>
+        <Box
+          p="16px"
+          sx={{ borderTop: `1px solid white`, display: open ? 'flex' : 'none' }}
+        >
           <Box>
             <Item img={item1} />
           </Box>
