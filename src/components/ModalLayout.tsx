@@ -1,7 +1,7 @@
 import CloseIcon from '@mui/icons-material/Close'
 import { Box, Modal } from '@mui/material'
 
-import SideBar from '../pages/ClubBoard/SideBar'
+import { SideBar } from '../pages/ClubBoard/'
 
 export const ModalLayout = ({
   open,

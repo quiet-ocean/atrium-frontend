@@ -5,6 +5,8 @@ import * as React from 'react'
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import ProfilePage from './ProfilePage'
 import { setBoardDialogOpen } from '../../stores/SettingStore'
+import { ModalLayout } from '../../components'
+
 const ClubBoardDialog = () => {
 
   const dispatch = useAppDispatch()
@@ -23,18 +25,21 @@ const ClubBoardDialog = () => {
   return (
     <>
       {/* <Button onClick={handleOpen}>Open modal</Button> */}
-      <Modal
+      {/* <Modal
         open={boardDialogOpen}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         sx={{ overflowY: 'scroll' }}
       >
-        {/* <ProfilePage onClose={handleClose} /> */}
         <Box height="100%">
           <ProfilePage />
         </Box>
-      </Modal>
+      </Modal> */}
+      <ModalLayout open={boardDialogOpen} handleClose={handleClose} >
+        <ProfilePage />
+      </ModalLayout>
+
     </>
   )
 }

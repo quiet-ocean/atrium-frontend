@@ -12,7 +12,7 @@ import * as Container from '../styled'
 import { setBoardDialogOpen } from '../../../stores/SettingStore'
 
 import {
-
+  SideBar,
   EditProfile,
   Profile,
   CommunityHub,

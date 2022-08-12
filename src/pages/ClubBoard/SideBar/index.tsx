@@ -57,7 +57,7 @@ const SideBar: React.FC<{
         zIndex: 1,
       }}
     >
-      <Tabs value={value} onChange={handleChange} aria-label="basic tabs">
+      <Tabs value={value} onChange={handleChange} aria-label="basic tabs side" orientation="vertical">
         <Tab
           id={`simple-tab-0`}
           aria-controls={`simple-tabpanel-0`}
@@ -108,4 +108,4 @@ const SideBar: React.FC<{
   )
 }
 
-export default SideBar
+export { SideBar }
