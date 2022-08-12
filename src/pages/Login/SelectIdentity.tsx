@@ -77,6 +77,7 @@ export const SelectIdentity = () => {
     <LoginLayout>
       <LoginSubLayout
         enable
+        step={3}
         stepper
         goForward={() => navigate('/select-skin')}
         goBack={() => navigate('/set-name')}

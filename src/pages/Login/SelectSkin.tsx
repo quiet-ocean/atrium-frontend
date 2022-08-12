@@ -45,6 +45,7 @@ export const SelectSkin = () => {
     <LoginLayout>
       <LoginSubLayout
         stepper
+        step={4}
         enable
         goForward={() => navigate('/load-scene')}
         goBack={() => navigate('/select-identity')}

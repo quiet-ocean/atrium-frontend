@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import type { To } from 'react-router-dom'
 
 import metamask from '../../assets/icons/metamask-logo.png'
-import near from '../../assets/icons/near-logo.png'
+import near_light from '../../assets/icons/near-logo.png'
+import near_dark from '../../assets/icons/near-logo-dark.svg'
 import phantom from '../../assets/icons/phantom-logo.png'
 import { LoginLayout } from '../../components'
 import { useAppDispatch } from '../../hooks'
@@ -125,7 +126,7 @@ const ConnectWallet = () => {
       <LoginSubLayout
         stepper
         step={1}
-        enable={true}
+        enable={enable}
         goForward={() => fetchLogin(`set-name`, `/`)}
         goBack={() => navigate('/signin')}
       >
@@ -137,7 +138,7 @@ const ConnectWallet = () => {
             <WalletCard wallet={phantom} commingSoon />
             <Box>
               <WalletCard
-                wallet={near}
+                wallet={enable ? near_dark : near_light }
                 active={enable}
                 handleClick={loginNear}
               />
