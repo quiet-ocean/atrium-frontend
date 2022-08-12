@@ -21,15 +21,15 @@ const IconLink = ({
 }) => {
   return (
     // <Link to={`${to}`}>
-      <IconButton
-        size="large"
-        aria-label="account of current user"
-        aria-controls="primary-search-account-menu"
-        aria-haspopup="true"
-        sx={{ color: muiTheme.palette.icon.dark }}
+      <Box
+        // size="large"
+        // aria-label="account of current user"
+        // aria-controls="primary-search-account-menu"
+        // aria-haspopup="true"
+        sx={{ color: muiTheme.palette.icon.dark, p: '12px 8px' }}
       >
         <Box>{children}</Box>
-      </IconButton>
+      </Box>
     // </Link>
   )
 }
@@ -55,6 +55,9 @@ const SideBar: React.FC<{
         width: '80px',
         xIndex: muiTheme.zIndex.drawer,
         zIndex: 1,
+        '& .MuiTab-root': {
+          minWidth: '80px !important',
+        }
       }}
     >
       <Tabs value={value} onChange={handleChange} aria-label="basic tabs side" orientation="vertical">
