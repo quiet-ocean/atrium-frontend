@@ -13,8 +13,8 @@ export const UiSlice = createSlice({
     },
     setCurrentBoardTab: (state, action: PayloadAction<number>) => {
       state.currentBoardTab = action.payload
-    }
-  }
+    },
+  },
 })
 
 export const { setBoardDialogOpen, setCurrentBoardTab } = UiSlice.actions

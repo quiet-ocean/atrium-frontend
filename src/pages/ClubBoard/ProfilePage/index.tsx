@@ -1,43 +1,22 @@
 import Box from '@mui/material/Box'
-import Tabs from '@mui/material/Tabs'
-import Tab from '@mui/material/Tab'
-import React , { useState } from 'react'
-import { Outlet } from 'react-router-dom'
-import { TabPanel, a11yProps } from '../EditProfile/styled'
-import '../reset.css'
-import { useAppDispatch, useAppSelector } from '../../../hooks'
-import SearchAppBar from '../SearchAppBar'
-// import SideBar from '../SideBar'
-import * as Container from '../styled'
-import { setBoardDialogOpen, setCurrentBoardTab } from '../../../stores/UiStore'
+import React from 'react'
 
-import {
-  SideBar,
-  EditProfile,
-  Profile,
-  CommunityHub,
-} from '../'
+import { TabPanel } from '../EditProfile/styled'
+import '../reset.css'
+import SearchAppBar from '../SearchAppBar'
+import * as Container from '../styled'
+import { EditProfile, Profile, CommunityHub } from '../'
+import { useAppSelector } from '../../../hooks'
 
 const ProfilePage: React.FC = () => {
-  const dispatch = useAppDispatch()
-  // const [value, setValue] = useState(0)
-  const value = useAppSelector(state => state.ui.currentBoardTab) || 0
-  console.log('tab value in profile page: ', value)
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    dispatch(setBoardDialogOpen(true))
-    // setValue(newValue)
-    console.log('new value for tab: ',newValue)
-    if(newValue >= 0)
-      dispatch(setCurrentBoardTab(newValue))
-    else console.log('invalid tab value in profile page')
-  }
+  const value = useAppSelector((state) => state.ui.currentBoardTab) || 0
+
   return (
     <Container.Root>
       <div>
         <SearchAppBar />
       </div>
       <Box>
-        {/* <SideBar value={value} handleChange={handleChange}/> */}
         <Box position="relative">
           <TabPanel value={value} index={0}>
             <Profile />

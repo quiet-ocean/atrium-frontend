@@ -20,6 +20,7 @@ import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
 import type Game from '../scenes/Game'
 import { setLoggedIn } from '../stores/UserStore'
+
 import { ClubBoardDialog } from './ClubBoard'
 
 const Backdrop = styled.div`

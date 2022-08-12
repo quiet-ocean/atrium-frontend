@@ -8,9 +8,9 @@ import computerReducer from './ComputerStore'
 import { toggleBackGroundListener } from './listener'
 import roomReducer from './RoomStore'
 import settingReducer from './SettingStore'
+import uiReducer from './UiStore'
 import userReducer, { toggleBackgroundMode } from './UserStore'
 import whiteboardReducer from './WhiteboardStore'
-import uiReducer from './UiStore'
 
 const listenerMiddleware = createListenerMiddleware()
 enableMapSet()
@@ -34,9 +34,9 @@ const store = configureStore({
     computer: computerReducer,
     room: roomReducer,
     setting: settingReducer,
+    ui: uiReducer,
     user: userReducer,
     whiteboard: whiteboardReducer,
-    ui: uiReducer,
   },
 })
 
