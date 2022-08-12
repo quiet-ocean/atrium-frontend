@@ -1,5 +1,3 @@
-import Phaser from 'phaser'
-
 import { PlayerBehavior } from '../types/PlayerBehavior'
 /**
  * shifting distance for sitting animation
@@ -25,11 +23,8 @@ export default class Player {
 
   constructor(
     // scene: Phaser.Scene,
-    x: number,
-    y: number,
     texture: string,
-    id: string,
-    frame?: string | number
+    id: string
   ) {
     // super(scene, x, y, texture, frame)
 
@@ -66,11 +61,10 @@ export default class Player {
   }
 
   updateDialogBubble(content: string) {
+    console.log(content)
     this.clearDialogBubble()
 
     // preprocessing for dialog bubble text (maximum 70 characters)
-    const dialogBubbleText =
-      content.length <= 70 ? content : content.substring(0, 70).concat('...')
 
     // const innerText = this.scene.add
     //   .text(0, 0, dialogBubbleText, {

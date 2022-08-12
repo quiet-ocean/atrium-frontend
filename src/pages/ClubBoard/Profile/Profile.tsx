@@ -160,24 +160,20 @@ export const CommunityCarousel = () => {
         navButtonsAlwaysVisible
         autoPlay={false}
         indicators={true}
-        NextIcon={
-          <AButton className="primary active" color0btn={palette.text.disabled}>
-            Prev
-          </AButton>
-        }
-        PrevIcon={
-          <AButton className="primary active" color0btn={palette.text.disabled}>
-            Prev
-          </AButton>
-        }
+        NextIcon={<>Prev</>}
+        PrevIcon={<>Prev</>}
         navButtonsProps={{
           // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
           style: {
-            backgroundColor: 'cornflowerblue',
+            background: palette.background.paper,
             borderRadius: 0,
             bottom: 0,
+            color: palette.text.primary,
+            fontFamily: 'Fractul',
+            fontSize: '16px',
+            fontWeight: 600,
             left: 0,
-            padding: 0,
+            padding: '4px 8px',
             // position: 'absolute',
           },
         }}

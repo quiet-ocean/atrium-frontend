@@ -7,7 +7,7 @@ import { TabPanel, a11yProps } from '../EditProfile/styled'
 import '../reset.css'
 import { useAppDispatch } from '../../../hooks'
 import SearchAppBar from '../SearchAppBar'
-import SideBar from '../SideBar'
+// import SideBar from '../SideBar'
 import * as Container from '../styled'
 import { setBoardDialogOpen } from '../../../stores/SettingStore'
 
@@ -32,7 +32,7 @@ const ProfilePage: React.FC = () => {
       </div>
       <Box>
         <SideBar value={value} handleChange={handleChange}/>
-        <Box>
+        <Box position="relative">
           <TabPanel value={value} index={0}>
             <Profile />
           </TabPanel>
