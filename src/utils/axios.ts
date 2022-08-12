@@ -41,7 +41,6 @@ export function setupAxios(axios, store) {
         auth: { accessToken },
       } = store.getState()
 
-      console.log(accessToken)
       if (accessToken) {
         config.headers.Authorization = `Bearer ${accessToken}`
       }
