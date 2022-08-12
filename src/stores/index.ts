@@ -10,6 +10,7 @@ import roomReducer from './RoomStore'
 import settingReducer from './SettingStore'
 import userReducer, { toggleBackgroundMode } from './UserStore'
 import whiteboardReducer from './WhiteboardStore'
+import uiReducer from './UiStore'
 
 const listenerMiddleware = createListenerMiddleware()
 enableMapSet()
@@ -35,6 +36,7 @@ const store = configureStore({
     setting: settingReducer,
     user: userReducer,
     whiteboard: whiteboardReducer,
+    ui: uiReducer,
   },
 })
 

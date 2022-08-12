@@ -5,11 +5,11 @@ import React , { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { TabPanel, a11yProps } from '../EditProfile/styled'
 import '../reset.css'
-import { useAppDispatch } from '../../../hooks'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 import SearchAppBar from '../SearchAppBar'
 // import SideBar from '../SideBar'
 import * as Container from '../styled'
-import { setBoardDialogOpen } from '../../../stores/SettingStore'
+import { setBoardDialogOpen, setCurrentBoardTab } from '../../../stores/UiStore'
 
 import {
   SideBar,
@@ -20,10 +20,12 @@ import {
 
 const ProfilePage: React.FC = () => {
   const dispatch = useAppDispatch()
-  const [value, setValue] = useState(0)
+  // const [value, setValue] = useState(0)
+  const value = useAppSelector(state => state.ui.currentBoardTab)
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     dispatch(setBoardDialogOpen(true))
-    setValue(newValue)
+    // setValue(newValue)
+    dispatch(setCurrentBoardTab(newValue))
   }
   return (
     <Container.Root>

@@ -4,13 +4,13 @@ import Modal from '@mui/material/Modal'
 import * as React from 'react'
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import ProfilePage from './ProfilePage'
-import { setBoardDialogOpen } from '../../stores/SettingStore'
+import { setBoardDialogOpen } from '../../stores/UiStore'
 import { ModalLayout } from '../../components'
 
 const ClubBoardDialog = () => {
 
   const dispatch = useAppDispatch()
-  const boardDialogOpen = useAppSelector(state => state.setting.boardDialogOpen)
+  const boardDialogOpen = useAppSelector(state => state.ui.boardDialogOpen)
   // const [open, setOpen] = React.useState(true)
   // const handleOpen = () => setOpen(true)
   // const handleClose = () => setOpen(false)
