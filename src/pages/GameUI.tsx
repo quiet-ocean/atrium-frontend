@@ -20,6 +20,7 @@ import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
 import type Game from '../scenes/Game'
 import { setLoggedIn } from '../stores/UserStore'
+import { ClubBoardDialog } from './ClubBoard'
 
 const Backdrop = styled.div`
   position: absolute;
@@ -127,6 +128,7 @@ function GameUI() {
       {/* Render HelperButtonGroup if no dialogs are opened. */}
       {/* {!computerDialogOpen && !whiteboardDialogOpen && <HelperButtonGroup />} */}
       {!computerDialogOpen && !whiteboardDialogOpen && <PopupMenuGroup />}
+      <ClubBoardDialog />
     </Backdrop>
   )
 }

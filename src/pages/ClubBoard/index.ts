@@ -1,4 +1,4 @@
-export * from './ProfileModal'
+export * from './ClubBoardDialog'
 export * from './Account'
 export * from './Dashboard'
 export * from './ArticleBuilder'

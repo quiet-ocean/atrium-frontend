@@ -9,6 +9,8 @@ import MessageIcon from '../../assets/icons/message-icon.png'
 import SettingIcon from '../../assets/icons/setting-icon.png'
 import WalletIcon from '../../assets/icons/wallet-icon.png'
 import avatar from '../../assets/images/avatar-6.png'
+import { useAppDispatch } from '../../hooks'
+import { setBoardDialogOpen } from '../../stores/SettingStore'
 
 export const PopupMenu = ({
   anchorEl,
@@ -19,9 +21,13 @@ export const PopupMenu = ({
 }) => {
   const open = Boolean(anchorEl)
 
-  const MenuItemContent = ({ icon, text }: { icon: string; text: string }) => {
+  const dispatch = useAppDispatch()
+
+  const MenuItemContent = ({ icon, text }: { icon: string; text: React.ReactNode }) => {
     return (
-      <Box display="flex" gap="16px" py="12px" width="154px">
+      <Box display="flex" gap="16px" py="12px" width="154px" onClick={() => {
+        dispatch(setBoardDialogOpen(true))
+      }}>
         <img src={icon} alt="" width="24px" height="24px" />
         <Box py="2px">
           <Typography variant="h6">{text}</Typography>
@@ -119,7 +125,6 @@ export const PopupMenu = ({
             </Typography>
           </Box>
         </Box>
-        <MenuItemContent icon={HomeIcon} text={`home`} />
         <MenuItemContent icon={HomeIcon} text={`home`} />
         <MenuItemContent icon={MessageIcon} text={`messages`} />
         <MenuItemContent icon={SettingIcon} text={`settings`} />

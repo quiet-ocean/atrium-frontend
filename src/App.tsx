@@ -19,7 +19,7 @@ import {
   LoadScene,
 } from './pages'
 import {
-  ClubBoard,
+  ClubBoardDialog,
   Dashboard,
   Account,
   ArticleBuilder,
@@ -72,7 +72,7 @@ const App = () => {
           <Route path="/success" element={<LoginSuccess />} />
           <Route
             path="/profile-modal-development-sandbox"
-            element={<ClubBoard />}
+            element={<ClubBoardDialog />}
           >
             <Route path="" element={<Dashboard />} />
             <Route path="dashboard" element={<Dashboard />} />

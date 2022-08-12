@@ -5,15 +5,19 @@ import { createSlice } from '@reduxjs/toolkit'
 export const settingSlice = createSlice({
   initialState: {
     settingDialogOpen: false,
+    boardDialogOpen: false,
   },
   name: 'setting',
   reducers: {
     setSettingDialogOpen: (state, action: PayloadAction<boolean>) => {
       state.settingDialogOpen = action.payload
     },
+    setBoardDialogOpen: (state, action: PayloadAction<boolean>) => {
+      state.boardDialogOpen = action.payload
+    }
   },
 })
 
-export const { setSettingDialogOpen } = settingSlice.actions
+export const { setSettingDialogOpen, setBoardDialogOpen } = settingSlice.actions
 
 export default settingSlice.reducer
