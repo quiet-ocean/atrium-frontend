@@ -38,12 +38,14 @@ export const ItemMenu = () => {
         sx={{
           backdropFilter: 'opacity(20%)',
           backgroundColor: 'rgba(26, 26, 26, 0.9)',
+          // width:'100%',
         }}
       >
         <Box
           display="flex"
           justifyContent="center"
           p="6px"
+          // width='100%'
           onClick={() => setOpen(!open)}
         >
           {open ? (
