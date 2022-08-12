@@ -181,7 +181,7 @@ export default class Network {
 
     // new instance added to the chatMessages ArraySchema
     this.room.state.chatMessages.onAdd = (item) => {
-      console.log(item)
+      console.log('message in on add event handler: ', item)
       store.dispatch(pushChatMessage(item))
     }
 
@@ -315,6 +315,7 @@ export default class Network {
   }
 
   addChatMessage(content: string) {
+    console.log('add chat message')
     this.room?.send(Message.ADD_CHAT_MESSAGE, { content: content })
   }
 }

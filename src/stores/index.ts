@@ -8,6 +8,7 @@ import computerReducer from './ComputerStore'
 import { toggleBackGroundListener } from './listener'
 import roomReducer from './RoomStore'
 import settingReducer from './SettingStore'
+import uiReducer from './UiStore'
 import userReducer, { toggleBackgroundMode } from './UserStore'
 import whiteboardReducer from './WhiteboardStore'
 
@@ -33,6 +34,7 @@ const store = configureStore({
     computer: computerReducer,
     room: roomReducer,
     setting: settingReducer,
+    ui: uiReducer,
     user: userReducer,
     whiteboard: whiteboardReducer,
   },

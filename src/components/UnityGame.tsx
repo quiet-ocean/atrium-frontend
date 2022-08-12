@@ -5,8 +5,10 @@ import styled from 'styled-components'
 const Container = styled.div`
   position: relative;
   /* The container determains the size. */
-  width: 960px;
-  height: 600px;
+  // width: 960px;
+  // height: 600px;
+  height: 100%;
+  width: 100%;
   margin: auto;
 `
 

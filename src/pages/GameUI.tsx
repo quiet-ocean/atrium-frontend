@@ -8,7 +8,7 @@ import Adam from '../assets/Adam_login.png'
 import Ash from '../assets/Ash_login.png'
 import Lucy from '../assets/Lucy_login.png'
 import Nancy from '../assets/Nancy_login.png'
-import { PopupMenuGroup } from '../components'
+import { PopupMenuGroup, ItemMenu } from '../components'
 import RoomSelectionDialog from '../components/_RoomSelectionDialog'
 import Chat from '../components/Chat'
 import ComputerDialog from '../components/ComputerDialog'
@@ -20,6 +20,8 @@ import { useAppDispatch, useAppSelector } from '../hooks'
 import phaserGame from '../PhaserGame'
 import type Game from '../scenes/Game'
 import { setLoggedIn } from '../stores/UserStore'
+
+import { ClubBoardDialog } from './ClubBoard'
 
 const Backdrop = styled.div`
   position: absolute;
@@ -90,6 +92,7 @@ function GameUI() {
         <>
           <UnityGame />
           <Chat />
+          <ItemMenu />
           {/* Render VideoConnectionDialog if user is not connected to a webcam. */}
           {/* {!videoConnected && <VideoConnectionDialog />} */}
         </>
@@ -126,6 +129,7 @@ function GameUI() {
       {/* Render HelperButtonGroup if no dialogs are opened. */}
       {/* {!computerDialogOpen && !whiteboardDialogOpen && <HelperButtonGroup />} */}
       {!computerDialogOpen && !whiteboardDialogOpen && <PopupMenuGroup />}
+      <ClubBoardDialog />
     </Backdrop>
   )
 }

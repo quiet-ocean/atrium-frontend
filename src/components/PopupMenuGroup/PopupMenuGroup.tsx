@@ -9,32 +9,45 @@ import { PopupMenu } from './PopupMenu'
 import './popup-menu.style.scss'
 
 export const PopupMenuGroup = () => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const [open, setOpen] = React.useState(false)
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget)
+  const handleClick = () => {
+    setOpen(!open)
   }
   const handleClose = () => {
-    setAnchorEl(null)
+    setOpen(false)
   }
 
   return (
-    <Box width="100%" textAlign={`right`}>
-      <AButton p="10px" onClick={handleClick}>
-        <Box width="56px" height="56px">
+    <Box
+      textAlign={`right`}
+      sx={{
+        background: 'rgba(26, 26, 26, 0.8)',
+        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))`,
+        bottom: '0px',
+        margin: '16px',
+        position: 'fixed',
+        right: '0px',
+      }}
+      className={open ? `popup-menu-group` : ``}
+    >
+      <AButton
+        onClick={handleClick}
+        className=""
+        sx={{
+          background: 'rgba(26, 26, 26, 0.8) !important',
+          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)) !important`,
+          bottom: '0px',
+          padding: '10px',
+          position: 'absolute',
+          right: '0px',
+        }}
+      >
+        <Box width="56px" height="56px" className={`popup-button`}>
           <img src={logo} alt="" width="100%" height="100%" />
         </Box>
       </AButton>
-      {/* <Button
-        id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-      >
-        Dashboard
-      </Button> */}
-      <PopupMenu anchorEl={anchorEl} handleClose={handleClose} />
+      <PopupMenu handleClose={handleClose} />
     </Box>
   )
 }
