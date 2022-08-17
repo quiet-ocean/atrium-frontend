@@ -13,14 +13,14 @@ import {
   Chat,
   Post,
   SinglePost,
-} from '../'
+} from '..'
 import { useAppSelector } from '../../../hooks'
 import { TabPanel } from '../EditProfile/styled'
 import '../reset.css'
 import SearchAppBar from '../SearchAppBar'
 import * as Container from '../styled'
 
-const ProfilePage: React.FC = () => {
+export const ClubBoard: React.FC = () => {
   const value = useAppSelector((state) => state.ui.currentBoardTab) || 0
 
   return (
@@ -65,5 +65,3 @@ const ProfilePage: React.FC = () => {
     </Container.Root>
   )
 }
-
-export default ProfilePage

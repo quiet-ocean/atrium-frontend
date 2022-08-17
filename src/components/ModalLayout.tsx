@@ -35,7 +35,7 @@ export const ModalLayout = ({
       sx={{ margin: 'auto', pt: '30px', width: '80%' }}
     >
       <Slide direction="up" in={open} mountOnEnter unmountOnExit>
-        {/* <ProfilePage onClose={handleClose} /> */}
+        {/* <ClubBoard onClose={handleClose} /> */}
         <Box
           height="100%"
           position="relative"

@@ -16,6 +16,8 @@ import {
   MembersModal,
   MediaPanel,
 } from '../CommunityHub'
+import type { TagProps } from '../EditProfile'
+import { initialTags } from '../EditProfile'
 import editIcon from '../images/edit-icon.png'
 import { Main as Container, Community as Panel } from '../styled'
 
@@ -239,22 +241,35 @@ export const CommunityCarousel = () => {
 }
 
 export const Tags = () => {
+  const tags = ['developer', 'founder', 'investor']
+  const [currentTag, setCurrentTag] = useState(tags[0])
+  const [desc, setDesc] = useState('')
+  const handleClick = (name: string) => {
+    setCurrentTag(name)
+    initialTags.forEach((item: TagProps) => {
+      if (name === item.name) setDesc(item?.description || '')
+    })
+  }
   return (
     <Panel mt="24px">
       <Box display="flex" gap="64px">
         <Typography variant="h2">tags</Typography>
         <Box display="flex" gap="24px" py="5px">
-          <AButton className="tag tag-large tag-active">developer</AButton>
-          <AButton className="tag tag-large">founder</AButton>
-          <AButton className="tag tag-large">investor</AButton>
+          {tags.map((item: string, key: number) => (
+            <AButton
+              key={key}
+              className={`tag tag-large ${
+                item === currentTag ? 'tag-active' : ''
+              }`}
+              onClick={() => handleClick(item)}
+            >
+              {item}
+            </AButton>
+          ))}
         </Box>
       </Box>
       <Box pt="24px">
-        <Typography variant="body1">
-          I have been coding for 8 years. I’ve built 16 websites using React and
-          Javascript mainly. I’ve built games as well, 3 in Unity and 2 using
-          custom APIs.
-        </Typography>
+        <Typography variant="body1">{desc}</Typography>
       </Box>
     </Panel>
   )

@@ -6,8 +6,8 @@ import Select from '@mui/material/Select'
 import styled from '@mui/material/styles/styled'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
-import { useAppSelector } from '../../../hooks'
 
+import { useAppSelector } from '../../../hooks'
 import muiTheme from '../../../MuiTheme'
 
 const AccountMenuItem = ({ user }) => {

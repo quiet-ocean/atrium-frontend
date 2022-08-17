@@ -4,7 +4,7 @@ import { ModalLayout } from '../../components'
 import { useAppSelector, useAppDispatch } from '../../hooks'
 import { setBoardDialogOpen } from '../../stores/UiStore'
 
-import ProfilePage from './ProfilePage'
+import { ClubBoard } from './ClubBoard'
 
 const ClubBoardDialog = () => {
   const dispatch = useAppDispatch()
@@ -17,7 +17,7 @@ const ClubBoardDialog = () => {
   return (
     <>
       <ModalLayout open={boardDialogOpen} handleClose={handleClose}>
-        <ProfilePage />
+        <ClubBoard />
       </ModalLayout>
     </>
   )

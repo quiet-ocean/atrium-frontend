@@ -2,14 +2,14 @@ import { Box, Typography } from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import avatar from '../assets/images/avatar-9.png'
-import { LoginLayout } from '../components'
-import { useAppSelector } from '../hooks'
-import { palette } from '../MuiTheme'
-import phaserGame from '../PhaserGame'
-import type Bootstrap from '../scenes/Bootstrap'
+import avatar from '../../assets/images/avatar-9.png'
+import { LoginLayout } from '../../components'
+import { useAppSelector } from '../../hooks'
+import { palette } from '../../MuiTheme'
+import phaserGame from '../../PhaserGame'
+import type Bootstrap from '../../scenes/Bootstrap'
 
-import { LoginSubLayout } from './Login/LoginSubLayout'
+import { LoginSubLayout } from './LoginSubLayout'
 
 const LoginSuccess = () => {
   const user = useAppSelector((state) => state.auth.user)
@@ -45,7 +45,7 @@ const LoginSuccess = () => {
             >
               {avatar && (
                 <img
-                  src={avatar}
+                  src={user.avatar}
                   width="160px"
                   height="160px"
                   style={{
