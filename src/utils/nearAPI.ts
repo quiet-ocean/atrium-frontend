@@ -15,7 +15,12 @@ export interface MyContract extends Contract {
   tokens_left: any
 }
 
-declare let window: any
+declare let window: {
+  walletConnection: WalletConnection
+  accountId: any
+  contract: MyContract
+  near: any
+}
 
 // Initialize contract & set global variables
 export async function initNearContract() {
@@ -43,16 +48,11 @@ export async function initNearContract() {
     window.walletConnection.account(),
     nearConfig.contractName,
     {
-      changeMethods: ['nft_mint', 'new_default_meta', 'nft_mint_many'],
+      changeMethods: ['set_greeting'],
       // View methods are read only. They don't modify the state, but usually return some value.
       // viewMethods: ['get_greeting'],
       // Change methods can modify the state. But you don't receive the returned value when called.
-      viewMethods: [
-        'total_cost',
-        'tokens_left',
-        'get_mint_start_epoch',
-        'nft_metadata',
-      ],
+      viewMethods: ['get_greeting'],
       // sender: window.walletConnection.account(),
     }
   )) as MyContract
@@ -66,18 +66,13 @@ export async function logoutNear() {
   // callback(false);
 }
 
-export async function loginNear(successUrl?: string, failureUrl?: string) {
+export async function loginNear() {
   // Allow the current app to make calls to the specified contract on the
   // user's behalf.
   // This works by creating a new access key for the user's account and storing
   // the private key in localStorage.
   await window.walletConnection
-    .requestSignIn(
-      nearConfig.contractName,
-      'near login',
-      successUrl,
-      failureUrl
-    )
+    .requestSignIn(nearConfig.contractName, 'near login')
     .then((res: any) => {
       console.log(res)
       // callback(true);

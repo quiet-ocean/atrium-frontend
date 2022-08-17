@@ -1,7 +1,8 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Box, Typography } from '@mui/material'
-import { useRef } from 'react'
+import type { SetStateAction } from 'react'
+import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Slider from 'react-slick'
 
@@ -13,7 +14,9 @@ import skin4 from '../../assets/images/ASAC 6.png'
 import skin6 from '../../assets/images/ASAC 7.png'
 import skin5 from '../../assets/images/ASAC 8.png'
 import { AButton, LoginLayout } from '../../components'
+import { useAppDispatch } from '../../hooks'
 import { palette } from '../../MuiTheme'
+import { setUser } from '../../stores/AuthStore'
 
 import { LoginSubLayout } from './LoginSubLayout'
 
@@ -30,23 +33,31 @@ const sliderSettings = {
   infinite: true,
   slidesToScroll: 1,
   slidesToShow: 5,
-
-  // dots: true,
-  //     infinite: true,
-  //     speed: 500,
-  //     slidesToShow: 1,
-  //     slidesToScroll: 1
 }
 
 export const SelectSkin = () => {
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
+
   const carouselRef = useRef<Slider>(null)
+  const [currrentSkin, setCurrentSkin] = useState(0)
+
+  const beforeChange = (_: any, newIndex: SetStateAction<number>) => {
+    setCurrentSkin(newIndex)
+  }
+  const handleNext = async () => {
+    dispatch(setUser({ skin: skins[currrentSkin] }))
+
+    navigate('/load-scene')
+  }
+
   return (
     <LoginLayout>
       <LoginSubLayout
         stepper
+        step={4}
         enable
-        goForward={() => navigate('/load-scene')}
+        goForward={handleNext}
         goBack={() => navigate('/select-identity')}
       >
         <Box flexDirection="column">
@@ -59,7 +70,11 @@ export const SelectSkin = () => {
             </Typography>
           </Box>
           <div style={{ marginTop: '32px', width: '1200px' }}>
-            <Slider {...sliderSettings} ref={carouselRef}>
+            <Slider
+              {...sliderSettings}
+              beforeChange={beforeChange}
+              ref={carouselRef}
+            >
               {skins.map((item: string, key) => (
                 <div
                   key={key}

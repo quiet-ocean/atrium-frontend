@@ -9,11 +9,12 @@ import MessageIcon from '../../assets/icons/message-icon.png'
 import SettingIcon from '../../assets/icons/setting-icon.png'
 import WalletIcon from '../../assets/icons/wallet-icon.png'
 import avatar from '../../assets/images/avatar-6.png'
-import { useAppDispatch } from '../../hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks'
 import { setBoardDialogOpen, setCurrentBoardTab } from '../../stores/UiStore'
 
 export const PopupMenu = ({ handleClose }: { handleClose: AnyFunction }) => {
   const dispatch = useAppDispatch()
+  const user = useAppSelector((state) => state.auth.user)
 
   const MenuItemContent = ({
     icon,
@@ -49,7 +50,7 @@ export const PopupMenu = ({ handleClose }: { handleClose: AnyFunction }) => {
       <Box className="MuiPaper-root" p="24px" onClick={handleClose}>
         <Box display="flex" gap="12px" py="12px">
           <img
-            src={avatar}
+            src={(user as any).avatar ?? avatar}
             alt=""
             width="32px"
             height="32px"
@@ -60,7 +61,7 @@ export const PopupMenu = ({ handleClose }: { handleClose: AnyFunction }) => {
               variant="h6"
               sx={{ textDecoration: 'underline', textTransform: 'lowercase' }}
             >
-              midnight maverick
+              {(user as any).username}
             </Typography>
           </Box>
         </Box>

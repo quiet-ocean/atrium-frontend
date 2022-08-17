@@ -2,10 +2,6 @@ import { Box, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-// import Adam from '../../assets/Adam_login.png'
-// import Ash from '../../assets/Ash_login.png'
-// import Lucy from '../../assets/Lucy_login.png'
-// import Nancy from '../../assets/Nancy_login.png'
 import { ATextField, LoginLayout } from '../../components'
 // import { useAppDispatch, useAppSelector } from '../../hooks'
 import { useAppDispatch } from '../../hooks'
@@ -15,13 +11,6 @@ import { setUser } from '../../stores/AuthStore'
 import { setPlayerName } from '../../stores/UserStore'
 
 import { LoginSubLayout } from './LoginSubLayout'
-
-// const avatars = [
-//   { img: Adam, name: 'adam' },
-//   { img: Ash, name: 'ash' },
-//   { img: Lucy, name: 'lucy' },
-//   { img: Nancy, name: 'nancy' },
-// ]
 
 const SetName = () => {
   const navigate = useNavigate()
@@ -91,6 +80,7 @@ const SetName = () => {
       <LoginSubLayout
         stepper
         enable
+        step={2}
         // goForward={() => navigate('/select-identity')}
         goForward={handleNext}
         goBack={() => navigate('/connect-wallet')}

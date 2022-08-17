@@ -93,7 +93,6 @@ const InputTextField = styled(InputBase)`
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 19px;
-    text-transform: capitalize;
   }
 `
 
@@ -174,7 +173,7 @@ const Message = ({ chatMessage, messageType }) => {
           // </p>
           <Typography variant="h6" py="4px">
             {/* {chatMessage.author}: <span>{chatMessage.content}</span> */}
-            {`Hades`}:{' '}
+            {chatMessage.author}:{' '}
             <span style={{ color: palette.secondary.main }}>
               {chatMessage.content}
             </span>
@@ -207,6 +206,7 @@ export default function Chat() {
   const showChat = useAppSelector((state) => state.chat.showChat)
   const dispatch = useAppDispatch()
   const game = phaserGame.game as Game
+  const playerName = useAppSelector((state) => state.user.playerName)
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     setInputValue(event.currentTarget.value)
@@ -340,7 +340,7 @@ export default function Chat() {
             variant="h6"
             sx={{ padding: '6px', whiteSpace: 'nowrap' }}
           >
-            ASAC Rocky:
+            {playerName}:
           </Typography>
           <InputTextField
             inputRef={inputRef}
