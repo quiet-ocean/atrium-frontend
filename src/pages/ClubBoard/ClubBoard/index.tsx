@@ -65,4 +65,3 @@ export const ClubBoard: React.FC = () => {
     </Container.Root>
   )
 }
-

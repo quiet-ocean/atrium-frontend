@@ -7,7 +7,8 @@ import { palette } from '../../../MuiTheme'
 const initialTags = [
   {
     active: false,
-    description: 'I have been coding for 8 years. I’ve built 16 websites using React and JavaScript mainly. I’ve built games as well, 3 in Unity and 2 using custom APIs.',
+    description:
+      'I have been coding for 8 years. I’ve built 16 websites using React and JavaScript mainly. I’ve built games as well, 3 in Unity and 2 using custom APIs.',
     name: 'developer',
   },
   {
@@ -22,7 +23,8 @@ const initialTags = [
   },
   {
     active: false,
-    description: 'I have been coding for 8 years. I’ve built 16 websites using React and JavaScript mainly. I’ve built games as well, 3 in Unity and 2 using custom APIs.',
+    description:
+      'I have been coding for 8 years. I’ve built 16 websites using React and JavaScript mainly. I’ve built games as well, 3 in Unity and 2 using custom APIs.',
     name: 'designer',
   },
   {
@@ -37,7 +39,8 @@ const initialTags = [
   },
   {
     active: false,
-    description: 'I have been coding for 8 years. I’ve built 16 websites using React and JavaScript mainly. I’ve built games as well, 3 in Unity and 2 using custom APIs.',
+    description:
+      'I have been coding for 8 years. I’ve built 16 websites using React and JavaScript mainly. I’ve built games as well, 3 in Unity and 2 using custom APIs.',
     name: 'founder',
   },
   {

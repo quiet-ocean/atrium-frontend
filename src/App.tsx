@@ -2,7 +2,7 @@ import { Container } from '@mui/material'
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { PrivateRoute } from './components'
+// import { PrivateRoute } from './components'
 import { useAppDispatch } from './hooks'
 import {
   ConnectWallet,
