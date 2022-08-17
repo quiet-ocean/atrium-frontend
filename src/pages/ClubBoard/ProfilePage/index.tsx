@@ -1,7 +1,19 @@
 import Box from '@mui/material/Box'
 import React from 'react'
 
-import { EditProfile, Profile, CommunityHub } from '../'
+import {
+  EditProfile,
+  Profile,
+  CommunityHub,
+  Dashboard,
+  // Account,
+  ArticleBuilder,
+  FeedbackForm,
+  UserProfile,
+  Chat,
+  Post,
+  SinglePost,
+} from '../'
 import { useAppSelector } from '../../../hooks'
 import { TabPanel } from '../EditProfile/styled'
 import '../reset.css'
@@ -19,19 +31,34 @@ const ProfilePage: React.FC = () => {
       <Box>
         <Box position="relative">
           <TabPanel value={value} index={0}>
-            <Profile />
+            <Dashboard />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <Profile />
+            <Post />
           </TabPanel>
           <TabPanel value={value} index={2}>
-            <CommunityHub />
+            <Chat />
           </TabPanel>
           <TabPanel value={value} index={3}>
-            <EditProfile />
+            <Profile />
           </TabPanel>
           <TabPanel value={value} index={4}>
             <EditProfile />
+          </TabPanel>
+          <TabPanel value={value} index={5}>
+            <CommunityHub />
+          </TabPanel>
+          <TabPanel value={value} index={6}>
+            <SinglePost />
+          </TabPanel>
+          <TabPanel value={value} index={7}>
+            <UserProfile />
+          </TabPanel>
+          <TabPanel value={value} index={8}>
+            <ArticleBuilder />
+          </TabPanel>
+          <TabPanel value={value} index={9}>
+            <FeedbackForm />
           </TabPanel>
         </Box>
       </Box>

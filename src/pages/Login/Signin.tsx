@@ -18,12 +18,12 @@ export const Signin = () => {
             <AButton
               className="primary active large"
               color0btn={palette.secondary.light}
+              component={Link}
+              to="/connect-wallet"
             >
-              <Link to="/connect-wallet">
-                <Typography variant="h2" color={palette.background.paper}>
-                  connect wallet
-                </Typography>
-              </Link>
+              <Typography variant="h2" color={palette.background.paper}>
+                connect wallet
+              </Typography>
             </AButton>
             <AButton
               className=" active large secondary"

@@ -11,7 +11,9 @@ import post1 from '../../../assets/images/post-1.png'
 import post2 from '../../../assets/images/post-2.png'
 import post3 from '../../../assets/images/post-3.png'
 import post4 from '../../../assets/images/post-4.png'
-import { AText } from '../../../components'
+import { AText, HoverBox } from '../../../components'
+import { useAppDispatch } from '../../../hooks'
+import { setCurrentBoardTab } from '../../../stores/UiStore'
 import post5 from '../images/post-image.png'
 import * as PContainer from '../styled'
 import { PostContainer } from '../UserProfile/PostCarousel'
@@ -44,6 +46,16 @@ export const Reactions = () => {
 }
 
 export const Dashboard = () => {
+  const dispatch = useAppDispatch()
+
+  const handleLinkProject = () => {
+    dispatch(setCurrentBoardTab(5))
+  }
+
+  const handleLinkPost = () => {
+    dispatch(setCurrentBoardTab(6))
+  }
+
   return (
     <PContainer.Main>
       <Container>
@@ -99,49 +111,50 @@ export const Dashboard = () => {
         </Box>
       </Container>
       <Container>
-        <Box flex="2">
+        <HoverBox flex="2" onClick={handleLinkPost}>
           <PostContainer img={post3} height="480px">
             <Title>How I stay ahead on quests</Title>
             <Box mt="12px">
               <User name="swiftyyy" />
             </Box>
           </PostContainer>
-        </Box>
-        <Box flex="2">
+        </HoverBox>
+        <HoverBox flex="2" onClick={handleLinkPost}>
           <PostContainer img={post4} height="480px">
             <Title>Why bounties mean everything</Title>
             <Box mt="12px">
               <User name="swiftyyy" />
             </Box>
           </PostContainer>
-        </Box>
-        <Box
+        </HoverBox>
+        <HoverBox
           flex="3"
           display="flex"
           flexDirection="column"
           justifyContent="space-between"
+          onClick={handleLinkPost}
         >
-          <HorizontalPostComp img={land1} />
-          <HorizontalPostComp img={land2} />
-          <HorizontalPostComp img={land3} />
-        </Box>
+          <HorizontalPostComp img={land1} onClick={handleLinkPost} />
+          <HorizontalPostComp img={land2} onClick={handleLinkPost} />
+          <HorizontalPostComp img={land3} onClick={handleLinkPost} />
+        </HoverBox>
       </Container>
       <Container>
-        <Box width="100%">
+        <HoverBox width="100%" onClick={handleLinkProject}>
           <PostContainer img={post5} height="350px">
             <AText>Project 1</AText>
           </PostContainer>
-        </Box>
-        <Box width="100%">
+        </HoverBox>
+        <HoverBox width="100%" onClick={handleLinkProject}>
           <PostContainer img={post5} height="350px">
             <AText>Project 1</AText>
           </PostContainer>
-        </Box>
-        <Box width="100%">
+        </HoverBox>
+        <HoverBox width="100%" onClick={handleLinkProject}>
           <PostContainer img={post5} height="350px">
             <AText>Project 1</AText>
           </PostContainer>
-        </Box>
+        </HoverBox>
       </Container>
     </PContainer.Main>
   )

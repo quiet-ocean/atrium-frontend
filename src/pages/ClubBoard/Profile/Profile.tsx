@@ -2,13 +2,14 @@ import { Box, Typography, Grid } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { useState } from 'react'
 import Carousel from 'react-material-ui-carousel'
-import { Link } from 'react-router-dom'
 
 import avatar1 from '../../../assets/images/avatar-8.png'
 import banner from '../../../assets/images/banner-3.png'
 import project6 from '../../../assets/images/project-6.png'
 import { AText, AButton } from '../../../components'
+import { useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import { setCurrentBoardTab } from '../../../stores/UiStore'
 import {
   SocialButtons,
   FeaturedPost,
@@ -29,6 +30,8 @@ const Banner = () => {
   )
 }
 export const UserInfo = () => {
+  const dispatch = useAppDispatch()
+
   const Text = styled(Typography)(() => ({
     color: `${palette.text.primary}`,
     fontFamily: 'Andale Mono Regular',
@@ -38,6 +41,11 @@ export const UserInfo = () => {
     letterSpacing: '-0.05em',
     lineHeight: '120%',
   }))
+
+  const handleBtnEditProfile = () => {
+    dispatch(setCurrentBoardTab(4))
+  }
+
   return (
     <Grid container spacing={2}>
       <Grid item lg={5} position="relative">
@@ -80,11 +88,10 @@ export const UserInfo = () => {
             className="outlined primary active"
             color0btn={palette.text.disabled}
             sx={{ position: 'absolute', right: '24px', top: '24px' }}
+            onClick={handleBtnEditProfile}
           >
             <img src={editIcon} alt="" />
-            <Link to="/profile-modal-development-sandbox/edit">
-              &nbsp; edit profile
-            </Link>
+            &nbsp; edit profile
           </AButton>
         </Box>
       </Grid>
@@ -251,6 +258,7 @@ export const Tags = () => {
 }
 export const Profile = () => {
   const [openMembersModal, setOpenMembersModal] = useState(false)
+
   return (
     <Container>
       <Box>
