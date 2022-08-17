@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { AButton, ATextField } from '../../../components'
 import { palette } from '../../../MuiTheme'
 
-const initialTags = [
+export const initialTags = [
   {
     active: false,
     description:
