@@ -14,6 +14,7 @@ import {
   Signin,
   LoadScene,
   ClubBoardUI,
+  LoginSuccess
 } from './pages'
 import { setWalletConnected } from './stores/UserStore'
 import { getAccount } from './utils'
@@ -43,6 +44,7 @@ const App = () => {
           <Route path="/load-scene" element={<LoadScene />} />
           <Route path="/game" element={<GameUI />} />
           <Route path="/club-board" element={<ClubBoardUI />} />
+          <Route path="/success" element={<LoginSuccess />} />
         </Routes>
       </BrowserRouter>
     </Container>
