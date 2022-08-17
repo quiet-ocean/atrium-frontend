@@ -6,6 +6,7 @@ import storage from 'redux-persist/lib/storage'
 import * as authApi from '../services/authApi'
 
 import { setPlayerAvatar, setPlayerName } from './UserStore'
+import { IUser } from '../types/User'
 
 export const login = createAsyncThunk(
   '/auth/login',
@@ -46,6 +47,16 @@ export const signup = createAsyncThunk(
   }
 )
 
+interface AuthState {
+  accessToken: string
+  user: IUser
+}
+
+const initialState: AuthState = {
+  accessToken: '',
+  user: {},
+}
+
 export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
@@ -58,10 +69,7 @@ export const authSlice = createSlice({
       state.accessToken = action.payload.accessToken
     })
   },
-  initialState: {
-    accessToken: '',
-    user: {},
-  },
+  initialState,
   name: 'auth',
   reducers: {
     clearToken: (state) => {
