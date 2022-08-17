@@ -5,12 +5,14 @@ import { Box, Typography } from '@mui/material'
 
 // import PostIcon from '../../assets/icons/frame-icon.png'
 import HomeIcon from '../../assets/icons/home-icon.png'
+import FrameIcon from '../../assets/icons/frame-icon.png'
 import MessageIcon from '../../assets/icons/message-icon.png'
 import SettingIcon from '../../assets/icons/setting-icon.png'
 import WalletIcon from '../../assets/icons/wallet-icon.png'
 import avatar from '../../assets/images/avatar-6.png'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { setBoardDialogOpen, setCurrentBoardTab } from '../../stores/UiStore'
+import { HoverBox } from '../elements'
 
 export const PopupMenu = ({ handleClose }: { handleClose: AnyFunction }) => {
   const dispatch = useAppDispatch()
@@ -26,7 +28,7 @@ export const PopupMenu = ({ handleClose }: { handleClose: AnyFunction }) => {
     text: React.ReactNode
   }) => {
     return (
-      <Box
+      <HoverBox
         display="flex"
         gap="16px"
         py="12px"
@@ -41,7 +43,7 @@ export const PopupMenu = ({ handleClose }: { handleClose: AnyFunction }) => {
         <Box py="2px">
           <Typography variant="h6">{text}</Typography>
         </Box>
-      </Box>
+      </HoverBox>
     )
   }
 
@@ -66,6 +68,7 @@ export const PopupMenu = ({ handleClose }: { handleClose: AnyFunction }) => {
           </Box>
         </Box>
         <MenuItemContent icon={HomeIcon} text={`home`} id={0} />
+        <MenuItemContent icon={FrameIcon} text={`posts`} id={1} />
         <MenuItemContent icon={MessageIcon} text={`messages`} id={2} />
         <MenuItemContent icon={SettingIcon} text={`settings`} id={3} />
         <MenuItemContent icon={WalletIcon} text={`view wallet`} id={4} />

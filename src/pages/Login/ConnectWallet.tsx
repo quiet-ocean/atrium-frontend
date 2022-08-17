@@ -9,7 +9,7 @@ import metamask from '../../assets/icons/metamask-logo.png'
 import near_dark from '../../assets/icons/near-logo-dark.svg'
 import near_light from '../../assets/icons/near-logo.png'
 import phantom from '../../assets/icons/phantom-logo.png'
-import { LoginLayout } from '../../components'
+import { HoverBox, LoginLayout } from '../../components'
 import { useAppDispatch } from '../../hooks'
 import { palette } from '../../MuiTheme'
 import { login, setUser, requestUser } from '../../stores/AuthStore'
@@ -136,13 +136,13 @@ const ConnectWallet = () => {
           </Box>
           <Box gap="24px" mt="24px">
             <WalletCard wallet={phantom} commingSoon />
-            <Box>
+            <HoverBox>
               <WalletCard
                 wallet={enable ? near_dark : near_light}
                 active={enable}
                 handleClick={loginNear}
               />
-            </Box>
+            </HoverBox>
             <WalletCard wallet={metamask} commingSoon />
           </Box>
           {/* <Button
