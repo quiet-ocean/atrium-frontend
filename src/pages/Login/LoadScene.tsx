@@ -5,9 +5,10 @@ import { useNavigate } from 'react-router-dom'
 
 import logo from '../../assets/images/atrium-logo-large.png'
 import { LoginLayout } from '../../components'
-import { useAppSelector } from '../../hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks'
 import phaserGame from '../../PhaserGame'
 import type Bootstrap from '../../scenes/Bootstrap'
+import { requestUser, signup } from '../../stores/AuthStore'
 
 export default function LinearDeterminate({ progress }: { progress: number }) {
   return (
@@ -24,20 +25,35 @@ export default function LinearDeterminate({ progress }: { progress: number }) {
   )
 }
 export const LoadScene = () => {
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+
+  const user = useAppSelector((state) => state.auth.user)
+  const sessionId = useAppSelector((state) => state.user.sessionId)
+
   const [angle, setAngle] = useState(0)
   const [progress, setProgress] = useState<number>(0)
 
-  const navigate = useNavigate()
   // const user = useAppSelector((state) => state.auth.user)
   const lobbyJoined = useAppSelector((state) => state.room.lobbyJoined)
   const roomJoined = useAppSelector((state) => state.room.roomJoined)
+
+  useEffect(() => {
+    const _signup = async () => {
+      await dispatch(signup(user))
+      await dispatch(requestUser())
+    }
+
+    _signup()
+
+    loadScene()
+  }, [])
 
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
         if (oldProgress === 100) {
           clearInterval(timer)
-          if (loadScene) setTimeout(() => loadScene(), 1000)
           // return 0
         }
         const diff = Math.random() * 10
@@ -51,8 +67,13 @@ export const LoadScene = () => {
   }, [])
 
   useEffect(() => {
+    if (sessionId && sessionId != '' && progress == 100) navigate('/game')
+  }, [sessionId, progress])
+
+  useEffect(() => {
     setAngle(parseInt((progress / 25).toString()) * 90)
   }, [progress])
+
   const loadScene = () => {
     console.log('load scene')
     console.log(roomJoined, lobbyJoined)
@@ -62,11 +83,11 @@ export const LoadScene = () => {
       .joinOrCreatePublic()
       .then(() => {
         bootstrap.launchGame()
-        navigate('/game')
       })
       .catch((error) => console.error(error))
     // }
   }
+
   return (
     <LoginLayout>
       <Box

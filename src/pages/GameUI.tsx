@@ -62,17 +62,17 @@ function GameUI() {
   React.useEffect(() => {
     if (game) {
       game.registerKeys()
-      // if (game.myPlayer) {
-      console.log('set player name to ', playerName)
-      // game.myPlayer.setPlayerName(
-      //   playerName ||
-      //     (window as any).accountId ||
-      //     (window as any).near?.accountId
-      // )
-      // game.myPlayer.setPlayerTexture(avatars[0].name)
+      if (game.myPlayer) {
+        console.log('set player name to ', playerName)
+        game.myPlayer.setPlayerName(
+          playerName ||
+            (window as any).accountId ||
+            (window as any).near?.accountId
+        )
+        // game.myPlayer.setPlayerTexture(avatars[0].name)
+      }
       game.network.readyToConnect()
       dispatch(setLoggedIn(true))
-      // }
     }
   }, [])
 

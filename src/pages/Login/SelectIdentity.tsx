@@ -6,6 +6,7 @@ import { LoginLayout } from '../../components'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { palette } from '../../MuiTheme'
 // import { setUser } from '../../stores/AuthStore'
+import { setUser } from '../../stores/AuthStore'
 import { addAvatar, setPlayerAvatar } from '../../stores/UserStore'
 import 'react-multi-carousel/lib/styles.css'
 import { getAccount } from '../../utils'
@@ -73,13 +74,19 @@ export const SelectIdentity = () => {
     })
   }
 
+  const handleNext = () => {
+    dispatch(setUser({ avatar: avatar }))
+
+    navigate('/select-skin')
+  }
+
   return (
     <LoginLayout>
       <LoginSubLayout
         enable
         step={3}
         stepper
-        goForward={() => navigate('/select-skin')}
+        goForward={handleNext}
         goBack={() => navigate('/set-name')}
       >
         <Box flexDirection="column">
