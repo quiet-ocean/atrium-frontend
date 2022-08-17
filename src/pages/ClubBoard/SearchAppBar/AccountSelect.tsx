@@ -6,13 +6,14 @@ import Select from '@mui/material/Select'
 import styled from '@mui/material/styles/styled'
 import Typography from '@mui/material/Typography'
 import * as React from 'react'
+import { useAppSelector } from '../../../hooks'
 
 import muiTheme from '../../../MuiTheme'
 
-const AccountMenuItem = () => {
+const AccountMenuItem = ({ user }) => {
   return (
     <Box sx={{ display: 'flex', gap: '8px' }}>
-      <img src={`/images/Ellipse 11.png`} alt="" />
+      <img src={user.avatar} width={30} alt="" />
       <Typography
         sx={{
           color: muiTheme.palette.text.primary,
@@ -23,7 +24,7 @@ const AccountMenuItem = () => {
           lineHeight: '32px',
         }}
       >
-        swiftyyy
+        {user.username}
       </Typography>
     </Box>
   )
@@ -35,6 +36,7 @@ const MySelect = styled(Select)(() => ({
   borderRadius: '0px',
 }))
 export default function AccountSelect() {
+  const user = useAppSelector((state) => state.auth.user)
   const [age, setAge] = React.useState('')
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -60,16 +62,16 @@ export default function AccountSelect() {
             <em>None</em>
           </MenuItem> */}
           <MenuItem value="">
-            <AccountMenuItem />
+            <AccountMenuItem user={user} />
           </MenuItem>
           <MenuItem value={10}>
-            <AccountMenuItem />
+            <AccountMenuItem user={user} />
           </MenuItem>
           <MenuItem value={20}>
-            <AccountMenuItem />
+            <AccountMenuItem user={user} />
           </MenuItem>
           <MenuItem value={30}>
-            <AccountMenuItem />
+            <AccountMenuItem user={user} />
           </MenuItem>
         </MySelect>
       </FormControl>

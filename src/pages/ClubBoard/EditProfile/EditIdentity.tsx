@@ -5,13 +5,17 @@ import Icon from '@mui/material/Icon'
 import React from 'react'
 
 import { AButton, ATextField } from '../../../components'
+import { useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 
 import { TextPanel } from './EditContent'
 import { EditProfileLayout } from './EditProfileLayout'
 import { AntSwitch } from './styled'
 // import { AntSwitch } from '../Chat/AntSwitch'<Icon sx={{ fontSize: '32px' }}>discord</Icon>
+
 export const EditIdentity = () => {
+  const user = useAppSelector((state) => state.auth.user)
+
   const SocialConnect = ({
     title,
     icon,
@@ -57,6 +61,7 @@ export const EditIdentity = () => {
       </Box>
     )
   }
+
   return (
     <EditProfileLayout
       title="Identity Information"
@@ -67,7 +72,7 @@ export const EditIdentity = () => {
         <Box py="12px">
           <Grid container>
             <Grid item lg={6}>
-              <ATextField className="rounded dark" />
+              <ATextField className="rounded dark" value={user.username} />
             </Grid>
             <Grid item lg={6} />
           </Grid>
@@ -77,8 +82,7 @@ export const EditIdentity = () => {
         <Typography variant="h6">Bio</Typography>
         <TextPanel>
           <Typography variant="body1" color={palette.text.primary}>
-            Your favorite degen’s favorite degen. Exclusively on NEAR. DMs
-            open!a,dmsnfkasndf
+            {user.bio}
           </Typography>
         </TextPanel>
       </Box>
@@ -89,7 +93,7 @@ export const EditIdentity = () => {
             <Box>
               <Typography variant="h6">website url</Typography>
               <Box py="12px">
-                <ATextField className="rounded default" />
+                <ATextField className="rounded default" value={user.webUrl} />
               </Box>
               <Box p="0px 24px" display="flex" gap="12px">
                 <AntSwitch />
@@ -101,14 +105,14 @@ export const EditIdentity = () => {
           </Grid>
           <Grid item lg={6}>
             <Box>
-              <Typography variant="h6">website url</Typography>
+              <Typography variant="h6">email</Typography>
               <Box py="12px">
-                <ATextField className="rounded default" />
+                <ATextField className="rounded default" value={user.email} />
               </Box>
               <Box p="0px 24px" display="flex" gap="12px">
                 <AntSwitch />
                 <Typography variant="caption" py="2px">
-                  Displayed on Profile
+                  Notifications On
                 </Typography>
               </Box>
             </Box>

@@ -3,11 +3,17 @@ import { Box, Grid, Typography } from '@mui/material'
 import React from 'react'
 
 import { AButton } from '../../../components'
+import { useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import { Wallet } from '../../../types/Wallet'
+import { getAccount } from '../../../utils'
 
 import { AntSwitch } from './styled'
 
 export const EditWallet = () => {
+  const user = useAppSelector((state) => state.auth.user)
+  const account = getAccount()
+  console.log(account)
   const InfoItem = ({
     index,
     children,
@@ -28,6 +34,7 @@ export const EditWallet = () => {
       </Box>
     )
   }
+
   return (
     <Box>
       <Grid container>
@@ -40,18 +47,24 @@ export const EditWallet = () => {
             <Box p="24px 80px">
               <InfoItem index="status">
                 <Box display="flex" gap="8px">
-                  <CheckCircleIcon sx={{ color: '#90E487' }} />
-                  <Typography variant="h5" py="2px" color="#90E487">
-                    connected
-                  </Typography>
+                  {account.accountId == user.accountId ? (
+                    <>
+                      <CheckCircleIcon sx={{ color: '#90E487' }} />
+                      <Typography variant="h5" py="2px" color="#90E487">
+                        connected
+                      </Typography>
+                    </>
+                  ) : (
+                    ''
+                  )}
                 </Box>
               </InfoItem>
               <InfoItem index="wallet id">
-                <Typography variant="h5">swiftyyy.near</Typography>
+                <Typography variant="h5">{user.accountId}</Typography>
               </InfoItem>
               <InfoItem index="wallet source">
                 <Typography variant="h5" sx={{ textTransform: 'uppercase' }}>
-                  near
+                  {account.type == Wallet.Near ? 'near' : 'sender'}
                 </Typography>
               </InfoItem>
               <Box mt="32px">
