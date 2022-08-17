@@ -52,7 +52,7 @@ export const AButton = styled(Button)<AButtonProps>(({ theme, color0btn }) => ({
   '&.tag-active': {
     background: theme.palette.text.disabled,
     border: `1px solid transparent`,
-    color: theme.palette.background.paper,
+    color: theme.palette.primary.dark,
   },
   '&.tag-large': {
     fontSize: '18px',
