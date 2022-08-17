@@ -1,35 +1,112 @@
 import { Box, Typography } from '@mui/material'
+import { useState } from 'react'
 
-import { AButton } from '../../../components'
+import { AButton, ATextField } from '../../../components'
 import { palette } from '../../../MuiTheme'
 
-import { TextPanel } from './EditContent'
-
-const tags = [
-  'developer',
-  'artist',
-  'project manager',
-  'designer',
-  'producer',
-  'team manager',
-  'founder',
-  'inverstor',
+const initialTags = [
+  {
+    active: false,
+    description: 'I have been coding for 8 years. I’ve built 16 websites using React and JavaScript mainly. I’ve built games as well, 3 in Unity and 2 using custom APIs.',
+    name: 'developer',
+  },
+  {
+    active: false,
+    description: '',
+    name: 'artist',
+  },
+  {
+    active: false,
+    description: '',
+    name: 'project manager',
+  },
+  {
+    active: false,
+    description: 'I have been coding for 8 years. I’ve built 16 websites using React and JavaScript mainly. I’ve built games as well, 3 in Unity and 2 using custom APIs.',
+    name: 'designer',
+  },
+  {
+    active: false,
+    description: '',
+    name: 'producer',
+  },
+  {
+    active: false,
+    description: '',
+    name: 'team manager',
+  },
+  {
+    active: false,
+    description: 'I have been coding for 8 years. I’ve built 16 websites using React and JavaScript mainly. I’ve built games as well, 3 in Unity and 2 using custom APIs.',
+    name: 'founder',
+  },
+  {
+    active: false,
+    description: '',
+    name: 'investor',
+  },
 ]
-export const TagDescription = ({ tag }: { tag: string }) => {
+export type TagProps = {
+  name: string
+  description?: string
+  active?: boolean
+}
+export const TagContent = ({
+  tag,
+  update,
+}: {
+  tag: TagProps
+  update: (v: string) => void
+}) => {
+  // console.log(tag.description)
+  const handleUpdate = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    update(e.target.value)
+  }
   return (
     <Box mb="24px">
-      <AButton className="tag tag-large tag-active">{tag}</AButton>
-      <TextPanel margin="12px 0px !important">
-        <Typography variant="body2">
-          I have been coding for 8 years. I’ve built 16 websites using React and
-          Javascript mainly. I’ve built games as well, 3 in Unity and 2 using
-          custom APIs.
-        </Typography>
-      </TextPanel>
+      <AButton className="tag tag-large tag-active">{tag.name}</AButton>
+      <ATextField
+        multiline
+        value={tag?.description}
+        className="rounded"
+        onChange={handleUpdate}
+        sx={{
+          '& textarea.MuiInputBase-input': {
+            fontSize: '18px !important',
+          },
+          margin: '12px 0px',
+        }}
+        rows={2}
+      />
     </Box>
   )
 }
 export const EditTags = () => {
+  const [tags, setTags] = useState<TagProps[]>(initialTags)
+  const [tempTags, setTempTags] = useState<TagProps[]>(tags)
+  const updateTag = (
+    name: string,
+    field: 'name' | 'active' | 'description',
+    value: string | boolean
+  ) => {
+    setTempTags(
+      tempTags.map((item: TagProps) => {
+        if (item.name === name) {
+          return { ...item, [field]: value }
+        }
+        return item
+      })
+    )
+  }
+  // useEffect(() => {
+  //   console.log(tempTags)
+  // }, [tempTags])
+  // useEffect(() => {
+  //   console.log(tags)
+  // }, [tags])
+  const save = () => {
+    setTags(tempTags)
+  }
   return (
     <Box>
       <Box>
@@ -44,10 +121,15 @@ export const EditTags = () => {
         sx={{ '& > div, & > div > div': { paddingY: '24px' } }}
       >
         <Box display="flex" gap="12px">
-          {tags.map((item: string, key: number) => (
-            <AButton className="tag tag-large" key={key}>
-              {item}
-            </AButton>
+          {tempTags.map((item: TagProps, key: number) => (
+            <Box key={key}>
+              <AButton
+                className={`tag tag-large ${item.active ? 'tag-active' : ''}`}
+                onClick={() => updateTag(item.name, 'active', !item.active)}
+              >
+                {item.name}
+              </AButton>
+            </Box>
           ))}
         </Box>
         <Box mt="24px" borderTop={`1px solid ${palette.text.disabled}`}>
@@ -58,9 +140,18 @@ export const EditTags = () => {
             </Typography>
           </Box>
           <Box>
-            <TagDescription tag={`developer`} />
-            <TagDescription tag={`designer`} />
-            <TagDescription tag={`founder`} />
+            {tempTags.map(
+              (item: TagProps, key: number) =>
+                item.active && (
+                  <TagContent
+                    tag={item}
+                    key={key}
+                    update={(value: string) =>
+                      updateTag(item.name, 'description', value)
+                    }
+                  />
+                )
+            )}
           </Box>
         </Box>
       </Box>
@@ -68,6 +159,7 @@ export const EditTags = () => {
         <AButton
           className="primary active medium"
           color0btn={palette.secondary.light}
+          onClick={save}
         >
           save changes
         </AButton>
