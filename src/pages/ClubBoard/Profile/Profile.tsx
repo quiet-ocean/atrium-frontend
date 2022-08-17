@@ -3,11 +3,10 @@ import { styled } from '@mui/material/styles'
 import { useState } from 'react'
 import Carousel from 'react-material-ui-carousel'
 
-import avatar1 from '../../../assets/images/avatar-8.png'
 import banner from '../../../assets/images/banner-3.png'
 import project6 from '../../../assets/images/project-6.png'
 import { AText, AButton } from '../../../components'
-import { useAppDispatch } from '../../../hooks'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
 import {
@@ -29,18 +28,20 @@ const Banner = () => {
     </Box>
   )
 }
+
+const Text = styled(Typography)(() => ({
+  color: `${palette.text.primary}`,
+  fontFamily: 'Andale Mono Regular',
+  fontSize: '24px',
+  fontStyle: 'normal',
+  fontWeight: 400,
+  letterSpacing: '-0.05em',
+  lineHeight: '120%',
+}))
+
 export const UserInfo = () => {
   const dispatch = useAppDispatch()
-
-  const Text = styled(Typography)(() => ({
-    color: `${palette.text.primary}`,
-    fontFamily: 'Andale Mono Regular',
-    fontSize: '24px',
-    fontStyle: 'normal',
-    fontWeight: 400,
-    letterSpacing: '-0.05em',
-    lineHeight: '120%',
-  }))
+  const user = useAppSelector((state) => state.auth.user)
 
   const handleBtnEditProfile = () => {
     dispatch(setCurrentBoardTab(4))
@@ -57,7 +58,7 @@ export const UserInfo = () => {
           pr="16px"
         >
           <img
-            src={avatar1}
+            src={user.avatar}
             alt=""
             width="156px"
             height="156px"
@@ -69,10 +70,10 @@ export const UserInfo = () => {
         </Box>
         <Box pt="48px">
           <Typography variant="h4" textAlign="center">
-            ASAC Rocky
+            {user.username}
           </Typography>
           <AText className="disabled" sx={{ textAlign: 'center' }} mt="8px">
-            rockyyy.near
+            {user.accountId}
           </AText>
         </Box>
       </Grid>
@@ -160,6 +161,7 @@ export const CommunityPanel = () => {
     </Box>
   )
 }
+
 export const CommunityCarousel = () => {
   return (
     <Panel>
@@ -167,7 +169,7 @@ export const CommunityCarousel = () => {
         navButtonsAlwaysVisible
         autoPlay={false}
         indicators={true}
-        NextIcon={<>Prev</>}
+        NextIcon={<>Next</>}
         PrevIcon={<>Prev</>}
         navButtonsProps={{
           // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
@@ -235,6 +237,7 @@ export const CommunityCarousel = () => {
     </Panel>
   )
 }
+
 export const Tags = () => {
   return (
     <Panel mt="24px">
@@ -256,6 +259,7 @@ export const Tags = () => {
     </Panel>
   )
 }
+
 export const Profile = () => {
   const [openMembersModal, setOpenMembersModal] = useState(false)
 

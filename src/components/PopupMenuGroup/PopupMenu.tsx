@@ -52,7 +52,7 @@ export const PopupMenu = ({ handleClose }: { handleClose: AnyFunction }) => {
       <Box className="MuiPaper-root" p="24px" onClick={handleClose}>
         <Box display="flex" gap="12px" py="12px">
           <img
-            src={(user as any).avatar ?? avatar}
+            src={user.avatar ?? avatar}
             alt=""
             width="32px"
             height="32px"
@@ -63,7 +63,7 @@ export const PopupMenu = ({ handleClose }: { handleClose: AnyFunction }) => {
               variant="h6"
               sx={{ textDecoration: 'underline', textTransform: 'lowercase' }}
             >
-              {(user as any).username}
+              {user.username}
             </Typography>
           </Box>
         </Box>
