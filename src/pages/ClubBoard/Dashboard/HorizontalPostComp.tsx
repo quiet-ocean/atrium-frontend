@@ -2,9 +2,15 @@ import { Box, Typography } from '@mui/material'
 
 import { User } from './User'
 
-export const HorizontalPostComp = ({ img }: { img: string }) => {
+export const HorizontalPostComp = ({
+  img,
+  onClick,
+}: {
+  img: string
+  onClick: AnyFunction
+}) => {
   return (
-    <Box position="relative" height="150px">
+    <Box position="relative" height="150px" onClick={onClick}>
       <img src={img} alt="" width="100%" height="100%" />
       <Box
         position="absolute"

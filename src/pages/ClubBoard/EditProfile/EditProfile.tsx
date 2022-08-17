@@ -1,10 +1,11 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Box, Tabs, Typography, Tab } from '@mui/material'
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 import { AButton } from '../../../components'
+import { useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import { setCurrentBoardTab } from '../../../stores/UiStore'
 import * as Container from '../styled'
 
 import { TabPanel, a11yProps } from './styled'
@@ -30,11 +31,18 @@ const tabStyle = {
 }
 
 const EditProfile: React.FC = () => {
+  const dispatch = useAppDispatch()
+
   const [value, setValue] = React.useState(0)
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
   }
+
+  const handleBtnBackToProfile = () => {
+    dispatch(setCurrentBoardTab(3))
+  }
+
   return (
     <Container.Main>
       <Box sx={{ padding: '60px 24px' }}>
@@ -47,15 +55,15 @@ const EditProfile: React.FC = () => {
               <AButton
                 className="primary active"
                 color0btn={palette.text.primary}
+                onClick={handleBtnBackToProfile}
               >
-                <Link to="/profile-modal-development-sandbox/profile">
-                  <Typography
-                    variant="h6"
-                    sx={{ color: palette.background.paper }}
-                  >
-                    back to profile
-                  </Typography>
-                </Link>
+                <Typography
+                  variant="h6"
+                  sx={{ color: palette.background.paper }}
+                >
+                  back to profile
+                </Typography>
+
                 <ArrowForwardIcon sx={{ fontSize: 18 }} />
               </AButton>
               <AButton

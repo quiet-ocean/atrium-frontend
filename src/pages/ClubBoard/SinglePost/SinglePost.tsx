@@ -142,7 +142,14 @@ const SinglePost = () => {
               <SubHead>comments</SubHead>
               <HeadButton>See All</HeadButton>
             </Box>
-            <Box sx={{ display: 'flex', gap: '36px', padding: '24px 0px' }}>
+            <Box
+              sx={{
+                display: 'flex',
+                gap: '36px',
+                overflowX: 'auto',
+                padding: '24px 0px',
+              }}
+            >
               <Card sx={{ padding: '24px' }}>
                 <img src={cardImage} alt="" />
                 <SubHead>spotify integrating with atrium</SubHead>
