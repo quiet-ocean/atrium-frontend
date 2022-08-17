@@ -45,7 +45,7 @@ const LoginSuccess = () => {
             >
               {avatar && (
                 <img
-                  src={avatar}
+                  src={user.avatar}
                   width="160px"
                   height="160px"
                   style={{
@@ -64,7 +64,7 @@ const LoginSuccess = () => {
               Welcome Back to Atrium,
             </Typography>
             <Typography variant="h4" sx={{ textAlign: 'center' }}>
-              {(user as any).username}
+              {user.username}
             </Typography>
           </Box>
         </Box>

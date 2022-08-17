@@ -127,7 +127,7 @@ const ConnectWallet = () => {
         stepper
         step={1}
         enable={enable}
-        goForward={() => fetchLogin(`/set-name`, `/set-name`)}
+        goForward={() => fetchLogin(`/success`, `/set-name`)}
         goBack={() => navigate('/signin')}
       >
         <Box flexDirection="column">
