@@ -13,6 +13,7 @@ import {
   Chat,
   Post,
   SinglePost,
+  SearchUI,
 } from '..'
 import { useAppSelector } from '../../../hooks'
 import { TabPanel } from '../EditProfile/styled'
@@ -60,6 +61,15 @@ export const ClubBoard: React.FC = () => {
           <TabPanel value={value} index={9}>
             <FeedbackForm />
           </TabPanel>
+          <Box sx={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            top: 0,
+            paddingLeft: '80px',
+          }}>
+            <SearchUI open={true}/>
+          </Box>
         </Box>
       </Box>
     </Container.Root>
