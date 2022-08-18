@@ -1,5 +1,5 @@
 import { Box, styled, Typography, Grid } from '@mui/material'
-import { palette } from '../../../MuiTheme' 
+
 const SearchUIWrapper = styled(Box)(() => ({
   opacity: 0,
   width: '100%',
@@ -10,14 +10,16 @@ const SearchUIWrapper = styled(Box)(() => ({
   transition: 'opacity 0.5s',
   '&.open': {
     opacity: 1,
-  }
+  },
 }))
+
 const ResultItemWrapper = styled(Box)(() => ({
   // margin: '24px',
   minHeight: '100px',
   width: '100%',
   background: '#D9D9D9',
 }))
+
 export const SearchUI = ({ open }: { open: boolean }) => {
   return (
     <SearchUIWrapper className={open ? 'open' : ''}>
@@ -25,10 +27,10 @@ export const SearchUI = ({ open }: { open: boolean }) => {
         <Box px="24px">
           <Typography variant="h1">user profiles</Typography>
         </Box>
-        
+
         <Box>
           <Grid container>
-            {new Array(6).fill(2).map((_, key: number)=>(
+            {new Array(6).fill(2).map((_, key: number) => (
               <Grid item lg={4} key={key} p="24px">
                 <ResultItemWrapper></ResultItemWrapper>
               </Grid>
@@ -40,10 +42,10 @@ export const SearchUI = ({ open }: { open: boolean }) => {
         <Box px="24px">
           <Typography variant="h1">project profiles</Typography>
         </Box>
-        
+
         <Box>
           <Grid container>
-            {new Array(7).fill(2).map((_, key: number)=>(
+            {new Array(7).fill(2).map((_, key: number) => (
               <Grid item lg={4} key={key} p="24px">
                 <ResultItemWrapper></ResultItemWrapper>
               </Grid>
