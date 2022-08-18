@@ -13,7 +13,9 @@ export const AdornmentInput: React.FC<{
   label: string
   variant?: 'primary' | 'default' | undefined
   sx?: object
-}> = ({ adornment, label, variant, sx }) => {
+  value?: string
+  onChange?: AnyFunction
+}> = ({ adornment, label, variant, sx, value, onChange }) => {
   return (
     <FormControl
       sx={{ width: variant === 'default' ? '100%' : '350px', ...sx }}
@@ -38,6 +40,8 @@ export const AdornmentInput: React.FC<{
       <OutlinedInput
         id="outlined-adornment-password"
         type="text"
+        value={value}
+        onChange={onChange}
         sx={{
           '& input': {
             py: '16px',
