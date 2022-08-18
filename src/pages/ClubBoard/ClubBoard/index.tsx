@@ -23,7 +23,7 @@ import * as Container from '../styled'
 
 export const ClubBoard: React.FC = () => {
   const value = useAppSelector((state) => state.ui.currentBoardTab) || 0
-
+  const searchUiOpen = useAppSelector((state) => state.ui.searchUiOpen)
   return (
     <Container.Root>
       <div>
@@ -68,7 +68,7 @@ export const ClubBoard: React.FC = () => {
             top: 0,
             paddingLeft: '80px',
           }}>
-            <SearchUI open={true}/>
+            <SearchUI open={searchUiOpen}/>
           </Box>
         </Box>
       </Box>

@@ -11,8 +11,21 @@ import muiTheme from '../../../MuiTheme'
 
 import MenuIconList from './MenuIconList'
 // import { StatusBar } from './StatusBar'
+import { useAppDispatch } from '../../../hooks'
+import { setSearchUiOpen } from '../../../stores/UiStore'
 
 const SearchAppBar: React.FC = () => {
+  const dispatch = useAppDispatch()
+  const [value, setValue] = React.useState('')
+
+  React.useEffect(() => {
+    if(value !== '') dispatch(setSearchUiOpen(true))
+    else dispatch(setSearchUiOpen(false))
+  }, [value])
+  
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value)
+  }
   return (
     <Box
       sx={{
@@ -34,6 +47,8 @@ const SearchAppBar: React.FC = () => {
             <AdornmentInput
               label={`Search the grid...`}
               adornment={<SearchIcon />}
+              value={value}
+              onChange={handleChange}
               sx={{
                 background: muiTheme.palette.background.paper,
                 border: muiTheme.palette.border.main,
