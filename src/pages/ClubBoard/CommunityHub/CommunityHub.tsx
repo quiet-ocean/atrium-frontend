@@ -26,12 +26,12 @@ import postImage from '../../../assets/images/post-6.png'
 import { AText, AButton, AdornmentInput } from '../../../components'
 import { useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import type { ICommunity } from '../../../types/model'
 import { apiPostRequest } from '../../../utils'
 import { Reactions } from '../Dashboard'
 import * as PContainer from '../styled'
 import { Community as Container } from '../styled'
 import { PostContainer } from '../UserProfile'
-import { ICommunity } from '../../../types/model'
 
 export const Banner = () => {
   return (
@@ -101,7 +101,15 @@ export const SocialButtons = () => {
     </Box>
   )
 }
-export const Detail = ({ community, handleJoin, joined }: { community: ICommunity, handleJoin: AnyFunction, joined: boolean }) => {
+export const Detail = ({
+  community,
+  handleJoin,
+  joined,
+}: {
+  community: ICommunity
+  handleJoin: AnyFunction
+  joined: boolean
+}) => {
   const Text = styled(Typography)(() => ({
     color: `${palette.text.primary}`,
     fontFamily: 'Andale Mono Regular',

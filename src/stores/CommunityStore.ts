@@ -12,7 +12,7 @@ export const communitySlice = createSlice({
     setCommunity: (state, action: PayloadAction<ICommunity>) => {
       state.data = action.payload
     },
-  }
+  },
 })
 
 export const { setCommunity } = communitySlice.actions

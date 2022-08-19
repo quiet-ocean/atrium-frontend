@@ -32,7 +32,7 @@ export const UserInfo = ({
   }, [user, profile])
 
   useEffect(() => {
-    console.log( isMe ? 'yes, this is me' : 'no, i am not')
+    console.log(isMe ? 'yes, this is me' : 'no, i am not')
     console.log(user, profile)
   }, [isMe])
 
