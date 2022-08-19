@@ -48,22 +48,26 @@ export const UserInfo = ({ user, me }: { user: IUser; me?: boolean }) => {
         </Box>
         {!me && (
           <Box pt="24px" display="flex" justifyContent="center" gap="12px">
-            <AButton
-              className="primary outlined active"
-              color0btn={palette.secondary.light}
-            >
-              <PeopleOutlinedIcon />
-              add friend
-            </AButton>
-            <AButton
-              className="primary outlined active"
-              color0btn={palette.secondary.light}
-            >
-              <Box pr="4px">
-                <img src={MessageIcon} alt="" />
-              </Box>
-              message
-            </AButton>
+            <Box>
+              <AButton
+                className="primary outlined active"
+                color0btn={palette.secondary.light}
+              >
+                <PeopleOutlinedIcon />
+                add friend
+              </AButton>
+            </Box>
+            <Box>
+              <AButton
+                className="primary outlined active"
+                color0btn={palette.secondary.light}
+              >
+                <Box pr="4px" width="24px" height="24px">
+                  <img src={MessageIcon} alt="" width="100%" height="100%" />
+                </Box>
+                message
+              </AButton>
+            </Box>
           </Box>
         )}
       </Grid>
