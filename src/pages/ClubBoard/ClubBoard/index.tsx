@@ -61,14 +61,17 @@ export const ClubBoard: React.FC = () => {
           <TabPanel value={value} index={9}>
             <FeedbackForm />
           </TabPanel>
-          <Box sx={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            top: 0,
-            paddingLeft: '80px',
-          }}>
-            <SearchUI open={searchUiOpen}/>
+          <Box
+            sx={{
+              display: searchUiOpen ? 'block' : 'none',
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              top: 0,
+              paddingLeft: '80px',
+            }}
+          >
+            <SearchUI open={searchUiOpen} />
           </Box>
         </Box>
       </Box>

@@ -481,7 +481,7 @@ export const Members = ({
   return (
     <Container>
       <Box display="flex" justifyContent="space-between" height="100%">
-        <Typography variant="h2">members</Typography>
+        <Typography variant="h2">Friends</Typography>
         {isModal ? (
           <Box onClick={() => handleOpen(false)}>
             <CloseIcon sx={{ color: palette.text.primary }} />
