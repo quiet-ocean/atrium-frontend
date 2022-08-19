@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 import loadingGif from '../../../assets/icons/search-loading.gif'
 import { useAppSelector, useAppDispatch } from '../../../hooks'
-import { setProfile } from '../../../stores/AppStore'
+import { setProfile, setSearchUserCriteria } from '../../../stores/AppStore'
 import { setCurrentBoardTab, setSearchUiOpen } from '../../../stores/UiStore'
 import type { ICommunity } from '../../../types/model'
 import type { IUser } from '../../../types/User'
@@ -43,6 +43,7 @@ const UserResultItem = ({ user }: { user: IUser }) => {
     dispatch(setSearchUiOpen(false))
     dispatch(setCurrentBoardTab(3))
     dispatch(setProfile(user))
+    dispatch(setSearchUserCriteria(''))
   }
   return (
     <ItemWrapper onClick={handleClick}>
@@ -64,6 +65,7 @@ const CommunityResultItem = ({ item }: { item: ICommunity }) => {
   const handleClick = () => {
     dispatch(setSearchUiOpen(false))
     dispatch(setCurrentBoardTab(5))
+    dispatch(setSearchUserCriteria(''))
   }
   return (
     <ItemWrapper flexDirection="column" gap="8px" onClick={handleClick}>
