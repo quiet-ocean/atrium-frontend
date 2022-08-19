@@ -21,7 +21,7 @@ const SearchAppBar: React.FC = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const _value: string = event.target.value
-    if(_value) {
+    if (_value) {
       dispatch(setSearchUiOpen(true))
     } else dispatch(setSearchUiOpen(false))
     dispatch(setSearchUserCriteria(event.target.value))

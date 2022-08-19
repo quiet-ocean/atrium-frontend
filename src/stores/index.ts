@@ -2,6 +2,7 @@ import { configureStore, createListenerMiddleware } from '@reduxjs/toolkit'
 import { enableMapSet } from 'immer'
 import { persistStore } from 'redux-persist'
 
+import appReducer from './AppStore'
 import authReducer from './AuthStore'
 import chatReducer from './ChatStore'
 import computerReducer from './ComputerStore'
@@ -11,7 +12,6 @@ import settingReducer from './SettingStore'
 import uiReducer from './UiStore'
 import userReducer, { toggleBackgroundMode } from './UserStore'
 import whiteboardReducer from './WhiteboardStore'
-import appReducer from './AppStore'
 
 const listenerMiddleware = createListenerMiddleware()
 enableMapSet()
@@ -30,6 +30,7 @@ const store = configureStore({
     }),
 
   reducer: {
+    app: appReducer,
     auth: authReducer,
     chat: chatReducer,
     computer: computerReducer,
@@ -38,7 +39,6 @@ const store = configureStore({
     ui: uiReducer,
     user: userReducer,
     whiteboard: whiteboardReducer,
-    app: appReducer,
   },
 })
 

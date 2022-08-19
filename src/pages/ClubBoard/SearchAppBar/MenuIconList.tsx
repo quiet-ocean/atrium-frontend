@@ -13,8 +13,8 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import styled from '@mui/material/styles/styled'
 import React from 'react'
-import { useAppDispatch } from '../../../hooks'
 
+import { useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
 

@@ -64,11 +64,12 @@ export const ClubBoard: React.FC = () => {
           <Box
             sx={{
               display: searchUiOpen ? 'block' : 'none',
-              position: 'absolute',
-              width: '100%',
               height: '100%',
-              top: 0,
               paddingLeft: '80px',
+              position: 'absolute',
+              top: 0,
+              width: '100%',
+              zIndex: 1,
             }}
           >
             <SearchUI open={searchUiOpen} />
