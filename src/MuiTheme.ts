@@ -98,7 +98,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     h1: {
       color: '#F8F9FA',
       fontFamily: 'Fractul',
-      fontSize: '60px',
+      fontSize: '48px',
       fontStyle: 'normal',
       fontWeight: 600,
       lineHeight: '110%',
