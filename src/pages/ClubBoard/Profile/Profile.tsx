@@ -1,5 +1,5 @@
 import { Box, Grid } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { useAppSelector } from '../../../hooks'
 import type { IUser } from '../../../types/User'
@@ -18,21 +18,18 @@ import { UserInfo } from './UserInfo'
 
 export const Profile = () => {
   const [openMembersModal, setOpenMembersModal] = useState(false)
-  const [isMe, setIsMe] = useState(false)
+
   // const dispatch = useAppDispatch()
   const user: IUser = useAppSelector((state) => state.auth.user)
   const profile: IUser = useAppSelector((state) => state.app.profile)
 
-  useEffect(() => {
-    setIsMe(user.accountId === profile.accountId)
-  }, [user, profile])
   return (
     <Container>
       <Box>
         <Banner />
       </Box>
       <Box>
-        <UserInfo user={profile} me={isMe} />
+        <UserInfo user={user} profile={profile} />
       </Box>
       <Box p="72px 24px">
         <Grid container spacing="24px">
