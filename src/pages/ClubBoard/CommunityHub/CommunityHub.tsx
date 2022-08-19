@@ -15,7 +15,7 @@ import {
 } from '@mui/material'
 import Icon from '@mui/material/Icon'
 import { styled } from '@mui/material/styles'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import LinkIcon from '../../../assets/icons/link-chain-icon.png'
 import badge from '../../../assets/icons/verified-icon-small.png'
@@ -24,11 +24,14 @@ import avatar1 from '../../../assets/images/avatar-7.png'
 import bannerImage from '../../../assets/images/banner-2.png'
 import postImage from '../../../assets/images/post-6.png'
 import { AText, AButton, AdornmentInput } from '../../../components'
+import { useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import { apiPostRequest } from '../../../utils'
 import { Reactions } from '../Dashboard'
 import * as PContainer from '../styled'
 import { Community as Container } from '../styled'
 import { PostContainer } from '../UserProfile'
+import { ICommunity } from '../../../types/model'
 
 export const Banner = () => {
   return (
@@ -98,7 +101,7 @@ export const SocialButtons = () => {
     </Box>
   )
 }
-export const Detail = () => {
+export const Detail = ({ community, handleJoin, joined }: { community: ICommunity, handleJoin: AnyFunction, joined: boolean }) => {
   const Text = styled(Typography)(() => ({
     color: `${palette.text.primary}`,
     fontFamily: 'Andale Mono Regular',
@@ -132,7 +135,7 @@ export const Detail = () => {
         <Box pt="48px">
           <Box display="flex" justifyContent="center" gap={`8px`}>
             <Typography variant="h4" textAlign="center">
-              Antisocial Ape Club
+              {community.name}
             </Typography>
             <Box py="6px">
               <img src={badge} alt="" />
@@ -144,11 +147,13 @@ export const Detail = () => {
         </Box>
         <Box pt="32px" textAlign="center">
           <AButton
-            className="community primary outlined active"
-            color0btn={palette.secondary.light}
+            // className={`community primary outlined active`}
+            className={`community primary outlined ${joined ? '' : 'active'}`}
+            color0btn={joined ? palette.text.primary : palette.secondary.light}
+            onClick={handleJoin}
           >
             <GroupOutlinedIcon />
-            join community
+            {joined ? 'remove' : 'join'} community
           </AButton>
         </Box>
       </Grid>
@@ -579,15 +584,44 @@ export const MembersModal = ({
   )
 }
 export const CommunityHub = () => {
+  const [joined, setJoined] = useState(false)
   const [openMembersModal, setOpenMembersModal] = useState(false)
-
+  const community = useAppSelector((state) => state.community.data)
+  useEffect(() => {
+    console.log('current community is : ', community)
+    // const ownerId = community.owner
+  }, [])
+  const handleJoin = async () => {
+    if (!joined) {
+      const res = await apiPostRequest(
+        `${process.env.VITE_API_URL}/communities/join`,
+        {
+          community: community._id,
+        }
+      )
+      if (res?.data?.community) {
+        setJoined(true)
+      }
+    } else {
+      const res = await apiPostRequest(
+        `${process.env.VITE_API_URL}/communities/join`,
+        {
+          community: community._id,
+          leave: true,
+        }
+      )
+      if (res?.status === 200) {
+        setJoined(false)
+      }
+    }
+  }
   return (
     <PContainer.Main>
       <Box>
         <Banner />
       </Box>
       <Box>
-        <Detail />
+        <Detail handleJoin={handleJoin} joined={joined} community={community} />
       </Box>
       <Grid container p="72px 24px" spacing={`24px`}>
         <Grid item lg={6}>

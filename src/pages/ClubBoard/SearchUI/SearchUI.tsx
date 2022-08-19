@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import loadingGif from '../../../assets/icons/search-loading.gif'
 import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { setProfile, setSearchUserCriteria } from '../../../stores/AppStore'
+import { setCommunity } from '../../../stores/CommunityStore'
 import { setCurrentBoardTab, setSearchUiOpen } from '../../../stores/UiStore'
 import type { ICommunity } from '../../../types/model'
 import type { IUser } from '../../../types/User'
@@ -65,6 +66,7 @@ const CommunityResultItem = ({ item }: { item: ICommunity }) => {
   const handleClick = () => {
     dispatch(setSearchUiOpen(false))
     dispatch(setCurrentBoardTab(5))
+    dispatch(setCommunity(item))
     dispatch(setSearchUserCriteria(''))
   }
   return (
