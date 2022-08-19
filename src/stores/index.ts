@@ -5,6 +5,7 @@ import { persistStore } from 'redux-persist'
 import appReducer from './AppStore'
 import authReducer from './AuthStore'
 import chatReducer from './ChatStore'
+import communityReducer from './CommunityStore'
 import computerReducer from './ComputerStore'
 import { toggleBackGroundListener } from './listener'
 import roomReducer from './RoomStore'
@@ -33,6 +34,7 @@ const store = configureStore({
     app: appReducer,
     auth: authReducer,
     chat: chatReducer,
+    community: communityReducer,
     computer: computerReducer,
     room: roomReducer,
     setting: settingReducer,
