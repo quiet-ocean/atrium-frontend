@@ -8,7 +8,9 @@ import HomeIcon from '../../../assets/icons/home-icon.png'
 import MessageIcon from '../../../assets/icons/message-icon.png'
 import ProposalIcon from '../../../assets/icons/proposal-icon.png'
 import SettingIcon from '../../../assets/icons/setting-icon.png'
+import { useAppSelector, useAppDispatch } from '../../../hooks'
 import muiTheme from '../../../MuiTheme'
+import { setProfile } from '../../../stores/AppStore'
 
 const IconLink = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -21,6 +23,14 @@ const SideBar: React.FC<{
   value: number
   handleChange: AnyFunction
 }> = ({ value, handleChange }) => {
+  const dispatch = useAppDispatch()
+  const me = useAppSelector((state) => state.auth.user)
+
+  const handleSetProfile = () => {
+    console.log('set profile for me: ', me)
+
+    dispatch(setProfile(me))
+  }
   return (
     <Box
       sx={{
@@ -86,6 +96,7 @@ const SideBar: React.FC<{
               <img src={ProposalIcon} alt="" width="100%" height="100%" />
             </IconLink>
           }
+          onClick={handleSetProfile}
         />
         <Tab
           id={`simple-tab-4`}
