@@ -2,10 +2,10 @@ import { Box, styled, Typography, Grid } from '@mui/material'
 import { useState, useEffect } from 'react'
 
 import loadingGif from '../../../assets/icons/search-loading.gif'
-import { useAppSelector } from '../../../hooks'
-import { palette } from '../../../MuiTheme'
-import { setUser } from '../../../stores/AuthStore'
+import { useAppSelector, useAppDispatch } from '../../../hooks'
+import { setCurrentBoardTab, setSearchUiOpen } from '../../../stores/UiStore'
 import { apiGetRequest } from '../../../utils'
+
 const SearchUIWrapper = styled(Box)(() => ({
   '&.open': {
     opacity: 1,
@@ -19,6 +19,19 @@ const SearchUIWrapper = styled(Box)(() => ({
   width: '100%',
 }))
 
+const ItemWrapper = styled(Box)(({ theme }) => ({
+  '&:hover': {
+    // background: theme.palette.background.default,
+    background: theme.palette.grey[300],
+    // '& .MuiTypography-root ': {
+    //   color: theme.palette.background.paper,
+    // }
+  },
+  background: theme.palette.background.paper,
+  display: 'flex',
+  padding: '12px',
+  transition: 'background 0.3s',
+}))
 const UserResultItem = ({
   imgUri,
   name,
@@ -26,8 +39,15 @@ const UserResultItem = ({
   imgUri?: string
   name?: string
 }) => {
+  const dispatch = useAppDispatch()
+
+  const handleClick = () => {
+    console.log('handle click')
+    dispatch(setSearchUiOpen(false))
+    dispatch(setCurrentBoardTab(3))
+  }
   return (
-    <Box display="flex" p="12px" sx={{ background: palette.background.paper }}>
+    <ItemWrapper onClick={handleClick}>
       <Box
         width={`76px`}
         height={`76px`}
@@ -38,16 +58,21 @@ const UserResultItem = ({
       <Box p="26px 12px">
         <Typography variant="h5">{name}</Typography>
       </Box>
-    </Box>
+    </ItemWrapper>
   )
 }
 const CommunityResultItem = ({ item }: { item: any }) => {
+  const dispatch = useAppDispatch()
+  const handleClick = () => {
+    dispatch(setSearchUiOpen(false))
+    dispatch(setCurrentBoardTab(5))
+  }
   return (
-    <Box p="12px" sx={{ background: palette.background.paper }}>
+    <ItemWrapper flexDirection="column" gap="8px" onClick={handleClick}>
       <Typography variant="h5">{item?.name}</Typography>
       <Typography variant="body2">{item?.description}</Typography>
       <Typography variant="caption">{item?.owner}</Typography>
-    </Box>
+    </ItemWrapper>
   )
 }
 const LoadingItem = () => {
