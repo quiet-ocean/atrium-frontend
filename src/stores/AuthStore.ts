@@ -54,7 +54,7 @@ interface AuthState {
 
 const initialState: AuthState = {
   accessToken: '',
-  user: {},
+  user: {} as IUser,
 }
 
 export const authSlice = createSlice({
