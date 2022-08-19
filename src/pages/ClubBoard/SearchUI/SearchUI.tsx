@@ -3,7 +3,10 @@ import { useState, useEffect } from 'react'
 
 import loadingGif from '../../../assets/icons/search-loading.gif'
 import { useAppSelector, useAppDispatch } from '../../../hooks'
+import { setProfile } from '../../../stores/AppStore'
 import { setCurrentBoardTab, setSearchUiOpen } from '../../../stores/UiStore'
+import type { ICommunity } from '../../../types/model'
+import type { IUser } from '../../../types/User'
 import { apiGetRequest } from '../../../utils'
 
 const SearchUIWrapper = styled(Box)(() => ({
@@ -32,19 +35,14 @@ const ItemWrapper = styled(Box)(({ theme }) => ({
   padding: '12px',
   transition: 'background 0.3s',
 }))
-const UserResultItem = ({
-  imgUri,
-  name,
-}: {
-  imgUri?: string
-  name?: string
-}) => {
+const UserResultItem = ({ user }: { user: IUser }) => {
   const dispatch = useAppDispatch()
 
   const handleClick = () => {
     console.log('handle click')
     dispatch(setSearchUiOpen(false))
     dispatch(setCurrentBoardTab(3))
+    dispatch(setProfile(user))
   }
   return (
     <ItemWrapper onClick={handleClick}>
@@ -53,15 +51,15 @@ const UserResultItem = ({
         height={`76px`}
         sx={{ '& img': { borderRadius: '100%' } }}
       >
-        <img src={imgUri} alt="" width="100%" height="100%" />
+        <img src={user.avatar} alt="" width="100%" height="100%" />
       </Box>
       <Box p="26px 12px">
-        <Typography variant="h5">{name}</Typography>
+        <Typography variant="h5">{user.username}</Typography>
       </Box>
     </ItemWrapper>
   )
 }
-const CommunityResultItem = ({ item }: { item: any }) => {
+const CommunityResultItem = ({ item }: { item: ICommunity }) => {
   const dispatch = useAppDispatch()
   const handleClick = () => {
     dispatch(setSearchUiOpen(false))
@@ -84,8 +82,8 @@ const LoadingItem = () => {
 }
 
 export const SearchUI = ({ open }: { open: boolean }) => {
-  const [users, setUsers] = useState([])
-  const [communities, setCommunities] = useState([])
+  const [users, setUsers] = useState<IUser[]>([])
+  const [communities, setCommunities] = useState<ICommunity[]>([])
   const [loading, setLoading] = useState(false)
 
   const value = useAppSelector((state) => state.app.searchUserCriteria)
@@ -125,12 +123,9 @@ export const SearchUI = ({ open }: { open: boolean }) => {
                     <LoadingItem />
                   </Grid>
                 ))
-              : users.map((item: any, key: number) => (
+              : users.map((item: IUser, key: number) => (
                   <Grid item lg={4} key={key} p="24px">
-                    <UserResultItem
-                      imgUri={item?.avatar}
-                      name={item?.username}
-                    />
+                    <UserResultItem user={item} />
                   </Grid>
                 ))}
           </Grid>
@@ -151,7 +146,7 @@ export const SearchUI = ({ open }: { open: boolean }) => {
                     <LoadingItem />
                   </Grid>
                 ))
-              : communities.map((item: any, key: number) => (
+              : communities.map((item: ICommunity, key: number) => (
                   <Grid item lg={4} key={key} p="24px">
                     <CommunityResultItem item={item} />
                   </Grid>
