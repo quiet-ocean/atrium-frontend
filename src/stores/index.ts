@@ -11,6 +11,7 @@ import settingReducer from './SettingStore'
 import uiReducer from './UiStore'
 import userReducer, { toggleBackgroundMode } from './UserStore'
 import whiteboardReducer from './WhiteboardStore'
+import appReducer from './AppStore'
 
 const listenerMiddleware = createListenerMiddleware()
 enableMapSet()
@@ -37,6 +38,7 @@ const store = configureStore({
     ui: uiReducer,
     user: userReducer,
     whiteboard: whiteboardReducer,
+    app: appReducer,
   },
 })
 
