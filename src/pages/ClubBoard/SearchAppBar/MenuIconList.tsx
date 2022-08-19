@@ -13,8 +13,10 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import styled from '@mui/material/styles/styled'
 import React from 'react'
+import { useAppDispatch } from '../../../hooks'
 
 import { palette } from '../../../MuiTheme'
+import { setCurrentBoardTab } from '../../../stores/UiStore'
 
 import AccountSelect from './AccountSelect'
 
@@ -25,6 +27,7 @@ const IconButtonBox = styled(IconButton)(({ theme }) => ({
 }))
 
 const MenuIconList: React.FC = () => {
+  const dispatch = useAppDispatch()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
 
@@ -46,6 +49,10 @@ const MenuIconList: React.FC = () => {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget)
+  }
+
+  const handleBtnAddArticle = () => {
+    dispatch(setCurrentBoardTab(8))
   }
 
   const menuId = 'primary-search-account-menu'
@@ -148,6 +155,7 @@ const MenuIconList: React.FC = () => {
           aria-label="plus"
           color="inherit"
           sx={{ background: palette.secondary.dark }}
+          onClick={handleBtnAddArticle}
         >
           <Typography
             sx={{ fontSize: '20px', fontWeight: 600, padding: '0px 8px' }}
