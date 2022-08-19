@@ -1,6 +1,6 @@
-import type { IFriend, IArticle, ICommunity } from './'
+import type { IFriend, IArticle, ICommunity } from '.'
 
-export interface IUser {
+export interface IOGUser {
   _id: string
   accountId: string
   username: string
