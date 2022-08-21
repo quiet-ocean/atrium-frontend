@@ -607,8 +607,15 @@ export const CommunityHub = () => {
           community: community._id,
         }
       )
-      if (res?.data?.community) {
-        setJoined(true)
+      console.log('join community api response: ', res)
+      if (res.status === 200) {
+        if (res?.data?.community) {
+          console.log('you are joined')
+          setJoined(true)
+        }
+      } else {
+        console.log('Bad Request 400')
+        alert(res?.data?.msg)
       }
     } else {
       const res = await apiPostRequest(
