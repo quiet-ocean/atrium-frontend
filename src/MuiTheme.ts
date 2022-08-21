@@ -4,11 +4,11 @@ import type { CreateAtrimTheme, AtriumTheme } from './types/AtriumThemeType'
 import { assertCast } from './types/AtriumThemeType'
 assertCast<CreateAtrimTheme>(createAtruimTheme)
 
-declare module '@mui/material/TextField' {
-  interface TextFieldPropsVariantOverrides {
-    primary: true
-  }
-}
+// declare module '@mui/material/TextField' {
+//   interface TextFieldPropsVariantOverrides {
+//     primary: true
+//   }
+// }
 
 export const colors = {
   black: '#21E0A5',
