@@ -2,6 +2,7 @@ import { configureStore, createListenerMiddleware } from '@reduxjs/toolkit'
 import { enableMapSet } from 'immer'
 import { persistStore } from 'redux-persist'
 
+import appReducer from './AppStore'
 import authReducer from './AuthStore'
 import chatReducer from './ChatStore'
 import computerReducer from './ComputerStore'
@@ -29,6 +30,7 @@ const store = configureStore({
     }),
 
   reducer: {
+    app: appReducer,
     auth: authReducer,
     chat: chatReducer,
     computer: computerReducer,

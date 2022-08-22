@@ -14,7 +14,7 @@ import {
   Signin,
   LoadScene,
   ClubBoardUI,
-  LoginSuccess
+  LoginSuccess,
 } from './pages'
 import { setWalletConnected } from './stores/UserStore'
 import { getAccount } from './utils'

@@ -1,8 +1,6 @@
-export interface IUser {
-  username?: string
-  accountId?: string
-  skin?: string
-  avatar?: string
+import type { IOGUser } from './model'
+
+export interface IUser extends IOGUser {
   bio?: string
   webUrl?: string
   email?: string

@@ -7,24 +7,24 @@ import * as React from 'react'
 
 import logo from '../../../assets/images/atrium-logo.png'
 import { AdornmentInput } from '../../../components'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 import muiTheme from '../../../MuiTheme'
+import { setSearchUserCriteria } from '../../../stores/AppStore'
+import { setSearchUiOpen } from '../../../stores/UiStore'
 
 import MenuIconList from './MenuIconList'
 // import { StatusBar } from './StatusBar'
-import { useAppDispatch } from '../../../hooks'
-import { setSearchUiOpen } from '../../../stores/UiStore'
 
 const SearchAppBar: React.FC = () => {
   const dispatch = useAppDispatch()
-  const [value, setValue] = React.useState('')
+  const value = useAppSelector((state) => state.app.searchUserCriteria)
 
-  React.useEffect(() => {
-    if(value !== '') dispatch(setSearchUiOpen(true))
-    else dispatch(setSearchUiOpen(false))
-  }, [value])
-  
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value)
+    const _value: string = event.target.value
+    if (_value) {
+      dispatch(setSearchUiOpen(true))
+    } else dispatch(setSearchUiOpen(false))
+    dispatch(setSearchUserCriteria(event.target.value))
   }
   return (
     <Box

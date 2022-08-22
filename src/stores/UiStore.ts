@@ -17,10 +17,11 @@ export const UiSlice = createSlice({
     },
     setSearchUiOpen: (state, action: PayloadAction<boolean>) => {
       state.searchUiOpen = action.payload
-    }
+    },
   },
 })
 
-export const { setBoardDialogOpen, setCurrentBoardTab, setSearchUiOpen } = UiSlice.actions
+export const { setBoardDialogOpen, setCurrentBoardTab, setSearchUiOpen } =
+  UiSlice.actions
 
 export default UiSlice.reducer
