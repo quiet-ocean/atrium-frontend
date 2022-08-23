@@ -1,3 +1,4 @@
+import { KeyboardReturn } from '@mui/icons-material'
 import CloseIcon from '@mui/icons-material/Close'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
@@ -12,6 +13,7 @@ import {
   Modal,
   Backdrop,
   Fade,
+  Snackbar,
 } from '@mui/material'
 import Icon from '@mui/material/Icon'
 import { styled } from '@mui/material/styles'
@@ -26,7 +28,7 @@ import postImage from '../../../assets/images/post-6.png'
 import { AText, AButton, AdornmentInput } from '../../../components'
 import { useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
-import type { ICommunity } from '../../../types/model'
+import type { ICommunity, ICommunityMember } from '../../../types/model'
 import { apiPostRequest } from '../../../utils'
 import { Reactions } from '../Dashboard'
 import * as PContainer from '../styled'
@@ -592,13 +594,39 @@ export const MembersModal = ({
   )
 }
 export const CommunityHub = () => {
+  const vertical = 'top'
+  const horizontal = 'right'
   const [joined, setJoined] = useState(false)
+  const [openSnackbar, setOpenSnackbar] = useState(false)
   const [openMembersModal, setOpenMembersModal] = useState(false)
+  const [message, setMessage] = useState('')
+
   const community = useAppSelector((state) => state.community.data)
+  const user = useAppSelector((state) => state.auth.user)
   useEffect(() => {
     console.log('current community is : ', community)
+    if (user.joinedCommunities.length === 0) {
+      console.log('no joined community')
+      return
+    }
+    user.joinedCommunities.forEach((cm: ICommunityMember | string) => {
+      if (typeof cm === 'string') {
+        if (cm === community._id) {
+          setJoined(true)
+          return
+        }
+      } else {
+        if (
+          ((cm as ICommunityMember).community as ICommunity)._id ===
+          community._id
+        ) {
+          setJoined(true)
+          return
+        }
+      }
+    })
     // const ownerId = community.owner
-  }, [])
+  }, [community])
   const handleJoin = async () => {
     if (!joined) {
       const res = await apiPostRequest(
@@ -610,12 +638,14 @@ export const CommunityHub = () => {
       console.log('join community api response: ', res)
       if (res.status === 200) {
         if (res?.data?.community) {
-          console.log('you are joined')
+          // console.log('you are joined')
+          snack('You are successfully joined')
           setJoined(true)
         }
       } else {
         console.log('Bad Request 400')
-        alert(res?.data?.msg)
+        // alert(res?.data?.msg)
+        snack(res.data?.msg)
       }
     } else {
       const res = await apiPostRequest(
@@ -629,6 +659,11 @@ export const CommunityHub = () => {
         setJoined(false)
       }
     }
+  }
+  const handleSnackbarClose = () => setOpenSnackbar(false)
+  const snack = (_message: string) => {
+    setMessage(_message)
+    setOpenSnackbar(true)
   }
   return (
     <PContainer.Main>
@@ -653,6 +688,13 @@ export const CommunityHub = () => {
         </Grid>
       </Grid>
       <MembersModal open={openMembersModal} handleOpen={setOpenMembersModal} />
+      <Snackbar
+        anchorOrigin={{ horizontal, vertical }}
+        open={openSnackbar}
+        onClose={handleSnackbarClose}
+        message={message}
+        key={vertical + horizontal}
+      />
     </PContainer.Main>
   )
 }
