@@ -1,4 +1,3 @@
-import { KeyboardReturn } from '@mui/icons-material'
 import CloseIcon from '@mui/icons-material/Close'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
@@ -26,10 +25,12 @@ import avatar1 from '../../../assets/images/avatar-7.png'
 import bannerImage from '../../../assets/images/banner-2.png'
 import postImage from '../../../assets/images/post-6.png'
 import { AText, AButton, AdornmentInput } from '../../../components'
-import { useAppSelector } from '../../../hooks'
+import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import { setUser } from '../../../stores/AuthStore'
 import type { ICommunity, ICommunityMember } from '../../../types/model'
-import { apiPostRequest } from '../../../utils'
+import type { IUser } from '../../../types/User'
+import { apiPostRequest, apiGetRequest } from '../../../utils'
 import { Reactions } from '../Dashboard'
 import * as PContainer from '../styled'
 import { Community as Container } from '../styled'
@@ -601,32 +602,46 @@ export const CommunityHub = () => {
   const [openMembersModal, setOpenMembersModal] = useState(false)
   const [message, setMessage] = useState('')
 
+  const dispatch = useAppDispatch()
   const community = useAppSelector((state) => state.community.data)
   const user = useAppSelector((state) => state.auth.user)
+
   useEffect(() => {
-    console.log('current community is : ', community)
+    console.log('user changed: ', user)
+  }, [user])
+  useEffect(() => {
+    console.log('current community is : ', community, 'user: ', user)
     if (user.joinedCommunities.length === 0) {
       console.log('no joined community')
+      setJoined(false)
       return
     }
+    console.log(community._id, user.joinedCommunities)
     user.joinedCommunities.forEach((cm: ICommunityMember | string) => {
       if (typeof cm === 'string') {
         if (cm === community._id) {
+          console.log('you are connected')
           setJoined(true)
           return
+        } else {
+          setJoined(false)
         }
       } else {
         if (
           ((cm as ICommunityMember).community as ICommunity)._id ===
           community._id
         ) {
+          console.log('you are connected')
           setJoined(true)
           return
+        } else {
+          setJoined(false)
         }
       }
     })
+    console.log('end of loop')
     // const ownerId = community.owner
-  }, [community])
+  }, [community, user])
   const handleJoin = async () => {
     if (!joined) {
       const res = await apiPostRequest(
@@ -640,6 +655,9 @@ export const CommunityHub = () => {
         if (res?.data?.community) {
           // console.log('you are joined')
           snack('You are successfully joined')
+          const res = await apiGetRequest(`${process.env.VITE_API_URL}/auth/me`)
+          console.log(res.data)
+          dispatch(setUser(res.data as IUser))
           setJoined(true)
         }
       } else {
@@ -657,6 +675,17 @@ export const CommunityHub = () => {
       )
       if (res?.status === 200) {
         setJoined(false)
+        dispatch(
+          setUser({
+            ...user,
+            joinedCommunities: (
+              user.joinedCommunities as ICommunityMember[]
+            ).filter(
+              (item: ICommunityMember) =>
+                (item.community as ICommunity)._id !== community._id
+            ),
+          })
+        )
       }
     }
   }
