@@ -58,7 +58,7 @@ export const ArticleBuilder = () => {
         },
       }
     )
-    console.log(res1)
+
     if (res1.status === 200 && res1.data.status && res1.data.file) {
       if (res1.data.file._id) {
         setPost({ ...post, media: res1.data.file._id })
@@ -68,7 +68,7 @@ export const ArticleBuilder = () => {
         })
         if (res2.status === 200) {
           console.log('success')
-          setPost({ title: '', body: '', media: ''})
+          setPost({ body: '', media: '', title: '' })
           setImage('')
         } else {
           console.log('it seems like not going well')

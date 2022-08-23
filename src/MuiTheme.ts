@@ -42,12 +42,12 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
-          // border: '1px solid red',
-          fontFamily: 'Fractul',
           '& input': {
             fontFamily: 'Fractul',
-          }
-        }
+          },
+          // border: '1px solid red',
+          fontFamily: 'Fractul',
+        },
       },
       variants: [
         {
