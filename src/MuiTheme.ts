@@ -17,6 +17,20 @@ export const colors = {
 }
 
 const muiTheme: AtriumTheme = createAtruimTheme({
+  components: {
+    MuiSnackbar: {
+      styleOverrides: {
+        root: {
+          '& .MuiPaper-root': {
+            '& .MuiSnackbarContent-message': {
+              fontFamily: 'Fractul',
+            },
+            borderRadius: 0,
+          },
+        },
+      },
+    },
+  },
   palette: {
     background: {
       default: '#80868B',
