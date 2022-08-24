@@ -6,7 +6,7 @@ import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { setProfile, setSearchUserCriteria } from '../../../stores/AppStore'
 import { setCommunity } from '../../../stores/CommunityStore'
 import { setCurrentBoardTab, setSearchUiOpen } from '../../../stores/UiStore'
-import type { ICommunity } from '../../../types/model'
+import type { ICommunity, IOGUser } from '../../../types/model'
 import type { IUser } from '../../../types/User'
 import { apiGetRequest } from '../../../utils'
 
@@ -73,7 +73,9 @@ const CommunityResultItem = ({ item }: { item: ICommunity }) => {
     <ItemWrapper flexDirection="column" gap="8px" onClick={handleClick}>
       <Typography variant="h5">{item?.name}</Typography>
       <Typography variant="body2">{item?.description}</Typography>
-      <Typography variant="caption">{item?.owner}</Typography>
+      <Typography variant="caption">
+        {(item?.owner as IOGUser).accountId}
+      </Typography>
     </ItemWrapper>
   )
 }

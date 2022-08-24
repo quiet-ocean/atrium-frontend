@@ -28,7 +28,11 @@ import { AText, AButton, AdornmentInput } from '../../../components'
 import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { setUser } from '../../../stores/AuthStore'
-import type { ICommunity, ICommunityMember } from '../../../types/model'
+import type {
+  ICommunity,
+  ICommunityMember,
+  IOGUser,
+} from '../../../types/model'
 import type { IUser } from '../../../types/User'
 import { apiPostRequest, apiGetRequest } from '../../../utils'
 import { Reactions } from '../Dashboard'
@@ -153,7 +157,7 @@ export const Detail = ({
             </Box>
           </Box>
           <AText className="disabled" sx={{ textAlign: 'center' }}>
-            ownerwalletfullID
+            {(community.owner as IOGUser).accountId}
           </AText>
         </Box>
         <Box pt="32px" textAlign="center">
