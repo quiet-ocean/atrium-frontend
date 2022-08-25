@@ -25,6 +25,8 @@ import bannerImage from '../../../assets/images/banner-2.png'
 import { AText, AButton, AdornmentInput } from '../../../components'
 import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import type { TAlert, TSnack } from '../../../stores/AppStore'
+import { openSnack } from '../../../stores/AppStore'
 import { setUser } from '../../../stores/AuthStore'
 import type { ICommunity, ICommunityMember, IUser } from '../../../types/model'
 import { apiPostRequest, apiGetRequest } from '../../../utils'
@@ -32,8 +34,6 @@ import * as PContainer from '../styled'
 import { Community as Container } from '../styled'
 
 import { FeaturedPost, MessageItem } from './'
-
-import { TAlert, TSnack } from '../../../stores/AppStore'
 
 export const Banner = () => {
   return (
@@ -451,10 +451,8 @@ export const MembersModal = ({
   )
 }
 export const CommunityHub = () => {
-
   const [joined, setJoined] = useState(false)
   const [openMembersModal, setOpenMembersModal] = useState(false)
-
 
   const dispatch = useAppDispatch()
   const community = useAppSelector((state) => state.community.data)
@@ -543,9 +541,9 @@ export const CommunityHub = () => {
       }
     }
   }
-  const handleSnack = (type: TAlert, message: string) => {
-    setMessage(_message)
-    setOpenSnackbar(true)
+  const handleSnack = (type: TAlert, content: string) => {
+    const snack: TSnack = { content, open: true, type }
+    dispatch(openSnack(snack))
   }
   return (
     <PContainer.Main>
