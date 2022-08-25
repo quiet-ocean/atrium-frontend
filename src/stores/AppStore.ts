@@ -42,7 +42,12 @@ export const AppSlice = createSlice({
   },
 })
 
-export const { setSearchUserCriteria, setProfile, setSnackbarOpen, openSnack } =
-  AppSlice.actions
+export const {
+  setSearchUserCriteria,
+  setProfile,
+  setSnackbarOpen,
+  openSnack,
+  setCurrentUserId,
+} = AppSlice.actions
 
 export default AppSlice.reducer
