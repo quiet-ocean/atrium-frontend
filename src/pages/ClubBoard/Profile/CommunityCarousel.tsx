@@ -1,9 +1,8 @@
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import Carousel from 'react-material-ui-carousel'
 
 import { palette } from '../../../MuiTheme'
 import type { ICommunityMember } from '../../../types/model'
-import { ICommunity } from '../../../types/model'
 import { Community as Panel } from '../styled'
 
 import { CommunityPanel } from './CommunityPanel'
@@ -65,15 +64,22 @@ const settings = {
 export const CommunityCarousel = ({
   members,
 }: {
-  members: string[] | ICommunityMember[]
+  members: ICommunityMember[]
 }) => {
   return (
     <Panel>
-      <Carousel {...settings}>
-        {members.map((item: any, key: number) => (
-          <CommunityPanel member={item} key={key} />
-        ))}
-      </Carousel>
+      {members && members.length ? (
+        <Carousel {...settings}>
+          {members.map((item: any, key: number) => (
+            <CommunityPanel member={item} key={key} />
+          ))}
+        </Carousel>
+      ) : (
+        <Box p="24px" display="flex" justifyContent="center">
+          <Typography variant="h5">No Joined Community</Typography>
+        </Box>
+      )}
+
       {/* <Box display="flex" gap="24px">
         <Box display="flex" gap="24px"></Box>
         <Box display="flex" gap="16px">
