@@ -2,14 +2,18 @@ import { Box, Stack, Typography, TextField, Button, Input } from '@mui/material'
 import axios from 'axios'
 import { useState, useEffect, useRef } from 'react'
 
+import { useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import type { TAlert, TSnack } from '../../../stores/AppStore'
+import { openSnack } from '../../../stores/AppStore'
 import type { IPost } from '../../../types/model'
 import { apiPostRequest } from '../../../utils'
 import * as Container from '../styled'
 
-type NameType = 'title' | 'body'
+type TName = 'title' | 'body'
 const url = process.env.VITE_API_URL || `http://localhost:2567`
 export const ArticleBuilder = () => {
+  const dispatch = useAppDispatch()
   const [post, setPost] = useState<IPost>({} as IPost)
   const [image, setImage] = useState<string>('')
   const [file, setFile] = useState<File | null>(null)
@@ -18,8 +22,13 @@ export const ArticleBuilder = () => {
   useEffect(() => {
     console.log(post)
   }, [post])
+
+  const handleSnack = (type: TAlert, content: string) => {
+    const payload: TSnack = { content, open: true, type }
+    dispatch(openSnack(payload))
+  }
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const name: NameType = event.target.name as NameType
+    const name: TName = event.target.name as TName
     setPost({ ...post, [name]: event.target.value })
   }
   const handleFileInput = () => {
@@ -38,15 +47,18 @@ export const ArticleBuilder = () => {
         fr.readAsDataURL(_file)
         setFile(_file)
       } else {
-        console.log('unsupported file')
+        // console.log('unsupported file')
+        handleSnack('warning', 'Unsupported file')
       }
     } else {
-      console.log('file not exist')
+      // console.log('file not exist')
+      handleSnack('warning', 'File not exist')
     }
   }
   const uploadPost = async () => {
     if (!post.title || !post.body || !image) {
-      console.log('input data correctly')
+      // console.log('input data correctly')
+      handleSnack('warning', 'Type data exactly')
       return
     }
     let res1 = await axios.post(
@@ -70,15 +82,18 @@ export const ArticleBuilder = () => {
           console.log('success')
           setPost({ body: '', media: '', title: '' })
           setImage('')
+          handleSnack('success', 'Succeed to create post')
         } else {
-          console.log('it seems like not going well')
+          // console.log('it seems like not going well')
+          handleSnack('error', 'Error occured')
         }
       } else {
         setImage('')
         setFile(null)
       }
     } else {
-      console.log('file is not uploaded')
+      // console.log('file is not uploaded')
+      handleSnack('error', 'File is not uploaded')
     }
   }
   return (
