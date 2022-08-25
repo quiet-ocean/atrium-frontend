@@ -18,20 +18,20 @@ export const FeaturedPost = ({
 }) => {
   return (
     <Container height="100%">
-      {post ? (
-        <>
-          <Box display="flex" justifyContent="space-between">
-            <Typography variant="h2">featured post</Typography>
-            <Box>
-              <AButton
-                className="primary outlined"
-                color0btn={palette.secondary.light}
-              >
-                view all posts
-              </AButton>
-            </Box>
-          </Box>
-          <Box pt="40px">
+      <Box display="flex" justifyContent="space-between">
+        <Typography variant="h2">featured post</Typography>
+        <Box>
+          <AButton
+            className="primary outlined"
+            color0btn={palette.secondary.light}
+          >
+            view all posts
+          </AButton>
+        </Box>
+      </Box>
+      <Box pt="40px">
+        {post ? (
+          <>
             <PostContainer img={post.media} height={height ? height : ''}>
               <Box display="flex" gap="24px">
                 <Box>
@@ -46,11 +46,11 @@ export const FeaturedPost = ({
             <Box pt="16px">
               <MessageItem user={post.author} />
             </Box>
-          </Box>
-        </>
-      ) : (
-        <EmptyBox>No Featured Post</EmptyBox>
-      )}
+          </>
+        ) : (
+          <EmptyBox>No Featured Post</EmptyBox>
+        )}
+      </Box>
     </Container>
   )
 }
