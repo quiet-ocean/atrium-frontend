@@ -1,5 +1,5 @@
-import type { ICommunity, ICommunityMember } from './'
-export interface IOGUser {
+import type { ICommunity, ICommunityMember } from '.'
+export interface IUser {
   _id: string
   accountId: string
   username: string
@@ -11,4 +11,12 @@ export interface IOGUser {
   joinedCommunities: string[] | ICommunityMember[] //id
   createdAt: string
   updatedAt: string
+
+  //user.ts
+  bio?: string
+  webUrl?: string
+  email?: string
+  isDiscord?: boolean
+  isTwitter?: boolean
+  isInstagram?: boolean
 }

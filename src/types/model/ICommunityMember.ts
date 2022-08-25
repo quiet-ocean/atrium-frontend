@@ -1,6 +1,4 @@
-import type { IUser } from '../User'
-
-import type { ICommunity } from './ICommunity'
+import type { ICommunity, IUser } from './'
 
 export interface ICommunityMember {
   _id: string

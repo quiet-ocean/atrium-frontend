@@ -1,7 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
-import type { IUser } from '../types/User'
+import type { IUser } from '../types/model'
 
 export const AppSlice = createSlice({
   initialState: {

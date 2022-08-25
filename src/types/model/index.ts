@@ -1,5 +1,5 @@
 export * from './IArticle'
 export * from './ICommunity'
 export * from './IFriend'
-export * from './IOGUser'
+export * from './IUser'
 export * from './ICommunityMember'

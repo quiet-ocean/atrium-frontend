@@ -7,7 +7,7 @@ import { AText, AButton } from '../../../components'
 import { useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
-import type { IUser } from '../../../types/User'
+import type { IUser } from '../../../types/model'
 import { apiPostRequest } from '../../../utils'
 import { SocialButtons } from '../CommunityHub'
 import editIcon from '../images/edit-icon.png'
@@ -33,7 +33,7 @@ export const UserInfo = ({
 
   useEffect(() => {
     console.log(isMe ? 'yes, this is me' : 'no, i am not')
-    console.log(user, profile)
+    console.log(profile)
   }, [isMe])
 
   const handleBtnEditProfile = () => {

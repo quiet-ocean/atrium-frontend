@@ -4,7 +4,7 @@ import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
 import * as authApi from '../services/authApi'
-import type { IUser } from '../types/User'
+import type { IUser } from '../types/model'
 
 import { setPlayerAvatar, setPlayerName } from './UserStore'
 

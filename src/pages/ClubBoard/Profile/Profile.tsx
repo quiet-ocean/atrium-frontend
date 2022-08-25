@@ -2,7 +2,7 @@ import { Box, Grid } from '@mui/material'
 import { useState } from 'react'
 
 import { useAppSelector } from '../../../hooks'
-import type { IUser } from '../../../types/User'
+import type { IUser } from '../../../types/model'
 import {
   FeaturedPost,
   Members,
@@ -34,11 +34,11 @@ export const Profile = () => {
       <Box p="72px 24px">
         <Grid container spacing="24px">
           <Grid item lg={6}>
-            <FeaturedPost height="380px" />
+            <FeaturedPost height="380px"/>
           </Grid>
           <Grid item lg={6}>
             <Box height="100%">
-              <CommunityCarousel />
+              <CommunityCarousel members={profile.joinedCommunities} />
               <Tags />
             </Box>
           </Grid>

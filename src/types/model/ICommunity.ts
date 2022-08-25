@@ -1,8 +1,8 @@
-import { IOGUser } from './IOGUser'
+import { IUser } from './'
 export interface ICommunity {
   _id: string
   name: string
-  owner: string | IOGUser //object id - user
+  owner: string | IUser //object id - user
   description: string
   logoUrl?: string
   discordUrl?: string

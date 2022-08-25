@@ -31,9 +31,8 @@ import { setUser } from '../../../stores/AuthStore'
 import type {
   ICommunity,
   ICommunityMember,
-  IOGUser,
+  IUser,
 } from '../../../types/model'
-import type { IUser } from '../../../types/User'
 import { apiPostRequest, apiGetRequest } from '../../../utils'
 import { Reactions } from '../Dashboard'
 import * as PContainer from '../styled'
@@ -157,7 +156,7 @@ export const Detail = ({
             </Box>
           </Box>
           <AText className="disabled" sx={{ textAlign: 'center' }}>
-            {(community.owner as IOGUser).accountId}
+            {(community.owner as IUser).accountId}
           </AText>
         </Box>
         <Box pt="32px" textAlign="center">

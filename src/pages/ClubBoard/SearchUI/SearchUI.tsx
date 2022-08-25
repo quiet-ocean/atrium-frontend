@@ -6,8 +6,7 @@ import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { setProfile, setSearchUserCriteria } from '../../../stores/AppStore'
 import { setCommunity } from '../../../stores/CommunityStore'
 import { setCurrentBoardTab, setSearchUiOpen } from '../../../stores/UiStore'
-import type { ICommunity, IOGUser } from '../../../types/model'
-import type { IUser } from '../../../types/User'
+import type { ICommunity, IUser } from '../../../types/model'
 import { apiGetRequest } from '../../../utils'
 
 const SearchUIWrapper = styled(Box)(() => ({
@@ -74,7 +73,7 @@ const CommunityResultItem = ({ item }: { item: ICommunity }) => {
       <Typography variant="h5">{item?.name}</Typography>
       <Typography variant="body2">{item?.description}</Typography>
       <Typography variant="caption">
-        {(item?.owner as IOGUser).accountId}
+        {(item?.owner as IUser).accountId}
       </Typography>
     </ItemWrapper>
   )
