@@ -85,7 +85,7 @@ export const Profile = () => {
               <Grid item lg={6}>
                 <Box height="100%">
                   <CommunityCarousel members={user.joinedCommunities} />
-                  <Tags />
+                  <Tags tags={user.tags}/>
                 </Box>
               </Grid>
               <Grid item lg={6}>
@@ -103,7 +103,7 @@ export const Profile = () => {
         </>
       ) : (
         <Box p="24px" display="flex" justifyContent="center">
-          <Typography variant="h5">No Joined Community</Typography>
+          <Typography variant="h5">Loading</Typography>
         </Box>
       )}
     </Container>
