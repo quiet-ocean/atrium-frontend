@@ -1,22 +1,30 @@
-import type { ICommunity, ICommunityMember } from '.'
+import type { ICommunity, ICommunityMember, IPost, IFriend, ITag } from '.'
 export interface IUser {
-  _id: string
-  accountId: string
-  username: string
-  avatar: string
-  skin: string
-  friends: string[] // object ids for friend
-  articles: string[] //id
-  ownedCommunities: string[] | ICommunity[] //id
-  joinedCommunities: string[] | ICommunityMember[] //id
-  createdAt: string
-  updatedAt: string
-
-  //user.ts
-  bio?: string
-  webUrl?: string
-  email?: string
-  isDiscord?: boolean
-  isTwitter?: boolean
-  isInstagram?: boolean
+  accountId: {
+    type: String
+    unique: true
+  }
+  username: String
+  avatar: String
+  skin: String
+  bio: String
+  websiteUrl: String
+  isWebsiteUrlDOP: Boolean
+  email: String
+  isEmailNotification: Boolean
+  discord: String
+  isDiscordDOP: Boolean
+  twitter: String
+  isTwitterDOP: Boolean
+  instagram: String
+  isInstagramDOP: Boolean
+  isPrivate: Boolean
+  blurp: String
+  friends: IFriend[]
+  posts: IPost[]
+  ownedCommunities: ICommunity[]
+  joinedCommunities: ICommunityMember
+  favoriteCommunities: ICommunity[]
+  featuredPost: IPost[]
+  tags: ITag[]
 }
