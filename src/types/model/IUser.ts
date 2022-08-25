@@ -2,22 +2,22 @@ import type { ICommunity, ICommunityMember, IPost, IFriend, ITag } from '.'
 export interface IUser {
   _id: string
   accountId: string
-  username: String
-  avatar: String
-  skin: String
-  bio: String
-  websiteUrl: String
-  isWebsiteUrlDOP: Boolean
-  email: String
-  isEmailNotification: Boolean
-  discord: String
-  isDiscordDOP: Boolean
-  twitter: String
-  isTwitterDOP: Boolean
-  instagram: String
-  isInstagramDOP: Boolean
-  isPrivate: Boolean
-  blurp: String
+  username: string
+  avatar: string
+  skin: string
+  bio: string
+  websiteUrl: string
+  isWebsiteUrlDOP: boolean
+  email: string
+  isEmailNotification: boolean
+  discord: string
+  isDiscordDOP: boolean
+  twitter: string
+  isTwitterDOP: boolean
+  instagram: string
+  isInstagramDOP: boolean
+  isPrivate: boolean
+  blurp: string
   friends: IFriend[]
   posts: IPost[]
   ownedCommunities: ICommunity[]
