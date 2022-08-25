@@ -15,9 +15,6 @@ import { EditContent, EditWallet, EditIdentity, EditTags } from './'
 const tabItems = ['content', 'tags', 'identity', 'wallet & privacy']
 
 const tabStyle = {
-  '&:first-child': {
-    paddingLeft: '0px',
-  },
   alignItems: 'flex-start',
   color: palette.text.disabled,
   fontFamily: 'Fractul Alt',
@@ -81,7 +78,15 @@ const EditProfile: React.FC = () => {
               aria-label="basic tabs example"
             >
               {tabItems.map((item: string, key: number) => (
-                <Tab label={item} {...a11yProps(key)} key={key} sx={tabStyle} />
+                <Tab
+                  label={item}
+                  {...a11yProps(key)}
+                  key={key}
+                  sx={{
+                    ...tabStyle,
+                    paddingLeft: key === 0 ? '0px' : '16px',
+                  }}
+                />
               ))}
             </Tabs>
           </Box>
