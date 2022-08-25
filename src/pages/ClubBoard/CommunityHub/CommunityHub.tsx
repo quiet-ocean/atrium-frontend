@@ -12,7 +12,6 @@ import {
   Modal,
   Backdrop,
   Fade,
-  Snackbar,
 } from '@mui/material'
 import Icon from '@mui/material/Icon'
 import { styled } from '@mui/material/styles'
@@ -23,17 +22,18 @@ import badge from '../../../assets/icons/verified-icon-small.png'
 import avatar2 from '../../../assets/images/avatar-6.png'
 import avatar1 from '../../../assets/images/avatar-7.png'
 import bannerImage from '../../../assets/images/banner-2.png'
-import postImage from '../../../assets/images/post-6.png'
 import { AText, AButton, AdornmentInput } from '../../../components'
 import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { setUser } from '../../../stores/AuthStore'
 import type { ICommunity, ICommunityMember, IUser } from '../../../types/model'
 import { apiPostRequest, apiGetRequest } from '../../../utils'
-import { Reactions } from '../Dashboard'
 import * as PContainer from '../styled'
 import { Community as Container } from '../styled'
-import { PostContainer } from '../UserProfile'
+
+import { FeaturedPost, MessageItem } from './'
+
+import { TAlert, TSnack } from '../../../stores/AppStore'
 
 export const Banner = () => {
   return (
@@ -188,90 +188,6 @@ export const Detail = ({
   )
 }
 
-export const ChatMessage = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <Box>
-      <Box display="flex" gap="12px">
-        <img
-          src={avatar2}
-          alt=""
-          width="36px"
-          height="36px"
-          style={{ borderRadius: '18px' }}
-        />
-        <Box display="flex" gap="8px" py="6px">
-          <Box>
-            <AText sx={{ fontSize: '14px', fontWeight: 600, padding: '2px' }}>
-              Hades
-            </AText>
-          </Box>
-          <Box>
-            <AButton
-              className="tag-secondary outlined tag-small"
-              color0btn="#71E5FF"
-            >
-              founder
-            </AButton>
-          </Box>
-          <Box>
-            <AButton
-              className="tag-secondary tag-small outlined"
-              color0btn="#FFB350"
-            >
-              devs
-            </AButton>
-          </Box>
-          <Box>
-            <AButton
-              className="tag-secondary tag-small outlined"
-              color0btn="#DE58FF"
-            >
-              moderator
-            </AButton>
-          </Box>
-        </Box>
-      </Box>
-      <Box pl="49px">{children}</Box>
-    </Box>
-  )
-}
-export const UsernameWithTags = () => {
-  return (
-    <>
-      <Box display="flex" gap="8px">
-        <Box>
-          <AText sx={{ fontSize: '14px', fontWeight: 600, padding: '2px' }}>
-            Hades
-          </AText>
-        </Box>
-        <Box>
-          <AButton
-            className="tag-secondary outlined tag-small"
-            color0btn="#71E5FF"
-          >
-            founder
-          </AButton>
-        </Box>
-        <Box>
-          <AButton
-            className="tag-secondary tag-small outlined"
-            color0btn="#FFB350"
-          >
-            devs
-          </AButton>
-        </Box>
-        <Box>
-          <AButton
-            className="tag-secondary tag-small outlined"
-            color0btn="#DE58FF"
-          >
-            moderator
-          </AButton>
-        </Box>
-      </Box>
-    </>
-  )
-}
 type TagStyleProps = { tcolor: string }
 export const Tag = styled(Button)<TagStyleProps>(({ theme, tcolor }) => ({
   '&.outlined': {
@@ -288,65 +204,6 @@ export const Tag = styled(Button)<TagStyleProps>(({ theme, tcolor }) => ({
   textTransform: 'capitalize',
 }))
 
-export const UserIntro = () => {
-  return (
-    <Box pb="24px">
-      <ChatMessage>
-        <Typography
-          sx={{
-            alignItems: 'center',
-            color: palette.text.primary,
-            fontFamily: 'Andale Mono Regular',
-            fontSize: '16px',
-            fontStyle: 'normal',
-            fontWeight: 400,
-            letterSpacing: '-0.05em',
-            lineHeight: '120%',
-          }}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac
-          convallis commodo morbi ut leo gravida ...
-        </Typography>
-      </ChatMessage>
-    </Box>
-  )
-}
-export const FeaturedPost = ({ height }: { height?: string }) => {
-  return (
-    <Container>
-      <Box display="flex" justifyContent="space-between">
-        <Typography variant="h2">featured post</Typography>
-        <Box>
-          <AButton
-            className="primary outlined"
-            color0btn={palette.secondary.light}
-          >
-            view all posts
-          </AButton>
-        </Box>
-      </Box>
-      <Box pt="40px">
-        <PostContainer img={postImage} height={height ? height : ''}>
-          <Box display="flex" gap="24px">
-            <Box>
-              <AText>Antisocial Ape Club Raffles Coming Soon</AText>
-              <AText className="disabled">
-                Keep the peace? Fuck that. We keep it antisocial on this island.
-                Stay Ape.{' '}
-              </AText>
-            </Box>
-            <Box display="flex" flexDirection="column" justifyContent="end">
-              <Reactions />
-            </Box>
-          </Box>
-        </PostContainer>
-        <Box pt="16px">
-          <UserIntro />
-        </Box>
-      </Box>
-    </Container>
-  )
-}
 export const LiveChat = () => {
   return (
     <Container height="100%">
@@ -380,18 +237,18 @@ export const LiveChat = () => {
               overflowY: 'scroll',
             }}
           >
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
+            {/* <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem /> */}
           </Box>
           <Box>
             <AdornmentInput
@@ -594,12 +451,10 @@ export const MembersModal = ({
   )
 }
 export const CommunityHub = () => {
-  const vertical = 'top'
-  const horizontal = 'right'
+
   const [joined, setJoined] = useState(false)
-  const [openSnackbar, setOpenSnackbar] = useState(false)
   const [openMembersModal, setOpenMembersModal] = useState(false)
-  const [message, setMessage] = useState('')
+
 
   const dispatch = useAppDispatch()
   const community = useAppSelector((state) => state.community.data)
@@ -653,7 +508,7 @@ export const CommunityHub = () => {
       if (res.status === 200) {
         if (res?.data?.community) {
           // console.log('you are joined')
-          snack('You are successfully joined')
+          handleSnack('success', 'You are successfully joined')
           const res = await apiGetRequest(`${process.env.VITE_API_URL}/auth/me`)
           console.log(res.data)
           dispatch(setUser(res.data as IUser))
@@ -662,7 +517,7 @@ export const CommunityHub = () => {
       } else {
         console.log('Bad Request 400')
         // alert(res?.data?.msg)
-        snack(res.data?.msg)
+        handleSnack('error', res.data?.msg)
       }
     } else {
       const res = await apiPostRequest(
@@ -688,8 +543,7 @@ export const CommunityHub = () => {
       }
     }
   }
-  const handleSnackbarClose = () => setOpenSnackbar(false)
-  const snack = (_message: string) => {
+  const handleSnack = (type: TAlert, message: string) => {
     setMessage(_message)
     setOpenSnackbar(true)
   }
@@ -716,13 +570,6 @@ export const CommunityHub = () => {
         </Grid>
       </Grid>
       <MembersModal open={openMembersModal} handleOpen={setOpenMembersModal} />
-      <Snackbar
-        anchorOrigin={{ horizontal, vertical }}
-        open={openSnackbar}
-        onClose={handleSnackbarClose}
-        message={message}
-        key={vertical + horizontal}
-      />
     </PContainer.Main>
   )
 }

@@ -73,7 +73,14 @@ export const Profile = () => {
           <Box p="72px 24px">
             <Grid container spacing="24px">
               <Grid item lg={6}>
-                <FeaturedPost height="380px" />
+                <FeaturedPost
+                  height="380px"
+                  post={
+                    user.featuredPost && user.featuredPost.length
+                      ? user.featuredPost[0]
+                      : null
+                  }
+                />
               </Grid>
               <Grid item lg={6}>
                 <Box height="100%">
