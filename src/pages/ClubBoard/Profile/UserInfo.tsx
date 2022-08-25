@@ -25,15 +25,19 @@ export const UserInfo = ({
   const [isFriend, setIsFriend] = useState(false)
 
   useEffect(() => {
-    if (user.accountId === profile.accountId) setIsMe(true)
-    else setIsMe(false)
-    if (user.friends.indexOf(profile._id) > -1) setIsFriend(true)
-    else setIsFriend(false)
+    if (user && profile) {
+      if (user.accountId === profile.accountId) setIsMe(true)
+      else setIsMe(false)
+      if (user.friends.indexOf(profile._id) > -1) setIsFriend(true)
+      else setIsFriend(false)
+    } else {
+      console.log('user and profile data is null')
+    }
   }, [user, profile])
 
   useEffect(() => {
     console.log(isMe ? 'yes, this is me' : 'no, i am not')
-    console.log(user, profile)
+    console.log(profile)
   }, [isMe])
 
   const handleBtnEditProfile = () => {

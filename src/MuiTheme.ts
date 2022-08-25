@@ -4,6 +4,12 @@ import type { CreateAtrimTheme, AtriumTheme } from './types/AtriumThemeType'
 import { assertCast } from './types/AtriumThemeType'
 assertCast<CreateAtrimTheme>(createAtruimTheme)
 
+// declare module '@mui/material/TextField' {
+//   interface TextFieldPropsVariantOverrides {
+//     primary: true
+//   }
+// }
+
 export const colors = {
   black: '#21E0A5',
   grey1: '#4A4A4A',
@@ -18,6 +24,60 @@ export const colors = {
 
 const muiTheme: AtriumTheme = createAtruimTheme({
   components: {
+    MuiButton: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '&:hover': {
+            border: `1px solid ${theme.palette.text.primary}`,
+            color: theme.palette.text.primary,
+          },
+          border: `1px solid ${theme.palette.background.default}`,
+          borderRadius: '0',
+          color: theme.palette.background.default,
+          fontFamily: 'Fractul',
+          textTransform: 'capitalize',
+        }),
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '& input': {
+            fontFamily: 'Fractul',
+          },
+          // border: '1px solid red',
+          fontFamily: 'Fractul',
+        },
+      },
+      variants: [
+        {
+          props: { variant: 'standard' },
+          style: {
+            '& > div.MuiInputBase-root::after': {
+              borderBottom: '0px solid blue',
+              content: '""',
+            },
+            '& > div.MuiInputBase-root::before': {
+              borderBottom: '0px solid blue',
+              content: '""',
+            },
+            '& > div.MuiInputBase-root:hover::before': {
+              borderBottom: '0px solid blue',
+              content: '""',
+            },
+            border: `1px solid #80868B`,
+            borderRadius: 0,
+            padding: '20px',
+          },
+        },
+        {
+          props: { variant: 'outlined' },
+          style: {
+            border: '0px',
+          },
+        },
+      ],
+    },
     MuiSnackbar: {
       styleOverrides: {
         root: {
@@ -68,7 +128,8 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     secondary: {
       dark: colors.primaryBlue,
       light: colors.primaryYellow,
-      main: colors.primaryRed,
+      // main: colors.primaryRed,
+      main: '#E90026',
     },
     text: {
       disabled: '#a8a8a8',
