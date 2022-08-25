@@ -5,11 +5,15 @@ import type { IUser } from '../types/model'
 
 export const AppSlice = createSlice({
   initialState: {
+    currentUserId: '',
     profile: {} as IUser,
     searchUserCriteria: '',
   },
   name: 'app',
   reducers: {
+    setCurrentUserId: (state, action: PayloadAction<string>) => {
+      state.currentUserId = action.payload
+    },
     setProfile: (state, action: PayloadAction<IUser>) => {
       state.profile = action.payload
     },
@@ -19,6 +23,7 @@ export const AppSlice = createSlice({
   },
 })
 
-export const { setSearchUserCriteria, setProfile } = AppSlice.actions
+export const { setCurrentUserId, setSearchUserCriteria, setProfile } =
+  AppSlice.actions
 
 export default AppSlice.reducer

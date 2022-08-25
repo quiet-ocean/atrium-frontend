@@ -28,11 +28,7 @@ import { AText, AButton, AdornmentInput } from '../../../components'
 import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { setUser } from '../../../stores/AuthStore'
-import type {
-  ICommunity,
-  ICommunityMember,
-  IUser,
-} from '../../../types/model'
+import type { ICommunity, ICommunityMember, IUser } from '../../../types/model'
 import { apiPostRequest, apiGetRequest } from '../../../utils'
 import { Reactions } from '../Dashboard'
 import * as PContainer from '../styled'

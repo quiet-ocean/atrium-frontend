@@ -4,39 +4,39 @@ import { useState, useEffect } from 'react'
 
 import MessageIcon from '../../../assets/icons/message-icon-dark.png'
 import { AText, AButton } from '../../../components'
-import { useAppDispatch } from '../../../hooks'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
-import type { IUser } from '../../../types/model'
+import type { IUser, IFriend } from '../../../types/model'
 import { apiPostRequest } from '../../../utils'
 import { SocialButtons } from '../CommunityHub'
 import editIcon from '../images/edit-icon.png'
 
 import { Text } from './styled'
-export const UserInfo = ({
-  user,
-  profile,
-}: {
-  user: IUser
-  profile: IUser
-}) => {
+
+export const UserInfo = ({ user, isMe }: { user: IUser; isMe?: boolean }) => {
   const dispatch = useAppDispatch()
-  const [isMe, setIsMe] = useState(false)
   const [isFriend, setIsFriend] = useState(false)
 
-  useEffect(() => {
-    if (user.accountId === profile.accountId) setIsMe(true)
-    else setIsMe(false)
-    if (user.friends.indexOf(profile._id) > -1) setIsFriend(true)
-    else setIsFriend(false)
-  }, [user, profile])
+  const me = useAppSelector((state) => state.auth.user)
+
 
   useEffect(() => {
-    console.log(isMe ? 'yes, this is me' : 'no, i am not')
-    console.log(profile)
-  }, [isMe])
+    let isMounted = true
+    if (isMounted && user && user.friends) {
+      user.friends.forEach((friend: IFriend) => {
+        if (friend.requester === me._id) {
+          setIsFriend(true)
+          return
+        }
+      })
+    }
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
-  const handleBtnEditProfile = () => {
+  const handleEdit = () => {
     dispatch(setCurrentBoardTab(4))
   }
 
@@ -46,7 +46,7 @@ export const UserInfo = ({
       const res = await apiPostRequest(
         `${process.env.VITE_API_URL}/user/friend`,
         {
-          recipient: profile._id,
+          recipient: user._id,
           status: 4,
         }
       )
@@ -58,7 +58,7 @@ export const UserInfo = ({
       const res = await apiPostRequest(
         `${process.env.VITE_API_URL}/user/friend`,
         {
-          recipient: profile._id,
+          recipient: user._id,
           status: 3,
         }
       )
@@ -92,10 +92,10 @@ export const UserInfo = ({
         </Box>
         <Box pt="48px">
           <Typography variant="h4" textAlign="center">
-            {profile.username}
+            {user.username}
           </Typography>
           <AText className="disabled" sx={{ textAlign: 'center' }} mt="8px">
-            {profile.accountId}
+            {user.accountId}
           </AText>
         </Box>
         {!isMe && (
@@ -136,7 +136,7 @@ export const UserInfo = ({
             className="outlined primary active"
             color0btn={palette.text.disabled}
             sx={{ position: 'absolute', right: '24px', top: '24px' }}
-            onClick={handleBtnEditProfile}
+            onClick={handleEdit}
           >
             <img src={editIcon} alt="" width="24px" height="24px" />
             &nbsp; edit profile
