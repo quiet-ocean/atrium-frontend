@@ -77,6 +77,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
           },
         },
       ],
+    },
     MuiSnackbar: {
       styleOverrides: {
         root: {
