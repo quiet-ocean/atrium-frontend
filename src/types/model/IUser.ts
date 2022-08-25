@@ -1,9 +1,7 @@
 import type { ICommunity, ICommunityMember, IPost, IFriend, ITag } from '.'
 export interface IUser {
-  accountId: {
-    type: String
-    unique: true
-  }
+  _id: string
+  accountId: string
   username: String
   avatar: String
   skin: String
@@ -23,7 +21,7 @@ export interface IUser {
   friends: IFriend[]
   posts: IPost[]
   ownedCommunities: ICommunity[]
-  joinedCommunities: ICommunityMember
+  joinedCommunities: ICommunityMember[]
   favoriteCommunities: ICommunity[]
   featuredPost: IPost[]
   tags: ITag[]
