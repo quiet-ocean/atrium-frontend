@@ -171,9 +171,7 @@ export const Detail = ({
             <DetailParams />
           </Box>
           <Box pt="15px">
-            <Typography variant="body1" color={palette.text.primary}>
-              {community.description}
-            </Typography>
+            <Text>{community.description}</Text>
           </Box>
           <Box pt="15px">
             <SocialButtons />
