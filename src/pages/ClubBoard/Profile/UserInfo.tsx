@@ -6,6 +6,7 @@ import MessageIcon from '../../../assets/icons/message-icon-dark.png'
 import { AText, AButton } from '../../../components'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import { getUserById } from '../../../services/authApi'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
 import type { IUser, IFriend } from '../../../types/model'
 import { apiPostRequest } from '../../../utils'
@@ -17,15 +18,16 @@ import { Text } from './styled'
 export const UserInfo = ({ user, isMe }: { user: IUser; isMe?: boolean }) => {
   const dispatch = useAppDispatch()
   const [isFriend, setIsFriend] = useState(false)
+  const [_user, setUser] = useState<IUser>(user)
 
   const me = useAppSelector((state) => state.auth.user)
-
-
+  console.log('user data in user intro: ', _user)
   useEffect(() => {
     let isMounted = true
-    if (isMounted && user && user.friends) {
-      user.friends.forEach((friend: IFriend) => {
-        if (friend.requester === me._id) {
+    if (isMounted && _user && _user.friends) {
+      _user.friends.forEach((friend: IFriend) => {
+        if (friend.user._id === me._id) {
+          console.log('is friend', friend.user._id, me._id)
           setIsFriend(true)
           return
         }
@@ -34,7 +36,11 @@ export const UserInfo = ({ user, isMe }: { user: IUser; isMe?: boolean }) => {
     return () => {
       isMounted = false
     }
-  }, [])
+  }, [_user])
+
+  useEffect(() => {
+    setUser(user)
+  }, [user])
 
   const handleEdit = () => {
     dispatch(setCurrentBoardTab(4))
@@ -46,25 +52,35 @@ export const UserInfo = ({ user, isMe }: { user: IUser; isMe?: boolean }) => {
       const res = await apiPostRequest(
         `${process.env.VITE_API_URL}/user/friend`,
         {
-          recipient: user._id,
+          recipient: _user._id,
           status: 4,
         }
       )
       console.log(res)
       if (res.data?.success) {
         setIsFriend(false)
+        setUser((prevUser) => ({
+          ...prevUser,
+          friends: prevUser?.friends.filter(
+            (item: IFriend) => item.user._id !== me._id
+          ),
+        }))
       }
     } else {
       const res = await apiPostRequest(
         `${process.env.VITE_API_URL}/user/friend`,
         {
-          recipient: user._id,
+          recipient: _user._id,
           status: 3,
         }
       )
       console.log(res)
-      if (res.data?.success) {
+      if (res.data?.recipient) {
+        console.log('succeed to add friend')
         setIsFriend(true)
+        const res = await getUserById(_user._id)
+        console.log('user data after added as friend')
+        if (res.status === 200 && res.data) setUser(res.data)
       }
     }
   }
@@ -80,7 +96,7 @@ export const UserInfo = ({ user, isMe }: { user: IUser; isMe?: boolean }) => {
           pr="16px"
         >
           <img
-            src={user.avatar}
+            src={_user.avatar}
             alt=""
             width="156px"
             height="156px"
@@ -92,13 +108,13 @@ export const UserInfo = ({ user, isMe }: { user: IUser; isMe?: boolean }) => {
         </Box>
         <Box pt="48px">
           <Typography variant="h4" textAlign="center">
-            {user.username}
+            {_user.username}
           </Typography>
           <AText className="disabled" sx={{ textAlign: 'center' }} mt="8px">
-            {user.accountId}
+            {_user.accountId}
           </AText>
         </Box>
-        {!isMe && (
+        {me._id !== _user._id && (
           <Box pt="24px" display="flex" justifyContent="center" gap="12px">
             <Box>
               <AButton

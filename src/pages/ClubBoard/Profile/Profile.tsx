@@ -36,7 +36,7 @@ export const Profile = () => {
     const getUserData = async () => {
       await apiGetRequest(`${apiUrl}/user/${currentUserId}`)
         .then((res: any) => {
-          console.log(res)
+          console.log('user data in profile: ', res)
           if (res.status === 200 && res.data) {
             if (isMounted) setUser(res.data)
             else console.log('not mounted')
@@ -56,7 +56,7 @@ export const Profile = () => {
       isMounted = false
       // abortController.abort()
     }
-  }, [])
+  }, [currentUserId])
 
   // return <>a;ldjf;lsdjflad</>
   return (
@@ -85,11 +85,15 @@ export const Profile = () => {
               <Grid item lg={6}>
                 <Box height="100%">
                   <CommunityCarousel members={user.joinedCommunities} />
-                  <Tags tags={user.tags}/>
+                  <Tags tags={user.tags} />
                 </Box>
               </Grid>
               <Grid item lg={6}>
-                <Members isModal={false} handleOpen={setOpenMembersModal} users={user.friends}/>
+                <Members
+                  isModal={false}
+                  handleOpen={setOpenMembersModal}
+                  users={user.friends}
+                />
               </Grid>
               <Grid item lg={6}>
                 <MediaPanel />

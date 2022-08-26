@@ -4,7 +4,7 @@ import { Box, Typography } from '@mui/material'
 // import avatar2 from '../../../assets/images/avatar-6.png'
 import { AButton, EmptyBox } from '../../../components'
 import { palette } from '../../../MuiTheme'
-import type { ITag, IUser } from '../../../types/model'
+import type { ITag, IFriend } from '../../../types/model'
 import { Community as Container } from '../styled'
 // import { MessageItem } from './'
 
@@ -21,7 +21,9 @@ export const TagButton = ({
     </AButton>
   )
 }
-export const Member = ({ index, user }: { index: number; user: IUser }) => {
+export const Member = ({ index, data }: { index: number; data: IFriend }) => {
+  // console.log('member data: ', data)
+  // const [user, setUser] = useState(data.)
   return (
     <Box
       p="8px 16px"
@@ -32,9 +34,9 @@ export const Member = ({ index, user }: { index: number; user: IUser }) => {
       }}
     >
       <Box display="flex" gap="12px">
-        <img src={user.avatar} alt="" width="46px" height="46px" />
+        <img src={data.user?.avatar} alt="" width="46px" height="46px" />
         <Box py="10px">
-          <Typography variant="h5">{user.username}</Typography>
+          <Typography variant="h5">{data.user.username}</Typography>
         </Box>
       </Box>
       <Box>
@@ -44,8 +46,8 @@ export const Member = ({ index, user }: { index: number; user: IUser }) => {
         </Typography>
       </Box>
       <Box display="flex" gap="12px">
-        {user.tags && user.tags.length ? (
-          user.tags.map((item: ITag, key: number) => (
+        {data.user.tags && data.user.tags.length ? (
+          data.user.tags.map((item: ITag, key: number) => (
             <Box py="160px" key={key}>
               <TagButton color="#FF75CD">{item.tag}</TagButton>
             </Box>
@@ -65,7 +67,7 @@ export const Members = ({
 }: {
   isModal: boolean
   handleOpen: (f: boolean) => void
-  users: IUser[]
+  users?: IFriend[]
 }) => {
   return (
     <Container>
@@ -88,7 +90,7 @@ export const Members = ({
         )}
       </Box>
       <Box display="flex" gap="12px" pt="18px">
-        {users && users.length && (
+        {users && users.length > 0 && (
           <>
             <TagButton color="#A8A8A8">all</TagButton>
             <TagButton color="#FF75CD">whitelisted</TagButton>
@@ -107,8 +109,8 @@ export const Members = ({
             overflowY: 'scroll',
           }}
         >
-          {new Array(10).fill(2).map((item: IUser, key: number) => (
-            <Member index={key} key={key} user={item} />
+          {users.map((item: IFriend, key: number) => (
+            <Member index={key} key={key} data={item} />
           ))}
         </Box>
       ) : (
