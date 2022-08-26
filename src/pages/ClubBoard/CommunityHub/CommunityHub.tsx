@@ -172,10 +172,8 @@ export const Detail = ({
           </Box>
           <Box pt="15px">
             <Typography variant="body1" color={palette.text.primary}>
-              A collection of 3333 unique, randomly
+              {community.description}
             </Typography>
-            <Text>generated pixel art NFTs stored on the NEAR</Text>
-            <Text> blockchain.</Text>
           </Box>
           <Box pt="15px">
             <SocialButtons />
