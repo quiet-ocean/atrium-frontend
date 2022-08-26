@@ -1,4 +1,3 @@
-import CloseIcon from '@mui/icons-material/Close'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
 import PushPinIcon from '@mui/icons-material/PushPin'
@@ -19,7 +18,6 @@ import { useState, useEffect } from 'react'
 
 import LinkIcon from '../../../assets/icons/link-chain-icon.png'
 import badge from '../../../assets/icons/verified-icon-small.png'
-import avatar2 from '../../../assets/images/avatar-6.png'
 import avatar1 from '../../../assets/images/avatar-7.png'
 import bannerImage from '../../../assets/images/banner-2.png'
 import { AText, AButton, AdornmentInput } from '../../../components'
@@ -33,7 +31,7 @@ import { apiPostRequest, apiGetRequest } from '../../../utils'
 import * as PContainer from '../styled'
 import { Community as Container } from '../styled'
 
-import { FeaturedPost, MessageItem } from './'
+import { FeaturedPost, Members } from './'
 
 export const Banner = () => {
   return (
@@ -308,105 +306,7 @@ export const MediaPanel = () => {
     </Container>
   )
 }
-export const Member = ({ index }: { index: number }) => {
-  return (
-    <Box
-      p="8px 16px"
-      display="flex"
-      justifyContent="space-between"
-      sx={{
-        background: index % 2 === 0 ? palette.background.paper : '',
-      }}
-    >
-      <Box display="flex" gap="12px">
-        <img src={avatar2} alt="" width="46px" height="46px" />
-        <Box py="10px">
-          <AText sx={{ fontSize: '18px', fontWeight: 800 }}>LtLollipop</AText>
-        </Box>
-      </Box>
-      <Box>
-        <AText sx={{ fontSize: '18px', fontWeight: 800 }}>15</AText>
-        <AText className="disabled" sx={{ fontSize: '12px !important' }}>
-          NFTs
-        </AText>
-      </Box>
-      <Box display="flex" gap="12px">
-        <Box py="10px">
-          <AButton
-            className="tag primary outlined tag-small"
-            color0btn="#FF75CD"
-          >
-            whitelisted
-          </AButton>
-        </Box>
-      </Box>
-    </Box>
-  )
-}
-export const Members = ({
-  isModal,
-  handleOpen,
-}: {
-  isModal: boolean
-  handleOpen: (f: boolean) => void
-}) => {
-  return (
-    <Container>
-      <Box display="flex" justifyContent="space-between" height="100%">
-        <Typography variant="h2">Friends</Typography>
-        {isModal ? (
-          <Box onClick={() => handleOpen(false)}>
-            <CloseIcon sx={{ color: palette.text.primary }} />
-          </Box>
-        ) : (
-          <Box>
-            <AButton
-              className="primary outlined"
-              color0btn={palette.secondary.light}
-              onClick={() => handleOpen(true)}
-            >
-              view all
-            </AButton>
-          </Box>
-        )}
-      </Box>
-      <Box display="flex" gap="12px" pt="18px">
-        <AButton
-          className="tag-secondary outlined tag-small"
-          color0btn="#A8A8A8"
-        >
-          all
-        </AButton>
-        <AButton className="tag primary outlined tag-small" color0btn="#FF75CD">
-          whitelisted
-        </AButton>
-        <AButton className="tag primary outlined tag-small" color0btn="#90E487">
-          OG member
-        </AButton>
-        <AButton className="tag primary outlined tag-small" color0btn="#FFB350">
-          devs
-        </AButton>
-        <AButton className="tag primary outlined tag-small" color0btn="#DE58FF">
-          moderator
-        </AButton>
-        <AButton className="tag primary outlined tag-small" color0btn="#71E5FF">
-          founder
-        </AButton>
-      </Box>
-      <Box
-        mt="24px"
-        sx={{
-          height: '360px',
-          overflowY: 'scroll',
-        }}
-      >
-        {new Array(10).fill(2).map((_, key: number) => (
-          <Member index={key} key={key} />
-        ))}
-      </Box>
-    </Container>
-  )
-}
+
 export const MembersModal = ({
   open,
   handleOpen,

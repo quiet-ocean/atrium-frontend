@@ -89,7 +89,7 @@ export const Profile = () => {
                 </Box>
               </Grid>
               <Grid item lg={6}>
-                <Members isModal={false} handleOpen={setOpenMembersModal} />
+                <Members isModal={false} handleOpen={setOpenMembersModal} users={user.friends}/>
               </Grid>
               <Grid item lg={6}>
                 <MediaPanel />
