@@ -14,3 +14,7 @@ export const signup = async (payload: any) => {
     payload
   )
 }
+
+export const getUserById = async (payload: string) => {
+  return await apiGetRequest(`${process.env.VITE_API_URL}/user/${payload}`)
+}
