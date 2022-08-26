@@ -1,4 +1,4 @@
-import { IUser } from './'
+import type { IUser } from './'
 export interface ICommunity {
   _id: string
   name: string

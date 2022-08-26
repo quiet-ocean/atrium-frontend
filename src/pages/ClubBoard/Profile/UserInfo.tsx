@@ -17,7 +17,7 @@ import editIcon from '../images/edit-icon.png'
 
 import { Text } from './styled'
 
-export const UserInfo = ({ user, isMe }: { user: IUser; isMe?: boolean }) => {
+export const UserInfo = ({ user }: { user: IUser }) => {
   const dispatch = useAppDispatch()
   const [isFriend, setIsFriend] = useState(false)
   const [_user, setUser] = useState<IUser>(user)
@@ -91,7 +91,6 @@ export const UserInfo = ({ user, isMe }: { user: IUser; isMe?: boolean }) => {
           const res = await getUserById(_user._id)
           if (res.status === 200 && res.data) setUser(res.data)
         } else {
-
         }
       } else {
         const snack: TSnack = {

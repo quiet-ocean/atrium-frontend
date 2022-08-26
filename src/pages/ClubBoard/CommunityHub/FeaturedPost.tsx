@@ -38,7 +38,7 @@ export const FeaturedPost = ({
         if (res.data) setPost(res.data)
       } else if (typeof data === undefined || data === null) {
         console.log('Post data is null')
-      } else if(typeof data === 'object' && data !== null) {
+      } else if (typeof data === 'object' && data !== null) {
         setPost(data)
       }
     }

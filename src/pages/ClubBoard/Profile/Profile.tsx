@@ -22,16 +22,11 @@ const apiUrl = process.env.VITE_API_URL || 'http://localhost:2567'
 export const Profile = () => {
   const [openMembersModal, setOpenMembersModal] = useState(false)
   const [user, setUser] = useState<IUser>({} as IUser)
-  const [isMe, setIsMe] = useState(false)
-  // const dispatch = useAppDispatch()
-  const me: IUser = useAppSelector((state) => state.auth.user)
-  // const profile: IUser = useAppSelector((state) => state.app.profile)
+
   const currentUserId = useAppSelector((state) => state.app.currentUserId)
 
   useEffect(() => {
     let isMounted = true
-    // let abortController = new AbortController()
-    if (me._id === currentUserId) setIsMe(true)
 
     const getUserData = async () => {
       await apiGetRequest(`${apiUrl}/user/${currentUserId}`)
@@ -67,7 +62,7 @@ export const Profile = () => {
             <Banner />
           </Box>
           <Box>
-            <UserInfo user={user} isMe={isMe} />
+            <UserInfo user={user} />
           </Box>
           <Box p="72px 24px">
             <Grid container spacing="24px">

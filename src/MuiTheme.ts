@@ -39,6 +39,18 @@ const muiTheme: AtriumTheme = createAtruimTheme({
         }),
       },
     },
+    MuiSnackbar: {
+      styleOverrides: {
+        root: {
+          '& .MuiPaper-root': {
+            '& .MuiSnackbarContent-message': {
+              fontFamily: 'Fractul',
+            },
+            borderRadius: 0,
+          },
+        },
+      },
+    },
     MuiTextField: {
       styleOverrides: {
         root: {
@@ -77,18 +89,6 @@ const muiTheme: AtriumTheme = createAtruimTheme({
           },
         },
       ],
-    },
-    MuiSnackbar: {
-      styleOverrides: {
-        root: {
-          '& .MuiPaper-root': {
-            '& .MuiSnackbarContent-message': {
-              fontFamily: 'Fractul',
-            },
-            borderRadius: 0,
-          },
-        },
-      },
     },
   },
   palette: {
