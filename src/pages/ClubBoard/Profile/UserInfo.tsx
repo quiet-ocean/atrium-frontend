@@ -21,7 +21,6 @@ export const UserInfo = ({ user, isMe }: { user: IUser; isMe?: boolean }) => {
   const [_user, setUser] = useState<IUser>(user)
 
   const me = useAppSelector((state) => state.auth.user)
-  console.log('user data in user intro: ', _user)
   useEffect(() => {
     let isMounted = true
     if (isMounted && _user && _user.friends) {
@@ -56,7 +55,6 @@ export const UserInfo = ({ user, isMe }: { user: IUser; isMe?: boolean }) => {
           status: 4,
         }
       )
-      console.log(res)
       if (res.data?.success) {
         setIsFriend(false)
         setUser((prevUser) => ({
@@ -74,12 +72,9 @@ export const UserInfo = ({ user, isMe }: { user: IUser; isMe?: boolean }) => {
           status: 3,
         }
       )
-      console.log(res)
       if (res.data?.recipient) {
-        console.log('succeed to add friend')
         setIsFriend(true)
         const res = await getUserById(_user._id)
-        console.log('user data after added as friend')
         if (res.status === 200 && res.data) setUser(res.data)
       }
     }

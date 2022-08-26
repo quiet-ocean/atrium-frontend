@@ -26,7 +26,6 @@ export const requestUser = createAsyncThunk(
   async (params, { dispatch }) => {
     const response = await authApi.getUserByToken()
     const user = response.data
-    console.log('user:', user)
     dispatch(setPlayerName(user.username))
     dispatch(setPlayerAvatar(user.avatar))
     return response.data
