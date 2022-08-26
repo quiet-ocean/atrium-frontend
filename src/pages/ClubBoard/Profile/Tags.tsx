@@ -7,10 +7,10 @@ import { AButton, EmptyBox } from '../../../components'
 import type { ITag } from '../../../types/model'
 import { Community as Panel } from '../styled'
 
-export const Tags = ({ tags }: { tags: ITag[] }) => {
+export const Tags = ({ data }: { data: ITag[] }) => {
   // const tags = ['developer', 'founder', 'investor']
   const [currentTag, setCurrentTag] = useState<ITag | null>(
-    tags && tags.length ? tags[0] : null
+    data && data.length ? data[0] : null
   )
   // const [desc, setDesc] = useState('')
 
@@ -28,8 +28,8 @@ export const Tags = ({ tags }: { tags: ITag[] }) => {
       <Box display="flex" gap="64px">
         <Typography variant="h2">tags</Typography>
         <Box display="flex" gap="24px" py="5px">
-          {tags && tags.length
-            ? tags.map((item: ITag, key: number) => (
+          {data && data.length
+            ? data.map((item: ITag, key: number) => (
                 <AButton
                   key={key}
                   className={`tag tag-large ${
@@ -43,7 +43,7 @@ export const Tags = ({ tags }: { tags: ITag[] }) => {
             : null}
         </Box>
       </Box>
-      {tags && tags.length ? (
+      {data && data.length ? (
         <Box pt="24px">
           <Typography variant="body1">{currentTag?.description}</Typography>
         </Box>

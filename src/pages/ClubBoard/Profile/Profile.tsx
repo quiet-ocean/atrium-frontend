@@ -36,7 +36,6 @@ export const Profile = () => {
     const getUserData = async () => {
       await apiGetRequest(`${apiUrl}/user/${currentUserId}`)
         .then((res: any) => {
-          console.log('user data in profile: ', res)
           if (res.status === 200 && res.data) {
             if (isMounted) setUser(res.data)
             else console.log('not mounted')
@@ -75,7 +74,7 @@ export const Profile = () => {
               <Grid item lg={6}>
                 <FeaturedPost
                   height="380px"
-                  post={
+                  data={
                     user.featuredPost && user.featuredPost.length
                       ? user.featuredPost[0]
                       : null
@@ -85,7 +84,7 @@ export const Profile = () => {
               <Grid item lg={6}>
                 <Box height="100%">
                   <CommunityCarousel members={user.joinedCommunities} />
-                  <Tags tags={user.tags} />
+                  <Tags data={user.tags} />
                 </Box>
               </Grid>
               <Grid item lg={6}>
