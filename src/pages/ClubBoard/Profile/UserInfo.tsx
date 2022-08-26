@@ -7,6 +7,8 @@ import { AText, AButton } from '../../../components'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { getUserById } from '../../../services/authApi'
+import type { TSnack } from '../../../stores/AppStore'
+import { openSnack } from '../../../stores/AppStore'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
 import type { IUser, IFriend } from '../../../types/model'
 import { apiPostRequest } from '../../../utils'
@@ -19,7 +21,7 @@ export const UserInfo = ({ user, isMe }: { user: IUser; isMe?: boolean }) => {
   const dispatch = useAppDispatch()
   const [isFriend, setIsFriend] = useState(false)
   const [_user, setUser] = useState<IUser>(user)
-
+  console.log('User data in user info component: ', user)
   const me = useAppSelector((state) => state.auth.user)
   useEffect(() => {
     let isMounted = true
@@ -55,14 +57,25 @@ export const UserInfo = ({ user, isMe }: { user: IUser; isMe?: boolean }) => {
           status: 4,
         }
       )
-      if (res.data?.success) {
-        setIsFriend(false)
-        setUser((prevUser) => ({
-          ...prevUser,
-          friends: prevUser?.friends.filter(
-            (item: IFriend) => item.user._id !== me._id
-          ),
-        }))
+      if (res.status === 200) {
+        if (res.data?.success) {
+          setIsFriend(false)
+          setUser((prevUser) => ({
+            ...prevUser,
+            friends: prevUser?.friends.filter(
+              (item: IFriend) => item.user._id !== me._id
+            ),
+          }))
+        } else {
+          console.log('Response status is 200, but not succeed to add friend')
+        }
+      } else {
+        const snack: TSnack = {
+          content: res.data?.message || 'Failed to add friend',
+          open: true,
+          type: 'warning',
+        }
+        dispatch(openSnack(snack))
       }
     } else {
       const res = await apiPostRequest(
@@ -72,10 +85,21 @@ export const UserInfo = ({ user, isMe }: { user: IUser; isMe?: boolean }) => {
           status: 3,
         }
       )
-      if (res.data?.recipient) {
-        setIsFriend(true)
-        const res = await getUserById(_user._id)
-        if (res.status === 200 && res.data) setUser(res.data)
+      if (res.status === 200) {
+        if (res.data?.recipient) {
+          setIsFriend(true)
+          const res = await getUserById(_user._id)
+          if (res.status === 200 && res.data) setUser(res.data)
+        } else {
+
+        }
+      } else {
+        const snack: TSnack = {
+          content: res.data?.message || 'Failed to add friend',
+          open: true,
+          type: 'warning',
+        }
+        dispatch(openSnack(snack))
       }
     }
   }
