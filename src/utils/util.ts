@@ -1,4 +1,4 @@
-export const convertStr2LongDate = (date: string) =>
+export const convertString2LongDate = (date: string) =>
   new Date(date).toLocaleDateString('en-US', {
     day: 'numeric',
     month: 'long',

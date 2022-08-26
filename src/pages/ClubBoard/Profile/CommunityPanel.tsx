@@ -4,7 +4,7 @@ import project6 from '../../../assets/images/project-6.png'
 import { AButton } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import type { ICommunity, ICommunityMember } from '../../../types/model'
-import { convertStr2LongDate } from '../../../utils'
+import { convertString2LongDate } from '../../../utils'
 
 export const CommunityPanel = ({ member }: { member: ICommunityMember }) => {
   const community: ICommunity = member.community as ICommunity
@@ -58,7 +58,7 @@ export const CommunityPanel = ({ member }: { member: ICommunityMember }) => {
             </Typography>
             <Typography variant="h4" flex="3">
               {/* august, 2nd 2022 */}
-              {convertStr2LongDate(member.createdAt)}
+              {convertString2LongDate(member.createdAt)}
             </Typography>
           </Box>
         </Box>
