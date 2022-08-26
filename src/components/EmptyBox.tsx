@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 
-export const EmptyBox = ({ children }: { children: React.ReactNode }) => {
+export const EmptyBox = ({ children }: { children?: React.ReactNode }) => {
   return (
     <Box
       p="24px"
