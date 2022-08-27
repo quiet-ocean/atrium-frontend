@@ -1,6 +1,6 @@
-import Phaser from 'phaser'
+import EventEmitter  from 'eventemitter3'
 
-export const phaserEvents = new Phaser.Events.EventEmitter()
+export const eventEmitter = new EventEmitter()
 
 export enum Event {
   PLAYER_JOINED = 'player-joined',

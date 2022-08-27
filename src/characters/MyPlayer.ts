@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 
-import { phaserEvents, Event } from '../events/EventCenter'
+import { eventEmitter, Event } from '../events/EventCenter'
 import type Chair from '../items/Chair'
 import type Computer from '../items/Computer'
 import type Whiteboard from '../items/Whiteboard'
@@ -31,14 +31,14 @@ export default class MyPlayer extends Player {
 
   setPlayerName(name: string) {
     // this.playerName.setText(name)
-    phaserEvents.emit(Event.MY_PLAYER_NAME_CHANGE, name)
+    eventEmitter.emit(Event.MY_PLAYER_NAME_CHANGE, name)
     store.dispatch(pushPlayerJoinedMessage(name))
   }
 
   setPlayerTexture(texture: string) {
     this.playerTexture = texture
     // this.anims.play(`${this.playerTexture}_idle_down`, true)
-    // phaserEvents.emit(
+    // eventEmitter.emit(
     //   Event.MY_PLAYER_TEXTURE_CHANGE,
     //   this.x,
     //   this.y,
