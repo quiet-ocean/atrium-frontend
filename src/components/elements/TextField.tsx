@@ -27,15 +27,35 @@ export const AtriumTextField = styled(MuiTextField)(({ theme }) => ({
 }))
 
 export const TextField = ({
-  children,
-  // variant,
+  variant,
+  multiline,
   // color,
-  _class,
+  name,
+  value,
+  onChange,
+  className,
+  sx,
+  rows,
 }: {
-  children: React.ReactNode
-  // variant?: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary'
+  multiline?: boolean
   // color?: string
-  _class?: string
+  name?: string
+  value?: string
+  onChange?: AnyFunction
+  className?: string
+  sx?: object
+  rows?: number
 }) => {
-  return <AtriumTextField className={_class}>{children}</AtriumTextField>
+  return (
+    <AtriumTextField
+      name={name}
+      value={value}
+      onChange={onChange}
+      className={className}
+      multiline
+      sx={sx}
+      rows={rows}
+    />
+  )
 }
