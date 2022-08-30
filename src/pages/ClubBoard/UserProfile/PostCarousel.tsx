@@ -24,7 +24,12 @@ export const PostContainer = ({
   return (
     <Box border={`1px solid ${palette.border.main}`}>
       <Box position="relative" height={`${height ? height : '480px'}`}>
-        <img src={img} alt="" width="100%" height="100%" />
+        <img
+          src={process.env.VITE_API_URL + '/files/' + img}
+          alt=""
+          width="100%"
+          height="100%"
+        />
         <Box
           sx={{
             backgroundImage: `linear-gradient(0deg, ${palette.common.black}, transparent)`,

@@ -14,6 +14,7 @@ import { TabPanel, a11yProps } from './styled'
 
 import { EditContent, EditWallet, EditIdentity, EditTags } from './'
 import { apiPutRequest } from '../../../utils'
+import { setUser } from '../../../stores/AuthStore'
 
 const tabItems = ['content', 'tags', 'identity', 'wallet & privacy']
 
@@ -58,7 +59,12 @@ const EditProfile: React.FC = () => {
     console.log('Save profile: ', profile)
     const res = await apiPutRequest(`${process.env.VITE_API_URL}/user`, profile)
 
-    console.log(res)
+    // console.log(res)
+    if (res.status === 200) {
+      dispatch(setUser(profile))
+    } else {
+      console.log('Failed to update user profile')
+    }
   }
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {

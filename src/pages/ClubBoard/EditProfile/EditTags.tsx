@@ -90,6 +90,7 @@ export const EditTags = ({
   setProfile: AnyFunction
   save: AnyFunction
 }) => {
+  console.log('Profile data in edit tag page: ', profile)
   const [userTagKeys, setUserTagKeys] = useState<string[]>([])
   const dispatch = useAppDispatch()
 

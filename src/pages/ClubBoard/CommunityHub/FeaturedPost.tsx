@@ -60,7 +60,7 @@ export const FeaturedPost = ({
       <Box pt="40px">
         {post ? (
           <>
-            <PostContainer img={post.media} height={height ? height : ''}>
+            <PostContainer img={post.media?.path} height={height ? height : ''}>
               <Box display="flex" gap="24px">
                 <Box>
                   <AText>{post.title}</AText>
