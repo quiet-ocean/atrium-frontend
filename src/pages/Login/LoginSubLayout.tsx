@@ -4,7 +4,7 @@ import { Box, Typography } from '@mui/material'
 
 import logo from '../../assets/images/atrium-logo-large.png'
 import logotype from '../../assets/images/atrium-logotype-small.png'
-import { AButton, HoverBox, Stepper } from '../../components'
+import { Button, HoverBox, Stepper } from '../../components'
 import { palette } from '../../MuiTheme'
 
 export const LoginSubLayout = ({
@@ -57,7 +57,7 @@ export const LoginSubLayout = ({
           gap="32px"
         >
           <Box>
-            <AButton
+            <Button
               onClick={handleForward}
               className="primary active large"
               color0btn={
@@ -66,7 +66,7 @@ export const LoginSubLayout = ({
             >
               Next &nbsp;
               <ArrowForwardIcon sx={{ fontSize: '28px' }} />
-            </AButton>
+            </Button>
           </Box>
           <Box>
             <HoverBox onClick={handleBack}>

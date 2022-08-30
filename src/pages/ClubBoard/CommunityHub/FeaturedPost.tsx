@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import { useState, useEffect } from 'react'
 
-import { AText, AButton, EmptyBox } from '../../../components'
+import { AText, Button, EmptyBox } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import type { IPost } from '../../../types/model'
 import { apiGetRequest } from '../../../utils'
@@ -49,12 +49,12 @@ export const FeaturedPost = ({
       <Box display="flex" justifyContent="space-between">
         <Typography variant="h2">featured post</Typography>
         <Box>
-          <AButton
+          <Button
             className="primary outlined"
             color0btn={palette.secondary.light}
           >
             view all posts
-          </AButton>
+          </Button>
         </Box>
       </Box>
       <Box pt="40px">

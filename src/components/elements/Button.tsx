@@ -1,8 +1,8 @@
-import { Button } from '@mui/material'
+import { Button as MuiButton } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-type AButtonProps = { color0btn?: string }
-export const AButton = styled(Button)<AButtonProps>(({ theme, color0btn }) => ({
+type ButtonProps = { color0btn?: string }
+export const Button = styled(MuiButton)<ButtonProps>(({ theme, color0btn }) => ({
   '&.disabled': {
     textTransform: 'uppercase',
   },

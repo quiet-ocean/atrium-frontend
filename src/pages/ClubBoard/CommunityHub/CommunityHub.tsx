@@ -6,7 +6,7 @@ import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap'
 import {
   Box,
   Grid,
-  Button,
+  // Button,
   Typography,
   Modal,
   Backdrop,
@@ -20,7 +20,7 @@ import LinkIcon from '../../../assets/icons/link-chain-icon.png'
 import badge from '../../../assets/icons/verified-icon-small.png'
 import avatar1 from '../../../assets/images/avatar-7.png'
 import bannerImage from '../../../assets/images/banner-2.png'
-import { AText, AButton, AdornmentInput } from '../../../components'
+import { AText, Button, AdornmentInput } from '../../../components'
 import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import type { TAlert, TSnack } from '../../../stores/AppStore'
@@ -83,21 +83,21 @@ export const DetailParams = () => {
 export const SocialButtons = () => {
   return (
     <Box display="flex" gap="12px">
-      <AButton className="secondary">
+      <Button className="secondary">
         <img src={LinkIcon} alt="" /> &nbsp; marketplace
-      </AButton>
-      {/* <AButton className="secondary">whitepaper</AButton> */}
-      <AButton className="secondary">
+      </Button>
+      {/* <Button className="secondary">whitepaper</Button> */}
+      <Button className="secondary">
         <TwitterIcon sx={{ fontSize: '16px' }} />
         &nbsp; twitter
-      </AButton>
-      <AButton className="secondary">
+      </Button>
+      <Button className="secondary">
         <Icon sx={{ fontSize: '16px' }}>discord</Icon>
         &nbsp; discord
-      </AButton>
-      <AButton className="secondary">
+      </Button>
+      <Button className="secondary">
         <img src={LinkIcon} alt="" /> &nbsp; website
-      </AButton>
+      </Button>
     </Box>
   )
 }
@@ -154,7 +154,7 @@ export const Detail = ({
           </AText>
         </Box>
         <Box pt="32px" textAlign="center">
-          <AButton
+          <Button
             // className={`community primary outlined active`}
             className={`community primary outlined ${joined ? '' : 'active'}`}
             color0btn={joined ? palette.text.primary : palette.secondary.light}
@@ -162,7 +162,7 @@ export const Detail = ({
           >
             <GroupOutlinedIcon />
             {joined ? 'remove' : 'join'} community
-          </AButton>
+          </Button>
         </Box>
       </Grid>
       <Grid item lg={7}>
@@ -267,12 +267,12 @@ export const MediaPanel = () => {
         <Box display="flex" justifyContent="space-between">
           <Typography variant="h2">media</Typography>
           <Box>
-            <AButton
+            <Button
               className="primary outlined"
               color0btn={palette.secondary.light}
             >
               view all
-            </AButton>
+            </Button>
           </Box>
         </Box>
         <Box

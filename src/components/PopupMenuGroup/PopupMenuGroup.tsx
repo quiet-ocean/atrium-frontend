@@ -2,7 +2,7 @@ import Box from '@mui/material/Box'
 import * as React from 'react'
 
 import logo from '../../assets/images/atrium-logo-large.png'
-import { AButton } from '../elements'
+import { Button } from '../elements'
 
 import { PopupMenu } from './PopupMenu'
 
@@ -31,7 +31,7 @@ export const PopupMenuGroup = () => {
       }}
       className={open ? `popup-menu-group` : ``}
     >
-      <AButton
+      <Button
         onClick={handleClick}
         className=""
         sx={{
@@ -46,7 +46,7 @@ export const PopupMenuGroup = () => {
         <Box width="56px" height="56px" className={`popup-button`}>
           <img src={logo} alt="" width="100%" height="100%" />
         </Box>
-      </AButton>
+      </Button>
       <PopupMenu handleClose={handleClose} />
     </Box>
   )

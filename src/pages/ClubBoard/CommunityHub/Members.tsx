@@ -2,7 +2,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import { Box, Typography } from '@mui/material'
 
 // import avatar2 from '../../../assets/images/avatar-6.png'
-import { AButton, EmptyBox } from '../../../components'
+import { Button, EmptyBox } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import type { ITag, IFriend } from '../../../types/model'
 import { Community as Container } from '../styled'
@@ -16,9 +16,9 @@ export const TagButton = ({
   color: string
 }) => {
   return (
-    <AButton className="tag primary outlined tag-small" color0btn={color}>
+    <Button className="tag primary outlined tag-small" color0btn={color}>
       {children}
-    </AButton>
+    </Button>
   )
 }
 export const Member = ({ index, data }: { index: number; data: IFriend }) => {
@@ -79,13 +79,13 @@ export const Members = ({
           </Box>
         ) : (
           <Box>
-            <AButton
+            <Button
               className="primary outlined"
               color0btn={palette.secondary.light}
               onClick={() => handleOpen(true)}
             >
               view all
-            </AButton>
+            </Button>
           </Box>
         )}
       </Box>

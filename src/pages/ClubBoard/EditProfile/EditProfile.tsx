@@ -1,9 +1,9 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Box, Tabs, Typography, Tab } from '@mui/material'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { AButton } from '../../../components'
-import { useAppDispatch } from '../../../hooks'
+import { Button } from '../../../components'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
 import * as Container from '../styled'
@@ -30,7 +30,13 @@ const tabStyle = {
 const EditProfile: React.FC = () => {
   const dispatch = useAppDispatch()
 
+  const me: IUser = useAppSelector((state) => state.auth.user)
   const [value, setValue] = React.useState(0)
+  const [profile, setProfile] = useState<IUser>(me)
+
+  const save = async () => {
+    console.log('save');
+  }
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
@@ -49,29 +55,26 @@ const EditProfile: React.FC = () => {
               edit profile
             </Typography>
             <Box display="flex" gap="24px">
-              <AButton
+              <Button
                 className="primary active"
                 color0btn={palette.text.primary}
                 onClick={handleBtnBackToProfile}
               >
-                <Typography
-                  variant="h6"
-                  sx={{ color: palette.background.paper }}
-                >
+                <Typography variant="h6" color={palette.background.paper}>
                   back to profile
                 </Typography>
 
                 <ArrowForwardIcon sx={{ fontSize: 18 }} />
-              </AButton>
-              <AButton
+              </Button>
+              <Button
                 className="primary active"
                 color0btn={palette.secondary.light}
               >
                 save changes
-              </AButton>
+              </Button>
             </Box>
           </Box>
-          <Box sx={{ borderColor: 'divider', displayborderBottom: 1 }}>
+          <Box sx={{ borderColor: 'divider' }}>
             <Tabs
               value={value}
               onChange={handleChange}
@@ -99,7 +102,7 @@ const EditProfile: React.FC = () => {
           }}
         >
           <TabPanel value={value} index={0}>
-            <EditContent />
+            <EditContent profile={profile} setProfile={setProfile} save={save}/>
           </TabPanel>
           <TabPanel value={value} index={1}>
             <EditTags />

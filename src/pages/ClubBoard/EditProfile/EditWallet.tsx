@@ -2,7 +2,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import { Box, Grid, Typography } from '@mui/material'
 import React from 'react'
 
-import { AButton } from '../../../components'
+import { Button } from '../../../components'
 import { useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { Wallet } from '../../../types/Wallet'
@@ -98,12 +98,12 @@ export const EditWallet = () => {
         </Grid>
       </Grid>
       <Box display="flex" justifyContent="end">
-        <AButton
+        <Button
           className="primary active medium"
           color0btn={palette.secondary.light}
         >
           save changes
-        </AButton>
+        </Button>
       </Box>
     </Box>
   )

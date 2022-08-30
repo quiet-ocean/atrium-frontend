@@ -3,7 +3,7 @@ import { Box, Typography, Grid } from '@mui/material'
 import { useState, useEffect } from 'react'
 
 import MessageIcon from '../../../assets/icons/message-icon-dark.png'
-import { AText, AButton } from '../../../components'
+import { AText, Button } from '../../../components'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { getUserById } from '../../../services/authApi'
@@ -135,17 +135,17 @@ export const UserInfo = ({ user }: { user: IUser }) => {
         {me._id !== _user._id && (
           <Box pt="24px" display="flex" justifyContent="center" gap="12px">
             <Box>
-              <AButton
+              <Button
                 className="primary outlined active"
                 color0btn={palette.secondary.light}
                 onClick={handleSetFriend}
               >
                 <PeopleOutlinedIcon />
                 {isFriend ? 'remove' : 'add'} friend
-              </AButton>
+              </Button>
             </Box>
             <Box>
-              <AButton
+              <Button
                 className="primary outlined active"
                 color0btn={palette.secondary.light}
               >
@@ -153,7 +153,7 @@ export const UserInfo = ({ user }: { user: IUser }) => {
                   <img src={MessageIcon} alt="" width="100%" height="100%" />
                 </Box>
                 message
-              </AButton>
+              </Button>
             </Box>
           </Box>
         )}
@@ -166,7 +166,7 @@ export const UserInfo = ({ user }: { user: IUser }) => {
           <Box pt="36px">
             <SocialButtons />
           </Box>
-          <AButton
+          <Button
             className="outlined primary active"
             color0btn={palette.text.disabled}
             sx={{ position: 'absolute', right: '24px', top: '24px' }}
@@ -174,7 +174,7 @@ export const UserInfo = ({ user }: { user: IUser }) => {
           >
             <img src={editIcon} alt="" width="24px" height="24px" />
             &nbsp; edit profile
-          </AButton>
+          </Button>
         </Box>
       </Grid>
     </Grid>

@@ -1,7 +1,7 @@
-import { TextField } from '@mui/material'
+import { TextField as MuiTextField } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-export const ATextField = styled(TextField)(({ theme }) => ({
+export const AtriumTextField = styled(MuiTextField)(({ theme }) => ({
   '& input': {
     fontSize: '24px',
     padding: '24px',
@@ -25,3 +25,17 @@ export const ATextField = styled(TextField)(({ theme }) => ({
   borderRadius: 0,
   width: '100%',
 }))
+
+export const TextField = ({
+  children,
+  // variant,
+  // color,
+  _class,
+}: {
+  children: React.ReactNode
+  // variant?: 'primary' | 'secondary'
+  // color?: string
+  _class?: string
+}) => {
+  return <AtriumTextField className={_class}>{children}</AtriumTextField>
+}

@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { ATextField, LoginLayout } from '../../components'
+import { TextField, LoginLayout } from '../../components'
 // import { useAppDispatch, useAppSelector } from '../../hooks'
 import { useAppDispatch } from '../../hooks'
 // import phaserGame from '../../PhaserGame'
@@ -100,7 +100,7 @@ const SetName = () => {
             </Typography>
           </Box>
           <Box mt="84px" flexDirection="column" gap="12px">
-            <ATextField fullWidth value={name} onChange={handleChange} />
+            <TextField fullWidth value={name} onChange={handleChange} />
             <Typography variant="caption" sx={{ textAlign: 'center' }}>
               {error}
             </Typography>

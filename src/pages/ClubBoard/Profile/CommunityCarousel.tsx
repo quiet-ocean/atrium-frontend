@@ -83,12 +83,12 @@ export const CommunityCarousel = ({
       {/* <Box display="flex" gap="24px">
         <Box display="flex" gap="24px"></Box>
         <Box display="flex" gap="16px">
-          <AButton className="primary active" color0btn={palette.text.disabled}>
+          <Button className="primary active" color0btn={palette.text.disabled}>
             Prev
-          </AButton>
-          <AButton className="primary active" color0btn={palette.text.disabled} ref={nextButtonRef}>
+          </Button>
+          <Button className="primary active" color0btn={palette.text.disabled} ref={nextButtonRef}>
             Next
-          </AButton>
+          </Button>
         </Box>
       </Box> */}
     </Panel>

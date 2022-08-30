@@ -4,7 +4,7 @@ import { Box, Typography, Grid } from '@mui/material'
 import Icon from '@mui/material/Icon'
 import React from 'react'
 
-import { AButton, ATextField } from '../../../components'
+import { Button, TextField } from '../../../components'
 import { useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 
@@ -25,7 +25,7 @@ export const EditIdentity = () => {
   }) => {
     return (
       <Box>
-        <AButton
+        <Button
           className="primary outlined"
           sx={{ padding: '24px 48px', width: '100%' }}
           color0btn={palette.text.primary}
@@ -36,7 +36,7 @@ export const EditIdentity = () => {
               {title} Connected
             </Typography>
           </Box>
-        </AButton>
+        </Button>
         <Box
           p="16px 24px"
           display="flex"
@@ -72,7 +72,7 @@ export const EditIdentity = () => {
         <Box py="12px">
           <Grid container>
             <Grid item lg={6}>
-              <ATextField className="rounded dark" value={user.username} />
+              <TextField className="rounded dark" value={user.username} />
             </Grid>
             <Grid item lg={6} />
           </Grid>
@@ -93,7 +93,7 @@ export const EditIdentity = () => {
             <Box>
               <Typography variant="h6">website url</Typography>
               <Box py="12px">
-                <ATextField className="rounded default" value={user.webUrl} />
+                <TextField className="rounded default" value={user.webUrl} />
               </Box>
               <Box p="0px 24px" display="flex" gap="12px">
                 <AntSwitch />
@@ -107,7 +107,7 @@ export const EditIdentity = () => {
             <Box>
               <Typography variant="h6">email</Typography>
               <Box py="12px">
-                <ATextField className="rounded default" value={user.email} />
+                <TextField className="rounded default" value={user.email} />
               </Box>
               <Box p="0px 24px" display="flex" gap="12px">
                 <AntSwitch />

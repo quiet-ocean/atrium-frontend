@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import { useState } from 'react'
 
-import { AButton, EmptyBox } from '../../../components'
+import { Button, EmptyBox } from '../../../components'
 // import type { TagProps } from '../EditProfile'
 // import { initialTags } from '../EditProfile'
 import type { ITag } from '../../../types/model'
@@ -30,7 +30,7 @@ export const Tags = ({ data }: { data: ITag[] }) => {
         <Box display="flex" gap="24px" py="5px">
           {data && data.length
             ? data.map((item: ITag, key: number) => (
-                <AButton
+                <Button
                   key={key}
                   className={`tag tag-large ${
                     item === currentTag ? 'tag-active' : ''
@@ -38,7 +38,7 @@ export const Tags = ({ data }: { data: ITag[] }) => {
                   onClick={() => handleClick(item)}
                 >
                   {item.tag}
-                </AButton>
+                </Button>
               ))
             : null}
         </Box>

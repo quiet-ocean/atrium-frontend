@@ -7,15 +7,37 @@ import post7 from '../../../assets/images/post-7.png'
 import post8 from '../../../assets/images/post-8.png'
 import post9 from '../../../assets/images/post-9.png'
 import project6 from '../../../assets/images/project-6.png'
-import { AButton } from '../../../components'
+import { Button, TextField } from '../../../components'
 import { palette } from '../../../MuiTheme'
+import type { IUser } from '../../../types/model'
 import { Reactions } from '../Dashboard'
 
+const CaptionText = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Typography variant="caption" sx={{ fontSize: '14px' }} py="5px" flex="2">
+      {children}
+    </Typography>
+  )
+}
+const TagButton = ({
+  children,
+  color,
+}: {
+  children: React.ReactNode
+  color: string
+}) => {
+  return (
+    <Button className="primary active tag tag-small" color0btn={color}>
+      {children}
+    </Button>
+  )
+}
 export const CommunityCard = () => {
   const [selected, setSelected] = useState(false)
   const handleClick = () => {
     if (!selected) setSelected(true)
   }
+
   return (
     <Box width="470px" mt="32px">
       <Box
@@ -43,30 +65,9 @@ export const CommunityCard = () => {
               flexDirection="column"
               justifyContent="space-between"
             >
-              <Typography
-                variant="caption"
-                sx={{ fontSize: '14px' }}
-                py="5px"
-                flex="2"
-              >
-                roles
-              </Typography>
-              <Typography
-                variant="caption"
-                sx={{ fontSize: '14px' }}
-                py="5px"
-                flex="2"
-              >
-                NFTs Owned
-              </Typography>
-              <Typography
-                variant="caption"
-                sx={{ fontSize: '14px' }}
-                py="5px"
-                flex="2"
-              >
-                joined
-              </Typography>
+              <CaptionText>roles</CaptionText>
+              <CaptionText>NFTs Owned</CaptionText>
+              <CaptionText>joined</CaptionText>
             </Box>
             <Box
               display="flex"
@@ -75,20 +76,10 @@ export const CommunityCard = () => {
             >
               <Box display="flex" gap="8px">
                 <Box>
-                  <AButton
-                    className="primary active tag tag-small"
-                    color0btn="#FF75CD"
-                  >
-                    whitelisted
-                  </AButton>
+                  <TagButton color="#FF75CD">whitelisted</TagButton>
                 </Box>
                 <Box>
-                  <AButton
-                    className="primary active tag tag-small"
-                    color0btn="#90E487"
-                  >
-                    OG Member
-                  </AButton>
+                  <TagButton color="#90E487">OG Member</TagButton>
                 </Box>
               </Box>
               <Typography variant="h6" flex="3">
@@ -104,13 +95,13 @@ export const CommunityCard = () => {
       <Box height="46px">
         <Collapse in={selected} orientation="vertical">
           <Box width="100%" p="8px" textAlign="center">
-            <AButton
+            <Button
               className="primary active"
               color0btn={palette.secondary.light}
               onClick={() => setSelected(false)}
             >
               unselect
-            </AButton>
+            </Button>
           </Box>
         </Collapse>
       </Box>
@@ -184,7 +175,15 @@ export const TextPanel = styled(Box)(({ theme }) => ({
   margin: '32px 0px',
   padding: '24px',
 }))
-export const EditContent = () => {
+export const EditContent = ({
+  profile,
+  setProfile,
+  save,
+}: {
+  profile: IUser
+  setProfile: AnyFunction
+  save: AnyFunction
+}) => {
   return (
     <Box>
       <Typography variant="h3">featured content</Typography>
@@ -197,11 +196,12 @@ export const EditContent = () => {
           Write an annoucement that appears next to your Profile Image. 64
           Charaters max.{' '}
         </Typography>
-        <TextPanel>
+        {/* <TextPanel>
           <Typography variant="body1" color={palette.text.primary}>
             asac is the worst project that i’ve owned
           </Typography>
-        </TextPanel>
+        </TextPanel> */}
+        <TextField variant="primary" />
         <Box py="32px" display="flex" flexDirection="column">
           <Typography variant="h4">Favorite Community</Typography>
           <Typography mt="8px" variant="body2">
@@ -253,12 +253,12 @@ export const EditContent = () => {
         </Box>
       </Box>
       <Box display="flex" justifyContent="end" mt="120px">
-        <AButton
+        <Button
           className="primary active medium"
           color0btn={palette.secondary.light}
         >
           save changes
-        </AButton>
+        </Button>
       </Box>
     </Box>
   )

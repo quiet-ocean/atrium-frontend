@@ -13,7 +13,7 @@ import skin7 from '../../assets/images/ASAC 5.png'
 import skin4 from '../../assets/images/ASAC 6.png'
 import skin6 from '../../assets/images/ASAC 7.png'
 import skin5 from '../../assets/images/ASAC 8.png'
-import { AButton, LoginLayout } from '../../components'
+import { Button, LoginLayout } from '../../components'
 import { useAppDispatch } from '../../hooks'
 import { palette } from '../../MuiTheme'
 import { setUser } from '../../stores/AuthStore'
@@ -98,7 +98,7 @@ export const SelectSkin = () => {
             </Slider>
           </div>
           <Box gap="32px" py="12px">
-            <AButton
+            <Button
               className="rounded active"
               color0btn={palette.secondary.light}
               onClick={() => {
@@ -107,14 +107,14 @@ export const SelectSkin = () => {
               }}
             >
               <ArrowBackIcon />
-            </AButton>
+            </Button>
             <Box py="16px">
               <Typography variant="h5" color={palette.secondary.light}>
                 Antisocial Ape Club
               </Typography>
             </Box>
             <Box>
-              <AButton
+              <Button
                 className="rounded active"
                 color0btn={palette.secondary.light}
                 onClick={() => {
@@ -123,7 +123,7 @@ export const SelectSkin = () => {
                 }}
               >
                 <ArrowForwardIcon />
-              </AButton>
+              </Button>
             </Box>
           </Box>
         </Box>

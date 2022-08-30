@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 
 import project6 from '../../../assets/images/project-6.png'
-import { AButton } from '../../../components'
+import { Button } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import type { ICommunity, ICommunityMember } from '../../../types/model'
 import { convertString2LongDate } from '../../../utils'
@@ -20,13 +20,13 @@ export const CommunityPanel = ({ member }: { member: ICommunityMember }) => {
       <Box py="24px" flex="1">
         <Typography variant="h2">{community.name}</Typography>
         <Box mt="40px">
-          <AButton
+          <Button
             className="primary outlined active"
             color0btn={palette.secondary.light}
             onClick={() => handleCommunityHub(community._id)}
           >
             view community hub
-          </AButton>
+          </Button>
         </Box>
         <Box mt="20px" display="flex" flexDirection="column" gap="8px">
           <Box display="flex">
@@ -35,12 +35,12 @@ export const CommunityPanel = ({ member }: { member: ICommunityMember }) => {
             </Typography>
             <Box flex="3">
               <Box>
-                <AButton
+                <Button
                   className="primary active tag tag-small"
                   color0btn="#FF75CD"
                 >
                   whitelisted
-                </AButton>
+                </Button>
               </Box>
             </Box>
           </Box>
@@ -64,12 +64,12 @@ export const CommunityPanel = ({ member }: { member: ICommunityMember }) => {
         </Box>
       </Box>
       <Box sx={{ position: 'absolute', right: '0px', top: '0px' }}>
-        <AButton
+        <Button
           className="outlined primary"
           color0btn={palette.secondary.light}
         >
           view all
-        </AButton>
+        </Button>
       </Box>
     </Box>
   )

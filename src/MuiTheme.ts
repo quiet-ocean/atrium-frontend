@@ -10,6 +10,13 @@ declare module '@mui/material/Button' {
   }
 }
 
+declare module '@mui/material/TextField' {
+  interface TextFieldPropsVariantOverrides {
+    primary: true
+    secondary: true
+  }
+}
+
 export const colors = {
   black: '#21E0A5',
   grey1: '#4A4A4A',
@@ -88,6 +95,18 @@ const muiTheme: AtriumTheme = createAtruimTheme({
             border: '0px',
           },
         },
+        {
+          props: { variant: 'primary' },
+          style: {
+            border: '1px solid red',
+          }
+        },
+        {
+          props: { variant: 'secondary' },
+          style: {
+            border: '1px solid red',
+          }
+        }
       ],
     },
   },

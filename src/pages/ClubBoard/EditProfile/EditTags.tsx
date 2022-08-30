@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import { useState } from 'react'
 
-import { AButton, ATextField } from '../../../components'
+import { Button, TextField } from '../../../components'
 import { palette } from '../../../MuiTheme'
 
 export const initialTags = [
@@ -64,8 +64,8 @@ export const TagContent = ({
   }
   return (
     <Box mb="24px">
-      <AButton className="tag tag-large tag-active">{tag.name}</AButton>
-      <ATextField
+      <Button className="tag tag-large tag-active">{tag.name}</Button>
+      <TextField
         multiline
         value={tag?.description}
         className="rounded"
@@ -123,12 +123,12 @@ export const EditTags = () => {
         <Box display="flex" gap="12px">
           {tempTags.map((item: TagProps, key: number) => (
             <Box key={key}>
-              <AButton
+              <Button
                 className={`tag tag-large ${item.active ? 'tag-active' : ''}`}
                 onClick={() => updateTag(item.name, 'active', !item.active)}
               >
                 {item.name}
-              </AButton>
+              </Button>
             </Box>
           ))}
         </Box>
@@ -156,13 +156,13 @@ export const EditTags = () => {
         </Box>
       </Box>
       <Box display="flex" justifyContent="end">
-        <AButton
+        <Button
           className="primary active medium"
           color0btn={palette.secondary.light}
           onClick={save}
         >
           save changes
-        </AButton>
+        </Button>
       </Box>
     </Box>
   )

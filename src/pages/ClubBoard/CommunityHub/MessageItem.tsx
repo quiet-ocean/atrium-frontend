@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material'
 import { useState, useEffect } from 'react'
 
 // import avatar2 from '../../../assets/images/avatar-6.png'
-import { AButton } from '../../../components'
+import { Button } from '../../../components'
 import { getUserById } from '../../../services/authApi'
 import type { ITag, IUser } from '../../../types/model'
 
@@ -31,37 +31,37 @@ export const MessageContainer = ({
           </Box>
           {user.tags.map((item: ITag, key: number) => (
             <Box key={key}>
-              <AButton
+              <Button
                 className="tag-secondary tag-small outlined"
                 // color0btn="#FFB350"
               >
                 {item.tag}
-              </AButton>
+              </Button>
             </Box>
           ))}
           {/* <Box>
-            <AButton
+            <Button
               className="tag-secondary outlined tag-small"
               color0btn="#71E5FF"
             >
               founder
-            </AButton>
+            </Button>
           </Box>
           <Box>
-            <AButton
+            <Button
               className="tag-secondary tag-small outlined"
               color0btn="#FFB350"
             >
               devs
-            </AButton>
+            </Button>
           </Box>
           <Box>
-            <AButton
+            <Button
               className="tag-secondary tag-small outlined"
               color0btn="#DE58FF"
             >
               moderator
-            </AButton>
+            </Button>
           </Box> */}
         </Box>
       </Box>
