@@ -13,6 +13,7 @@ import * as Container from '../styled'
 import { TabPanel, a11yProps } from './styled'
 
 import { EditContent, EditWallet, EditIdentity, EditTags } from './'
+import { apiPutRequest } from '../../../utils'
 
 const tabItems = ['content', 'tags', 'identity', 'wallet & privacy']
 
@@ -55,6 +56,9 @@ const EditProfile: React.FC = () => {
   // }
   const save = async () => {
     console.log('Save profile: ', profile)
+    const res = await apiPutRequest(`${process.env.VITE_API_URL}/user`, profile)
+
+    console.log(res)
   }
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
