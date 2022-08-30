@@ -4,3 +4,7 @@ export const convertString2LongDate = (date: string) =>
     month: 'long',
     year: 'numeric',
   })
+
+export const calculatePastTime = (date: string | undefined) => {
+  return date
+}
