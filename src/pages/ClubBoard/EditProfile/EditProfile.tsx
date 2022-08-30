@@ -6,12 +6,13 @@ import { Button } from '../../../components'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
+import type { IUser } from '../../../types/model'
+import { ICommunity } from '../../../types/model'
 import * as Container from '../styled'
 
 import { TabPanel, a11yProps } from './styled'
 
 import { EditContent, EditWallet, EditIdentity, EditTags } from './'
-import { ICommunity, IUser } from '../../../types/model'
 
 const tabItems = ['content', 'tags', 'identity', 'wallet & privacy']
 
@@ -35,7 +36,6 @@ const EditProfile: React.FC = () => {
   const [value, setValue] = React.useState(0)
 
   const [profile, setProfile] = useState<IUser>(me)
-
 
   useEffect(() => {
     // updateProfile()
@@ -130,7 +130,11 @@ const EditProfile: React.FC = () => {
             <EditTags profile={profile} setProfile={setProfile} save={save} />
           </TabPanel>
           <TabPanel value={value} index={2}>
-            <EditIdentity />
+            <EditIdentity
+              profile={profile}
+              setProfile={setProfile}
+              save={save}
+            />
           </TabPanel>
           <TabPanel value={value} index={3}>
             <EditWallet />

@@ -8,10 +8,12 @@ export const EditProfileLayout = ({
   title,
   subtitle,
   children,
+  save,
 }: {
   title: string
   subtitle: string
   children: React.ReactNode
+  save?: AnyFunction
 }) => {
   return (
     <Box>
@@ -26,6 +28,7 @@ export const EditProfileLayout = ({
         <Button
           className="primary active medium"
           color0btn={palette.secondary.light}
+          onClick={save}
         >
           save changes
         </Button>
