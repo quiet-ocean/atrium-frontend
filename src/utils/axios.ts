@@ -34,6 +34,21 @@ export const apiPostRequest = async (url: string, data = {}) => {
   }
 }
 
+export const apiPutRequest = async (url: string, data = {}) => {
+  try {
+    const response = await axios.put(url, data)
+    return response
+  } catch (error: any) {
+    console.log(error)
+    if (error.response.status === 401) {
+      // store.dispatch(actions.logout());
+      return error.response
+    } else {
+      return error.response
+    }
+  }
+}
+
 export function setupAxios(axios, store) {
   axios.interceptors.request.use(
     (config) => {
