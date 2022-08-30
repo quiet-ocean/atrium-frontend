@@ -5,15 +5,27 @@ import React from 'react'
 import { Button } from '../../../components'
 import { useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import type { IUser } from '../../../types/model'
 import { Wallet } from '../../../types/Wallet'
 import { getAccount } from '../../../utils'
 
 import { AntSwitch } from './styled'
 
-export const EditWallet = () => {
+export const EditWallet = ({
+  profile,
+  setProfile,
+  save,
+}: {
+  profile: IUser
+  setProfile: AnyFunction
+  save: AnyFunction
+}) => {
   const user = useAppSelector((state) => state.auth.user)
   const account = getAccount()
-  console.log(account)
+
+  const disconnectWallet = () => {
+    console.log('Disconnect wallet')
+  }
   const InfoItem = ({
     index,
     children,
@@ -72,6 +84,7 @@ export const EditWallet = () => {
                   variant="h6"
                   color={palette.text.disabled}
                   sx={{ textDecoration: 'underline' }}
+                  onClick={disconnectWallet}
                 >
                   Disconnect Wallet
                 </Typography>
@@ -88,7 +101,13 @@ export const EditWallet = () => {
             </Typography>
             <Box p="24px 0px">
               <Box display="flex" gap="12px">
-                <AntSwitch />
+                <AntSwitch
+                  name="isPrivate"
+                  checked={profile?.isPrivate || false}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setProfile({ ...profile, isPrivate: e.target.checked })
+                  }}
+                />
                 <Typography variant="caption" py="2px">
                   Private
                 </Typography>
@@ -101,6 +120,7 @@ export const EditWallet = () => {
         <Button
           className="primary active medium"
           color0btn={palette.secondary.light}
+          onClick={save}
         >
           save changes
         </Button>

@@ -40,6 +40,9 @@ const EditProfile: React.FC = () => {
   useEffect(() => {
     // updateProfile()
   }, [])
+  useEffect(() => {
+    setProfile(me)
+  }, [me])
   // const updateProfile = <T,>(name: string, value: T) => {
   //   // const keyArray = Object.keys(me)
   //   // type TUserKey = typeof keyArray[number]
@@ -137,7 +140,7 @@ const EditProfile: React.FC = () => {
             />
           </TabPanel>
           <TabPanel value={value} index={3}>
-            <EditWallet />
+            <EditWallet profile={profile} setProfile={setProfile} save={save}/>
           </TabPanel>
         </Box>
       </Box>
