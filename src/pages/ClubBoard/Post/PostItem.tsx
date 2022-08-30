@@ -7,7 +7,7 @@ import { useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import type { IPost } from '../../../types/model'
 import { apiGetRequest, apiPostRequest } from '../../../utils'
-import { convertString2LongDate } from '../../../utils/util'
+import { convertString2LongDate } from '../../../utils/utils'
 
 import { Comments } from './Comments'
 
