@@ -11,6 +11,7 @@ import * as Container from '../styled'
 import { TabPanel, a11yProps } from './styled'
 
 import { EditContent, EditWallet, EditIdentity, EditTags } from './'
+import { ICommunity, IUser } from '../../../types/model'
 
 const tabItems = ['content', 'tags', 'identity', 'wallet & privacy']
 
@@ -32,10 +33,25 @@ const EditProfile: React.FC = () => {
 
   const me: IUser = useAppSelector((state) => state.auth.user)
   const [value, setValue] = React.useState(0)
+
   const [profile, setProfile] = useState<IUser>(me)
 
+
+  useEffect(() => {
+    // updateProfile()
+  }, [])
+  // const updateProfile = <T,>(name: string, value: T) => {
+  //   // const keyArray = Object.keys(me)
+  //   // type TUserKey = typeof keyArray[number]
+  //   // const t: TUserkey = {} as TUserKey
+  //   // console.log(t)
+  //   setProfile({ ...profile, [name]: value })
+  // }
+  // function updateProfile<T>(name: string, value: T) {
+
+  // }
   const save = async () => {
-    console.log('save');
+    console.log('Save profile: ', profile)
   }
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -69,6 +85,7 @@ const EditProfile: React.FC = () => {
               <Button
                 className="primary active"
                 color0btn={palette.secondary.light}
+                onClick={save}
               >
                 save changes
               </Button>
@@ -102,10 +119,15 @@ const EditProfile: React.FC = () => {
           }}
         >
           <TabPanel value={value} index={0}>
-            <EditContent profile={profile} setProfile={setProfile} save={save}/>
+            <EditContent
+              profile={profile}
+              setProfile={setProfile}
+              // updateProfile={updateProfile}
+              save={save}
+            />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <EditTags />
+            <EditTags profile={profile} setProfile={setProfile} save={save} />
           </TabPanel>
           <TabPanel value={value} index={2}>
             <EditIdentity />

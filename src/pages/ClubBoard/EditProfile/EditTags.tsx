@@ -1,8 +1,11 @@
 import { Box, Typography } from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Button, TextField } from '../../../components'
+import { useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import { openSnack } from '../../../stores/AppStore'
+import type { IUser, ITag } from '../../../types/model'
 
 export const initialTags = [
   {
@@ -52,24 +55,21 @@ export type TagProps = {
   active?: boolean
 }
 export const TagContent = ({
-  tag,
-  update,
+  data,
+  handleChange,
 }: {
-  tag: TagProps
-  update: (v: string) => void
+  data: ITag
+  handleChange: AnyFunction
 }) => {
-  // console.log(tag.description)
-  const handleUpdate = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    update(e.target.value)
-  }
   return (
     <Box mb="24px">
-      <Button className="tag tag-large tag-active">{tag.name}</Button>
+      <Button className="tag tag-large tag-active">{data.tag}</Button>
       <TextField
         multiline
-        value={tag?.description}
+        value={data?.description}
         className="rounded"
-        onChange={handleUpdate}
+        name={data.tag}
+        onChange={handleChange}
         sx={{
           '& textarea.MuiInputBase-input': {
             fontSize: '18px !important',
@@ -81,22 +81,57 @@ export const TagContent = ({
     </Box>
   )
 }
-export const EditTags = () => {
-  const [tags, setTags] = useState<TagProps[]>(initialTags)
-  const [tempTags, setTempTags] = useState<TagProps[]>(tags)
-  const updateTag = (
-    name: string,
-    field: 'name' | 'active' | 'description',
-    value: string | boolean
-  ) => {
-    setTempTags(
-      tempTags.map((item: TagProps) => {
-        if (item.name === name) {
-          return { ...item, [field]: value }
-        }
-        return item
+export const EditTags = ({
+  profile,
+  setProfile,
+  save,
+}: {
+  profile: IUser
+  setProfile: AnyFunction
+  save: AnyFunction
+}) => {
+  const [userTagKeys, setUserTagKeys] = useState<string[]>([])
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (profile.tags && profile.tags.length > 0) {
+      setUserTagKeys(profile.tags.map((item: ITag) => item.tag))
+    } else setUserTagKeys([])
+  }, [profile.tags])
+
+  const removeTag = (tag: string) => {
+    setProfile({
+      ...profile,
+      tags: profile.tags.filter((item: ITag) => item.tag !== tag),
+    })
+  }
+  const addTag = (tag: string) => {
+    if (profile.tags.length < 3)
+      setProfile({
+        ...profile,
+        tags: [...profile.tags, { description: '', tag }],
       })
-    )
+    else
+      dispatch(
+        openSnack({ content: 'Max tag size is 3', open: true, type: 'warning' })
+      )
+  }
+  const handleTagClick = (tag: string) => {
+    let isExist = userTagKeys.indexOf(tag) > -1
+
+    if (isExist) removeTag(tag)
+    else addTag(tag)
+  }
+  const handleTagChange = (tag: string, desc: string) => {
+    setProfile({
+      ...profile,
+      tags: profile.tags.map((item: ITag) => {
+        return item.tag === tag ? { description: desc, tag } : item
+      }),
+    })
+  }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleTagChange(e.target.name, e.target.value)
   }
   // useEffect(() => {
   //   console.log(tempTags)
@@ -104,9 +139,9 @@ export const EditTags = () => {
   // useEffect(() => {
   //   console.log(tags)
   // }, [tags])
-  const save = () => {
-    setTags(tempTags)
-  }
+  // const save = () => {
+  //   setTags(tempTags)
+  // }
   return (
     <Box>
       <Box>
@@ -121,11 +156,14 @@ export const EditTags = () => {
         sx={{ '& > div, & > div > div': { paddingY: '24px' } }}
       >
         <Box display="flex" gap="12px">
-          {tempTags.map((item: TagProps, key: number) => (
+          {initialTags.map((item: TagProps, key: number) => (
             <Box key={key}>
               <Button
-                className={`tag tag-large ${item.active ? 'tag-active' : ''}`}
-                onClick={() => updateTag(item.name, 'active', !item.active)}
+                className={`tag tag-large ${
+                  userTagKeys.indexOf(item.name) > -1 ? 'tag-active' : ''
+                }`}
+                // onClick={() => updateTag(item.name, 'active', !item.active)}
+                onClick={() => handleTagClick(item.name)}
               >
                 {item.name}
               </Button>
@@ -140,7 +178,12 @@ export const EditTags = () => {
             </Typography>
           </Box>
           <Box>
-            {tempTags.map(
+            {profile.tags &&
+              profile.tags.length > 0 &&
+              profile.tags.map((item: ITag, key: number) => (
+                <TagContent data={item} handleChange={handleChange} key={key} />
+              ))}
+            {/* {tempTags.map(
               (item: TagProps, key: number) =>
                 item.active && (
                   <TagContent
@@ -151,7 +194,7 @@ export const EditTags = () => {
                     }
                   />
                 )
-            )}
+            )} */}
           </Box>
         </Box>
       </Box>
