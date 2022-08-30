@@ -5,16 +5,15 @@ import React, { useState, useEffect } from 'react'
 import { Button } from '../../../components'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import { setUser } from '../../../stores/AuthStore'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
 import type { IUser } from '../../../types/model'
-import { ICommunity } from '../../../types/model'
+import { apiPutRequest } from '../../../utils'
 import * as Container from '../styled'
 
 import { TabPanel, a11yProps } from './styled'
 
 import { EditContent, EditWallet, EditIdentity, EditTags } from './'
-import { apiPutRequest } from '../../../utils'
-import { setUser } from '../../../stores/AuthStore'
 
 const tabItems = ['content', 'tags', 'identity', 'wallet & privacy']
 
@@ -150,7 +149,7 @@ const EditProfile: React.FC = () => {
             />
           </TabPanel>
           <TabPanel value={value} index={3}>
-            <EditWallet profile={profile} setProfile={setProfile} save={save}/>
+            <EditWallet profile={profile} setProfile={setProfile} save={save} />
           </TabPanel>
         </Box>
       </Box>

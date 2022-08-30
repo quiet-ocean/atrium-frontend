@@ -1,18 +1,18 @@
 import { Box, Typography, Collapse } from '@mui/material'
-import { styled } from '@mui/material/styles'
+// import { styled } from '@mui/material/styles'
 import React, { useState, useEffect } from 'react'
 
-import avatar from '../../../assets/images/avatar-6.png'
-import post7 from '../../../assets/images/post-7.png'
-import post8 from '../../../assets/images/post-8.png'
-import post9 from '../../../assets/images/post-9.png'
+// import avatar from '../../../assets/images/avatar-6.png'
+// import post7 from '../../../assets/images/post-7.png'
+// import post8 from '../../../assets/images/post-8.png'
+// import post9 from '../../../assets/images/post-9.png'
 import project6 from '../../../assets/images/project-6.png'
 import { Button, TextField, EmptyBox } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import type { IUser, ICommunity, IPost, IComment } from '../../../types/model'
 import {
   apiGetRequest,
-  apiPostRequest,
+  // apiPostRequest,
   calculatePastTime,
 } from '../../../utils'
 import { Reactions } from '../Dashboard'

@@ -99,14 +99,14 @@ const muiTheme: AtriumTheme = createAtruimTheme({
           props: { variant: 'primary' },
           style: {
             border: '1px solid red',
-          }
+          },
         },
         {
           props: { variant: 'secondary' },
           style: {
             border: '1px solid red',
-          }
-        }
+          },
+        },
       ],
     },
   },

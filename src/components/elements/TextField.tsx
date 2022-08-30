@@ -53,7 +53,7 @@ export const TextField = ({
       value={value}
       onChange={onChange}
       className={className}
-      multiline
+      multiline={multiline}
       sx={sx}
       rows={rows}
     />
