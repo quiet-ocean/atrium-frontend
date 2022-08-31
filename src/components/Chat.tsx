@@ -13,7 +13,7 @@ import styled from 'styled-components'
 
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { palette } from '../MuiTheme'
-import phaserGame from '../PhaserGame'
+import colyseusGame from '../ColyseusGame'
 import type Game from '../scenes/Game'
 import { MessageType, setFocused, setShowChat } from '../stores/ChatStore'
 
@@ -205,7 +205,7 @@ export default function Chat() {
   const focused = useAppSelector((state) => state.chat.focused)
   const showChat = useAppSelector((state) => state.chat.showChat)
   const dispatch = useAppDispatch()
-  const game = phaserGame.game as Game
+  const game = colyseusGame.game as Game
   const playerName = useAppSelector((state) => state.user.playerName)
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
@@ -292,7 +292,7 @@ export default function Chat() {
               // backgroundColor: 'rgba(26, 26, 26, 0.9)',
               // flexDirection: 'column',
             }}
-            // position="relative"
+          // position="relative"
           >
             {chatMessages.map(({ messageType, chatMessage }, index) => (
               <Message

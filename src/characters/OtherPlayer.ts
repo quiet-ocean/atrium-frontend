@@ -1,4 +1,4 @@
-import { Event, phaserEvents } from '../events/EventCenter'
+import { Event, eventEmitter } from '../events/EventCenter'
 import type WebRTC from '../web/WebRTC'
 
 import type MyPlayer from './MyPlayer'
@@ -167,7 +167,7 @@ export default class OtherPlayer extends Player {
       //   this.myPlayer!.y > 515
       // )
       //   return
-      phaserEvents.emit(Event.PLAYER_DISCONNECTED, this.playerId)
+      eventEmitter.emit(Event.PLAYER_DISCONNECTED, this.playerId)
       this.connectionBufferTime = 0
       this.connected = false
     }

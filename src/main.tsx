@@ -13,7 +13,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import './styles/index.scss'
 import App from './App'
 import muiTheme from './MuiTheme'
-import './PhaserGame'
+import './ColyseusGame'
 import store, { persistor } from './stores'
 import { initNearContract, setupAxios } from './utils'
 

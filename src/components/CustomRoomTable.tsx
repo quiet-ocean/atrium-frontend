@@ -19,7 +19,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import { useAppSelector } from '../hooks'
-import phaserGame from '../PhaserGame'
+import colyseusGame from '../ColyseusGame'
 import type Bootstrap from '../scenes/Bootstrap'
 import { getAvatarString, getColorByString } from '../util'
 
@@ -94,7 +94,7 @@ export const CustomRoomTable = () => {
 
   const handleJoinClick = (roomId: string, password: string | null) => {
     if (!lobbyJoined) return
-    const bootstrap = phaserGame.bootstrap as Bootstrap
+    const bootstrap = colyseusGame.bootstrap as Bootstrap
     bootstrap.network
       .joinCustomById(roomId, password)
       .then(() => bootstrap.launchGame())

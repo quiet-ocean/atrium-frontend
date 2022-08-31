@@ -1,7 +1,7 @@
 import type { Room } from 'colyseus.js'
 import { Client } from 'colyseus.js'
 
-import { phaserEvents, Event } from '../events/EventCenter'
+import { eventEmitter, Event } from '../events/EventCenter'
 import store from '../stores'
 import {
   pushChatMessage,
@@ -49,9 +49,9 @@ export default class Network {
       store.dispatch(setLobbyJoined(true))
     })
 
-    phaserEvents.on(Event.MY_PLAYER_NAME_CHANGE, this.updatePlayerName, this)
-    phaserEvents.on(Event.MY_PLAYER_TEXTURE_CHANGE, this.updatePlayer, this)
-    phaserEvents.on(
+    eventEmitter.on(Event.MY_PLAYER_NAME_CHANGE, this.updatePlayerName, this)
+    eventEmitter.on(Event.MY_PLAYER_TEXTURE_CHANGE, this.updatePlayer, this)
+    eventEmitter.on(
       Event.PLAYER_DISCONNECTED,
       this.playerStreamDisconnect,
       this
@@ -122,11 +122,11 @@ export default class Network {
         console.log(changes)
         changes.forEach((change) => {
           const { field, value } = change
-          phaserEvents.emit(Event.PLAYER_UPDATED, field, value, key)
+          eventEmitter.emit(Event.PLAYER_UPDATED, field, value, key)
 
           // when a new player finished setting up player name
           if (field === 'name' && value !== '') {
-            phaserEvents.emit(Event.PLAYER_JOINED, player, key)
+            eventEmitter.emit(Event.PLAYER_JOINED, player, key)
             store.dispatch(setPlayerNameMap({ id: key, name: value }))
             store.dispatch(pushPlayerJoinedMessage(value))
           }
@@ -136,7 +136,7 @@ export default class Network {
 
     // an instance removed from the players MapSchema
     this.room.state.players.onRemove = (player: IPlayer, key: string) => {
-      phaserEvents.emit(Event.PLAYER_LEFT, key)
+      eventEmitter.emit(Event.PLAYER_LEFT, key)
       this.webRTC?.deleteVideoStream(key)
       this.webRTC?.deleteOnCalledVideoStream(key)
       store.dispatch(pushPlayerLeftMessage(player.name))
@@ -147,10 +147,10 @@ export default class Network {
     this.room.state.computers.onAdd = (computer: IComputer, key: string) => {
       // track changes on every child object's connectedUser
       computer.connectedUser.onAdd = (item) => {
-        phaserEvents.emit(Event.ITEM_USER_ADDED, item, key, ItemType.COMPUTER)
+        eventEmitter.emit(Event.ITEM_USER_ADDED, item, key, ItemType.COMPUTER)
       }
       computer.connectedUser.onRemove = (item) => {
-        phaserEvents.emit(Event.ITEM_USER_REMOVED, item, key, ItemType.COMPUTER)
+        eventEmitter.emit(Event.ITEM_USER_REMOVED, item, key, ItemType.COMPUTER)
       }
     }
 
@@ -167,10 +167,10 @@ export default class Network {
       )
       // track changes on every child object's connectedUser
       whiteboard.connectedUser.onAdd = (item) => {
-        phaserEvents.emit(Event.ITEM_USER_ADDED, item, key, ItemType.WHITEBOARD)
+        eventEmitter.emit(Event.ITEM_USER_ADDED, item, key, ItemType.WHITEBOARD)
       }
       whiteboard.connectedUser.onRemove = (item) => {
-        phaserEvents.emit(
+        eventEmitter.emit(
           Event.ITEM_USER_REMOVED,
           item,
           key,
@@ -192,7 +192,9 @@ export default class Network {
 
     // when a user sends a message
     this.room.onMessage(Message.ADD_CHAT_MESSAGE, ({ clientId, content }) => {
-      phaserEvents.emit(Event.UPDATE_DIALOG_BUBBLE, clientId, content)
+      console.log(clientId)
+      console.log(content)
+      eventEmitter.emit(Event.UPDATE_DIALOG_BUBBLE, clientId, content)
     })
 
     // when a peer disconnects with myPeer
@@ -212,7 +214,7 @@ export default class Network {
     callback: (playerId: string, content: string) => void,
     context?: any
   ) {
-    phaserEvents.on(Event.UPDATE_DIALOG_BUBBLE, callback, context)
+    eventEmitter.on(Event.UPDATE_DIALOG_BUBBLE, callback, context)
   }
 
   // method to register event listener and call back function when a item user added
@@ -220,7 +222,7 @@ export default class Network {
     callback: (playerId: string, key: string, itemType: ItemType) => void,
     context?: any
   ) {
-    phaserEvents.on(Event.ITEM_USER_ADDED, callback, context)
+    eventEmitter.on(Event.ITEM_USER_ADDED, callback, context)
   }
 
   // method to register event listener and call back function when a item user removed
@@ -228,7 +230,7 @@ export default class Network {
     callback: (playerId: string, key: string, itemType: ItemType) => void,
     context?: any
   ) {
-    phaserEvents.on(Event.ITEM_USER_REMOVED, callback, context)
+    eventEmitter.on(Event.ITEM_USER_REMOVED, callback, context)
   }
 
   // method to register event listener and call back function when a player joined
@@ -236,22 +238,22 @@ export default class Network {
     callback: (Player: IPlayer, key: string) => void,
     context?: any
   ) {
-    phaserEvents.on(Event.PLAYER_JOINED, callback, context)
+    eventEmitter.on(Event.PLAYER_JOINED, callback, context)
   }
 
   // method to register event listener and call back function when a player left
   onPlayerLeft(callback: (key: string) => void, context?: any) {
-    phaserEvents.on(Event.PLAYER_LEFT, callback, context)
+    eventEmitter.on(Event.PLAYER_LEFT, callback, context)
   }
 
   // method to register event listener and call back function when myPlayer is ready to connect
   onMyPlayerReady(callback: (key: string) => void, context?: any) {
-    phaserEvents.on(Event.MY_PLAYER_READY, callback, context)
+    eventEmitter.on(Event.MY_PLAYER_READY, callback, context)
   }
 
   // method to register event listener and call back function when my video is connected
   onMyPlayerVideoConnected(callback: (key: string) => void, context?: any) {
-    phaserEvents.on(Event.MY_PLAYER_VIDEO_CONNECTED, callback, context)
+    eventEmitter.on(Event.MY_PLAYER_VIDEO_CONNECTED, callback, context)
   }
 
   // method to register event listener and call back function when a player updated
@@ -259,7 +261,7 @@ export default class Network {
     callback: (field: string, value: number | string, key: string) => void,
     context?: any
   ) {
-    phaserEvents.on(Event.PLAYER_UPDATED, callback, context)
+    eventEmitter.on(Event.PLAYER_UPDATED, callback, context)
   }
 
   // method to send player updates to Colyseus server
@@ -279,13 +281,13 @@ export default class Network {
   // method to send ready-to-connect signal to Colyseus server
   readyToConnect() {
     this.room?.send(Message.READY_TO_CONNECT)
-    phaserEvents.emit(Event.MY_PLAYER_READY)
+    eventEmitter.emit(Event.MY_PLAYER_READY)
   }
 
   // method to send ready-to-connect signal to Colyseus server
   videoConnected() {
     this.room?.send(Message.VIDEO_CONNECTED)
-    phaserEvents.emit(Event.MY_PLAYER_VIDEO_CONNECTED)
+    eventEmitter.emit(Event.MY_PLAYER_VIDEO_CONNECTED)
   }
 
   // method to send stream-disconnection signal to Colyseus server

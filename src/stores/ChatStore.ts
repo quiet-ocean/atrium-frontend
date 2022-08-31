@@ -1,7 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
-import phaserGame from '../PhaserGame'
+import colyseusGame from '../ColyseusGame'
 import type Game from '../scenes/Game'
 import type { IChatMessage } from '../types/IOfficeState'
 
@@ -49,7 +49,7 @@ export const chatSlice = createSlice({
       })
     },
     setFocused: (state, action: PayloadAction<boolean>) => {
-      const game = phaserGame.game as Game
+      const game = colyseusGame.game as Game
       action.payload ? game.disableKeys() : game.enableKeys()
       state.focused = action.payload
     },
