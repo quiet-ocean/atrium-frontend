@@ -25,7 +25,7 @@ import Game from './scenes/Game'
 //   type: Phaser.AUTO,
 // }
 
-class UnityGame {
+class ColyseusGame {
   bootstrap!: Bootstrap
   game!: Game
 
@@ -36,8 +36,8 @@ class UnityGame {
   }
 }
 
-const phaserGame = new UnityGame()
+const colyseusGame = new ColyseusGame()
 
-;(window as any).game = phaserGame
+;(window as any).game = colyseusGame
 
-export default phaserGame
+export default colyseusGame

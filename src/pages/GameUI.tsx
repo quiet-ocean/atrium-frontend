@@ -17,7 +17,7 @@ import SettingDialog from '../components/SettingDialog'
 import UnityGame from '../components/UnityGame'
 import WhiteboardDialog from '../components/WhiteboardDialog'
 import { useAppDispatch, useAppSelector } from '../hooks'
-import phaserGame from '../PhaserGame'
+import colyseusGame from '../ColyseusGame'
 import type Game from '../scenes/Game'
 import { setLoggedIn } from '../stores/UserStore'
 
@@ -44,7 +44,7 @@ for (let i = avatars.length - 1; i > 0; i--) {
 
 function GameUI() {
   const dispatch = useAppDispatch()
-  const game = phaserGame.game as Game
+  const game = colyseusGame.game as Game
   const loggedIn = useAppSelector((state) => state.user.loggedIn)
   const playerName = useAppSelector((state) => state.user.playerName)
   const computerDialogOpen = useAppSelector(

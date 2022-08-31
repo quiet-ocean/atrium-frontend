@@ -16,7 +16,7 @@ import Ash from '../assets/Ash_login.png'
 import Lucy from '../assets/Lucy_login.png'
 import Nancy from '../assets/Nancy_login.png'
 import { useAppSelector, useAppDispatch } from '../hooks'
-import phaserGame from '../PhaserGame'
+import colyseusGame from '../ColyseusGame'
 import type Game from '../scenes/Game'
 import { setLoggedIn } from '../stores/UserStore'
 import { getAvatarString, getColorByString } from '../util'
@@ -148,7 +148,7 @@ export default function LoginDialog() {
   const roomJoined = useAppSelector((state) => state.room.roomJoined)
   const roomName = useAppSelector((state) => state.room.roomName)
   const roomDescription = useAppSelector((state) => state.room.roomDescription)
-  const game = phaserGame.game as Game
+  const game = colyseusGame.game as Game
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()

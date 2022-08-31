@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../../assets/images/atrium-logo-large.png'
 import { LoginLayout } from '../../components'
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import phaserGame from '../../PhaserGame'
+import colyseusGame from '../../ColyseusGame'
 import type Bootstrap from '../../scenes/Bootstrap'
 import { requestUser, signup } from '../../stores/AuthStore'
 
@@ -78,7 +78,7 @@ export const LoadScene = () => {
     console.log('load scene')
     console.log(roomJoined, lobbyJoined)
     // if (!roomJoined && lobbyJoined) {
-    const bootstrap = phaserGame.bootstrap as Bootstrap
+    const bootstrap = colyseusGame.bootstrap as Bootstrap
     bootstrap.network
       .joinOrCreatePublic()
       .then(() => {

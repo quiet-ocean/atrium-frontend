@@ -11,7 +11,7 @@ import styled from 'styled-components'
 
 import logo from '../assets/logo.png'
 import { useAppSelector } from '../hooks'
-import phaserGame from '../PhaserGame'
+import colyseusGame from '../ColyseusGame'
 import type Bootstrap from '../scenes/Bootstrap'
 
 import { CreateRoomForm } from './CreateRoomForm'
@@ -96,7 +96,7 @@ export default function RoomSelectionDialog() {
 
   const handleConnect = () => {
     if (lobbyJoined) {
-      const bootstrap = phaserGame.bootstrap as Bootstrap
+      const bootstrap = colyseusGame.bootstrap as Bootstrap
       bootstrap.network
         .joinOrCreatePublic()
         .then(() => bootstrap.launchGame())

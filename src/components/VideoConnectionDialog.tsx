@@ -4,7 +4,7 @@ import Button from '@mui/material/Button'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import phaserGame from '../PhaserGame'
+import colyseusGame from '../ColyseusGame'
 import type Game from '../scenes/Game'
 
 const Backdrop = styled.div`
@@ -43,7 +43,7 @@ export default function VideoConnectionDialog() {
           variant="contained"
           color="secondary"
           onClick={() => {
-            const game = phaserGame.game as Game
+            const game = colyseusGame.game as Game
             game.network.webRTC?.getUserMedia()
           }}
         >
