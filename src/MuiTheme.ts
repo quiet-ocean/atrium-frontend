@@ -4,11 +4,18 @@ import type { CreateAtrimTheme, AtriumTheme } from './types/AtriumThemeType'
 import { assertCast } from './types/AtriumThemeType'
 assertCast<CreateAtrimTheme>(createAtruimTheme)
 
-// declare module '@mui/material/TextField' {
-//   interface TextFieldPropsVariantOverrides {
-//     primary: true
-//   }
-// }
+declare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    primary: true
+  }
+}
+
+declare module '@mui/material/TextField' {
+  interface TextFieldPropsVariantOverrides {
+    primary: true
+    secondary: true
+  }
+}
 
 export const colors = {
   black: '#21E0A5',
@@ -34,19 +41,31 @@ const muiTheme: AtriumTheme = createAtruimTheme({
           border: `1px solid ${theme.palette.background.default}`,
           borderRadius: '0',
           color: theme.palette.background.default,
-          fontFamily: 'Fractul',
+          fontFamily: 'Fractul Alt',
           textTransform: 'capitalize',
         }),
+      },
+    },
+    MuiSnackbar: {
+      styleOverrides: {
+        root: {
+          '& .MuiPaper-root': {
+            '& .MuiSnackbarContent-message': {
+              fontFamily: 'Fractul Alt',
+            },
+            borderRadius: 0,
+          },
+        },
       },
     },
     MuiTextField: {
       styleOverrides: {
         root: {
           '& input': {
-            fontFamily: 'Fractul',
+            fontFamily: 'Fractul Alt',
           },
           // border: '1px solid red',
-          fontFamily: 'Fractul',
+          fontFamily: 'Fractul Alt',
         },
       },
       variants: [
@@ -76,19 +95,19 @@ const muiTheme: AtriumTheme = createAtruimTheme({
             border: '0px',
           },
         },
-      ],
-    },
-    MuiSnackbar: {
-      styleOverrides: {
-        root: {
-          '& .MuiPaper-root': {
-            '& .MuiSnackbarContent-message': {
-              fontFamily: 'Fractul',
-            },
-            borderRadius: 0,
+        {
+          props: { variant: 'primary' },
+          style: {
+            border: '1px solid red',
           },
         },
-      },
+        {
+          props: { variant: 'secondary' },
+          style: {
+            border: '1px solid red',
+          },
+        },
+      ],
     },
   },
   palette: {
@@ -172,7 +191,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     },
     h1: {
       color: '#F8F9FA',
-      fontFamily: 'Fractul',
+      fontFamily: 'Fractul Alt',
       fontSize: '48px',
       fontStyle: 'normal',
       fontWeight: 600,
@@ -181,7 +200,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     },
     h2: {
       color: '#F8F9FA',
-      fontFamily: 'Fractul',
+      fontFamily: 'Fractul Alt',
       fontSize: '36px',
       fontStyle: 'normal',
       fontWeight: 600,
@@ -190,7 +209,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     },
     h3: {
       color: '#F8F9FA',
-      fontFamily: 'Fractul',
+      fontFamily: 'Fractul Alt',
       fontSize: '32px',
       fontStyle: 'normal',
       fontWeight: 600,
@@ -199,7 +218,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     },
     h4: {
       color: '#F8F9FA',
-      fontFamily: 'Fractul',
+      fontFamily: 'Fractul Alt',
       fontSize: '24px',
       fontStyle: 'normal',
       fontWeight: 600,
@@ -209,7 +228,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     },
     h5: {
       color: '#F8F9FA',
-      fontFamily: 'Fractul',
+      fontFamily: 'Fractul Alt',
       fontSize: '18px',
       fontStyle: 'normal',
       fontWeight: 600,
@@ -219,7 +238,7 @@ const muiTheme: AtriumTheme = createAtruimTheme({
     },
     h6: {
       color: '#F8F9FA',
-      fontFamily: 'Fractul',
+      fontFamily: 'Fractul Alt',
       fontSize: '16px',
       fontStyle: 'normal',
       fontWeight: 400,

@@ -1,4 +1,3 @@
-import CloseIcon from '@mui/icons-material/Close'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
 import PushPinIcon from '@mui/icons-material/PushPin'
@@ -7,12 +6,11 @@ import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap'
 import {
   Box,
   Grid,
-  Button,
+  // Button,
   Typography,
   Modal,
   Backdrop,
   Fade,
-  Snackbar,
 } from '@mui/material'
 import Icon from '@mui/material/Icon'
 import { styled } from '@mui/material/styles'
@@ -20,25 +18,20 @@ import { useState, useEffect } from 'react'
 
 import LinkIcon from '../../../assets/icons/link-chain-icon.png'
 import badge from '../../../assets/icons/verified-icon-small.png'
-import avatar2 from '../../../assets/images/avatar-6.png'
 import avatar1 from '../../../assets/images/avatar-7.png'
 import bannerImage from '../../../assets/images/banner-2.png'
-import postImage from '../../../assets/images/post-6.png'
-import { AText, AButton, AdornmentInput } from '../../../components'
+import { AText, Button, AdornmentInput } from '../../../components'
 import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import type { TAlert, TSnack } from '../../../stores/AppStore'
+import { openSnack } from '../../../stores/AppStore'
 import { setUser } from '../../../stores/AuthStore'
-import type {
-  ICommunity,
-  ICommunityMember,
-  IOGUser,
-} from '../../../types/model'
-import type { IUser } from '../../../types/User'
+import type { ICommunity, ICommunityMember, IUser } from '../../../types/model'
 import { apiPostRequest, apiGetRequest } from '../../../utils'
-import { Reactions } from '../Dashboard'
 import * as PContainer from '../styled'
 import { Community as Container } from '../styled'
-import { PostContainer } from '../UserProfile'
+
+import { FeaturedPost, Members } from './'
 
 export const Banner = () => {
   return (
@@ -90,21 +83,21 @@ export const DetailParams = () => {
 export const SocialButtons = () => {
   return (
     <Box display="flex" gap="12px">
-      <AButton className="secondary">
+      <Button className="secondary">
         <img src={LinkIcon} alt="" /> &nbsp; marketplace
-      </AButton>
-      {/* <AButton className="secondary">whitepaper</AButton> */}
-      <AButton className="secondary">
+      </Button>
+      {/* <Button className="secondary">whitepaper</Button> */}
+      <Button className="secondary">
         <TwitterIcon sx={{ fontSize: '16px' }} />
         &nbsp; twitter
-      </AButton>
-      <AButton className="secondary">
+      </Button>
+      <Button className="secondary">
         <Icon sx={{ fontSize: '16px' }}>discord</Icon>
         &nbsp; discord
-      </AButton>
-      <AButton className="secondary">
+      </Button>
+      <Button className="secondary">
         <img src={LinkIcon} alt="" /> &nbsp; website
-      </AButton>
+      </Button>
     </Box>
   )
 }
@@ -157,11 +150,11 @@ export const Detail = ({
             </Box>
           </Box>
           <AText className="disabled" sx={{ textAlign: 'center' }}>
-            {(community.owner as IOGUser).accountId}
+            {(community.owner as IUser).accountId}
           </AText>
         </Box>
         <Box pt="32px" textAlign="center">
-          <AButton
+          <Button
             // className={`community primary outlined active`}
             className={`community primary outlined ${joined ? '' : 'active'}`}
             color0btn={joined ? palette.text.primary : palette.secondary.light}
@@ -169,7 +162,7 @@ export const Detail = ({
           >
             <GroupOutlinedIcon />
             {joined ? 'remove' : 'join'} community
-          </AButton>
+          </Button>
         </Box>
       </Grid>
       <Grid item lg={7}>
@@ -178,11 +171,7 @@ export const Detail = ({
             <DetailParams />
           </Box>
           <Box pt="15px">
-            <Typography variant="body1" color={palette.text.primary}>
-              A collection of 3333 unique, randomly
-            </Typography>
-            <Text>generated pixel art NFTs stored on the NEAR</Text>
-            <Text> blockchain.</Text>
+            <Text>{community.description}</Text>
           </Box>
           <Box pt="15px">
             <SocialButtons />
@@ -193,90 +182,6 @@ export const Detail = ({
   )
 }
 
-export const ChatMessage = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <Box>
-      <Box display="flex" gap="12px">
-        <img
-          src={avatar2}
-          alt=""
-          width="36px"
-          height="36px"
-          style={{ borderRadius: '18px' }}
-        />
-        <Box display="flex" gap="8px" py="6px">
-          <Box>
-            <AText sx={{ fontSize: '14px', fontWeight: 600, padding: '2px' }}>
-              Hades
-            </AText>
-          </Box>
-          <Box>
-            <AButton
-              className="tag-secondary outlined tag-small"
-              color0btn="#71E5FF"
-            >
-              founder
-            </AButton>
-          </Box>
-          <Box>
-            <AButton
-              className="tag-secondary tag-small outlined"
-              color0btn="#FFB350"
-            >
-              devs
-            </AButton>
-          </Box>
-          <Box>
-            <AButton
-              className="tag-secondary tag-small outlined"
-              color0btn="#DE58FF"
-            >
-              moderator
-            </AButton>
-          </Box>
-        </Box>
-      </Box>
-      <Box pl="49px">{children}</Box>
-    </Box>
-  )
-}
-export const UsernameWithTags = () => {
-  return (
-    <>
-      <Box display="flex" gap="8px">
-        <Box>
-          <AText sx={{ fontSize: '14px', fontWeight: 600, padding: '2px' }}>
-            Hades
-          </AText>
-        </Box>
-        <Box>
-          <AButton
-            className="tag-secondary outlined tag-small"
-            color0btn="#71E5FF"
-          >
-            founder
-          </AButton>
-        </Box>
-        <Box>
-          <AButton
-            className="tag-secondary tag-small outlined"
-            color0btn="#FFB350"
-          >
-            devs
-          </AButton>
-        </Box>
-        <Box>
-          <AButton
-            className="tag-secondary tag-small outlined"
-            color0btn="#DE58FF"
-          >
-            moderator
-          </AButton>
-        </Box>
-      </Box>
-    </>
-  )
-}
 type TagStyleProps = { tcolor: string }
 export const Tag = styled(Button)<TagStyleProps>(({ theme, tcolor }) => ({
   '&.outlined': {
@@ -293,65 +198,6 @@ export const Tag = styled(Button)<TagStyleProps>(({ theme, tcolor }) => ({
   textTransform: 'capitalize',
 }))
 
-export const UserIntro = () => {
-  return (
-    <Box pb="24px">
-      <ChatMessage>
-        <Typography
-          sx={{
-            alignItems: 'center',
-            color: palette.text.primary,
-            fontFamily: 'Andale Mono Regular',
-            fontSize: '16px',
-            fontStyle: 'normal',
-            fontWeight: 400,
-            letterSpacing: '-0.05em',
-            lineHeight: '120%',
-          }}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac
-          convallis commodo morbi ut leo gravida ...
-        </Typography>
-      </ChatMessage>
-    </Box>
-  )
-}
-export const FeaturedPost = ({ height }: { height?: string }) => {
-  return (
-    <Container>
-      <Box display="flex" justifyContent="space-between">
-        <Typography variant="h2">featured post</Typography>
-        <Box>
-          <AButton
-            className="primary outlined"
-            color0btn={palette.secondary.light}
-          >
-            view all posts
-          </AButton>
-        </Box>
-      </Box>
-      <Box pt="40px">
-        <PostContainer img={postImage} height={height ? height : ''}>
-          <Box display="flex" gap="24px">
-            <Box>
-              <AText>Antisocial Ape Club Raffles Coming Soon</AText>
-              <AText className="disabled">
-                Keep the peace? Fuck that. We keep it antisocial on this island.
-                Stay Ape.{' '}
-              </AText>
-            </Box>
-            <Box display="flex" flexDirection="column" justifyContent="end">
-              <Reactions />
-            </Box>
-          </Box>
-        </PostContainer>
-        <Box pt="16px">
-          <UserIntro />
-        </Box>
-      </Box>
-    </Container>
-  )
-}
 export const LiveChat = () => {
   return (
     <Container height="100%">
@@ -385,18 +231,18 @@ export const LiveChat = () => {
               overflowY: 'scroll',
             }}
           >
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
-            <UserIntro />
+            {/* <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem /> */}
           </Box>
           <Box>
             <AdornmentInput
@@ -421,12 +267,12 @@ export const MediaPanel = () => {
         <Box display="flex" justifyContent="space-between">
           <Typography variant="h2">media</Typography>
           <Box>
-            <AButton
+            <Button
               className="primary outlined"
               color0btn={palette.secondary.light}
             >
               view all
-            </AButton>
+            </Button>
           </Box>
         </Box>
         <Box
@@ -456,105 +302,7 @@ export const MediaPanel = () => {
     </Container>
   )
 }
-export const Member = ({ index }: { index: number }) => {
-  return (
-    <Box
-      p="8px 16px"
-      display="flex"
-      justifyContent="space-between"
-      sx={{
-        background: index % 2 === 0 ? palette.background.paper : '',
-      }}
-    >
-      <Box display="flex" gap="12px">
-        <img src={avatar2} alt="" width="46px" height="46px" />
-        <Box py="10px">
-          <AText sx={{ fontSize: '18px', fontWeight: 800 }}>LtLollipop</AText>
-        </Box>
-      </Box>
-      <Box>
-        <AText sx={{ fontSize: '18px', fontWeight: 800 }}>15</AText>
-        <AText className="disabled" sx={{ fontSize: '12px !important' }}>
-          NFTs
-        </AText>
-      </Box>
-      <Box display="flex" gap="12px">
-        <Box py="10px">
-          <AButton
-            className="tag primary outlined tag-small"
-            color0btn="#FF75CD"
-          >
-            whitelisted
-          </AButton>
-        </Box>
-      </Box>
-    </Box>
-  )
-}
-export const Members = ({
-  isModal,
-  handleOpen,
-}: {
-  isModal: boolean
-  handleOpen: (f: boolean) => void
-}) => {
-  return (
-    <Container>
-      <Box display="flex" justifyContent="space-between" height="100%">
-        <Typography variant="h2">Friends</Typography>
-        {isModal ? (
-          <Box onClick={() => handleOpen(false)}>
-            <CloseIcon sx={{ color: palette.text.primary }} />
-          </Box>
-        ) : (
-          <Box>
-            <AButton
-              className="primary outlined"
-              color0btn={palette.secondary.light}
-              onClick={() => handleOpen(true)}
-            >
-              view all
-            </AButton>
-          </Box>
-        )}
-      </Box>
-      <Box display="flex" gap="12px" pt="18px">
-        <AButton
-          className="tag-secondary outlined tag-small"
-          color0btn="#A8A8A8"
-        >
-          all
-        </AButton>
-        <AButton className="tag primary outlined tag-small" color0btn="#FF75CD">
-          whitelisted
-        </AButton>
-        <AButton className="tag primary outlined tag-small" color0btn="#90E487">
-          OG member
-        </AButton>
-        <AButton className="tag primary outlined tag-small" color0btn="#FFB350">
-          devs
-        </AButton>
-        <AButton className="tag primary outlined tag-small" color0btn="#DE58FF">
-          moderator
-        </AButton>
-        <AButton className="tag primary outlined tag-small" color0btn="#71E5FF">
-          founder
-        </AButton>
-      </Box>
-      <Box
-        mt="24px"
-        sx={{
-          height: '360px',
-          overflowY: 'scroll',
-        }}
-      >
-        {new Array(10).fill(2).map((_, key: number) => (
-          <Member index={key} key={key} />
-        ))}
-      </Box>
-    </Container>
-  )
-}
+
 export const MembersModal = ({
   open,
   handleOpen,
@@ -599,12 +347,8 @@ export const MembersModal = ({
   )
 }
 export const CommunityHub = () => {
-  const vertical = 'top'
-  const horizontal = 'right'
   const [joined, setJoined] = useState(false)
-  const [openSnackbar, setOpenSnackbar] = useState(false)
   const [openMembersModal, setOpenMembersModal] = useState(false)
-  const [message, setMessage] = useState('')
 
   const dispatch = useAppDispatch()
   const community = useAppSelector((state) => state.community.data)
@@ -658,7 +402,7 @@ export const CommunityHub = () => {
       if (res.status === 200) {
         if (res?.data?.community) {
           // console.log('you are joined')
-          snack('You are successfully joined')
+          handleSnack('success', 'You are successfully joined')
           const res = await apiGetRequest(`${process.env.VITE_API_URL}/auth/me`)
           console.log(res.data)
           dispatch(setUser(res.data as IUser))
@@ -667,7 +411,7 @@ export const CommunityHub = () => {
       } else {
         console.log('Bad Request 400')
         // alert(res?.data?.msg)
-        snack(res.data?.msg)
+        handleSnack('error', res.data?.msg)
       }
     } else {
       const res = await apiPostRequest(
@@ -693,10 +437,9 @@ export const CommunityHub = () => {
       }
     }
   }
-  const handleSnackbarClose = () => setOpenSnackbar(false)
-  const snack = (_message: string) => {
-    setMessage(_message)
-    setOpenSnackbar(true)
+  const handleSnack = (type: TAlert, content: string) => {
+    const snack: TSnack = { content, open: true, type }
+    dispatch(openSnack(snack))
   }
   return (
     <PContainer.Main>
@@ -721,13 +464,6 @@ export const CommunityHub = () => {
         </Grid>
       </Grid>
       <MembersModal open={openMembersModal} handleOpen={setOpenMembersModal} />
-      <Snackbar
-        anchorOrigin={{ horizontal, vertical }}
-        open={openSnackbar}
-        onClose={handleSnackbarClose}
-        message={message}
-        key={vertical + horizontal}
-      />
     </PContainer.Main>
   )
 }

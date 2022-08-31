@@ -3,44 +3,47 @@ import { Box, Typography, Grid } from '@mui/material'
 import { useState, useEffect } from 'react'
 
 import MessageIcon from '../../../assets/icons/message-icon-dark.png'
-import { AText, AButton } from '../../../components'
-import { useAppDispatch } from '../../../hooks'
+import { AText, Button } from '../../../components'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import { getUserById } from '../../../services/authApi'
+import type { TSnack } from '../../../stores/AppStore'
+import { openSnack } from '../../../stores/AppStore'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
-import type { IUser } from '../../../types/User'
+import type { IUser, IFriend } from '../../../types/model'
 import { apiPostRequest } from '../../../utils'
 import { SocialButtons } from '../CommunityHub'
 import editIcon from '../images/edit-icon.png'
 
 import { Text } from './styled'
-export const UserInfo = ({
-  user,
-  profile,
-}: {
-  user: IUser
-  profile: IUser
-}) => {
+
+export const UserInfo = ({ user }: { user: IUser }) => {
   const dispatch = useAppDispatch()
-  const [isMe, setIsMe] = useState(false)
   const [isFriend, setIsFriend] = useState(false)
-
+  const [_user, setUser] = useState<IUser>(user)
+  console.log('User data in user info component: ', user)
+  const me = useAppSelector((state) => state.auth.user)
   useEffect(() => {
-    if (user && profile) {
-      if (user.accountId === profile.accountId) setIsMe(true)
-      else setIsMe(false)
-      if (user.friends.indexOf(profile._id) > -1) setIsFriend(true)
-      else setIsFriend(false)
-    } else {
-      console.log('user and profile data is null')
+    let isMounted = true
+    if (isMounted && _user && _user.friends) {
+      _user.friends.forEach((friend: IFriend) => {
+        if (friend.user._id === me._id) {
+          console.log('is friend', friend.user._id, me._id)
+          setIsFriend(true)
+          return
+        }
+      })
     }
-  }, [user, profile])
+    return () => {
+      isMounted = false
+    }
+  }, [_user])
 
   useEffect(() => {
-    console.log(isMe ? 'yes, this is me' : 'no, i am not')
-    console.log(profile)
-  }, [isMe])
+    setUser(user)
+  }, [user])
 
-  const handleBtnEditProfile = () => {
+  const handleEdit = () => {
     dispatch(setCurrentBoardTab(4))
   }
 
@@ -50,25 +53,52 @@ export const UserInfo = ({
       const res = await apiPostRequest(
         `${process.env.VITE_API_URL}/user/friend`,
         {
-          recipient: profile._id,
+          recipient: _user._id,
           status: 4,
         }
       )
-      console.log(res)
-      if (res.data?.success) {
-        setIsFriend(false)
+      if (res.status === 200) {
+        if (res.data?.success) {
+          setIsFriend(false)
+          setUser((prevUser) => ({
+            ...prevUser,
+            friends: prevUser?.friends.filter(
+              (item: IFriend) => item.user._id !== me._id
+            ),
+          }))
+        } else {
+          console.log('Response status is 200, but not succeed to add friend')
+        }
+      } else {
+        const snack: TSnack = {
+          content: res.data?.message || 'Failed to add friend',
+          open: true,
+          type: 'warning',
+        }
+        dispatch(openSnack(snack))
       }
     } else {
       const res = await apiPostRequest(
         `${process.env.VITE_API_URL}/user/friend`,
         {
-          recipient: profile._id,
+          recipient: _user._id,
           status: 3,
         }
       )
-      console.log(res)
-      if (res.data?.success) {
-        setIsFriend(true)
+      if (res.status === 200) {
+        if (res.data?.recipient) {
+          setIsFriend(true)
+          const res = await getUserById(_user._id)
+          if (res.status === 200 && res.data) setUser(res.data)
+        } else {
+        }
+      } else {
+        const snack: TSnack = {
+          content: res.data?.message || 'Failed to add friend',
+          open: true,
+          type: 'warning',
+        }
+        dispatch(openSnack(snack))
       }
     }
   }
@@ -84,7 +114,7 @@ export const UserInfo = ({
           pr="16px"
         >
           <img
-            src={user.avatar}
+            src={_user.avatar}
             alt=""
             width="156px"
             height="156px"
@@ -94,28 +124,28 @@ export const UserInfo = ({
             }}
           />
         </Box>
-        <Box pt="48px">
+        <Box pt={8}>
           <Typography variant="h4" textAlign="center">
-            {profile.username}
+            {_user.username}
           </Typography>
           <AText className="disabled" sx={{ textAlign: 'center' }} mt="8px">
-            {profile.accountId}
+            {_user.accountId}
           </AText>
         </Box>
-        {!isMe && (
+        {me._id !== _user._id && (
           <Box pt="24px" display="flex" justifyContent="center" gap="12px">
             <Box>
-              <AButton
+              <Button
                 className="primary outlined active"
                 color0btn={palette.secondary.light}
                 onClick={handleSetFriend}
               >
                 <PeopleOutlinedIcon />
                 {isFriend ? 'remove' : 'add'} friend
-              </AButton>
+              </Button>
             </Box>
             <Box>
-              <AButton
+              <Button
                 className="primary outlined active"
                 color0btn={palette.secondary.light}
               >
@@ -123,7 +153,7 @@ export const UserInfo = ({
                   <img src={MessageIcon} alt="" width="100%" height="100%" />
                 </Box>
                 message
-              </AButton>
+              </Button>
             </Box>
           </Box>
         )}
@@ -131,20 +161,21 @@ export const UserInfo = ({
       <Grid item lg={7}>
         <Box position="relative">
           <Box pt="64px">
-            <Text>cofounder @ASAC_NFT</Text>
+            {/* <Text>cofounder @ASAC_NFT</Text> */}
+            <Text maxWidth={554}>{user.bio}</Text>
           </Box>
           <Box pt="36px">
             <SocialButtons />
           </Box>
-          <AButton
+          <Button
             className="outlined primary active"
             color0btn={palette.text.disabled}
             sx={{ position: 'absolute', right: '24px', top: '24px' }}
-            onClick={handleBtnEditProfile}
+            onClick={handleEdit}
           >
             <img src={editIcon} alt="" width="24px" height="24px" />
             &nbsp; edit profile
-          </AButton>
+          </Button>
         </Box>
       </Grid>
     </Grid>

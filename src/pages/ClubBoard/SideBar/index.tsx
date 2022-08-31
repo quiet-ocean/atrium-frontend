@@ -10,7 +10,7 @@ import ProposalIcon from '../../../assets/icons/proposal-icon.png'
 import SettingIcon from '../../../assets/icons/setting-icon.png'
 import { useAppSelector, useAppDispatch } from '../../../hooks'
 import muiTheme from '../../../MuiTheme'
-import { setProfile } from '../../../stores/AppStore'
+import { setProfile, setCurrentUserId } from '../../../stores/AppStore'
 
 const IconLink = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -27,9 +27,8 @@ const SideBar: React.FC<{
   const me = useAppSelector((state) => state.auth.user)
 
   const handleSetProfile = () => {
-    console.log('set profile for me: ', me)
-
     dispatch(setProfile(me))
+    dispatch(setCurrentUserId(me._id))
   }
   return (
     <Box

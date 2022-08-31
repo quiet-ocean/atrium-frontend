@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 
-import { LoginLayout, AButton } from '../../components'
+import { LoginLayout, Button } from '../../components'
 import { palette } from '../../MuiTheme'
 
 import { LoginSubLayout } from './LoginSubLayout'
@@ -15,7 +15,7 @@ export const Signin = () => {
             <Typography variant="h3">sign in</Typography>
           </Box>
           <Box flexDirection="column" mt="64px" gap="24px">
-            <AButton
+            <Button
               className="primary active large"
               color0btn={palette.secondary.light}
               component={Link}
@@ -24,13 +24,13 @@ export const Signin = () => {
               <Typography variant="h2" color={palette.background.paper}>
                 connect wallet
               </Typography>
-            </AButton>
-            <AButton
+            </Button>
+            <Button
               className=" active large secondary"
               color0btn={palette.secondary.light}
             >
               <Typography variant="h2">continue as guest</Typography>
-            </AButton>
+            </Button>
           </Box>
         </Box>
       </LoginSubLayout>

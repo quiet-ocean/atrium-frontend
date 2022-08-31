@@ -3,11 +3,14 @@ import { useState, useEffect } from 'react'
 
 import loadingGif from '../../../assets/icons/search-loading.gif'
 import { useAppSelector, useAppDispatch } from '../../../hooks'
-import { setProfile, setSearchUserCriteria } from '../../../stores/AppStore'
+import {
+  setProfile,
+  setSearchUserCriteria,
+  setCurrentUserId,
+} from '../../../stores/AppStore'
 import { setCommunity } from '../../../stores/CommunityStore'
 import { setCurrentBoardTab, setSearchUiOpen } from '../../../stores/UiStore'
-import type { ICommunity, IOGUser } from '../../../types/model'
-import type { IUser } from '../../../types/User'
+import type { ICommunity, IUser } from '../../../types/model'
 import { apiGetRequest } from '../../../utils'
 
 const SearchUIWrapper = styled(Box)(() => ({
@@ -45,6 +48,7 @@ const UserResultItem = ({ user }: { user: IUser }) => {
     dispatch(setCurrentBoardTab(3))
     dispatch(setProfile(user))
     dispatch(setSearchUserCriteria(''))
+    dispatch(setCurrentUserId(user._id))
   }
   return (
     <ItemWrapper onClick={handleClick}>
@@ -74,7 +78,7 @@ const CommunityResultItem = ({ item }: { item: ICommunity }) => {
       <Typography variant="h5">{item?.name}</Typography>
       <Typography variant="body2">{item?.description}</Typography>
       <Typography variant="caption">
-        {(item?.owner as IOGUser).accountId}
+        {(item?.owner as IUser).accountId}
       </Typography>
     </ItemWrapper>
   )

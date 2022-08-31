@@ -221,7 +221,7 @@ export default function Chat() {
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log('handle submit')
+    // console.log('handle submit')
     event.preventDefault()
     // move focus back to the game
     inputRef.current?.blur()

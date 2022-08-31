@@ -1,11 +1,14 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Box, Tabs, Typography, Tab } from '@mui/material'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { AButton } from '../../../components'
-import { useAppDispatch } from '../../../hooks'
+import { Button } from '../../../components'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import { setUser } from '../../../stores/AuthStore'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
+import type { IUser } from '../../../types/model'
+import { apiPutRequest } from '../../../utils'
 import * as Container from '../styled'
 
 import { TabPanel, a11yProps } from './styled'
@@ -30,7 +33,38 @@ const tabStyle = {
 const EditProfile: React.FC = () => {
   const dispatch = useAppDispatch()
 
+  const me: IUser = useAppSelector((state) => state.auth.user)
   const [value, setValue] = React.useState(0)
+
+  const [profile, setProfile] = useState<IUser>(me)
+
+  useEffect(() => {
+    // updateProfile()
+  }, [])
+  useEffect(() => {
+    setProfile(me)
+  }, [me])
+  // const updateProfile = <T,>(name: string, value: T) => {
+  //   // const keyArray = Object.keys(me)
+  //   // type TUserKey = typeof keyArray[number]
+  //   // const t: TUserkey = {} as TUserKey
+  //   // console.log(t)
+  //   setProfile({ ...profile, [name]: value })
+  // }
+  // function updateProfile<T>(name: string, value: T) {
+
+  // }
+  const save = async () => {
+    console.log('Save profile: ', profile)
+    const res = await apiPutRequest(`${process.env.VITE_API_URL}/user`, profile)
+
+    // console.log(res)
+    if (res.status === 200) {
+      dispatch(setUser(profile))
+    } else {
+      console.log('Failed to update user profile')
+    }
+  }
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
@@ -49,29 +83,27 @@ const EditProfile: React.FC = () => {
               edit profile
             </Typography>
             <Box display="flex" gap="24px">
-              <AButton
+              <Button
                 className="primary active"
                 color0btn={palette.text.primary}
                 onClick={handleBtnBackToProfile}
               >
-                <Typography
-                  variant="h6"
-                  sx={{ color: palette.background.paper }}
-                >
+                <Typography variant="h6" color={palette.background.paper}>
                   back to profile
                 </Typography>
 
                 <ArrowForwardIcon sx={{ fontSize: 18 }} />
-              </AButton>
-              <AButton
+              </Button>
+              <Button
                 className="primary active"
                 color0btn={palette.secondary.light}
+                onClick={save}
               >
                 save changes
-              </AButton>
+              </Button>
             </Box>
           </Box>
-          <Box sx={{ borderColor: 'divider', displayborderBottom: 1 }}>
+          <Box sx={{ borderColor: 'divider' }}>
             <Tabs
               value={value}
               onChange={handleChange}
@@ -99,16 +131,25 @@ const EditProfile: React.FC = () => {
           }}
         >
           <TabPanel value={value} index={0}>
-            <EditContent />
+            <EditContent
+              profile={profile}
+              setProfile={setProfile}
+              // updateProfile={updateProfile}
+              save={save}
+            />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <EditTags />
+            <EditTags profile={profile} setProfile={setProfile} save={save} />
           </TabPanel>
           <TabPanel value={value} index={2}>
-            <EditIdentity />
+            <EditIdentity
+              profile={profile}
+              setProfile={setProfile}
+              save={save}
+            />
           </TabPanel>
           <TabPanel value={value} index={3}>
-            <EditWallet />
+            <EditWallet profile={profile} setProfile={setProfile} save={save} />
           </TabPanel>
         </Box>
       </Box>

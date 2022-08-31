@@ -1,7 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
-import type { IUser } from '../types/User'
+import type { IUser } from '../types/model'
 
 export type TAlert = 'error' | 'warning' | 'success' | 'info'
 
@@ -13,6 +13,7 @@ export type TSnack = {
 
 export const AppSlice = createSlice({
   initialState: {
+    currentUserId: '',
     profile: {} as IUser,
     searchUserCriteria: '',
     snack: { content: '', open: false, type: 'info' } as TSnack,
@@ -26,6 +27,9 @@ export const AppSlice = createSlice({
         type: action.payload.type,
       }
     },
+    setCurrentUserId: (state, action: PayloadAction<string>) => {
+      state.currentUserId = action.payload
+    },
     setProfile: (state, action: PayloadAction<IUser>) => {
       state.profile = action.payload
     },
@@ -38,7 +42,12 @@ export const AppSlice = createSlice({
   },
 })
 
-export const { setSearchUserCriteria, setProfile, setSnackbarOpen, openSnack } =
-  AppSlice.actions
+export const {
+  setSearchUserCriteria,
+  setProfile,
+  setSnackbarOpen,
+  openSnack,
+  setCurrentUserId,
+} = AppSlice.actions
 
 export default AppSlice.reducer

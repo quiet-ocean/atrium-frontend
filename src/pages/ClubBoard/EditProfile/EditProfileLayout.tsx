@@ -1,17 +1,19 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
 
-import { AButton } from '../../../components'
+import { Button } from '../../../components'
 import { palette } from '../../../MuiTheme'
 
 export const EditProfileLayout = ({
   title,
   subtitle,
   children,
+  save,
 }: {
   title: string
   subtitle: string
   children: React.ReactNode
+  save?: AnyFunction
 }) => {
   return (
     <Box>
@@ -23,12 +25,13 @@ export const EditProfileLayout = ({
       </Box>
       <Box p="24px 80px">{children}</Box>
       <Box display="flex" justifyContent="end" mt="64px">
-        <AButton
+        <Button
           className="primary active medium"
           color0btn={palette.secondary.light}
+          onClick={save}
         >
           save changes
-        </AButton>
+        </Button>
       </Box>
     </Box>
   )
