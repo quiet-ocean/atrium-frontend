@@ -14,7 +14,7 @@ type TName = 'title' | 'body'
 const url = process.env.VITE_API_URL || `http://localhost:2567`
 export const ArticleBuilder = () => {
   const dispatch = useAppDispatch()
-  const [post, setPost] = useState<IPost>({} as IPost)
+  const [post, setPost] = useState<Partial<IPost>>({} as IPost)
   const [image, setImage] = useState<string>('')
   const [file, setFile] = useState<File | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)

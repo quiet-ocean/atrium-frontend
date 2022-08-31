@@ -6,7 +6,7 @@ export interface IPost {
   title: string
   body: string
   // media: string
-  media: IFile
+  media: string | IFile
   // author: string //object id - user
   author: IUser
   comments: IComment[]
