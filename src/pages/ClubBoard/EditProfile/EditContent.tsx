@@ -9,7 +9,7 @@ import React, { useState, useEffect } from 'react'
 import project6 from '../../../assets/images/project-6.png'
 import { Button, TextField, EmptyBox } from '../../../components'
 import { palette } from '../../../MuiTheme'
-import type { IUser, ICommunity, IPost, IComment } from '../../../types/model'
+import type { IUser, ICommunity, IPost, IComment, IFile } from '../../../types/model'
 import {
   apiGetRequest,
   // apiPostRequest,
@@ -51,9 +51,8 @@ export const CommunityCard = ({ data }: { data?: ICommunity }) => {
         display="flex"
         gap="16px"
         p="16px"
-        border={`1px solid ${
-          selected ? palette.secondary.light : palette.text.primary
-        }`}
+        border={`1px solid ${selected ? palette.secondary.light : palette.text.primary
+          }`}
         onClick={handleClick}
       >
         <Box width="120px !important" height="120px">
@@ -128,12 +127,11 @@ export const PostCard = ({
   return (
     <Box
       p="16px"
-      border={`1px solid ${
-        selected ? palette.secondary.light : palette.text.primary
-      }`}
+      border={`1px solid ${selected ? palette.secondary.light : palette.text.primary
+        }`}
     >
       <img
-        src={url + '/files/' + data.media?.path}
+        src={url + '/files/' + (data.media as IFile)?.path}
         alt=""
         width="100%"
         height="180px"
@@ -163,9 +161,8 @@ export const CommentCard = ({
 }) => {
   return (
     <Box
-      border={`1px solid ${
-        selected ? palette.secondary.light : palette.text.primary
-      }`}
+      border={`1px solid ${selected ? palette.secondary.light : palette.text.primary
+        }`}
       p="12px"
     >
       <Box display="flex" gap="48px">
@@ -194,7 +191,7 @@ export const CommentCard = ({
         </Box>
         <Box>
           <Typography variant="caption" textTransform="lowercase">
-            asac seems to have a bright future ahead of it (or it doesn’t idk)
+            {data?.body}
           </Typography>
         </Box>
       </Box>
@@ -214,7 +211,7 @@ export const EditContent = ({
   save: AnyFunction
 }) => {
   const chunkSize = 2
-  const [communities, setComunities] = useState<ICommunity[]>([])
+  // const [communities, setComunities] = useState<ICommunity[]>([])
   const [posts, setPosts] = useState<IPost[]>([])
   // const [featuredPost, setFeaturedPost] = useState<IPost>({} as IPost)
   // const [featuredPostId, setFeaturedPostId] = useState('')
@@ -225,7 +222,7 @@ export const EditContent = ({
     {} as IComment
   )
 
-  const [communityGroup, setCommunityGroup] = useState<ICommunity[][]>([[]])
+  // const [communityGroup, setCommunityGroup] = useState<ICommunity[][]>([[]])
 
   useEffect(() => {
     const init = async () => {
@@ -268,14 +265,14 @@ export const EditContent = ({
       getComments(profile.featuredPost[0]._id)
   }, [profile.featuredPost])
 
-  useEffect(() => {
-    const length = communities.length
-    let _communityGroup = []
-    for (let i = 0; i < length; i += 2) {
-      _communityGroup.push(communities.slice(i, i + chunkSize))
-    }
-    setCommunityGroup(_communityGroup)
-  }, [communities])
+  // useEffect(() => {
+  //   const length = communities.length
+  //   let _communityGroup = [] as ICommunity[][]
+  //   for (let i = 0; i < length; i += 2) {
+  //     _communityGroup.push(communities.slice(i, i + chunkSize))
+  //   }
+  //   setCommunityGroup(_communityGroup)
+  // }, [communities])
   // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   //   updateProfile<string>(e.target.name, e.target.value)
   // }
@@ -392,7 +389,7 @@ export const EditContent = ({
                     <PostCard
                       data={item}
                       key={key}
-                      selected={profile.featuredPost[0]._id === item._id}
+                      selected={profile.featuredPost.length > 0 && profile.featuredPost[0]._id === item._id}
                     />
                   </Box>
                 )

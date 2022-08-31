@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { AtButton } from '../../../components'
 import { useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
-import type { IPost } from '../../../types/model'
+import type { IFile, IPost } from '../../../types/model'
 import { apiGetRequest, apiPostRequest } from '../../../utils'
 import { convertString2LongDate } from '../../../utils/utils'
 
@@ -89,7 +89,7 @@ export const PostItem = ({ data }: { data: IPost }) => {
         </Box>
         <Box p="24px 0px">
           <img
-            src={`${process.env.VITE_API_URL}/files/${post.media?.path}`}
+            src={`${process.env.VITE_API_URL}/files/${(post.media as IFile)?.path}`}
             alt=""
             width="100%"
           />

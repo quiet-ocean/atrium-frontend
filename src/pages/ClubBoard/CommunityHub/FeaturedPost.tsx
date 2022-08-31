@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 import { AText, Button, EmptyBox } from '../../../components'
 import { palette } from '../../../MuiTheme'
-import type { IPost } from '../../../types/model'
+import type { IFile, IPost } from '../../../types/model'
 import { apiGetRequest } from '../../../utils'
 import { Reactions } from '../Dashboard'
 import { Community as Container } from '../styled'
@@ -60,7 +60,7 @@ export const FeaturedPost = ({
       <Box pt="40px">
         {post ? (
           <>
-            <PostContainer img={post.media?.path} height={height ? height : ''}>
+            <PostContainer img={(post.media as IFile)?.path} height={height ? height : ''}>
               <Box display="flex" gap="24px">
                 <Box>
                   <AText>{post.title}</AText>

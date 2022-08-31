@@ -44,7 +44,10 @@ export const Comments = ({
   const [value, setValue] = useState('')
 
   const handleCreate = () => {
-    if (value) createComment(value)
+    if (value) {
+      createComment(value)
+      setValue('')
+    }
     else {
       const snack: TSnack = {
         content: 'Please fill in the comment',
