@@ -7,7 +7,7 @@ import Ash from '../assets/Ash_login.png'
 import Lucy from '../assets/Lucy_login.png'
 import Nancy from '../assets/Nancy_login.png'
 import { useAppSelector, useAppDispatch } from '../hooks'
-import phaserGame from '../PhaserGame'
+import colyseusGame from '../ColyseusGame'
 import type Bootstrap from '../scenes/Bootstrap'
 import { setPlayerName, setWalletConnected } from '../stores/UserStore'
 import type { IRoomData } from '../types/Rooms'
@@ -105,7 +105,7 @@ const CreateRoomForm = () => {
   const create = () => {
     if (values.name) {
       console.log(values)
-      const bootstrap = phaserGame.bootstrap as Bootstrap
+      const bootstrap = colyseusGame.bootstrap as Bootstrap
       bootstrap.network
         .createCustom(values)
         .then(() => {
@@ -203,7 +203,7 @@ const SetProfile = () => {
   const dispatch = useAppDispatch()
   const [name, setName] = useState('')
   const handleConnect = () => {
-    const bootstrap = phaserGame.bootstrap as Bootstrap
+    const bootstrap = colyseusGame.bootstrap as Bootstrap
     bootstrap.network
       .joinOrCreatePublic()
       .then(() => bootstrap.launchGame())

@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import { useAppSelector } from '../hooks'
-import phaserGame from '../PhaserGame'
+import colyseusGame from '../ColyseusGame'
 import type Bootstrap from '../scenes/Bootstrap'
 import type { IRoomData } from '../types/Rooms'
 
@@ -47,7 +47,7 @@ export const CreateRoomForm = () => {
 
     // create custom room if name and description are not empty
     if (isValidName && isValidDescription && lobbyJoined) {
-      const bootstrap = phaserGame.bootstrap as Bootstrap
+      const bootstrap = colyseusGame.bootstrap as Bootstrap
       bootstrap.network
         .createCustom(values)
         .then(() => bootstrap.launchGame())

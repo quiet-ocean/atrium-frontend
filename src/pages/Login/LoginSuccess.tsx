@@ -6,7 +6,7 @@ import avatar from '../../assets/images/avatar-9.png'
 import { LoginLayout } from '../../components'
 import { useAppSelector } from '../../hooks'
 import { palette } from '../../MuiTheme'
-import phaserGame from '../../PhaserGame'
+import colyseusGame from '../../ColyseusGame'
 import type Bootstrap from '../../scenes/Bootstrap'
 
 import { LoginSubLayout } from './LoginSubLayout'
@@ -21,7 +21,7 @@ const LoginSuccess = () => {
   const handleForward = () => {
     console.log('handle next')
     // if (!roomJoined && lobbyJoined) {
-    const bootstrap = phaserGame.bootstrap as Bootstrap
+    const bootstrap = colyseusGame.bootstrap as Bootstrap
     bootstrap.network
       .joinOrCreatePublic()
       .then(() => {
