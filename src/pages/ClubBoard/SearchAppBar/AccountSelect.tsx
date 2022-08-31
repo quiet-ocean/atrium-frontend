@@ -13,7 +13,13 @@ import muiTheme from '../../../MuiTheme'
 const AccountMenuItem = ({ user }) => {
   return (
     <Box sx={{ display: 'flex', gap: '8px' }}>
-      <img src={user.avatar} width={30} alt="" />
+      <img
+        src={user.avatar}
+        width={30}
+        height={30}
+        style={{ borderRadius: 30 }}
+        alt=""
+      />
       <Typography
         sx={{
           color: muiTheme.palette.text.primary,
