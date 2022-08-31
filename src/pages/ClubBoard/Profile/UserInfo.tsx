@@ -124,7 +124,7 @@ export const UserInfo = ({ user }: { user: IUser }) => {
             }}
           />
         </Box>
-        <Box pt="48px">
+        <Box pt={8}>
           <Typography variant="h4" textAlign="center">
             {_user.username}
           </Typography>
@@ -161,7 +161,8 @@ export const UserInfo = ({ user }: { user: IUser }) => {
       <Grid item lg={7}>
         <Box position="relative">
           <Box pt="64px">
-            <Text>cofounder @ASAC_NFT</Text>
+            {/* <Text>cofounder @ASAC_NFT</Text> */}
+            <Text maxWidth={554}>{user.bio}</Text>
           </Box>
           <Box pt="36px">
             <SocialButtons />
