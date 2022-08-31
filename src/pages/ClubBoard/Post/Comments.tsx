@@ -47,8 +47,7 @@ export const Comments = ({
     if (value) {
       createComment(value)
       setValue('')
-    }
-    else {
+    } else {
       const snack: TSnack = {
         content: 'Please fill in the comment',
         open: true,

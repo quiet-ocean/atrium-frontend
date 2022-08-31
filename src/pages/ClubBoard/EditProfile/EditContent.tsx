@@ -210,7 +210,7 @@ export const EditContent = ({
   // updateProfile: AnyFunction
   save: AnyFunction
 }) => {
-  const chunkSize = 2
+  // const chunkSize = 2
   // const [communities, setComunities] = useState<ICommunity[]>([])
   const [posts, setPosts] = useState<IPost[]>([])
   // const [featuredPost, setFeaturedPost] = useState<IPost>({} as IPost)

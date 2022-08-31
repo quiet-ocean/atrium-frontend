@@ -5,7 +5,6 @@ import Icon from '@mui/material/Icon'
 import React from 'react'
 
 import { Button, TextField } from '../../../components'
-import { useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import type { IUser } from '../../../types/model'
 

@@ -36,6 +36,7 @@ export const TextField = ({
   className,
   sx,
   rows,
+  fullWidth
 }: {
   variant?: 'primary' | 'secondary'
   multiline?: boolean
@@ -46,9 +47,12 @@ export const TextField = ({
   className?: string
   sx?: object
   rows?: number
+  fullWidth?: boolean
 }) => {
   return (
     <AtriumTextField
+      variant={variant}
+      fullWidth={fullWidth}
       name={name}
       value={value}
       onChange={onChange}

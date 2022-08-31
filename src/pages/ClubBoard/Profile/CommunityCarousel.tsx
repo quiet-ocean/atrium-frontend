@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import Slider from 'react-slick'
 
 import { Button } from '../../../components'
