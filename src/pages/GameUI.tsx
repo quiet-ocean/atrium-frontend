@@ -9,7 +9,7 @@ import Ash from '../assets/Ash_login.png'
 import Lucy from '../assets/Lucy_login.png'
 import Nancy from '../assets/Nancy_login.png'
 import { PopupMenuGroup, ItemMenu } from '../components'
-import RoomSelectionDialog from '../components/_RoomSelectionDialog'
+// import RoomSelectionDialog from '../components/_RoomSelectionDialog'
 import Chat from '../components/Chat'
 import ComputerDialog from '../components/ComputerDialog'
 // import HelperButtonGroup from '../components/HelperButtonGroup'
@@ -39,7 +39,7 @@ const avatars = [
 // shuffle the avatars array
 for (let i = avatars.length - 1; i > 0; i--) {
   const j = Math.floor(Math.random() * (i + 1))
-  ;[avatars[i], avatars[j]] = [avatars[j], avatars[i]]
+    ;[avatars[i], avatars[j]] = [avatars[j], avatars[i]]
 }
 
 function GameUI() {
@@ -66,13 +66,15 @@ function GameUI() {
         console.log('set player name to ', playerName)
         game.myPlayer.setPlayerName(
           playerName ||
-            (window as any).accountId ||
-            (window as any).near?.accountId
+          (window as any).accountId ||
+          (window as any).near?.accountId
         )
         // game.myPlayer.setPlayerTexture(avatars[0].name)
+        if (game.network) {
+          game.network.readyToConnect()
+          dispatch(setLoggedIn(true))
+        }
       }
-      game.network.readyToConnect()
-      dispatch(setLoggedIn(true))
     }
   }, [])
 
@@ -119,7 +121,8 @@ function GameUI() {
     // console.log('room joined');
   } else {
     /* Render RoomSelectionDialog if yet selected a room. */
-    ui = <RoomSelectionDialog />
+    ui = <></>
+    // ui = <RoomSelectionDialog />
     // ui = <div></div>
   }
 

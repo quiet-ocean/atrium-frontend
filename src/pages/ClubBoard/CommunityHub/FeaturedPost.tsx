@@ -72,7 +72,7 @@ export const FeaturedPost = ({
               </Box>
             </PostContainer>
             <Box pt="16px">
-              <MessageItem user={post.author} />
+              <MessageItem user={post.author} message={{}} />
             </Box>
           </>
         ) : (

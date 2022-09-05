@@ -324,7 +324,7 @@ export const EditContent = ({
         <Box py={3}>
           <TextField
             name="blurp"
-            variant="primary"
+            // variant="primary"
             className="rounded"
             value={profile.blurp}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -389,7 +389,7 @@ export const EditContent = ({
                     <PostCard
                       data={item}
                       key={key}
-                      selected={profile.featuredPost.length > 0 && profile.featuredPost[0]._id === item._id}
+                      selected={profile.featuredPost && profile.featuredPost.length > 0 && profile.featuredPost[0]._id === item._id}
                     />
                   </Box>
                 )

@@ -27,6 +27,7 @@ export const userSlice = createSlice({
     sessionId: '',
     videoConnected: false,
     walletConnected: false,
+    friends: new Array(),
   },
   name: 'user',
   reducers: {
@@ -77,6 +78,31 @@ export const userSlice = createSlice({
 
       state.backgroundMode = newMode
     },
+    updateFriend: (state, action: PayloadAction<any>) => {
+      const payload = action.payload
+      if (payload.length > 0) {
+        payload.forEach((elem) => {
+          let _index = state.friends.findIndex(
+            (friend) => elem.username == friend.username
+          )
+
+          if (_index === -1) {
+            state.friends.push(elem)
+          } else {
+            state.friends[_index] = { ...state.friends[_index], ...elem }
+          }
+        })
+      } else {
+        const index = state.friends.findIndex(
+          (friend) => friend.username === payload.username
+        )
+        if (index == -1) {
+          state.friends.push(payload)
+        } else {
+          state.friends[index] = { ...state.friends[index], ...payload }
+        }
+      }
+    },
   },
 })
 
@@ -96,6 +122,7 @@ export const {
   clearAvatars,
   setPlayerAvatar,
   setMyPlayerReady,
+  updateFriend,
 } = userSlice.actions
 
 export default userSlice.reducer
