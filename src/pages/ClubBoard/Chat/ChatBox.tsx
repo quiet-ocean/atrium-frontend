@@ -27,15 +27,13 @@ export const ChatBox = ({ opponentInfo, selfInfo }: { opponentInfo: any, selfInf
   return (
     <>
       <Box height="720px" sx={{ overflowY: 'scroll' }} p="24px">
-        {
-          friendChatMessages.map(({ messageType, chatMessage }, index) => (
-            <Message
-              key={index}
-              sent={selfInfo.username !== chatMessage.username}
-              chatMessage={chatMessage}
-              avatar={opponentInfo.username == chatMessage.username ? opponentInfo.avatar : selfInfo.avatar} />
-          ))
-        }
+        {friendChatMessages.map(({ chatMessage }, index) => (
+          <Message
+            key={index}
+            sent={selfInfo.username !== chatMessage.username}
+            chatMessage={chatMessage}
+            avatar={opponentInfo.username == chatMessage.username ? opponentInfo.avatar : selfInfo.avatar} />
+        ))}
       </Box>
       <Box display="flex" gap="12px">
         <Box

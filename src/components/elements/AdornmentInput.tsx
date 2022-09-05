@@ -14,15 +14,14 @@ export const AdornmentInput: React.FC<{
   variant?: 'primary' | 'default' | undefined
   sx?: object
   value?: string
-  onChange?: AnyFunction,
+  onChange?: AnyFunction
   onClick?: AnyFunction
 }> = ({ adornment, label, variant, sx, value, onChange, onClick }) => {
-
   function onEnterPress(e) {
     if (e.keyCode === 13 && e.shiftKey === false) {
       e.preventDefault();
       if (onClick) {
-        onClick()
+        onClick();
       }
     }
   }

@@ -38,28 +38,26 @@ export const ContactInfo = ({ info }: { info: UserProps }) => {
                 width: '100px',
               }}
             />
-            {
-              info.status === 'online' ?
-                <OnlineIcon
-                  sx={{
-                    border: `1px solid ${palette.border.dark}`,
-                    height: '15px',
-                    position: 'absolute',
-                    right: '3px',
-                    top: '12px',
-                    width: '15px',
-                  }}
-                /> :
-                <OfflineIcon
-                  sx={{
-                    border: `1px solid ${palette.border.dark}`,
-                    height: '15px',
-                    position: 'absolute',
-                    right: '3px',
-                    top: '12px',
-                    width: '15px',
-                  }} />
-            }
+            {info.status === 'online' ?
+              <OnlineIcon
+                sx={{
+                  border: `1px solid ${palette.border.dark}`,
+                  height: '15px',
+                  position: 'absolute',
+                  right: '3px',
+                  top: '12px',
+                  width: '15px',
+                }}
+              /> :
+              <OfflineIcon
+                sx={{
+                  border: `1px solid ${palette.border.dark}`,
+                  height: '15px',
+                  position: 'absolute',
+                  right: '3px',
+                  top: '12px',
+                  width: '15px',
+                }} />}
 
           </Box>
         </Box>

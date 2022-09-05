@@ -187,7 +187,13 @@ export default class Network {
     this.room.state.chatMessages.onAdd = (item) => {
       console.log('message in on add event handler: ', item)
       if (!item.channel || item.channel == '') {
-        store.dispatch(pushChatMessage(item))
+        store.dispatch(
+          pushChatMessage({
+            username: item.username,
+            createdAt: item.createdAt,
+            content: item.content,
+          } as IChatMessage)
+        )
       } else {
         const payload = {
           channel: item.channel,
