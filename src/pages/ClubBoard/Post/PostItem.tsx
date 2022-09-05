@@ -39,7 +39,7 @@ export const PostItem = ({ data }: { data: IPost }) => {
     }
   }
   useEffect(() => {
-    if (!post && post === {}) return
+    if (!post) return
 
     if (post.comments.length > 0 && typeof post.comments[0] === 'string') {
       getComments()
