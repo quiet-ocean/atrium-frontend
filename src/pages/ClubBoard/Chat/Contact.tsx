@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 
-import { OnlineIcon } from '../UserProfile/styled'
+import { OfflineIcon, OnlineIcon } from '../UserProfile/styled'
 
 import type { UserProps } from './'
 
@@ -19,7 +19,7 @@ export const Contact = ({
         border={`${active ? '2px solid yellow' : '2px solid transparent'}`}
       >
         <img
-          src={`/images/avatar-${user.walletId}.png`}
+          src={user.avatar}
           alt=""
           width="74px"
           height="74px"
@@ -29,11 +29,11 @@ export const Contact = ({
             variant="h5"
             sx={{ fontSize: '20px', textTransform: 'lowercase' }}
           >
-            {user.name}
+            {user.username}
           </Typography>
           <Box display="flex" gap="8px" pt="3px">
             <Box p="3px 0px">
-              <OnlineIcon />
+              {user.status === 'online' ? <OnlineIcon /> : <OfflineIcon />}
             </Box>
             <Typography
               variant="caption"

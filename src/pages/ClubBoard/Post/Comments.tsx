@@ -99,6 +99,7 @@ export const Comments = ({
           value={value}
           onChange={handleChange}
           adornment={<SendIcon onClick={handleCreate} />}
+          onClick={handleCreate}
         />
       </Box>
     </Box>

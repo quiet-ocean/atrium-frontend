@@ -1,9 +1,9 @@
 import { Box, Typography } from '@mui/material'
 
-import avatar from '../../../assets/images/avatar-5.png'
+// import avatar from '../../../assets/images/avatar-5.png'
 import { palette } from '../../../MuiTheme'
 
-export const Message = ({ sent }: { sent?: boolean }) => {
+export const Message = ({ sent, chatMessage, avatar }: { sent?: boolean, chatMessage: any, avatar: string }) => {
   return (
     <Box
       display="flex"
@@ -41,8 +41,7 @@ export const Message = ({ sent }: { sent?: boolean }) => {
             lineHeight: '16px',
           }}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac
-          convallis commodo morbi ut leo gravida.
+          {chatMessage.content}
         </Typography>
       </Box>
     </Box>

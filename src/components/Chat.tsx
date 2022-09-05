@@ -166,28 +166,28 @@ const Message = ({ chatMessage, messageType }) => {
         {messageType === MessageType.REGULAR_MESSAGE ? (
           // <p
           //   style={{
-          //     color: getColorByString(chatMessage.author),
+          //     color: getColorByString(chatMessage.username),
           //   }}
           // >
-          //   {chatMessage.author}: <span>{chatMessage.content}</span>
+          //   {chatMessage.username}: <span>{chatMessage.content}</span>
           // </p>
           <Typography variant="h6" py="4px">
-            {/* {chatMessage.author}: <span>{chatMessage.content}</span> */}
-            {chatMessage.author}:{' '}
+            {/* {chatMessage.username}: <span>{chatMessage.content}</span> */}
+            {chatMessage.username}:{' '}
             <span style={{ color: palette.secondary.main }}>
               {chatMessage.content}
             </span>
           </Typography>
         ) : (
           // <p className="notification">
-          //   {chatMessage.author} {chatMessage.content}
+          //   {chatMessage.username} {chatMessage.content}
           // </p>
           <Typography
             variant="h6"
             py="4px"
             sx={{ color: palette.secondary.light, fontSize: '12px' }}
           >
-            {chatMessage.author} {chatMessage.content}
+            {chatMessage.username} {chatMessage.content}
           </Typography>
         )}
       </Tooltip>

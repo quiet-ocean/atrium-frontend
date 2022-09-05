@@ -27,8 +27,8 @@ export const UserInfo = ({ user }: { user: IUser }) => {
     let isMounted = true
     if (isMounted && _user && _user.friends) {
       _user.friends.forEach((friend: IFriend) => {
-        if (friend.user._id === me._id) {
-          console.log('is friend', friend.user._id, me._id)
+        if (friend._id === me._id) {
+          console.log('is friend', friend._id, me._id)
           setIsFriend(true)
           return
         }
@@ -63,7 +63,7 @@ export const UserInfo = ({ user }: { user: IUser }) => {
           setUser((prevUser) => ({
             ...prevUser,
             friends: prevUser?.friends.filter(
-              (item: IFriend) => item.user._id !== me._id
+              (item: IFriend) => item._id !== me._id
             ),
           }))
         } else {

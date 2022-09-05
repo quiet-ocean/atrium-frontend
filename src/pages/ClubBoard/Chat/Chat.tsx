@@ -1,8 +1,12 @@
 // import { SearchIcon } from '@mui/icons-material';
 import { Box, styled } from '@mui/material'
 import { useState, useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 
 import { palette } from '../../../MuiTheme'
+import { updateFriend } from '../../../stores/UserStore'
+import { IUser } from '../../../types/model'
+import { apiGetRequest } from '../../../utils'
 import { ModalContainer } from '../styled'
 
 import { ContactList, ChatBox, ContactInfo } from './'
@@ -19,76 +23,59 @@ export const ChatContainer = styled(Box)(() => ({
   width: '480px',
 }))
 export type UserProps = {
-  name: string
-  walletId: string
+  username: string
+  accountId: string
   status: 'online' | 'offline'
-  avatar: string
+  avatar: string,
+  _id: string
 }
-const users: UserProps[] = [
-  {
-    avatar: '',
-    name: 'crooks',
-    status: 'online',
-    walletId: 'crooks.near',
-  },
-  {
-    avatar: '',
-    name: 'snowstorm',
-    status: 'online',
-    walletId: 'snowstorm.near',
-  },
-  {
-    avatar: '',
-    name: 'hades',
-    status: 'online',
-    walletId: 'hades.near',
-  },
-  {
-    avatar: '',
-    name: 'robbie123',
-    status: 'online',
-    walletId: 'robbie123.near',
-  },
-  {
-    avatar: '',
-    name: 'soccor156',
-    status: 'online',
-    walletId: 'soccor156.near',
-  },
-  {
-    avatar: '',
-    name: 'penaldo',
-    status: 'online',
-    walletId: 'penaldo.near',
-  },
-  {
-    avatar: '',
-    name: '',
-    status: 'online',
-    walletId: '',
-  },
-]
+
+const url = process.env.VITE_API_URL || 'http://localhost:2567'
+
 export const Chat = () => {
+  const dispatch = useAppDispatch()
+  const me: IUser = useAppSelector((state) => state.auth.user)
+  const friends = useAppSelector((state) => state.user.friends)
   const [opponentId, setOpponentId] = useState('')
-  const [opponentInfo, setOpponentInfo] = useState<UserProps>(users[0])
+  const [opponentInfo, setOpponentInfo] = useState<UserProps>({} as UserProps)
+  // const [friends, setFriends] = useState<UserProps[]>([])
+
   useEffect(() => {
-    users.forEach((item: UserProps) => {
-      if (item.walletId === opponentId) setOpponentInfo(item)
+    const init = async () => {
+      const res = await apiGetRequest(`${url}/user/friend/all`)
+
+      if (res.status === 200 && res.data) {
+        console.log('Loaded friends: ', res.data)
+        dispatch(updateFriend(res.data))
+        setOpponentId(res.data[0].accountId)
+        setOpponentInfo(res.data[0])
+      } else {
+        console.log('Failed to load friends')
+      }
+    }
+
+    init()
+  }, [])
+
+  useEffect(() => {
+    friends.forEach((item: UserProps) => {
+      if (item.accountId === opponentId) setOpponentInfo(item)
     })
-  }, [opponentId])
+  }, [opponentId, friends])
+
   return (
     <Box>
       <ModalContainer>
         <Box display="flex">
           <ChatContainer>
             <ContactList
-              contacts={users}
+              contacts={friends}
               opponentId={opponentId}
               setOpponentId={setOpponentId}
             />
           </ChatContainer>
           <ChatContainer className="main">
-            <ChatBox />
+            <ChatBox opponentInfo={opponentInfo} selfInfo={me} />
           </ChatContainer>
           <ChatContainer>
             <ContactInfo info={opponentInfo} />

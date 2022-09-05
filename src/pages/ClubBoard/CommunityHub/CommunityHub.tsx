@@ -20,9 +20,11 @@ import LinkIcon from '../../../assets/icons/link-chain-icon.png'
 import badge from '../../../assets/icons/verified-icon-small.png'
 import avatar1 from '../../../assets/images/avatar-7.png'
 import bannerImage from '../../../assets/images/banner-2.png'
+import colyseusGame from '../../../ColyseusGame'
 import { AText, Button, AdornmentInput } from '../../../components'
 import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import Game from '../../../scenes/Game'
 import type { TAlert, TSnack } from '../../../stores/AppStore'
 import { openSnack } from '../../../stores/AppStore'
 import { setUser } from '../../../stores/AuthStore'
@@ -31,7 +33,7 @@ import { apiPostRequest, apiGetRequest } from '../../../utils'
 import * as PContainer from '../styled'
 import { Community as Container } from '../styled'
 
-import { FeaturedPost, Members } from './'
+import { FeaturedPost, Members, MessageItem } from './'
 
 export const Banner = () => {
   return (
@@ -42,6 +44,7 @@ export const Banner = () => {
     </Box>
   )
 }
+
 export const DetailParams = () => {
   const Item = ({
     category,
@@ -101,6 +104,7 @@ export const SocialButtons = () => {
     </Box>
   )
 }
+
 export const Detail = ({
   community,
   handleJoin,
@@ -198,7 +202,25 @@ export const Tag = styled(Button)<TagStyleProps>(({ theme, tcolor }) => ({
   textTransform: 'capitalize',
 }))
 
-export const LiveChat = () => {
+export const LiveChat = ({ community }) => {
+  const game = colyseusGame.game as Game
+  const meInfo: IUser = useAppSelector((state) => state.auth.user)
+  const communityChatMessages = useAppSelector((state) => state.chat.communityChatMessages)
+  const [value, setValue] = useState('')
+
+  const handleSubmit = () => {
+    if (value) {
+      game.network.addCommunityChatMessage({
+        username: meInfo.username,
+        avatar: meInfo.avatar,
+        channel: community._id,
+        createdAt: new Date().getTime(),
+        content: value
+      })
+    }
+    setValue('')
+  }
+
   return (
     <Container height="100%">
       <Box height="100%" display="flex" flexDirection="column">
@@ -231,18 +253,10 @@ export const LiveChat = () => {
               overflowY: 'scroll',
             }}
           >
-            {/* <MessageItem />
-            <MessageItem />
-            <MessageItem />
-            <MessageItem />
-            <MessageItem />
-            <MessageItem />
-            <MessageItem />
-            <MessageItem />
-            <MessageItem />
-            <MessageItem />
-            <MessageItem />
-            <MessageItem /> */}
+            {communityChatMessages[community._id] ? communityChatMessages[community._id].map(
+              (message, index) => <MessageItem key={index} user={message.user} message={message.chatMessage} />
+            ) : ''}
+
           </Box>
           <Box>
             <AdornmentInput
@@ -253,6 +267,9 @@ export const LiveChat = () => {
                 background: palette.background.paper,
                 border: palette.border.main,
               }}
+              value={value}
+              onChange={(e) => { setValue(e.target.value) }}
+              onClick={handleSubmit}
             />
           </Box>
         </Box>
@@ -260,6 +277,7 @@ export const LiveChat = () => {
     </Container>
   )
 }
+
 export const MediaPanel = () => {
   return (
     <Container height="100%">
@@ -346,6 +364,7 @@ export const MembersModal = ({
     </Modal>
   )
 }
+
 export const CommunityHub = () => {
   const [joined, setJoined] = useState(false)
   const [openMembersModal, setOpenMembersModal] = useState(false)
@@ -454,7 +473,7 @@ export const CommunityHub = () => {
           <FeaturedPost />
         </Grid>
         <Grid item lg={6}>
-          <LiveChat />
+          <LiveChat community={community} />
         </Grid>
         <Grid item lg={6}>
           <MediaPanel />

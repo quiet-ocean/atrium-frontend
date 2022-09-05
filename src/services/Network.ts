@@ -5,6 +5,8 @@ import { eventEmitter, Event } from '../events/EventCenter'
 import store from '../stores'
 import {
   pushChatMessage,
+  pushCommunityChatMessage,
+  pushDirectChatMessage,
   pushPlayerJoinedMessage,
   pushPlayerLeftMessage,
 } from '../stores/ChatStore'
@@ -19,9 +21,11 @@ import {
   setSessionId,
   setPlayerNameMap,
   removePlayerNameMap,
+  updateFriend,
 } from '../stores/UserStore'
 import { setWhiteboardUrls } from '../stores/WhiteboardStore'
 import type {
+  IChatMessage,
   IComputer,
   IOfficeState,
   IPlayer,
@@ -113,8 +117,6 @@ export default class Network {
 
     // new instance added to the players MapSchema
     this.room.state.players.onAdd = (player: IPlayer, key: string) => {
-      console.log(player)
-      console.log(key)
       if (key === this.mySessionId) return
 
       // track changes on every child object inside the players MapSchema
@@ -126,6 +128,7 @@ export default class Network {
 
           // when a new player finished setting up player name
           if (field === 'name' && value !== '') {
+            store.dispatch(updateFriend({ username: value, status: 'online' }))
             eventEmitter.emit(Event.PLAYER_JOINED, player, key)
             store.dispatch(setPlayerNameMap({ id: key, name: value }))
             store.dispatch(pushPlayerJoinedMessage(value))
@@ -137,6 +140,7 @@ export default class Network {
     // an instance removed from the players MapSchema
     this.room.state.players.onRemove = (player: IPlayer, key: string) => {
       eventEmitter.emit(Event.PLAYER_LEFT, key)
+      store.dispatch(updateFriend({ username: player.name, status: 'offline' }))
       this.webRTC?.deleteVideoStream(key)
       this.webRTC?.deleteOnCalledVideoStream(key)
       store.dispatch(pushPlayerLeftMessage(player.name))
@@ -182,7 +186,19 @@ export default class Network {
     // new instance added to the chatMessages ArraySchema
     this.room.state.chatMessages.onAdd = (item) => {
       console.log('message in on add event handler: ', item)
-      store.dispatch(pushChatMessage(item))
+      if (!item.channel || item.channel == '') {
+        store.dispatch(pushChatMessage(item))
+      } else {
+        const payload = {
+          channel: item.channel,
+          user: { avatar: item.avatar, username: item.username },
+          chatMessage: {
+            createdAt: item.createdAt,
+            content: item.content,
+          },
+        }
+        store.dispatch(pushCommunityChatMessage(payload))
+      }
     }
 
     // when the server sends room data
@@ -196,6 +212,16 @@ export default class Network {
       console.log(content)
       eventEmitter.emit(Event.UPDATE_DIALOG_BUBBLE, clientId, content)
     })
+
+    // when a user sends a message
+    this.room.onMessage(
+      Message.DIRECT_CHAT_MESSAGE,
+      ({ username, content, createdAt }) => {
+        const payload = { username, content, createdAt } as IChatMessage
+        store.dispatch(pushDirectChatMessage(payload))
+        // eventEmitter.emit(Event.UPDATE_DIALOG_BUBBLE, clientId, content)
+      }
+    )
 
     // when a peer disconnects with myPeer
     this.room.onMessage(Message.DISCONNECT_STREAM, (clientId: string) => {
@@ -319,5 +345,25 @@ export default class Network {
   addChatMessage(content: string) {
     console.log('add chat message')
     this.room?.send(Message.ADD_CHAT_MESSAGE, { content: content })
+  }
+
+  addCommunityChatMessage(payload) {
+    console.log('add chat message')
+    this.room?.send(Message.COMMUNITY_CHAT_MESSAGE, payload)
+  }
+
+  addDirectChatMessage(selfInfo: any, client: any, content: string) {
+    console.log('add direct chat message')
+    const payload = {
+      username: selfInfo.username,
+      content: content,
+      createdAt: new Date().getTime(),
+    } as IChatMessage
+    store.dispatch(pushDirectChatMessage(payload))
+    this.room?.send(Message.DIRECT_CHAT_MESSAGE, {
+      receiver: client,
+      content: content,
+      createdAt: payload.createdAt,
+    })
   }
 }

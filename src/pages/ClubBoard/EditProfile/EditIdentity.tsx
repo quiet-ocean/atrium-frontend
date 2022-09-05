@@ -119,7 +119,7 @@ export const EditIdentity = ({
         <Box mt={2}>
           <TextField
             name="bio"
-            variant="primary"
+            // variant="primary"
             className="rounded"
             value={profile.bio}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
