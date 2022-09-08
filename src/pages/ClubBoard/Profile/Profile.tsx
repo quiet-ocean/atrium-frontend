@@ -1,6 +1,8 @@
 import { Box, Grid, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 
+import banner from '../../../assets/images/banner-3.png'
+import { Banner } from '../../../components'
 import { useAppSelector } from '../../../hooks'
 import type { IUser, IFile } from '../../../types/model'
 import { apiGetRequest } from '../../../utils'
@@ -13,7 +15,6 @@ import {
 import { Main as Container } from '../styled'
 
 import { CommunityCarousel } from './CommunityCarousel'
-import { Banner } from './styled'
 import { Tags } from './Tags'
 import { UserInfo } from './UserInfo'
 
@@ -77,7 +78,7 @@ export const Profile = () => {
         // <>user is set</>
         <>
           <Box>
-            <Banner />
+            <Banner img={banner} />
           </Box>
           <Box>
             <UserInfo user={user} />
