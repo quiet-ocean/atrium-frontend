@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { Button, EmptyBox } from '../../../components'
 // import type { TagProps } from '../EditProfile'
@@ -12,6 +12,13 @@ export const Tags = ({ data }: { data: ITag[] }) => {
   const [currentTag, setCurrentTag] = useState<ITag | null>(
     data && data.length ? data[0] : null
   )
+
+  useEffect(() => {
+    if (data && data.length) handleClick(data[0])
+  }, [])
+  useEffect(() => {
+    console.log('current tag changed to ', currentTag)
+  }, [currentTag])
   // const [desc, setDesc] = useState('')
 
   const handleClick = (tag: ITag) => {
@@ -33,7 +40,7 @@ export const Tags = ({ data }: { data: ITag[] }) => {
                 <Button
                   key={key}
                   className={`tag tag-large ${
-                    item === currentTag ? 'tag-active' : ''
+                    item.tag === currentTag?.tag ? 'tag-active' : ''
                   }`}
                   onClick={() => handleClick(item)}
                 >
