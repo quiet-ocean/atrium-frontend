@@ -2,7 +2,7 @@ import { Box, Grid, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 
 import { useAppSelector } from '../../../hooks'
-import type { IUser } from '../../../types/model'
+import type { IUser, IFile } from '../../../types/model'
 import { apiGetRequest } from '../../../utils'
 import {
   FeaturedPost,
@@ -22,6 +22,9 @@ const apiUrl = process.env.VITE_API_URL || 'http://localhost:2567'
 export const Profile = () => {
   const [openMembersModal, setOpenMembersModal] = useState(false)
   const [user, setUser] = useState<IUser>({} as IUser)
+  const [limit, setLimit] = useState(10)
+  const [skip, setSkip] = useState(0)
+  const [medias, setMedias] = useState<IFile[]>([])
 
   const currentUserId = useAppSelector((state) => state.app.currentUserId)
 
@@ -46,12 +49,27 @@ export const Profile = () => {
         })
     }
     getUserData()
+
+    if (isMounted) {
+      getMediaData()
+    }
     return () => {
       isMounted = false
       // abortController.abort()
     }
   }, [currentUserId])
-
+  const getMediaData = async () => {
+    if (currentUserId) {
+      const res = await apiGetRequest(
+        `${apiUrl}/file?limit=${limit}&skip=${skip}`
+      )
+      if (res.status === 200 && res.data) {
+        setMedias(res.data)
+      } else {
+        console.log('Failed to load media data')
+      }
+    }
+  }
   // return <>a;ldjf;lsdjflad</>
   return (
     <Container>
@@ -90,7 +108,7 @@ export const Profile = () => {
                 />
               </Grid>
               <Grid item lg={6}>
-                <MediaPanel userId={currentUserId} />
+                <MediaPanel data={medias} />
               </Grid>
             </Grid>
           </Box>

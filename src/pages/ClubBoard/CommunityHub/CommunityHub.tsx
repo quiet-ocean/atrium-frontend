@@ -265,29 +265,7 @@ export const LiveChat = () => {
     </Container>
   )
 }
-export const MediaPanel = ({ userId }: { userId?: string }) => {
-  const [limit, setLimit] = useState(10)
-  const [skip, setSkip] = useState(0)
-  const [medias, setMedias] = useState<IFile[]>([])
-
-  useEffect(() => {
-    getMedias(userId)
-  }, [userId])
-
-  const getMedias = async (id) => {
-    if (id) {
-      const res = await apiGetRequest(
-        `${apiUrl}/file?limit=${limit}&skip=${skip}`
-      )
-      if (res.status === 200 && res.data) {
-        console.log(`files result: `, res.data)
-        setMedias(res.data)
-      } else {
-        console.log('Failed to load media data')
-      }
-    }
-  }
-
+export const MediaPanel = ({ data }: { data?: IFile[] }) => {
   return (
     <Container height="100%">
       <Box height="100%">
@@ -311,18 +289,20 @@ export const MediaPanel = ({ userId }: { userId?: string }) => {
           pr="24px"
         >
           <Grid container spacing={1}>
-            {medias.map((media: IFile, key: number) => (
-              <Grid item lg={3} key={key}>
-                <Box width="100%" height="136px" margin="0px">
-                  <img
-                    src={`/assets/images/media (${key + 1}).png`}
-                    alt=""
-                    width="100%"
-                    height="100%"
-                  />
-                </Box>
-              </Grid>
-            ))}
+            {data &&
+              data.length &&
+              data.map((media: IFile, key: number) => (
+                <Grid item lg={3} key={key}>
+                  <Box width="100%" height="136px" margin="0px">
+                    <img
+                      src={`/assets/images/media (${key + 1}).png`}
+                      alt=""
+                      width="100%"
+                      height="100%"
+                    />
+                  </Box>
+                </Grid>
+              ))}
           </Grid>
         </Box>
       </Box>
