@@ -16,7 +16,7 @@ export const TagButton = ({
   color: string
 }) => {
   return (
-    <Button className="tag primary outlined tag-small" color0btn={color}>
+    <Button className="tag primary outlined tag-small" color={color}>
       {children}
     </Button>
   )
@@ -81,7 +81,7 @@ export const Members = ({
           <Box>
             <Button
               className="primary outlined"
-              color0btn={palette.secondary.light}
+              color={palette.secondary.light}
               onClick={() => handleOpen(true)}
             >
               view all

@@ -17,7 +17,7 @@ export const Signin = () => {
           <Box flexDirection="column" mt="64px" gap="24px">
             <Button
               className="primary active large"
-              color0btn={palette.secondary.light}
+              color={palette.secondary.light}
               component={Link}
               to="/connect-wallet"
             >
@@ -27,7 +27,7 @@ export const Signin = () => {
             </Button>
             <Button
               className=" active large secondary"
-              color0btn={palette.secondary.light}
+              color={palette.secondary.light}
             >
               <Typography variant="h2">continue as guest</Typography>
             </Button>

@@ -85,7 +85,7 @@ const EditProfile: React.FC = () => {
             <Box display="flex" gap="24px">
               <Button
                 className="primary active"
-                color0btn={palette.text.primary}
+                color={palette.text.primary}
                 onClick={handleBtnBackToProfile}
               >
                 <Typography variant="h6" color={palette.background.paper}>
@@ -96,7 +96,7 @@ const EditProfile: React.FC = () => {
               </Button>
               <Button
                 className="primary active"
-                color0btn={palette.secondary.light}
+                color={palette.secondary.light}
                 onClick={save}
               >
                 save changes

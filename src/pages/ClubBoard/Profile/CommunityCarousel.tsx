@@ -82,7 +82,6 @@ export const CommunityCarousel = ({
           ref={sliderRef}
           {...sliderSettings}
           beforeChange={(_, idx: number) => {
-            console.log('current carousel index: ', idx)
             setIndex(idx)
           }}
         >
@@ -118,14 +117,14 @@ export const CommunityCarousel = ({
             <Button
               onClick={handlePrev}
               className="primary active"
-              color0btn={palette.text.disabled}
+              color={palette.text.disabled}
             >
               Prev
             </Button>
             <Button
               onClick={handleNext}
               className="primary active"
-              color0btn={palette.text.disabled}
+              color={palette.text.disabled}
             >
               Next
             </Button>

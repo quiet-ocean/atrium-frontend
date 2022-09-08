@@ -31,7 +31,7 @@ const TagButton = ({
   color: string
 }) => {
   return (
-    <Button className="primary active tag tag-small" color0btn={color}>
+    <Button className="primary active tag tag-small" color={color}>
       {children}
     </Button>
   )
@@ -103,7 +103,7 @@ export const CommunityCard = ({ data }: { data?: ICommunity }) => {
           <Box width="100%" p="8px" textAlign="center">
             <Button
               className="primary active"
-              color0btn={palette.secondary.light}
+              color={palette.secondary.light}
               onClick={() => setSelected(false)}
             >
               unselect
@@ -430,7 +430,7 @@ export const EditContent = ({
       <Box display="flex" justifyContent="end" mt="120px">
         <Button
           className="primary active medium"
-          color0btn={palette.secondary.light}
+          color={palette.secondary.light}
           onClick={save}
         >
           save changes

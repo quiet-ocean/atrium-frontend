@@ -60,7 +60,7 @@ export const LoginSubLayout = ({
             <Button
               onClick={handleForward}
               className="primary active large"
-              color0btn={
+              color={
                 enable ? palette.secondary.light : palette.text.disabled
               }
             >

@@ -100,7 +100,7 @@ export const SelectSkin = () => {
           <Box gap="32px" py="12px">
             <Button
               className="rounded active"
-              color0btn={palette.secondary.light}
+              color={palette.secondary.light}
               onClick={() => {
                 if (carouselRef && carouselRef.current)
                   carouselRef.current?.slickPrev()
@@ -116,7 +116,7 @@ export const SelectSkin = () => {
             <Box>
               <Button
                 className="rounded active"
-                color0btn={palette.secondary.light}
+                color={palette.secondary.light}
                 onClick={() => {
                   if (carouselRef && carouselRef.current)
                     carouselRef.current?.slickNext()

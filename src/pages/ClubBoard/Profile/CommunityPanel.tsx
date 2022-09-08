@@ -11,6 +11,7 @@ export const CommunityPanel = ({ member }: { member: ICommunityMember }) => {
 
   const handleCommunityHub = (id: string) => {
     console.log('go to community hub for community ', id)
+    // dispatch(setCommunityId)
   }
   return (
     <Box display="flex" gap="24px" position="relative">
@@ -22,7 +23,7 @@ export const CommunityPanel = ({ member }: { member: ICommunityMember }) => {
         <Box mt="40px">
           <Button
             className="primary outlined active"
-            color0btn={palette.secondary.light}
+            color={palette.secondary.light}
             onClick={() => handleCommunityHub(community._id)}
           >
             view community hub
@@ -37,7 +38,7 @@ export const CommunityPanel = ({ member }: { member: ICommunityMember }) => {
               <Box>
                 <Button
                   className="primary active tag tag-small"
-                  color0btn="#FF75CD"
+                  color="#FF75CD"
                 >
                   whitelisted
                 </Button>
@@ -66,7 +67,7 @@ export const CommunityPanel = ({ member }: { member: ICommunityMember }) => {
       <Box sx={{ position: 'absolute', right: '0px', top: '0px' }}>
         <Button
           className="outlined primary"
-          color0btn={palette.secondary.light}
+          color={palette.secondary.light}
         >
           view all
         </Button>

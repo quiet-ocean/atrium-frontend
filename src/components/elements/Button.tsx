@@ -1,9 +1,9 @@
 import { Button as MuiButton } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-type ButtonProps = { color0btn?: string }
-export const Button = styled(MuiButton)<ButtonProps>(
-  ({ theme, color0btn }) => ({
+type ButtonProps = { btn_color?: string }
+export const ButtonStyled = styled(MuiButton)<ButtonProps>(
+  ({ theme, btn_color }) => ({
     '&.disabled': {
       textTransform: 'uppercase',
     },
@@ -16,16 +16,16 @@ export const Button = styled(MuiButton)<ButtonProps>(
       padding: '16px 20px',
     },
     '&.outlined': {
-      border: color0btn
-        ? `1px solid ${color0btn} !important`
+      border: btn_color
+        ? `1px solid ${btn_color} !important`
         : `1px solid ${theme.palette.primary.main}`,
     },
     '&.primary': {
       background: 'transparent',
-      color: `${color0btn ? color0btn : theme.palette.text.primary} !important`,
+      color: `${btn_color ? btn_color : theme.palette.text.primary} !important`,
     },
     '&.primary:hover, &.active': {
-      background: color0btn ? color0btn : theme.palette.background.paper,
+      background: btn_color ? btn_color : theme.palette.background.paper,
       border: '1px solid transparent !important',
       color: `${theme.palette.background.paper} !important`,
     },
@@ -33,7 +33,7 @@ export const Button = styled(MuiButton)<ButtonProps>(
       '& *': {
         margin: '0px',
       },
-      background: color0btn ? color0btn : theme.palette.background.paper,
+      background: btn_color ? btn_color : theme.palette.background.paper,
       borderRadius: '100px',
       padding: '16px',
     },
@@ -61,8 +61,8 @@ export const Button = styled(MuiButton)<ButtonProps>(
     },
     '&.tag-primary': {},
     '&.tag-secondary': {
-      background: `${color0btn}`,
-      border: `1px solid ${color0btn}`,
+      background: `${btn_color}`,
+      border: `1px solid ${btn_color}`,
       borderRadius: '54px',
       color: theme.palette.primary.dark,
       fontFamily: 'Andale Mono Regular',
@@ -86,3 +86,25 @@ export const Button = styled(MuiButton)<ButtonProps>(
     textTransform: 'capitalize',
   })
 )
+
+export const Button = ({
+  children,
+  color,
+  className,
+  onClick,
+}: {
+  children: React.ReactNode
+  color?: string
+  className?: string
+  onClick?: AnyFunction
+}) => {
+  return (
+    <ButtonStyled
+      btn_color={color || ''}
+      className={className}
+      onClick={onClick}
+    >
+      {children}
+      </ButtonStyled>
+    )
+}

@@ -49,7 +49,7 @@ export const FeaturedPost = ({
         <Box>
           <Button
             className="primary outlined"
-            color0btn={palette.secondary.light}
+            color={palette.secondary.light}
           >
             view all posts
           </Button>
