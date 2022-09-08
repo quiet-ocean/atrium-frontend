@@ -90,7 +90,7 @@ export const Profile = () => {
                 />
               </Grid>
               <Grid item lg={6}>
-                <MediaPanel />
+                <MediaPanel userId={currentUserId} />
               </Grid>
             </Grid>
           </Box>

@@ -26,8 +26,13 @@ import { palette } from '../../../MuiTheme'
 import type { TAlert, TSnack } from '../../../stores/AppStore'
 import { openSnack } from '../../../stores/AppStore'
 import { setUser } from '../../../stores/AuthStore'
-import type { ICommunity, ICommunityMember, IUser } from '../../../types/model'
-import { apiPostRequest, apiGetRequest } from '../../../utils'
+import type {
+  ICommunity,
+  ICommunityMember,
+  IUser,
+  IFile,
+} from '../../../types/model'
+import { apiPostRequest, apiGetRequest, apiUrl } from '../../../utils'
 import * as PContainer from '../styled'
 import { Community as Container } from '../styled'
 
@@ -260,7 +265,29 @@ export const LiveChat = () => {
     </Container>
   )
 }
-export const MediaPanel = () => {
+export const MediaPanel = ({ userId }: { userId?: string }) => {
+  const [limit, setLimit] = useState(10)
+  const [skip, setSkip] = useState(0)
+  const [medias, setMedias] = useState<IFile[]>([])
+
+  useEffect(() => {
+    getMedias(userId)
+  }, [userId])
+
+  const getMedias = async (id) => {
+    if (id) {
+      const res = await apiGetRequest(
+        `${apiUrl}/file?limit=${limit}&skip=${skip}`
+      )
+      if (res.status === 200 && res.data) {
+        console.log(`files result: `, res.data)
+        setMedias(res.data)
+      } else {
+        console.log('Failed to load media data')
+      }
+    }
+  }
+
   return (
     <Container height="100%">
       <Box height="100%">
@@ -284,7 +311,7 @@ export const MediaPanel = () => {
           pr="24px"
         >
           <Grid container spacing={1}>
-            {new Array(12).fill(2).map((_, key: number) => (
+            {medias.map((media: IFile, key: number) => (
               <Grid item lg={3} key={key}>
                 <Box width="100%" height="136px" margin="0px">
                   <img
