@@ -92,19 +92,22 @@ export const Button = ({
   color,
   className,
   onClick,
+  sx,
 }: {
   children: React.ReactNode
   color?: string
   className?: string
   onClick?: AnyFunction
+  sx?: object
 }) => {
   return (
     <ButtonStyled
       btn_color={color || ''}
       className={className}
       onClick={onClick}
+      sx={sx}
     >
       {children}
-      </ButtonStyled>
-    )
+    </ButtonStyled>
+  )
 }
