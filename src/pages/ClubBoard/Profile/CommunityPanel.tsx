@@ -2,16 +2,22 @@ import { Box, Typography } from '@mui/material'
 
 import project6 from '../../../assets/images/project-6.png'
 import { Button } from '../../../components'
+import { useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import { setCommunity } from '../../../stores/CommunityStore'
+import { setCurrentBoardTab } from '../../../stores/UiStore'
 import type { ICommunity, ICommunityMember } from '../../../types/model'
 import { convertString2LongDate } from '../../../utils'
+// import { setCommunityId } from '../../../stores/AppStore'
+import { TabID } from '../ClubBoard'
 
 export const CommunityPanel = ({ member }: { member: ICommunityMember }) => {
   const community: ICommunity = member.community as ICommunity
+  const dispatch = useAppDispatch()
 
-  const handleCommunityHub = (id: string) => {
-    console.log('go to community hub for community ', id)
-    // dispatch(setCommunityId)
+  const handleCommunityHub = (community: ICommunity) => {
+    dispatch(setCommunity(community))
+    dispatch(setCurrentBoardTab(TabID.COMMUNITY_HUB))
   }
   return (
     <Box display="flex" gap="24px" position="relative">
@@ -24,7 +30,7 @@ export const CommunityPanel = ({ member }: { member: ICommunityMember }) => {
           <Button
             className="primary outlined active"
             color={palette.secondary.light}
-            onClick={() => handleCommunityHub(community._id)}
+            onClick={() => handleCommunityHub(community)}
           >
             view community hub
           </Button>
@@ -65,10 +71,7 @@ export const CommunityPanel = ({ member }: { member: ICommunityMember }) => {
         </Box>
       </Box>
       <Box sx={{ position: 'absolute', right: '0px', top: '0px' }}>
-        <Button
-          className="outlined primary"
-          color={palette.secondary.light}
-        >
+        <Button className="outlined primary" color={palette.secondary.light}>
           view all
         </Button>
       </Box>

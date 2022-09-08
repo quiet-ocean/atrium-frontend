@@ -21,6 +21,19 @@ import '../reset.css'
 import SearchAppBar from '../SearchAppBar'
 import * as Container from '../styled'
 
+export enum TabID {
+  DASHBOARD,
+  POST,
+  CHAT,
+  PROFILE,
+  EDIT_PROFILE,
+  COMMUNITY_HUB,
+  SINGLE_POST,
+  USER_PROFILE,
+  ARTICLE_BUILDER,
+  FEEDBACK_FORM,
+}
+
 export const ClubBoard: React.FC = () => {
   const value = useAppSelector((state) => state.ui.currentBoardTab) || 0
   const searchUiOpen = useAppSelector((state) => state.ui.searchUiOpen)
