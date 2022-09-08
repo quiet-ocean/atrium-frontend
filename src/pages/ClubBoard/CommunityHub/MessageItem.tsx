@@ -29,16 +29,19 @@ export const MessageContainer = ({
               {user.username}
             </Typography>
           </Box>
-          {user.tags.map((item: ITag, key: number) => (
-            <Box key={key}>
-              <Button
-                className="tag-secondary tag-small outlined"
-                // color0btn="#FFB350"
-              >
-                {item.tag}
-              </Button>
-            </Box>
-          ))}
+          {user &&
+            user.tags &&
+            user.tags.length &&
+            user.tags.map((item: ITag, key: number) => (
+              <Box key={key}>
+                <Button
+                  className="tag-secondary tag-small outlined"
+                  // color0btn="#FFB350"
+                >
+                  {item.tag}
+                </Button>
+              </Box>
+            ))}
           {/* <Box>
             <Button
               className="tag-secondary outlined tag-small"
