@@ -51,7 +51,7 @@ export const TextField = ({
 }) => {
   return (
     <AtriumTextField
-      variant={variant}
+      // variant={variant}
       fullWidth={fullWidth}
       name={name}
       value={value}
