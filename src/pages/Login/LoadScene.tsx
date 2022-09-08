@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import logo from '../../assets/images/atrium-logo-large.png'
+import colyseusGame from '../../ColyseusGame'
 import { LoginLayout } from '../../components'
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import colyseusGame from '../../ColyseusGame'
 import type Bootstrap from '../../scenes/Bootstrap'
 import { requestUser, signup } from '../../stores/AuthStore'
 

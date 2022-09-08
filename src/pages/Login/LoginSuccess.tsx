@@ -3,10 +3,10 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import avatar from '../../assets/images/avatar-9.png'
+import colyseusGame from '../../ColyseusGame'
 import { LoginLayout } from '../../components'
 import { useAppSelector } from '../../hooks'
 import { palette } from '../../MuiTheme'
-import colyseusGame from '../../ColyseusGame'
 import type Bootstrap from '../../scenes/Bootstrap'
 
 import { LoginSubLayout } from './LoginSubLayout'
@@ -26,7 +26,8 @@ const LoginSuccess = () => {
       .joinOrCreatePublic()
       .then(() => {
         bootstrap.launchGame()
-        navigate('/game')
+        // navigate('/game')
+        navigate('/club-board')
       })
       .catch((error) => console.error(error))
     // }

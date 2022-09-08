@@ -89,7 +89,9 @@ export const PostItem = ({ data }: { data: IPost }) => {
         </Box>
         <Box p="24px 0px">
           <img
-            src={`${process.env.VITE_API_URL}/files/${(post.media as IFile)?.path}`}
+            src={`${process.env.VITE_API_URL}/files/${
+              (post.media as IFile)?.path
+            }`}
             alt=""
             width="100%"
           />

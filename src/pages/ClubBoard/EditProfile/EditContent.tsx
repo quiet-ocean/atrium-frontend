@@ -9,7 +9,13 @@ import React, { useState, useEffect } from 'react'
 import project6 from '../../../assets/images/project-6.png'
 import { Button, TextField, EmptyBox } from '../../../components'
 import { palette } from '../../../MuiTheme'
-import type { IUser, ICommunity, IPost, IComment, IFile } from '../../../types/model'
+import type {
+  IUser,
+  ICommunity,
+  IPost,
+  IComment,
+  IFile,
+} from '../../../types/model'
 import {
   apiGetRequest,
   // apiPostRequest,
@@ -51,8 +57,9 @@ export const CommunityCard = ({ data }: { data?: ICommunity }) => {
         display="flex"
         gap="16px"
         p="16px"
-        border={`1px solid ${selected ? palette.secondary.light : palette.text.primary
-          }`}
+        border={`1px solid ${
+          selected ? palette.secondary.light : palette.text.primary
+        }`}
         onClick={handleClick}
       >
         <Box width="120px !important" height="120px">
@@ -127,8 +134,9 @@ export const PostCard = ({
   return (
     <Box
       p="16px"
-      border={`1px solid ${selected ? palette.secondary.light : palette.text.primary
-        }`}
+      border={`1px solid ${
+        selected ? palette.secondary.light : palette.text.primary
+      }`}
     >
       <img
         src={url + '/files/' + (data.media as IFile)?.path}
@@ -161,8 +169,9 @@ export const CommentCard = ({
 }) => {
   return (
     <Box
-      border={`1px solid ${selected ? palette.secondary.light : palette.text.primary
-        }`}
+      border={`1px solid ${
+        selected ? palette.secondary.light : palette.text.primary
+      }`}
       p="12px"
     >
       <Box display="flex" gap="48px">
@@ -389,7 +398,10 @@ export const EditContent = ({
                     <PostCard
                       data={item}
                       key={key}
-                      selected={profile.featuredPost.length > 0 && profile.featuredPost[0]._id === item._id}
+                      selected={
+                        profile.featuredPost.length > 0 &&
+                        profile.featuredPost[0]._id === item._id
+                      }
                     />
                   </Box>
                 )

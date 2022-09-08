@@ -36,7 +36,7 @@ export const TextField = ({
   className,
   sx,
   rows,
-  fullWidth
+  fullWidth,
 }: {
   variant?: 'primary' | 'secondary'
   multiline?: boolean

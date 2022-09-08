@@ -11,9 +11,9 @@ import { Picker } from 'emoji-mart'
 import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 
+import colyseusGame from '../ColyseusGame'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { palette } from '../MuiTheme'
-import colyseusGame from '../ColyseusGame'
 import type Game from '../scenes/Game'
 import { MessageType, setFocused, setShowChat } from '../stores/ChatStore'
 
@@ -292,7 +292,7 @@ export default function Chat() {
               // backgroundColor: 'rgba(26, 26, 26, 0.9)',
               // flexDirection: 'column',
             }}
-          // position="relative"
+            // position="relative"
           >
             {chatMessages.map(({ messageType, chatMessage }, index) => (
               <Message
