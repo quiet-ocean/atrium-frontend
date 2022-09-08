@@ -20,7 +20,7 @@ import LinkIcon from '../../../assets/icons/link-chain-icon.png'
 import badge from '../../../assets/icons/verified-icon-small.png'
 import avatar1 from '../../../assets/images/avatar-7.png'
 import bannerImage from '../../../assets/images/banner-2.png'
-import { AText, Button, AdornmentInput } from '../../../components'
+import { AText, Button, AdornmentInput, Banner } from '../../../components'
 import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import type { TAlert, TSnack } from '../../../stores/AppStore'
@@ -32,21 +32,12 @@ import type {
   IUser,
   IFile,
 } from '../../../types/model'
-import { apiPostRequest, apiGetRequest, apiUrl } from '../../../utils'
+import { apiPostRequest, apiGetRequest } from '../../../utils'
 import * as PContainer from '../styled'
 import { Community as Container } from '../styled'
 
 import { FeaturedPost, Members } from './'
 
-export const Banner = () => {
-  return (
-    <Box position="relative">
-      <Box>
-        <img src={bannerImage} alt="" width="100%" height="250px" />
-      </Box>
-    </Box>
-  )
-}
 export const DetailParams = () => {
   const Item = ({
     category,
@@ -451,7 +442,7 @@ export const CommunityHub = () => {
   return (
     <PContainer.Main>
       <Box>
-        <Banner />
+        <Banner img={bannerImage} />
       </Box>
       <Box>
         <Detail handleJoin={handleJoin} joined={joined} community={community} />
