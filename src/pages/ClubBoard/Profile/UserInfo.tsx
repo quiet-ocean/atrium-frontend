@@ -21,14 +21,12 @@ export const UserInfo = ({ user }: { user: IUser }) => {
   const dispatch = useAppDispatch()
   const [isFriend, setIsFriend] = useState(false)
   const [_user, setUser] = useState<IUser>(user)
-  console.log('User data in user info component: ', user)
   const me = useAppSelector((state) => state.auth.user)
   useEffect(() => {
     let isMounted = true
     if (isMounted && _user && _user.friends) {
       _user.friends.forEach((friend: IFriend) => {
-        if (friend.user._id === me._id) {
-          console.log('is friend', friend.user._id, me._id)
+        if (friend?._id === me._id) {
           setIsFriend(true)
           return
         }
