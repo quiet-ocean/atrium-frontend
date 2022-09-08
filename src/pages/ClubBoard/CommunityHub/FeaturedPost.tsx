@@ -27,14 +27,12 @@ export const FeaturedPost = ({
   data?: null | string | IPost
   height?: string
 }) => {
-  console.log('Featured post: ', data, ' Type is: ', typeof data)
   const [post, setPost] = useState<IPost>({} as IPost)
 
   useEffect(() => {
     const init = async () => {
       if (typeof data === 'string') {
         const res = await getPost(data)
-        console.log('Loaded featured post data: ', res.data)
         if (res.data) setPost(res.data)
       } else if (typeof data === undefined || data === null) {
         console.log('Post data is null')

@@ -43,7 +43,6 @@ const UserResultItem = ({ user }: { user: IUser }) => {
   const dispatch = useAppDispatch()
 
   const handleClick = () => {
-    console.log('handle click')
     dispatch(setSearchUiOpen(false))
     dispatch(setCurrentBoardTab(3))
     dispatch(setProfile(user))
@@ -99,14 +98,12 @@ export const SearchUI = ({ open }: { open: boolean }) => {
   const value = useAppSelector((state) => state.app.searchUserCriteria)
 
   useEffect(() => {
-    console.log('value changed to: ', value)
 
     const search = async () => {
       setLoading(true)
       const res = await apiGetRequest(
         `${process.env.VITE_API_URL}/search?user=${value}&community=${value}`
       )
-      console.log(res)
       if (res.data.users && res.data.users.length) setUsers(res.data.users)
       else setUsers([])
       if (res.data.communities && res.data.communities.length)
