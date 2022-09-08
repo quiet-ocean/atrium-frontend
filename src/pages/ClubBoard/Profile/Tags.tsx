@@ -9,13 +9,14 @@ import { Community as Panel } from '../styled'
 
 export const Tags = ({ data }: { data: ITag[] }) => {
   // const tags = ['developer', 'founder', 'investor']
+  console.log('tags data: ', data)
   const [currentTag, setCurrentTag] = useState<ITag | null>(
     data && data.length ? data[0] : null
   )
 
   useEffect(() => {
     if (data && data.length) handleClick(data[0])
-  }, [])
+  }, [data])
   useEffect(() => {
     console.log('current tag changed to ', currentTag)
   }, [currentTag])
