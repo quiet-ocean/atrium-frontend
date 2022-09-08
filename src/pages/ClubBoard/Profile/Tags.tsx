@@ -2,14 +2,10 @@ import { Box, Typography } from '@mui/material'
 import { useState, useEffect } from 'react'
 
 import { Button, EmptyBox } from '../../../components'
-// import type { TagProps } from '../EditProfile'
-// import { initialTags } from '../EditProfile'
 import type { ITag } from '../../../types/model'
 import { Community as Panel } from '../styled'
 
 export const Tags = ({ data }: { data: ITag[] }) => {
-  // const tags = ['developer', 'founder', 'investor']
-  console.log('tags data: ', data)
   const [currentTag, setCurrentTag] = useState<ITag | null>(
     data && data.length ? data[0] : null
   )
@@ -17,20 +13,10 @@ export const Tags = ({ data }: { data: ITag[] }) => {
   useEffect(() => {
     if (data && data.length) handleClick(data[0])
   }, [data])
-  useEffect(() => {
-    console.log('current tag changed to ', currentTag)
-  }, [currentTag])
-  // const [desc, setDesc] = useState('')
 
   const handleClick = (tag: ITag) => {
     setCurrentTag(tag)
-    // tags && tags.forEach((item: ITag) => {
-    //   if (name === item.name) setDesc(item?.description || '')
-    // })
   }
-  // useEffect(() => {
-  // handleClick('developer')
-  // }, [])
   return (
     <Panel mt="24px">
       <Box display="flex" gap="64px">

@@ -20,8 +20,6 @@ export const ModalLayout = ({
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     dispatch(setBoardDialogOpen(true))
-    // setValue(newValue)
-    console.log('new value for tab: ', newValue)
     if (newValue >= 0) dispatch(setCurrentBoardTab(newValue))
     else console.log('invalid tab value in profile page')
   }
