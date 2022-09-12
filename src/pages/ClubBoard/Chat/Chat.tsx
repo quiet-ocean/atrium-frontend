@@ -47,8 +47,10 @@ export const Chat = () => {
       if (res.status === 200 && res.data) {
         console.log('Loaded friends: ', res.data)
         dispatch(updateFriend(res.data))
-        setOpponentId(res.data[0].accountId)
-        setOpponentInfo(res.data[0])
+        if (res.data.length > 0) {
+          setOpponentId(res.data[0].accountId)
+          setOpponentInfo(res.data[0])
+        }
       } else {
         console.log('Failed to load friends')
       }

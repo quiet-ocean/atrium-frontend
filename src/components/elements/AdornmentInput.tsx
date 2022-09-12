@@ -16,12 +16,13 @@ export const AdornmentInput: React.FC<{
   value?: string
   onChange?: AnyFunction
   onClick?: AnyFunction
-}> = ({ adornment, label, variant, sx, value, onChange, onClick }) => {
+  onSend?: AnyFunction
+}> = ({ adornment, label, variant, sx, value, onChange, onClick, onSend }) => {
   function onEnterPress(e) {
     if (e.keyCode === 13 && e.shiftKey === false) {
       e.preventDefault();
-      if (onClick) {
-        onClick();
+      if (onSend) {
+        onSend();
       }
     }
   }
@@ -67,7 +68,7 @@ export const AdornmentInput: React.FC<{
             <IconButton
               aria-label="toggle password visibility"
               edge="end"
-              onClick={onClick ? () => onClick() : undefined}
+              onClick={onClick ? (e) => onClick(e) : undefined}
             >
               {adornment}
             </IconButton>

@@ -93,13 +93,15 @@ export const userSlice = createSlice({
           }
         })
       } else {
-        const index = state.friends.findIndex(
-          (friend) => friend.username === payload.username
-        )
-        if (index == -1) {
-          state.friends.push(payload)
-        } else {
-          state.friends[index] = { ...state.friends[index], ...payload }
+        if (payload.username) {
+          const index = state.friends.findIndex(
+            (friend) => friend.username === payload.username
+          )
+          if (index == -1) {
+            state.friends.push(payload)
+          } else {
+            state.friends[index] = { ...state.friends[index], ...payload }
+          }
         }
       }
     },
