@@ -10,7 +10,7 @@ import { AdornmentInput } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import { Community as Container } from '../styled'
 
-export const LiveChat = () => {
+export const LiveChat = ({ community }) => {
   const [inputText, setInputText] = useState('')
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const pickerRef = useRef<HTMLDivElement>(null)
