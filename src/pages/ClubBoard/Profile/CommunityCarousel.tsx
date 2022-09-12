@@ -104,7 +104,7 @@ export const CommunityCarousel = ({
         </Box>
       )}
 
-      {members && members.length && (
+      {members && members.length > 0 && (
         <Box display="flex" gap="24px">
           <Box display="flex" py={2} gap="24px" width="100%">
             <CarouselDots
