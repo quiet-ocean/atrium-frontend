@@ -27,7 +27,7 @@ export const AtriumTextField = styled(MuiTextField)(({ theme }) => ({
 }))
 
 export const TextField = ({
-  variant,
+  // variant,
   multiline,
   // color,
   name,
