@@ -2,7 +2,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Box, Tabs, Typography, Tab } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 
-import { TabPanel, a11yProps } from '../../../components'
+import { TabPanel, a11yProps, Button } from '../../../components'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { setUser } from '../../../stores/AuthStore'
