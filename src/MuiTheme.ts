@@ -66,6 +66,9 @@ const muiTheme: AtriumTheme = createAtruimTheme({
           },
           // border: '1px solid red',
           fontFamily: 'Fractul Alt',
+          '& .small': {
+            borderRadius: 0,
+          },
         },
       },
       variants: [
