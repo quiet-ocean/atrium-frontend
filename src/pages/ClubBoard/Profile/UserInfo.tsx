@@ -3,7 +3,7 @@ import { Box, Typography, Grid } from '@mui/material'
 import { useState, useEffect } from 'react'
 
 import MessageIcon from '../../../assets/icons/message-icon-dark.png'
-import { AText, Button } from '../../../components'
+import { AText, Button, SocialButtons } from '../../../components'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { getUserById } from '../../../services/authApi'
@@ -12,7 +12,6 @@ import { openSnack } from '../../../stores/AppStore'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
 import type { IUser, IFriend } from '../../../types/model'
 import { apiPostRequest } from '../../../utils'
-import { SocialButtons } from '../CommunityHub'
 import editIcon from '../images/edit-icon.png'
 
 import { Text } from './styled'
@@ -21,14 +20,12 @@ export const UserInfo = ({ user }: { user: IUser }) => {
   const dispatch = useAppDispatch()
   const [isFriend, setIsFriend] = useState(false)
   const [_user, setUser] = useState<IUser>(user)
-  console.log('User data in user info component: ', user)
   const me = useAppSelector((state) => state.auth.user)
   useEffect(() => {
     let isMounted = true
     if (isMounted && _user && _user.friends) {
       _user.friends.forEach((friend: IFriend) => {
-        if (friend._id === me._id) {
-          console.log('is friend', friend._id, me._id)
+        if (friend?._id === me._id) {
           setIsFriend(true)
           return
         }
@@ -137,7 +134,7 @@ export const UserInfo = ({ user }: { user: IUser }) => {
             <Box>
               <Button
                 className="primary outlined active"
-                color0btn={palette.secondary.light}
+                color={palette.secondary.light}
                 onClick={handleSetFriend}
               >
                 <PeopleOutlinedIcon />
@@ -147,7 +144,7 @@ export const UserInfo = ({ user }: { user: IUser }) => {
             <Box>
               <Button
                 className="primary outlined active"
-                color0btn={palette.secondary.light}
+                color={palette.secondary.light}
               >
                 <Box pr="4px" width="24px" height="24px">
                   <img src={MessageIcon} alt="" width="100%" height="100%" />
@@ -169,7 +166,7 @@ export const UserInfo = ({ user }: { user: IUser }) => {
           </Box>
           <Button
             className="outlined primary active"
-            color0btn={palette.text.disabled}
+            color={palette.text.disabled}
             sx={{ position: 'absolute', right: '24px', top: '24px' }}
             onClick={handleEdit}
           >

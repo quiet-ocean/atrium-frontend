@@ -3,10 +3,10 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import avatar from '../../assets/images/avatar-9.png'
+import colyseusGame from '../../ColyseusGame'
 import { LoginLayout } from '../../components'
 import { useAppSelector } from '../../hooks'
 import { palette } from '../../MuiTheme'
-import colyseusGame from '../../ColyseusGame'
 import type Bootstrap from '../../scenes/Bootstrap'
 
 import { LoginSubLayout } from './LoginSubLayout'
@@ -19,7 +19,6 @@ const LoginSuccess = () => {
   const navigate = useNavigate()
 
   const handleForward = () => {
-    console.log('handle next')
     // if (!roomJoined && lobbyJoined) {
     const bootstrap = colyseusGame.bootstrap as Bootstrap
     bootstrap.network
@@ -27,14 +26,17 @@ const LoginSuccess = () => {
       .then(() => {
         bootstrap.launchGame()
         navigate('/game')
+        // navigate('/club-board')
       })
-      .catch((error) => console.error(error))
+      .catch((error) =>
+        console.error('Error occurred while join public lobby', error)
+      )
     // }
   }
   // console.log(handleForward)
   return (
     <LoginLayout>
-      <LoginSubLayout stepper enable goForward={handleForward}>
+      <LoginSubLayout stepper enable goForward={handleForward} goBack={() => navigate('/signin')}>
         <Box flexDirection="column" gap={`32px`}>
           <Box mt="32px" justifyContent="center">
             <Box

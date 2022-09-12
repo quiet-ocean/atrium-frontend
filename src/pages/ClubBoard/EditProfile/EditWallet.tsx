@@ -119,7 +119,7 @@ export const EditWallet = ({
       <Box display="flex" justifyContent="end">
         <Button
           className="primary active medium"
-          color0btn={palette.secondary.light}
+          color={palette.secondary.light}
           onClick={save}
         >
           save changes

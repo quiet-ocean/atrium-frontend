@@ -2,7 +2,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Box, Tabs, Typography, Tab } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 
-import { Button } from '../../../components'
+import { TabPanel, a11yProps, Button } from '../../../components'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { setUser } from '../../../stores/AuthStore'
@@ -10,8 +10,6 @@ import { setCurrentBoardTab } from '../../../stores/UiStore'
 import type { IUser } from '../../../types/model'
 import { apiPutRequest } from '../../../utils'
 import * as Container from '../styled'
-
-import { TabPanel, a11yProps } from './styled'
 
 import { EditContent, EditWallet, EditIdentity, EditTags } from './'
 
@@ -85,7 +83,7 @@ const EditProfile: React.FC = () => {
             <Box display="flex" gap="24px">
               <Button
                 className="primary active"
-                color0btn={palette.text.primary}
+                color={palette.text.primary}
                 onClick={handleBtnBackToProfile}
               >
                 <Typography variant="h6" color={palette.background.paper}>
@@ -96,7 +94,7 @@ const EditProfile: React.FC = () => {
               </Button>
               <Button
                 className="primary active"
-                color0btn={palette.secondary.light}
+                color={palette.secondary.light}
                 onClick={save}
               >
                 save changes

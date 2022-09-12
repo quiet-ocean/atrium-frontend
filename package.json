@@ -15,7 +15,8 @@
     "validate": "./scripts/validate"
   },
   "dependencies": {
-    "@emoji-mart/data": "^1.0.2",
+    "@emoji-mart/data": "^1.0.6",
+    "@emoji-mart/react": "^1.0.1",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.2",
@@ -23,11 +24,12 @@
     "@mui/styled-engine-sc": "npm:@mui/styled-engine-sc@latest",
     "@mui/system": "^5.8.3",
     "@reduxjs/toolkit": "^1.8.2",
+    "@types/emoji-mart": "^3.0.9",
     "@types/react-slick": "^0.23.10",
     "axios": "^0.27.2",
     "borsh": "0.7.0",
     "buffer": "^6.0.3",
-    "emoji-mart": "^5.1.0",
+    "emoji-mart": "^5.2.2",
     "near-api-js": "^0.44.2",
     "peerjs": "^1.4.6",
     "phaser": "^3.55.2",

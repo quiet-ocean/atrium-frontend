@@ -77,12 +77,11 @@ export const CommunityCarousel = ({
         },
       }}
     >
-      {members && members.length ? (
+      {members && members.length > 0 ? (
         <Slider
           ref={sliderRef}
           {...sliderSettings}
           beforeChange={(_, idx: number) => {
-            console.log('current carousel index: ', idx)
             setIndex(idx)
           }}
         >
@@ -105,31 +104,33 @@ export const CommunityCarousel = ({
         </Box>
       )}
 
-      <Box display="flex" gap="24px">
-        <Box display="flex" py={2} gap="24px" width="100%">
-          <CarouselDots
-            length={members && members.length ? members.length : 1}
-            current={index}
-          />
-          {/* <CarouselDots length={4} current={index} /> */}
+      {members && members.length > 0 && (
+        <Box display="flex" gap="24px">
+          <Box display="flex" py={2} gap="24px" width="100%">
+            <CarouselDots
+              length={members && members.length ? members.length : 1}
+              current={index}
+            />
+            {/* <CarouselDots length={4} current={index} /> */}
+          </Box>
+          <Box display="flex" gap="16px">
+            <Button
+              onClick={handlePrev}
+              className="primary active"
+              color={palette.text.disabled}
+            >
+              Prev
+            </Button>
+            <Button
+              onClick={handleNext}
+              className="primary active"
+              color={palette.text.disabled}
+            >
+              Next
+            </Button>
+          </Box>
         </Box>
-        <Box display="flex" gap="16px">
-          <Button
-            onClick={handlePrev}
-            className="primary active"
-            color0btn={palette.text.disabled}
-          >
-            Prev
-          </Button>
-          <Button
-            onClick={handleNext}
-            className="primary active"
-            color0btn={palette.text.disabled}
-          >
-            Next
-          </Button>
-        </Box>
-      </Box>
+      )}
     </Panel>
   )
 }

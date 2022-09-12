@@ -1,8 +1,10 @@
 import { Box, Grid, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 
+import banner from '../../../assets/images/banner-3.png'
+import { Banner } from '../../../components'
 import { useAppSelector } from '../../../hooks'
-import type { IUser } from '../../../types/model'
+import type { IUser, IFile } from '../../../types/model'
 import { apiGetRequest } from '../../../utils'
 import {
   FeaturedPost,
@@ -13,7 +15,6 @@ import {
 import { Main as Container } from '../styled'
 
 import { CommunityCarousel } from './CommunityCarousel'
-import { Banner } from './styled'
 import { Tags } from './Tags'
 import { UserInfo } from './UserInfo'
 
@@ -22,6 +23,9 @@ const apiUrl = process.env.VITE_API_URL || 'http://localhost:2567'
 export const Profile = () => {
   const [openMembersModal, setOpenMembersModal] = useState(false)
   const [user, setUser] = useState<IUser>({} as IUser)
+  const limit = 10
+  const skip = 0
+  const [medias, setMedias] = useState<IFile[]>([])
 
   const currentUserId = useAppSelector((state) => state.app.currentUserId)
 
@@ -46,12 +50,27 @@ export const Profile = () => {
         })
     }
     getUserData()
+
+    if (isMounted) {
+      getMediaData()
+    }
     return () => {
       isMounted = false
       // abortController.abort()
     }
   }, [currentUserId])
-
+  const getMediaData = async () => {
+    if (currentUserId) {
+      const res = await apiGetRequest(
+        `${apiUrl}/file?limit=${limit}&skip=${skip}`
+      )
+      if (res.status === 200 && res.data) {
+        setMedias(res.data)
+      } else {
+        console.log('Failed to load media data')
+      }
+    }
+  }
   // return <>a;ldjf;lsdjflad</>
   return (
     <Container>
@@ -59,7 +78,7 @@ export const Profile = () => {
         // <>user is set</>
         <>
           <Box>
-            <Banner />
+            <Banner img={banner} />
           </Box>
           <Box>
             <UserInfo user={user} />
@@ -86,11 +105,11 @@ export const Profile = () => {
                 <Members
                   isModal={false}
                   handleOpen={setOpenMembersModal}
-                  // users={user.friends}
+                // users={user.friends}
                 />
               </Grid>
               <Grid item lg={6}>
-                <MediaPanel />
+                <MediaPanel data={medias} />
               </Grid>
             </Grid>
           </Box>

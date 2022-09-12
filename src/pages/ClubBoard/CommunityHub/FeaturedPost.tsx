@@ -27,14 +27,12 @@ export const FeaturedPost = ({
   data?: null | string | IPost
   height?: string
 }) => {
-  console.log('Featured post: ', data, ' Type is: ', typeof data)
   const [post, setPost] = useState<IPost>({} as IPost)
 
   useEffect(() => {
     const init = async () => {
       if (typeof data === 'string') {
         const res = await getPost(data)
-        console.log('Loaded featured post data: ', res.data)
         if (res.data) setPost(res.data)
       } else if (typeof data === undefined || data === null) {
         console.log('Post data is null')
@@ -51,7 +49,7 @@ export const FeaturedPost = ({
         <Box>
           <Button
             className="primary outlined"
-            color0btn={palette.secondary.light}
+            color={palette.secondary.light}
           >
             view all posts
           </Button>
@@ -60,7 +58,10 @@ export const FeaturedPost = ({
       <Box pt="40px">
         {post ? (
           <>
-            <PostContainer img={(post.media as IFile)?.path} height={height ? height : ''}>
+            <PostContainer
+              img={(post.media as IFile)?.path}
+              height={height ? height : ''}
+            >
               <Box display="flex" gap="24px">
                 <Box>
                   <AText>{post.title}</AText>

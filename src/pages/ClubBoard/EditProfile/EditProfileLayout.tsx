@@ -27,7 +27,7 @@ export const EditProfileLayout = ({
       <Box display="flex" justifyContent="end" mt="64px">
         <Button
           className="primary active medium"
-          color0btn={palette.secondary.light}
+          color={palette.secondary.light}
           onClick={save}
         >
           save changes

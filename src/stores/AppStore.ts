@@ -13,6 +13,7 @@ export type TSnack = {
 
 export const AppSlice = createSlice({
   initialState: {
+    communityId: '',
     currentUserId: '',
     profile: {} as IUser,
     searchUserCriteria: '',
@@ -26,6 +27,9 @@ export const AppSlice = createSlice({
         open: true,
         type: action.payload.type,
       }
+    },
+    setCommunityId: (state, action: PayloadAction<string>) => {
+      state.communityId = action.payload
     },
     setCurrentUserId: (state, action: PayloadAction<string>) => {
       state.currentUserId = action.payload
@@ -47,6 +51,7 @@ export const {
   setProfile,
   setSnackbarOpen,
   openSnack,
+  setCommunityId,
   setCurrentUserId,
 } = AppSlice.actions
 

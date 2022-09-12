@@ -27,7 +27,7 @@ export const AtriumTextField = styled(MuiTextField)(({ theme }) => ({
 }))
 
 export const TextField = ({
-  variant,
+  // variant,
   multiline,
   // color,
   name,
@@ -36,7 +36,7 @@ export const TextField = ({
   className,
   sx,
   rows,
-  fullWidth
+  fullWidth,
 }: {
   variant?: 'primary' | 'secondary'
   multiline?: boolean
@@ -51,7 +51,7 @@ export const TextField = ({
 }) => {
   return (
     <AtriumTextField
-      variant={variant}
+      // variant={variant}
       fullWidth={fullWidth}
       name={name}
       value={value}

@@ -16,7 +16,7 @@ export const TagButton = ({
   color: string
 }) => {
   return (
-    <Button className="tag primary outlined tag-small" color0btn={color}>
+    <Button className="tag primary outlined tag-small" color={color}>
       {children}
     </Button>
   )
@@ -36,7 +36,7 @@ export const Member = ({ index, data }: { index: number; data: IFriend }) => {
       <Box display="flex" gap="12px">
         <img src={data.user?.avatar} alt="" width="46px" height="46px" />
         <Box py="10px">
-          <Typography variant="h5">{data.user.username}</Typography>
+          <Typography variant="h5">{data.user?.username}</Typography>
         </Box>
       </Box>
       <Box>
@@ -46,8 +46,8 @@ export const Member = ({ index, data }: { index: number; data: IFriend }) => {
         </Typography>
       </Box>
       <Box display="flex" gap="12px">
-        {data.user.tags && data.user.tags.length ? (
-          data.user.tags.map((item: ITag, key: number) => (
+        {data.user?.tags && data.user?.tags.length ? (
+          data.user.tags?.map((item: ITag, key: number) => (
             <Box py="160px" key={key}>
               <TagButton color="#FF75CD">{item.tag}</TagButton>
             </Box>
@@ -81,7 +81,7 @@ export const Members = ({
           <Box>
             <Button
               className="primary outlined"
-              color0btn={palette.secondary.light}
+              color={palette.secondary.light}
               onClick={() => handleOpen(true)}
             >
               view all

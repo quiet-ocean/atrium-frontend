@@ -29,20 +29,23 @@ export const MessageContainer = ({
               {user.username}
             </Typography>
           </Box>
-          {user.tags && user.tags.map((item: ITag, key: number) => (
-            <Box key={key}>
-              <Button
-                className="tag-secondary tag-small outlined"
-              // color0btn="#FFB350"
-              >
-                {item.tag}
-              </Button>
-            </Box>
-          ))}
+          {user &&
+            user.tags &&
+            user.tags.length &&
+            user.tags.map((item: ITag, key: number) => (
+              <Box key={key}>
+                <Button
+                  className="tag-secondary tag-small outlined"
+                  // color="#FFB350"
+                >
+                  {item.tag}
+                </Button>
+              </Box>
+            ))}
           {/* <Box>
             <Button
               className="tag-secondary outlined tag-small"
-              color0btn="#71E5FF"
+              color="#71E5FF"
             >
               founder
             </Button>
@@ -50,7 +53,7 @@ export const MessageContainer = ({
           <Box>
             <Button
               className="tag-secondary tag-small outlined"
-              color0btn="#FFB350"
+              color="#FFB350"
             >
               devs
             </Button>
@@ -58,7 +61,7 @@ export const MessageContainer = ({
           <Box>
             <Button
               className="tag-secondary tag-small outlined"
-              color0btn="#DE58FF"
+              color="#DE58FF"
             >
               moderator
             </Button>

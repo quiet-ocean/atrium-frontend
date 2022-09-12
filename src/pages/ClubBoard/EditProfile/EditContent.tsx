@@ -1,20 +1,17 @@
 import { Box, Typography, Collapse } from '@mui/material'
-// import { styled } from '@mui/material/styles'
 import React, { useState, useEffect } from 'react'
 
-// import avatar from '../../../assets/images/avatar-6.png'
-// import post7 from '../../../assets/images/post-7.png'
-// import post8 from '../../../assets/images/post-8.png'
-// import post9 from '../../../assets/images/post-9.png'
 import project6 from '../../../assets/images/project-6.png'
 import { Button, TextField, EmptyBox } from '../../../components'
 import { palette } from '../../../MuiTheme'
-import type { IUser, ICommunity, IPost, IComment, IFile } from '../../../types/model'
-import {
-  apiGetRequest,
-  // apiPostRequest,
-  calculatePastTime,
-} from '../../../utils'
+import type {
+  IUser,
+  ICommunity,
+  IPost,
+  IComment,
+  IFile,
+} from '../../../types/model'
+import { apiGetRequest, calculatePastTime } from '../../../utils'
 import { Reactions } from '../Dashboard'
 
 const url = process.env.VITE_API_URL || 'http://localhost:2567'
@@ -34,7 +31,7 @@ const TagButton = ({
   color: string
 }) => {
   return (
-    <Button className="primary active tag tag-small" color0btn={color}>
+    <Button className="primary active tag tag-small" color={color}>
       {children}
     </Button>
   )
@@ -51,8 +48,9 @@ export const CommunityCard = ({ data }: { data?: ICommunity }) => {
         display="flex"
         gap="16px"
         p="16px"
-        border={`1px solid ${selected ? palette.secondary.light : palette.text.primary
-          }`}
+        border={`1px solid ${
+          selected ? palette.secondary.light : palette.text.primary
+        }`}
         onClick={handleClick}
       >
         <Box width="120px !important" height="120px">
@@ -105,7 +103,7 @@ export const CommunityCard = ({ data }: { data?: ICommunity }) => {
           <Box width="100%" p="8px" textAlign="center">
             <Button
               className="primary active"
-              color0btn={palette.secondary.light}
+              color={palette.secondary.light}
               onClick={() => setSelected(false)}
             >
               unselect
@@ -127,8 +125,9 @@ export const PostCard = ({
   return (
     <Box
       p="16px"
-      border={`1px solid ${selected ? palette.secondary.light : palette.text.primary
-        }`}
+      border={`1px solid ${
+        selected ? palette.secondary.light : palette.text.primary
+      }`}
     >
       <img
         src={url + '/files/' + (data.media as IFile)?.path}
@@ -161,8 +160,9 @@ export const CommentCard = ({
 }) => {
   return (
     <Box
-      border={`1px solid ${selected ? palette.secondary.light : palette.text.primary
-        }`}
+      border={`1px solid ${
+        selected ? palette.secondary.light : palette.text.primary
+      }`}
       p="12px"
     >
       <Box display="flex" gap="48px">
@@ -226,13 +226,11 @@ export const EditContent = ({
 
   useEffect(() => {
     const init = async () => {
-      console.log('Load communities and posts')
       // GET POSTS
 
       const res = await apiGetRequest(`${url}/posts`)
 
       if (res.status === 200 && res.data) {
-        console.log('Loaded posts: ', res.data)
         setPosts(res.data)
       } else {
         console.log('Failed to load posts')
@@ -298,7 +296,6 @@ export const EditContent = ({
   //   console.log('Remvove favorite community')
   // }
   const setFeaturedPost = (post?: IPost) => {
-    console.log('Set featured post')
     if (post) {
       setProfile({ ...profile, featuredPost: [post] })
     } else {
@@ -380,6 +377,9 @@ export const EditContent = ({
           >
             {posts && posts.length > 0 ? (
               posts.map((item: IPost, key: number) => {
+                const fpId =
+                  profile.featuredPost[0]._id ||
+                  (profile.featuredPost[0] as any)
                 return (
                   <Box
                     sx={{ minWidth: 200 }}
@@ -389,7 +389,7 @@ export const EditContent = ({
                     <PostCard
                       data={item}
                       key={key}
-                      selected={profile.featuredPost && profile.featuredPost.length > 0 && profile.featuredPost[0]._id === item._id}
+                      selected={fpId === item._id}
                     />
                   </Box>
                 )
@@ -406,8 +406,6 @@ export const EditContent = ({
           </Typography>
           <Box
             mt="50px"
-            // pl="114px"
-            // pr=
             p="0px 32px 0px 114px"
             sx={{
               maxHeight: 445,
@@ -432,7 +430,7 @@ export const EditContent = ({
       <Box display="flex" justifyContent="end" mt="120px">
         <Button
           className="primary active medium"
-          color0btn={palette.secondary.light}
+          color={palette.secondary.light}
           onClick={save}
         >
           save changes

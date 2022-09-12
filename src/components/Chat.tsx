@@ -8,12 +8,13 @@ import Typography from '@mui/material/Typography'
 // I've never find any css file in the emoji-mart package, and such as guide
 // import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
+import type { BaseEmoji } from 'emoji-mart'
 import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 
+import colyseusGame from '../ColyseusGame'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { palette } from '../MuiTheme'
-import colyseusGame from '../ColyseusGame'
 import type Game from '../scenes/Game'
 import { MessageType, setFocused, setShowChat } from '../stores/ChatStore'
 
@@ -308,7 +309,7 @@ export default function Chat() {
                   theme="dark"
                   showSkinTones={false}
                   showPreview={false}
-                  onSelect={(emoji) => {
+                  onSelect={(emoji: BaseEmoji) => {
                     setInputValue(inputValue + emoji.native)
                     setShowEmojiPicker(!showEmojiPicker)
                     dispatch(setFocused(true))
