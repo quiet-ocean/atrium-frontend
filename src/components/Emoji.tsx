@@ -8,10 +8,8 @@ export const Emoji = (props) => (
     aria-label={props.label ? props.label : ''}
     aria-hidden={props.label ? 'false' : 'true'}
   >
-    {props.symbol}
-    {/* {emoji(props.symbol) as React.ElementType<span>} */}
-    {/* {new DOMParser().parseFromString(props.symbol, "text/html")} */}
-    {/* {String.fromCodePoint(props.symbol)} */}
+    {/* {props.symbol} */}
+    <div dangerouslySetInnerHTML={{ __html: props.symbol }} />
   </span>
 )
 // export Emoji;

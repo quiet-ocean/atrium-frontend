@@ -1,44 +1,76 @@
 import { Box, TextField, Typography } from '@mui/material'
-import { useState } from 'react'
+import React, { useState, forwardRef } from 'react'
+
+import { TabPanel } from '../../../../components'
 
 import { EmojiTabList, EmojiBox } from './'
 
-const tabs = ['a', 'b', 'c']
+const tabs = ['emoji a', 'emoji b', 'emoji c']
+export type EmojiProps = {
+  label: string
+  symbol: string
+}
 const emojis = [
-  '&#128507',	
-  '&#128508',	
-  '&#128509',	
-  '&#128510',	
-  '&#128511',	
-  '&#128512',	
-  '&#128513',	
-  '&#128514',	
-  '&#128515',	
-  '&#128516',	
-  '&#128517',
+  { label: '', symbol: '&#128507;' },
+  { label: '', symbol: '&#128508;' },
+  { label: '', symbol: '&#128509;' },
+  { label: '', symbol: '&#128510;' },
+  { label: '', symbol: '&#128511;' },
+  { label: '', symbol: '&#128512;' },
+  { label: '', symbol: '&#128513;' },
+  { label: '', symbol: '&#128514;' },
+  { label: '', symbol: '&#128515;' },
+  { label: '', symbol: '&#128516;' },
+  { label: '', symbol: '&#128517;' },
+  { label: '', symbol: '&#128513;' },
 ]
-export const EmojiDialog = () => {
+
+export const EmojiDialog = forwardRef<HTMLDivElement>((_, ref) => {
   const [value, setValue] = useState(0)
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
   }
   return (
-    <Box>
+    <Box maxWidth={300} ref={ref}>
       <Box>
         <EmojiTabList items={tabs} value={value} handleChange={handleChange} />
       </Box>
-      <Box>
-        <TextField />
+      <Box py={2}>
+        <TextField
+          fullWidth
+          className="small"
+          variant="standard"
+          sx={{
+            fontSize: 12,
+            padding: 1,
+          }}
+          inputProps={{
+            sx: {
+              fontSize: 12,
+              padding: 0,
+            },
+          }}
+        />
       </Box>
       <Box>
-        <Typography>Recent</Typography>
+        <Typography variant="h6">Recent</Typography>
         <EmojiBox />
       </Box>
-      <Box>
-        <Typography>{`smile`}</Typography>
-        <EmojiBox icons={emojis}/>
+      <Box sx={{ '& > div > div': { p: 0 } }} py={1}>
+        <TabPanel value={value} index={0}>
+          <Typography variant="h6">{tabs[0]}</Typography>
+          <EmojiBox icons={emojis} />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <Typography variant="h6">{tabs[1]}</Typography>
+          <EmojiBox icons={emojis} />
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <Typography variant="h6">{tabs[2]}</Typography>
+          <EmojiBox icons={emojis} />
+        </TabPanel>
       </Box>
       <Box></Box>
     </Box>
   )
-}
+})

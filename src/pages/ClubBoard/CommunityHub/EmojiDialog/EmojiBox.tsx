@@ -1,13 +1,17 @@
 import { Box } from '@mui/material'
 
-export const EmojiBox = ({ icons }: { icons?: string[] }) => {
+import { Emoji } from '../../../../components'
+
+import type { EmojiProps } from './EmojiDialog'
+
+export const EmojiBox = ({ icons }: { icons?: EmojiProps[] }) => {
   return (
     <Box>
       {icons &&
         icons.length &&
-        icons.map((icon: string, key: number) => (
-          <Box key={key}>
-            <span>{icon}</span>
+        icons.map((icon: EmojiProps, key: number) => (
+          <Box key={key} display="inline-block">
+            <Emoji label={icon.label} symbol={`${icon.symbol}`} />
           </Box>
         ))}
     </Box>
