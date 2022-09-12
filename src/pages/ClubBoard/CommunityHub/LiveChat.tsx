@@ -3,6 +3,8 @@ import PushPinIcon from '@mui/icons-material/PushPin'
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap'
 import { Box, Typography, IconButton, Popover, Popper } from '@mui/material'
 import { useState, useEffect, useRef, ReactNode } from 'react'
+import ContentEditable from 'react-contenteditable'
+import InputEmoji from 'react-input-emoji'
 
 import { AdornmentInput } from '../../../components'
 import { palette } from '../../../MuiTheme'
@@ -10,12 +12,34 @@ import { Community as Container } from '../styled'
 
 import { EmojiDialog } from './EmojiDialog'
 
-export const LiveChat = () => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const dialogRef = useRef<HTMLDivElement>(null)
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget)
+export const LiveChat = () => {
+  const [text, setText] = useState('')
+  const [html, setHtml] = useState<string>(null)
+  const contentEditableRef = useRef<HTMLDivElement>(null)
+  function handleOnEnter(text) {
+    console.log('enter', text)
+  }
+  const [inputText, setInputText] = useState('')
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const pickerRef = useRef<HTMLDivElement>(null)
+
+  const insertEmoji = (emoji: string) => {
+    // setInputText(inputText.concat(emoji))
+    setHtml(html.concat(emoji))
+  }
+  const addEmoji = (e: any) => {
+    // console.log(e)
+    let sym = e.unified.split("-")
+    let codesArray: any[] = []
+    sym.forEach((el: string) => codesArray.push("0x" + el))
+    let emoji = String.fromCodePoint(...codesArray);
+    // setInput(input + emoji);
+    console.log(emoji)
+    // setHtml(html.concat(emoji))
+    setInputText(inputText + emoji)
   }
   const handlePopperOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -24,8 +48,9 @@ export const LiveChat = () => {
     setAnchorEl(null)
   }
   const handleClose = (e: Event) => {
-    console.log(e.target, dialogRef.current?.contains(e.target))
-    if (!dialogRef.current?.contains(e.target)) {
+    // console.log(e.target, pickerRef.current?.contains(e.target))
+    // console.log(e.target, pickerRef.current)
+    if (!pickerRef.current?.contains(e.target)) {
       handlePopperClose()
     }
   }
@@ -87,6 +112,27 @@ export const LiveChat = () => {
             <MessageItem /> */}
           </Box>
           <Box>
+            {/* <ContentEditable
+              innerRef={contentEditableRef}
+              html={html || '<></>'} // innerHTML of the editable div
+              disabled={false} // use true to disable editing
+              onChange={(e) => setHtml(e.target.value)} // handle innerHTML change
+              tagName="span" // Use a custom HTML tag (uses a div by default)
+            /> */}
+            {/* <IconButton
+              aria-describedby={id}
+              onMouseEnter={handlePopperOpen}
+              // onMouseLeave={handlePopperClose}
+            >
+              <InsertEmoticonIcon />
+            </IconButton> */}
+            {/* <InputEmoji
+              value={text}
+              onChange={setText}
+              cleanOnEnter
+              onEnter={handleOnEnter}
+              placeholder="Type a message"
+            /> */}
             <AdornmentInput
               adornment={
                 <IconButton
@@ -99,6 +145,8 @@ export const LiveChat = () => {
               }
               label="type here..."
               variant="default"
+              value={inputText}
+              onChange={e => setInputText(e.target.value)}
               sx={{
                 background: palette.background.paper,
                 border: palette.border.main,
@@ -116,10 +164,11 @@ export const LiveChat = () => {
           placement={`top-end`}
           sx={{ zIndex: 10000 }}
         >
-          <Box pb={2}>
-            <Box sx={{ bgcolor: 'background.paper', border: 1, p: 1 }}>
-              <EmojiDialog ref={dialogRef} />
-            </Box>
+          <Box pb={2} ref={pickerRef}>
+            {/* <Box sx={{ bgcolor: 'background.paper', border: 1, p: 1 }}> */}
+              {/* <EmojiDialog ref={dialogRef} insert={insertEmoji} /> */}
+              <Picker data={data} onEmojiSelect={addEmoji} />
+            {/* </Box> */}
           </Box>
         </Popper>
       </Box>
