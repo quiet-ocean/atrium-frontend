@@ -1,7 +1,8 @@
-import { Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/material'
+import type { ButtonProps as MuiButtonProps } from '@mui/material'
+import { Button as MuiButton } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-interface ButtonProps extends MuiButtonProps { 
+interface ButtonProps extends MuiButtonProps {
   btn_color?: string
 }
 export const ButtonStyled = styled(MuiButton)<ButtonProps>(
@@ -27,12 +28,12 @@ export const ButtonStyled = styled(MuiButton)<ButtonProps>(
       color: `${btn_color ? btn_color : theme.palette.text.primary} !important`,
     },
     '&.primary:hover, &.active': {
+      '& .MuiTypography-root': {
+        color: `${theme.palette.background.paper} !important`,
+      },
       background: btn_color ? btn_color : theme.palette.background.paper,
       border: '1px solid transparent !important',
       color: `${theme.palette.background.paper} !important`,
-      '& .MuiTypography-root': {
-        color: `${theme.palette.background.paper} !important`,
-      }
     },
     '&.rounded': {
       '& *': {
