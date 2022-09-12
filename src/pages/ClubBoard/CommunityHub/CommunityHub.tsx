@@ -5,6 +5,7 @@ import bannerImage from '../../../assets/images/banner-2.png'
 import { Banner } from '../../../components'
 import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import Game from '../../../scenes/Game'
 import type { TAlert, TSnack } from '../../../stores/AppStore'
 import { openSnack } from '../../../stores/AppStore'
 import { setUser } from '../../../stores/AuthStore'
@@ -57,6 +58,7 @@ export const MembersModal = ({
     </Modal>
   )
 }
+
 export const CommunityHub = () => {
   const [joined, setJoined] = useState(false)
   const [openMembersModal, setOpenMembersModal] = useState(false)
@@ -165,7 +167,7 @@ export const CommunityHub = () => {
           <FeaturedPost />
         </Grid>
         <Grid item lg={6}>
-          <LiveChat />
+          <LiveChat community={community} />
         </Grid>
         <Grid item lg={6}>
           <MediaPanel />

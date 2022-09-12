@@ -60,7 +60,7 @@ export const UserInfo = ({ user }: { user: IUser }) => {
           setUser((prevUser) => ({
             ...prevUser,
             friends: prevUser?.friends.filter(
-              (item: IFriend) => item.user._id !== me._id
+              (item: IFriend) => item._id !== me._id
             ),
           }))
         } else {

@@ -321,7 +321,7 @@ export const EditContent = ({
         <Box py={3}>
           <TextField
             name="blurp"
-            variant="primary"
+            // variant="primary"
             className="rounded"
             value={profile.blurp}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

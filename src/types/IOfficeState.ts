@@ -24,9 +24,11 @@ export interface IWhiteboard extends Schema {
 }
 
 export interface IChatMessage extends Schema {
-  author: string
+  username: string
   createdAt: number
   content: string
+  avatar?: string
+  channel?: string
 }
 
 export interface IOfficeState extends Schema {
