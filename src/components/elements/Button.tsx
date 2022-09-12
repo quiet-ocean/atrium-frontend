@@ -1,7 +1,9 @@
-import { Button as MuiButton } from '@mui/material'
+import { Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-type ButtonProps = { btn_color?: string }
+interface ButtonProps extends MuiButtonProps { 
+  btn_color?: string
+}
 export const ButtonStyled = styled(MuiButton)<ButtonProps>(
   ({ theme, btn_color }) => ({
     '&.disabled': {
