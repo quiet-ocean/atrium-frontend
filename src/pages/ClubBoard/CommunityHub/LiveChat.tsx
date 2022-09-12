@@ -4,7 +4,7 @@ import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
 import PushPinIcon from '@mui/icons-material/PushPin'
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap'
 import { Box, Typography, IconButton, Popper } from '@mui/material'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 import { AdornmentInput } from '../../../components'
 import { palette } from '../../../MuiTheme'
@@ -32,9 +32,13 @@ export const LiveChat = () => {
   // const handleKeyDown = (e: any) => {
   //   console.log(e)
   // }
-  const handlePopperOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
+  const handlePopperOpen = useCallback(
+    (event: React.MouseEvent<HTMLElement>) => {
+      if (Boolean(anchorEl)) setAnchorEl(null)
+      else setAnchorEl(event.currentTarget)
+    },
+    [anchorEl]
+  )
   const handlePopperClose = () => {
     setAnchorEl(null)
   }
@@ -51,15 +55,15 @@ export const LiveChat = () => {
   const open = Boolean(anchorEl)
   const id = open ? 'simple-popper' : undefined
 
-  useEffect(() => {
-    if (open) {
-      document.addEventListener('click', handleClose)
-    } else {
-      document.removeEventListener('click', handleClose)
-    }
+  // useEffect(() => {
+  //   if (open) {
+  //     document.addEventListener('click', handleClose)
+  //   } else {
+  //     document.removeEventListener('click', handleClose)
+  //   }
 
-    return () => document.removeEventListener('click', handleClose)
-  }, [open])
+  //   return () => document.removeEventListener('click', handleClose)
+  // }, [open])
   return (
     <Container height="100%">
       <Box height="100%" display="flex" flexDirection="column">
@@ -110,7 +114,7 @@ export const LiveChat = () => {
               adornment={
                 <IconButton
                   aria-describedby={id}
-                  onMouseEnter={handlePopperOpen}
+                  onClick={handlePopperOpen}
                   // onMouseLeave={handlePopperClose}
                 >
                   <InsertEmoticonIcon />
