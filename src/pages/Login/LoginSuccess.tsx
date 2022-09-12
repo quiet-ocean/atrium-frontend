@@ -36,7 +36,7 @@ const LoginSuccess = () => {
   // console.log(handleForward)
   return (
     <LoginLayout>
-      <LoginSubLayout stepper enable goForward={handleForward}>
+      <LoginSubLayout stepper enable goForward={handleForward} goBack={() => navigate('/signin')}>
         <Box flexDirection="column" gap={`32px`}>
           <Box mt="32px" justifyContent="center">
             <Box

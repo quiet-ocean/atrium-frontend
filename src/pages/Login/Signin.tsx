@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { LoginLayout, Button } from '../../components'
 import { palette } from '../../MuiTheme'
@@ -7,6 +7,12 @@ import { palette } from '../../MuiTheme'
 import { LoginSubLayout } from './LoginSubLayout'
 
 export const Signin = () => {
+  const navigate = useNavigate()
+
+  const handleNext = () => {
+    navigate('/connect-wallet')
+  }
+
   return (
     <LoginLayout>
       <LoginSubLayout>
@@ -18,12 +24,11 @@ export const Signin = () => {
             <Button
               className="primary active large"
               color={palette.secondary.light}
+              onClick={handleNext}
             >
-              <Link to="/connect-wallet">
-                <Typography variant="h2" color={palette.background.paper}>
-                  connect wallet
-                </Typography>
-              </Link>
+              <Typography variant="h2" color={palette.background.paper}>
+                connect wallet
+              </Typography>
             </Button>
             <Button
               className=" active large secondary"

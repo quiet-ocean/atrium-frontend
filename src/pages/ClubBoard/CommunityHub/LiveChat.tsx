@@ -39,19 +39,6 @@ export const LiveChat = () => {
     },
     [anchorEl]
   )
-  const handlePopperClose = () => {
-    setAnchorEl(null)
-  }
-  const handleClose = (e: Event) => {
-    // console.log(e.target, pickerRef.current?.contains(e.target))
-    // console.log(e.target, pickerRef.current)
-    if (!pickerRef.current?.contains(e.target)) {
-      handlePopperClose()
-    }
-  }
-  const handleFocus = (e: any) => {
-    console.log(e)
-  }
   const open = Boolean(anchorEl)
   const id = open ? 'simple-popper' : undefined
 
@@ -115,7 +102,7 @@ export const LiveChat = () => {
                 <IconButton
                   aria-describedby={id}
                   onClick={handlePopperOpen}
-                  // onMouseLeave={handlePopperClose}
+                // onMouseLeave={handlePopperClose}
                 >
                   <InsertEmoticonIcon />
                 </IconButton>

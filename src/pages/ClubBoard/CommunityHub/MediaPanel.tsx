@@ -35,7 +35,7 @@ export const MediaPanel = ({ data }: { data?: IFile[] }) => {
                 <Grid item lg={3} key={key}>
                   <Box width="100%" height="136px" margin="0px">
                     <img
-                      src={`/assets/images/media (${key + 1}).png`}
+                      src={media.fullPath}
                       alt=""
                       width="100%"
                       height="100%"
