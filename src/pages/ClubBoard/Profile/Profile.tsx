@@ -23,8 +23,8 @@ const apiUrl = process.env.VITE_API_URL || 'http://localhost:2567'
 export const Profile = () => {
   const [openMembersModal, setOpenMembersModal] = useState(false)
   const [user, setUser] = useState<IUser>({} as IUser)
-  const [limit, setLimit] = useState(10)
-  const [skip, setSkip] = useState(0)
+  const limit = 10
+  const skip = 0
   const [medias, setMedias] = useState<IFile[]>([])
 
   const currentUserId = useAppSelector((state) => state.app.currentUserId)
@@ -105,7 +105,7 @@ export const Profile = () => {
                 <Members
                   isModal={false}
                   handleOpen={setOpenMembersModal}
-                  // users={user.friends}
+                // users={user.friends}
                 />
               </Grid>
               <Grid item lg={6}>

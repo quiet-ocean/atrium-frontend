@@ -4,7 +4,7 @@ import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
 import PushPinIcon from '@mui/icons-material/PushPin'
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap'
 import { Box, Typography, IconButton, Popper } from '@mui/material'
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback } from 'react'
 
 import { AdornmentInput } from '../../../components'
 import { palette } from '../../../MuiTheme'
@@ -42,6 +42,7 @@ export const LiveChat = ({ community }) => {
   const open = Boolean(anchorEl)
   const id = open ? 'simple-popper' : undefined
 
+  console.log(community)
   // useEffect(() => {
   //   if (open) {
   //     document.addEventListener('click', handleClose)
