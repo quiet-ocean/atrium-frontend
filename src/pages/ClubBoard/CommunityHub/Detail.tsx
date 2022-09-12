@@ -4,7 +4,7 @@ import type {
   ICommunity,
   IUser,
 } from '../../../types/model'
-import { AText, Button, AdornmentInput, Banner, SocialButtons } from '../../../components'
+import { AText, Button, SocialButtons } from '../../../components'
 import avatar1 from '../../../assets/images/avatar-7.png'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import badge from '../../../assets/icons/verified-icon-small.png'

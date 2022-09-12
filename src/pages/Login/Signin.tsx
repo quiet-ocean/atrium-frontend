@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { LoginLayout, Button } from '../../components'
 import { palette } from '../../MuiTheme'
