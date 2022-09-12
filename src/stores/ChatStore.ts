@@ -9,6 +9,8 @@ export enum MessageType {
   PLAYER_JOINED,
   PLAYER_LEFT,
   REGULAR_MESSAGE,
+  FRIEND_MESSAGE,
+  COMMUNITY_MESSAGE,
 }
 
 export const chatSlice = createSlice({
@@ -17,6 +19,11 @@ export const chatSlice = createSlice({
       messageType: MessageType
       chatMessage: IChatMessage
     }>(),
+    friendChatMessages: new Array<{
+      messageType: MessageType
+      chatMessage: IChatMessage
+    }>(),
+    communityChatMessages: {},
     focused: false,
     showChat: true,
   },
@@ -28,10 +35,26 @@ export const chatSlice = createSlice({
         messageType: MessageType.REGULAR_MESSAGE,
       })
     },
+    pushCommunityChatMessage: (state, action: PayloadAction<any>) => {
+      const channel = action.payload.channel
+      if (!state.communityChatMessages[channel]) {
+        state.communityChatMessages[channel] = []
+      }
+      state.communityChatMessages[channel].push({
+        chatMessage: action.payload.chatMessage,
+        user: action.payload.user,
+      })
+    },
+    pushDirectChatMessage: (state, action: PayloadAction<IChatMessage>) => {
+      state.friendChatMessages.push({
+        chatMessage: action.payload,
+        messageType: MessageType.FRIEND_MESSAGE,
+      })
+    },
     pushPlayerJoinedMessage: (state, action: PayloadAction<string>) => {
       state.chatMessages.push({
         chatMessage: {
-          author: action.payload,
+          username: action.payload,
           content: 'joined the lobby',
           createdAt: new Date().getTime(),
         } as IChatMessage,
@@ -41,7 +64,7 @@ export const chatSlice = createSlice({
     pushPlayerLeftMessage: (state, action: PayloadAction<string>) => {
       state.chatMessages.push({
         chatMessage: {
-          author: action.payload,
+          username: action.payload,
           content: 'left the lobby',
           createdAt: new Date().getTime(),
         } as IChatMessage,
@@ -61,6 +84,8 @@ export const chatSlice = createSlice({
 
 export const {
   pushChatMessage,
+  pushCommunityChatMessage,
+  pushDirectChatMessage,
   pushPlayerJoinedMessage,
   pushPlayerLeftMessage,
   setFocused,

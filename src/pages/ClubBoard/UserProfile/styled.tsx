@@ -14,3 +14,10 @@ export const OnlineIcon = styled(Box)(() => ({
   height: '10px',
   width: '10px',
 }))
+
+export const OfflineIcon = styled(Box)(() => ({
+  background: 'gray',
+  borderRadius: '25px',
+  height: '10px',
+  width: '10px',
+}))

@@ -7,7 +7,7 @@ import { Box, Button, Typography, ButtonGroup } from '@mui/material'
 // import avatar from '../../../assets/images/avatar-5.png'
 import { AText, AdornmentInput } from '../../../components'
 import { palette } from '../../../MuiTheme'
-import { OnlineIcon } from '../UserProfile/styled'
+import { OfflineIcon, OnlineIcon } from '../UserProfile/styled'
 
 import { AntSwitch } from './AntSwitch'
 import type { UserProps } from './Chat'
@@ -30,7 +30,7 @@ export const ContactInfo = ({ info }: { info: UserProps }) => {
         <Box display="flex" justifyContent="center">
           <Box position="relative">
             <img
-              src={`/images/avatar-${info.walletId}.png`}
+              src={info.avatar}
               alt=""
               style={{
                 borderRadius: '100%',
@@ -38,16 +38,27 @@ export const ContactInfo = ({ info }: { info: UserProps }) => {
                 width: '100px',
               }}
             />
-            <OnlineIcon
-              sx={{
-                border: `1px solid ${palette.border.dark}`,
-                height: '15px',
-                position: 'absolute',
-                right: '3px',
-                top: '12px',
-                width: '15px',
-              }}
-            />
+            {info.status === 'online' ?
+              <OnlineIcon
+                sx={{
+                  border: `1px solid ${palette.border.dark}`,
+                  height: '15px',
+                  position: 'absolute',
+                  right: '3px',
+                  top: '12px',
+                  width: '15px',
+                }}
+              /> :
+              <OfflineIcon
+                sx={{
+                  border: `1px solid ${palette.border.dark}`,
+                  height: '15px',
+                  position: 'absolute',
+                  right: '3px',
+                  top: '12px',
+                  width: '15px',
+                }} />}
+
           </Box>
         </Box>
         <Box p="6px 0px">
@@ -57,7 +68,7 @@ export const ContactInfo = ({ info }: { info: UserProps }) => {
                 fontSize: '24px',
               }}
             >
-              {info.name}
+              {info.username}
             </AText>
             <Box p="6px 5px">
               <LaunchIcon
@@ -73,7 +84,7 @@ export const ContactInfo = ({ info }: { info: UserProps }) => {
               textTransform: 'uppercase',
             }}
           >
-            {info.walletId}
+            {info.accountId}
           </Typography>
         </Box>
         <Box display="flex" justifyContent="center" p="6px 0px">

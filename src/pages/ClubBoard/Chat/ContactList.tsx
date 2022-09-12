@@ -26,10 +26,10 @@ export const ContactList = ({
       </Box>
       <Box>
         {contacts.map((item: UserProps, key: number) => (
-          <Box key={key} onClick={() => setOpponentId(item.walletId)}>
+          <Box key={key} onClick={() => setOpponentId(item.accountId)}>
             <Contact
               user={item}
-              active={item.walletId === opponentId ? true : false}
+              active={item.accountId === opponentId ? true : false}
             />
           </Box>
         ))}

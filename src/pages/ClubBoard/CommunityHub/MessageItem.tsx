@@ -10,7 +10,7 @@ export const MessageContainer = ({
   user,
   children,
 }: {
-  user: IUser
+  user: { avatar: string, username: string, tags?: [] }
   children: React.ReactNode
 }) => {
   return (
@@ -73,8 +73,8 @@ export const MessageContainer = ({
   )
 }
 
-export const MessageItem = ({ user }: { user: IUser }) => {
-  const [autor, setAuthor] = useState<IUser>({} as IUser)
+export const MessageItem = ({ user, message }: { user: IUser, message: any }) => {
+  const [author, setAuthor] = useState<any>({} as any)
 
   useEffect(() => {
     let isMounted = true
@@ -107,10 +107,9 @@ export const MessageItem = ({ user }: { user: IUser }) => {
   return (
     <Box pb="24px">
       {user && (
-        <MessageContainer user={autor}>
+        <MessageContainer user={author}>
           <Typography variant="caption">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac
-            convallis commodo morbi ut leo gravida ...
+            {message?.content}
           </Typography>
         </MessageContainer>
       )}

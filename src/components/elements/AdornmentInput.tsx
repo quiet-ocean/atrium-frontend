@@ -15,7 +15,17 @@ export const AdornmentInput: React.FC<{
   sx?: object
   value?: string
   onChange?: AnyFunction
-}> = ({ adornment, label, variant, sx, value, onChange }) => {
+  onClick?: AnyFunction
+}> = ({ adornment, label, variant, sx, value, onChange, onClick }) => {
+  function onEnterPress(e) {
+    if (e.keyCode === 13 && e.shiftKey === false) {
+      e.preventDefault();
+      if (onClick) {
+        onClick();
+      }
+    }
+  }
+
   return (
     <FormControl
       sx={{ width: variant === 'default' ? '100%' : '350px', ...sx }}
@@ -42,6 +52,7 @@ export const AdornmentInput: React.FC<{
         type="text"
         value={value}
         onChange={onChange}
+        onKeyDown={onEnterPress}
         sx={{
           '& input': {
             py: '16px',
@@ -53,7 +64,11 @@ export const AdornmentInput: React.FC<{
         }}
         endAdornment={
           <InputAdornment position="end">
-            <IconButton aria-label="toggle password visibility" edge="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              edge="end"
+              onClick={onClick ? () => onClick() : undefined}
+            >
               {adornment}
             </IconButton>
           </InputAdornment>
