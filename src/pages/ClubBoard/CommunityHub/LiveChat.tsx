@@ -16,16 +16,22 @@ export const LiveChat = () => {
   const pickerRef = useRef<HTMLDivElement>(null)
 
   const addEmoji = (e: any) => {
-    // console.log(e)
     let sym = e.unified.split('-')
     let codesArray: any[] = []
     sym.forEach((el: string) => codesArray.push('0x' + el))
     let emoji = String.fromCodePoint(...codesArray)
-    // setInput(input + emoji);
-    console.log(emoji)
-    // setHtml(html.concat(emoji))
     setInputText(inputText + emoji)
   }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e)
+    setInputText(e.target.value)
+  }
+  // const handleClick = (e: any) => {
+  //   console.log(e)
+  // }
+  // const handleKeyDown = (e: any) => {
+  //   console.log(e)
+  // }
   const handlePopperOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
@@ -38,6 +44,9 @@ export const LiveChat = () => {
     if (!pickerRef.current?.contains(e.target)) {
       handlePopperClose()
     }
+  }
+  const handleFocus = (e: any) => {
+    console.log(e)
   }
   const open = Boolean(anchorEl)
   const id = open ? 'simple-popper' : undefined
@@ -110,7 +119,10 @@ export const LiveChat = () => {
               label="type here..."
               variant="default"
               value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
+              onChange={handleChange}
+              // onClick={handleClick}
+              // onKeyDown={handleKeyDown}
+              // onFocus={handleFocus}
               sx={{
                 background: palette.background.paper,
                 border: palette.border.main,
