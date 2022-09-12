@@ -77,7 +77,7 @@ export const CommunityCarousel = ({
         },
       }}
     >
-      {members && members.length ? (
+      {members && members.length > 0 ? (
         <Slider
           ref={sliderRef}
           {...sliderSettings}
