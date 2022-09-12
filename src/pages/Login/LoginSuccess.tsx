@@ -19,17 +19,18 @@ const LoginSuccess = () => {
   const navigate = useNavigate()
 
   const handleForward = () => {
-    console.log('handle next')
     // if (!roomJoined && lobbyJoined) {
     const bootstrap = colyseusGame.bootstrap as Bootstrap
     bootstrap.network
       .joinOrCreatePublic()
       .then(() => {
         bootstrap.launchGame()
-        // navigate('/game')
-        navigate('/club-board')
+        navigate('/game')
+        // navigate('/club-board')
       })
-      .catch((error) => console.error(error))
+      .catch((error) =>
+        console.error('Error occurred while join public lobby', error)
+      )
     // }
   }
   // console.log(handleForward)
