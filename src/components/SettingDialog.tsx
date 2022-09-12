@@ -25,41 +25,11 @@ import Tabs from '@mui/material/Tabs'
 import React from 'react'
 // import DiscordIcon from '@mui/icons-material/Discord'
 
+import { TabPanel, a11yProps } from '../components'
 import { useAppDispatch } from '../hooks'
 import { setSettingDialogOpen } from '../stores/SettingStore'
 
 // const normalise = (value) => ((value - MIN) * 100) / (MAX - MIN);
-interface TabPanelProps {
-  children?: React.ReactNode
-  index: number
-  value: number
-}
-
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <div>{children}</div>
-        </Box>
-      )}
-    </div>
-  )
-}
-function a11yProps(index: number) {
-  return {
-    'aria-controls': `simple-tabpanel-${index}`,
-    id: `simple-tab-${index}`,
-  }
-}
 
 const Footer = () => {
   return (

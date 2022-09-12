@@ -15,8 +15,8 @@ import {
   SinglePost,
   SearchUI,
 } from '..'
+import { TabPanel } from '../../../components'
 import { useAppSelector } from '../../../hooks'
-import { TabPanel } from '../EditProfile/styled'
 import '../reset.css'
 import SearchAppBar from '../SearchAppBar'
 import * as Container from '../styled'
