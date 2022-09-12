@@ -31,7 +31,7 @@ export const Signin = () => {
               </Typography>
             </Button>
             <Button
-              className=" active large secondary"
+              className="large secondary"
               color={palette.secondary.light}
             >
               <Typography variant="h2">continue as guest</Typography>

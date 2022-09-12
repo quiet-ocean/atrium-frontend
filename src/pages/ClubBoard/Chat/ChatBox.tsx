@@ -59,6 +59,7 @@ export const ChatBox = ({ opponentInfo, selfInfo }: { opponentInfo: any, selfInf
           value={value}
           onChange={(e) => { setValue(e.target.value) }}
           onClick={handleSubmit}
+          onSend={handleSubmit}
         />
       </Box>
     </>
