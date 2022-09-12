@@ -30,7 +30,10 @@ const SocialConnect = ({
     <Box>
       <Button
         className="primary outlined"
-        sx={{ padding: '24px 48px', width: '100%' }}
+        sx={{
+          padding: '24px 48px',
+          width: '100%',
+        }}
         color={palette.text.primary}
       >
         <Box display="flex" gap="20px">
