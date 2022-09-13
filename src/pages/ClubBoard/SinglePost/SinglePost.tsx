@@ -6,31 +6,55 @@ import {
   InputAdornment,
   IconButton,
 } from '@mui/material'
+import { useEffect, useState } from 'react'
 
-import commentAvatar from '../images/Ellipse 37.png'
+import { useAppSelector } from '../../../hooks'
+import type { IComment, IPost } from '../../../types/model'
+import { apiUrl, apiGetRequest } from '../../../utils/axios'
 import icon2 from '../images/fa-solid_search-1.png'
 import icon1 from '../images/fa-solid_search.png'
 import bg from '../images/profile-landing-image.png'
 import profileImage from '../images/Rectangle 121.png'
 import cardImage from '../images/Rectangle 138.png'
 import icon3 from '../images/Vector.png'
+import { Comment } from '../Post/Comments'
 import * as PContainer from '../styled'
 
 import { Text, Heading, SubHead, HeadButton, Container, Card } from './styled'
 
-const Comment = ({ text }: { text: string }) => {
-  return (
-    <Box sx={{ display: 'flex', gap: '24px' }}>
-      <Box sx={{ padding: '42px 0px' }}>
-        <img src={commentAvatar} alt="" width="90px" />
-      </Box>
-      <Text sx={{ background: '#17181B', color: '#F8F9FA', padding: '36px' }}>
-        {text}
-      </Text>
-    </Box>
-  )
-}
 const SinglePost = () => {
+  const data = useAppSelector((state) => state.app.currentPost)
+
+  const [post, setPost] = useState<IPost>({} as IPost)
+
+  type GetComments = (postId: string) => Promise<IComment[] | null>
+  const getComments: GetComments = async (postId: string) => {
+    const res = await apiGetRequest(`${apiUrl}/posts/${postId}/comment/`)
+
+    return res?.data.comments
+  }
+  useEffect(() => {
+    const updateState = async () => {
+      if (
+        data.comments &&
+        data.comments.length &&
+        typeof data.comments[0] === 'string'
+      ) {
+        const _comments = await getComments(data._id)
+        console.log(_comments)
+        if (_comments) {
+          setPost({ ...data, comments: _comments })
+          return
+        }
+
+        setPost(data)
+        return
+      }
+      setPost(data)
+    }
+    updateState()
+  }, [data])
+
   return (
     <PContainer.Main>
       <Box>
@@ -42,7 +66,7 @@ const SinglePost = () => {
         <Box sx={{ padding: '0px 180px' }}>
           <Box>
             <Box sx={{ p: '32px' }}>
-              <Heading>spotify integrating with atrium</Heading>
+              <Heading>{data?.title}</Heading>
               <Box sx={{ display: 'flex', gap: '12px', padding: '36px 0px' }}>
                 <HeadButton>spotify</HeadButton>
                 <HeadButton>atrium</HeadButton>
@@ -53,15 +77,8 @@ const SinglePost = () => {
             <Box></Box>
           </Box>
           <Container>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet quam
-              in purus maecenas nisl tincidunt. Nascetur justo adipiscing lectus
-              sapien sit accumsan. Platea ultrices est odio neque. Quam
-              hendrerit amet, tellus lobortis lacus. Arcu amet, eu, dignissim
-              gravida. A turpis ut id amet sollicitudin leo fusce integer.
-            </Text>
-            <SubHead>“spotify integrating with atrium”</SubHead>
-            <Text>
+            {/* <SubHead>“spotify integrating with atrium”</SubHead> */}
+            {/* <Text>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis eu
               sed et tortor proin. Ac vulputate eget sagittis amet metus feugiat
               vitae. Velit nunc, augue felis interdum integer aliquet commodo
@@ -69,17 +86,9 @@ const SinglePost = () => {
               urna, cursus. Feugiat nibh non amet, nunc risus faucibus viverra
               hendrerit. Cursus sed est tellus lorem nec vel. Lacinia ut rhoncus
               massa id turpis quisque amet, non.
-            </Text>
+            </Text> */}
             <img src={profileImage} alt="" />
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis eu
-              sed et tortor proin. Ac vulputate eget sagittis amet metus feugiat
-              vitae. Velit nunc, augue felis interdum integer aliquet commodo
-              vel ultrices. Feugiat malesuada tempor euismod et nibh ac laoreet
-              urna, cursus. Feugiat nibh non amet, nunc risus faucibus viverra
-              hendrerit. Cursus sed est tellus lorem nec vel. Lacinia ut rhoncus
-              massa id turpis quisque amet, non.
-            </Text>
+            <Text>{data?.body}</Text>
           </Container>
           <Container>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -87,15 +96,12 @@ const SinglePost = () => {
               <HeadButton>See All</HeadButton>
             </Box>
             <Box>
-              <Comment
-                text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac convallis commodo morbi ut leo gravida. A nunc laoreet cras semper netus quis blandit eu.`}
-              />
-              <Comment
-                text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac convallis commodo morbi ut leo gravida. A nunc laoreet cras semper netus quis blandit eu.`}
-              />
-              <Comment
-                text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac convallis commodo morbi ut leo gravida. A nunc laoreet cras semper netus quis blandit eu.`}
-              />
+              {post &&
+                post.comments &&
+                post.comments.length > 0 &&
+                post?.comments.map((comment: IComment, key: number) => {
+                  return <Comment data={comment} key={key} />
+                })}
             </Box>
             <Box sx={{ display: 'flex', gap: '24px', padding: '24px 0px' }}>
               <Card sx={{ padding: '24px' }}>
