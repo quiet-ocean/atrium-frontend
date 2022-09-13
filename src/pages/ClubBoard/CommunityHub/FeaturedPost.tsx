@@ -47,10 +47,7 @@ export const FeaturedPost = ({
       <Box display="flex" justifyContent="space-between">
         <Typography variant="h2">featured post</Typography>
         <Box>
-          <Button
-            className="primary outlined"
-            color={palette.secondary.light}
-          >
+          <Button className="primary outlined" color={palette.secondary.light}>
             view all posts
           </Button>
         </Box>

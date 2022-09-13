@@ -39,7 +39,7 @@ const avatars = [
 // shuffle the avatars array
 for (let i = avatars.length - 1; i > 0; i--) {
   const j = Math.floor(Math.random() * (i + 1))
-    ;[avatars[i], avatars[j]] = [avatars[j], avatars[i]]
+  ;[avatars[i], avatars[j]] = [avatars[j], avatars[i]]
 }
 
 function GameUI() {
@@ -66,8 +66,8 @@ function GameUI() {
         console.log('set player name to ', playerName)
         game.myPlayer.setPlayerName(
           playerName ||
-          (window as any).accountId ||
-          (window as any).near?.accountId
+            (window as any).accountId ||
+            (window as any).near?.accountId
         )
         // game.myPlayer.setPlayerTexture(avatars[0].name)
         if (game.network) {

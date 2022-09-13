@@ -60,9 +60,7 @@ export const LoginSubLayout = ({
             <Button
               onClick={handleForward}
               className="primary active large"
-              color={
-                enable ? palette.secondary.light : palette.text.disabled
-              }
+              color={enable ? palette.secondary.light : palette.text.disabled}
             >
               Next &nbsp;
               <ArrowForwardIcon sx={{ fontSize: '28px' }} />

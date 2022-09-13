@@ -1,19 +1,27 @@
-import React, { useState } from 'react'
 import AttachFileIcon from '@mui/icons-material/AttachFile'
 import ImageIcon from '@mui/icons-material/Image'
 import SendIcon from '@mui/icons-material/Send'
 import { Box } from '@mui/material'
+import React, { useState } from 'react'
 
+import colyseusGame from '../../../ColyseusGame'
 import { AdornmentInput } from '../../../components'
 import { useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import type Game from '../../../scenes/Game'
 
 import { Message } from './Message'
-import colyseusGame from '../../../ColyseusGame'
-import Game from '../../../scenes/Game'
 
-export const ChatBox = ({ opponentInfo, selfInfo }: { opponentInfo: any, selfInfo: any }) => {
-  const friendChatMessages = useAppSelector((state) => state.chat.friendChatMessages)
+export const ChatBox = ({
+  opponentInfo,
+  selfInfo,
+}: {
+  opponentInfo: any
+  selfInfo: any
+}) => {
+  const friendChatMessages = useAppSelector(
+    (state) => state.chat.friendChatMessages
+  )
   const [value, setValue] = useState('')
   const game = colyseusGame.game as Game
 
@@ -32,7 +40,12 @@ export const ChatBox = ({ opponentInfo, selfInfo }: { opponentInfo: any, selfInf
             key={index}
             sent={selfInfo.username !== chatMessage.username}
             chatMessage={chatMessage}
-            avatar={opponentInfo.username == chatMessage.username ? opponentInfo.avatar : selfInfo.avatar} />
+            avatar={
+              opponentInfo.username == chatMessage.username
+                ? opponentInfo.avatar
+                : selfInfo.avatar
+            }
+          />
         ))}
       </Box>
       <Box display="flex" gap="12px">
@@ -57,7 +70,9 @@ export const ChatBox = ({ opponentInfo, selfInfo }: { opponentInfo: any, selfInf
           label="type here..."
           adornment={<SendIcon />}
           value={value}
-          onChange={(e) => { setValue(e.target.value) }}
+          onChange={(e) => {
+            setValue(e.target.value)
+          }}
           onClick={handleSubmit}
           onSend={handleSubmit}
         />
