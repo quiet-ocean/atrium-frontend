@@ -10,20 +10,21 @@ import { useEffect, useState } from 'react'
 
 import { useAppSelector } from '../../../hooks'
 import type { IComment, IPost } from '../../../types/model'
-import { apiUrl, apiGetRequest } from '../../../utils/axios'
+import { apiUrl, apiGetRequest, apiPostRequest } from '../../../utils/axios'
 import icon2 from '../images/fa-solid_search-1.png'
 import icon1 from '../images/fa-solid_search.png'
 import bg from '../images/profile-landing-image.png'
 import profileImage from '../images/Rectangle 121.png'
 import cardImage from '../images/Rectangle 138.png'
 import icon3 from '../images/Vector.png'
-import { Comment } from '../Post/Comments'
+import { Comment, Comments } from '../Post/Comments'
 import * as PContainer from '../styled'
 
 import { Text, Heading, SubHead, HeadButton, Container, Card } from './styled'
 
 const SinglePost = () => {
   const data = useAppSelector((state) => state.app.currentPost)
+  const me = useAppSelector((state) => state.auth.user)
 
   const [post, setPost] = useState<IPost>({} as IPost)
 
@@ -54,6 +55,23 @@ const SinglePost = () => {
     }
     updateState()
   }, [data])
+
+  const createComment = async (body: string) => {
+    const id = data._id
+    const res = await apiPostRequest(`${apiUrl}/posts/${id}/comment`, {
+      body,
+    })
+
+    if (res.status === 200 && res.data) {
+      console.log('New comment: ', res.data)
+      setPost({
+        ...post,
+        comments: [...post.comments, { ...res.data, author: me }],
+      })
+    } else {
+      console.log('Something went wrong while create comment')
+    }
+  }
 
   return (
     <PContainer.Main>
@@ -96,27 +114,25 @@ const SinglePost = () => {
               <HeadButton>See All</HeadButton>
             </Box>
             <Box>
-              {post &&
-                post.comments &&
-                post.comments.length > 0 &&
-                post?.comments.map((comment: IComment, key: number) => {
-                  return <Comment data={comment} key={key} />
-                })}
+              {
+                post && post.comments && post.comments.length > 0 && (
+                  <Comments
+                    data={post.comments}
+                    createComment={createComment}
+                  />
+                )
+                // post?.comments.map((comment: IComment, key: number) => {
+                //   return <Comment data={comment} key={key} createComment={createComment} />
+                // })
+              }
             </Box>
-            <Box sx={{ display: 'flex', gap: '24px', padding: '24px 0px' }}>
+            {/* <Box sx={{ display: 'flex', gap: '24px', padding: '24px 0px' }}>
               <Card sx={{ padding: '24px' }}>
                 <img src={icon1} alt="" />
               </Card>
               <Card sx={{ padding: '24px' }}>
                 <img src={icon2} alt="" />
               </Card>
-              {/* <Card>
-              <input style={{
-                background: 'transparent',
-                border: 'none'
-              }} />
-              <img src={icon3} alt='' />
-            </Card> */}
               <FormControl sx={{ width: '100%' }} variant="outlined">
                 <InputLabel
                   htmlFor="outlined-adornment-password"
@@ -141,7 +157,7 @@ const SinglePost = () => {
                   label="Password"
                 />
               </FormControl>
-            </Box>
+            </Box> */}
           </Container>
           <Container>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
