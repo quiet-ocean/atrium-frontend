@@ -1,4 +1,4 @@
-const  MONTHS = [
+const MONTHS = [
   'Jan',
   'Feb',
   'Mar',
