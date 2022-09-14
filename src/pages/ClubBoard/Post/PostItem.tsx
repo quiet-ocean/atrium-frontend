@@ -105,7 +105,11 @@ export const PostItem = ({ data }: { data: IPost }) => {
         </Box>
         <Typography variant="body1">{post.body}</Typography>
       </Box>
-      <Comments data={post.comments} createComment={createComment} />
+      <Comments
+        data={post.comments.slice(0, 2)}
+        createComment={createComment}
+        preview
+      />
     </Box>
   )
 }

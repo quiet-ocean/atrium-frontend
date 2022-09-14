@@ -36,9 +36,11 @@ export const Comment = ({ data }: { data: IComment }) => {
 export const Comments = ({
   data,
   createComment,
+  preview,
 }: {
   data: IComment[]
   createComment: (body: string) => void
+  preview?: boolean
 }) => {
   const dispatch = useAppDispatch()
   const [value, setValue] = useState('')
@@ -84,7 +86,7 @@ export const Comments = ({
           )}
         </ScrollableFeed>
       </Box>
-      <Box display="flex" gap="12px">
+      <Box display={preview ? 'none' : 'flex'} gap="12px">
         <Box
           sx={{
             border: `1px solid ${palette.border.main}`,
