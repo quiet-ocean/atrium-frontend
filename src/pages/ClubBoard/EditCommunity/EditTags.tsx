@@ -160,11 +160,11 @@ export const EditTags = ({
           {initialTags.map((item: TagProps, key: number) => (
             <Box key={key}>
               <Button
-                // className={`tag tag-large ${
-                  // userTagKeys.indexOf(item.name) > -1 ? 'tag-active' : ''
-                // }`}
-                // onClick={() => updateTag(item.name, 'active', !item.active)}
-                // onClick={() => handleTagClick(item.name)}
+              // className={`tag tag-large ${
+              // userTagKeys.indexOf(item.name) > -1 ? 'tag-active' : ''
+              // }`}
+              // onClick={() => updateTag(item.name, 'active', !item.active)}
+              // onClick={() => handleTagClick(item.name)}
               >
                 {/* {item.name} */}
               </Button>

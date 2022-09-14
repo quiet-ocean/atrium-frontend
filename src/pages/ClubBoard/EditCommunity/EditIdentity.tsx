@@ -6,7 +6,7 @@ import React from 'react'
 
 import { Button, TextField } from '../../../components'
 import { palette } from '../../../MuiTheme'
-import { ICommunity } from '../../../types/model'
+import type { ICommunity } from '../../../types/model'
 // import type { IUser } from '../../../types/model'
 
 // import { TextPanel } from './EditContent'
