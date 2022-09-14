@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 
 import type { IUser } from '../../../types/model'
-import { apiUrl } from '../../../utils'
+// import { apiUrl } from '../../../utils'
 import avatar from '../images/profile-avatar.png'
 
 export const User = ({ data }: { data?: IUser }) => {
