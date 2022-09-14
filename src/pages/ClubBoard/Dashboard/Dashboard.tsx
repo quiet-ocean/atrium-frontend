@@ -8,15 +8,12 @@ import reactions from '../../../assets/icons/reactions.png'
 import land1 from '../../../assets/images/land-1.png'
 import land2 from '../../../assets/images/land-2.png'
 import land3 from '../../../assets/images/land-3.png'
-import post1 from '../../../assets/images/post-1.png'
 import post2 from '../../../assets/images/post-2.png'
-import post3 from '../../../assets/images/post-3.png'
-import post4 from '../../../assets/images/post-4.png'
 import { AText, HoverBox } from '../../../components'
 import { useAppDispatch } from '../../../hooks'
 import { setCommunity } from '../../../stores/CommunityStore'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
-import type { ICommunity } from '../../../types/model'
+import type { ICommunity, IFile, IPost } from '../../../types/model'
 import { apiGetRequest, apiUrl } from '../../../utils'
 import * as PContainer from '../styled'
 import { PostContainer } from '../UserProfile/PostCarousel'
@@ -48,19 +45,66 @@ export const Reactions = () => {
   )
 }
 
+const DetailedPost = ({ data }: { data?: IPost }) => {
+  return (
+    <PostContainer img={`${apiUrl}/files/${(data?.media as IFile)?.path}`}>
+      <Box display="flex" gap="12px">
+        <Box>
+          <Title>{data?.title || `Taking advantage of your clan`}</Title>
+          <Typography variant="h6">
+            {data?.body || `Tips on how to network and make the most of your Atrium connections.{' '}`}
+          </Typography>
+        </Box>
+        <Box
+          p="40px 12px 0px 0px"
+          display="flex"
+          flexDirection="column"
+          justifyContent="end"
+        >
+          <img src={reactions} alt="" />
+        </Box>
+      </Box>
+    </PostContainer>
+  )
+}
+const SimplePost = ({ data }: { data?: IPost}) => {
+  return (
+    <PostContainer img={`${apiUrl}/files/${(data?.media as IFile)?.path}`}>
+      <Typography variant="h4">
+        {data?.title || `How Atrium’s Tokenomics work and why you should ...`}
+      </Typography>
+      <Box mt="12px">
+        <User data={data?.author} />
+      </Box>
+    </PostContainer>
+  )
+}
 export const Dashboard = () => {
   const dispatch = useAppDispatch()
   const [communities, setCommunities] = useState<ICommunity[]>([])
+  const [posts, setPosts] = useState<IPost[]>([])
 
   useEffect(() => {
     let isMounted = true
 
-    if (isMounted) getCommunities()
+    if (isMounted) {
+      getCommunities()
+      getPosts()
+    }
     return () => {
       isMounted = false
     }
   })
 
+  const getPosts = async () => {
+    const res = await apiGetRequest(`${apiUrl}/posts`)
+
+    if (res.status === 200 && res.data) {
+      setPosts(res.data)
+    } else {
+      console.log('error occurred while load posts data in dashboard')
+    }
+  }
   const getCommunities = async () => {
     const res = await apiGetRequest(`${apiUrl}/communities`)
 
@@ -83,48 +127,10 @@ export const Dashboard = () => {
     <PContainer.Main>
       <Container>
         <Box flex="3">
-          <PostContainer img={post1}>
-            <Box display="flex" gap="12px">
-              <Box>
-                <Title>Taking advantage of your clan</Title>
-                <Typography
-                  sx={{
-                    fontFamily: 'Andale Mono Regular',
-                    fontSize: '16px',
-                    fontWeight: 400,
-                    letterSpacing: '-0.05em',
-                    lineHeight: '17px',
-                    textAlign: 'left',
-                  }}
-                >
-                  Tips on how to network and make the most of your Atrium
-                  connections.{' '}
-                </Typography>
-              </Box>
-              <Box p="40px 12px 0px 0px">
-                <img src={reactions} alt="" />
-              </Box>
-            </Box>
-          </PostContainer>
+          <DetailedPost data={posts[0]} />
         </Box>
         <Box flex="2">
-          <PostContainer
-            img={post2}
-            children={
-              <Typography
-                sx={{
-                  fontFamily: 'Fractul Alt',
-                  fontSize: '24px',
-                  fontWeight: 600,
-                  letterSpacing: '0em',
-                  lineHeight: '25px',
-                  textAlign: 'left',
-                }}
-              >
-                How Atrium’s Tokenomics work and why you should ...
-              </Typography>
-            }
-          />
+          <SimplePost data={posts[1]} />
         </Box>
         <Box flex="2">
           <PostContainer
@@ -135,20 +141,10 @@ export const Dashboard = () => {
       </Container>
       <Container>
         <HoverBox flex="2" onClick={handleLinkPost}>
-          <PostContainer img={post3} height="480px">
-            <Title>How I stay ahead on quests</Title>
-            <Box mt="12px">
-              <User name="swiftyyy" />
-            </Box>
-          </PostContainer>
+          <SimplePost data={posts[2]} />
         </HoverBox>
         <HoverBox flex="2" onClick={handleLinkPost}>
-          <PostContainer img={post4} height="480px">
-            <Title>Why bounties mean everything</Title>
-            <Box mt="12px">
-              <User name="swiftyyy" />
-            </Box>
-          </PostContainer>
+          <SimplePost data={posts[3]} />
         </HoverBox>
         <HoverBox
           flex="3"
