@@ -112,6 +112,7 @@ const SideBar: React.FC<{
             id={`simple-tab-${5 + key}`}
             aria-controls={`simple-tabpanel-${5 + key}`}
             label=""
+            sx={{ display: 'none' }}
           />
         ))}
       </Tabs>
