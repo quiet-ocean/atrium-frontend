@@ -91,7 +91,7 @@ export const Comments = ({
       <Box display={preview ? 'none' : 'flex'} gap="12px">
         <Box
           sx={{
-            border: `1px solid ${palette.border.main}`,
+            border: `1px solid ${palette.background.default}`,
             padding: '13px',
           }}
         >
