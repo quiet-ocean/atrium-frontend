@@ -1,33 +1,22 @@
-import {
-  Box,
-  // FormControl,
-  // InputLabel,
-  // OutlinedInput,
-  // InputAdornment,
-  // IconButton,
-  Typography,
-} from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 
 import { Button, Banner } from '../../../components'
 import { useAppSelector } from '../../../hooks'
 import type { IComment, IPost } from '../../../types/model'
+import { convert2LongDate } from '../../../utils'
 import { apiUrl, apiGetRequest, apiPostRequest } from '../../../utils/axios'
-// import icon2 from '../images/fa-solid_search-1.png'
-// import icon1 from '../images/fa-solid_search.png'
 import bg from '../images/profile-landing-image.png'
 import profileImage from '../images/Rectangle 121.png'
-import cardImage from '../images/Rectangle 138.png'
-// import icon3 from '../images/Vector.png'
 import { Comments } from '../Post/Comments'
 import * as PContainer from '../styled'
 
-import { Text, SubHead, HeadButton, Container, Card } from './styled'
+import { Container } from './styled'
 
 const SinglePost = () => {
   const data = useAppSelector((state) => state.app.currentPost)
   const me = useAppSelector((state) => state.auth.user)
-
+  console.log(data)
   const [post, setPost] = useState<IPost>({} as IPost)
 
   type GetComments = (postId: string) => Promise<IComment[] | null>
@@ -82,12 +71,17 @@ const SinglePost = () => {
         <Box sx={{ padding: '0px 180px' }}>
           <Box>
             <Box sx={{ p: '32px' }}>
-              <Typography
-                variant="h1"
-                sx={{ fontSize: 60, textTransform: 'capitalize' }}
-              >
-                {data?.title}
-              </Typography>
+              <Box display="flex" justifyContent={'space-between'}>
+                <Typography
+                  variant="h1"
+                  sx={{ fontSize: 60, textTransform: 'capitalize' }}
+                >
+                  {data?.title}
+                </Typography>
+                <Typography variant="body2" pt={1} textTransform="uppercase">
+                  //{convert2LongDate(data?.createdAt)}
+                </Typography>
+              </Box>
               <Box
                 sx={{
                   '& button': {
@@ -109,50 +103,28 @@ const SinglePost = () => {
             <Box></Box>
           </Box>
           <Container>
-            <img src={profileImage} alt="" />
-            <Text>{data?.body}</Text>
+            <img
+              src={
+                typeof data?.media !== 'string'
+                  ? apiUrl + '/files/' + data?.media?.path
+                  : ''
+              }
+              alt=""
+              width="100%"
+            />
+            <Typography variant="body1" py={2}>
+              {data?.body}
+            </Typography>
           </Container>
-          <Container>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <SubHead>comments</SubHead>
-              <HeadButton>See All</HeadButton>
-            </Box>
-            <Box>
-              {post && post.comments && post.comments.length > 0 && (
-                <Comments data={post.comments} createComment={createComment} preview={false}/>
-              )}
-            </Box>
-          </Container>
-          <Container>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <SubHead>comments</SubHead>
-              <HeadButton>See All</HeadButton>
-            </Box>
-            <Box
-              sx={{
-                display: 'flex',
-                gap: '36px',
-                overflowX: 'auto',
-                padding: '24px 0px',
-              }}
-            >
-              <Card sx={{ padding: '24px' }}>
-                <img src={cardImage} alt="" />
-                <SubHead>spotify integrating with atrium</SubHead>
-                <Text>//mar 1st, 2022</Text>
-              </Card>
-              <Card sx={{ padding: '24px' }}>
-                <img src={cardImage} alt="" />
-                <SubHead>spotify integrating with atrium</SubHead>
-                <Text>//mar 1st, 2022</Text>
-              </Card>
-              <Card sx={{ padding: '24px' }}>
-                <img src={cardImage} alt="" />
-                <SubHead>spotify integrating with atrium</SubHead>
-                <Text>//mar 1st, 2022</Text>
-              </Card>
-            </Box>
-          </Container>
+          <Box>
+            {post && post.comments && post.comments.length > 0 && (
+              <Comments
+                data={post.comments}
+                createComment={createComment}
+                preview={false}
+              />
+            )}
+          </Box>
         </Box>
       </Box>
     </PContainer.Main>
