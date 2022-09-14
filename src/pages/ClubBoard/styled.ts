@@ -43,7 +43,6 @@ export const Exploration = styled.main`
   display: grid;
 `
 export const Main = styled.div`
-  // margin: 160px 0px 0px 80px;
   margin: 0px 0px 0px 80px;
 `
 export const ModalContainer = styled.div`
