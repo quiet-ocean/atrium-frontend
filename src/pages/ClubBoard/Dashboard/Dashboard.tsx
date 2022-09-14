@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material'
+import { useState, useEffect } from 'react'
 
 import coolcat from '../../../assets/icons/reaction-coolcat.png'
 import seemsgood from '../../../assets/icons/reaction-seemsgood.png'
@@ -13,8 +14,10 @@ import post3 from '../../../assets/images/post-3.png'
 import post4 from '../../../assets/images/post-4.png'
 import { AText, HoverBox } from '../../../components'
 import { useAppDispatch } from '../../../hooks'
+import { setCommunity } from '../../../stores/CommunityStore'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
-import post5 from '../images/post-image.png'
+import type { ICommunity } from '../../../types/model'
+import { apiGetRequest, apiUrl } from '../../../utils'
 import * as PContainer from '../styled'
 import { PostContainer } from '../UserProfile/PostCarousel'
 
@@ -47,8 +50,28 @@ export const Reactions = () => {
 
 export const Dashboard = () => {
   const dispatch = useAppDispatch()
+  const [communities, setCommunities] = useState<ICommunity[]>([])
 
-  const handleLinkProject = () => {
+  useEffect(() => {
+    let isMounted = true
+
+    if (isMounted) getCommunities()
+    return () => {
+      isMounted = false
+    }
+  })
+
+  const getCommunities = async () => {
+    const res = await apiGetRequest(`${apiUrl}/communities`)
+
+    if (res.status === 200 && res.data) {
+      setCommunities(res.data)
+    } else {
+      console.log('error occurred while load community data in dashboard')
+    }
+  }
+  const handleLinkCommunity = (data: ICommunity) => {
+    dispatch(setCommunity(data))
     dispatch(setCurrentBoardTab(5))
   }
 
@@ -140,21 +163,22 @@ export const Dashboard = () => {
         </HoverBox>
       </Container>
       <Container>
-        <HoverBox width="100%" onClick={handleLinkProject}>
-          <PostContainer img={post5} height="350px">
-            <AText>Project 1</AText>
-          </PostContainer>
-        </HoverBox>
-        <HoverBox width="100%" onClick={handleLinkProject}>
-          <PostContainer img={post5} height="350px">
-            <AText>Project 1</AText>
-          </PostContainer>
-        </HoverBox>
-        <HoverBox width="100%" onClick={handleLinkProject}>
-          <PostContainer img={post5} height="350px">
-            <AText>Project 1</AText>
-          </PostContainer>
-        </HoverBox>
+        {communities &&
+          communities.length > 0 &&
+          communities.slice(0, 3).map((item: ICommunity, key: number) => (
+            <HoverBox
+              width="100%"
+              onClick={() => handleLinkCommunity(item)}
+              key={key}
+            >
+              <PostContainer
+                img={`${apiUrl}/files/${item?.logoUrl}`}
+                height="350px"
+              >
+                <AText>{item.name}</AText>
+              </PostContainer>
+            </HoverBox>
+          ))}
       </Container>
     </PContainer.Main>
   )
