@@ -5,7 +5,7 @@ import project6 from '../../../assets/images/project-6.png'
 import { Button, TextField, EmptyBox } from '../../../components'
 import { palette } from '../../../MuiTheme'
 import type {
-  IUser,
+  // IUser,
   ICommunity,
   IPost,
   IComment,
@@ -200,111 +200,111 @@ export const CommentCard = ({
 }
 
 export const EditContent = ({
-  profile,
-  setProfile,
+  data,
+  setData,
   // updateProfile,
   save,
 }: {
-  profile: IUser
-  setProfile: AnyFunction
+  data?: ICommunity
+  setData?: AnyFunction
   // updateProfile: AnyFunction
-  save: AnyFunction
+  save?: AnyFunction
 }) => {
   // const chunkSize = 2
   // const [communities, setComunities] = useState<ICommunity[]>([])
-  const [posts, setPosts] = useState<IPost[]>([])
-  // const [featuredPost, setFeaturedPost] = useState<IPost>({} as IPost)
-  // const [featuredPostId, setFeaturedPostId] = useState('')
-  const [featuredPostComments, setFeaturedPostComments] = useState<IComment[]>(
-    []
-  )
-  const [featuredComment, setFeaturedComment] = useState<IComment>(
-    {} as IComment
-  )
+  // const [posts, setPosts] = useState<IPost[]>([])
+  // // const [featuredPost, setFeaturedPost] = useState<IPost>({} as IPost)
+  // // const [featuredPostId, setFeaturedPostId] = useState('')
+  // const [featuredPostComments, setFeaturedPostComments] = useState<IComment[]>(
+  //   []
+  // )
+  // const [featuredComment, setFeaturedComment] = useState<IComment>(
+  //   {} as IComment
+  // )
 
-  // const [communityGroup, setCommunityGroup] = useState<ICommunity[][]>([[]])
-
-  useEffect(() => {
-    const init = async () => {
-      // GET POSTS
-
-      const res = await apiGetRequest(`${url}/posts`)
-
-      if (res.status === 200 && res.data) {
-        setPosts(res.data)
-      } else {
-        console.log('Failed to load posts')
-      }
-      // GET COMMUNITIES
-    }
-
-    init()
-  }, [])
-  // useEffect(() => {
-  //   if (post.length > 0) {
-  //     posts.forEach((item: IPost) => {
-  //      const res = await apiGetRequest(`${url}/${item._id}/comment`)
-
-  //      if (res.status === 200 && res.data) {
-  //         setCo
-  //      } else {
-  //       console.log('Failed to load comments for post ', item._id)
-  //      }
-  //     })
-  //   }
-  // }, [posts])
-  useEffect(() => {
-    // console.log(profile.featuredPost)
-    if (
-      profile.featuredPost &&
-      profile.featuredPost[0] &&
-      profile.featuredPost[0]._id
-    )
-      getComments(profile.featuredPost[0]._id)
-  }, [profile.featuredPost])
+  // // const [communityGroup, setCommunityGroup] = useState<ICommunity[][]>([[]])
 
   // useEffect(() => {
-  //   const length = communities.length
-  //   let _communityGroup = [] as ICommunity[][]
-  //   for (let i = 0; i < length; i += 2) {
-  //     _communityGroup.push(communities.slice(i, i + chunkSize))
-  //   }
-  //   setCommunityGroup(_communityGroup)
-  // }, [communities])
-  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   updateProfile<string>(e.target.name, e.target.value)
-  // }
-  const getComments = async (id: string) => {
-    const res = await apiGetRequest(`${url}/posts/${id}/comment`)
+  //   const init = async () => {
+  //     // GET POSTS
 
-    if (res.status === 200 && res.data) {
-      setFeaturedPostComments(res.data.comments)
-    } else {
-      console.log('Failed to load comments for post ', id)
-    }
-  }
-  const setBlurp = (blurp: string) => {
-    setProfile({ ...profile, blurp })
-  }
-  // const addFavoriteCommunity = (id: string) => {
-  //   console.log('Add favorite community')
-  //   if (profile.favoriteCommunities.length < 3) {
-  //     console.log('Add')
+  //     const res = await apiGetRequest(`${url}/posts`)
+
+  //     if (res.status === 200 && res.data) {
+  //       setPosts(res.data)
+  //     } else {
+  //       console.log('Failed to load posts')
+  //     }
+  //     // GET COMMUNITIES
+  //   }
+
+  //   init()
+  // }, [])
+  // // useEffect(() => {
+  // //   if (post.length > 0) {
+  // //     posts.forEach((item: IPost) => {
+  // //      const res = await apiGetRequest(`${url}/${item._id}/comment`)
+
+  // //      if (res.status === 200 && res.data) {
+  // //         setCo
+  // //      } else {
+  // //       console.log('Failed to load comments for post ', item._id)
+  // //      }
+  // //     })
+  // //   }
+  // // }, [posts])
+  // useEffect(() => {
+  //   // console.log(profile.featuredPost)
+  //   if (
+  //     data.featuredPost &&
+  //     data.featuredPost[0] &&
+  //     data.featuredPost[0]._id
+  //   )
+  //     getComments(data.featuredPost[0]._id)
+  // }, [data.featuredPost])
+
+  // // useEffect(() => {
+  // //   const length = communities.length
+  // //   let _communityGroup = [] as ICommunity[][]
+  // //   for (let i = 0; i < length; i += 2) {
+  // //     _communityGroup.push(communities.slice(i, i + chunkSize))
+  // //   }
+  // //   setCommunityGroup(_communityGroup)
+  // // }, [communities])
+  // // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // //   updateProfile<string>(e.target.name, e.target.value)
+  // // }
+  // const getComments = async (id: string) => {
+  //   const res = await apiGetRequest(`${url}/posts/${id}/comment`)
+
+  //   if (res.status === 200 && res.data) {
+  //     setFeaturedPostComments(res.data.comments)
+  //   } else {
+  //     console.log('Failed to load comments for post ', id)
   //   }
   // }
-  // const removeFavoriteCommunity = (id: string) => {
-  //   console.log('Remvove favorite community')
+  // const setBlurp = (blurp: string) => {
+  //   setProfile({ ...profile, blurp })
   // }
-  const setFeaturedPost = (post?: IPost) => {
-    if (post) {
-      setProfile({ ...profile, featuredPost: [post] })
-    } else {
-      setProfile({ ...profile, featuredPost: [] })
-    }
-  }
-  // const setFeaturedComment = (id: string) => {
-  //   console.log('Set featured post')
-  // }
+  // // const addFavoriteCommunity = (id: string) => {
+  // //   console.log('Add favorite community')
+  // //   if (profile.favoriteCommunities.length < 3) {
+  // //     console.log('Add')
+  // //   }
+  // // }
+  // // const removeFavoriteCommunity = (id: string) => {
+  // //   console.log('Remvove favorite community')
+  // // }
+  // // const setFeaturedPost = (post?: IPost) => {
+  // //   if (post) {
+  // //     setProfile({ ...profile, featuredPost: [post] })
+  // //   } else {
+  // //     setProfile({ ...profile, featuredPost: [] })
+  // //   }
+  // // }
+  // // const setFeaturedComment = (id: string) => {
+  // //   console.log('Set featured post')
+  // // }
 
   return (
     <Box>
@@ -323,10 +323,10 @@ export const EditContent = ({
             name="blurp"
             // variant="primary"
             className="rounded"
-            value={profile.blurp}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setBlurp(e.target.value)
-            }
+            // value={profile.blurp}
+            // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            //   setBlurp(e.target.value)
+            // }
           />
         </Box>
         <Box py="32px" display="flex" flexDirection="column">
@@ -375,7 +375,7 @@ export const EditContent = ({
               pb: 3,
             }}
           >
-            {posts && posts.length > 0 ? (
+            {/* {posts && posts.length > 0 ? (
               posts.map((item: IPost, key: number) => {
                 const fpId =
                   profile.featuredPost[0]._id ||
@@ -396,7 +396,7 @@ export const EditContent = ({
               })
             ) : (
               <EmptyBox>No Posts</EmptyBox>
-            )}
+            )} */}
           </Box>
         </Box>
         <Box my="32px">
@@ -412,7 +412,7 @@ export const EditContent = ({
               overflowY: 'scroll',
             }}
           >
-            {featuredPostComments && featuredPostComments.length > 0 ? (
+            {/* {featuredPostComments && featuredPostComments.length > 0 ? (
               featuredPostComments.map((item: IComment, key: number) => (
                 <Box mb={2} key={key} onClick={() => setFeaturedComment(item)}>
                   <CommentCard
@@ -423,7 +423,7 @@ export const EditContent = ({
               ))
             ) : (
               <EmptyBox>No Comments</EmptyBox>
-            )}
+            )} */}
           </Box>
         </Box>
       </Box>

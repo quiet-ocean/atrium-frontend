@@ -1,11 +1,11 @@
 import { Box, Typography } from '@mui/material'
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 
 import { Button, TextField } from '../../../components'
-import { useAppDispatch } from '../../../hooks'
+// import { useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
-import { openSnack } from '../../../stores/AppStore'
-import type { IUser, ITag } from '../../../types/model'
+// import { openSnack } from '../../../stores/AppStore'
+import type { IUser, ITag, ICommunity } from '../../../types/model'
 
 export const initialTags = [
   {
@@ -82,58 +82,58 @@ export const TagContent = ({
   )
 }
 export const EditTags = ({
-  profile,
-  setProfile,
+  data,
+  setData,
   save,
 }: {
-  profile: IUser
-  setProfile: AnyFunction
+  data: ICommunity
+  setData: AnyFunction
   save: AnyFunction
 }) => {
-  console.log('Profile data in edit tag page: ', profile)
-  const [userTagKeys, setUserTagKeys] = useState<string[]>([])
-  const dispatch = useAppDispatch()
+  // console.log('Profile data in edit tag page: ', profile)
+  // const [userTagKeys, setUserTagKeys] = useState<string[]>([])
+  // const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    if (profile.tags && profile.tags.length > 0) {
-      setUserTagKeys(profile.tags.map((item: ITag) => item.tag))
-    } else setUserTagKeys([])
-  }, [profile.tags])
+  // useEffect(() => {
+  //   if (profile.tags && profile.tags.length > 0) {
+  //     setUserTagKeys(profile.tags.map((item: ITag) => item.tag))
+  //   } else setUserTagKeys([])
+  // }, [profile.tags])
 
-  const removeTag = (tag: string) => {
-    setProfile({
-      ...profile,
-      tags: profile.tags.filter((item: ITag) => item.tag !== tag),
-    })
-  }
-  const addTag = (tag: string) => {
-    if (profile.tags.length < 3)
-      setProfile({
-        ...profile,
-        tags: [...profile.tags, { description: '', tag }],
-      })
-    else
-      dispatch(
-        openSnack({ content: 'Max tag size is 3', open: true, type: 'warning' })
-      )
-  }
-  const handleTagClick = (tag: string) => {
-    let isExist = userTagKeys.indexOf(tag) > -1
+  // const removeTag = (tag: string) => {
+  //   setProfile({
+  //     ...profile,
+  //     tags: profile.tags.filter((item: ITag) => item.tag !== tag),
+  //   })
+  // }
+  // const addTag = (tag: string) => {
+  //   if (profile.tags.length < 3)
+  //     setProfile({
+  //       ...profile,
+  //       tags: [...profile.tags, { description: '', tag }],
+  //     })
+  //   else
+  //     dispatch(
+  //       openSnack({ content: 'Max tag size is 3', open: true, type: 'warning' })
+  //     )
+  // }
+  // const handleTagClick = (tag: string) => {
+  //   let isExist = userTagKeys.indexOf(tag) > -1
 
-    if (isExist) removeTag(tag)
-    else addTag(tag)
-  }
-  const handleTagChange = (tag: string, desc: string) => {
-    setProfile({
-      ...profile,
-      tags: profile.tags.map((item: ITag) => {
-        return item.tag === tag ? { description: desc, tag } : item
-      }),
-    })
-  }
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleTagChange(e.target.name, e.target.value)
-  }
+  //   if (isExist) removeTag(tag)
+  //   else addTag(tag)
+  // }
+  // const handleTagChange = (tag: string, desc: string) => {
+  //   setProfile({
+  //     ...profile,
+  //     tags: profile.tags.map((item: ITag) => {
+  //       return item.tag === tag ? { description: desc, tag } : item
+  //     }),
+  //   })
+  // }
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   handleTagChange(e.target.name, e.target.value)
+  // }
   // useEffect(() => {
   //   console.log(tempTags)
   // }, [tempTags])
@@ -146,7 +146,7 @@ export const EditTags = ({
   return (
     <Box>
       <Box>
-        <Typography variant="h3">Choose Your Tags</Typography>
+        <Typography variant="h3">Choose Community Tags</Typography>
         <Typography variant="body2" mt="16px">
           Select the 3 tags that best represent you, then write a bit about each
           one.{' '}
@@ -160,13 +160,13 @@ export const EditTags = ({
           {initialTags.map((item: TagProps, key: number) => (
             <Box key={key}>
               <Button
-                className={`tag tag-large ${
-                  userTagKeys.indexOf(item.name) > -1 ? 'tag-active' : ''
-                }`}
+                // className={`tag tag-large ${
+                  // userTagKeys.indexOf(item.name) > -1 ? 'tag-active' : ''
+                // }`}
                 // onClick={() => updateTag(item.name, 'active', !item.active)}
-                onClick={() => handleTagClick(item.name)}
+                // onClick={() => handleTagClick(item.name)}
               >
-                {item.name}
+                {/* {item.name} */}
               </Button>
             </Box>
           ))}
@@ -179,11 +179,11 @@ export const EditTags = ({
             </Typography>
           </Box>
           <Box>
-            {profile.tags &&
+            {/* {profile.tags &&
               profile.tags.length > 0 &&
               profile.tags.map((item: ITag, key: number) => (
                 <TagContent data={item} handleChange={handleChange} key={key} />
-              ))}
+              ))} */}
             {/* {tempTags.map(
               (item: TagProps, key: number) =>
                 item.active && (

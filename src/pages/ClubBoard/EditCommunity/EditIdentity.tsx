@@ -6,7 +6,8 @@ import React from 'react'
 
 import { Button, TextField } from '../../../components'
 import { palette } from '../../../MuiTheme'
-import type { IUser } from '../../../types/model'
+import { ICommunity } from '../../../types/model'
+// import type { IUser } from '../../../types/model'
 
 // import { TextPanel } from './EditContent'
 import { EditProfileLayout } from './EditProfileLayout'
@@ -23,8 +24,8 @@ const SocialConnect = ({
   title: string
   icon: React.ReactNode
   name: string
-  checked: boolean
-  onChange: AnyFunction
+  checked?: boolean
+  onChange?: AnyFunction
 }) => {
   return (
     <Box>
@@ -51,7 +52,7 @@ const SocialConnect = ({
         justifyContent="center"
       >
         {/* <AntSwitch /> */}
-        <Switch name={name} checked={checked} onChange={onChange} />
+        <Switch name={name} checked={checked || false} onChange={onChange} />
         <Typography variant="caption" py="2px">
           Displayed on Profile
         </Typography>
@@ -74,27 +75,27 @@ const Switch = ({
   onChange,
 }: {
   name: string
-  checked: boolean
-  onChange: AnyFunction
+  checked?: boolean
+  onChange?: AnyFunction
 }) => {
   console.log('Switch checked: ', checked)
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(name, event.target.checked)
   }
-  return <AntSwitch checked={checked} onChange={handleChange} />
+  return <AntSwitch checked={checked || false} onChange={handleChange} />
 }
 export const EditIdentity = ({
-  profile,
-  setProfile,
+  data,
+  setData,
   save,
 }: {
-  profile: IUser
-  setProfile: AnyFunction
+  data?: ICommunity
+  setData?: AnyFunction
   save: AnyFunction
 }) => {
-  const handleSwitchChange = (name: string, value: boolean) => {
-    setProfile({ ...profile, [name]: value })
-  }
+  // const handleSwitchChange = (name: string, value: boolean) => {
+  //   setProfile({ ...profile, [name]: value })
+  // }
   return (
     <EditProfileLayout
       title="Identity Information"
@@ -106,7 +107,7 @@ export const EditIdentity = ({
         <Box py="12px">
           <Grid container>
             <Grid item lg={6}>
-              <TextField className="rounded dark" value={profile.username} />
+              <TextField className="rounded dark" /*value={data.username}*/ />
             </Grid>
             <Grid item lg={6} />
           </Grid>
@@ -124,10 +125,10 @@ export const EditIdentity = ({
             name="bio"
             // variant="primary"
             className="rounded"
-            value={profile.bio}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setProfile({ ...profile, bio: e.target.value })
-            }
+            // value={profile.bio}
+            // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            //   setProfile({ ...profile, bio: e.target.value })
+            // }
           />
         </Box>
       </Box>
@@ -140,18 +141,18 @@ export const EditIdentity = ({
               <Box py="12px">
                 <TextField
                   className="rounded default"
-                  value={profile.websiteUrl}
+                  // value={profile.websiteUrl}
                   name="websiteUrl"
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    setProfile({ ...profile, websiteUrl: e.target.value })
-                  }
+                  // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  //   setProfile({ ...profile, websiteUrl: e.target.value })
+                  // }
                 />
               </Box>
               <Box p="0px 24px" display="flex" gap="12px">
                 <Switch
                   name="isWebsiteUrlDOP"
-                  checked={profile.isWebsiteUrlDOP || false}
-                  onChange={handleSwitchChange}
+                  // checked={profile.isWebsiteUrlDOP || false}
+                  // onChange={handleSwitchChange}
                 />
                 <Typography variant="caption" py="2px">
                   Displayed on Profile
@@ -166,17 +167,17 @@ export const EditIdentity = ({
                 <TextField
                   name="email"
                   className="rounded default"
-                  value={profile.email}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    setProfile({ ...profile, email: e.target.value })
-                  }
+                  // value={profile.email}
+                  // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  //   setProfile({ ...profile, email: e.target.value })
+                  // }
                 />
               </Box>
               <Box p="0px 24px" display="flex" gap="12px">
                 <Switch
                   name="isEmailNotification"
-                  checked={profile.isEmailNotification || false}
-                  onChange={handleSwitchChange}
+                  // checked={profile.isEmailNotification || false}
+                  // onChange={handleSwitchChange}
                 />
                 <Typography variant="caption" py="2px">
                   Notifications On
@@ -191,8 +192,8 @@ export const EditIdentity = ({
               title="discord"
               icon={<Icon sx={{ fontSize: '32px' }}>discord</Icon>}
               name="isDiscordDOP"
-              checked={profile.isDiscordDOP || false}
-              onChange={handleSwitchChange}
+              // checked={profile.isDiscordDOP || false}
+              // onChange={handleSwitchChange}
             />
           </Grid>
           <Grid item lg={4}>
@@ -200,8 +201,8 @@ export const EditIdentity = ({
               title="twitter"
               icon={<TwitterIcon sx={{ fontSize: '32px' }} />}
               name="isTwitterDOP"
-              checked={profile.isTwitterDOP || false}
-              onChange={handleSwitchChange}
+              // checked={profile.isTwitterDOP || false}
+              // onChange={handleSwitchChange}
             />
           </Grid>
           <Grid item lg={4}>
@@ -209,8 +210,8 @@ export const EditIdentity = ({
               title="instagram"
               icon={<InstagramIcon sx={{ fontSize: '32px' }} />}
               name="isInstagramDOP"
-              checked={profile.isInstagramDOP || false}
-              onChange={handleSwitchChange}
+              // checked={profile.isInstagramDOP || false}
+              // onChange={handleSwitchChange}
             />
           </Grid>
         </Grid>

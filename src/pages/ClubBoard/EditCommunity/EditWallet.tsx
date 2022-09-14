@@ -1,31 +1,31 @@
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+// import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import { Box, Grid, Typography } from '@mui/material'
 import React from 'react'
 
 import { Button } from '../../../components'
-import { useAppSelector } from '../../../hooks'
+// import { useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
-import type { IUser } from '../../../types/model'
-import { Wallet } from '../../../types/Wallet'
-import { getAccount } from '../../../utils'
+import type { ICommunity } from '../../../types/model'
+// import { Wallet } from '../../../types/Wallet'
+// import { getAccount } from '../../../utils'
 
 import { AntSwitch } from './styled'
 
 export const EditWallet = ({
-  profile,
-  setProfile,
+  data,
+  setData,
   save,
 }: {
-  profile: IUser
-  setProfile: AnyFunction
+  data: ICommunity
+  setData: AnyFunction
   save: AnyFunction
 }) => {
-  const user = useAppSelector((state) => state.auth.user)
-  const account = getAccount()
+  // const user = useAppSelector((state) => state.auth.user)
+  // const account = getAccount()
 
-  const disconnectWallet = () => {
-    console.log('Disconnect wallet')
-  }
+  // const disconnectWallet = () => {
+  //   console.log('Disconnect wallet')
+  // }
   const InfoItem = ({
     index,
     children,
@@ -59,7 +59,7 @@ export const EditWallet = ({
             <Box p="24px 80px">
               <InfoItem index="status">
                 <Box display="flex" gap="8px">
-                  {account.accountId == user.accountId ? (
+                  {/* {account.accountId == user.accountId ? (
                     <>
                       <CheckCircleIcon sx={{ color: '#90E487' }} />
                       <Typography variant="h5" py="2px" color="#90E487">
@@ -68,15 +68,15 @@ export const EditWallet = ({
                     </>
                   ) : (
                     ''
-                  )}
+                  )} */}
                 </Box>
               </InfoItem>
               <InfoItem index="wallet id">
-                <Typography variant="h5">{user.accountId}</Typography>
+                {/* <Typography variant="h5">{user.accountId}</Typography> */}
               </InfoItem>
               <InfoItem index="wallet source">
                 <Typography variant="h5" sx={{ textTransform: 'uppercase' }}>
-                  {account.type == Wallet.Near ? 'near' : 'sender'}
+                  {/* {account.type == Wallet.Near ? 'near' : 'sender'} */}
                 </Typography>
               </InfoItem>
               <Box mt="32px">
@@ -84,7 +84,7 @@ export const EditWallet = ({
                   variant="h6"
                   color={palette.text.disabled}
                   sx={{ textDecoration: 'underline' }}
-                  onClick={disconnectWallet}
+                  // onClick={disconnectWallet}
                 >
                   Disconnect Wallet
                 </Typography>
@@ -103,10 +103,10 @@ export const EditWallet = ({
               <Box display="flex" gap="12px">
                 <AntSwitch
                   name="isPrivate"
-                  checked={profile?.isPrivate || false}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    setProfile({ ...profile, isPrivate: e.target.checked })
-                  }}
+                  // checked={profile?.isPrivate || false}
+                  // onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  //   setProfile({ ...profile, isPrivate: e.target.checked })
+                  // }}
                 />
                 <Typography variant="caption" py="2px">
                   Private

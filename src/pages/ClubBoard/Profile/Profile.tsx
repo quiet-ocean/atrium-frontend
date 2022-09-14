@@ -105,7 +105,7 @@ export const Profile = () => {
                 <Members
                   isModal={false}
                   handleOpen={setOpenMembersModal}
-                // users={user.friends}
+                  // users={user.friends}
                 />
               </Grid>
               <Grid item lg={6}>

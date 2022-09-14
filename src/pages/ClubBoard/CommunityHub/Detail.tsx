@@ -1,18 +1,18 @@
-import { Box, Grid, Typography, styled } from '@mui/material'
-import { palette } from '../../../MuiTheme'
-import type {
-  ICommunity,
-  IUser,
-} from '../../../types/model'
-import { AText, Button, SocialButtons } from '../../../components'
-import avatar1 from '../../../assets/images/avatar-7.png'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
+import { Box, Grid, Typography, styled } from '@mui/material'
+
 import badge from '../../../assets/icons/verified-icon-small.png'
-import editIcon from '../images/edit-icon.png'
-import { DetailContent } from './'
-import { useAppDispatch } from '../../../hooks'
+import avatar1 from '../../../assets/images/avatar-7.png'
+import { AText, Button, SocialButtons } from '../../../components'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
+import { palette } from '../../../MuiTheme'
+import { openSnack } from '../../../stores/AppStore'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
+import type { ICommunity, IUser } from '../../../types/model'
 import { TabID } from '../ClubBoard'
+import editIcon from '../images/edit-icon.png'
+
+import { DetailContent } from './'
 
 export const Detail = ({
   community,
@@ -24,7 +24,8 @@ export const Detail = ({
   joined: boolean
 }) => {
   const dispatch = useAppDispatch()
-  
+  const me = useAppSelector((state) => state.auth.user)
+
   const Text = styled(Typography)(() => ({
     color: `${palette.text.primary}`,
     fontFamily: 'Andale Mono Regular',
@@ -36,7 +37,21 @@ export const Detail = ({
   }))
 
   const handleEdit = () => {
-    dispatch(setCurrentBoardTab(TabID.EDIT_COMMUNITY))
+    const ownerId =
+      typeof community.owner === 'string'
+        ? community.owner
+        : community.owner?._id
+    if (ownerId === me._id) {
+      dispatch(setCurrentBoardTab(TabID.EDIT_COMMUNITY))
+    } else {
+      dispatch(
+        openSnack({
+          content: "You can't edit this community since you are not owner.",
+          open: true,
+          type: 'warning',
+        })
+      )
+    }
   }
   return (
     <Grid container spacing={2}>
