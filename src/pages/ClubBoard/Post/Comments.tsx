@@ -4,7 +4,7 @@ import { Box, Typography } from '@mui/material'
 import { useState } from 'react'
 import ScrollableFeed from 'react-scrollable-feed'
 
-import { AtButton, AdornmentInput, EmptyBox } from '../../../components'
+import { Button, AdornmentInput, EmptyBox } from '../../../components'
 import { useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import type { TSnack } from '../../../stores/AppStore'
@@ -62,10 +62,12 @@ export const Comments = ({
     setValue(e.target.value)
   }
   return (
-    <Box p="30px" border={`1px solid ${palette.background.paper}`} mt="48px">
+    <Box p="30px" border={`1px solid ${palette.background.default}`} mt="48px">
       <Box display="flex" justifyContent="space-between">
         <Typography variant="h4">comments</Typography>
-        <AtButton variant="small" text="see all" />
+        <Button className="primary" sx={{ border: 1 }}>
+          see all
+        </Button>
       </Box>
       <Box
         mt="12px"
