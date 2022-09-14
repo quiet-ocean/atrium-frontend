@@ -7,7 +7,6 @@ import type { IComment, IPost } from '../../../types/model'
 import { convert2LongDate } from '../../../utils'
 import { apiUrl, apiGetRequest, apiPostRequest } from '../../../utils/axios'
 import bg from '../images/profile-landing-image.png'
-import profileImage from '../images/Rectangle 121.png'
 import { Comments } from '../Post/Comments'
 import * as PContainer from '../styled'
 
