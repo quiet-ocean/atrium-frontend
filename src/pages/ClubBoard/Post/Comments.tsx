@@ -98,7 +98,8 @@ export const Comments = ({
           label="type here..."
           value={value}
           onChange={handleChange}
-          adornment={<SendIcon onClick={handleCreate} />}
+          // adornment={<SendIcon onClick={handleCreate} />}
+          adornment={<SendIcon />}
           onClick={handleCreate}
           onSend={handleCreate}
         />
