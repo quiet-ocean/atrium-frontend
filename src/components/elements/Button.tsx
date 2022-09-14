@@ -33,7 +33,9 @@ export const ButtonStyled = styled(MuiButton)<ButtonProps>(
       },
       background: btn_color ? btn_color : theme.palette.background.paper,
       border: '1px solid transparent !important',
-      color: `${theme.palette.background.paper} !important`,
+      color: btn_color
+        ? `${theme.palette.background.paper} !important`
+        : `text.primary`,
     },
     '&.rounded': {
       '& *': {
