@@ -9,7 +9,7 @@ import { setCurrentPost } from '../../../stores/AppStore'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
 import type { IFile, IPost } from '../../../types/model'
 import { apiGetRequest, apiPostRequest } from '../../../utils'
-import { convertString2LongDate } from '../../../utils/utils'
+import { convert2LongDate } from '../../../utils/utils'
 
 import { Comments } from './Comments'
 
@@ -83,7 +83,7 @@ export const PostItem = ({ data }: { data: IPost }) => {
             variant="body2"
             sx={{ fontSize: '20px', textTransform: 'uppercase' }}
           >
-            {convertString2LongDate(post.createdAt)}
+            {convert2LongDate(post.createdAt)}
           </Typography>
         </Box>
       </Box>
