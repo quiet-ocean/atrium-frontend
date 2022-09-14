@@ -106,6 +106,14 @@ const SideBar: React.FC<{
             </IconLink>
           }
         />
+        {new Array(5).fill(1).map((_, key: number) => (
+          <Tab
+            key={key}
+            id={`simple-tab-${5 + key}`}
+            aria-controls={`simple-tabpanel-${5 + key}`}
+            label=""
+          />
+        ))}
       </Tabs>
     </Box>
   )
