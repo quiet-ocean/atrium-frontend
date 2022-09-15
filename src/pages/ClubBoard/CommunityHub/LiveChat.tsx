@@ -5,20 +5,23 @@ import PushPinIcon from '@mui/icons-material/PushPin'
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap'
 import { Box, Typography, IconButton, Popper } from '@mui/material'
 import { useState, useRef, useCallback } from 'react'
-import colyseusGame from '../../../ColyseusGame'
 
+import colyseusGame from '../../../ColyseusGame'
 import { AdornmentInput } from '../../../components'
 import { useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
-import Game from '../../../scenes/Game'
-import { IUser } from '../../../types/model'
+import type Game from '../../../scenes/Game'
+import type { IUser } from '../../../types/model'
 import { Community as Container } from '../styled'
+
 import { MessageItem } from './MessageItem'
 
 export const LiveChat = ({ community }) => {
   const game = colyseusGame.game as Game
   const meInfo: IUser = useAppSelector((state) => state.auth.user)
-  const communityChatMessages = useAppSelector((state) => state.chat.communityChatMessages)
+  const communityChatMessages = useAppSelector(
+    (state) => state.chat.communityChatMessages
+  )
 
   const [inputText, setInputText] = useState('')
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -27,11 +30,11 @@ export const LiveChat = ({ community }) => {
   const handleSubmit = () => {
     if (inputText) {
       game.network.addCommunityChatMessage({
-        username: meInfo.username,
         avatar: meInfo.avatar,
         channel: community._id,
+        content: inputText,
         createdAt: new Date().getTime(),
-        content: inputText
+        username: meInfo.username,
       })
     }
     setInputText('')
@@ -105,9 +108,17 @@ export const LiveChat = ({ community }) => {
               overflowY: 'scroll',
             }}
           >
-            {communityChatMessages[community._id] ? communityChatMessages[community._id].map(
-              (message, index: string) => <MessageItem key={index} user={message.user} message={message.chatMessage} />
-            ) : ''}
+            {communityChatMessages[community._id]
+              ? communityChatMessages[community._id].map(
+                  (message, index: string) => (
+                    <MessageItem
+                      key={index}
+                      user={message.user}
+                      message={message.chatMessage}
+                    />
+                  )
+                )
+              : ''}
           </Box>
           <Box>
             <AdornmentInput
@@ -115,7 +126,7 @@ export const LiveChat = ({ community }) => {
                 <IconButton
                   aria-describedby={id}
                   onClick={handlePopperOpen}
-                // onMouseLeave={handlePopperClose}
+                  // onMouseLeave={handlePopperClose}
                 >
                   <InsertEmoticonIcon />
                 </IconButton>

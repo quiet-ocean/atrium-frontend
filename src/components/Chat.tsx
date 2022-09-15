@@ -293,7 +293,7 @@ export default function Chat() {
               // backgroundColor: 'rgba(26, 26, 26, 0.9)',
               // flexDirection: 'column',
             }}
-          // position="relative"
+            // position="relative"
           >
             {chatMessages.map(({ messageType, chatMessage }, index) => (
               <Message

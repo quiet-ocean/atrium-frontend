@@ -10,7 +10,7 @@ export const MessageContainer = ({
   user,
   children,
 }: {
-  user: { avatar: string, username: string, tags?: [] }
+  user: { avatar: string; username: string; tags?: [] }
   children: React.ReactNode
 }) => {
   return (
@@ -73,7 +73,13 @@ export const MessageContainer = ({
   )
 }
 
-export const MessageItem = ({ user, message }: { user: IUser, message: any }) => {
+export const MessageItem = ({
+  user,
+  message,
+}: {
+  user: IUser
+  message: any
+}) => {
   const [author, setAuthor] = useState<any>({} as any)
 
   useEffect(() => {
@@ -108,9 +114,7 @@ export const MessageItem = ({ user, message }: { user: IUser, message: any }) =>
     <Box pb="24px">
       {user && (
         <MessageContainer user={author}>
-          <Typography variant="caption">
-            {message?.content}
-          </Typography>
+          <Typography variant="caption">{message?.content}</Typography>
         </MessageContainer>
       )}
     </Box>

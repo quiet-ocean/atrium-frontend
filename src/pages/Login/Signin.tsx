@@ -30,10 +30,7 @@ export const Signin = () => {
                 connect wallet
               </Typography>
             </Button>
-            <Button
-              className="large secondary"
-              color={palette.secondary.light}
-            >
+            <Button className="large secondary" color={palette.secondary.light}>
               <Typography variant="h2">continue as guest</Typography>
             </Button>
           </Box>

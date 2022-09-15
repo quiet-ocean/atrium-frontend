@@ -38,7 +38,7 @@ export const ContactInfo = ({ info }: { info: UserProps }) => {
                 width: '100px',
               }}
             />
-            {info.status === 'online' ?
+            {info.status === 'online' ? (
               <OnlineIcon
                 sx={{
                   border: `1px solid ${palette.border.dark}`,
@@ -48,7 +48,8 @@ export const ContactInfo = ({ info }: { info: UserProps }) => {
                   top: '12px',
                   width: '15px',
                 }}
-              /> :
+              />
+            ) : (
               <OfflineIcon
                 sx={{
                   border: `1px solid ${palette.border.dark}`,
@@ -57,8 +58,9 @@ export const ContactInfo = ({ info }: { info: UserProps }) => {
                   right: '3px',
                   top: '12px',
                   width: '15px',
-                }} />}
-
+                }}
+              />
+            )}
           </Box>
         </Box>
         <Box p="6px 0px">

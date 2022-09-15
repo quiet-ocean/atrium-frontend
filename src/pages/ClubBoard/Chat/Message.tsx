@@ -3,7 +3,15 @@ import { Box, Typography } from '@mui/material'
 // import avatar from '../../../assets/images/avatar-5.png'
 import { palette } from '../../../MuiTheme'
 
-export const Message = ({ sent, chatMessage, avatar }: { sent?: boolean, chatMessage: any, avatar: string }) => {
+export const Message = ({
+  sent,
+  chatMessage,
+  avatar,
+}: {
+  sent?: boolean
+  chatMessage: any
+  avatar: string
+}) => {
   return (
     <Box
       display="flex"

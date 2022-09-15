@@ -14,6 +14,7 @@ import {
   Post,
   SinglePost,
   SearchUI,
+  EditCommunity,
 } from '..'
 import { TabPanel } from '../../../components'
 import { useAppSelector } from '../../../hooks'
@@ -32,6 +33,7 @@ export enum TabID {
   USER_PROFILE,
   ARTICLE_BUILDER,
   FEEDBACK_FORM,
+  EDIT_COMMUNITY,
 }
 
 export const ClubBoard: React.FC = () => {
@@ -73,6 +75,9 @@ export const ClubBoard: React.FC = () => {
           </TabPanel>
           <TabPanel value={value} index={9}>
             <FeedbackForm />
+          </TabPanel>
+          <TabPanel value={value} index={TabID.EDIT_COMMUNITY}>
+            <EditCommunity />
           </TabPanel>
           <Box
             sx={{
