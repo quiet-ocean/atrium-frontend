@@ -13,6 +13,7 @@ export const User = ({ data }: { data?: IUser }) => {
           alt=""
           width="100%"
           height="100%"
+          style={{ borderRadius: 24 }}
         />
       </Box>
       <Typography variant="h6">{data?.accountId}</Typography>
