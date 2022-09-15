@@ -11,6 +11,7 @@ import land3 from '../../../assets/images/land-3.png'
 import post2 from '../../../assets/images/post-2.png'
 import { AText, HoverBox } from '../../../components'
 import { useAppDispatch } from '../../../hooks'
+import { setCurrentPost } from '../../../stores/AppStore'
 import { setCommunity } from '../../../stores/CommunityStore'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
 import type { ICommunity, IFile, IPost } from '../../../types/model'
@@ -120,19 +121,24 @@ export const Dashboard = () => {
     dispatch(setCurrentBoardTab(5))
   }
 
-  const handleLinkPost = () => {
-    dispatch(setCurrentBoardTab(6))
+  const handleLinkPost = (post: IPost | undefined) => {
+    if (post) {
+      dispatch(setCurrentPost(post))
+      dispatch(setCurrentBoardTab(6))
+    } else {
+      console.log('null')
+    }
   }
 
   return (
     <PContainer.Main>
       <Container>
-        <Box flex="3">
+        <HoverBox flex="3" onClick={() => handleLinkPost(posts[0])}>
           <DetailedPost data={posts[0]} />
-        </Box>
-        <Box flex="2">
+        </HoverBox>
+        <HoverBox flex="2" onClick={() => handleLinkPost(posts[1])}>
           <SimplePost data={posts[1]} />
-        </Box>
+        </HoverBox>
         <Box flex="2">
           <PostContainer
             img={post2}
@@ -141,10 +147,10 @@ export const Dashboard = () => {
         </Box>
       </Container>
       <Container>
-        <HoverBox flex="2" onClick={handleLinkPost}>
+        <HoverBox flex="2" onClick={() => handleLinkPost(posts[2])}>
           <SimplePost data={posts[2]} />
         </HoverBox>
-        <HoverBox flex="2" onClick={handleLinkPost}>
+        <HoverBox flex="2" onClick={() => handleLinkPost(posts[3])}>
           <SimplePost data={posts[3]} />
         </HoverBox>
         <HoverBox
@@ -152,7 +158,7 @@ export const Dashboard = () => {
           display="flex"
           flexDirection="column"
           justifyContent="space-between"
-          onClick={handleLinkPost}
+          onClick={() => handleLinkPost()}
         >
           <HorizontalPostComp img={land1} onClick={handleLinkPost} />
           <HorizontalPostComp img={land2} onClick={handleLinkPost} />
