@@ -48,8 +48,9 @@ export const CommunityCard = ({ data }: { data?: ICommunity }) => {
         display="flex"
         gap="16px"
         p="16px"
-        border={`1px solid ${selected ? palette.secondary.light : palette.text.primary
-          }`}
+        border={`1px solid ${
+          selected ? palette.secondary.light : palette.text.primary
+        }`}
         onClick={handleClick}
       >
         <Box width="120px !important" height="120px">
@@ -124,8 +125,9 @@ export const PostCard = ({
   return (
     <Box
       p="16px"
-      border={`1px solid ${selected ? palette.secondary.light : palette.text.primary
-        }`}
+      border={`1px solid ${
+        selected ? palette.secondary.light : palette.text.primary
+      }`}
     >
       <img
         src={url + '/files/' + (data.media as IFile)?.path}
@@ -158,8 +160,9 @@ export const CommentCard = ({
 }) => {
   return (
     <Box
-      border={`1px solid ${selected ? palette.secondary.light : palette.text.primary
-        }`}
+      border={`1px solid ${
+        selected ? palette.secondary.light : palette.text.primary
+      }`}
       p="12px"
     >
       <Box display="flex" gap="48px">
@@ -320,10 +323,10 @@ export const EditContent = ({
             name="blurp"
             // variant="primary"
             className="rounded"
-          // value={profile.blurp}
-          // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          //   setBlurp(e.target.value)
-          // }
+            // value={profile.blurp}
+            // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            //   setBlurp(e.target.value)
+            // }
           />
         </Box>
         <Box py="32px" display="flex" flexDirection="column">

@@ -121,7 +121,7 @@ export const Dashboard = () => {
     dispatch(setCurrentBoardTab(5))
   }
 
-  const handleLinkPost = (post: IPost | undefined) => {
+  const handleLinkPost = (post?: IPost | undefined) => {
     if (post) {
       dispatch(setCurrentPost(post))
       dispatch(setCurrentBoardTab(6))
