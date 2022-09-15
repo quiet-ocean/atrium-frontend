@@ -47,7 +47,7 @@ export const Reactions = () => {
 
 const DetailedPost = ({ data }: { data?: IPost }) => {
   return (
-    <PostContainer img={`${apiUrl}/files/${(data?.media as IFile)?.path}`}>
+    <PostContainer img={`${(data?.media as IFile)?.path}`}>
       <Box display="flex" gap="12px">
         <Box>
           <Title>{data?.title || `Taking advantage of your clan`}</Title>
@@ -69,7 +69,7 @@ const DetailedPost = ({ data }: { data?: IPost }) => {
 }
 const SimplePost = ({ data }: { data?: IPost}) => {
   return (
-    <PostContainer img={`${apiUrl}/files/${(data?.media as IFile)?.path}`}>
+    <PostContainer img={`${(data?.media as IFile)?.path}`}>
       <Typography variant="h4">
         {data?.title || `How Atrium’s Tokenomics work and why you should ...`}
       </Typography>
