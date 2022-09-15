@@ -37,7 +37,7 @@ export const Skills = () => {
           }}
         >
           <AText
-            component="span"
+            // component="span"
             sx={{
               color: 'white !important',
               fontSize: '20px !important',
