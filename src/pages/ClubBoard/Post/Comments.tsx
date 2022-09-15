@@ -51,16 +51,6 @@ export const Comments = (props: {
     let emoji = String.fromCodePoint(...codesArray)
     setValue(value + emoji)
   }
-  const handlePopperOpen = useCallback(
-    (event: React.MouseEvent<HTMLElement>) => {
-      if (Boolean(anchorEl)) setAnchorEl(null)
-      else setAnchorEl(event.currentTarget)
-    },
-    [anchorEl]
-  )
-  
-  const open = Boolean(anchorEl)
-  const id = open ? 'simple-popper' : undefined
 
   const handleCreate = () => {
     if (value) {
@@ -78,6 +68,15 @@ export const Comments = (props: {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
   }
+  const handlePopperOpen = useCallback(
+    (event: React.MouseEvent<HTMLElement>) => {
+      if (Boolean(anchorEl)) setAnchorEl(null)
+      else setAnchorEl(event.currentTarget)
+    },
+    [anchorEl]
+  )
+  const open = Boolean(anchorEl)
+  const id = open ? 'simple-popper' : undefined
   return (
     <Box p="30px" border={`1px solid ${palette.background.paper}`} mt="48px">
       <Box display="flex" justifyContent="space-between">
