@@ -37,10 +37,10 @@ export const HeadButton = styled(Button)(() => ({
 export const SubHead = styled(Heading)(() => ({
   fontSize: '36px',
 }))
-export const Container = styled(Box)(() => ({
-  border: '1px solid #D9D9D9',
+export const Container = styled(Box)(({ theme }) => ({
+  border: `1px solid ${theme.palette.background.default}`,
   marginBottom: '48px',
-  padding: '48px',
+  padding: 36,
 }))
 export const Card = styled(Box)(() => ({
   background: '#17181B',

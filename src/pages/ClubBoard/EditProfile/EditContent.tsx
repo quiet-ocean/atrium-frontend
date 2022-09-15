@@ -378,8 +378,10 @@ export const EditContent = ({
             {posts && posts.length > 0 ? (
               posts.map((item: IPost, key: number) => {
                 const fpId =
-                  profile.featuredPost[0]._id ||
-                  (profile.featuredPost[0] as any)
+                  profile.featuredPost && profile.featuredPost.length > 0
+                    ? profile.featuredPost[0]._id ||
+                      (profile.featuredPost[0] as any)
+                    : ''
                 return (
                   <Box
                     sx={{ minWidth: 200 }}

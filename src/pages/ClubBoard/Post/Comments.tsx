@@ -4,7 +4,7 @@ import { Box, Typography } from '@mui/material'
 import { useState } from 'react'
 import ScrollableFeed from 'react-scrollable-feed'
 
-import { AtButton, AdornmentInput, EmptyBox } from '../../../components'
+import { Button, AdornmentInput, EmptyBox } from '../../../components'
 import { useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import type { TSnack } from '../../../stores/AppStore'
@@ -36,9 +36,11 @@ export const Comment = ({ data }: { data: IComment }) => {
 export const Comments = ({
   data,
   createComment,
+  preview,
 }: {
   data: IComment[]
   createComment: (body: string) => void
+  preview?: boolean
 }) => {
   const dispatch = useAppDispatch()
   const [value, setValue] = useState('')
@@ -60,10 +62,12 @@ export const Comments = ({
     setValue(e.target.value)
   }
   return (
-    <Box p="30px" border={`1px solid ${palette.background.paper}`} mt="48px">
+    <Box p="30px" border={`1px solid ${palette.background.default}`} mt="48px">
       <Box display="flex" justifyContent="space-between">
         <Typography variant="h4">comments</Typography>
-        <AtButton variant="small" text="see all" />
+        <Button className="primary" sx={{ border: 1 }}>
+          see all
+        </Button>
       </Box>
       <Box
         mt="12px"
@@ -84,10 +88,10 @@ export const Comments = ({
           )}
         </ScrollableFeed>
       </Box>
-      <Box display="flex" gap="12px">
+      <Box display={preview ? 'none' : 'flex'} gap="12px">
         <Box
           sx={{
-            border: `1px solid ${palette.border.main}`,
+            border: `1px solid ${palette.background.default}`,
             padding: '13px',
           }}
         >
@@ -98,7 +102,8 @@ export const Comments = ({
           label="type here..."
           value={value}
           onChange={handleChange}
-          adornment={<SendIcon onClick={handleCreate} />}
+          // adornment={<SendIcon onClick={handleCreate} />}
+          adornment={<SendIcon />}
           onClick={handleCreate}
           onSend={handleCreate}
         />
