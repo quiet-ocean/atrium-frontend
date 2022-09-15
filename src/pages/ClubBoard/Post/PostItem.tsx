@@ -27,7 +27,7 @@ const url = process.env.VITE_API_URL || 'localhost:2567'
 export const PostItem = ({ data }: { data: IPost }) => {
   const dispatch = useAppDispatch()
   // console.log('Post data: ', data)
-  const [expand, setExpand] = useState(false)
+  const expand = false
   const [post, setPost] = useState<IPost>(data)
 
   const me = useAppSelector((state) => state.auth.user)
@@ -96,9 +96,8 @@ export const PostItem = ({ data }: { data: IPost }) => {
         </Box>
         <Box p="24px 0px">
           <img
-            src={`${process.env.VITE_API_URL}/files/${
-              (post.media as IFile)?.path
-            }`}
+            src={`${process.env.VITE_API_URL}/files/${(post.media as IFile)?.path
+              }`}
             alt=""
             width="100%"
           />
