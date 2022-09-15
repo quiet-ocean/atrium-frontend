@@ -5,7 +5,6 @@ import React, { useState, useEffect } from 'react'
 import { TabPanel, a11yProps, Button } from '../../../components'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
-import { setUser } from '../../../stores/AuthStore'
 import { setCommunity as setGlobalCommunity } from '../../../stores/CommunityStore'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
 import type { IUser, ICommunity } from '../../../types/model'
@@ -36,7 +35,6 @@ const tabStyle = {
 const EditCommunity: React.FC = () => {
   const dispatch = useAppDispatch()
 
-  const me: IUser = useAppSelector((state) => state.auth.user)
   const data = useAppSelector((state) => state.community.data)
   const [value, setValue] = React.useState(0)
 

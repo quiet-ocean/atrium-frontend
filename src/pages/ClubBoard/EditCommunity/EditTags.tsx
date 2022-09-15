@@ -5,7 +5,7 @@ import { Button, TextField } from '../../../components'
 // import { useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 // import { openSnack } from '../../../stores/AppStore'
-import type { IUser, ITag, ICommunity } from '../../../types/model'
+import type { ITag, ICommunity } from '../../../types/model'
 
 export const initialTags = [
   {
@@ -82,8 +82,8 @@ export const TagContent = ({
   )
 }
 export const EditTags = ({
-  data,
-  setData,
+  // data,
+  // setData,
   save,
 }: {
   data: ICommunity
