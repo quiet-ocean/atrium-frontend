@@ -1,13 +1,11 @@
-import { Box, Grid, Typography, styled } from '@mui/material'
-import { palette } from '../../../MuiTheme'
-import type {
-  ICommunity,
-  IUser,
-} from '../../../types/model'
-import { AText, Button, SocialButtons } from '../../../components'
-import avatar1 from '../../../assets/images/avatar-7.png'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
+import { Box, Grid, Typography, styled } from '@mui/material'
+
 import badge from '../../../assets/icons/verified-icon-small.png'
+import avatar1 from '../../../assets/images/avatar-7.png'
+import { AText, Button, SocialButtons } from '../../../components'
+import { palette } from '../../../MuiTheme'
+import type { ICommunity, IUser } from '../../../types/model'
 
 import { DetailContent } from './'
 

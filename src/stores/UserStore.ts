@@ -19,6 +19,7 @@ export const userSlice = createSlice({
   initialState: {
     avatars: new Array<string>(),
     backgroundMode: initialBackGroundMode,
+    friends: new Array(),
     isMyPlayerReady: false,
     loggedIn: false,
     playerAvatar: '',
@@ -27,7 +28,6 @@ export const userSlice = createSlice({
     sessionId: '',
     videoConnected: false,
     walletConnected: false,
-    friends: new Array(),
   },
   name: 'user',
   reducers: {

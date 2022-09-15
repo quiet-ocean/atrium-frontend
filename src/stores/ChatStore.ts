@@ -19,12 +19,12 @@ export const chatSlice = createSlice({
       messageType: MessageType
       chatMessage: IChatMessage
     }>(),
+    communityChatMessages: {},
+    focused: false,
     friendChatMessages: new Array<{
       messageType: MessageType
       chatMessage: IChatMessage
     }>(),
-    communityChatMessages: {},
-    focused: false,
     showChat: true,
   },
   name: 'chat',
@@ -54,9 +54,9 @@ export const chatSlice = createSlice({
     pushPlayerJoinedMessage: (state, action: PayloadAction<string>) => {
       state.chatMessages.push({
         chatMessage: {
-          username: action.payload,
           content: 'joined the lobby',
           createdAt: new Date().getTime(),
+          username: action.payload,
         } as IChatMessage,
         messageType: MessageType.PLAYER_JOINED,
       })
@@ -64,9 +64,9 @@ export const chatSlice = createSlice({
     pushPlayerLeftMessage: (state, action: PayloadAction<string>) => {
       state.chatMessages.push({
         chatMessage: {
-          username: action.payload,
           content: 'left the lobby',
           createdAt: new Date().getTime(),
+          username: action.payload,
         } as IChatMessage,
         messageType: MessageType.PLAYER_LEFT,
       })

@@ -1,11 +1,11 @@
 // import { SearchIcon } from '@mui/icons-material';
 import { Box, styled } from '@mui/material'
 import { useState, useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../../hooks'
 
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
 import { updateFriend } from '../../../stores/UserStore'
-import { IUser } from '../../../types/model'
+import type { IUser } from '../../../types/model'
 import { apiGetRequest } from '../../../utils'
 import { ModalContainer } from '../styled'
 
@@ -26,7 +26,7 @@ export type UserProps = {
   username: string
   accountId: string
   status: 'online' | 'offline'
-  avatar: string,
+  avatar: string
   _id: string
 }
 

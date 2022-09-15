@@ -52,7 +52,8 @@ const DetailedPost = ({ data }: { data?: IPost }) => {
         <Box>
           <Title>{data?.title || `Taking advantage of your clan`}</Title>
           <Typography variant="h6">
-            {data?.body || `Tips on how to network and make the most of your Atrium connections.{' '}`}
+            {data?.body ||
+              `Tips on how to network and make the most of your Atrium connections.{' '}`}
           </Typography>
         </Box>
         <Box
@@ -67,7 +68,7 @@ const DetailedPost = ({ data }: { data?: IPost }) => {
     </PostContainer>
   )
 }
-const SimplePost = ({ data }: { data?: IPost}) => {
+const SimplePost = ({ data }: { data?: IPost }) => {
   return (
     <PostContainer img={`${(data?.media as IFile)?.path}`}>
       <Typography variant="h4">
