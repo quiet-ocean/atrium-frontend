@@ -191,7 +191,6 @@ const muiTheme: AtriumTheme = createAtruimTheme({
       fontWeight: '400',
       letterSpacing: '-0.05em',
       lineHeight: '90%',
-      textTransform: 'capitalize',
     },
     h1: {
       color: '#F8F9FA',
