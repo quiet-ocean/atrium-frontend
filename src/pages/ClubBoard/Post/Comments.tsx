@@ -38,7 +38,7 @@ export const Comments = ({
   createComment,
   preview,
 }: {
-  data: IComment[]
+  data?: IComment[]
   createComment: (body: string) => void
   preview?: boolean
 }) => {
