@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material'
+import { getLinkPreview, getPreviewFromContent } from 'link-preview-js'
 import { useEffect } from 'react'
-import { getLinkPreview, getPreviewFromContent } from "link-preview-js";
 
 import { isValidUrl } from '../../../utils'
 
@@ -25,13 +25,12 @@ export const PostLink = ({
     getLinkPreview(data.value as string, {
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'method': 'GET',
+        'Content-type': 'text/html; charset=UTF-8',
+        // 'method': 'GET',
       },
       timeout: 100000,
       // mode: 'cors',
-    }).then((res) =>
-      console.debug(res)
-    );
+    }).then((res) => console.debug(res))
   }
   return (
     <TextField
