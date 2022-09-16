@@ -1,6 +1,6 @@
 import { Box, Stack, Typography, TextField, Button } from '@mui/material'
 // import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // import { useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
@@ -35,26 +35,29 @@ export const ArticleBuilder = () => {
     title: '',
   } as IDevPost)
 
+  useEffect(() => {
+    console.log('data changed ', data)
+  }, [data])
   // const handleSnack = (type: TAlert, content: string) => {
   //   const payload: TSnack = { content, open: true, type }
   //   dispatch(openSnack(payload))
   // }
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    index?: number
-  ) => {
-    const name = event.target.name
-    const value = event.target.value
+  type ChangeEvent = React.ChangeEvent<HTMLInputElement>
+  const handleChange = (event: ChangeEvent | File, index?: number) => {
+    const isFile = (event as File).name !== undefined
+
+    const name = isFile ? 'image' : (event as ChangeEvent).target.name
+    const value = isFile ? event : (event as ChangeEvent).target.value
     console.log(name, value, index)
-    if (event.target.name === 'title' && index === undefined)
-      setData({ contents: data.contents, title: value })
+    if (name === 'title' && index === undefined)
+      setData({ contents: data.contents, title: value as string })
     else if (index || index === 0) {
       setData({
         contents: [
           ...data.contents.slice(0, index),
           {
             type: name as TPostContentType,
-            value: value,
+            value: isFile ? (value as File) : (value as string),
           },
           ...data.contents.slice(index + 1),
         ],
@@ -78,7 +81,6 @@ export const ArticleBuilder = () => {
     //     },
     //   }
     // )
-
     // if (res1.status === 200 && res1.data.status && res1.data.file) {
     //   if (res1.data.file._id) {
     //     setPost({ ...post, media: res1.data.file._id })
@@ -144,7 +146,7 @@ export const ArticleBuilder = () => {
           <TextField
             value={data.title}
             name={`title`}
-            onChange={handleChange}
+            onChange={(e: ChangeEvent) => handleChange(e)}
             variant="standard"
             sx={{ width: '100%' }}
           />

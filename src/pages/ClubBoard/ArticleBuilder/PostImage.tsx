@@ -1,5 +1,6 @@
-import { Box, Input, Button } from '@mui/material'
-import React, { useState, useRef } from 'react'
+import { Box, Button } from '@mui/material'
+import React, { useState, useRef, useCallback } from 'react'
+import { useDropzone } from 'react-dropzone'
 
 import { useAppDispatch } from '../../../hooks'
 import { openSnack } from '../../../stores/AppStore'
@@ -18,15 +19,11 @@ export const PostImage = ({
   const dispatch = useAppDispatch()
   const [image, setImage] = useState<string>('')
   const fileInputRef = useRef<HTMLInputElement>(null)
-  // const [file, setFile] = useState<File | null>(null)
-  const handleFileInput = () => {
-    if (fileInputRef.current) fileInputRef.current?.click()
-  }
-  const handleFileChange = (event) => {
-    const supportedFiles = ['image/png', 'image/jpeg']
-    if (event.target.files && event.target.files.length) {
-      const _file = event.target.files[0]
 
+  const handleFileChange = (files: File[]) => {
+    const supportedFiles = ['image/png', 'image/jpeg']
+    if (files && files.length) {
+      const _file = files[0]
       if (supportedFiles.indexOf(_file.type) > -1) {
         let fr = new FileReader()
         fr.onload = function () {
@@ -34,12 +31,7 @@ export const PostImage = ({
         }
         fr.readAsDataURL(_file)
         // setFile(_file)
-        handleChange(
-          {
-            target: { name: 'image', value: _file },
-          } as React.ChangeEvent<HTMLInputElement>,
-          index
-        )
+        handleChange(_file, index)
       } else {
         // console.log('unsupported file')
         dispatch(
@@ -57,15 +49,23 @@ export const PostImage = ({
       )
     }
   }
+  const handleDrop = useCallback((acceptedFiles) => {
+    // Do something with the files
+    console.log(acceptedFiles)
+    handleFileChange(acceptedFiles)
+  }, [])
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop: handleDrop,
+  })
   return (
     <Box>
-      <Input
+      {/* <Input
         inputRef={fileInputRef}
         type="file"
         hidden
         onChange={handleFileChange}
         sx={{ visibility: 'hidden' }}
-      />
+      /> */}
       {data.value && image ? (
         <Box position="relative">
           <img src={image} alt="" width="100%" />
@@ -77,13 +77,20 @@ export const PostImage = ({
           </Box>
         </Box>
       ) : (
-        <Button
-          onClick={handleFileInput}
-          variant="outlined"
-          sx={{ fontSize: '36px', padding: '60px 0px', width: '100%' }}
-        >
-          + add image / gif
-        </Button>
+        <div {...getRootProps()}>
+          <input {...getInputProps()} ref={fileInputRef} type="file" hidden />
+
+          <Button
+            variant="outlined"
+            sx={{ fontSize: '36px', py: 6, width: '100%' }}
+          >
+            {isDragActive ? (
+              <>Drop the files here ...</>
+            ) : (
+              <>+ Add image / gif</>
+            )}
+          </Button>
+        </div>
       )}
     </Box>
   )
