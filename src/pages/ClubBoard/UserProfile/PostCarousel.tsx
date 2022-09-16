@@ -38,7 +38,7 @@ export const PostContainer = ({
             height: '100%',
             justifyContent: 'end',
             left: '0',
-            padding: '36px',
+            padding: 3,
             position: 'absolute',
             top: 0,
             width: '100%',

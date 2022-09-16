@@ -6,7 +6,7 @@ import avatar from '../images/profile-avatar.png'
 
 export const User = ({ data }: { data?: IUser }) => {
   return (
-    <Box display="flex">
+    <Box display="flex" gap={1}>
       <Box width="24px" height="24px">
         <img
           src={data ? `${data?.avatar}` : avatar}
