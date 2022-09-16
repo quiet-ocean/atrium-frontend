@@ -84,7 +84,7 @@ export const EditWallet = ({
                   variant="h6"
                   color={palette.text.disabled}
                   sx={{ textDecoration: 'underline' }}
-                // onClick={disconnectWallet}
+                  // onClick={disconnectWallet}
                 >
                   Disconnect Wallet
                 </Typography>
@@ -103,10 +103,10 @@ export const EditWallet = ({
               <Box display="flex" gap="12px">
                 <AntSwitch
                   name="isPrivate"
-                // checked={profile?.isPrivate || false}
-                // onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                //   setProfile({ ...profile, isPrivate: e.target.checked })
-                // }}
+                  // checked={profile?.isPrivate || false}
+                  // onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  //   setProfile({ ...profile, isPrivate: e.target.checked })
+                  // }}
                 />
                 <Typography variant="caption" py="2px">
                   Private
