@@ -82,6 +82,7 @@ const SimplePost = ({ data }: { data?: IPost }) => {
   )
 }
 export const Dashboard = () => {
+  const delay = 7000
   const dispatch = useAppDispatch()
   const [communities, setCommunities] = useState<ICommunity[]>([])
   const [posts, setPosts] = useState<IPost[]>([])
@@ -93,11 +94,15 @@ export const Dashboard = () => {
       getCommunities()
       getPosts()
     }
+
+    const id = setInterval(() => updatePosts(), delay)
     return () => {
       isMounted = false
+      clearInterval(id)
     }
-  })
+  }, [])
 
+  const updatePosts = () => getPosts()
   const getPosts = async () => {
     const res = await apiGetRequest(`${apiUrl}/posts`)
 
