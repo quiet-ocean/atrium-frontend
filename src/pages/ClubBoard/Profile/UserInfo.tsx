@@ -167,7 +167,12 @@ export const UserInfo = ({ user }: { user: IUser }) => {
           <Button
             className="outlined primary active"
             color={palette.text.disabled}
-            sx={{ position: 'absolute', right: '24px', top: '24px' }}
+            sx={{
+              position: 'absolute',
+              right: '24px',
+              top: '24px',
+              visibility: me._id === _user._id ? 'visible' : 'hidden',
+            }}
             onClick={handleEdit}
           >
             <img src={editIcon} alt="" width="24px" height="24px" />
