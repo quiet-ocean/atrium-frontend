@@ -20,7 +20,13 @@ export const PostLink = ({
     }
   }, [data])
   const getDataByLink = async () => {
-    const res = await fetch(new URL(data.value as string))
+    const res = await fetch(new URL(data.value as string), {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'text/html',
+      },
+      method: 'GET',
+    })
     console.log(res)
   }
   return (
