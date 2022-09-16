@@ -21,7 +21,7 @@ export const PostImage = ({
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleFileChange = (files: File[]) => {
-    const supportedFiles = ['image/png', 'image/jpeg']
+    const supportedFiles = ['image/png', 'image/jpeg', 'image/gif']
     if (files && files.length) {
       const _file = files[0]
       if (supportedFiles.indexOf(_file.type) > -1) {
