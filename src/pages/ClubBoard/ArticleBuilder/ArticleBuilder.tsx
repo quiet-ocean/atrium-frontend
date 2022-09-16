@@ -11,7 +11,18 @@ import { apiPostRequest } from '../../../utils'
 import * as Container from '../styled'
 
 type TName = 'title' | 'body'
+
+type TPostContent = {
+  type: string
+  content: string
+}
+interface IDevPost {
+  title: string
+  contents: TPostContent[]
+}
+
 const url = process.env.VITE_API_URL || `http://localhost:2567`
+
 export const ArticleBuilder = () => {
   const dispatch = useAppDispatch()
   const [post, setPost] = useState<Partial<IPost>>({} as IPost)
