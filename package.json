@@ -30,6 +30,7 @@
     "borsh": "0.7.0",
     "buffer": "^6.0.3",
     "emoji-mart": "^5.2.2",
+    "link-preview-js": "^3.0.4",
     "near-api-js": "^0.44.2",
     "peerjs": "^1.4.6",
     "phaser": "^3.55.2",
