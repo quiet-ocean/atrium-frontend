@@ -152,7 +152,7 @@ export const Dashboard = () => {
         <Box flex="2">
           <PostContainer
             img={post2}
-            children={<Typography>members</Typography>}
+            children={<Typography>Members</Typography>}
           />
         </Box>
       </Container>
