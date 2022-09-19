@@ -1,7 +1,9 @@
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 import SendIcon from '@mui/icons-material/Send'
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt'
-import { Box, Typography } from '@mui/material'
-import { useState } from 'react'
+import { Box, Typography, Popper } from '@mui/material'
+import { useState, useCallback, useRef } from 'react'
 import ScrollableFeed from 'react-scrollable-feed'
 
 import { Button, AdornmentInput, EmptyBox } from '../../../components'
@@ -33,21 +35,28 @@ export const Comment = ({ data }: { data: IComment }) => {
     </Box>
   )
 }
-export const Comments = ({
-  data,
-  createComment,
-  preview,
-}: {
-  data?: IComment[]
-  createComment: (body: string) => void
+
+export const Comments = (props: {
+  data: IComment[]
+  createComment: (body: string) => void,
   preview?: boolean
 }) => {
   const dispatch = useAppDispatch()
   const [value, setValue] = useState('')
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const pickerRef = useRef<HTMLDivElement>(null)
+
+  const addEmoji = (e: any) => {
+    let sym = e.unified.split('-')
+    let codesArray: any[] = []
+    sym.forEach((el: string) => codesArray.push('0x' + el))
+    let emoji = String.fromCodePoint(...codesArray)
+    setValue(value + emoji)
+  }
 
   const handleCreate = () => {
     if (value) {
-      createComment(value)
+      props.createComment(value)
       setValue('')
     } else {
       const snack: TSnack = {
@@ -61,6 +70,15 @@ export const Comments = ({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
   }
+  const handlePopperOpen = useCallback(
+    (event: React.MouseEvent<HTMLElement>) => {
+      if (Boolean(anchorEl)) setAnchorEl(null)
+      else setAnchorEl(event.currentTarget)
+    },
+    [anchorEl]
+  )
+  const open = Boolean(anchorEl)
+  const id = open ? 'simple-popper' : undefined
   return (
     <Box p="30px" border={`1px solid ${palette.background.default}`} mt="48px">
       <Box display="flex" justifyContent="space-between">
@@ -77,9 +95,9 @@ export const Comments = ({
         }}
       >
         <ScrollableFeed>
-          {data && data.length > 0 ? (
+          {props.data && props.data.length > 0 ? (
             <>
-              {data.map((item: IComment, key: number) => (
+              {props.data.map((item: IComment, key: number) => (
                 <Comment data={item} key={key} />
               ))}
             </>
@@ -88,12 +106,13 @@ export const Comments = ({
           )}
         </ScrollableFeed>
       </Box>
-      <Box display={preview ? 'none' : 'flex'} gap="12px">
+      <Box display={props.preview ? 'none' : 'flex'} gap="12px">
         <Box
           sx={{
             border: `1px solid ${palette.background.default}`,
             padding: '13px',
           }}
+          onClick={handlePopperOpen}
         >
           <SentimentSatisfiedAltIcon sx={{ color: 'white' }} />
         </Box>
@@ -107,6 +126,19 @@ export const Comments = ({
           onClick={handleCreate}
           onSend={handleCreate}
         />
+      </Box>
+      <Box>
+        <Popper
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          placement={`top-start`}
+          sx={{ zIndex: 10000 }}
+        >
+          <Box pb={2} ref={pickerRef}>
+            <Picker data={data} onEmojiSelect={addEmoji} />
+          </Box>
+        </Popper>
       </Box>
     </Box>
   )
