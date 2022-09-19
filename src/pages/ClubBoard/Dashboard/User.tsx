@@ -1,26 +1,22 @@
 import { Box, Typography } from '@mui/material'
 
+import type { IUser } from '../../../types/model'
+// import { apiUrl } from '../../../utils'
 import avatar from '../images/profile-avatar.png'
 
-export const User = ({ name }: { name: string }) => {
+export const User = ({ data }: { data?: IUser }) => {
   return (
-    <Box display="flex">
+    <Box display="flex" gap={1}>
       <Box width="24px" height="24px">
-        <img src={avatar} alt="" width="100%" height="100%" />
+        <img
+          src={data ? `${data?.avatar}` : avatar}
+          alt=""
+          width="100%"
+          height="100%"
+          style={{ borderRadius: 24 }}
+        />
       </Box>
-      <Typography
-        sx={{
-          fontFamily: 'Fractul Alt',
-          fontSize: '16px',
-          fontWeight: '600',
-          letterSpacing: '0em',
-          lineHeight: '17px',
-          padding: '3px 10px',
-          textAlign: 'left',
-        }}
-      >
-        {name}
-      </Typography>
+      <Typography variant="h6">{data?.accountId}</Typography>
     </Box>
   )
 }
