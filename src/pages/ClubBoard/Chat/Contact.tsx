@@ -18,12 +18,7 @@ export const Contact = ({
         gap="12px"
         border={`${active ? '2px solid yellow' : '2px solid transparent'}`}
       >
-        <img
-          src={user.avatar}
-          alt=""
-          width="74px"
-          height="74px"
-        />
+        <img src={user.avatar} alt="" width="74px" height="74px" />
         <Box p="12px">
           <Typography
             variant="h5"

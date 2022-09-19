@@ -1,138 +1,174 @@
 import { Box, Typography } from '@mui/material'
+import { useState, useEffect } from 'react'
 
-import coolcat from '../../../assets/icons/reaction-coolcat.png'
-import seemsgood from '../../../assets/icons/reaction-seemsgood.png'
+import coolCat from '../../../assets/icons/reaction-cool-cat.png'
+import seemsGood from '../../../assets/icons/reaction-seems-good.png'
 import smile from '../../../assets/icons/reaction-smile.png'
-import reactions from '../../../assets/icons/reactions.png'
 import land1 from '../../../assets/images/land-1.png'
 import land2 from '../../../assets/images/land-2.png'
 import land3 from '../../../assets/images/land-3.png'
-import post1 from '../../../assets/images/post-1.png'
 import post2 from '../../../assets/images/post-2.png'
-import post3 from '../../../assets/images/post-3.png'
-import post4 from '../../../assets/images/post-4.png'
 import { AText, HoverBox } from '../../../components'
 import { useAppDispatch } from '../../../hooks'
+import { setCurrentPost } from '../../../stores/AppStore'
+import { setCommunity } from '../../../stores/CommunityStore'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
-import post5 from '../images/post-image.png'
+import type { ICommunity, IFile, IPost } from '../../../types/model'
+import { apiGetRequest, apiUrl } from '../../../utils'
 import * as PContainer from '../styled'
 import { PostContainer } from '../UserProfile/PostCarousel'
 
 import { HorizontalPostComp } from './HorizontalPostComp'
 import { Container } from './styled'
-import { Title } from './Title'
 import { User } from './User'
 
+function truncateText(text: string | undefined, size: number) {
+  return text && text?.length > size
+    ? text.substring(0, size).concat('...')
+    : text
+}
 export const Reactions = () => {
   return (
     <Box display="flex" gap="4px">
       <img src={smile} alt="" width="18px" height="18px" />
-      <img src={seemsgood} alt="" width="18px" height="18px" />
-      <img src={coolcat} alt="" width="18px" height="18px" />
-      <Typography
-        sx={{
-          color: '#FFFFFF',
-          fontFamily: 'Andale Mono Regular',
-          fontSize: '14px',
-          fontStyle: 'normal',
-          fontWeight: 400,
-          lineHeight: '19px',
-        }}
-      >
+      <img src={seemsGood} alt="" width="18px" height="18px" />
+      <img src={coolCat} alt="" width="18px" height="18px" />
+      <Typography variant="body2" fontSize={14}>
         +204
       </Typography>
     </Box>
   )
 }
 
+const DetailedPost = ({ data }: { data?: IPost }) => {
+  return (
+    <PostContainer img={`${(data?.media as IFile)?.path}`}>
+      <Box display="flex" justifyContent={`space-between`}>
+        <Box>
+          <Typography variant="h2">
+            {data?.title || `Taking advantage of your clan`}
+          </Typography>
+          <Box mt={2}>
+            <Typography variant="caption">
+              {truncateText(data?.body, 50) ||
+                `Tips on how to network and make the most of your Atrium connections.{' '}`}
+            </Typography>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'end',
+          }}
+        >
+          <Reactions />
+        </Box>
+      </Box>
+    </PostContainer>
+  )
+}
+const SimplePost = ({ data }: { data?: IPost }) => {
+  return (
+    <PostContainer img={`${(data?.media as IFile)?.path}`}>
+      <Typography variant="h4">
+        {data?.title || `How Atrium’s Tokenomics work and why you should ...`}
+      </Typography>
+      <Box mt={2}>
+        <User data={data?.author} />
+      </Box>
+    </PostContainer>
+  )
+}
 export const Dashboard = () => {
+  const delay = 7000
   const dispatch = useAppDispatch()
+  const [communities, setCommunities] = useState<ICommunity[]>([])
+  const [posts, setPosts] = useState<IPost[]>([])
 
-  const handleLinkProject = () => {
+  useEffect(() => {
+    let isMounted = true
+
+    if (isMounted) {
+      getCommunities()
+      getPosts()
+    }
+
+    const id = setInterval(() => updatePosts(), delay)
+    return () => {
+      isMounted = false
+      clearInterval(id)
+    }
+  }, [])
+
+  const updatePosts = () => getPosts()
+  const getPosts = async () => {
+    const res = await apiGetRequest(`${apiUrl}/posts`)
+
+    if (res.status === 200 && res.data) {
+      setPosts(res.data)
+    } else {
+      console.log('error occurred while load posts data in dashboard')
+    }
+  }
+  const getCommunities = async () => {
+    const res = await apiGetRequest(`${apiUrl}/communities`)
+
+    if (res.status === 200 && res.data) {
+      setCommunities(res.data)
+    } else {
+      console.log('error occurred while load community data in dashboard')
+    }
+  }
+  const handleLinkCommunity = (data: ICommunity) => {
+    dispatch(setCommunity(data))
     dispatch(setCurrentBoardTab(5))
   }
 
-  const handleLinkPost = () => {
-    dispatch(setCurrentBoardTab(6))
+  const handleLinkPost = (post?: IPost | undefined) => {
+    if (post) {
+      dispatch(setCurrentPost(post))
+      dispatch(setCurrentBoardTab(6))
+    } else {
+      console.log('null')
+    }
   }
 
   return (
     <PContainer.Main>
       <Container>
-        <Box flex="3">
-          <PostContainer img={post1}>
-            <Box display="flex" gap="12px">
-              <Box>
-                <Title>Taking advantage of your clan</Title>
-                <Typography
-                  sx={{
-                    fontFamily: 'Andale Mono Regular',
-                    fontSize: '16px',
-                    fontWeight: 400,
-                    letterSpacing: '-0.05em',
-                    lineHeight: '17px',
-                    textAlign: 'left',
-                  }}
-                >
-                  Tips on how to network and make the most of your Atrium
-                  connections.{' '}
-                </Typography>
-              </Box>
-              <Box p="40px 12px 0px 0px">
-                <img src={reactions} alt="" />
-              </Box>
-            </Box>
+        <HoverBox flex="3" onClick={() => handleLinkPost(posts[0])}>
+          <DetailedPost data={posts[0]} />
+        </HoverBox>
+        <HoverBox flex="2" onClick={() => handleLinkPost(posts[1])}>
+          {/* <SimplePost data={posts[1]} /> */}
+          <PostContainer img={`${(posts[1]?.media as IFile)?.path}`}>
+            <Typography variant="h4">
+              {truncateText(posts[1]?.body, 43) ||
+                `How Atrium’s Tokenomics work and why you should ...`}
+            </Typography>
           </PostContainer>
-        </Box>
+        </HoverBox>
         <Box flex="2">
           <PostContainer
             img={post2}
-            children={
-              <Typography
-                sx={{
-                  fontFamily: 'Fractul Alt',
-                  fontSize: '24px',
-                  fontWeight: 600,
-                  letterSpacing: '0em',
-                  lineHeight: '25px',
-                  textAlign: 'left',
-                }}
-              >
-                How Atrium’s Tokenomics work and why you should ...
-              </Typography>
-            }
-          />
-        </Box>
-        <Box flex="2">
-          <PostContainer
-            img={post2}
-            children={<Typography>members</Typography>}
+            children={<Typography>Members</Typography>}
           />
         </Box>
       </Container>
       <Container>
-        <HoverBox flex="2" onClick={handleLinkPost}>
-          <PostContainer img={post3} height="480px">
-            <Title>How I stay ahead on quests</Title>
-            <Box mt="12px">
-              <User name="swiftyyy" />
-            </Box>
-          </PostContainer>
+        <HoverBox flex="2" onClick={() => handleLinkPost(posts[2])}>
+          <SimplePost data={posts[2]} />
         </HoverBox>
-        <HoverBox flex="2" onClick={handleLinkPost}>
-          <PostContainer img={post4} height="480px">
-            <Title>Why bounties mean everything</Title>
-            <Box mt="12px">
-              <User name="swiftyyy" />
-            </Box>
-          </PostContainer>
+        <HoverBox flex="2" onClick={() => handleLinkPost(posts[3])}>
+          <SimplePost data={posts[3]} />
         </HoverBox>
         <HoverBox
           flex="3"
           display="flex"
           flexDirection="column"
           justifyContent="space-between"
-          onClick={handleLinkPost}
+          onClick={() => handleLinkPost()}
         >
           <HorizontalPostComp img={land1} onClick={handleLinkPost} />
           <HorizontalPostComp img={land2} onClick={handleLinkPost} />
@@ -140,21 +176,22 @@ export const Dashboard = () => {
         </HoverBox>
       </Container>
       <Container>
-        <HoverBox width="100%" onClick={handleLinkProject}>
-          <PostContainer img={post5} height="350px">
-            <AText>Project 1</AText>
-          </PostContainer>
-        </HoverBox>
-        <HoverBox width="100%" onClick={handleLinkProject}>
-          <PostContainer img={post5} height="350px">
-            <AText>Project 1</AText>
-          </PostContainer>
-        </HoverBox>
-        <HoverBox width="100%" onClick={handleLinkProject}>
-          <PostContainer img={post5} height="350px">
-            <AText>Project 1</AText>
-          </PostContainer>
-        </HoverBox>
+        {communities &&
+          communities.length > 0 &&
+          communities.slice(0, 3).map((item: ICommunity, key: number) => (
+            <HoverBox
+              width="100%"
+              onClick={() => handleLinkCommunity(item)}
+              key={key}
+            >
+              <PostContainer
+                img={`${apiUrl}/files/${item?.logoUrl}`}
+                height="350px"
+              >
+                <AText>{item.name}</AText>
+              </PostContainer>
+            </HoverBox>
+          ))}
       </Container>
     </PContainer.Main>
   )

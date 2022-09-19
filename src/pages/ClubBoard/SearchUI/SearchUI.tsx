@@ -98,7 +98,6 @@ export const SearchUI = ({ open }: { open: boolean }) => {
   const value = useAppSelector((state) => state.app.searchUserCriteria)
 
   useEffect(() => {
-
     const search = async () => {
       setLoading(true)
       const res = await apiGetRequest(

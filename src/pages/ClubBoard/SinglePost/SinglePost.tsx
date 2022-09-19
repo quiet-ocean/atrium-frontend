@@ -1,172 +1,129 @@
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  OutlinedInput,
-  InputAdornment,
-  IconButton,
-} from '@mui/material'
+import { Box, Typography } from '@mui/material'
+import { useEffect, useState } from 'react'
 
-import commentAvatar from '../images/Ellipse 37.png'
-import icon2 from '../images/fa-solid_search-1.png'
-import icon1 from '../images/fa-solid_search.png'
+import { Button, Banner } from '../../../components'
+import { useAppSelector } from '../../../hooks'
+import type { IComment, IPost } from '../../../types/model'
+import { convert2LongDate } from '../../../utils'
+import { apiUrl, apiGetRequest, apiPostRequest } from '../../../utils/axios'
 import bg from '../images/profile-landing-image.png'
-import profileImage from '../images/Rectangle 121.png'
-import cardImage from '../images/Rectangle 138.png'
-import icon3 from '../images/Vector.png'
+import { Comments } from '../Post/Comments'
 import * as PContainer from '../styled'
 
-import { Text, Heading, SubHead, HeadButton, Container, Card } from './styled'
+import { Container } from './styled'
 
-const Comment = ({ text }: { text: string }) => {
-  return (
-    <Box sx={{ display: 'flex', gap: '24px' }}>
-      <Box sx={{ padding: '42px 0px' }}>
-        <img src={commentAvatar} alt="" width="90px" />
-      </Box>
-      <Text sx={{ background: '#17181B', color: '#F8F9FA', padding: '36px' }}>
-        {text}
-      </Text>
-    </Box>
-  )
-}
 const SinglePost = () => {
+  const data = useAppSelector((state) => state.app.currentPost)
+  const me = useAppSelector((state) => state.auth.user)
+  console.log(data)
+  const [post, setPost] = useState<IPost>({} as IPost)
+
+  type GetComments = (postId: string) => Promise<IComment[] | null>
+  const getComments: GetComments = async (postId: string) => {
+    const res = await apiGetRequest(`${apiUrl}/posts/${postId}/comment/`)
+
+    return res?.data.comments
+  }
+  useEffect(() => {
+    const updateState = async () => {
+      if (
+        data.comments &&
+        data.comments.length &&
+        typeof data.comments[0] === 'string'
+      ) {
+        const _comments = await getComments(data._id)
+        console.log(_comments)
+        if (_comments) {
+          setPost({ ...data, comments: _comments })
+          return
+        }
+
+        setPost(data)
+        return
+      }
+      setPost(data)
+    }
+    updateState()
+  }, [data])
+
+  const createComment = async (body: string) => {
+    const id = data._id
+    const res = await apiPostRequest(`${apiUrl}/posts/${id}/comment`, {
+      body,
+    })
+
+    if (res.status === 200 && res.data) {
+      console.log('New comment: ', res.data)
+      setPost({
+        ...post,
+        comments: [...post.comments, { ...res.data, author: me }],
+      })
+    } else {
+      console.log('Something went wrong while create comment')
+    }
+  }
+
   return (
     <PContainer.Main>
-      <Box>
-        <Box>
-          <img src={bg} alt="" width="100%" />
-        </Box>
-      </Box>
+      <Banner img={bg} />
       <Box>
         <Box sx={{ padding: '0px 180px' }}>
           <Box>
             <Box sx={{ p: '32px' }}>
-              <Heading>spotify integrating with atrium</Heading>
-              <Box sx={{ display: 'flex', gap: '12px', padding: '36px 0px' }}>
-                <HeadButton>spotify</HeadButton>
-                <HeadButton>atrium</HeadButton>
-                <HeadButton>trending news</HeadButton>
-                <HeadButton>integrations</HeadButton>
+              <Box display="flex" justifyContent={'space-between'}>
+                <Typography
+                  variant="h1"
+                  sx={{ fontSize: 60, textTransform: 'capitalize' }}
+                >
+                  {data?.title}
+                </Typography>
+                <Typography variant="body2" pt={1} textTransform="uppercase">
+                  //{convert2LongDate(data?.createdAt)}
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  '& button': {
+                    fontFamily: 'Andale Mono Regular',
+                    fontWeight: 100,
+                    textTransform: 'uppercase',
+                  },
+                  display: 'flex',
+                  gap: '12px',
+                  padding: '36px 0px',
+                }}
+              >
+                <Button className="primary active">spotify</Button>
+                <Button className="primary active">atrium</Button>
+                <Button className="primary active">trending news</Button>
+                <Button className="primary active">integrations</Button>
               </Box>
             </Box>
             <Box></Box>
           </Box>
           <Container>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet quam
-              in purus maecenas nisl tincidunt. Nascetur justo adipiscing lectus
-              sapien sit accumsan. Platea ultrices est odio neque. Quam
-              hendrerit amet, tellus lobortis lacus. Arcu amet, eu, dignissim
-              gravida. A turpis ut id amet sollicitudin leo fusce integer.
-            </Text>
-            <SubHead>“spotify integrating with atrium”</SubHead>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis eu
-              sed et tortor proin. Ac vulputate eget sagittis amet metus feugiat
-              vitae. Velit nunc, augue felis interdum integer aliquet commodo
-              vel ultrices. Feugiat malesuada tempor euismod et nibh ac laoreet
-              urna, cursus. Feugiat nibh non amet, nunc risus faucibus viverra
-              hendrerit. Cursus sed est tellus lorem nec vel. Lacinia ut rhoncus
-              massa id turpis quisque amet, non.
-            </Text>
-            <img src={profileImage} alt="" />
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis eu
-              sed et tortor proin. Ac vulputate eget sagittis amet metus feugiat
-              vitae. Velit nunc, augue felis interdum integer aliquet commodo
-              vel ultrices. Feugiat malesuada tempor euismod et nibh ac laoreet
-              urna, cursus. Feugiat nibh non amet, nunc risus faucibus viverra
-              hendrerit. Cursus sed est tellus lorem nec vel. Lacinia ut rhoncus
-              massa id turpis quisque amet, non.
-            </Text>
+            <img
+              src={
+                typeof data?.media !== 'string'
+                  ? apiUrl + '/files/' + data?.media?.path
+                  : ''
+              }
+              alt=""
+              width="100%"
+            />
+            <Typography variant="body1" py={2}>
+              {data?.body}
+            </Typography>
           </Container>
-          <Container>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <SubHead>comments</SubHead>
-              <HeadButton>See All</HeadButton>
-            </Box>
-            <Box>
-              <Comment
-                text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac convallis commodo morbi ut leo gravida. A nunc laoreet cras semper netus quis blandit eu.`}
+          <Box>
+            {
+              <Comments
+                data={post.comments}
+                createComment={createComment}
+                preview={false}
               />
-              <Comment
-                text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac convallis commodo morbi ut leo gravida. A nunc laoreet cras semper netus quis blandit eu.`}
-              />
-              <Comment
-                text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit ac convallis commodo morbi ut leo gravida. A nunc laoreet cras semper netus quis blandit eu.`}
-              />
-            </Box>
-            <Box sx={{ display: 'flex', gap: '24px', padding: '24px 0px' }}>
-              <Card sx={{ padding: '24px' }}>
-                <img src={icon1} alt="" />
-              </Card>
-              <Card sx={{ padding: '24px' }}>
-                <img src={icon2} alt="" />
-              </Card>
-              {/* <Card>
-              <input style={{
-                background: 'transparent',
-                border: 'none'
-              }} />
-              <img src={icon3} alt='' />
-            </Card> */}
-              <FormControl sx={{ width: '100%' }} variant="outlined">
-                <InputLabel
-                  htmlFor="outlined-adornment-password"
-                  sx={{ fontSize: '36px', left: '12px', top: '2px' }}
-                >
-                  Type Here...
-                </InputLabel>
-                <OutlinedInput
-                  id="outlined-adornment-password"
-                  type="text"
-                  sx={{ fontSize: '42px', height: '100%' }}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        edge="end"
-                      >
-                        <img src={icon3} alt="" />
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                  label="Password"
-                />
-              </FormControl>
-            </Box>
-          </Container>
-          <Container>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <SubHead>comments</SubHead>
-              <HeadButton>See All</HeadButton>
-            </Box>
-            <Box
-              sx={{
-                display: 'flex',
-                gap: '36px',
-                overflowX: 'auto',
-                padding: '24px 0px',
-              }}
-            >
-              <Card sx={{ padding: '24px' }}>
-                <img src={cardImage} alt="" />
-                <SubHead>spotify integrating with atrium</SubHead>
-                <Text>//mar 1st, 2022</Text>
-              </Card>
-              <Card sx={{ padding: '24px' }}>
-                <img src={cardImage} alt="" />
-                <SubHead>spotify integrating with atrium</SubHead>
-                <Text>//mar 1st, 2022</Text>
-              </Card>
-              <Card sx={{ padding: '24px' }}>
-                <img src={cardImage} alt="" />
-                <SubHead>spotify integrating with atrium</SubHead>
-                <Text>//mar 1st, 2022</Text>
-              </Card>
-            </Box>
-          </Container>
+            }
+          </Box>
         </Box>
       </Box>
     </PContainer.Main>

@@ -5,14 +5,17 @@ import React, { useState, useEffect } from 'react'
 import { TabPanel, a11yProps, Button } from '../../../components'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
-import { openSnack } from '../../../stores/AppStore'
-import { setUser } from '../../../stores/AuthStore'
+import { setCommunity as setGlobalCommunity } from '../../../stores/CommunityStore'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
-import type { IUser } from '../../../types/model'
+import type { ICommunity } from '../../../types/model'
 import { apiPutRequest } from '../../../utils'
+import { TabID } from '../ClubBoard'
 import * as Container from '../styled'
 
-import { EditContent, EditWallet, EditIdentity, EditTags } from './'
+import { EditContent } from './EditContent'
+import { EditIdentity } from './EditIdentity'
+import { EditTags } from './EditTags'
+import { EditWallet } from './EditWallet'
 
 const tabItems = ['content', 'tags', 'identity', 'wallet & privacy']
 
@@ -29,20 +32,20 @@ const tabStyle = {
   textTransform: 'capitalize',
 }
 
-const EditProfile: React.FC = () => {
+const EditCommunity: React.FC = () => {
   const dispatch = useAppDispatch()
 
-  const me: IUser = useAppSelector((state) => state.auth.user)
+  const data = useAppSelector((state) => state.community.data)
   const [value, setValue] = React.useState(0)
 
-  const [profile, setProfile] = useState<IUser>(me)
+  const [community, setCommunity] = useState<ICommunity>(data)
 
   useEffect(() => {
     // updateProfile()
   }, [])
   useEffect(() => {
-    setProfile(me)
-  }, [me])
+    setCommunity(data)
+  }, [data])
   // const updateProfile = <T,>(name: string, value: T) => {
   //   // const keyArray = Object.keys(me)
   //   // type TUserKey = typeof keyArray[number]
@@ -54,29 +57,17 @@ const EditProfile: React.FC = () => {
 
   // }
   const save = async () => {
-    console.log('Save profile: ', profile)
-    const isOwner = profile._id === me._id
+    console.log('Save community: ', community)
+    const res = await apiPutRequest(
+      `${process.env.VITE_API_URL}/user`,
+      community
+    )
 
-    if (isOwner) {
-      const res = await apiPutRequest(
-        `${process.env.VITE_API_URL}/user`,
-        profile
-      )
-
-      // console.log(res)
-      if (res.status === 200) {
-        dispatch(setUser(profile))
-      } else {
-        console.log('Failed to update user profile')
-      }
+    // console.log(res)
+    if (res.status === 200) {
+      dispatch(setGlobalCommunity(community))
     } else {
-      dispatch(
-        openSnack({
-          content: 'This is not your profile.',
-          open: true,
-          type: 'warning',
-        })
-      )
+      console.log('Failed to update user profile')
     }
   }
 
@@ -84,8 +75,8 @@ const EditProfile: React.FC = () => {
     setValue(newValue)
   }
 
-  const handleBtnBackToProfile = () => {
-    dispatch(setCurrentBoardTab(3))
+  const handleBtnBackToCommunity = () => {
+    dispatch(setCurrentBoardTab(TabID.COMMUNITY_HUB))
   }
 
   return (
@@ -94,16 +85,16 @@ const EditProfile: React.FC = () => {
         <Box p="32px">
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
             <Typography variant="h2" color={palette.secondary.light}>
-              edit profile
+              edit community
             </Typography>
             <Box display="flex" gap="24px">
               <Button
                 className="primary active"
                 color={palette.text.primary}
-                onClick={handleBtnBackToProfile}
+                onClick={handleBtnBackToCommunity}
               >
                 <Typography variant="h6" color={palette.background.paper}>
-                  back to profile
+                  back to community
                 </Typography>
 
                 <ArrowForwardIcon sx={{ fontSize: 18 }} />
@@ -146,24 +137,20 @@ const EditProfile: React.FC = () => {
         >
           <TabPanel value={value} index={0}>
             <EditContent
-              profile={profile}
-              setProfile={setProfile}
+              data={community}
+              setData={setCommunity}
               // updateProfile={updateProfile}
               save={save}
             />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <EditTags profile={profile} setProfile={setProfile} save={save} />
+            <EditTags data={community} setData={setCommunity} save={save} />
           </TabPanel>
           <TabPanel value={value} index={2}>
-            <EditIdentity
-              profile={profile}
-              setProfile={setProfile}
-              save={save}
-            />
+            <EditIdentity data={community} setData={setCommunity} save={save} />
           </TabPanel>
           <TabPanel value={value} index={3}>
-            <EditWallet profile={profile} setProfile={setProfile} save={save} />
+            <EditWallet data={community} setData={setCommunity} save={save} />
           </TabPanel>
         </Box>
       </Box>
@@ -171,4 +158,4 @@ const EditProfile: React.FC = () => {
   )
 }
 
-export { EditProfile }
+export { EditCommunity }

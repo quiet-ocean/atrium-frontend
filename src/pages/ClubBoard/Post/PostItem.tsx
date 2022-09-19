@@ -3,11 +3,13 @@ import { useState, useEffect } from 'react'
 
 // import postImage from '../../../assets/images/post-image.png'
 import { AtButton } from '../../../components'
-import { useAppSelector } from '../../../hooks'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import { setCurrentPost } from '../../../stores/AppStore'
+import { setCurrentBoardTab } from '../../../stores/UiStore'
 import type { IFile, IPost } from '../../../types/model'
 import { apiGetRequest, apiPostRequest } from '../../../utils'
-import { convertString2LongDate } from '../../../utils/utils'
+import { convert2LongDate } from '../../../utils/utils'
 
 import { Comments } from './Comments'
 
@@ -23,8 +25,9 @@ export const Tag = ({ children }: { children: React.ReactNode }) => {
 const url = process.env.VITE_API_URL || 'localhost:2567'
 
 export const PostItem = ({ data }: { data: IPost }) => {
+  const dispatch = useAppDispatch()
   // console.log('Post data: ', data)
-  const [expand, setExpand] = useState(false)
+  const expand = false
   const [post, setPost] = useState<IPost>(data)
 
   const me = useAppSelector((state) => state.auth.user)
@@ -61,12 +64,16 @@ export const PostItem = ({ data }: { data: IPost }) => {
       console.log('Something went wrong while create comment')
     }
   }
+  const handleClick = (post: IPost) => {
+    dispatch(setCurrentPost(post))
+    dispatch(setCurrentBoardTab(6))
+  }
   return (
     <Box sx={{ border: `1px solid ${palette.text.primary}`, padding: '36px' }}>
       <Box
         display="flex"
         justifyContent="space-between"
-        onClick={() => setExpand(!expand)}
+        onClick={() => handleClick(data)}
       >
         <Typography variant="h2" sx={{ fontSize: '60px', maxWidth: '640px' }}>
           {post.title}
@@ -76,7 +83,7 @@ export const PostItem = ({ data }: { data: IPost }) => {
             variant="body2"
             sx={{ fontSize: '20px', textTransform: 'uppercase' }}
           >
-            {convertString2LongDate(post.createdAt)}
+            {convert2LongDate(post.createdAt)}
           </Typography>
         </Box>
       </Box>
@@ -98,7 +105,11 @@ export const PostItem = ({ data }: { data: IPost }) => {
         </Box>
         <Typography variant="body1">{post.body}</Typography>
       </Box>
-      <Comments data={post.comments} createComment={createComment} />
+      <Comments
+        data={post.comments.slice(0, 2)}
+        createComment={createComment}
+        preview
+      />
     </Box>
   )
 }

@@ -128,7 +128,7 @@ export default class Network {
 
           // when a new player finished setting up player name
           if (field === 'name' && value !== '') {
-            store.dispatch(updateFriend({ username: value, status: 'online' }))
+            store.dispatch(updateFriend({ status: 'online', username: value }))
             eventEmitter.emit(Event.PLAYER_JOINED, player, key)
             store.dispatch(setPlayerNameMap({ id: key, name: value }))
             store.dispatch(pushPlayerJoinedMessage(value))
@@ -140,7 +140,7 @@ export default class Network {
     // an instance removed from the players MapSchema
     this.room.state.players.onRemove = (player: IPlayer, key: string) => {
       eventEmitter.emit(Event.PLAYER_LEFT, key)
-      store.dispatch(updateFriend({ username: player.name, status: 'offline' }))
+      store.dispatch(updateFriend({ status: 'offline', username: player.name }))
       this.webRTC?.deleteVideoStream(key)
       this.webRTC?.deleteOnCalledVideoStream(key)
       store.dispatch(pushPlayerLeftMessage(player.name))
@@ -189,19 +189,19 @@ export default class Network {
       if (!item.channel || item.channel == '') {
         store.dispatch(
           pushChatMessage({
-            username: item.username,
-            createdAt: item.createdAt,
             content: item.content,
+            createdAt: item.createdAt,
+            username: item.username,
           } as IChatMessage)
         )
       } else {
         const payload = {
           channel: item.channel,
-          user: { avatar: item.avatar, username: item.username },
           chatMessage: {
-            createdAt: item.createdAt,
             content: item.content,
+            createdAt: item.createdAt,
           },
+          user: { avatar: item.avatar, username: item.username },
         }
         store.dispatch(pushCommunityChatMessage(payload))
       }
@@ -223,7 +223,7 @@ export default class Network {
     this.room.onMessage(
       Message.DIRECT_CHAT_MESSAGE,
       ({ username, content, createdAt }) => {
-        const payload = { username, content, createdAt } as IChatMessage
+        const payload = { content, createdAt, username } as IChatMessage
         store.dispatch(pushDirectChatMessage(payload))
         // eventEmitter.emit(Event.UPDATE_DIALOG_BUBBLE, clientId, content)
       }
@@ -361,15 +361,15 @@ export default class Network {
   addDirectChatMessage(selfInfo: any, client: any, content: string) {
     console.log('add direct chat message')
     const payload = {
-      username: selfInfo.username,
       content: content,
       createdAt: new Date().getTime(),
+      username: selfInfo.username,
     } as IChatMessage
     store.dispatch(pushDirectChatMessage(payload))
     this.room?.send(Message.DIRECT_CHAT_MESSAGE, {
-      receiver: client,
       content: content,
       createdAt: payload.createdAt,
+      receiver: client,
     })
   }
 }

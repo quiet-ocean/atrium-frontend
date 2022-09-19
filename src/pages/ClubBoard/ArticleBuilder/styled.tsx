@@ -1,7 +1,8 @@
 import { styled, Box, Button } from '@mui/material'
 
 export const ArticleBox = styled(Box)(({ theme }) => ({
-  border: '1px solid' + theme.palette.border.light,
+  // border: '1px solid' + theme.palette.border.light,
+  border: '1px solid' + theme.palette.background.default,
   display: 'flex',
   flexDirection: 'column',
   height: '320px',
@@ -11,7 +12,8 @@ export const ArticleBox = styled(Box)(({ theme }) => ({
 
 export const CButton = styled(Button)(({ theme }) => ({
   background: 'transparent',
-  border: '1px solid ' + theme.palette.border.light,
+  // border: '1px solid ' + theme.palette.border.light,
+  border: '1px solid' + theme.palette.background.default,
   borderRadius: '0px',
   color: theme.palette.text.disabled,
   fontFamily: 'Fractul',
