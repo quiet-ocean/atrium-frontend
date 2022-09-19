@@ -36,13 +36,9 @@ export const Comment = ({ data }: { data: IComment }) => {
   )
 }
 
-export const Comments = ({
-  data,
-  createComment,
-  preview,
-}: {
-  data?: IComment[]
-  createComment: (body: string) => void
+export const Comments = (props: {
+  data: IComment[]
+  createComment: (body: string) => void,
   preview?: boolean
 }) => {
   const dispatch = useAppDispatch()
@@ -110,7 +106,7 @@ export const Comments = ({
           )}
         </ScrollableFeed>
       </Box>
-      <Box display={preview ? 'none' : 'flex'} gap="12px">
+      <Box display={props.preview ? 'none' : 'flex'} gap="12px">
         <Box
           sx={{
             border: `1px solid ${palette.background.default}`,
