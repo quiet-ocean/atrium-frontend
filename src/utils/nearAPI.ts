@@ -58,8 +58,14 @@ export async function initNearContract() {
   )) as MyContract
 }
 
-export async function logoutNear() {
-  window.walletConnection.signOut()
+export async function logoutNear(cb: AnyFunction) {
+  try {
+    await window.walletConnection.signOut()
+    cb(true)
+  } catch (e) {
+    cb(false, e)
+  }
+
   // reload page
   // window.location.replace(window.location.origin + window.location.pathname);
   console.log('sign out')
