@@ -25,10 +25,22 @@ export const PopupMenu = ({ handleClose }: { handleClose: AnyFunction }) => {
   const disconnectWallet = async () => {
     await logoutNear((succeed: boolean, e?: any) => {
       if (succeed) {
-        dispatch(openSnack({ open: true, content: 'Succeed to logout', type: 'success' }))
+        dispatch(
+          openSnack({
+            content: 'Succeed to logout',
+            open: true,
+            type: 'success',
+          })
+        )
         navigate('/')
       } else {
-        dispatch(openSnack({ open: true, content: 'Failed to logout' + e.toString(), type: 'error' }))
+        dispatch(
+          openSnack({
+            content: 'Failed to logout' + e.toString(),
+            open: true,
+            type: 'error',
+          })
+        )
       }
     })
   }
