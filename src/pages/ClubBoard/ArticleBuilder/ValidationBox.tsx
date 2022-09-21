@@ -12,12 +12,12 @@ export const ValidationBox = ({
   textStyle?: object
 }) => {
   return (
-    <Box sx={sx}>
+    <Box sx={sx} mb={2}>
       {children}
       <Typography
         variant="h5"
         sx={{
-          mt: '24px',
+          mt: 1,
           textAlign: 'center',
           visibility: valid ? 'visible' : 'hidden',
           ...textStyle,
