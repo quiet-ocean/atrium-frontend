@@ -8,7 +8,7 @@ import { apiGetRequest, apiUrl, isValidUrl } from '../../../utils'
 
 import type { TPostContent } from './ArticleBuilder'
 
-const domain = 'https://twitter.com'
+const domain = 'https://medium.com'
 
 type TPreviewData = {
   contentType: string
