@@ -1,13 +1,12 @@
 import { Box, Stack, Typography, TextField, Button } from '@mui/material'
-// import axios from 'axios'
+import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 
-// import { useAppDispatch } from '../../../hooks'
+import { useAppDispatch } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
-// import type { TAlert, TSnack } from '../../../stores/AppStore'
-// import { openSnack } from '../../../stores/AppStore'
-// import type { IPost } from '../../../types/model'
-import { isValidUrl } from '../../../utils'
+import type { TAlert, TSnack } from '../../../stores/AppStore'
+import { openSnack } from '../../../stores/AppStore'
+import { apiPostRequest, apiUrl, isValidUrl } from '../../../utils'
 import * as Container from '../styled'
 
 import { ValidationBox, PostImage, PostSection, PostLink, PostText } from './'
@@ -22,13 +21,8 @@ export interface IDevPost {
   contents: TPostContent[]
 }
 
-// const url = process.env.VITE_API_URL || `http://localhost:2567`
-
 export const ArticleBuilder = () => {
-  // const dispatch = useAppDispatch()
-  // const [post, setPost] = useState<Partial<IPost>>({} as IPost)
-  // const [image, setImage] = useState<string>('')
-  // const [file, setFile] = useState<File | null>(null)
+  const dispatch = useAppDispatch()
 
   const [data, setData] = useState<IDevPost>({
     contents: [],
@@ -38,16 +32,21 @@ export const ArticleBuilder = () => {
   useEffect(() => {
     console.log('data changed ', data)
   }, [data])
-  // const handleSnack = (type: TAlert, content: string) => {
-  //   const payload: TSnack = { content, open: true, type }
-  //   dispatch(openSnack(payload))
-  // }
+  const handleSnack = (type: TAlert, content: string) => {
+    const payload: TSnack = { content, open: true, type }
+    dispatch(openSnack(payload))
+  }
   type ChangeEvent = React.ChangeEvent<HTMLInputElement>
-  const handleChange = (event: ChangeEvent | File, index?: number) => {
-    const isFile = (event as File).name !== undefined
+  const handleChange = (event: ChangeEvent | File | null, index?: number) => {
+    const isNull = event === null
+    const isFile = !isNull && (event as File).name !== undefined
 
-    const name = isFile ? 'image' : (event as ChangeEvent).target.name
-    const value = isFile ? event : (event as ChangeEvent).target.value
+    const name = isFile || isNull ? 'image' : (event as ChangeEvent).target.name
+    const value = isNull
+      ? ''
+      : isFile
+      ? event
+      : (event as ChangeEvent).target.value
     console.log(name, value, index)
     if (name === 'title' && index === undefined)
       setData({ contents: data.contents, title: value as string })
@@ -65,47 +64,78 @@ export const ArticleBuilder = () => {
       })
     }
   }
-
-  const uploadPost = async () => {
-    // if (!post.title || !post.body || !image) {
-    //   // console.log('input data correctly')
-    //   handleSnack('warning', 'Type data exactly')
-    //   return
-    // }
-    // let res1 = await axios.post(
-    //   `${url}/file/upload`,
-    //   { image: file },
-    //   {
-    //     headers: {
-    //       'Content-Type': 'multipart/form-data',
-    //     },
-    //   }
-    // )
-    // if (res1.status === 200 && res1.data.status && res1.data.file) {
-    //   if (res1.data.file._id) {
-    //     setPost({ ...post, media: res1.data.file._id })
-    //     let res2 = await apiPostRequest(`${url}/posts`, {
-    //       ...post,
-    //       media: res1.data.file._id,
-    //     })
-    //     if (res2.status === 200) {
-    //       console.log('success')
-    //       setPost({ body: '', media: '', title: '' })
-    //       setImage('')
-    //       handleSnack('success', 'Succeed to create post')
-    //     } else {
-    //       // console.log('it seems like not going well')
-    //       handleSnack('error', 'Error occured')
-    //     }
-    //   } else {
-    //     setImage('')
-    //     setFile(null)
-    //   }
-    // } else {
-    //   // console.log('file is not uploaded')
-    //   handleSnack('error', 'File is not uploaded')
-    // }
+  const getImageFile = async () => {
+    return new Promise<File>((resolve, reject) => {
+      if (data.contents?.length > 0) {
+        data.contents.forEach((item: TPostContent) => {
+          if (item.type === 'image') {
+            resolve(item.value as File)
+          }
+        })
+      }
+      reject()
+    })
   }
+  const getBody = async () =>
+    new Promise((resolve, reject) => {
+      if (data.contents?.length > 0) {
+        data.contents.forEach((item: TPostContent) => {
+          if (item.type === 'text') {
+            resolve(item.value as string)
+          }
+        })
+      }
+      reject()
+    })
+  const uploadImage = async (file: File) => {
+    return await axios.post(
+      `${apiUrl}/file/upload`,
+      { image: file },
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    )
+  }
+  const uploadPost = async () => {
+    if (!data.title || !data.contents || data.contents.length === 0) {
+      // console.log('input data correctly')
+      handleSnack('warning', 'Type data exactly')
+      return
+    }
+    const file = await getImageFile()
+    // console.log(Boolean(file))
+    // let fileUploadResponse = {}
+    let media = ''
+    if (file) {
+      const res = await uploadImage(file)
+
+      if (res.status === 200 && res.data.status && res.data.file) {
+        // setPost({ ...post, media: res?.data.file._id })
+        media = res?.data.file._id
+      }
+    }
+    const body = await getBody()
+    const res = await apiPostRequest(`${apiUrl}/posts`, {
+      body,
+      media,
+      title: data.title,
+    })
+    if (res.status === 200) {
+      clearData()
+      handleSnack('success', 'Succeed to create post')
+    } else {
+      // console.log('it seems like not going well')
+      handleSnack('error', 'Error occurred')
+    }
+  }
+  const clearData = () =>
+    setData({
+      contents: [],
+      title: '',
+    } as IDevPost)
+
   const validate = (content: TPostContent) => {
     // return true
     if (content.type === 'text' || content.type === 'section') {

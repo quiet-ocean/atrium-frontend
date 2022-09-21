@@ -54,6 +54,10 @@ export const PostImage = ({
     console.log(acceptedFiles)
     handleFileChange(acceptedFiles)
   }, [])
+  const clear = () => {
+    setImage('')
+    handleChange(null, index)
+  }
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: handleDrop,
   })
@@ -71,7 +75,7 @@ export const PostImage = ({
           <img src={image} alt="" width="100%" />
           <Box
             sx={{ left: '12px', position: 'absolute', top: '12px' }}
-            onClick={() => setImage('')}
+            onClick={() => clear()}
           >
             close
           </Box>
