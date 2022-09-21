@@ -3,11 +3,10 @@ import { getPreviewFromContent } from 'link-preview-js'
 // import { getLinkPreview } from 'link-preview-js'
 import { useState, useEffect } from 'react'
 
+import { palette } from '../../../MuiTheme'
 import { apiGetRequest, apiUrl, isValidUrl } from '../../../utils'
-import axios from 'axios'
 
 import type { TPostContent } from './ArticleBuilder'
-import { palette } from '../../../MuiTheme'
 
 const domain = 'https://medium.com'
 
@@ -19,7 +18,7 @@ type TPreviewData = {
   mediaType: string
   siteName: string
   title: string
-  url: string,
+  url: string
   videos: string[]
 }
 export const PostLink = ({
@@ -54,9 +53,8 @@ export const PostLink = ({
     }
   }
   const getPreviewByProxy = async (subdomain) => {
-
-    const res = await apiGetRequest(`${'http://localhost:2567'}/proxy${subdomain}`)
-    return getPreviewFromContent({...res, url: domain})
+    const res = await apiGetRequest(`${apiUrl}/proxy${subdomain}`)
+    return getPreviewFromContent({ ...res, url: domain })
   }
   return (
     <>
@@ -72,8 +70,22 @@ export const PostLink = ({
           <Grid item md={8} xs={12}>
             <Box>
               <Typography variant="h4">{previewData?.title}</Typography>
-              <Typography variant="body2" mt={4}>{previewData?.description}</Typography>
-              {previewData && (<Box mt={1}><Typography variant="caption"><a target="_blank" href={data.value as string} style={{ color: palette.text.secondary}}>{domain}</a></Typography></Box>)}
+              <Typography variant="body2" mt={4}>
+                {previewData?.description}
+              </Typography>
+              {previewData && (
+                <Box mt={1}>
+                  <Typography variant="caption">
+                    <a
+                      target="_blank"
+                      href={data.value as string}
+                      style={{ color: palette.text.secondary }}
+                    >
+                      {domain}
+                    </a>
+                  </Typography>
+                </Box>
+              )}
             </Box>
           </Grid>
           <Grid item md={4} xs={12}>

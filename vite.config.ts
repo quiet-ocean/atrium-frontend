@@ -21,9 +21,9 @@ export default defineConfig({
   ],
   proxy: 'https://api.playatrium.com',
   server: {
+    cors: false,
     hmr: { overlay: false },
     host: true,
     open: true,
-    cors: false,
   },
 })
