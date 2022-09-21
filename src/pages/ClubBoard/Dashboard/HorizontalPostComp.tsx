@@ -1,5 +1,7 @@
 import { Box, Typography } from '@mui/material'
 
+import type { IUser } from '../../../types/model'
+
 import { User } from './User'
 
 export const HorizontalPostComp = ({
@@ -31,7 +33,7 @@ export const HorizontalPostComp = ({
         >
           I will win your land and your girl
         </Typography>
-        <User name="swiftyyy" />
+        <User data={{ accountId: 'swiftyyy' } as IUser} />
       </Box>
     </Box>
   )

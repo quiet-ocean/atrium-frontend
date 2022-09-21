@@ -116,13 +116,13 @@ const SinglePost = () => {
             </Typography>
           </Container>
           <Box>
-            {post && post.comments && post.comments.length > 0 && (
+            {
               <Comments
                 data={post.comments}
                 createComment={createComment}
                 preview={false}
               />
-            )}
+            }
           </Box>
         </Box>
       </Box>

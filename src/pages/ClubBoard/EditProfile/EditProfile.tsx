@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react'
 import { TabPanel, a11yProps, Button } from '../../../components'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { palette } from '../../../MuiTheme'
+import { openSnack } from '../../../stores/AppStore'
 import { setUser } from '../../../stores/AuthStore'
 import { setCurrentBoardTab } from '../../../stores/UiStore'
 import type { IUser } from '../../../types/model'
@@ -54,13 +55,28 @@ const EditProfile: React.FC = () => {
   // }
   const save = async () => {
     console.log('Save profile: ', profile)
-    const res = await apiPutRequest(`${process.env.VITE_API_URL}/user`, profile)
+    const isOwner = profile._id === me._id
 
-    // console.log(res)
-    if (res.status === 200) {
-      dispatch(setUser(profile))
+    if (isOwner) {
+      const res = await apiPutRequest(
+        `${process.env.VITE_API_URL}/user`,
+        profile
+      )
+
+      // console.log(res)
+      if (res.status === 200) {
+        dispatch(setUser(profile))
+      } else {
+        console.log('Failed to update user profile')
+      }
     } else {
-      console.log('Failed to update user profile')
+      dispatch(
+        openSnack({
+          content: 'This is not your profile.',
+          open: true,
+          type: 'warning',
+        })
+      )
     }
   }
 

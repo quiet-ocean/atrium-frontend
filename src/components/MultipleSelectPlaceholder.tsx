@@ -67,12 +67,12 @@ export default function MultipleSelectPlaceholder() {
           value={personName}
           onChange={handleChange}
           input={<OutlinedInput />}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
+          renderValue={(selected: any) => {
+            if (selected?.length === 0) {
               return <em>Choose post</em>
             }
 
-            return selected.join(', ')
+            return selected?.join(', ')
           }}
           MenuProps={MenuProps}
           inputProps={{ 'aria-label': 'Without label' }}
