@@ -19,7 +19,9 @@ export default defineConfig({
       'VITE_API_URL',
     ]),
   ],
+  proxy: 'https://api.playatrium.com',
   server: {
+    cors: false,
     hmr: { overlay: false },
     host: true,
     open: true,

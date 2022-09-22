@@ -29,6 +29,7 @@ export const convert2LongDate = (s: string) => {
 export const calculatePastTime = (date: string | undefined) => {
   return date
 }
+
 export const isValidUrl = (urlString) => {
   try {
     return Boolean(new URL(urlString))

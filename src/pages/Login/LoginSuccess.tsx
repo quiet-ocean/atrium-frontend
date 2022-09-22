@@ -25,8 +25,8 @@ const LoginSuccess = () => {
       .joinOrCreatePublic()
       .then(() => {
         bootstrap.launchGame()
-        navigate('/game')
-        // navigate('/club-board')
+        // navigate('/game')
+        navigate('/club-board')
       })
       .catch((error) =>
         console.error('Error occurred while join public lobby', error)

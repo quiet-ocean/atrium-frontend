@@ -30,11 +30,13 @@
     "borsh": "0.7.0",
     "buffer": "^6.0.3",
     "emoji-mart": "^5.2.2",
+    "link-preview-js": "^3.0.4",
     "near-api-js": "^0.44.2",
     "peerjs": "^1.4.6",
     "phaser": "^3.55.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-dropzone": "^14.2.2",
     "react-material-ui-carousel": "^3.4.2",
     "react-multi-carousel": "^2.8.0",
     "react-redux": "^8.0.2",
@@ -90,5 +92,6 @@
     "vite": "^2.9.12",
     "vite-plugin-environment": "^1.1.1",
     "vite-plugin-html": "^3.2.0"
-  }
+  },
+  "proxy": "https://api.playatrium.com"
 }

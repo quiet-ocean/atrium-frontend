@@ -38,7 +38,7 @@ export const Comment = ({ data }: { data: IComment }) => {
 
 export const Comments = (props: {
   data: IComment[]
-  createComment: (body: string) => void,
+  createComment: (body: string) => void
   preview?: boolean
 }) => {
   const dispatch = useAppDispatch()
