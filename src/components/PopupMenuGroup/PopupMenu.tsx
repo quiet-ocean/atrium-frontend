@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 // import Menu from '@mui/material/Menu'
 // import MenuItem from '@mui/material/MenuItem'
 // import * as React from 'react'
@@ -11,13 +12,38 @@ import SettingIcon from '../../assets/icons/setting-icon.png'
 import WalletIcon from '../../assets/icons/wallet-icon.png'
 import avatar from '../../assets/images/avatar-6.png'
 import { useAppDispatch, useAppSelector } from '../../hooks'
+import { openSnack } from '../../stores/AppStore'
 import { setBoardDialogOpen, setCurrentBoardTab } from '../../stores/UiStore'
+import { logoutNear } from '../../utils'
 import { HoverBox } from '../elements'
 
 export const PopupMenu = ({ handleClose }: { handleClose: AnyFunction }) => {
+  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const user = useAppSelector((state) => state.auth.user)
 
+  const disconnectWallet = async () => {
+    await logoutNear((succeed: boolean, e?: any) => {
+      if (succeed) {
+        dispatch(
+          openSnack({
+            content: 'Succeed to logout',
+            open: true,
+            type: 'success',
+          })
+        )
+        navigate('/')
+      } else {
+        dispatch(
+          openSnack({
+            content: 'Failed to logout' + e.toString(),
+            open: true,
+            type: 'error',
+          })
+        )
+      }
+    })
+  }
   const MenuItemContent = ({
     icon,
     text,
@@ -76,6 +102,7 @@ export const PopupMenu = ({ handleClose }: { handleClose: AnyFunction }) => {
           <Typography
             variant="caption"
             sx={{ fontSize: '12px', textDecoration: 'underline' }}
+            onClick={disconnectWallet}
           >
             disconnect wallet
           </Typography>
